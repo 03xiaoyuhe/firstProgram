@@ -1,8 +1,11 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="home.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="homeTest.aspx.cs" Inherits="home" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
     <style>
         /* 通用功能设置 */
         .positionRelative{
@@ -45,10 +48,6 @@
             top:50%;
             transform:translate(-50%,-50%);
         }
-        
-        .makeCharBolder{
-            font-weight:bolder;
-        }
 
 
         /* 特定功能属性 */
@@ -78,6 +77,7 @@
             position:absolute;
             width:80%;
             height:80%;
+            
             border:solid 1px;
             border-color:white;
             border-radius:20px;
@@ -106,20 +106,15 @@
         }
         /* 文本框格式 */
         .textBox{
-            margin:20px;
-            width:400px;
+            margin:10px;
+            width:380px;
             word-wrap:break-word;
-        }
-
-        .headLine{
-            font-size:30px;
-
         }
         
         /* 照片盒子 */
         /* 盒子1  左浮动 */
         .imgBox1{
-            margin:0 20px;
+            margin:0 10px;
             background-color:aqua;
             height:160px;
             width:160px;
@@ -127,7 +122,7 @@
         
         /* 盒子2  右浮动 */
         .imgBox2{
-            margin:0 20px;
+            margin:0 10px;
             background-color:brown;
             height:160px;
             width:160px;
@@ -135,81 +130,52 @@
         
         /* 盒子3  左浮动 */
         .imgBox3{
-            margin:0 20px;
+            margin:0 10px;
             background-color:coral;
             height:160px;
             width:160px;
 
         }
     </style>
-    <div class="body">
-    <!-- 首页大图部分 -->
-    <div class="HeadHelpBox"><!-- 辅助定位盒子 -->
-    </div>
+</head>
+<body>
 
-    <!-- 功能展示部分 -->
-    <div> <!-- 功能展示主盒子 -->
-         <div class="makeUnfloat"><!-- 便签1辅助定位盒子 -->
+    <form id="form1" runat="server" class="body">
+        <!-- 首页大图部分 -->
+        <div class="HeadHelpBox"><!-- 辅助定位盒子 -->
+        </div>
 
-            <div class="note makeUnfloat"><!-- 便签本体 -->
-
-                 <div class="imgBox1 float-right relVerticalCenter"></div><!-- 配图放置处 -->
-                <div class="float-left">
-
-                    <!-- 标题栏 -->
-                    <div class="headLine textBox makeCharBolder">
-                        功能一
-                    </div>
-
-                    <!-- 正文栏 -->
-                    <div class="textBox">
-                       11111111111111111111111111111111111111
-                    </div>
-
-                </div>
+        <!-- 功能展示部分 -->
+        <div> <!-- 功能展示主盒子 -->
+             <div class="makeUnfloat"><!-- 便签1辅助定位盒子 -->
+                <div class="note makeUnfloat"><!-- 便签本体 -->
+                     <div class="imgBox1 float-right relVerticalCenter"></div><!-- 配图放置处 -->
+                     <div class="textBox float-left"><!-- 文字盒子 -->
+                         11111111111111111111111111111111111111
+                     </div>
+                 </div>
              </div>
-         </div>
-    
-        <div class="makeUnfloat"><!-- 便签2辅助定位盒子 -->
-            <div class="note float-right makeUnfloat"><!-- 便签本体 -->
-                <div class="float-right">
-
-                    <!-- 标题栏 -->
-                    <div class="headLine textBox makeCharBolder">
-                        功能二
+        
+            <div class="makeUnfloat"><!-- 便签2辅助定位盒子 -->
+                <div class="note float-right makeUnfloat"><!-- 便签本体 -->
+                    <div class="textBox float-right"><!-- 文字盒子 -->
+                        11111111111111111111111111111111111111111111111111
                     </div>
-
-                    <!-- 正文栏 -->
-                    <div class="textBox">
-                       11111111111111111111111111111111111111
-                    </div>
-
-                </div>
-                <div class="imgBox2 float-left relVerticalCenter"></div><!-- 配图放置处 -->
-            </div>
-        </div>
-
-        <div class="makeUnfloat"><!-- 便签3辅助定位盒子 -->
-            <div class="note makeUnfloat"><!-- 便签本体 -->
-                <div class="imgBox3 float-right relVerticalCenter"></div><!-- 配图放置处 -->
-                <div class="float-left">
-
-                    <!-- 标题栏 -->
-                    <div class="headLine textBox makeCharBolder">
-                        功能三
-                    </div>
-
-                    <!-- 正文栏 -->
-                    <div class="textBox">
-                       11111111111111111111111111111111111111
-                    </div>
-
+                    <div class="imgBox2 float-left relVerticalCenter"></div><!-- 配图放置处 -->
                 </div>
             </div>
+
+            <div class="makeUnfloat"><!-- 便签3辅助定位盒子 -->
+                <div class="note makeUnfloat"><!-- 便签本体 -->
+                    <div class="imgBox3 float-right relVerticalCenter"></div><!-- 配图放置处 -->
+                    <div class="textBox float-left"><!-- 文字盒子 -->
+                        11111111111111111111111111111111111111
+
+                    </div>
+                </div>
+            </div>
+
         </div>
-
-    </div>
-</div>
-
-</asp:Content>
-
+    </form>
+</body>
+</html>
