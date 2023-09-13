@@ -18,8 +18,8 @@ namespace DAL
         public static string GetConnectionString()
         {
             return ConfigurationManager.ConnectionStrings["connection"].ConnectionString;
-        }
 
+        }
         //适合增删改操作，返回影响条数
         public static int ExecuteNonQuery(string sql, params SqlParameter[] parameters)
         {
@@ -47,7 +47,6 @@ namespace DAL
                 }
             }
         }
-
         //查询操作，返回查询结果中的第一行第一列的值
         public static object ExecuteScalar(string sql, params SqlParameter[] parameters)
         {
@@ -85,6 +84,7 @@ namespace DAL
                 return dt;
             }
         }
+
 
         public static SqlDataReader ExecuteReader(string sqlText, params SqlParameter[] parameters)
         {
