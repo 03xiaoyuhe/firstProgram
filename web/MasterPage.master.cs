@@ -27,9 +27,14 @@ public partial class MasterPage : System.Web.UI.MasterPage
             }
             
         }
+
         if (Session["loginSuccess"].ToString() == "success")
         {
             turnToLoginSuccessModo();
+        }
+        else
+        {
+
         }
     }
 
