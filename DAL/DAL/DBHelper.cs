@@ -10,17 +10,34 @@ namespace DAL
 {
     internal class DBHelper
     {
+        /// <summary>
+        /// 获取通过账号名密码连接数据库的字符串
+        /// </summary>
+        /// <returns>连接字符串</returns>
         public static string GetSqlConnectionString()
         {
-            string appSettings = ConfigurationManager.AppSettings["SQpwdLoad"];
-            return appSettings.ToString();
+            //string appSettings = ConfigurationManager.AppSettings["SQpwdLoad"];
+            //return appSettings.ToString();
+
+            return ConfigurationManager.ConnectionStrings["SQpwdLoad"].ConnectionString;
         }
+
+        /// <summary>
+        /// 获取windows登录连接字符串
+        /// </summary>
+        /// <returns>连接字符串</returns>
         public static string GetConnectionString()
         {
             return ConfigurationManager.ConnectionStrings["connection"].ConnectionString;
-
         }
-        //适合增删改操作，返回影响条数
+
+        /// <summary>
+        /// 适合增删改操作，返回影响条数
+        /// </summary>
+        /// <param name="sql">增删改语句</param>
+        /// <param name="parameters">字段</param>
+        /// <returns>影响条数</returns>
+        /// <exception cref="Exception"></exception>
         public static int ExecuteNonQuery(string sql, params SqlParameter[] parameters)
         {
             using (SqlConnection conn = new SqlConnection(GetSqlConnectionString()))
@@ -47,7 +64,14 @@ namespace DAL
                 }
             }
         }
-        //查询操作，返回查询结果中的第一行第一列的值
+
+        /// <summary>
+        /// 查询操作，返回查询结果中的第一行第一列的值
+        /// </summary>
+        /// <param name="sql">增删改语句</param>
+        /// <param name="parameters">字段</param>
+        /// <returns>查询结果中的第一行第一列的值</returns>
+        /// <exception cref="Exception"></exception>
         public static object ExecuteScalar(string sql, params SqlParameter[] parameters)
         {
             using (SqlConnection conn = new SqlConnection(GetSqlConnectionString()))
@@ -73,7 +97,13 @@ namespace DAL
                 }
             }
         }
-        //Adapter调整，查询操作，返回DataTable
+
+        /// <summary>
+        /// Adapter调整，查询操作，返回DataTable
+        /// </summary>
+        /// <param name="sql">增删改语句</param>
+        /// <param name="parameters">字段</param>
+        /// <returns>DataTable</returns>
         public static DataTable ExecuteDataTable(string sql, params SqlParameter[] parameters)
         {
             using (SqlDataAdapter adapter = new SqlDataAdapter(sql, GetSqlConnectionString()))
