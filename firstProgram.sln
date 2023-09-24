@@ -3,29 +3,33 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34018.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "web", ".\web\", "{E6D3BA6D-6A17-4693-8E08-F6B7D5665363}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "web", "web\", "{E6D3BA6D-6A17-4693-8E08-F6B7D5665363}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8.1"
+		ProjectReferences = "{54cb229c-b188-4be6-97ee-253b6b6d6fc6}|EXE.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_3032"
-		Debug.AspNetCompiler.PhysicalPath = ".\web\"
+		Debug.AspNetCompiler.PhysicalPath = "web\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_3032\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/localhost_3032"
-		Release.AspNetCompiler.PhysicalPath = ".\web\"
+		Release.AspNetCompiler.PhysicalPath = "web\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_3032\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "3032"
+		SlnRelativePath = "web\"
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", ".\DAL\DAL\DAL.csproj", "{008AE4F7-35E9-4D65-9746-4D360541E284}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL\DAL.csproj", "{008AE4F7-35E9-4D65-9746-4D360541E284}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", ".\Models\Models\Models.csproj", "{E88DE7EC-7E82-4F99-9FB8-BC3A14891F02}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models\Models.csproj", "{E88DE7EC-7E82-4F99-9FB8-BC3A14891F02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EXE", "EXE\EXE.csproj", "{54CB229C-B188-4BE6-97EE-253B6B6D6FC6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -101,6 +105,26 @@ Global
 		{E88DE7EC-7E82-4F99-9FB8-BC3A14891F02}.Release|x64.Build.0 = Release|Any CPU
 		{E88DE7EC-7E82-4F99-9FB8-BC3A14891F02}.Release|x86.ActiveCfg = Release|Any CPU
 		{E88DE7EC-7E82-4F99-9FB8-BC3A14891F02}.Release|x86.Build.0 = Release|Any CPU
+		{54CB229C-B188-4BE6-97EE-253B6B6D6FC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54CB229C-B188-4BE6-97EE-253B6B6D6FC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54CB229C-B188-4BE6-97EE-253B6B6D6FC6}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{54CB229C-B188-4BE6-97EE-253B6B6D6FC6}.Debug|ARM.Build.0 = Debug|Any CPU
+		{54CB229C-B188-4BE6-97EE-253B6B6D6FC6}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{54CB229C-B188-4BE6-97EE-253B6B6D6FC6}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{54CB229C-B188-4BE6-97EE-253B6B6D6FC6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{54CB229C-B188-4BE6-97EE-253B6B6D6FC6}.Debug|x64.Build.0 = Debug|Any CPU
+		{54CB229C-B188-4BE6-97EE-253B6B6D6FC6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{54CB229C-B188-4BE6-97EE-253B6B6D6FC6}.Debug|x86.Build.0 = Debug|Any CPU
+		{54CB229C-B188-4BE6-97EE-253B6B6D6FC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54CB229C-B188-4BE6-97EE-253B6B6D6FC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54CB229C-B188-4BE6-97EE-253B6B6D6FC6}.Release|ARM.ActiveCfg = Release|Any CPU
+		{54CB229C-B188-4BE6-97EE-253B6B6D6FC6}.Release|ARM.Build.0 = Release|Any CPU
+		{54CB229C-B188-4BE6-97EE-253B6B6D6FC6}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{54CB229C-B188-4BE6-97EE-253B6B6D6FC6}.Release|ARM64.Build.0 = Release|Any CPU
+		{54CB229C-B188-4BE6-97EE-253B6B6D6FC6}.Release|x64.ActiveCfg = Release|Any CPU
+		{54CB229C-B188-4BE6-97EE-253B6B6D6FC6}.Release|x64.Build.0 = Release|Any CPU
+		{54CB229C-B188-4BE6-97EE-253B6B6D6FC6}.Release|x86.ActiveCfg = Release|Any CPU
+		{54CB229C-B188-4BE6-97EE-253B6B6D6FC6}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
