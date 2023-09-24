@@ -10,6 +10,10 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:TextBox ID ="world" runat="server" />
+            <div>
+                <asp:HyperLink ID="HyperLink1" runat="server">HyperLink</asp:HyperLink>
+            </div>
         </div>
     </form>
 </body>

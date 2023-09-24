@@ -14,10 +14,10 @@ public partial class test : System.Web.UI.Page
     string path = System.AppDomain.CurrentDomain.BaseDirectory;
     protected void Page_Load(object sender, EventArgs e)
     {
-        Response.Write("<div>absPath:"+ path +"</div>");
+        
         EXEHelper a = new EXEHelper();
-        a.path = path + @"ExeFile\test\main.exe";
-        a.arguments = "hellow";
-        Response.Write("<div>absPath:" + a.OperationReturn() + "</div>");
+        a.path = path + @"ExeFile\search\search.exe";
+        a.arguments = this.world.Text;
+        this.HyperLink1.Text = a.OperationReturn();
     }
 }
