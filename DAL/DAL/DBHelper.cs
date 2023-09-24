@@ -98,6 +98,7 @@ namespace DAL
             }
         }
 
+
         /// <summary>
         /// Adapter调整，查询操作，返回DataTable
         /// </summary>
