@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DBHelperTest.aspx.cs" Inherits="DBHelperTest" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="printFormTest.aspx.cs" Inherits="DBHelperTest" %>
 
 <!DOCTYPE html>
 

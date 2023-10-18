@@ -106,4 +106,9 @@ public partial class MasterPage : System.Web.UI.MasterPage
         }
     }
 
+
+    protected void loginSuccessBtn_Click(object sender, EventArgs e)
+    {
+        Server.Transfer("~/QueryPage.aspx", false);
+    }
 }

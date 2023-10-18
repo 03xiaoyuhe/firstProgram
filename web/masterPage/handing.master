@@ -1,12 +1,12 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="handing.master.cs" Inherits="MasterPage" %>
 
 <!DOCTYPE html>
 
 <html>
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <link href="bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css" rel="stylesheet" />
-        <script src="bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js" ></script>
+        <link href="../bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css" rel="stylesheet" />
+        <script src="../bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js" ></script>
     <title></title>
     <asp:ContentPlaceHolder id="head" runat="server">
 
@@ -148,11 +148,7 @@
                  </div>
                 <!-- 登陆成功页 -->
                 <div id ="LoginSuccess" runat="server" style ="display:none;">
-                    <div class="startBarLoginBtn loginSuccessBtnAdd">
-                        <div class="relVerticalCenter">
-                            个人主页
-                        </div>
-                    </div>
+                    <asp:Button ID="loginSuccessBtn" runat="server" Text="功能页" CssClass ="startBarLoginBtn loginSuccessBtnAdd" OnClick ="loginSuccessBtn_Click"/>
                 </div>
             </div>
         </div>

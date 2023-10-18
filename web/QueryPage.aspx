@@ -1,8 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="perHomePage.aspx.cs" Inherits="perMainPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masterPage/handing.master" AutoEventWireup="true" CodeFile="QueryPage.aspx.cs" Inherits="QueryPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server" CssClass="tripleVessel">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    
     <style>
 
         /* 特定功能属性 */
@@ -85,9 +86,10 @@
         <div class ="help"></div>
         <!-- 横幅 -->
         <div id ="banner" runat ="server" class="banner">
-                <asp:Button ID="fenture1" runat="server" Text="功能1" CssClass="fenture1" OnClick="fenture1_Click" /><!--
-                --><asp:Button ID="fenture2" runat="server" Text="功能2" CssClass="fenture1" OnClick="fenture2_Click" /><!--
-                --><asp:Button ID="fenture3" runat="server" Text="功能3" CssClass="fenture1" OnClick="fenture3_Click" />
+            <asp:Button ID="turnBackToHome" runat="server" Text="回到主页" CssClass="fenture1" OnClick="turnBackToHome_Click"/><!--
+            --><asp:Button ID="fenture1" runat="server" Text="功能1" CssClass="fenture1" OnClick="fenture1_Click" /><!--
+            --><asp:Button ID="fenture2" runat="server" Text="功能2" CssClass="fenture1" OnClick="fenture2_Click" /><!--
+            --><asp:Button ID="fenture3" runat="server" Text="功能3" CssClass="fenture1" OnClick="fenture3_Click" />
         </div>
 
         <!-- 侧边栏 -->

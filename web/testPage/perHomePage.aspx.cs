@@ -51,6 +51,8 @@ public partial class perMainPage : System.Web.UI.Page
         Session["sidebar2"] = "UnShow";
         Session["sidebar3"] = "UnShow";
     }
+
+
     /// <summary>
     /// 
     /// </summary>
@@ -76,6 +78,7 @@ public partial class perMainPage : System.Web.UI.Page
             this.fenture3.CssClass = "fenture1";
         }
     }
+
 
     protected void fenture2_Click(object sender, EventArgs e)
     {
