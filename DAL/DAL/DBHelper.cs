@@ -11,7 +11,8 @@ using System.Data.Common;
 
 namespace DAL
 {
-    internal class DBHelper
+    //internal class DBHelper
+     public class DBHelper
     {
         /// <summary>
         /// 获取连接字符串
