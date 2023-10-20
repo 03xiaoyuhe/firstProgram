@@ -606,6 +606,7 @@ namespace DAL
                 }
             }
         }
+
         /// <summary>
         /// 执行一条计算查询结果语句，返回查询结果（object）。
         /// </summary>
