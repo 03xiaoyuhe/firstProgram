@@ -15,17 +15,6 @@ public partial class QueryPage : System.Web.UI.Page
         if (!IsPostBack)
         {
 
-            if(Session["loginSuccess"] != null)
-            {
-                if (Session["loginSuccess"].ToString() == "success")
-                {
-                    isPageLoging=true;
-                }
-            }
-            if (!isPageLoging)
-            {
-                Server.Transfer("~/home.aspx", true);
-            }
             SidebarList[0] = "sidebar1";
             SidebarList[1] = "sidebar2";
             SidebarList[2] = "sidebar3";
@@ -35,6 +24,8 @@ public partial class QueryPage : System.Web.UI.Page
             Session["sidebar2"] = "UnShow";
             Session["sidebar3"] = "UnShow";
             Session["sidebar4"] = "UnShow";
+            Session["filtratePrincipalDiv"] = "unShow";
+            checkLodeSuccess();
         }
     }
 
@@ -53,11 +44,30 @@ public partial class QueryPage : System.Web.UI.Page
     }
 
     /// <summary>
+    /// 确保页面在登陆状态下访问
+    /// </summary>
+    void checkLodeSuccess()
+    {
+        if (Session["loginSuccess"] != null)
+        {
+            if (Session["loginSuccess"].ToString() == "success")
+            {
+                isPageLoging = true;
+            }
+        }
+
+        if (!isPageLoging)
+        {
+            Server.Transfer("~/home.aspx", true);
+        }
+    }
+
+    /// <summary>
     /// 将所有侧边栏设为不可见
     /// </summary>
     void setAllUnShow()
     {
-        this.sidebar1.Attributes.Add("style", "display:none");
+        this.filtrateSidebar.Attributes.Add("style", "display:none");
         this.sidebar2.Attributes.Add("style", "display:none");
         this.sidebar3.Attributes.Add("style", "display:none");
         Session["sidebar1"] = "UnShow";
@@ -70,22 +80,22 @@ public partial class QueryPage : System.Web.UI.Page
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    protected void fenture1_Click(object sender, EventArgs e)
+    protected void filtrateBtm_Click(object sender, EventArgs e)
     {
         if (checkSidebarIsShow("sidebar1"))
         {
-            this.sidebar1.Attributes.Add("style", "display:none");
+            this.filtrateSidebar.Attributes.Add("style", "display:none");
             Session["sidebar1"] = "UnShow";
-            this.fenture1.CssClass = "fenture1";
+            this.filtrateBtm.CssClass = "fenture1";
             this.fenture2.CssClass = "fenture1";
             this.fenture3.CssClass = "fenture1";
         }
         else
         {
             setAllUnShow();
-            this.sidebar1.Attributes.Add("style", "display:block");
+            this.filtrateSidebar.Attributes.Add("style", "display:block");
             Session["sidebar1"] = "Show";
-            this.fenture1.CssClass = "fenture1OverCleck";
+            this.filtrateBtm.CssClass = "fenture1OverCleck";
             this.fenture2.CssClass = "fenture1";
             this.fenture3.CssClass = "fenture1";
         }
@@ -97,7 +107,7 @@ public partial class QueryPage : System.Web.UI.Page
         {
             this.sidebar2.Attributes.Add("style", "display:none");
             Session["sidebar2"] = "UnShow";
-            this.fenture1.CssClass = "fenture1";
+            this.filtrateBtm.CssClass = "fenture1";
             this.fenture2.CssClass = "fenture1";
             this.fenture3.CssClass = "fenture1";
         }
@@ -107,7 +117,7 @@ public partial class QueryPage : System.Web.UI.Page
             this.sidebar2.Attributes.Add("style", "display:block");
             Session["sidebar2"] = "Show";
             this.fenture2.CssClass = "fenture1OverCleck";
-            this.fenture1.CssClass = "fenture1";
+            this.filtrateBtm.CssClass = "fenture1";
             this.fenture3.CssClass = "fenture1";
         }
     }
@@ -119,7 +129,7 @@ public partial class QueryPage : System.Web.UI.Page
         {
             this.sidebar3.Attributes.Add("style", "display:none");
             Session["sidebar3"] = "UnShow";
-            this.fenture1.CssClass = "fenture1";
+            this.filtrateBtm.CssClass = "fenture1";
             this.fenture2.CssClass = "fenture1";
             this.fenture3.CssClass = "fenture1";
         }
@@ -130,12 +140,29 @@ public partial class QueryPage : System.Web.UI.Page
             Session["sidebar3"] = "Show";
             this.fenture3.CssClass = "fenture1OverCleck";
             this.fenture2.CssClass = "fenture1";
-            this.fenture1.CssClass = "fenture1";
+            this.filtrateBtm.CssClass = "fenture1";
         }
     }
 
     protected void turnBackToHome_Click(object sender, EventArgs e)
     {
         Server.Transfer("~/home.aspx", false);
+    }
+
+    protected void filtratePrincipal_Click(object sender, EventArgs e)
+    {
+        //检查filtratePrincipalDiv是否显示
+        bool flag = checkSidebarIsShow("filtratePrincipalDiv");
+
+        if (!flag)
+        {
+            Session["filtratePrincipalDiv"] = "Show";
+            this.filtratePrincipalDiv.Attributes.Add("style", "dispaly:block");
+        }
+        else
+        {
+            Session["filtratePrincipalDiv"] = "UnShow";
+            this.filtratePrincipalDiv.Attributes.Add("style", "dispaly:none");
+        }
     }
 }
