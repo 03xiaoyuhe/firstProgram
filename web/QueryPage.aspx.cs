@@ -249,7 +249,6 @@ public partial class QueryPage : System.Web.UI.Page
     #endregion
 
 
-
     #region 导航栏响应编写
 
     /// <summary>
@@ -389,6 +388,7 @@ public partial class QueryPage : System.Web.UI.Page
     {
         Server.Transfer("~/home.aspx", false);
     }
+
 
     void txt_LostFocus(object sender, EventArgs e)
     {
