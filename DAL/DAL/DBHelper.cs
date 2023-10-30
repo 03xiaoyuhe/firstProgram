@@ -124,6 +124,8 @@ namespace DAL
                 return true;
             }
         }
+
+
         public static bool Exists(string strSql, params SqlParameter[] cmdParms)
         {
             object obj = GetSingle(strSql, cmdParms);
