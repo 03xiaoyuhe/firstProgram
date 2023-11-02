@@ -25,12 +25,11 @@ namespace DAL
 
         //用户登录的方法
         /// <summary>
-        /// 用来检测输入的用户名与密码是否在数据库中
+        /// 用来检测输入的用户名是否在数据库中
         /// </summary>
         /// <param name="name">用户名</param>
-        /// <param name="psw">密码</param>
         /// <returns>返回值为DataSet，内容为对应的信息，若没有就返回值为Null(返回值待验证)</returns>
-        public DataSet checkId(string name)
+        public static DataSet checkId(string name)
         {
             string strsql = "select * from " + formName + " where " + fieldId + " = '" + name;
             return DBHelper.Query(strsql);
@@ -43,7 +42,7 @@ namespace DAL
         /// <param name="name">用户输入的用户名</param>
         /// <param name="psw">用户输入的密码</param>
         /// <returns>返回影响的条数</returns>
-        public int insertId(string name, string psw)
+        public static int insertId(string name, string psw)
         {
             string strsql = "insert into" + formName + "(" + fieldId + "," + fieldPwd + ") values(" + name + "," + psw + ")";
             return DBHelper.ExecuteSql(strsql);
