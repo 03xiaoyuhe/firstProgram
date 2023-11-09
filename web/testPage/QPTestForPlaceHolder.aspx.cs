@@ -1,18 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IdentityModel.Claims;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
-//HtmlGenericControl hgc = (HtmlGenericControl)Page.FindControl(div); 获取ID对应的标签变量
-
-public partial class QueryPage : System.Web.UI.Page
+public partial class testPage_QPTestForPlaceHolder : System.Web.UI.Page
 {
-    /* 注册侧边栏名称 */
+    /// <summary>
+    /// 判断是否登陆变量
+    /// 默认值为未登陆
+    /// 若已登陆在页面初次加载后会赋为true
+    /// </summary>
     protected bool isPageLoging = false;
+
+    /// <summary>
+    /// 存储功能栏默认内容
+    /// </summary>
+    string DataPageMode = "~/testPage/controlsASCX/testControls1.ascx";
 
     /// <summary>
     /// 创建导航栏按钮与对应Div关系
@@ -25,7 +30,6 @@ public partial class QueryPage : System.Web.UI.Page
     protected Dictionary<string, string> TreeRelation = new Dictionary<string, string>();
     protected void Page_Load(object sender, EventArgs e)
     {
-
         // 初始化导航栏与对应功能映射关系
         navigationBarRelation.Clear();
         navigationBarRelation.Add("filtrateBtm", "filtrateSidebar");
@@ -39,15 +43,16 @@ public partial class QueryPage : System.Web.UI.Page
         TreeRelation.Add("PagingSidebarButton2", "PagingSidebarPlaceHolder2");
         TreeRelation.Add("PagingSidebarButton1", "PagingSidebarPlaceHolder1");
 
+
+        this.DataView.Controls.Clear();
+        this.DataView.Controls.Add(LoadControl(DataPageMode));
+
         if (!IsPostBack)
         {
             checkLodeSuccess();
-
             // 初始化功能
             InitDivDisplayMode();
             initTreeButton();
-            this.DataView.Controls.Clear();
-            this.DataView.Controls.Add(LoadControl("~/testPage/controlsASCX/testControls1.ascx"));
         }
     }
 
@@ -105,9 +110,9 @@ public partial class QueryPage : System.Web.UI.Page
     protected string classSetToClassString(string[] classSet)
     {
         string classString = "";
-        for(int i = 0; i < classSet.Length; i++)
+        for (int i = 0; i < classSet.Length; i++)
         {
-            if(i == 0)
+            if (i == 0)
             {
                 classString = classString + classSet[i];
             }
@@ -132,7 +137,7 @@ public partial class QueryPage : System.Web.UI.Page
     protected void foreachDo<T, B>(Func<T, B> func, params object[] datas)
     {
 
-        foreach(T data in datas)
+        foreach (T data in datas)
         {
             func((T)data);
         }
@@ -145,8 +150,8 @@ public partial class QueryPage : System.Web.UI.Page
     /// <returns>如果显示则返回true 如果不显示则返回false</returns>
     protected bool checkPlaceHolderIsShow(string a)
     {
-        if(a == null) return false;
-        if (Session[a].ToString() == "Show"){ return true; }
+        if (a == null) return false;
+        if (Session[a].ToString() == "Show") { return true; }
         else { return false; }
     }
 
@@ -177,7 +182,7 @@ public partial class QueryPage : System.Web.UI.Page
         Control[] controls = null;
         if (ID.Length == 0) return null;
         controls = new Control[IDs.Length];
-        for (int i = 0;i < IDs.Length; i++)
+        for (int i = 0; i < IDs.Length; i++)
         {
             controls[i] = getSidebarItemByID((string)IDs[i]);
         }
@@ -207,7 +212,7 @@ public partial class QueryPage : System.Web.UI.Page
     {
         if (controls == null) { return -1; }
 
-        foreach(PlaceHolder control in controls)
+        foreach (PlaceHolder control in controls)
         {
             setSidebarShow(control);
         }
@@ -223,7 +228,7 @@ public partial class QueryPage : System.Web.UI.Page
     /// </returns>
     protected int setSidebarUnShow(params PlaceHolder[] controls)
     {
-        if(controls == null){ return -1; }
+        if (controls == null) { return -1; }
 
         foreach (PlaceHolder control in controls)
         {
@@ -270,7 +275,7 @@ public partial class QueryPage : System.Web.UI.Page
     /// </summary>
     void setAllUnShow()
     {
-        foreach(KeyValuePair<string,string> kvp in navigationBarRelation)
+        foreach (KeyValuePair<string, string> kvp in navigationBarRelation)
         {
             setSidebarUnShow((PlaceHolder)getSidebarItemByID(kvp.Value.ToString()));
         }
@@ -294,7 +299,7 @@ public partial class QueryPage : System.Web.UI.Page
     /// <param name="controls">一个或多个asp按钮变量</param>
     protected void setButtomPopOn(params Button[] controls)
     {
-        foreach(Button control in controls)
+        foreach (Button control in controls)
         {
             control.CssClass = "fenture1OverCleck";
         }
@@ -305,7 +310,7 @@ public partial class QueryPage : System.Web.UI.Page
     /// </summary>
     protected void setAllPopOff()
     {
-        foreach(KeyValuePair<string ,string> kvp in navigationBarRelation)
+        foreach (KeyValuePair<string, string> kvp in navigationBarRelation)
         {
             setButtonPopOff((Button)getSidebarItemByID(kvp.Key.ToString()));
         }
@@ -353,7 +358,7 @@ public partial class QueryPage : System.Web.UI.Page
     /// </summary>
     protected void initTreeButton()
     {
-        foreach (KeyValuePair<string,string> item in TreeRelation)
+        foreach (KeyValuePair<string, string> item in TreeRelation)
         {
             Session[item.Value] = "Unshow";
             getSidebarItemByID(item.Value.ToString()).Visible = false;
@@ -396,6 +401,5 @@ public partial class QueryPage : System.Web.UI.Page
     {
         ((TextBox)sender).Text = "aaa";
     }
-
 
 }

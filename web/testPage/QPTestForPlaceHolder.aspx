@@ -1,8 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masterPage/handing.master" AutoEventWireup="true" CodeFile="QueryPageTestForPlaceHolder.aspx.cs" Inherits="QueryPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masterPage/handing.master" AutoEventWireup="true" CodeFile="QPTestForPlaceHolder.aspx.cs" Inherits="testPage_QPTestForPlaceHolder" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    
 
     <link href="../bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="../bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
@@ -231,7 +232,7 @@
                         <!-- 子功能一按键容器 -->
                         <div class="sidebarButtomDiv">
 
-                            <img src="./img/homeHeadimg.jpg" class="sidebarButtomImg" />
+                            <img src="../img/homeHeadimg.jpg" class="sidebarButtomImg" />
 
                             <!-- 按钮辅助定位盒子 -->
                             <div class="sidebarButtomHelpDiv">
@@ -245,7 +246,7 @@
                         <!-- 子功能一子栏 -->
                         <asp:PlaceHolder ID="filtratePrincipalDiv" runat="server">
                             <div class="sidbarChildDiv">
-                                111
+                                <asp:Button runat="server" Text="Button" />
                             </div>
                         </asp:PlaceHolder>
                     </div>
@@ -256,7 +257,7 @@
                         <div class="sidebarButtomDiv">
 
                             <!-- 按钮前插图片 -->
-                            <img src="./img/homeHeadimg.jpg" class="sidebarButtomImg" />
+                            <img src="../img/homeHeadimg.jpg" class="sidebarButtomImg" />
 
                             <!-- 按钮辅助定位盒子 -->
                             <div class="sidebarButtomHelpDiv">
@@ -282,7 +283,7 @@
                         <!-- 子功能一按键容器 -->
                         <div class="sidebarButtomDiv">
 
-                            <img src="./img/homeHeadimg.jpg" class="sidebarButtomImg" />
+                            <img src="../img/homeHeadimg.jpg" class="sidebarButtomImg" />
 
                             <!-- 按钮辅助定位盒子 -->
                             <div class="sidebarButtomHelpDiv">
@@ -308,7 +309,7 @@
                         <div class="sidebarButtomDiv">
 
                             <!-- 按钮前插图片 -->
-                            <img src="./img/homeHeadimg.jpg" class="sidebarButtomImg" />
+                            <img src="../img/homeHeadimg.jpg" class="sidebarButtomImg" />
 
                             <!-- 按钮辅助定位盒子 -->
                             <div class="sidebarButtomHelpDiv">
@@ -361,7 +362,9 @@
         </div>
 
         <!-- 内容页 -->
-        <asp:PlaceHolder ID="DataView" runat="server"></asp:PlaceHolder>
+        <asp:PlaceHolder ID="DataView" runat="server">
+
+        </asp:PlaceHolder>
 
     </div>
 </asp:Content>
