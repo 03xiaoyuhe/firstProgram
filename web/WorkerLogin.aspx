@@ -50,7 +50,7 @@
             margin: 0 auto;
         }
 
-        .Body {
+        .Body-a {
             width: 90%;
             margin: 0 auto;
             position: absolute;
@@ -78,7 +78,7 @@
                 </div>
             </div>
             <!-- 登陆页主体 -->
-            <div class="modal-body Body">
+            <div class="modal-body Body-a">
 
                 <!-- 用户名输入框 -->
                 <div class="mb-3">
@@ -92,7 +92,6 @@
                     <label for="message-text" class="col-form-label">密码:</label>
                     <asp:TextBox ID="userPwd" runat="server" CssClass="putOnShowBorder form-control" TextMode="Password"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="checkPwdNull" runat="server" ErrorMessage="请输入密码" Font-Strikeout="False" ControlToValidate="userPwd" CssClass="setCharRed setCharSizeSmall"></asp:RequiredFieldValidator>
-
                 </div>
                 <asp:HyperLink ID="HyperLink1" runat="server" 
                     NavigateUrl="~/Home.aspx">
@@ -105,7 +104,7 @@
             <div class="modal-footer Footer">
                 <link title="aaaa" rel="aaa" />
                 <!-- 登陆按钮 -->
-                <asp:Button ID="BtmLogin" runat="server" Text="登陆" CssClass="btn btn-primary" />
+                <asp:Button ID="BtmLogin" runat="server" Text="登陆"  CssClass="btn btn-primary" OnClick="BtmLogin_Click" />
                 <span style="width: 2px;"></span>
                 <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Close</button>
             </div>

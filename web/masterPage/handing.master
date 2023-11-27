@@ -171,74 +171,11 @@
                 </div>
             </div>
 
-            <!-- 登陆页功能部分 -->
-            <div class="loginSpace float-right">
-
-                <!-- 未登陆页 -->
-                <div id="unLogin" runat="server">
-
-                    <!-- 登陆按钮 -->
-                    <button type="button" class="startBarLoginBtn makeCharBolder" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">未登陆</button>
-                </div>
-                <!-- 登陆成功页 -->
-                <div id="LoginSuccess" runat="server" style="display: none;">
-                    <asp:Button ID="loginSuccessBtn" runat="server" Text="功能页" CssClass="startBarLoginBtn loginSuccessBtnAdd" OnClick="loginSuccessBtn_Click" />
-                </div>
-            </div>
+            
         </div>
-
         <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
-        </div>
-        <div class="modal fade setSize" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-fullscreen example1 setSize">
-                <!-- 登陆页背景及容器1 -->
-
-                <div class="modal-content example1 setSize" aria-expanded="undefined">
-                    <!-- 登陆页背景及容器2 -->
-
-                    <!-- 登陆页编写 -->
-                    <div id="login" runat="server">
-
-                        <!-- 登陆页头部 -->
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5 makeCharBolder">登陆</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-
-                        <!-- 登陆页主体 -->
-                        <div class="modal-body">
-
-                            <!-- 用户名输入框 -->
-                            <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label">用户名:</label>
-                                <asp:TextBox ID="userName" runat="server" CssClass="putOnShowBorder form-control"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="checkNameNull" runat="server" ErrorMessage="请输入用户名" Font-Strikeout="False" ControlToValidate="userName" CssClass="setCharRed setCharSizeSmall"></asp:RequiredFieldValidator>
-                            </div>
-
-                            <!-- 密码输入框 -->
-                            <div class="mb-3">
-                                <label for="message-text" class="col-form-label">密码:</label>
-                                <asp:TextBox ID="userPwd" runat="server" CssClass="putOnShowBorder form-control" TextMode="Password"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="checkPwdNull" runat="server" ErrorMessage="请输入密码" Font-Strikeout="False" ControlToValidate="userPwd" CssClass="setCharRed setCharSizeSmall"></asp:RequiredFieldValidator>
-
-                            </div>
-
-                            <!-- 判断是否为管理员登陆 -->
-                            <asp:CheckBox ID="CheckAdm" runat="server" Text="管理员登陆" />
-                        </div>
-
-                        <!-- 登陆页尾部 -->
-                        <div class="modal-footer">
-
-                            <!-- 登陆按钮 -->
-                            <asp:Button ID="BtmLogin" runat="server" Text="登陆" OnClick="BtmLogin_Click" CssClass="btn btn-primary" />
-                            <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
     </form>

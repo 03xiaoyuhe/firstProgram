@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    internal class Class1
+    public class workerLogin
     {
+        public string UID;
+        public string Password;
     }
 }
