@@ -50,7 +50,7 @@
             margin: 0 auto;
         }
 
-        .Body {
+        .Body-a {
             width: 90%;
             margin: 0 auto;
             position: absolute;
@@ -78,7 +78,7 @@
                 </div>
             </div>
             <!-- 登陆页主体 -->
-            <div class="modal-body Body">
+            <div class="modal-body Body-a">
 
                 <!-- 用户名输入框 -->
                 <div class="mb-3">
@@ -102,6 +102,7 @@
 
             <!-- 登陆页尾部 -->
             <div class="modal-footer Footer">
+                <link title="aaaa" rel="aaa" />
                 <!-- 登陆按钮 -->
                 <asp:Button ID="BtmLogin" runat="server" Text="登陆"  CssClass="btn btn-primary" OnClick="BtmLogin_Click" />
                 <span style="width: 2px;"></span>

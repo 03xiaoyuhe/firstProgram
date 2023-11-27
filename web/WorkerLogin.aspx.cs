@@ -17,10 +17,12 @@ public partial class WorkerLogin : System.Web.UI.Page
 
     protected void BtmLogin_Click(object sender, EventArgs e)
     {
+        Response.Write("<script>alert('账号或者密码错误!')</script>");
         string a = this.userPwd.Text.ToString();
         string b = this.userPwd.Text.ToString();
         workerLogin Workerlogin = new workerLogin();
         Workerlogin.UID = a;
         Workerlogin.Password = b;
+
     }
 }
