@@ -17,7 +17,7 @@ public partial class DBHelperTest : System.Web.UI.Page
         {
             //创建一个临时数据库
             DataSet ds;
-            ds= DBHelper.Query("select *from emp;");
+            ds = DBHelper.Query("select *from ProjectApplications;");
 
             //创建一个临时表
             dt = ds.Tables[0];

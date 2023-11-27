@@ -23,10 +23,10 @@
                 <td>手机号</td>
                 <td>立项时间</td>
                 <td>成果形式</td>
-                <td>项目类别</td>
+              <%--  <td>项目类别</td>
                 <td>变更内容</td>
                 <td>变更内容原因</td>
-                <td>管理单位意见</td>
+                <td>管理单位意见</td>--%>
 
             </tr>
             
@@ -35,27 +35,27 @@
                     {%> 
                         <tr>
                             <td>
-                                <%=dt.Rows[i]["emp_id"] %>
+                                <%=dt.Rows[i]["project_id"] %>
                             </td>
                             <td>
-                                <%=dt.Rows[i]["emp_number"] %>
+                                <%=dt.Rows[i]["proposal_number"] %>
                             </td>
                             <td>
-                                <%=dt.Rows[i]["emp_name"] %>
+                                <%=dt.Rows[i]["project_title"] %>
                             </td>
                             <td>
-                                <%=dt.Rows[i]["emp_dutier"] %>
+                                <%=dt.Rows[i]["project_description"] %>
                             </td>
                             <td>
-                                <%=dt.Rows[i]["emp_phone"] %>
+                                <%=dt.Rows[i]["team_id"] %>
                             </td>
                             <td>
-                                <%=dt.Rows[i]["emp_time"] %>
+                                <%=dt.Rows[i]["achievement_form"] %>
                             </td>
                             <td>
-                                <%=dt.Rows[i]["emp_result"] %>
+                                <%=dt.Rows[i]["achievement_brief"] %>
                             </td>
-                            <td>
+                            <%--<td>
                                 <%=dt.Rows[i]["emp_category"] %>
                             </td>
                             <td>
@@ -66,7 +66,7 @@
                             </td>
                             <td>
                                 <%=dt.Rows[i]["emp_opinion"] %>
-                            </td>
+                            </td>--%>
                        </tr>
                  <% 
                     }

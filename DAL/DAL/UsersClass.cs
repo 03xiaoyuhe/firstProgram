@@ -9,15 +9,17 @@ namespace DAL
 {
     public class UserClass
     {
-        private static string formName = "Users";
+        private static string formName = "UserLogin";
 
         #region 字段名
         /// <summary>
         /// 字段名指代为密码
         /// </summary>
-        private static string fieldPwd = "";
+        private static string fieldPwd = "password";
 
-        private static string fieldId = "Username";
+        private static string fieldId = "username";
+
+
 
         #endregion
 
@@ -45,7 +47,18 @@ namespace DAL
         /// <returns>返回影响的条数</returns>
         public int insertId(string name, string psw)
         {
-            string strsql = "insert into" + formName + "(" + fieldId + "," + fieldPwd + ") values(" + name + "," + psw + ")";
+            
+            string strsql = "insert into" + formName + "(" + fieldId + "," + fieldPwd + ") values("+ "'"+ name + " '"+ "," + "'" + psw + " '" + ")";
+            return DBHelper.ExecuteSql(strsql);
+        }
+
+        ///<summary>
+        ///
+        ///</summary>
+        public int deleteId(string name, string psw)
+        {
+
+            string strsql = "delete from" + formName + "where" +"("+ fieldId+ " = " + " name "+"and" + fieldPwd + " = " +"'"+ psw + "'";
             return DBHelper.ExecuteSql(strsql);
         }
 
