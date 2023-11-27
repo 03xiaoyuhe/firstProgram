@@ -1,0 +1,212 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="handingTest.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <link href="../bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css" rel="stylesheet" />
+        <script src="../bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js" ></script>
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+
+    </asp:ContentPlaceHolder>
+    <style>
+        /* 通用属性 */
+        /* 竖直居中 使用相对定位*/
+        .relVerticalCenter{/* 竖直margin必须为零否则会出bug */
+            position:relative;
+            top:50%;
+            transform:translate(0,-50%);
+        }
+        /* 水平居中 */
+        .center{
+            left:50%;
+            transform:translate(-50%,0);
+
+        }
+        /* 渐变自发光 */
+        .shade{
+            box-shadow: 0 0 30px 20px rgb(0, 0, 0);/* 阴影设置 */
+        }
+
+        /* 右浮动 */
+        .float-right{
+            float:right;
+        }
+
+        /* 将字体设为红色 */
+        .setCharRed{
+            color:red;
+        }
+        
+        /* 缩小字体 */
+        .setCharSizeSmall{
+            font-size:10px;
+        }
+        
+        /* 字体加粗 */
+        .makeCharBolder{
+            font-weight:bolder;
+        }
+
+        /* 特定功能属性 */
+        .body1{
+            min-width:1200px;
+            max-width:1550px;
+            margin:auto;
+        }
+        
+        .body2{
+            max-width:1550px;
+            margin:auto;
+        }
+        /* 顶部开始栏编写 */
+        .topStartBar{
+            z-index:999;
+            position: fixed;
+            width:100%;
+            /*height:60px;*/
+            overflow:hidden;
+            top:0px;
+        }
+
+        /* 开始栏登陆按钮 */
+        .startBarLoginBtn{
+            height:30px;
+            width:60px;
+            border-radius:5px;
+            border:solid;
+            border-color:rgb(0, 0, 0, 0.40);
+            color:rgb(0, 0, 0, 0.40);
+            background:none;
+
+        }
+        .startBarLoginBtn:hover{
+            border-color:rgb(0, 0, 0, 0.60);
+            color:rgb(0, 0, 0, 0.60);
+
+        }
+        /* 登陆成功后按钮变化添加属性 */
+        .loginSuccessBtnAdd{
+            font-size:10px;
+            text-align:center;
+        }
+
+        /* 登陆按钮辅助定位 */
+        .loginSpace{
+            margin-top:5px;
+            margin-right:30px;
+        }
+
+        /* 登陆弹出窗口背景及容器 */
+        .setSize{
+            width:100%;
+            height:100%;
+        }
+        .example1
+        {
+            background-color:rgba(126, 126, 126, 0.556);
+        }
+        
+        /* 登陆弹出窗口 */
+        #login{
+            z-index:1000;
+            width:400px;
+            margin:auto;
+            border-width:2px;
+            border-color:black;
+            border-radius:10px;
+            background-color: white;
+            box-shadow: 0 0 10px 2px rgba(126, 126, 126, 0.556);
+        }
+
+        /* 输入框样式 */
+        .putOnShowBorder{
+            border:solid;
+            border-width:1px;
+            border-color:darkgrey;
+        }
+
+        .placeHolder{
+            height:100%;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server" class="body1">
+        <div class="topStartBar body2 center">
+            <%--<div class="shade "></div>--%>
+
+            <!-- 登陆页功能部分 -->
+            <div class="loginSpace float-right">
+                
+                <!-- 未登陆页 -->
+                <div id ="unLogin" runat ="server" >
+                    
+                    <!-- 登陆按钮 -->
+                    <button type="button" class="startBarLoginBtn makeCharBolder" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">登陆</button>
+                 </div>
+                <!-- 登陆成功页 -->
+                <div id ="LoginSuccess" runat="server" style ="display:none;">
+                    <asp:Button ID="loginSuccessBtn" runat="server" Text="功能页" CssClass ="startBarLoginBtn loginSuccessBtnAdd" OnClick ="loginSuccessBtn_Click"/>
+                </div>
+            </div>
+        </div>
+        <div>
+            <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+            </asp:ContentPlaceHolder>
+        </div>
+            
+    
+        <div class="modal fade setSize" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen example1 setSize"><!-- 登陆页背景及容器1 -->
+
+                <div class="modal-content example1 setSize" aria-expanded="undefined"><!-- 登陆页背景及容器2 -->
+
+                    <!-- 登陆页编写 -->
+                    <div id ="login" runat="server">
+
+                        <!-- 登陆页头部 -->
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5 makeCharBolder">登陆</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <!-- 登陆页主体 -->
+                        <div class="modal-body">
+
+                            <!-- 用户名输入框 -->
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">用户名:</label>
+                                <asp:TextBox ID="userName" runat="server"  CssClass="putOnShowBorder form-control" ></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="checkNameNull" runat="server" ErrorMessage="请输入用户名" Font-Strikeout="False" ControlToValidate="userName" CssClass ="setCharRed setCharSizeSmall"></asp:RequiredFieldValidator>
+                            </div>
+                                        
+                            <!-- 密码输入框 -->
+                            <div class="mb-3">
+                                <label for="message-text" class="col-form-label">密码:</label>
+                                <asp:TextBox ID="userPwd" runat="server" CssClass="putOnShowBorder form-control" TextMode="Password"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="checkPwdNull" runat="server" ErrorMessage="请输入密码" Font-Strikeout="False" ControlToValidate="userPwd" CssClass ="setCharRed setCharSizeSmall"></asp:RequiredFieldValidator>
+
+                            </div>
+
+                            <!-- 判断是否为管理员登陆 -->
+                            <asp:CheckBox ID="CheckAdm" runat="server" Text="管理员登陆" />
+                        </div>
+
+                        <!-- 登陆页尾部 -->
+                        <div class="modal-footer">
+
+                            <!-- 登陆按钮 -->
+                            <asp:Button ID="BtmLogin" runat="server" Text="登陆" OnClick="BtmLogin_Click" CssClass="btn btn-primary"/>
+                            <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </div>
+    </form>
+</body>
+</html>
