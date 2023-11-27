@@ -5,8 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class masterPage_MasterPage : System.Web.UI.MasterPage
+public partial class MasterPage : System.Web.UI.MasterPage
 {
+
     protected bool isPageLoging = false;
 
     string UserName = "abc";

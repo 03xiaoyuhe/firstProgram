@@ -15,7 +15,7 @@ public partial class testPage_QPTestForPlaceHolder : System.Web.UI.Page
     protected bool isPageLoging = false;
 
     /// <summary>
-    /// 存储功能栏默认内容
+    /// 功能栏默认内容
     /// </summary>
     string DataPageMode = "~/testPage/controlsASCX/testControls1.ascx";
 

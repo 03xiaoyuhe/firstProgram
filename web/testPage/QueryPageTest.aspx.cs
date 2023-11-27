@@ -66,7 +66,7 @@ public partial class QueryPage : System.Web.UI.Page
 
         if (!isPageLoging)
         {
-            Server.Transfer("~/home.aspx", true);
+            Server.Transfer("~/homeTest.aspx", true);
         }
     }
 

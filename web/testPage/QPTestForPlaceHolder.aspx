@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masterPage/handing.master" AutoEventWireup="true" CodeFile="QPTestForPlaceHolder.aspx.cs" Inherits="testPage_QPTestForPlaceHolder" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/testPage/masterPage/handingTest.master" AutoEventWireup="true" CodeFile="QPTestForPlaceHolder.aspx.cs" Inherits="testPage_QPTestForPlaceHolder" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -332,39 +332,12 @@
                 </div>
             </asp:PlaceHolder>
 
-            <%--            
-            <!-- 功能二对应的子功能-->
-            <asp:PlaceHolder  id="sidebar2" runat="server" Visible="false">
-                <div class="sidebar">
-                    <asp:Button ID="Button2" runat="server" Text="Button" CssClass="sidebarButtom" />
-                    <asp:Button ID="Button4" runat="server" Text="Button" CssClass="sidebarButtom" />
-                </div>
-            </asp:PlaceHolder>
-            --%>
-
-
-            <%--            
-            <!-- 功能三对应的子功能-->
-            <asp:PlaceHolder  id="sidebar3" runat="server" Visible="false">
-                <div class="sidebar">
-                    <asp:Button ID="Button3" runat="server" Text="Button" CssClass="sidebarButtom" />
-                    <asp:Button ID="Button5" runat="server" Text="Button" CssClass="sidebarButtom" />
-                    <asp:Button ID="Button6" runat="server" Text="Button" CssClass="sidebarButtom" />
-                </div>
-            </asp:PlaceHolder>
-            --%>
-
-
-            <!-- 功能四对应的子功能-->
-            <div id="sidebar4" runat="server" class="sidebar UnDisplay">
-            </div>
-
         </div>
 
         <!-- 内容页 -->
-        <asp:PlaceHolder ID="DataView" runat="server">
-
-        </asp:PlaceHolder>
+        <div class = "functionDomain">
+            <asp:PlaceHolder ID="DataView" runat="server"></asp:PlaceHolder>
+        </div>
 
     </div>
 </asp:Content>
