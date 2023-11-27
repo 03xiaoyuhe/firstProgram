@@ -1,215 +1,240 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masterPage/handing.master" AutoEventWireup="true" CodeFile="home.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masterPage/handing.master" AutoEventWireup="true" CodeFile="Home.aspx.cs" Inherits="Home" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    
+    <link href="../bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
+
     <style>
-        /* 通用功能设置 */
-        .positionRelative{
-            position:relative;
-        }
 
-        /* 右浮动 */
-        .float-right{
-            float:right;
+        /* 通用功能 */
+        .inline-table{
+            display: inline-table;
         }
-
-        /* 右浮动 */
-        .float-left{
-            float:left;
-        }
-
-        /* 取消孩子浮动 */
-        .makeUnfloat{
-            overflow:hidden;
-        }
-        
-        /* 竖直居中 使用相对定位*/
-        .relVerticalCenter{/* 竖直margin必须为零否则会出bug */
-            position:relative;
-            top:50%;
-            transform:translate(0,-50%);
-        }
-        
-        /* 竖直居中 使用绝对定位*/
-        .absVerticalCenter{/* 竖直margin必须为零否则会出bug */
-            position:absolute;
-            top:50%;
-            transform:translate(0,-50%);
-        }
-        
-        /* 中心居中 使用绝对定位*/
-        .absCenter{/* 竖直margin必须为零否则会出bug */
-            position:absolute;
-            left:50%;
-            top:50%;
-            transform:translate(-50%,-50%);
-        }
-        
-        .makeCharBolder{
-            font-weight:bolder;
-        }
-
 
         /* 特定功能属性 */
+        .Center {
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%,0);
+            max-width: 60%;
+        }
 
         /* 主页基本设定 */
-        .body{
-            min-width:1200px;
-            max-width:1550px;
-            margin:auto;
+        .body {
+            min-width: 1200px;
+            max-width: 1550px;
+            margin: auto;
+        }
+
+        .chooseLoginManber {
+            position: relative;
+            height: 300px;
+            width: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .test {
+            position: relative;
+            margin-left: 10px;
+            margin-right: 10px;
+            /* 比例大小及辅助定位 */
+            width: 200px;
+            height: 240px;
+            margin-top: 34px;
+            display: inline-block;
+            border-radius: 5px;
+            border: solid 3px;
+            border-color: rgb(0, 0, 0, 0.618);
+            box-shadow: black 0px 0px 10px;
+            font-size: 24px;
+        }
+
+            .test:hover {
+                margin-top: 10px;
+                width: 220px;
+                height: 264px;
+                font-size: 26.4px;
+            }
+
+        .test-imformation {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+        }
+
+        .test-imformation-img {
+            position: relative;
+            margin: 0 auto;
+            height: 100px;
+            width: 100px;
             /* 设置背景图 并使其自适应大小 */
-            background-image:url("img/homeHeadImg.jpg");
+            opacity: 0.618;
             background-repeat: no-repeat;
             background-size: contain;
-        }
-        /* 首页大图部分 */
-
-        /* 首页大图辅助定位 */
-        .HeadHelpBox{
-            position:relative;
-            height:100%;
-            padding-bottom:55.8%;
-            margin:0 auto;
+            display: inline-table;
         }
 
-        /* 大图放置容器 */
-        .imgBox{
+        .test-imformation-text {
+            color: rgba(0, 0, 0, 0.618);
+            font-weight: bold;
+        }
+
+        .test-imformation-buttom{
             position:absolute;
-            width:80%;
-            height:80%;
-            border:solid 1px;
-            border-color:white;
-            border-radius:20px;
-            overflow:hidden;
-            box-shadow: 0 0 20px 5px rgba(126, 126, 126);/* 阴影设置 */
-            margin-top:-10px;
+            display:inline-table;
+
+            height:100%;
+            width:100%;
 
         }
-        /* 图片样式 */
-        .Img{
-            margin:0 auto;
+
+        .test-buttom{
+            border:none;
+            cursor:pointer;
             width:100%;
             height:100%;
-            object-fit:cover;
+            background-color:rgba(0, 0, 0, 0.0)
         }
 
-        /* 功能展示部分 */
+        .imformation {
+            position: relative;
+            margin: 0 auto;
 
-        /* 便签格式 */
-        .note{
-            height:200px;
-            width:700px;
-            margin:20px 150px;
-            border-radius:10px;
-            box-shadow: 0 0 10px 2px rgba(126, 126, 126);/* 便签阴影设置 */
-        }
-        /* 文本框格式 */
-        .textBox{
-            margin:20px;
-            width:400px;
-            word-wrap:break-word;
+            width: 80%;
+            height:500px;
+
+            border-radius: 5px;
+            box-shadow: black 0px 0px 10px;
+            overflow:hidden;
+
+            margin-bottom:100px;
+
+            
+            background-color:rgb(101, 109, 255, 0.1);
         }
 
-        .headLine{
-            font-size:30px;
+        .imformation-part {
+            position: relative;
+
+            width: 50%;
+            height:100%;
+
+            display: inline-table;
+            box-shadow: black 0px 0px 10px;
+            overflow:hidden;
+        }
+
+        .imformation-head{
+            width:100%;
+            height:35px;
+            padding-left:5px;
+            margin-bottom:5px;
+
+            box-shadow: black 0px 0px 10px;
+
+            color:rgba(0, 0, 0, 0.618);
+            font-weight: bold;
+            font-size:20px;
+
+            background-color:rgb(101, 109, 255, 0.2);
+        }
+
+        .imformation-data-1{
+            position:relative;
+            margin:0;
+            width:100%;
+            height:30px;
+            padding-left:5px;
 
         }
-        
-        /* 照片盒子 */
-        /* 盒子1  左浮动 */
-        .imgBox1{
-            margin:0 20px;
-            background-color:aqua;
-            height:160px;
-            width:160px;
-        }
-        
-        /* 盒子2  右浮动 */
-        .imgBox2{
-            margin:0 20px;
-            background-color:brown;
-            height:160px;
-            width:160px;
-        }
-        
-        /* 盒子3  左浮动 */
-        .imgBox3{
-            margin:0 20px;
-            background-color:coral;
-            height:160px;
-            width:160px;
 
+        .imformation-data-2 {
+            position:relative;
+            margin:0;
+            width: 100%;
+            height: 30px;
+            padding-left: 5px;
+            background-color:rgb(101, 109, 255, 0.15);
         }
     </style>
+
     <div class="body">
-    <!-- 首页大图部分 -->
-    <div class="HeadHelpBox"><!-- 辅助定位盒子 -->
-    </div>
-
-    <!-- 功能展示部分 -->
-    <div> <!-- 功能展示主盒子 -->
-         <div class="makeUnfloat"><!-- 便签1辅助定位盒子 -->
-
-            <div class="note makeUnfloat"><!-- 便签本体 -->
-
-                 <div class="imgBox1 float-right relVerticalCenter"></div><!-- 配图放置处 -->
-                <div class="float-left">
-
-                    <!-- 标题栏 -->
-                    <div class="headLine textBox makeCharBolder">
-                        功能一
-                    </div>
-
-                    <!-- 正文栏 -->
-                    <div class="textBox">
-                       11111111111111111111111111111111111111
-                    </div>
-
-                </div>
-             </div>
-         </div>
-    
-        <div class="makeUnfloat"><!-- 便签2辅助定位盒子 -->
-            <div class="note float-right makeUnfloat"><!-- 便签本体 -->
-                <div class="float-right">
-
-                    <!-- 标题栏 -->
-                    <div class="headLine textBox makeCharBolder">
-                        功能二
-                    </div>
-
-                    <!-- 正文栏 -->
-                    <div class="textBox">
-                       11111111111111111111111111111111111111
-                    </div>
-
-                </div>
-                <div class="imgBox2 float-left relVerticalCenter"></div><!-- 配图放置处 -->
-            </div>
+        <!-- 辅助定位 -->
+        <div style="margin: 50px;">
         </div>
 
-        <div class="makeUnfloat"><!-- 便签3辅助定位盒子 -->
-            <div class="note makeUnfloat"><!-- 便签本体 -->
-                <div class="imgBox3 float-right relVerticalCenter"></div><!-- 配图放置处 -->
-                <div class="float-left">
-
-                    <!-- 标题栏 -->
-                    <div class="headLine textBox makeCharBolder">
-                        功能三
+        <!-- 身份选择 -->
+        <div class="chooseLoginManber">
+            <div class="Center">
+                <div class="test">
+                    <div class="test-imformation">
+                        <div class="test-imformation-img" style="background-image: url(img/Home_img/adm.png)"></div>
+                        <div class="test-imformation-text">
+                            科研人员
+                        </div>
                     </div>
-
-                    <!-- 正文栏 -->
-                    <div class="textBox">
-                       11111111111111111111111111111111111111
+                    <!-- 按钮覆盖 -->
+                    <div class="test-imformation-buttom">
+                        <asp:Button ID="testLogin" runat="server" Text="" CssClass="test-buttom"/>
                     </div>
+                </div>
 
+                <div class="test">
+                    <div class="test-imformation">
+                        <div class="test-imformation-img" style="background-image: url(img/Home_img/plo.png)"></div>
+                        <div class="test-imformation-text">
+                            工作人员
+                        </div>
+                    </div>
+                    <!-- 按钮覆盖 -->
+                    <div class="test-imformation-buttom">
+                        <asp:Button ID="workerLogin" runat="server" Text="" CssClass="test-buttom" OnClientClick="WorkerLogin_Click" OnClick="workerLogin_Click" />
+                    </div>
+                </div>
+
+                <div class="test">
+                    <div class="test-imformation">
+                        <div class="test-imformation-img" style="background-image: url(img/Home_img/adj.png)"></div>
+                        <div class="test-imformation-text">
+                            评委入口
+                        </div>
+                    </div>
+                    <!-- 按钮覆盖 -->
+                    <div class="test-imformation-buttom">
+                        <asp:Button ID="argLogin" runat="server" Text="" CssClass="test-buttom" />
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- 信息公布栏 -->
+        <div class="imformation">
+            <!-- 信息发布栏一 -->
+            <div class="imformation-part">
+                <!-- 标题栏 -->
+                <div class ="imformation-head inline-table">
+                        操作手册
+                </div>
+            </div><!-- 
+                信息发布栏二 
+         --><div class="imformation-part">
+                <!-- 标题栏 -->
+                <div class ="imformation-head inline-table">
+                        通知公告
+                </div>
+                <div class ="imformation-data-1">
+
+                </div>
+                <div class ="imformation-data-2">
                 </div>
             </div>
         </div>
-
     </div>
-</div>
-
 </asp:Content>
 
