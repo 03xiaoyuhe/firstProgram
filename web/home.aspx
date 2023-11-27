@@ -180,7 +180,7 @@
                     </div>
                     <!-- 按钮覆盖 -->
                     <div class="test-imformation-buttom">
-                        <asp:Butto  n ID="testLogin" runat="server" Text="" CssClass="test-buttom"/>
+                        <asp:Button  ID="testLogin" runat="server" Text="" CssClass="test-buttom"/>
                     </div>
                 </div>
 

@@ -108,8 +108,8 @@
                 </div>
 
                 <asp:HyperLink ID="HyperLink1" runat="server" 
-                    NavigateUrl="~/Home.aspx">
-                    帮助，请点击这里！
+                    NavigateUrl="~/home.aspx">
+                    点此返回主页面！
                 </asp:HyperLink>
             </div>
 
