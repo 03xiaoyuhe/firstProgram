@@ -3,7 +3,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    
+    <link href="../bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
+
     <style>
+
         /* 通用功能 */
         .inline-table{
             display: inline-table;
@@ -93,7 +98,7 @@
             cursor:pointer;
             width:100%;
             height:100%;
-            background-color:rgba(0, 0, 0, 0.1)
+            background-color:rgba(0, 0, 0, 0.0)
         }
 
         .imformation {
