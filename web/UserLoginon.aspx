@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masterPage/handing.master" AutoEventWireup="true" CodeFile="UserLoginon.aspx.cs" Inherits="UserLoginon_" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <link href="./bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="./bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
     <style>
@@ -60,7 +60,6 @@
         .Footer {
             position: absolute;
             bottom: 0;
-            text-align: end;
             width: 100%;
             padding-right: 15px;
             padding-bottom: 5px;
@@ -97,22 +96,18 @@
                     <label for="message-text" class="col-form-label">确认密码:</label>
                     <asp:TextBox ID="userPwd2" runat="server" CssClass="putOnShowBorder form-control" TextMode="Password"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="checkPwd2Null" runat="server" ErrorMessage="请输入密码" Font-Strikeout="False" ControlToValidate="userPwd2" CssClass="setCharRed setCharSizeSmall"></asp:RequiredFieldValidator>
-                    <asp:CompareValidator ControlToValidate="userPwd2" ControlToCompare="userPwd" runat="server" ErrorMessage="两次密码不一致，请重新输入" CssClass="setCharRed setCharSizeSmall"></asp:CompareValidator> 
+                    <asp:CompareValidator ControlToValidate="userPwd2" ControlToCompare="userPwd" runat="server" ErrorMessage="两次密码不一致，请重新输入" CssClass="setCharRed setCharSizeSmall"></asp:CompareValidator>
                 </div>
                 <!--联系电话-->
                 <div class="mb-3">
                     <label for="message-text" class="col-form-label">手机电话:</label>
-                    <asp:TextBox ID="useNumber" runat="server" CssClass="putOnShowBorder form-control" ></asp:TextBox>
+                    <asp:TextBox ID="useNumber" runat="server" CssClass="putOnShowBorder form-control"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="checkNumberNull" runat="server" ErrorMessage="请输入联系电话" Font-Strikeout="False" ControlToValidate="useNumber" CssClass="setCharRed setCharSizeSmall"></asp:RequiredFieldValidator>
 
                 </div>
 
-                <asp:HyperLink ID="HyperLink1" runat="server" 
-                    NavigateUrl="~/home.aspx">
-                    点此返回主页面！
-                </asp:HyperLink>
             </div>
-
+            
             <!-- 注册页尾部 -->
             <div class="modal-footer Footer">
                 <!-- 注册按钮 -->
@@ -120,6 +115,13 @@
                 <span style="width: 2px;"></span>
                 <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Close</button>
             </div>
+                <div style="position:absolute; bottom:0;padding-bottom:5px;">
+                    <asp:HyperLink ID="HyperLink1" runat="server"
+                        NavigateUrl="~/home.aspx">
+                        点此返回主页面！
+                    </asp:HyperLink>
+
+                </div>
         </div>
     </div>
 

@@ -51,7 +51,7 @@ public partial class functionPage_QueryForm : System.Web.UI.Page
 
         if (!IsPostBack)
         {
-            DataPageMode = "~/ASCX/DefaultNONE.ascx";
+            SetDefaultData();
 
             checkLodeSuccess();
 
@@ -81,6 +81,16 @@ public partial class functionPage_QueryForm : System.Web.UI.Page
             //Server.Transfer("~/homeTest.aspx", true);
         }
     }
+
+    /// <summary>
+    /// 设为默认内容页
+    /// </summary>
+    void SetDefaultData()
+    {
+        DataPageMode = "~/ASCX/DefaultNONE.ascx";
+    }
+
+
 
 
     #endregion
@@ -402,10 +412,6 @@ public partial class functionPage_QueryForm : System.Web.UI.Page
     }
 
 
-    void txt_LostFocus(object sender, EventArgs e)
-    {
-        ((TextBox)sender).Text = "aaa";
-    }
 
 
     protected void ShowAll_Click(object sender, EventArgs e)
