@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="testSupportPage.aspx.cs" Inherits="_test_testSupportPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="testSupportPage.aspx.cs" Inherits="testPage_Default" %>
 
 <!DOCTYPE html>
 
@@ -10,6 +10,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:HyperLink ID="HyperLink1" runat="server">HyperLink</asp:HyperLink>
         </div>
     </form>
 </body>
