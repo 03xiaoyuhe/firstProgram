@@ -210,8 +210,8 @@
 
 
             <asp:Button ID="turnBackToHome" runat="server" Text="回到主页" CssClass="fenture1" OnClick="turnBackToHome_Click" ValidationGroup="aaa1" /><!--
-        --><asp:Button ID="filtrateBtm" runat="server" Text="筛选" CssClass="fenture1" OnClick="allNavigationBarBtm_Click" ValidationGroup="aaa2" /><!--
-        --><asp:Button ID="pagingBtm" runat="server" Text="分页" CssClass="fenture1" OnClick="allNavigationBarBtm_Click" ValidationGroup="aaa" />
+        --><asp:Button ID="filtrateBtm" runat="server" Text="项目" CssClass="fenture1" OnClick="allNavigationBarBtm_Click" ValidationGroup="aaa2" /><!--
+        --><asp:Button ID="pagingBtm" runat="server" Text="申请" CssClass="fenture1" OnClick="allNavigationBarBtm_Click" ValidationGroup="aaa" />
 
         </div>
 
@@ -219,15 +219,33 @@
         <div class="sidebarDiv">
 
 
-            <!-- 筛选对应的子功能-->
+            <!-- 项目对应的子功能-->
             <asp:PlaceHolder ID="filtrateSidebar" runat="server">
 
-                <!-- 筛选及其子功能容器 -->
+                <!-- 项目及其子功能容器 -->
                 <div class="sidebar">
-
-                    <!-- 子功能一及其子功能容器 -->
+                    <!-- 显示全部 按钮及其子功能容器 -->
                     <div>
-                        <!-- 子功能一按键容器 -->
+                        <!-- 显示全部 按键容器 -->
+                        <div class="sidebarButtomDiv">
+
+                            <!-- 按钮前插图片 -->
+                            <img src="./img/homeHeadimg.jpg" class="sidebarButtomImg" />
+
+                            <!-- 按钮辅助定位盒子 -->
+                            <div class="sidebarButtomHelpDiv">
+
+                                <!-- 显示全部 按钮 -->
+                                <asp:Button ID="Button2" runat="server" Text="显示全部" CssClass="sidebarButtom" ValidationGroup="aaa3" />
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- 筛选 及其子功能容器 -->
+                    <div>
+                        <!-- 筛选 按键容器 -->
                         <div class="sidebarButtomDiv">
 
                             <img src="./img/homeHeadimg.jpg" class="sidebarButtomImg" />
@@ -236,7 +254,7 @@
                             <div class="sidebarButtomHelpDiv">
 
                                 <!-- 子功能一按钮 -->
-                                <asp:Button ID="filtratePrincipal" runat="server" Text="负责人" CssClass="sidebarButtom" OnClick="TreeButton_Click" ValidationGroup="aaa3" />
+                                <asp:Button ID="filtratePrincipal" runat="server" Text="筛选" CssClass="sidebarButtom" OnClick="TreeButton_Click" ValidationGroup="aaa3" />
                             </div>
 
                         </div>
@@ -244,7 +262,10 @@
                         <!-- 子功能一子栏 -->
                         <asp:PlaceHolder ID="filtratePrincipalDiv" runat="server">
                             <div class="sidbarChildDiv">
+
                                 111
+
+
                             </div>
                         </asp:PlaceHolder>
                     </div>
@@ -267,6 +288,7 @@
                         </div>
 
                     </div>
+
                 </div>
 
             </asp:PlaceHolder>
