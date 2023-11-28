@@ -25,4 +25,9 @@ public partial class WorkerLogin : System.Web.UI.Page
         Workerlogin.Password = b;
 
     }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        Response.Write("<script language='javascript'>window.location='home.aspx'</script>");
+    }
 }

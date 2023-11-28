@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masterPage/handing.master" AutoEventWireup="true" CodeFile="UserLoginon.aspx.cs" Inherits="xxxlzm_sign" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masterPage/handing.master" AutoEventWireup="true" CodeFile="UserLoginon.aspx.cs" Inherits="UserLoginon_" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -115,7 +115,6 @@
 
             <!-- 注册页尾部 -->
             <div class="modal-footer Footer">
-                <link title="aaaa" rel="aaa" />
                 <!-- 注册按钮 -->
                 <asp:Button ID="BtmLogin" runat="server" Text="注册" CssClass="btn btn-primary" />
                 <span style="width: 2px;"></span>
@@ -124,8 +123,5 @@
         </div>
     </div>
 
-
 </asp:Content>
-
-
 
