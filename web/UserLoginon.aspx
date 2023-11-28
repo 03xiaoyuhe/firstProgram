@@ -113,12 +113,15 @@
                 <!-- 注册按钮 -->
                 <asp:Button ID="BtmLogin" runat="server" Text="注册" CssClass="btn btn-primary" />
                 <span style="width: 2px;"></span>
-                <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Close</button>
+
+                <a href="home.aspx">
+                    <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">返回主页</button>
+                </a>
             </div>
                 <div style="position:absolute; bottom:0;padding-bottom:5px;">
                     <asp:HyperLink ID="HyperLink1" runat="server"
-                        NavigateUrl="~/home.aspx">
-                        点此返回主页面！
+                        NavigateUrl="~/WorkerLogin.aspx">
+                        已有账号？马上登陆->
                     </asp:HyperLink>
 
                 </div>

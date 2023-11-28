@@ -8,21 +8,41 @@ using Models;
 
 public partial class WorkerLogin : System.Web.UI.Page
 {
+    public string UID = "TTT";
+    public string PWD = "zzz101";
     protected void Page_Load(object sender, EventArgs e)
     {
 
+        //if (Session["loginSuccess"] == null)
+        //{
+        //    Session["userName"] = null;
+        //    Session["loginSuccess"] = "unlogin";
+        //}
+        if (Session["userName"] != null && Session["loginSuccess"].ToString() == "success")
+        {
+            Response.Write("<script language='javascript'>window.location='./functionPage/QueryForm.aspx'</script>");
+        }
     }
 
 
 
     protected void BtmLogin_Click(object sender, EventArgs e)
     {
-        Response.Write("<script>alert('账号或者密码错误!')</script>");
-        string a = this.userPwd.Text.ToString();
+        string a = this.userName.Text.ToString();
         string b = this.userPwd.Text.ToString();
         workerLogin Workerlogin = new workerLogin();
         Workerlogin.UID = a;
         Workerlogin.Password = b;
+        if (this.userName.Text == UID & this.userPwd.Text == PWD)
+        {
+            Session["userName"] = this.userName.Text;
+            Session["loginSuccess"] = "success";
+            Response.Write("<script language='javascript'>window.location='./functionPage/QueryForm.aspx'</script>");
+        }
+        else
+        {
+            Response.Write("<script>alert('用户名或密码输入错误')</script>");
+        }
 
     }
 
