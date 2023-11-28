@@ -118,7 +118,7 @@
 
         /* 侧边栏样式 */
         .sidebar {
-            width: 100px;
+            width: 200px;
             min-height: 600px;
             background-color: rgb(206, 221, 228)
         }
@@ -253,23 +253,41 @@
                             <!-- 按钮辅助定位盒子 -->
                             <div class="sidebarButtomHelpDiv">
 
-                                <!-- 子功能一按钮 -->
+                                <!-- 筛选 按钮 -->
                                 <asp:Button ID="filtratePrincipal" runat="server" Text="筛选" CssClass="sidebarButtom" OnClick="TreeButton_Click" ValidationGroup="aaa3" />
                             </div>
 
                         </div>
 
-                        <!-- 子功能一子栏 -->
+                        <!-- 筛选子栏 -->
                         <asp:PlaceHolder ID="filtratePrincipalDiv" runat="server">
                             <div class="sidbarChildDiv">
-                                111
+
+                                <!-- 子功能二及其子功能容器 -->
+                                <div>
+                                    <!-- 子功能二按键容器 -->
+                                    <div class="sidebarButtomDiv">
+
+                                        <!-- 按钮前插图片 -->
+                                        <img src="./img/homeHeadimg.jpg" class="sidebarButtomImg" />
+
+                                        <!-- 按钮辅助定位盒子 -->
+                                        <div class="sidebarButtomHelpDiv">
+
+                                            <!-- 子功能二按钮 -->
+                                            <asp:Button ID="Button2" runat="server" Text="项目名称" CssClass="sidebarButtom" ValidationGroup="aaa3" />
+
+                                        </div>
+                                    </div>
+
+                                </div>
 
 
                             </div>
                         </asp:PlaceHolder>
                     </div>
 
-                    <!-- 子功能二及其子功能容器 -->
+                    <%--<!-- 子功能二及其子功能容器 -->
                     <div>
                         <!-- 子功能二按键容器 -->
                         <div class="sidebarButtomDiv">
@@ -286,7 +304,7 @@
                             </div>
                         </div>
 
-                    </div>
+                    </div>--%>
 
                 </div>
 

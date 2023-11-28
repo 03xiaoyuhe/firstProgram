@@ -19,6 +19,13 @@ public partial class functionPage_QueryForm : System.Web.UI.Page
     /// 创建侧边栏按钮树对应关系
     /// </summary>
     protected Dictionary<string, string> TreeRelation = new Dictionary<string, string>();
+
+
+    /// <summary>
+    /// 功能栏默认内容
+    /// </summary>
+    static string DataPageMode = "~/ASCX/DefaultNONE.ascx";
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -35,8 +42,17 @@ public partial class functionPage_QueryForm : System.Web.UI.Page
         TreeRelation.Add("PagingSidebarButton2", "PagingSidebarPlaceHolder2");
         TreeRelation.Add("PagingSidebarButton1", "PagingSidebarPlaceHolder1");
 
+
+
+
+        this.DataView.Controls.Clear();
+        this.DataView.Controls.Add(LoadControl(DataPageMode));
+
+
         if (!IsPostBack)
         {
+            DataPageMode = "~/ASCX/DefaultNONE.ascx";
+
             checkLodeSuccess();
 
             // 初始化功能
@@ -394,8 +410,8 @@ public partial class functionPage_QueryForm : System.Web.UI.Page
 
     protected void ShowAll_Click(object sender, EventArgs e)
     {
-
+        DataPageMode = "~/ASCX/RoughImformation.ascx";
         this.DataView.Controls.Clear();
-        this.DataView.Controls.Add(LoadControl("~/ASCX/RoughImformation.ascx"));
+        this.DataView.Controls.Add(LoadControl(DataPageMode));
     }
 }

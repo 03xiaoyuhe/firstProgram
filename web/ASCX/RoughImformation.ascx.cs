@@ -31,8 +31,6 @@ public partial class ASCX_RoughImformation : System.Web.UI.UserControl
                     strColumns[i] = dt.Columns[i].ColumnName;
                 }
             }
-            this.HyperLink2.Text = strColumns.Length.ToString();
-            this.HyperLink1.Text = dt.Rows.Count.ToString();
         }
     }
 }

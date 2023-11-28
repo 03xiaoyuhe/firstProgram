@@ -1,8 +1,12 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="RoughImformation.ascx.cs" Inherits="ASCX_RoughImformation" %>
+<style type="text/css">
+    .RI-body{
+        width:100%;
+        height:100%;
+    }
+</style>
 
-<asp:HyperLink ID="HyperLink1" runat="server">HyperLink</asp:HyperLink>
-<asp:HyperLink ID="HyperLink2" runat="server">HyperLink</asp:HyperLink>
-<div>
+<div >
     <table class="Table" cellpadding="0" cellspacing="0" style="border-top: 1px solid Gray; border-left: 1px solid Gray; border-bottom: 1px solid Gray; border-collapse: collapse; text-align: center; margin: auto"
         width="70%" border="1px" bordercolor="Gray">
         <tr>
