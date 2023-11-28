@@ -131,14 +131,23 @@
         .sidebar {
             width: 200px;
             min-height: 600px;
-            background-color: rgb(206, 221, 228)
+            background-color: rgb(206, 221, 228);
+            overflow:hidden;
+        }
+
+        .sidebarAllDiv{
+            padding:0;
         }
 
         /* 侧边栏按钮容器 */
         .sidebarButtomDiv {
+            background-color: rgb(0, 0, 0, 0.15);
             width: 100%;
         }
-
+        
+        .sidebarButtomDiv:hover {
+            background-color: rgb(0, 0, 0, 0.3)
+        }
 
 
         .sidebarButtomHelpDiv {
@@ -147,24 +156,21 @@
 
         /* 侧边栏按钮 */
         .sidebarButtom {
+            background-color: rgb(0, 0, 0, 0);
             text-align: left;
             width: 100%;
             border: none;
-            background-color: rgb(0, 0, 0, 0.15);
             margin: 0;
             padding: 0;
         }
 
-        .sidebarButtomDiv:hover {
-            background-color: rgb(0, 0, 0, 0.3)
-        }
 
         /* 侧边栏子功能按钮前插图片 */
         .sidebarButtomImg {
             float: left;
             height: 25px;
-            width: 25px;
-            background-color: rgb(0, 0, 0, 0.15);
+            width: 25px;/*
+            background-color: rgb(0, 0, 0, 0.15);*/
         }
 
         /* 侧边栏子页 */
@@ -237,7 +243,7 @@
                 <!-- 项目及其子功能容器 -->
                 <div class="sidebar">
                     <!-- 显示全部 按钮及其子功能容器 -->
-                    <div>
+                    <div  class="sidebarAllDiv">
                         <!-- 显示全部 按键容器 -->
                         <div class="sidebarButtomDiv">
 
@@ -263,7 +269,7 @@
                     </div>
 
                     <!-- 筛选 及其子功能容器 -->
-                    <div>
+                    <div class="sidebar">
                         <!-- 筛选 按键容器 -->
                         <div class="sidebarButtomDiv">
 
@@ -318,7 +324,7 @@
                             <div class="sidbarChildDiv">
 
                                 <!-- 子功能二及其子功能容器 -->
-                                <div>
+                                <div class="sidebar">
                                     <!-- 子功能二按键容器 -->
                                     <div class="sidebarButtomDiv">
 
@@ -353,7 +359,7 @@
                 <div class="sidebar">
                     
                     <!-- 显示全部 按钮及其子功能容器 -->
-                    <div>
+                    <div class="sidebarAllDiv">
                         <!-- 显示全部 按键容器 -->
                         <div class="sidebarButtomDiv">
 
@@ -378,7 +384,7 @@
 
                     </div>
                     <!-- 子功能一及其子功能容器 -->
-                    <div>
+                    <div class="sidebarAllDiv">
                         <!-- 子功能一按键容器 -->
                         <div class="sidebarButtomDiv">
 
@@ -435,7 +441,7 @@
                     </div>
 
                     <!-- 子功能二及其子功能容器 -->
-                    <div>
+                    <div class="sidebar">
                         <!-- 子功能二按键容器 -->
                         <div class="sidebarButtomDiv">
 
