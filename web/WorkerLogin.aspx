@@ -106,8 +106,10 @@
                 <!-- 登陆按钮 -->
                 <asp:Button ID="BtmLogin" runat="server" Text="登陆"  CssClass="btn btn-primary" OnClick="BtmLogin_Click" />
                 <span style="width: 2px;"></span>
-                <%--<button type="button" class="btn btn-secondary " data-bs-dismiss="modal">返回主页</button>--%>
-                <asp:Button ID="Button1" runat="server" Text="返回主页" class="btn btn-secondary" data-bs-dismiss="modal" OnClick="Button1_Click"/>
+
+                <a href="home.aspx">
+                    <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">返回主页</button>
+                </a>
             </div>
         </div>
     </div>

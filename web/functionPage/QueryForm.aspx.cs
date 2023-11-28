@@ -412,7 +412,7 @@ public partial class functionPage_QueryForm : System.Web.UI.Page
 
     protected void turnBackToHome_Click(object sender, EventArgs e)
     {
-        Server.Transfer("~/home.aspx", false);
+        Response.Write("<script language='javascript'>window.location='../home.aspx'</script>");
     }
 
 

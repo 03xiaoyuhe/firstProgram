@@ -9,7 +9,12 @@ public partial class masterPage_MasterPage : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-       
+        /* 如果userName为空则初始化 */
+        if (Session["loginSuccess"] == null)
+        {
+            Session["userName"] = null;
+            Session["loginSuccess"] = "unlogin";
+        }
     }
 
     

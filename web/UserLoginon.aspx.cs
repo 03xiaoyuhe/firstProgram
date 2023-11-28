@@ -11,4 +11,9 @@ public partial class UserLoginon_ : System.Web.UI.Page
     {
 
     }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        Response.Write("<script language='javascript'>window.location='home.aspx'</script>");
+    }
 }
