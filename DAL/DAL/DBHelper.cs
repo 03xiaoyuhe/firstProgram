@@ -355,7 +355,7 @@ namespace DAL
         /// </summary>
         /// <param name="SQLString">计算查询结果语句</param>
         /// <returns>查询结果（object）</returns>
-        public static object GetSingle(string SQLString)
+        public static object GetSingle(string SQLString, SqlParameter[] parameters, string connectionString)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -857,6 +857,11 @@ namespace DAL
                 false, 0, 0, string.Empty, DataRowVersion.Default, null));
             return command;
         }
+
+        //internal static int GetCount(string query, SqlParameter[] parameters, string connectionString)
+        //{
+        //    throw new NotImplementedException();
+        //}
         #endregion
 
 
