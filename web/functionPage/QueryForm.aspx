@@ -26,6 +26,17 @@
         }
         /* 特定功能属性 */
 
+        .QF-body {
+            min-width: 1200px;
+            max-width: 1550px;
+            margin: auto;
+            /* 设置背景图 并使其自适应大小 */
+            background-image: url("img/homeHeadImg.jpg");
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+
         /* 三栏页面 */
         #tripleVessel {
             height: 100%;
@@ -144,15 +155,16 @@
             padding: 0;
         }
 
-            .sidebarButtom:hover {
-                background-color: rgb(0, 0, 0, 0.3)
-            }
+        .sidebarButtomDiv:hover {
+            background-color: rgb(0, 0, 0, 0.3)
+        }
 
         /* 侧边栏子功能按钮前插图片 */
         .sidebarButtomImg {
             float: left;
             height: 25px;
             width: 25px;
+            background-color: rgb(0, 0, 0, 0.15);
         }
 
         /* 侧边栏子页 */
@@ -193,11 +205,9 @@
             .btn:hover {
                 background: rgb(149, 205, 243);
             }
-
-
     </style>
 
-    <div id="tripleVessel" runat="server">
+    <div id="tripleVessel" class="QF-body" runat="server">
         <div class="help">
         </div>
         <!-- 横幅 -->
@@ -232,7 +242,14 @@
                         <div class="sidebarButtomDiv">
 
                             <!-- 按钮前插图片 -->
-                            <img src="./img/homeHeadimg.jpg" class="sidebarButtomImg" />
+                            <svg xmlns="http://www.w3.org/2000/svg" 
+                                width="16" 
+                                height="16" 
+                                fill="currentColor" 
+                                class="sidebarButtomImg bi bi-arrow-up-right-square" 
+                                viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z" />
+                            </svg>
 
                             <!-- 按钮辅助定位盒子 -->
                             <div class="sidebarButtomHelpDiv">
@@ -250,7 +267,42 @@
                         <!-- 筛选 按键容器 -->
                         <div class="sidebarButtomDiv">
 
-                            <img src="./img/homeHeadimg.jpg" class="sidebarButtomImg" />
+                            <!-- 折叠图标 -->
+                            <asp:PlaceHolder ID="PlaceHolder2" runat="server">
+
+                                <!-- 折叠时  _SVGUnShow-->
+                                <asp:PlaceHolder ID="filtratePrincipalDiv_SVGUnShow" runat="server">
+
+                                    <!-- sidebarButtomImg -->
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        width="16"
+                                        height="16"
+                                        fill="currentColor"
+                                        class="sidebarButtomImg bi bi-caret-right"
+                                        viewBox="0 0 16 16">
+                                        <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                    </svg>
+
+                                </asp:PlaceHolder>
+
+                                <!-- 展开时  _SVGOnShow-->
+                                <asp:PlaceHolder ID="filtratePrincipalDiv_SVGOnShow" runat="server" Visible="false">
+
+                                    <!-- sidebarButtomImg -->
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        width="16"
+                                        height="16"
+                                        fill="currentColor"
+                                        class="sidebarButtomImg bi bi-caret-down"
+                                        viewBox="0 0 16 16">
+                                        <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z" />
+                                    </svg>
+
+                                </asp:PlaceHolder>
+                                <!-- end 折叠图标 -->
+
+                            </asp:PlaceHolder>
+
 
                             <!-- 按钮辅助定位盒子 -->
                             <div class="sidebarButtomHelpDiv">
@@ -289,42 +341,82 @@
                         </asp:PlaceHolder>
                     </div>
 
-                    <%--<!-- 子功能二及其子功能容器 -->
-                    <div>
-                        <!-- 子功能二按键容器 -->
-                        <div class="sidebarButtomDiv">
-
-                            <!-- 按钮前插图片 -->
-                            <img src="./img/homeHeadimg.jpg" class="sidebarButtomImg" />
-
-                            <!-- 按钮辅助定位盒子 -->
-                            <div class="sidebarButtomHelpDiv">
-
-                                <!-- 子功能二按钮 -->
-                                <asp:Button ID="Button7" runat="server" Text="项目名称" CssClass="sidebarButtom" ValidationGroup="aaa3" />
-
-                            </div>
-                        </div>
-
-                    </div>--%>
-
                 </div>
 
             </asp:PlaceHolder>
 
 
+            <!-- 申请对应子功能 -->
             <asp:PlaceHolder ID="PagingSidebar" runat="server" Visible="false">
+
                 <!-- 筛选及其子功能容器 -->
                 <div class="sidebar">
+                    
+                    <!-- 显示全部 按钮及其子功能容器 -->
+                    <div>
+                        <!-- 显示全部 按键容器 -->
+                        <div class="sidebarButtomDiv">
 
+                            <!-- 按钮前插图片 -->
+                            <svg xmlns="http://www.w3.org/2000/svg" 
+                                width="16" 
+                                height="16" 
+                                fill="currentColor" 
+                                class="sidebarButtomImg bi bi-arrow-up-right-square" 
+                                viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z" />
+                            </svg>
+
+                            <!-- 按钮辅助定位盒子 -->
+                            <div class="sidebarButtomHelpDiv">
+
+                                <!-- 显示全部 按钮 -->
+                                <asp:Button ID="ShowAllApplica" runat="server" Text="显示全部" CssClass="sidebarButtom" ValidationGroup="aaa3" OnClick="ShowAllApplica_Click"/>
+
+                            </div>
+                        </div>
+
+                    </div>
                     <!-- 子功能一及其子功能容器 -->
                     <div>
                         <!-- 子功能一按键容器 -->
                         <div class="sidebarButtomDiv">
 
-                            <img src="./img/homeHeadimg.jpg" class="sidebarButtomImg" />
+                            <!-- 折叠图标 -->
+                            <asp:PlaceHolder ID="PlaceHolder1" runat="server">
+                                <!-- 折叠时  _SVGUnShow-->
+                                <asp:PlaceHolder ID="PagingSidebarPlaceHolder1_SVGUnShow" runat="server">
 
-                            <!-- 按钮辅助定位盒子 -->
+                                    <!-- sidebarButtomImg -->
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        width="16"
+                                        height="16"
+                                        fill="currentColor"
+                                        class="sidebarButtomImg bi bi-caret-right"
+                                        viewBox="0 0 16 16">
+                                        <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                    </svg>
+
+                                </asp:PlaceHolder>
+
+                                <!-- 展开时  _SVGOnShow-->
+                                <asp:PlaceHolder ID="PagingSidebarPlaceHolder1_SVGOnShow" runat="server" Visible="false">
+
+                                    <!-- sidebarButtomImg -->
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        width="16"
+                                        height="16"
+                                        fill="currentColor"
+                                        class="sidebarButtomImg bi bi-caret-down"
+                                        viewBox="0 0 16 16">
+                                        <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z" />
+                                    </svg>
+
+                                </asp:PlaceHolder>
+                                <!-- end 折叠图标 -->
+
+                            </asp:PlaceHolder>
+
                             <div class="sidebarButtomHelpDiv">
 
                                 <!-- 子功能一按钮 -->

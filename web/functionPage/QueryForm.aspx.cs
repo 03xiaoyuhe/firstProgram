@@ -396,10 +396,14 @@ public partial class functionPage_QueryForm : System.Web.UI.Page
         if (flag)
         {
             setSidebarUnShow((PlaceHolder)getSidebarItemByID(divID));
+            setSidebarShow((PlaceHolder)getSidebarItemByID(divID+ "_SVGUnShow"));
+            setSidebarUnShow((PlaceHolder)getSidebarItemByID(divID + "_SVGOnShow"));
         }
         else
         {
             setSidebarShow((PlaceHolder)getSidebarItemByID(divID));
+            setSidebarShow((PlaceHolder)getSidebarItemByID(divID + "_SVGOnShow"));
+            setSidebarUnShow((PlaceHolder)getSidebarItemByID(divID + "_SVGUnShow"));
         }
     }
 
@@ -417,6 +421,14 @@ public partial class functionPage_QueryForm : System.Web.UI.Page
     protected void ShowAll_Click(object sender, EventArgs e)
     {
         DataPageMode = "~/ASCX/RoughImformation.ascx";
+        this.DataView.Controls.Clear();
+        this.DataView.Controls.Add(LoadControl(DataPageMode));
+    }
+
+
+    protected void ShowAllApplica_Click(object sender, EventArgs e)
+    {
+        DataPageMode = "~/ASCX/RoughImformationForApplica.ascx";
         this.DataView.Controls.Clear();
         this.DataView.Controls.Add(LoadControl(DataPageMode));
     }

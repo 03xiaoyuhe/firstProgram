@@ -1,4 +1,5 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="RoughImformation.ascx.cs" Inherits="ASCX_RoughImformation" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="RoughImformationForApplica.ascx.cs" Inherits="ASCX_RoughImformationForApplica" %>
+
 <style type="text/css">
     .RI-body{
         width:100%;
