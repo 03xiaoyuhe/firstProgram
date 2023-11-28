@@ -236,7 +236,7 @@
                             <div class="sidebarButtomHelpDiv">
 
                                 <!-- 显示全部 按钮 -->
-                                <asp:Button ID="Button2" runat="server" Text="显示全部" CssClass="sidebarButtom" ValidationGroup="aaa3" />
+                                <asp:Button ID="ShowAll" runat="server" Text="显示全部" CssClass="sidebarButtom" ValidationGroup="aaa3" OnClick="ShowAll_Click" />
 
                             </div>
                         </div>
@@ -262,7 +262,6 @@
                         <!-- 子功能一子栏 -->
                         <asp:PlaceHolder ID="filtratePrincipalDiv" runat="server">
                             <div class="sidbarChildDiv">
-
                                 111
 
 
@@ -356,6 +355,10 @@
             <div id="sidebar4" runat="server" class="sidebar UnDisplay">
             </div>
 
+        </div>
+        <!-- 内容页 -->
+        <div class="functionDomain">
+            <asp:PlaceHolder ID="DataView" runat="server"></asp:PlaceHolder>
         </div>
     </div>
 </asp:Content>

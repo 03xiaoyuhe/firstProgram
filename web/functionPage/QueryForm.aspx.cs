@@ -391,4 +391,11 @@ public partial class functionPage_QueryForm : System.Web.UI.Page
         ((TextBox)sender).Text = "aaa";
     }
 
+
+    protected void ShowAll_Click(object sender, EventArgs e)
+    {
+
+        this.DataView.Controls.Clear();
+        this.DataView.Controls.Add(LoadControl("~/ASCX/RoughImformation.ascx"));
+    }
 }
