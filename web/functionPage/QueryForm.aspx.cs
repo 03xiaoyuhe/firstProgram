@@ -21,10 +21,16 @@ public partial class functionPage_QueryForm : System.Web.UI.Page
     protected Dictionary<string, string> TreeRelation = new Dictionary<string, string>();
 
 
+    //Test  DefaultNONE
     /// <summary>
     /// 功能栏默认内容
     /// </summary>
-    static string DataPageMode = "~/ASCX/DefaultNONE.ascx";
+    const string DefaultPageMode = "~/ASCX/Test.ascx";
+
+    /// <summary>
+    /// 功能栏显示内容
+    /// </summary>
+    static string DataPageMode;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -42,13 +48,6 @@ public partial class functionPage_QueryForm : System.Web.UI.Page
         TreeRelation.Add("PagingSidebarButton2", "PagingSidebarPlaceHolder2");
         TreeRelation.Add("PagingSidebarButton1", "PagingSidebarPlaceHolder1");
 
-
-
-
-        this.DataView.Controls.Clear();
-        this.DataView.Controls.Add(LoadControl(DataPageMode));
-
-
         if (!IsPostBack)
         {
             SetDefaultData();
@@ -59,6 +58,9 @@ public partial class functionPage_QueryForm : System.Web.UI.Page
             InitDivDisplayMode();
             initTreeButton();
         }
+
+        this.DataView.Controls.Clear();
+        this.DataView.Controls.Add(LoadControl(DataPageMode));
     }
 
     #region 页面常规加载
@@ -87,7 +89,7 @@ public partial class functionPage_QueryForm : System.Web.UI.Page
     /// </summary>
     void SetDefaultData()
     {
-        DataPageMode = "~/ASCX/DefaultNONE.ascx";
+        DataPageMode = DefaultPageMode;
     }
 
 
