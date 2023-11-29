@@ -19,7 +19,6 @@
             position: absolute;
             left: 50%;
             transform: translate(-50%,0);
-            max-width: 60%;
         }
 
         /* 主页基本设定 */
@@ -51,6 +50,7 @@
             border-color: rgb(0, 0, 0, 0.618);
             box-shadow: black 0px 0px 10px;
             font-size: 24px;
+            max-width: 200px;
         }
 
             .test:hover {
@@ -58,6 +58,7 @@
                 width: 220px;
                 height: 264px;
                 font-size: 26.4px;
+            max-width: 220px;
             }
 
         .test-imformation {

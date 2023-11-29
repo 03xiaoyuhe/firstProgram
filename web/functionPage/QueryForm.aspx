@@ -136,7 +136,11 @@
         }
 
         .sidebarAllDiv{
+            overflow: hidden;
+            width:100%;
             padding:0;
+            margin:0;
+            
         }
 
         /* 侧边栏按钮容器 */
@@ -269,7 +273,7 @@
                     </div>
 
                     <!-- 筛选 及其子功能容器 -->
-                    <div class="sidebar">
+                    <div class="sidebarAllDiv">
                         <!-- 筛选 按键容器 -->
                         <div class="sidebarButtomDiv">
 
@@ -324,7 +328,7 @@
                             <div class="sidbarChildDiv">
 
                                 <!-- 子功能二及其子功能容器 -->
-                                <div class="sidebar">
+                                <div class="sidebarButtomDiv">
                                     <!-- 子功能二按键容器 -->
                                     <div class="sidebarButtomDiv">
 
@@ -383,6 +387,7 @@
                         </div>
 
                     </div>
+
                     <!-- 子功能一及其子功能容器 -->
                     <div class="sidebarAllDiv">
                         <!-- 子功能一按键容器 -->
@@ -441,7 +446,7 @@
                     </div>
 
                     <!-- 子功能二及其子功能容器 -->
-                    <div class="sidebar">
+                    <div class="sidebarAllDiv">
                         <!-- 子功能二按键容器 -->
                         <div class="sidebarButtomDiv">
 
