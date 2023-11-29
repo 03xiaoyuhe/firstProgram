@@ -32,37 +32,37 @@
             {%>
         <tr>
             <td>
-                <%=dt.Rows[i]["emp_id"] %>
+                <%=dt.Rows[i]["user_id"] %>
             </td>
             <td>
-                <%=dt.Rows[i]["emp_number"] %>
+                <%=dt.Rows[i]["gender"] %>
             </td>
             <td>
-                <%=dt.Rows[i]["emp_name"] %>
+                <%=dt.Rows[i]["contact_number"] %>
             </td>
             <td>
-                <%=dt.Rows[i]["emp_dutier"] %>
+                <%=dt.Rows[i]["email"] %>
             </td>
             <td>
-                <%=dt.Rows[i]["emp_phone"] %>
+                <%=dt.Rows[i]["date_of_birth"] %>
             </td>
             <td>
-                <%=dt.Rows[i]["emp_time"] %>
+                <%=dt.Rows[i]["education_degree"] %>
             </td>
             <td>
-                <%=dt.Rows[i]["emp_result"] %>
+                <%=dt.Rows[i]["position"] %>
             </td>
             <td>
-                <%=dt.Rows[i]["emp_category"] %>
+                <%=dt.Rows[i]["workplace"] %>
             </td>
             <td>
-                <%=dt.Rows[i]["emp_change"] %>
+                <%=dt.Rows[i]["workplace"] %>
             </td>
             <td>
-                <%=dt.Rows[i]["emp_change_reson"] %>
+                <%=dt.Rows[i]["workplace"] %>
             </td>
             <td>
-                <%=dt.Rows[i]["emp_opinion"] %>
+                <%=dt.Rows[i]["workplace"] %>
             </td>
         </tr>
         <% 

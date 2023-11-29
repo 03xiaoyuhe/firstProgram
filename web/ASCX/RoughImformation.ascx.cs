@@ -16,7 +16,7 @@ public partial class ASCX_RoughImformation : System.Web.UI.UserControl
         {
             //创建一个临时数据库
             DataSet ds;
-            ds = DBHelper.Query("select *from emp;");
+            ds = DBHelper.Query("select *from UserInfo;");
 
             //创建一个临时表
             dt = ds.Tables[0];
