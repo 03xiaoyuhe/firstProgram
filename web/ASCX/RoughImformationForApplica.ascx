@@ -48,37 +48,37 @@
                 {%>
             <tr>
                 <td>
-                    <%=dt.Rows[i]["emp_id"] %>
+                    <%=dt.Rows[i]["username"] %>
                 </td>
                 <td>
-                    <%=dt.Rows[i]["emp_number"] %>
+                    <%=dt.Rows[i]["username"] %>
                 </td>
                 <td>
-                    <%=dt.Rows[i]["emp_name"] %>
+                    <%=dt.Rows[i]["username"] %>
                 </td>
                 <td>
-                    <%=dt.Rows[i]["emp_dutier"] %>
+                    <%=dt.Rows[i]["username"] %>
                 </td>
                 <td>
-                    <%=dt.Rows[i]["emp_phone"] %>
+                    <%=dt.Rows[i]["username"] %>
                 </td>
                 <td>
-                    <%=dt.Rows[i]["emp_time"] %>
+                    <%=dt.Rows[i]["username"] %>
                 </td>
                 <td>
-                    <%=dt.Rows[i]["emp_result"] %>
+                    <%=dt.Rows[i]["username"] %>
                 </td>
                 <td>
-                    <%=dt.Rows[i]["emp_category"] %>
+                    <%=dt.Rows[i]["username"] %>
                 </td>
                 <td>
-                    <%=dt.Rows[i]["emp_change"] %>
+                    <%=dt.Rows[i]["username"] %>
                 </td>
                 <td>
-                    <%=dt.Rows[i]["emp_change_reson"] %>
+                    <%=dt.Rows[i]["username"] %>
                 </td>
                 <td>
-                    <%=dt.Rows[i]["emp_opinion"] %>
+                    <%=dt.Rows[i]["username"] %>
                 </td>
             </tr>
             <% 

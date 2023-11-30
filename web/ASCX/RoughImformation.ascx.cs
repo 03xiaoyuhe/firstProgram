@@ -9,14 +9,12 @@ using System.Web.UI.WebControls;
 
 public partial class ASCX_RoughImformation : System.Web.UI.UserControl
 {
-    public DataTable dt = new DataTable();
+    static public DataTable dt = new DataTable();
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
-        {
             //创建一个临时数据库
             DataSet ds;
-            ds = DBHelper.Query("select *from UserInfo;");
+            ds = DBHelper.Query("select *from UserLogin;");
 
             //创建一个临时表
             dt = ds.Tables[0];
@@ -32,5 +30,4 @@ public partial class ASCX_RoughImformation : System.Web.UI.UserControl
                 }
             }
         }
-    }
 }
