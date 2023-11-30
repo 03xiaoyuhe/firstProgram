@@ -8,9 +8,11 @@ using System.Web.UI.WebControls;
 
 public partial class ASCX_Test : System.Web.UI.UserControl
 {
-    public DataTable dt = new DataTable();
+    static public DataTable dt = new DataTable();
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!IsPostBack)
+        {
             //创建一个临时数据库
             DataSet ds = new DataSet();
             //创建一个临时表
@@ -50,5 +52,7 @@ public partial class ASCX_Test : System.Web.UI.UserControl
             }
             //把表添加到DataSet中
             ds.Tables.Add(dt);
+
+        }
     }
 }

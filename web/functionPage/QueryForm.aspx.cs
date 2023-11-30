@@ -13,12 +13,12 @@ public partial class functionPage_QueryForm : System.Web.UI.Page
     /// <summary>
     /// 创建导航栏按钮与对应Div关系
     /// </summary>
-    protected Dictionary<string, string> navigationBarRelation = new Dictionary<string, string>();
+    static protected Dictionary<string, string> navigationBarRelation = new Dictionary<string, string>();
 
     /// <summary>
     /// 创建侧边栏按钮树对应关系
     /// </summary>
-    protected Dictionary<string, string> TreeRelation = new Dictionary<string, string>();
+    static protected Dictionary<string, string> TreeRelation = new Dictionary<string, string>();
 
 
     //Test  DefaultNONE
@@ -35,21 +35,26 @@ public partial class functionPage_QueryForm : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        // 初始化导航栏与对应功能映射关系
-        navigationBarRelation.Clear();
-        navigationBarRelation.Add("filtrateBtm", "filtrateSidebar");
-        navigationBarRelation.Add("pagingBtm", "PagingSidebar");
-        //navigationBarRelation.Add("fenture2", "sidebar2");
-        //navigationBarRelation.Add("fenture3", "sidebar3");
 
-        // 初始化按钮树功能映射关系
-        TreeRelation.Clear();
-        TreeRelation.Add("filtratePrincipal", "filtratePrincipalDiv");
-        TreeRelation.Add("PagingSidebarButton2", "PagingSidebarPlaceHolder2");
-        TreeRelation.Add("PagingSidebarButton1", "PagingSidebarPlaceHolder1");
 
         if (!IsPostBack)
         {
+
+            // 初始化导航栏与对应功能映射关系
+            navigationBarRelation.Clear();
+            navigationBarRelation.Add("filtrateBtm", "filtrateSidebar");
+            navigationBarRelation.Add("pagingBtm", "PagingSidebar");
+            navigationBarRelation.Add("settingBtm", "SettingPlaceHolder");
+            //navigationBarRelation.Add("fenture2", "sidebar2");
+            //navigationBarRelation.Add("fenture3", "sidebar3");
+
+
+            // 初始化按钮树功能映射关系
+            TreeRelation.Clear();
+            TreeRelation.Add("filtratePrincipal", "filtratePrincipalDiv");
+            TreeRelation.Add("PagingSidebarButton2", "PagingSidebarPlaceHolder2");
+            TreeRelation.Add("PagingSidebarButton1", "PagingSidebarPlaceHolder1");
+
             SetDefaultData();
 
             checkLodeSuccess();
@@ -433,5 +438,26 @@ public partial class functionPage_QueryForm : System.Web.UI.Page
         DataPageMode = "~/ASCX/RoughImformationForApplica.ascx";
         this.DataView.Controls.Clear();
         this.DataView.Controls.Add(LoadControl(DataPageMode));
+    }
+
+    protected void displaySettingBtn_Click(object sender, EventArgs e)
+    {
+        DataPageMode = "~/ASCX/WorkerSetup/DisplaySetup.ascx";
+        this.DataView.Controls.Clear();
+        this.DataView.Controls.Add(LoadControl(DataPageMode));
+    }
+
+
+
+    protected void AccountSetupBtn_Click(object sender, EventArgs e)
+    {
+        DataPageMode = "~/ASCX/WorkerSetup/AccountSetup.ascx";
+        this.DataView.Controls.Clear();
+        this.DataView.Controls.Add(LoadControl(DataPageMode));
+    }
+
+    protected void AccurateSizingBtn_Click(object sender, EventArgs e)
+    {
+
     }
 }
