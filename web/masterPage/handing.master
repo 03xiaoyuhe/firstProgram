@@ -45,6 +45,9 @@
         }
 
         /* 特定功能属性 */
+        .master-Body {
+        }
+
         .body1 {
             min-width: 1200px;
             max-width: 1550px;
@@ -57,17 +60,18 @@
         }
         /* 顶部开始栏编写 */
         .topStartBar {
-            padding-left:5px;
+            padding-left: 5px;
             z-index: 999;
             position: fixed;
             width: 100%;
-            height:40px;
+            height: 40px;
             overflow: hidden;
             top: 0px;
-            background-color:rgb(0, 0, 0, 0.85);
+            background-color: rgb(0, 0, 0, 0.85);
         }
-        .nameAndLogo{
-            display:inline-table;
+
+        .nameAndLogo {
+            display: inline-table;
         }
 
         .logo {
@@ -80,12 +84,12 @@
             background-size: contain;
             display: inline-table;
             height: 24px;
-            width:22px;
+            width: 22px;
         }
 
-        .nameForSys{
-            display:inline-table;
-            color:rgb(255, 255, 255, 0.59);
+        .nameForSys {
+            display: inline-table;
+            color: rgb(255, 255, 255, 0.59);
         }
 
         /* 开始栏登陆按钮 */
@@ -153,31 +157,34 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="topStartBar body2 center">
-            <!-- 网站名及logo -->
-            <div class = "nameAndLogo relVerticalCenter">
-                <!-- logo放置处 -->
-                <div class="logo">
-                </div>
-                <!-- 分隔符 -->
-                <div style="margin-left:32px; margin-right:10px; display:inline-table; color:rgb(255, 255, 255, 0.59);">
-                    |
-                </div>
-                <!-- 网站名 -->
-                <div style="display:inline-table;">
-                    <div class="nameForSys">
-                        哲学与社会科学规划项目信息化管理平台
+        <div class="master-Body">
+            <div class="topStartBar body2 center">
+                <!-- 网站名及logo -->
+                <div class="nameAndLogo relVerticalCenter">
+                    <!-- logo放置处 -->
+                    <div class="logo">
+                    </div>
+                    <!-- 分隔符 -->
+                    <div style="margin-left: 32px; margin-right: 10px; display: inline-table; color: rgb(255, 255, 255, 0.59);">
+                        |
+                    </div>
+                    <!-- 网站名 -->
+                    <div style="display: inline-table;">
+                        <div class="nameForSys">
+                            哲学与社会科学规划项目信息化管理平台
+                        </div>
                     </div>
                 </div>
+
+
+            </div>
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
             </div>
 
-            
-        </div>
-        <div>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
-        </div>
 
+        </div>
     </form>
 </body>
 </html>

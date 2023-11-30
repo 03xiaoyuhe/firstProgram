@@ -1,61 +1,25 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="RoughImformation.ascx.cs" Inherits="ASCX_RoughImformation" %>
+
+<link href="../CSS/Style.css" rel="stylesheet" />
+
 <style type="text/css">
     .RI-body {
         width: 100%;
         height: 100%;
     }
-    /* typography */
 
-    html {
-        font-family: "helvetica neue", helvetica, arial, sans-serif;
+    .turnDiv {
+        width: 100%;
     }
 
-    thead th,
-    tfoot th {
-        font-family: "Rock Salt", cursive;
+    .turnTable {
+        margin: 0 auto;
     }
 
-    th {
-        letter-spacing: 2px;
-    }
-
-    td {
-        letter-spacing: 1px;
-    }
-
-    tbody td {
-        text-align: center;
-    }
-
-    tfoot th {
-        text-align: right;
-    }
-
-    thead, tfoot {
-        background: url(leopardskin.jpg);
-        color: white;
-        text-shadow: 1px 1px 1px black;
-    }
-
-        thead th, tfoot th, tfoot td {
-            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5));
-            border: 3px solid purple;
-        }
-
-    tbody tr:nth-child(odd) {
-        background-color: #ff33cc;
-    }
-
-    tbody tr:nth-child(even) {
-        background-color: #e495e4;
-    }
-
-    tbody tr {
-        background-image: url(noise.png);
-    }
-
-    table {
-        background-color: #ff33cc;
+    
+    .form-div{
+        overflow:auto;
+        height:600px;
     }
 </style>
 
@@ -63,6 +27,7 @@
 <script type="text/jscript" src="../bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
 
 <div>
+    <div class="form-div">
     <table class="Table"
         cellpadding="0"
         cellspacing="0"
@@ -126,4 +91,26 @@
         %>
     </table>
 
+    </div>
+    <div class="turnDiv">
+        <table class="turnTable table-buttom">
+            <tr>
+                <td>
+                    <button class="btn btn-secondary ">&laquo;</button>
+                </td>
+                <td>
+                    <button class="btn btn-secondary "><</button>
+                </td>
+                <td>
+                    <div class="btn btn-secondary ">2/5</div>
+                </td>
+                <td>
+                    <button class="btn btn-secondary ">></button>
+                </td>
+                <td>
+                    <button class="btn btn-secondary ">&raquo;</button>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>

@@ -3,9 +3,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    
     <link href="../bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="../bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
-
     <style>
         /* 通用功能属性 */
         /* 竖直居中 使用相对定位*/
@@ -27,6 +27,7 @@
         /* 特定功能属性 */
 
         .QF-body {
+            position: relative;
             min-width: 1200px;
             max-width: 1550px;
             margin: auto;
@@ -34,6 +35,7 @@
             background-image: url("img/homeHeadImg.jpg");
             background-repeat: no-repeat;
             background-size: contain;
+            height: 100%;
         }
 
 
@@ -124,23 +126,25 @@
 
         /* 侧边栏容器 */
         .sidebarDiv {
+            position: relative;
             float: left;
+            height: 640px;
         }
 
         /* 侧边栏样式 */
         .sidebar {
             width: 200px;
-            min-height: 600px;
+            height: 100%;
             background-color: rgb(206, 221, 228);
-            overflow:hidden;
+            overflow: hidden;
         }
 
-        .sidebarAllDiv{
+        .sidebarAllDiv {
             overflow: hidden;
-            width:100%;
-            padding:0;
-            margin:0;
-            
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            border-radius:4px;
         }
 
         /* 侧边栏按钮容器 */
@@ -148,10 +152,10 @@
             background-color: rgb(0, 0, 0, 0.15);
             width: 100%;
         }
-        
-        .sidebarButtomDiv:hover {
-            background-color: rgb(0, 0, 0, 0.3)
-        }
+
+            .sidebarButtomDiv:hover {
+                background-color: rgb(0, 0, 0, 0.3)
+            }
 
 
         .sidebarButtomHelpDiv {
@@ -173,7 +177,7 @@
         .sidebarButtomImg {
             float: left;
             height: 25px;
-            width: 25px;/*
+            width: 25px; /*
             background-color: rgb(0, 0, 0, 0.15);*/
         }
 
@@ -186,6 +190,7 @@
         .functionDomain {
             overflow: hidden;
             min-height: 600px;
+            height: 640px;
             /*background-color:burlywood;*/
         }
 
@@ -216,6 +221,7 @@
                 background: rgb(149, 205, 243);
             }
     </style>
+    
 
     <div id="tripleVessel" class="QF-body" runat="server">
         <div class="help">
@@ -233,7 +239,8 @@
 
             <asp:Button ID="turnBackToHome" runat="server" Text="回到主页" CssClass="fenture1" OnClick="turnBackToHome_Click" ValidationGroup="aaa1" /><!--
         --><asp:Button ID="filtrateBtm" runat="server" Text="项目" CssClass="fenture1" OnClick="allNavigationBarBtm_Click" ValidationGroup="aaa2" /><!--
-        --><asp:Button ID="pagingBtm" runat="server" Text="申请" CssClass="fenture1" OnClick="allNavigationBarBtm_Click" ValidationGroup="aaa" />
+        --><asp:Button ID="pagingBtm" runat="server" Text="申请" CssClass="fenture1" OnClick="allNavigationBarBtm_Click" ValidationGroup="aaa" /><!--
+        --><asp:Button ID="settingBtm" runat="server" Text="设置" CssClass="fenture1" OnClick="allNavigationBarBtm_Click" ValidationGroup="aaa4" />
 
         </div>
 
@@ -246,17 +253,19 @@
 
                 <!-- 项目及其子功能容器 -->
                 <div class="sidebar">
+
+
                     <!-- 显示全部 按钮及其子功能容器 -->
-                    <div  class="sidebarAllDiv">
+                    <div class="sidebarAllDiv">
                         <!-- 显示全部 按键容器 -->
                         <div class="sidebarButtomDiv">
 
                             <!-- 按钮前插图片 -->
-                            <svg xmlns="http://www.w3.org/2000/svg" 
-                                width="16" 
-                                height="16" 
-                                fill="currentColor" 
-                                class="sidebarButtomImg bi bi-arrow-up-right-square" 
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="currentColor"
+                                class="sidebarButtomImg bi bi-arrow-up-right-square"
                                 viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z" />
                             </svg>
@@ -327,25 +336,32 @@
                         <asp:PlaceHolder ID="filtratePrincipalDiv" runat="server">
                             <div class="sidbarChildDiv">
 
-                                <!-- 子功能二及其子功能容器 -->
-                                <div class="sidebarButtomDiv">
-                                    <!-- 子功能二按键容器 -->
+                                <!-- 精确筛选 按钮及其子功能容器 -->
+                                <div class="sidebarAllDiv">
+                                    <!-- 精确筛选 按键容器 -->
                                     <div class="sidebarButtomDiv">
 
                                         <!-- 按钮前插图片 -->
-                                        <img src="./img/homeHeadimg.jpg" class="sidebarButtomImg" />
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            width="16"
+                                            height="16"
+                                            fill="currentColor"
+                                            class="sidebarButtomImg bi bi-arrow-up-right-square"
+                                            viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z" />
+                                        </svg>
 
                                         <!-- 按钮辅助定位盒子 -->
                                         <div class="sidebarButtomHelpDiv">
 
-                                            <!-- 子功能二按钮 -->
-                                            <asp:Button ID="Button2" runat="server" Text="项目名称" CssClass="sidebarButtom" ValidationGroup="aaa3" />
+                                            <!-- 精确筛选 按钮 -->
+                                            <asp:Button ID="AccurateSizingBtn" runat="server" Text="精确筛选" CssClass="sidebarButtom" ValidationGroup="aaa3" OnClick="AccurateSizingBtn_Click" />
 
                                         </div>
+
                                     </div>
 
                                 </div>
-
 
                             </div>
                         </asp:PlaceHolder>
@@ -361,18 +377,18 @@
 
                 <!-- 筛选及其子功能容器 -->
                 <div class="sidebar">
-                    
+
                     <!-- 显示全部 按钮及其子功能容器 -->
                     <div class="sidebarAllDiv">
                         <!-- 显示全部 按键容器 -->
                         <div class="sidebarButtomDiv">
 
                             <!-- 按钮前插图片 -->
-                            <svg xmlns="http://www.w3.org/2000/svg" 
-                                width="16" 
-                                height="16" 
-                                fill="currentColor" 
-                                class="sidebarButtomImg bi bi-arrow-up-right-square" 
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="currentColor"
+                                class="sidebarButtomImg bi bi-arrow-up-right-square"
                                 viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z" />
                             </svg>
@@ -381,7 +397,7 @@
                             <div class="sidebarButtomHelpDiv">
 
                                 <!-- 显示全部 按钮 -->
-                                <asp:Button ID="ShowAllApplica" runat="server" Text="显示全部" CssClass="sidebarButtom" ValidationGroup="aaa3" OnClick="ShowAllApplica_Click"/>
+                                <asp:Button ID="ShowAllApplica" runat="server" Text="显示全部" CssClass="sidebarButtom" ValidationGroup="aaa3" OnClick="ShowAllApplica_Click" />
 
                             </div>
                         </div>
@@ -474,15 +490,79 @@
                 </div>
             </asp:PlaceHolder>
 
-            <!-- 功能四对应的子功能-->
-            <div id="sidebar4" runat="server" class="sidebar UnDisplay">
-            </div>
+
+            <!-- 设置对应的子功能-->
+            <asp:PlaceHolder ID="SettingPlaceHolder" runat="server">
+
+                <!-- 设置及其子功能容器 -->
+                <div class="sidebar">
+
+
+                    <!-- 显示设置 按钮及其子功能容器 -->
+                    <div class="sidebarAllDiv">
+                        <!-- 显示全部 按键容器 -->
+                        <div class="sidebarButtomDiv">
+
+                            <!-- 按钮前插图片 -->
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="currentColor"
+                                class="sidebarButtomImg bi bi-arrow-up-right-square"
+                                viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z" />
+                            </svg>
+
+                            <!-- 按钮辅助定位盒子 -->
+                            <div class="sidebarButtomHelpDiv">
+
+                                <!-- 显示全部 按钮 -->
+                                <asp:Button ID="displaySettingBtn" runat="server" Text="显示设置" CssClass="sidebarButtom" ValidationGroup="aaa3" OnClick="displaySettingBtn_Click" />
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    
+                    <!-- 账户设置 按钮及其子功能容器 -->
+                    <div class="sidebarAllDiv">
+                        <!-- 账户设置 按键容器 -->
+                        <div class="sidebarButtomDiv">
+
+                            <!-- 按钮前插图片 -->
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="currentColor"
+                                class="sidebarButtomImg bi bi-arrow-up-right-square"
+                                viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z" />
+                            </svg>
+
+                            <!-- 按钮辅助定位盒子 -->
+                            <div class="sidebarButtomHelpDiv">
+
+                                <!-- 显示全部 按钮 -->
+                                <asp:Button ID="AccountSetupBtn" runat="server" Text="账户设置" CssClass="sidebarButtom" ValidationGroup="aaa3" OnClick="AccountSetupBtn_Click" />
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </asp:PlaceHolder>
 
         </div>
         <!-- 内容页 -->
         <div class="functionDomain">
             <asp:PlaceHolder ID="DataView" runat="server"></asp:PlaceHolder>
         </div>
+
+        <!-- 精确筛选页 -->
+
     </div>
 </asp:Content>
 
