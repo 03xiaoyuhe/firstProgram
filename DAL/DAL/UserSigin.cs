@@ -11,7 +11,7 @@ namespace DAL
 {
     public class UserLogin
     {
-        private readonly string connectionString = "SQpwdLoad"; // Replace with your actual connection string
+        private readonly string connectionString = "Your Connection String"; // Replace with your actual connection string
 
 
         /// <summary>

@@ -12,9 +12,11 @@ public partial class ASCX_RoughImformation : System.Web.UI.UserControl
     public DataTable dt = new DataTable();
     protected void Page_Load(object sender, EventArgs e)
     {
-        //创建一个临时数据库
-        DataSet ds;
-        ds = DBHelper.Query("select *from UserInfo;");
+        if (!IsPostBack)
+        {
+            //创建一个临时数据库
+            DataSet ds;
+            ds = DBHelper.Query("select *from emp;");
 
         //创建一个临时表
         dt = ds.Tables[0];

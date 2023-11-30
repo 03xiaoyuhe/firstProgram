@@ -9,8 +9,6 @@ using DAL;
 
 namespace DAL
 {
-
-
     public class UserRegistration
     {
         private readonly string connectionString = "SQpwdLoad";
@@ -28,7 +26,7 @@ namespace DAL
                 new SqlParameter("@Username", SqlDbType.NVarChar) { Value = username }
             };
 
-            object result = DBHelper.GetSingle(query, parameters, connectionString);//（）内的connectionString或许可以去掉。
+            object result = DBHelper.GetSingle(query, parameters);
             int count = Convert.ToInt32(result);
 
             return count > 0;
