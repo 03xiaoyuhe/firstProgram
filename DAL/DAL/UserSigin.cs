@@ -13,6 +13,13 @@ namespace DAL
     {
         private readonly string connectionString = "SQpwdLoad"; // Replace with your actual connection string
 
+
+        /// <summary>
+        /// 查询账号密码是否在数据库中并登录
+        /// </summary>
+        /// <param name="username">账号</param>
+        /// <param name="password">密码</param>
+        /// <returns></returns>
         public bool AuthenticateUser(string username, string password)
         {
             string query = "SELECT COUNT(*) FROM UserLogin WHERE Username = @Username AND Password = @Password";

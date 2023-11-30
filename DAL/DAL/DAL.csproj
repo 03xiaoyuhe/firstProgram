@@ -47,6 +47,7 @@
     <Compile Include="UserInformations.cs" />
     <Compile Include="UserLoginOn.cs" />
     <Compile Include="UserSigin.cs" />
+    <Compile Include="UserTeamIofo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

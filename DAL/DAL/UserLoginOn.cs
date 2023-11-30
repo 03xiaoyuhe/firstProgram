@@ -14,6 +14,13 @@ namespace DAL
     public class UserRegistration
     {
         private readonly string connectionString = "SQpwdLoad";
+
+
+        /// <summary>
+        /// 查询账号是否存在
+        /// </summary>
+        /// <param name="username">账号</param>
+        /// <returns></returns>
         public bool CheckIfAccountExists(string username)
         {
             string query = "SELECT COUNT(*) FROM UserLogin WHERE Username = @Username";
@@ -27,6 +34,16 @@ namespace DAL
             return count > 0;
         }
 
+
+
+        /// <summary>
+        /// 注册账号密码插入数据库
+        /// </summary>
+        /// <param name="username">账号</param>
+        /// <param name="password">密码</param>
+        /// <param name="phoneNumber">联系电话</param>
+        /// <returns></returns>
+        /// <exception cref="InvalidOperationException"></exception>
         public bool RegisterUser(string username, string password, string phoneNumber)
         {
             if (CheckIfAccountExists(username))
