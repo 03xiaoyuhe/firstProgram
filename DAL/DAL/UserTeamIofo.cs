@@ -12,7 +12,7 @@ namespace DAL
     {
 
         /// <summary>
-        ///小队申请表，需要两个参数进行对表中数据的插入。
+        ///小队申请表，需要两个参数进行对表中数据的插入,向里插入负责人id与队伍名字。
         /// </summary>
         /// <param name="teamName">小队名</param>
         /// <param name="contactNumber">负责人的身份证号</param>
@@ -30,6 +30,9 @@ namespace DAL
 
             return rowsAffected > 0;
         }
+
+
+
 
 
     }

@@ -39,17 +39,19 @@ namespace DAL
 
 
         /// <summary>
-        /// 利用原队伍id修改为现在的队伍id
+        /// 利用电话号码修改现在的队伍id
         /// </summary>
-        /// <param name="team_idBefore">原队伍id</param>
+        /// <param name="useNumber">电话号码</param>
         /// <param name="team_id">现在的队伍id</param>
         /// <returns></returns>
-        public bool UpdataTeamInfor(string team_idBefore, string team_id )
+        public bool UpdataTeamInfor(string useNumber, string team_id )
         {
-            string query = "UPDATE TeamMembers SET team_id = '@team_id ' WHERE  team_id='@team_idBefore'";
+            string query = "UPDATE TeamMembers SET team_id = '@team_id' " +
+                "WHERE  member_id=(select user_id from UserInfo where " +
+                "user_id=(select user_id from UserLogin where useNumber='@useNumber'));";
 
             SqlParameter[] parameters = {
-                new SqlParameter("@team_idBefore", SqlDbType.NVarChar) { Value = team_idBefore },
+                new SqlParameter("@useNumber", SqlDbType.NVarChar) { Value = useNumber },
                 new SqlParameter("@team_id", SqlDbType.NVarChar) { Value = team_id },
 
                         };
