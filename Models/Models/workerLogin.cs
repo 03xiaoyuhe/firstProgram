@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class workerLogin
+    public class WorkerLogin
     {
-        public string UID;
-        public string Password;
+        public string username;
+        public string password;
+        public string phoneNumber;
     }
 }

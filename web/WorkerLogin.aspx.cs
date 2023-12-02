@@ -30,9 +30,8 @@ public partial class WorkerLogin : System.Web.UI.Page
     {
         string a = this.userName.Text.ToString();
         string b = this.userPwd.Text.ToString();
-        workerLogin Workerlogin = new workerLogin();
-        Workerlogin.UID = a;
-        Workerlogin.Password = b;
+        Models.WorkerLogin Workerlogin = new Models.WorkerLogin();
+
         if (this.userName.Text == UID & this.userPwd.Text == PWD)
         {
             Session["userName"] = this.userName.Text;
