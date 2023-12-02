@@ -20,8 +20,11 @@ namespace ForTest
             workerLogin.username = Console.ReadLine();
             Console.WriteLine("密码:");
             workerLogin.password = Console.ReadLine();
-            if (userLogin.AuthenticateUser(workerLogin.username, workerLogin.password)) Console.WriteLine("登陆成功");
-            else Console.WriteLine("登陆失败");
+            if (userLogin.AuthenticateUser(workerLogin.username, workerLogin.password)) 
+                Console.WriteLine("登陆成功");
+
+            else 
+                Console.WriteLine("登陆失败");
 
         }
     }

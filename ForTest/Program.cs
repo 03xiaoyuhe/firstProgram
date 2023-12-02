@@ -1,26 +1,43 @@
-﻿// See https://aka.ms/new-console-template for more information
-using ForTest;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using DAL;
+using Models;
+
+namespace ForTest
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
 
 
 
-Console.WriteLine("Hello, World!");
+
+            Console.WriteLine("Hello, World!");
 
 
-#region UserSighin
-/// UserLoginOn
-Console.WriteLine("\n\n----For UserSighin Test----");
-ForUserSigin.ForAuthenticateUser();
+            #region UserSighin
+            /// UserLoginOn
+            Console.WriteLine("\n\n----For UserSighin Test----");
+            ForTest.ForUserSigin.ForAuthenticateUser();
 
-#endregion
-
-
-
-#region UserLoginOn
-/// UserLoginOn
-Console.WriteLine("\n\n----For UserLoginOn Test----");
-ForUserLoginOn.ForCheckIfAccountExists();
-ForUserLoginOn.ForRegisterUser();
-
-#endregion
+            #endregion
 
 
+
+            #region UserLoginOn
+            /// UserLoginOn
+            Console.WriteLine("\n\n----For UserLoginOn Test----");
+            ForTest.ForUserLoginOn.ForCheckIfAccountExists();
+            ForTest.ForUserLoginOn.ForRegisterUser();
+
+            #endregion
+
+
+
+        }
+    }
+}

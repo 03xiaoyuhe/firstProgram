@@ -29,7 +29,7 @@ namespace DAL
             //string appSettings = ConfigurationManager.AppSettings["SQpwdLoad"];
             //return appSettings.ToString();
 
-            return ConfigurationManager.ConnectionStrings["SQpwdLoad"].ConnectionString;
+            return "Data Source =.; Initial Catalog = Social Philosophy Project; User Id = sa; Password = 0.0.00.0;"; //ConfigurationManager.ConnectionStrings["SQpwdLoad"].ConnectionString;
         }
 
 
@@ -681,6 +681,7 @@ namespace DAL
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand cmd = new SqlCommand();
+                string look = cmd.ToString();
                 PrepareCommand(cmd, connection, null, SQLString, cmdParms);
                 using (SqlDataAdapter da = new SqlDataAdapter(cmd))
                 {

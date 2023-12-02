@@ -11,25 +11,26 @@ namespace DAL
 {
     public class UserLogin
     {
-        private readonly string connectionString = "SQpwdLoad"; // Replace with your actual connection string
+        private string connectionString = "Data Source=.;Initial Catalog=Social Philosophy Project;User Id=sa;Password=0.0.00.0;"; 
 
 
         /// <summary>
-        /// 查询账号密码是否在数据库中并登录
+        /// 查询账号密码是否在数据库中
         /// </summary>
         /// <param name="username">账号</param>
         /// <param name="password">密码</param>
         /// <returns></returns>
         public bool AuthenticateUser(string username, string password)
         {
-            string query = "SELECT COUNT(*) FROM UserLogin WHERE Username = @Username AND Password = @Password";
+            string query = "SELECT COUNT(*)\"count\" FROM UserLogin WHERE username = @Username AND password =@Password;";
             SqlParameter[] parameters = {
                 new SqlParameter("@Username", SqlDbType.NVarChar) { Value = username },
                 new SqlParameter("@Password", SqlDbType.NVarChar) { Value = password }
             };
 
-            object result = DBHelper.GetSingle(query, parameters, connectionString);
-            int count = Convert.ToInt32(result);
+            DataSet result = DBHelper.Query(query, parameters);
+            DataTable dt = result.Tables[0];
+            int count = Convert.ToInt32(dt.Rows[0]["count"]);
 
             return count > 0;
         }

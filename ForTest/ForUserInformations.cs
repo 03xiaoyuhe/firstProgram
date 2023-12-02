@@ -8,7 +8,7 @@ namespace ForTest
 {
     public class ForUserInformations
     {
-        public bool ForRegisterUser()
+        static public bool ForRegisterUser()
         {
 
             //Console.ReadLine(); 获取用户一行输入(回车结束)[返回值字符串]
