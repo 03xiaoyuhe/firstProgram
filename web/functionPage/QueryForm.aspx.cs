@@ -25,7 +25,7 @@ public partial class functionPage_QueryForm : System.Web.UI.Page
     /// <summary>
     /// 功能栏默认内容
     /// </summary>
-    const string DefaultPageMode = "~/ASCX/Test.ascx";
+    const string DefaultPageMode = "~/ASCX/DefaultNONE.ascx";
 
     /// <summary>
     /// 功能栏显示内容
