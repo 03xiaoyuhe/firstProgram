@@ -2,6 +2,7 @@
 <style type="text/css">
     .DN-body {
         width:100%;
+        height:100%;
     }
     .DN-imformation{
         width:200px;

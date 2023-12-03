@@ -64,8 +64,9 @@ public partial class functionPage_QueryForm : System.Web.UI.Page
             initTreeButton();
         }
 
-        this.DataView.Controls.Clear();
-        this.DataView.Controls.Add(LoadControl(DataPageMode));
+        //this.DataView.Controls.Clear();
+        //this.DataView.Controls.Add(LoadControl(DataPageMode));
+        //this.DataView.Visible = true;
     }
 
     #region 页面常规加载
@@ -427,9 +428,11 @@ public partial class functionPage_QueryForm : System.Web.UI.Page
 
     protected void ShowAll_Click(object sender, EventArgs e)
     {
+
         DataPageMode = "~/ASCX/RoughImformation.ascx";
         this.DataView.Controls.Clear();
         this.DataView.Controls.Add(LoadControl(DataPageMode));
+        this.DataView.Visible=true;
     }
 
 
@@ -438,6 +441,7 @@ public partial class functionPage_QueryForm : System.Web.UI.Page
         DataPageMode = "~/ASCX/RoughImformationForApplica.ascx";
         this.DataView.Controls.Clear();
         this.DataView.Controls.Add(LoadControl(DataPageMode));
+        this.DataView.Visible = true;
     }
 
     protected void displaySettingBtn_Click(object sender, EventArgs e)
@@ -445,6 +449,7 @@ public partial class functionPage_QueryForm : System.Web.UI.Page
         DataPageMode = "~/ASCX/WorkerSetup/DisplaySetup.ascx";
         this.DataView.Controls.Clear();
         this.DataView.Controls.Add(LoadControl(DataPageMode));
+        this.DataView.Visible = true;
     }
 
 
@@ -454,6 +459,7 @@ public partial class functionPage_QueryForm : System.Web.UI.Page
         DataPageMode = "~/ASCX/WorkerSetup/AccountSetup.ascx";
         this.DataView.Controls.Clear();
         this.DataView.Controls.Add(LoadControl(DataPageMode));
+        this.DataView.Visible = true;
     }
 
     protected void AccurateSizingBtn_Click(object sender, EventArgs e)
