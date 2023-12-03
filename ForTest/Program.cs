@@ -13,8 +13,9 @@ namespace ForTest
         static void Main(string[] args)
         {
 
-
+            //DBHelper dbHelper = new DBHelper();
             DBHelper.Mode = 2;
+            DBHelper.Setting();
 
             Console.WriteLine("Hello, World!");
 

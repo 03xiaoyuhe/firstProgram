@@ -14,19 +14,24 @@ namespace DAL
     //internal class DBHelper
      public class DBHelper
     {
-        /// <summary>
-        /// 获取连接字符串
-        /// </summary>
-        public static string connectionString = GetSqlConnectionString();
 
         /// <summary>
         /// 标识DBHelper运行模式
         /// 1为WEB模式
         /// 2为TEST模式
         /// </summary>
-        public static int Mode = 1;
+        public static int Mode = 2;
+
+        /// <summary>
+        /// 获取连接字符串
+        /// </summary>
+        public static string connectionString = GetSqlConnectionString();
 
 
+        public static void Setting()
+        {
+            connectionString = GetSqlConnectionString();
+        }
         /// <summary>
         /// 获取通过账号名密码连接数据库的字符串
         /// </summary>
@@ -39,7 +44,7 @@ namespace DAL
 
             if (Mode == 1) return ConfigurationManager.ConnectionStrings["SQpwdLoad"].ConnectionString;
             else if (Mode == 2) return "Data Source =.; Initial Catalog = Social Philosophy Project; User Id = sa; Password = 0.0.00.0;";
-            return null;
+            else return null;
         }
 
 
