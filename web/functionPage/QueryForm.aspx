@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-
+    
     <link href="../bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="../bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
     <style>
@@ -144,7 +144,7 @@
             width: 100%;
             padding: 0;
             margin: 0;
-            border-radius: 4px;
+            border-radius:4px;
         }
 
         /* 侧边栏按钮容器 */
@@ -191,7 +191,7 @@
             overflow: hidden;
             min-height: 600px;
             height: 640px;
-            background-color:burlywood;
+            /*background-color:burlywood;*/
         }
 
 
@@ -221,7 +221,7 @@
                 background: rgb(149, 205, 243);
             }
     </style>
-
+    
 
     <div id="tripleVessel" class="QF-body" runat="server">
         <div class="help">
@@ -524,7 +524,7 @@
 
                     </div>
 
-
+                    
                     <!-- 账户设置 按钮及其子功能容器 -->
                     <div class="sidebarAllDiv">
                         <!-- 账户设置 按键容器 -->
@@ -558,11 +558,10 @@
         </div>
         <!-- 内容页 -->
         <div class="functionDomain">
-            <asp:PlaceHolder ID="DataView" runat="server">
-
-            </asp:PlaceHolder>
+            <asp:PlaceHolder ID="DataView" runat="server"></asp:PlaceHolder>
         </div>
 
+        <!-- 精确筛选页 -->
 
     </div>
 </asp:Content>

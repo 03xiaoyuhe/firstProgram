@@ -64,9 +64,9 @@ public partial class functionPage_QueryForm : System.Web.UI.Page
             initTreeButton();
         }
 
-        //this.DataView.Controls.Clear();
-        //this.DataView.Controls.Add(LoadControl(DataPageMode));
-        //this.DataView.Visible = true;
+        this.DataView.Controls.Clear();
+        this.DataView.Controls.Add(LoadControl(DataPageMode));
+        this.DataView.Visible = true;
     }
 
     #region 页面常规加载
