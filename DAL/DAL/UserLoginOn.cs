@@ -28,7 +28,7 @@ namespace DAL
                 new SqlParameter("@Username", SqlDbType.NVarChar) { Value = username }
             };
 
-            object result = DBHelper.GetSingle(query, parameters, connectionString);//（）内的connectionString或许可以去掉。
+            object result = DBHelper.GetSingle(query, parameters);//（）内的connectionString或许可以去掉。
             int count = Convert.ToInt32(result);
 
             return count > 0;
@@ -41,21 +41,21 @@ namespace DAL
         /// </summary>
         /// <param name="username">账号</param>
         /// <param name="password">密码</param>
-        /// <param name="phoneNumber">联系电话</param>
+        /// <param name="userNumber">联系电话</param>
         /// <returns></returns>
         /// <exception cref="InvalidOperationException"></exception>
-        public bool RegisterUser(string username, string password, string phoneNumber)
+        public bool RegisterUser(string username, string password, string userNumber)
         {
             if (CheckIfAccountExists(username))
             {
                 throw new InvalidOperationException("该账号已存在，请重新注册。");
             }
 
-            string query = "INSERT INTO UserLogin (Username, Password, PhoneNumber) VALUES (@Username, @Password, @PhoneNumber)";
+            string query = "INSERT INTO UserLogin (Username, Password, useNumber) VALUES (@Username, @Password, @PhoneNumber)";
             SqlParameter[] parameters = {
                 new SqlParameter("@Username", SqlDbType.NVarChar) { Value = username },
                 new SqlParameter("@Password", SqlDbType.NVarChar) { Value = password },
-                new SqlParameter("@PhoneNumber", SqlDbType.NVarChar) { Value = phoneNumber }
+                new SqlParameter("@PhoneNumber", SqlDbType.NVarChar) { Value = userNumber }
             };
 
             int rowsAffected = DBHelper.ExecuteSql(query, parameters);

@@ -8,14 +8,16 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    internal class UserInformations
+    public class UserInformations
     {
         private readonly string connectionString = "SQpwdLoad";//获取连接数据的字符串。
 
 
         /// <summary>
         /// 对Social Philosophy Project数据库中的UserInfo表进行插入操作
+        /// 其中利用注册表中的电话号码对user_id进行查询，并将id插入信息表中存储。
         /// </summary>
+        /// <param name="userNumber">联系电话</param>
         /// <param name="gender">性别</param>
         /// <param name="contact_number">身份证号</param>
         /// <param name="email">邮箱</param>
@@ -24,10 +26,13 @@ namespace DAL
         /// <param name="position">职业</param>
         /// <param name="workplace">工作地点</param>
         /// <returns></returns>
-        public bool RegisterUser(string gender, string contact_number, string email, string date_of_birth, string education_degree, string position, string workplace)
+        public bool RegisterUser( string userNumber, string gender, string contact_number, string email, string date_of_birth, string education_degree, string position, string workplace)
         {
-            string query = "INSERT INTO UserInfo (gender, contact_number, email,date_of_birth,education_degree,position,workplace) VALUES (@gender, @contact_number, @email,@email,@date_of_birth,@education_degree,@position,@workplace)";
+            string query = "INSERT INTO UserInfo (user_id,gender, contact_number, email,date_of_birth,education_degree,position,workplace) VALUES" +
+                " (" + "(select USER_ID from UserLogin where useNumber = '@userNumber'),"+
+                "@gender, @contact_number, @email,@email,@date_of_birth,@education_degree,@position,@workplace)";
             SqlParameter[] parameters = {
+                new SqlParameter("@userNumber", SqlDbType.NVarChar) { Value = userNumber },
                 new SqlParameter("@gender", SqlDbType.NVarChar) { Value = gender },
                 new SqlParameter("@contact_number", SqlDbType.NVarChar) { Value = contact_number },
                 new SqlParameter("@email", SqlDbType.NVarChar) { Value = email },
@@ -50,12 +55,13 @@ namespace DAL
         /// <param name="useNumber">电话号码</param>
         /// <param name="gender">正确的修改为的值</param>
         /// <returns></returns>
+        /// 
         public bool UpdataRegisterGender(string useNumber, string gender)
         {
             string query = "UPDATE UserInfo SET gender='@gender' " +
                 "WHERE " +
                 " user_id=" +
-                "(select user_idfrom UserInfo where " +
+                "(select user_id from UserInfo where " +
                 "user_id=(select user_id from UserLogin where useNumber='@useNumber'))";
 
             SqlParameter[] parameters = {

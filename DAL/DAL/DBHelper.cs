@@ -26,10 +26,10 @@ namespace DAL
         /// <returns>连接字符串</returns>
         public static string GetSqlConnectionString()
         {
-            //string appSettings = ConfigurationManager.AppSettings["SQpwdLoad"];
-            //return appSettings.ToString();
+            string appSettings = ConfigurationManager.AppSettings["SQpwdLoad"];
+            return appSettings.ToString();
 
-            return "Data Source =.; Initial Catalog = Social Philosophy Project; User Id = sa; Password = 0.0.00.0;"; //ConfigurationManager.ConnectionStrings["SQpwdLoad"].ConnectionString;
+            //return    //"Data Source =.; Initial Catalog = Social Philosophy Project; User Id = sa; Password = 0.0.00.0;"; //ConfigurationManager.ConnectionStrings["SQpwdLoad"].ConnectionString;
         }
 
 
