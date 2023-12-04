@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DAL
-{
+{   
     public class ProjectCompletion
     {
 
