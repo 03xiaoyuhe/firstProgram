@@ -1,569 +1,477 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masterPage/handing.master" AutoEventWireup="true" CodeFile="QueryForm.aspx.cs" Inherits="functionPage_QueryForm" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="QueryForm.aspx.cs" Inherits="test" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    
-    <link href="../bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css" rel="stylesheet" />
-    <script src="../bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
+<%@ Register Src="~/ASCX/DefaultNONE.ascx" TagPrefix="uc1" TagName="DefaultNONE" %>
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <script src="../assets/js/color-modes.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <%--<meta name="generator" content="Hugo 0.118.2">--%>
+    <title>哲学与社会科学规划项目信息化管理平台 · 用户主页</title>
+    <link rel="icon" href="../img/logo.png" type="image/x-icon" />
+
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sidebars/">
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
-        /* 通用功能属性 */
-        /* 竖直居中 使用相对定位*/
-        .relVerticalCenter { /* 竖直margin必须为零否则会出bug */
-            position: relative;
+        .mergin li {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+
+        .logo { /*
+            position: absolute;
             top: 50%;
-            transform: translate(0,-50%);
-        }
-
-        /* 将标签设置为显示 */
-        .Display {
-            display: block;
-        }
-
-        /* 将标签设置为不可见 */
-        .UnDisplay {
-            display: none;
-        }
-        /* 特定功能属性 */
-
-        .QF-body {
-            position: relative;
-            min-width: 1200px;
-            max-width: 1550px;
-            margin: auto;
+            transform: translate(0,-50%);*/
             /* 设置背景图 并使其自适应大小 */
-            background-image: url("img/homeHeadImg.jpg");
+            background-image: url("../img/logo.png");
             background-repeat: no-repeat;
             background-size: contain;
-            height: 100%;
+            display: inline-table;
+            height: 50px;
+            width: 50px;
         }
 
-
-        /* 三栏页面 */
-        #tripleVessel {
-            height: 100%;
-            background-color: blue;
-            overflow: hidden;
-        }
-
-        /* 辅助定位盒子 */
-        .help {
-            height: 40px;
-        }
-
-        /* 横幅样式 */
-        .banner {
-            border-top: 2px solid #4E6EF2;
-            background-color: rgb(233, 235, 239);
-            text-align: left;
-            overflow: hidden;
-        }
-
-        /* 横幅按钮未点击样式 */
-        .fenture1 {
-            height: 40px;
-            border: none;
-            background-color: rgb(0, 0, 0, 0.00);
-            margin: 0;
-            padding: 0;
-            width: 80px;
-            display: inline-block;
-        }
-
-            /* 横幅按钮聚焦动态 */
-            .fenture1:hover {
-                background-color: rgb(0, 0, 0, 0.15)
-            }
-
-        /* 横幅按钮点击后样式 */
-        .fenture1OverCleck {
-            height: 40px;
-            border: none;
-            background-color: rgb(0, 0, 0, 0.3);
-            margin: 0;
-            padding: 0;
-            width: 80px;
-            display: inline-block;
-        }
-
-        /* 搜索栏样式 */
-        .searchDiv {
-            width: 300px;
-            overflow: hidden;
-            padding: 0;
-            height: 30px;
-            text-align: end;
-        }
-
-        /* 搜索输入框样式 */
-        .searchBox {
-            padding-left: 16px;
-            font-size: 16px;
-            width: 100%;
-            background: rgb(223, 234, 244);
-        }
-
-            .searchBox:focus {
-                border: hidden;
-            }
-
-            .searchBox:hover {
-                background-color: rgb(0, 0, 0, 0.30)
-            }
-
-        .searchBoxHelp {
-            top: -1px;
-            left: -1px;
-            width: 100px;
-            height: 30px;
-            border: hidden;
-        }
-
-        .searchButtonDiv {
-            height: 28px;
-            float: right;
-        }
 
         /* 侧边栏容器 */
         .sidebarDiv {
             position: relative;
             float: left;
-            height: 640px;
         }
 
-        /* 侧边栏样式 */
-        .sidebar {
-            width: 200px;
-            height: 100%;
-            background-color: rgb(206, 221, 228);
-            overflow: hidden;
-        }
-
-        .sidebarAllDiv {
-            overflow: hidden;
-            width: 100%;
-            padding: 0;
-            margin: 0;
-            border-radius:4px;
-        }
-
-        /* 侧边栏按钮容器 */
-        .sidebarButtomDiv {
-            background-color: rgb(0, 0, 0, 0.15);
-            width: 100%;
-        }
-
-            .sidebarButtomDiv:hover {
-                background-color: rgb(0, 0, 0, 0.3)
-            }
-
-
-        .sidebarButtomHelpDiv {
-            overflow: hidden;
-        }
-
-        /* 侧边栏按钮 */
-        .sidebarButtom {
-            background-color: rgb(0, 0, 0, 0);
-            text-align: left;
-            width: 100%;
-            border: none;
-            margin: 0;
-            padding: 0;
-        }
-
-
-        /* 侧边栏子功能按钮前插图片 */
-        .sidebarButtomImg {
-            float: left;
-            height: 25px;
-            width: 25px; /*
-            background-color: rgb(0, 0, 0, 0.15);*/
-        }
-
-        /* 侧边栏子页 */
-        .sidbarChildDiv {
-            padding-left: 20px;
-        }
 
         /* 功能区 */
         .functionDomain {
             overflow: hidden;
-            min-height: 600px;
-            height: 640px;
             /*background-color:burlywood;*/
         }
 
 
-        .father {
-            text-align: center;
-            padding-top: 20px;
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
         }
 
-
-        .input {
-            width: 260px;
-        }
-
-
-        .btn {
-            width: 100%;
-            height: 100%;
-            font-size: 12px;
-            background: #4E6EF2;
-            color: white;
-            border-color: #4E6EF2;
-            border: none; /* 边框线有一个立体感，去掉立体感 */
-            /*vertical-align: top;*/ /* 让这两个都顶部对齐 */
-        }
-
-            .btn:hover {
-                background: rgb(149, 205, 243);
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
             }
+        }
+
+        .b-example-divider {
+            width: 100%;
+            height: 3rem;
+            background-color: rgba(0, 0, 0, .1);
+            border: solid rgba(0, 0, 0, .15);
+            border-width: 1px 0;
+            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        }
+
+        .b-example-vr {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 100vh;
+        }
+
+        .bi {
+            vertical-align: -.125em;
+            fill: currentColor;
+        }
+
+        .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+        }
+
+            .nav-scroller .nav {
+                display: flex;
+                flex-wrap: nowrap;
+                padding-bottom: 1rem;
+                margin-top: -1px;
+                overflow-x: auto;
+                text-align: center;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+            }
+
+        .btn-bd-primary {
+            --bd-violet-bg: #712cf9;
+            --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+            --bs-btn-font-weight: 600;
+            --bs-btn-color: var(--bs-white);
+            --bs-btn-bg: var(--bd-violet-bg);
+            --bs-btn-border-color: var(--bd-violet-bg);
+            --bs-btn-hover-color: var(--bs-white);
+            --bs-btn-hover-bg: #6528e0;
+            --bs-btn-hover-border-color: #6528e0;
+            --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+            --bs-btn-active-color: var(--bs-btn-hover-color);
+            --bs-btn-active-bg: #5a23c8;
+            --bs-btn-active-border-color: #5a23c8;
+        }
+
+        .bd-mode-toggle {
+            z-index: 1500;
+        }
+
+            .bd-mode-toggle .dropdown-menu .active .bi {
+                display: block !important;
+            }
+
+        .clearfix:after {
+            clear: both;
+            display: block;
+            content: ".";
+            visibility: hidden;
+            height: 0;
+        }
+
+        .clearfix {
+            zoom: 1;
+        }
     </style>
-    
 
-    <div id="tripleVessel" class="QF-body" runat="server">
-        <div class="help">
+
+    <!-- Custom styles for this template -->
+    <link href="../CSS/sidebars.css" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+</head>
+<body style="overflow:hidden;">
+
+    <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+        <symbol id="check2" viewBox="0 0 16 16">
+            <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
+        </symbol>
+        <symbol id="circle-half" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+        </symbol>
+        <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+            <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z" />
+            <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z" />
+        </symbol>
+        <symbol id="sun-fill" viewBox="0 0 16 16">
+            <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
+        </symbol>
+    </svg>
+
+    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+        <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
+            id="bd-theme"
+            type="button"
+            aria-expanded="false"
+            data-bs-toggle="dropdown"
+            aria-label="Toggle theme (auto)">
+            <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
+                <use href="#circle-half"></use></svg>
+            <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+        </button>
+        <ul class="mergin dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+            <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+                    <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
+                        <use href="#sun-fill"></use></svg>
+                    Light
+                   
+                        <svg class="bi ms-auto d-none" width="1em" height="1em">
+                            <use href="#check2"></use></svg>
+                </button>
+            </li>
+            <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                    <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
+                        <use href="#moon-stars-fill"></use></svg>
+                    Dark
+                   
+                        <svg class="bi ms-auto d-none" width="1em" height="1em">
+                            <use href="#check2"></use></svg>
+                </button>
+            </li>
+            <li>
+                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+                    <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
+                        <use href="#circle-half"></use></svg>
+                    Auto
+                   
+                        <svg class="bi ms-auto d-none" width="1em" height="1em">
+                            <use href="#check2"></use></svg>
+                </button>
+            </li>
+        </ul>
+    </div>
+
+
+
+
+    <header class="p-3 mb-3 border-bottom">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="../home.aspx" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+                    <div class="logo">
+                    </div>
+                </a>
+
+                <ul class="mergin nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+
+                    <li><a href="../home.aspx" class="nav-link px-2 link-secondary btn">主页</a></li>
+                    <li>
+                        <input type="radio" class="btn-check" name="options-base" id="option5" autocomplete="off" /><!--checked-->
+                        <label
+                            class="btn"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#ForProgrem"
+                            aria-expanded="true"
+                            aria-controls="ForProgrem"
+                            for="option5">
+                            项目管理
+                        </label>
+                    </li>
+                    <li>
+                        <input type="radio" class="btn-check" name="options-base" id="option6" autocomplete="off">
+                        <label
+                            class="btn"
+                            for="option6"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#ForApplication"
+                            aria-expanded="true"
+                            aria-controls="ForApplication">
+                            申请管理
+                        </label>
+                    </li>
+                    <li>
+                        <input type="radio" class="btn-check" name="options-base" id="option8" autocomplete="off">
+                        <label
+                            class="btn"
+                            for="option8"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#collapseWidthExampl"
+                            aria-expanded="true"
+                            aria-controls="collapseWidthExampl">
+                            Radio
+                        </label>
+                    </li>
+                </ul>
+
+                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                    <input type="search" class="form-control" placeholder="Search..." aria-label="Search" />
+                </form>
+
+                <div class="dropdown text-end">
+                    <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu text-small">
+                        <li><a class="dropdown-item" href="#">New project...</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <!-- 横幅 -->
-        <div id="banner" runat="server" class="banner">
+    </header>
 
-            <div style="float: right; height: 30px; border-radius: 7px; overflow: hidden; border: 1px solid #4E6EF2; margin: 5px auto; padding: 0;">
-                <div class="input-group mb-3 searchDiv" style="height: 30px;">
-                    <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control searchBox" Style="width: 80%; height: 100%">搜索</asp:TextBox>
-                    <asp:Button ID="Button1" runat="server" Text="搜索" class="btn btn-outline-secondary" Style="width: 20%; height: 100%" />
+
+    <main class="d-flex flex-nowrap">
+
+
+        <div id="accordionExample" class="clearfix sidebarDiv" style="position: relative; height: 570px; margin-left: 10px;">
+            <div
+                id="ForProgrem"
+                class="collapse collapse-horizontal showing"
+                data-bs-parent="#accordionExample"
+                style="max-height: 570px;"
+                >
+                <div style="width: 280px; height: 570px; overflow: auto;">
+                    <div class="card card-body" style="width: 100%">
+                        <div class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+                            <svg class="bi pe-none me-2" width="30" height="24">
+                                <use xlink:href="#bootstrap"></use>
+                            </svg>
+                            <span class="fs-5 fw-semibold">项目管理</span>
+                        </div>
+                        <ul class="list-unstyled ps-0">
+                            <li class="mb-1">
+                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+                                    Home
+       
+                                </button>
+                                <div class="collapse show" id="home-collapse">
+                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Overview</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Updates</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Reports</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="mb-1">
+                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+                                    Dashboard
+                                </button>
+                                <div class="collapse" id="dashboard-collapse">
+                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Overview</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Weekly</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Monthly</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Annually</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="mb-1">
+                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+                                    Orders
+       
+                                </button>
+                                <div class="collapse" id="orders-collapse">
+                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">New</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Processed</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Shipped</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Returned</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="border-top my-3"></li>
+                            <li class="mb-1">
+                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+                                    Account
+       
+                                </button>
+                                <div class="collapse" id="account-collapse">
+                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">New...</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Profile</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Settings</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Sign out</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
+            <div
+                id="ForApplication"
+                class="collapse collapse-horizontal showing sidebarDiv"
+                data-bs-parent="#accordionExample"
+                style="max-height: 570px; float: left"
+                >
+                <div id="sidebarF" style="width: 280px; height: 570px;overflow:auto;">
 
-            <asp:Button ID="turnBackToHome" runat="server" Text="回到主页" CssClass="fenture1" OnClick="turnBackToHome_Click" ValidationGroup="aaa1" /><!--
-        --><asp:Button ID="filtrateBtm" runat="server" Text="项目" CssClass="fenture1" OnClick="allNavigationBarBtm_Click" ValidationGroup="aaa2" /><!--
-        --><asp:Button ID="pagingBtm" runat="server" Text="申请" CssClass="fenture1" OnClick="allNavigationBarBtm_Click" ValidationGroup="aaa" /><!--
-        --><asp:Button ID="settingBtm" runat="server" Text="设置" CssClass="fenture1" OnClick="allNavigationBarBtm_Click" ValidationGroup="aaa4" />
-
-        </div>
-
-        <!-- 侧边栏 -->
-        <div class="sidebarDiv">
-
-
-            <!-- 项目对应的子功能-->
-            <asp:PlaceHolder ID="filtrateSidebar" runat="server">
-
-                <!-- 项目及其子功能容器 -->
-                <div class="sidebar">
-
-
-                    <!-- 显示全部 按钮及其子功能容器 -->
-                    <div class="sidebarAllDiv">
-                        <!-- 显示全部 按键容器 -->
-                        <div class="sidebarButtomDiv">
-
-                            <!-- 按钮前插图片 -->
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                width="16"
-                                height="16"
-                                fill="currentColor"
-                                class="sidebarButtomImg bi bi-arrow-up-right-square"
-                                viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z" />
+                    <div class="card card-body" style="width: 100%">
+                        <div class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+                            <svg class="bi pe-none me-2" width="30" height="24">
+                                <use xlink:href="#bootstrap"></use>
                             </svg>
-
-                            <!-- 按钮辅助定位盒子 -->
-                            <div class="sidebarButtomHelpDiv">
-
-                                <!-- 显示全部 按钮 -->
-                                <asp:Button ID="ShowAll" runat="server" Text="显示全部" CssClass="sidebarButtom" ValidationGroup="aaa3" OnClick="ShowAll_Click" />
-
-                            </div>
+                            <span class="fs-5 fw-semibold">申请管理</span>
                         </div>
-
-                    </div>
-
-                    <!-- 筛选 及其子功能容器 -->
-                    <div class="sidebarAllDiv">
-                        <!-- 筛选 按键容器 -->
-                        <div class="sidebarButtomDiv">
-
-                            <!-- 折叠图标 -->
-                            <asp:PlaceHolder ID="PlaceHolder2" runat="server">
-
-                                <!-- 折叠时  _SVGUnShow-->
-                                <asp:PlaceHolder ID="filtratePrincipalDiv_SVGUnShow" runat="server">
-
-                                    <!-- sidebarButtomImg -->
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        width="16"
-                                        height="16"
-                                        fill="currentColor"
-                                        class="sidebarButtomImg bi bi-caret-right"
-                                        viewBox="0 0 16 16">
-                                        <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
-                                    </svg>
-
-                                </asp:PlaceHolder>
-
-                                <!-- 展开时  _SVGOnShow-->
-                                <asp:PlaceHolder ID="filtratePrincipalDiv_SVGOnShow" runat="server" Visible="false">
-
-                                    <!-- sidebarButtomImg -->
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        width="16"
-                                        height="16"
-                                        fill="currentColor"
-                                        class="sidebarButtomImg bi bi-caret-down"
-                                        viewBox="0 0 16 16">
-                                        <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z" />
-                                    </svg>
-
-                                </asp:PlaceHolder>
-                                <!-- end 折叠图标 -->
-
-                            </asp:PlaceHolder>
-
-
-                            <!-- 按钮辅助定位盒子 -->
-                            <div class="sidebarButtomHelpDiv">
-
-                                <!-- 筛选 按钮 -->
-                                <asp:Button ID="filtratePrincipal" runat="server" Text="筛选" CssClass="sidebarButtom" OnClick="TreeButton_Click" ValidationGroup="aaa3" />
-                            </div>
-
-                        </div>
-
-                        <!-- 筛选子栏 -->
-                        <asp:PlaceHolder ID="filtratePrincipalDiv" runat="server">
-                            <div class="sidbarChildDiv">
-
-                                <!-- 精确筛选 按钮及其子功能容器 -->
-                                <div class="sidebarAllDiv">
-                                    <!-- 精确筛选 按键容器 -->
-                                    <div class="sidebarButtomDiv">
-
-                                        <!-- 按钮前插图片 -->
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            width="16"
-                                            height="16"
-                                            fill="currentColor"
-                                            class="sidebarButtomImg bi bi-arrow-up-right-square"
-                                            viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z" />
-                                        </svg>
-
-                                        <!-- 按钮辅助定位盒子 -->
-                                        <div class="sidebarButtomHelpDiv">
-
-                                            <!-- 精确筛选 按钮 -->
-                                            <asp:Button ID="AccurateSizingBtn" runat="server" Text="精确筛选" CssClass="sidebarButtom" ValidationGroup="aaa3" OnClick="AccurateSizingBtn_Click" />
-
-                                        </div>
-
-                                    </div>
-
+                        <ul class="list-unstyled ps-0">
+                            <li class="mb-1">
+                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+                                    Home
+       
+                                </button>
+                                <div class="collapse show" id="home-collapse">
+                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Overview</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Updates</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Reports</a></li>
+                                    </ul>
                                 </div>
-
-                            </div>
-                        </asp:PlaceHolder>
+                            </li>
+                            <li class="mb-1">
+                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+                                    Dashboard
+                                </button>
+                                <div class="collapse" id="dashboard-collapse">
+                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Overview</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Weekly</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Monthly</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Annually</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="mb-1">
+                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+                                    Orders
+       
+                                </button>
+                                <div class="collapse" id="orders-collapse">
+                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">New</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Processed</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Shipped</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Returned</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="border-top my-3"></li>
+                            <li class="mb-1">
+                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+                                    Account
+       
+                                </button>
+                                <div class="collapse" id="account-collapse">
+                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">New...</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Profile</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Settings</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Sign out</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
 
                 </div>
-
-            </asp:PlaceHolder>
-
-
-            <!-- 申请对应子功能 -->
-            <asp:PlaceHolder ID="PagingSidebar" runat="server" Visible="false">
-
-                <!-- 筛选及其子功能容器 -->
-                <div class="sidebar">
-
-                    <!-- 显示全部 按钮及其子功能容器 -->
-                    <div class="sidebarAllDiv">
-                        <!-- 显示全部 按键容器 -->
-                        <div class="sidebarButtomDiv">
-
-                            <!-- 按钮前插图片 -->
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                width="16"
-                                height="16"
-                                fill="currentColor"
-                                class="sidebarButtomImg bi bi-arrow-up-right-square"
-                                viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z" />
-                            </svg>
-
-                            <!-- 按钮辅助定位盒子 -->
-                            <div class="sidebarButtomHelpDiv">
-
-                                <!-- 显示全部 按钮 -->
-                                <asp:Button ID="ShowAllApplica" runat="server" Text="显示全部" CssClass="sidebarButtom" ValidationGroup="aaa3" OnClick="ShowAllApplica_Click" />
-
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- 子功能一及其子功能容器 -->
-                    <div class="sidebarAllDiv">
-                        <!-- 子功能一按键容器 -->
-                        <div class="sidebarButtomDiv">
-
-                            <!-- 折叠图标 -->
-                            <asp:PlaceHolder ID="PlaceHolder1" runat="server">
-                                <!-- 折叠时  _SVGUnShow-->
-                                <asp:PlaceHolder ID="PagingSidebarPlaceHolder1_SVGUnShow" runat="server">
-
-                                    <!-- sidebarButtomImg -->
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        width="16"
-                                        height="16"
-                                        fill="currentColor"
-                                        class="sidebarButtomImg bi bi-caret-right"
-                                        viewBox="0 0 16 16">
-                                        <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
-                                    </svg>
-
-                                </asp:PlaceHolder>
-
-                                <!-- 展开时  _SVGOnShow-->
-                                <asp:PlaceHolder ID="PagingSidebarPlaceHolder1_SVGOnShow" runat="server" Visible="false">
-
-                                    <!-- sidebarButtomImg -->
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        width="16"
-                                        height="16"
-                                        fill="currentColor"
-                                        class="sidebarButtomImg bi bi-caret-down"
-                                        viewBox="0 0 16 16">
-                                        <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z" />
-                                    </svg>
-
-                                </asp:PlaceHolder>
-                                <!-- end 折叠图标 -->
-
-                            </asp:PlaceHolder>
-
-                            <div class="sidebarButtomHelpDiv">
-
-                                <!-- 子功能一按钮 -->
-                                <asp:Button ID="PagingSidebarButton1" runat="server" Text="负责人" CssClass="sidebarButtom" OnClick="TreeButton_Click" ValidationGroup="aaa3" />
-                            </div>
-
-                        </div>
-
-                        <!-- 子功能一子栏 -->
-                        <asp:PlaceHolder ID="PagingSidebarPlaceHolder1" runat="server">
-                            <div class="sidbarChildDiv">
-                                111
-                            </div>
-                        </asp:PlaceHolder>
-
-                    </div>
-
-                    <!-- 子功能二及其子功能容器 -->
-                    <div class="sidebarAllDiv">
-                        <!-- 子功能二按键容器 -->
-                        <div class="sidebarButtomDiv">
-
-                            <!-- 按钮前插图片 -->
-                            <img src="./img/homeHeadimg.jpg" class="sidebarButtomImg" />
-
-                            <!-- 按钮辅助定位盒子 -->
-                            <div class="sidebarButtomHelpDiv">
-
-                                <!-- 子功能二按钮 -->
-                                <asp:Button ID="PagingSidebarButton2" runat="server" Text="项目名称" CssClass="sidebarButtom" ValidationGroup="aaa" />
-
-                            </div>
-                        </div>
-
-                        <!-- 子功能二子栏 -->
-                        <asp:PlaceHolder ID="PagingSidebarPlaceHolder2" runat="server">
-                            <div class="sidbarChildDiv">
-                                111
-                            </div>
-                        </asp:PlaceHolder>
-
-                    </div>
-
-                </div>
-            </asp:PlaceHolder>
-
-
-            <!-- 设置对应的子功能-->
-            <asp:PlaceHolder ID="SettingPlaceHolder" runat="server">
-
-                <!-- 设置及其子功能容器 -->
-                <div class="sidebar">
-
-
-                    <!-- 显示设置 按钮及其子功能容器 -->
-                    <div class="sidebarAllDiv">
-                        <!-- 显示全部 按键容器 -->
-                        <div class="sidebarButtomDiv">
-
-                            <!-- 按钮前插图片 -->
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                width="16"
-                                height="16"
-                                fill="currentColor"
-                                class="sidebarButtomImg bi bi-arrow-up-right-square"
-                                viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z" />
-                            </svg>
-
-                            <!-- 按钮辅助定位盒子 -->
-                            <div class="sidebarButtomHelpDiv">
-
-                                <!-- 显示全部 按钮 -->
-                                <asp:Button ID="displaySettingBtn" runat="server" Text="显示设置" CssClass="sidebarButtom" ValidationGroup="aaa3" OnClick="displaySettingBtn_Click" />
-
-                            </div>
-                        </div>
-
-                    </div>
-
-                    
-                    <!-- 账户设置 按钮及其子功能容器 -->
-                    <div class="sidebarAllDiv">
-                        <!-- 账户设置 按键容器 -->
-                        <div class="sidebarButtomDiv">
-
-                            <!-- 按钮前插图片 -->
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                width="16"
-                                height="16"
-                                fill="currentColor"
-                                class="sidebarButtomImg bi bi-arrow-up-right-square"
-                                viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z" />
-                            </svg>
-
-                            <!-- 按钮辅助定位盒子 -->
-                            <div class="sidebarButtomHelpDiv">
-
-                                <!-- 显示全部 按钮 -->
-                                <asp:Button ID="AccountSetupBtn" runat="server" Text="账户设置" CssClass="sidebarButtom" ValidationGroup="aaa3" OnClick="AccountSetupBtn_Click" />
-
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </asp:PlaceHolder>
-
-        </div>
-        <!-- 内容页 -->
-        <div class="functionDomain">
-            <asp:PlaceHolder ID="DataView" runat="server"></asp:PlaceHolder>
+            </div>
         </div>
 
-        <!-- 精确筛选页 -->
-        <asp:PlaceHolder ID =""></asp:PlaceHolder>
 
-    </div>
-</asp:Content>
 
+
+        <div class="bg-body-tertiary border rounded-3" style="float: right; position: relative; overflow: hidden; width: 100%; height: 570px; margin-right: 30px; margin-left">
+            <iframe src="../home.aspx" style="width: 100%; height: 100%"></iframe>
+        </div>
+    </main>
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="../JS/sidebars.js"></script>
+    <script>
+
+        var beforeId = '';
+        var grop = document.querySelector("label[ttt='sidebarButton']")
+        for (i in grop) {
+            i.oncleck
+        }
+        const myCollapsible = document.getElementById('myCollapsible')
+        myCollapsible.addEventListener('hidden.bs.collapse', event => {
+
+        })
+
+    </script>
+</body>
+</html>

@@ -50,12 +50,10 @@
 
         .body1 {
             min-width: 1200px;
-            max-width: 1550px;
             margin: auto;
         }
 
         .body2 {
-            max-width: 1550px;
             margin: auto;
         }
         /* 顶部开始栏编写 */
@@ -67,10 +65,11 @@
             height: 40px;
             overflow: hidden;
             top: 0px;
-            background-color: rgb(0, 0, 0, 0.85);
+            background-color: rgb(6, 30, 54, 1);
         }
 
         .nameAndLogo {
+            width:100%;
             display: inline-table;
         }
 
@@ -88,8 +87,14 @@
         }
 
         .nameForSys {
+            margin-top:7px;
+            /* 设置背景图 并使其自适应大小 */
+            background-image: url("../img/Home_img/homeName.png");
+            background-repeat: no-repeat;
+            background-size: contain;
             display: inline-table;
-            color: rgb(255, 255, 255, 0.59);
+            height: 38px;
+            width: 350px;
         }
 
         /* 开始栏登陆按钮 */
@@ -165,14 +170,12 @@
                     <div class="logo">
                     </div>
                     <!-- 分隔符 -->
-                    <div style="margin-left: 32px; margin-right: 10px; display: inline-table; color: rgb(255, 255, 255, 0.59);">
+<%--                    <div style="margin-left: 32px; margin-right: 10px; display: inline-table; color: rgb(255, 255, 255, 0.59);">
                         |
-                    </div>
+                    </div>--%>
                     <!-- 网站名 -->
-                    <div style="display: inline-table;">
-                        <div class="nameForSys">
-                            哲学与社会科学规划项目信息化管理平台
-                        </div>
+                    <div style="display: inline-table; float:right;">
+                        <div class="nameForSys"></div>
                     </div>
                 </div>
 
