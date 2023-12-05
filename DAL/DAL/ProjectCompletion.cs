@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DAL
-{
+{   
     public class ProjectCompletion
     {
 
@@ -17,7 +17,7 @@ namespace DAL
         /// <param name="proposal_number">立项编号</param>
         /// <param name="project_title">项目名称</param>
         /// <param name="project_description">项目描述</param>
-        /// <param name="useNumber">点话号码</param>
+        /// <param name="useNumber">负责人电话号码</param>
         /// <param name="achievement_form">成果形式</param>
         /// <param name="achievement_brief">项目成果简介</param>
         /// <returns></returns>
@@ -42,6 +42,20 @@ namespace DAL
             int rowsAffected = DBHelper.ExecuteSql(query, parameters);
 
             return rowsAffected > 0;
+        }
+
+
+        /// <summary>
+        /// 显示表中的所有信息
+        /// </summary>
+        /// <returns></returns>
+        public bool ProjectVision()
+        {
+            string query = "select proposal_number,project_title,project_description,team_id,achievement_form,achievement_brief from ProjectApplications;";
+            object rowsAffected = DBHelper.GetSingle(query);
+            int count = Convert.ToInt32(rowsAffected);
+            return count>0;
+
         }
 
 
