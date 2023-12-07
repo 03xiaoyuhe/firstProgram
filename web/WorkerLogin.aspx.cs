@@ -13,11 +13,11 @@ public partial class WorkerLogin : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        //if (Session["loginSuccess"] == null)
-        //{
-        //    Session["userName"] = null;
-        //    Session["loginSuccess"] = "unlogin";
-        //}
+        if (Session["loginSuccess"] == null)
+        {
+            Session["userName"] = null;
+            Session["loginSuccess"] = "unlogin";
+        }
         if (Session["userName"] != null && Session["loginSuccess"].ToString() == "success")
         {
             Response.Write("<script language='javascript'>window.location='./functionPage/QueryForm.aspx'</script>");
@@ -30,9 +30,9 @@ public partial class WorkerLogin : System.Web.UI.Page
     {
         string a = this.userName.Text.ToString();
         string b = this.userPwd.Text.ToString();
-        Models.WorkerLogin Workerlogin = new Models.WorkerLogin();
-
-        if (this.userName.Text == UID & this.userPwd.Text == PWD)
+        DBHelper.Mode = 1;
+        DBHelper.Setting();
+        if ( UserLogin.AuthenticateUser(a,b))
         {
             Session["userName"] = this.userName.Text;
             Session["loginSuccess"] = "success";

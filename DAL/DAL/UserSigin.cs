@@ -20,7 +20,7 @@ namespace DAL
         /// <param name="username">账号</param>
         /// <param name="password">密码</param>
         /// <returns></returns>
-        public bool AuthenticateUser(string username, string password)
+        static public bool AuthenticateUser(string username, string password)
         {
             string query = "SELECT COUNT(*)\"count\" FROM UserLogin WHERE username = @Username AND password =@Password;";
             SqlParameter[] parameters = {
