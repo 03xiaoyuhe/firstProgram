@@ -80,8 +80,9 @@
                 <!-- 用户名输入框 -->
                 <div class="mb-3">
                     <label for="recipient-name" class="col-form-label">用户名:</label>
-                    <asp:TextBox ID="userName" runat="server" CssClass="putOnShowBorder form-control"></asp:TextBox>
+                    <asp:TextBox ID="userName" runat="server" CssClass="putOnShowBorder form-control" AutoPostBack= "true" OnTextChanged="userName_TextChanged"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="checkNameNull" runat="server" ErrorMessage="请输入用户名" Font-Strikeout="False" ControlToValidate="userName" CssClass="setCharRed setCharSizeSmall"></asp:RequiredFieldValidator>
+                    <asp:HyperLink ID="SameName" runat="server" ForeColor="Red"></asp:HyperLink>
                 </div>
 
                 <!-- 密码输入框 -->
@@ -114,8 +115,8 @@
                 <asp:Button ID="BtmLogin" runat="server" Text="注册" CssClass="btn btn-primary" />
                 <span style="width: 2px;"></span>
 
-                <a href="home.aspx">
-                    <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">返回主页</button>
+                <a class="btn btn-secondary " href="home.aspx">返回主页
+                    <%--<button type="button"  data-bs-dismiss="modal"></button>--%>
                 </a>
             </div>
                 <div style="position:absolute; bottom:0;padding-bottom:5px;">
