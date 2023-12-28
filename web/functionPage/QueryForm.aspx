@@ -389,6 +389,12 @@
                         </div>
                         <ul class="list-unstyled ps-0">
                             <li class="mb-1">
+                                <form runat="server">
+                                    <asp:Button ID="Button1" runat="server" Text="Button" CssClass="btn"/>
+                                </form>
+                            </li>
+                            <li class="mb-1">
+
                                 <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
                                     Home
        
