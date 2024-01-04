@@ -288,7 +288,7 @@
 
     <main class="d-flex flex-nowrap">
 
-        <form runat="server">
+     
 
         <div id="accordionExample" class="clearfix sidebarDiv" style="position: relative; height: 570px; margin-left: 10px;">
 

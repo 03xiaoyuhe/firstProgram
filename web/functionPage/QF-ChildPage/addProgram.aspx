@@ -35,7 +35,7 @@
             <table style="width:100%">
                 <tr>
                     <td>
-                        <div class="form-floating mb-3" style="margin:0 auto;">
+                        <div class="form-floating mb-3" style="margin:5px auto;">
                             <asp:TextBox 
                                 id="ProgramIDInput" 
                                 runat="server" 

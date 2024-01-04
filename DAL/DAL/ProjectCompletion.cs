@@ -24,10 +24,10 @@ namespace DAL
         static public bool ProjectInfor(string proposal_number, string project_title, string project_description,string useNumber, string achievement_form,string achievement_brief)
         {
             
-            string query = "INSERT INTO UserLogin (proposal_number, project_title, " +
+            string query = "INSERT INTO ProjectApplications (proposal_number, project_title, " +
                 "project_description,team_id,achievement_form,achievement_brief) " +
                 "VALUES (@proposal_number, @project_title, @project_description," +
-                "(select team_id from TeamInfo where team_leader_id=(select user_id from UserLogin where useNumber='@useNumber'))" +
+                "(select team_id from TeamInfo where team_leader_id=(select user_id from UserLogin where useNumber=@useNumber))" +
                 ",@achievement_form,@achievement_brief)";
             SqlParameter[] parameters = {   
                 new SqlParameter("@proposal_number", SqlDbType.NVarChar) { Value = proposal_number },
@@ -61,7 +61,7 @@ namespace DAL
                 "proposal_number = '@proposal_number'," +
                 "project_title = '@project_title'," +
                 "project_description = '@project_description'," +
-                "team_id = (select user_id from UserLogin where useNumber='131231414'))," +
+                "team_id = (select user_id from UserLogin where useNumber=@userNumber))," +
                 "achievement_form = '@achievement_form'," +
                 "achievement_brief = '@achievement_brief'" +
                 "WHERE project_id = '@project_id';";

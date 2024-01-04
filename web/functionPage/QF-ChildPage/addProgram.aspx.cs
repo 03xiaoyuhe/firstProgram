@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using DAL;
 
 public partial class functionPage_QF_ChildPage_addProgramData : System.Web.UI.Page
 {
@@ -14,7 +15,15 @@ public partial class functionPage_QF_ChildPage_addProgramData : System.Web.UI.Pa
 
     protected void submit_Click(object sender, EventArgs e)
     {
-
+        ProjectCompletion.ProjectInfor(
+            this.ProgramIDInput.Text.ToString(),
+            this.floatingInput.Text.ToString(),
+            this.floatingTextarea.Text.ToString(),
+            this.PhoneNum.Text.ToString(),
+            this.DoForm.Text.ToString(),
+            this.DoTextarea.Text.ToString()
+            );
+   
     }
 
     protected void clear_Click(object sender, EventArgs e)
