@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
     <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    
 
     <style>
         .mergin li {
@@ -155,7 +156,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 </head>
-<body style="overflow: hidden;">
+    
+<body style="overflow:hidden;">
+    <script type="text/javascript" src ="../JS/QueryFormJS.js"></script>
+    <script type="text/javascript">
+    </script>
+    
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
         <symbol id="check2" viewBox="0 0 16 16">
             <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
@@ -255,23 +261,11 @@
                             申请管理
                         </label>
                     </li>
-                    <li>
-                        <input type="radio" class="btn-check" name="options-base" id="option8" autocomplete="off">
-                        <label
-                            class="btn"
-                            for="option8"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#collapseWidthExampl"
-                            aria-expanded="true"
-                            aria-controls="collapseWidthExampl">
-                            Radio
-                        </label>
-                    </li>
                 </ul>
 
-                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                <div class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
                     <input type="search" class="form-control" placeholder="Search..." aria-label="Search" />
-                </form>
+                </div>
 
                 <div class="dropdown text-end">
                     <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -296,51 +290,52 @@
 
         <form runat="server">
 
-            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-            <div id="accordionExample" class="clearfix sidebarDiv" style="position: relative; height: 570px; margin-left: 10px;">
-                <div
-                    id="ForProgrem"
-                    class="collapse collapse-horizontal showing"
-                    data-bs-parent="#accordionExample"
-                    style="max-height: 570px;">
-                    <div style="width: 280px; height: 570px; overflow: auto;">
-                        <div class="card card-body" style="width: 100%">
-                            <div class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
-                                <svg class="bi pe-none me-2" width="30" height="24">
-                                    <use xlink:href="#bootstrap"></use>
-                                </svg>
-                                <span class="fs-5 fw-semibold">项目管理</span>
-                            </div>
-                            <ul class="list-unstyled ps-0">
-                                <li class="mb-1">
-                                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-                                        Home
-       
-                                    </button>
-                                    <div class="collapse show" id="home-collapse">
-                                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Overview</a></li>
-                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Updates</a></li>
-                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Reports</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="mb-1">
-                                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-                                        Dashboard
-                                    </button>
-                                    <div class="collapse" id="dashboard-collapse">
-                                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Overview</a></li>
-                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Weekly</a></li>
-                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Monthly</a></li>
-                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Annually</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="mb-1">
-                                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-                                        Orders
+        <div id="accordionExample" class="clearfix sidebarDiv" style="position: relative; height: 570px; margin-left: 10px;">
+
+            <!-- 项目管理功能栏 -->
+            <div
+                id="ForProgrem"
+                class="collapse collapse-horizontal showing"
+                data-bs-parent="#accordionExample"
+                style="max-height: 570px;"
+                >
+                <div style="width: 280px; height: 570px; overflow: auto;">
+                    <div class="card card-body" style="width: 100%">
+                        <div class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+                            <svg class="bi pe-none me-2" width="30" height="24">
+                                <use xlink:href="#bootstrap"></use>
+                            </svg>
+                            <span class="fs-5 fw-semibold">项目管理</span>
+                        </div>
+                        <ul class="list-unstyled ps-0">
+                            <li class="mb-1">
+                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#selectProgremInform-collapse" aria-expanded="true">
+                                    项目信息查询
+                                </button>
+                                <div class="collapse" id="selectProgremInform-collapse">
+                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="selectAll(this)">显示全部</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">在研</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">结项</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="mb-1">
+                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#manageProgram-collapse" aria-expanded="false">
+                                    项目信息管理
+                                </button>
+                                <div class="collapse" id="manageProgram-collapse">
+                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="addProgram()" >快速插入</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">批量导入</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">修改</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Annually</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="mb-1">
+                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+                                    Orders
        
                                     </button>
                                     <div class="collapse" id="orders-collapse">
@@ -372,28 +367,31 @@
                     </div>
                 </div>
 
-                <div
-                    id="ForApplication"
-                    class="collapse collapse-horizontal showing sidebarDiv"
-                    data-bs-parent="#accordionExample"
-                    style="max-height: 570px; float: left">
-                    <div id="sidebarF" style="width: 280px; height: 570px; overflow: auto;">
 
-                        <div class="card card-body" style="width: 100%">
-                            <div class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
-                                <svg class="bi pe-none me-2" width="30" height="24">
-                                    <use xlink:href="#bootstrap"></use>
-                                </svg>
-                                <span class="fs-5 fw-semibold">申请管理</span>
-                            </div>
-                            <ul class="list-unstyled ps-0">
-                                <li class="mb-1">
+            <!-- 申请管理功能栏 -->
+            <div
+                id="ForApplication"
+                class="collapse collapse-horizontal showing sidebarDiv"
+                data-bs-parent="#accordionExample"
+                style="max-height: 570px; float: left"
+                >
+                <div id="sidebarF" style="width: 280px; height: 570px;overflow:auto;">
 
-                                    <asp:Button ID="Button1" runat="server" Text="Button" />
-                                </li>
-                                <li class="mb-1">
-                                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-                                        Home
+                    <div class="card card-body" style="width: 100%">
+                        <div class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+                            <svg class="bi pe-none me-2" width="30" height="24">
+                                <use xlink:href="#bootstrap"></use>
+                            </svg>
+                            <span class="fs-5 fw-semibold">申请管理</span>
+                        </div>
+                        <ul class="list-unstyled ps-0">
+                            <li class="mb-1">
+                                    <button  onclick="test(this)">test</button>
+                            </li>
+                            <li class="mb-1">
+
+                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+                                    Home
        
                                     </button>
                                     <div class="collapse show" id="home-collapse">
@@ -449,38 +447,18 @@
                             </ul>
                         </div>
 
-                    </div>
                 </div>
             </div>
-
-
-
-
-        </form>
-
-
-
-
-
+        </div>
+        
+    <script type="text/javascript">
+    </script>
         <div class="bg-body-tertiary border rounded-3" style="float: right; position: relative; overflow: hidden; width: 100%; height: 570px; margin-right: 30px; margin-left">
-            <iframe src="../home.aspx" style="width: 100%; height: 100%"></iframe>
+             <iframe id ="test" src="../home.aspx" style="width: 100%; height: 100%"></iframe>
         </div>
     </main>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="../JS/sidebars.js"></script>
-    <script>
-
-        var beforeId = '';
-        var grop = document.querySelector("label[ttt='sidebarButton']")
-        for (i in grop) {
-            i.oncleck
-        }
-        const myCollapsible = document.getElementById('myCollapsible')
-        myCollapsible.addEventListener('hidden.bs.collapse', event => {
-
-        })
-
-    </script>
 </body>
 </html>

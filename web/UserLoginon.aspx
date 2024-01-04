@@ -123,7 +123,7 @@
                 <div style="position:absolute; bottom:0;padding-bottom:5px;">
                     <asp:HyperLink ID="HyperLink1" runat="server"
                         NavigateUrl="~/WorkerLogin.aspx">
-                        已有账号？马上登陆->
+                        已有账号？马上登录->
                     </asp:HyperLink>
 
                 </div>

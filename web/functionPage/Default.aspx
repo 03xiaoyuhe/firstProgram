@@ -12,6 +12,11 @@
     <button id="btn" onclick="threeFn(this)" next="tttt" sss="QueryForm.aspx">点我</button>
     <div id="aaa"></div>
     <iframe id="tttt"></iframe>
+
+
+
+        <p id="p1">Hello World!</p>
+        <button onclick="ccc(this)"></button>
     <script type="text/javascript">
 
         // 第三种 通过方法响应点击事件
@@ -21,6 +26,10 @@
             document.getElementById(next).src = this.getAttribute("sss");
         }
 
+
+        function ccc(this) {
+            document.getElementById("p1").innerHTML = "新文本!";
+        }
     </script>
     </form>
 </body>

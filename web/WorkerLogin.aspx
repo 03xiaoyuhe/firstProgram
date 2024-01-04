@@ -104,7 +104,7 @@
             <div class="modal-footer Footer">
                 <link title="aaaa" rel="aaa" />
                 <!-- 登陆按钮 -->
-                <asp:Button ID="BtmLogin" runat="server" Text="登陆"  CssClass="btn btn-primary" OnClick="BtmLogin_Click" />
+                <asp:Button ID="BtmLogin" runat="server" Text="登录"  CssClass="btn btn-primary" OnClick="BtmLogin_Click" />
                 <span style="width: 2px;"></span>
 
                 <a href="home.aspx">
