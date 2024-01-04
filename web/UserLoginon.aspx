@@ -81,10 +81,19 @@
                 <div class="mb-3">
                     <label for="recipient-name" class="col-form-label">用户名:</label>
                     <asp:TextBox ID="userName" runat="server" CssClass="putOnShowBorder form-control" AutoPostBack= "true" OnTextChanged="userName_TextChanged"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="checkNameNull" runat="server" ErrorMessage="请输入用户名" Font-Strikeout="False" ControlToValidate="userName" CssClass="setCharRed setCharSizeSmall"></asp:RequiredFieldValidator>
                     <asp:HyperLink ID="SameName" runat="server" ForeColor="Red"></asp:HyperLink>
+                    <asp:RequiredFieldValidator ID="checkNameNull" runat="server" ErrorMessage="请输入用户名" Font-Strikeout="False" ControlToValidate="userName" CssClass="setCharRed setCharSizeSmall"></asp:RequiredFieldValidator>
                 </div>
 
+                <!--联系电话-->
+                <div class="mb-3">
+                    <label for="message-text" class="col-form-label">手机电话:</label>
+                    <asp:TextBox ID="useNumber" runat="server" CssClass="putOnShowBorder form-control" AutoPostBack= "true" OnTextChanged="useNumber_TextChanged"></asp:TextBox>
+                    <asp:HyperLink ID="sameUserNumber" runat="server" ForeColor="Red"></asp:HyperLink>
+                    <asp:RequiredFieldValidator ID="checkNumberNull" runat="server" ErrorMessage="请输入联系电话" Font-Strikeout="False" ControlToValidate="useNumber" CssClass="setCharRed setCharSizeSmall"></asp:RequiredFieldValidator>
+
+                </div>
+                
                 <!-- 密码输入框 -->
                 <div class="mb-3">
                     <label for="message-text" class="col-form-label">密码:</label>
@@ -99,20 +108,12 @@
                     <asp:RequiredFieldValidator ID="checkPwd2Null" runat="server" ErrorMessage="请输入密码" Font-Strikeout="False" ControlToValidate="userPwd2" CssClass="setCharRed setCharSizeSmall"></asp:RequiredFieldValidator>
                     <asp:CompareValidator ControlToValidate="userPwd2" ControlToCompare="userPwd" runat="server" ErrorMessage="两次密码不一致，请重新输入" CssClass="setCharRed setCharSizeSmall"></asp:CompareValidator>
                 </div>
-                <!--联系电话-->
-                <div class="mb-3">
-                    <label for="message-text" class="col-form-label">手机电话:</label>
-                    <asp:TextBox ID="useNumber" runat="server" CssClass="putOnShowBorder form-control"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="checkNumberNull" runat="server" ErrorMessage="请输入联系电话" Font-Strikeout="False" ControlToValidate="useNumber" CssClass="setCharRed setCharSizeSmall"></asp:RequiredFieldValidator>
-
-                </div>
-
             </div>
             
             <!-- 注册页尾部 -->
             <div class="modal-footer Footer">
                 <!-- 注册按钮 -->
-                <asp:Button ID="BtmLogin" runat="server" Text="注册" CssClass="btn btn-primary" />
+                <asp:Button ID="BtmLogin" runat="server" Text="注册" CssClass="btn btn-primary" OnClick="BtmLogin_Click"/>
                 <span style="width: 2px;"></span>
 
                 <a class="btn btn-secondary " href="home.aspx">返回主页

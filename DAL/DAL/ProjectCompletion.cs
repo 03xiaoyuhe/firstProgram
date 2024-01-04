@@ -21,7 +21,7 @@ namespace DAL
         /// <param name="achievement_form">成果形式</param>
         /// <param name="achievement_brief">项目成果简介</param>
         /// <returns></returns>
-        public bool ProjectInfor(string proposal_number, string project_title, string project_description,string useNumber, string achievement_form,string achievement_brief)
+        static public bool ProjectInfor(string proposal_number, string project_title, string project_description,string useNumber, string achievement_form,string achievement_brief)
         {
             
             string query = "INSERT INTO UserLogin (proposal_number, project_title, " +
@@ -29,7 +29,7 @@ namespace DAL
                 "VALUES (@proposal_number, @project_title, @project_description," +
                 "(select team_id from TeamInfo where team_leader_id=(select user_id from UserLogin where useNumber='@useNumber'))" +
                 ",@achievement_form,@achievement_brief)";
-            SqlParameter[] parameters = {
+            SqlParameter[] parameters = {   
                 new SqlParameter("@proposal_number", SqlDbType.NVarChar) { Value = proposal_number },
                 new SqlParameter("@project_title", SqlDbType.NVarChar) { Value = project_title },
                 new SqlParameter("@project_description", SqlDbType.NVarChar) { Value = project_description },
@@ -44,25 +44,76 @@ namespace DAL
             return rowsAffected > 0;
         }
 
+        /// <summary>
+        /// 利用project_id修改表中的各值
+        /// </summary>
+        /// <param name="project_id">项目id</param>
+        /// <param name="proposal_number">立项编号</param>
+        /// <param name="project_title">项目名称</param>
+        /// <param name="project_description">项目描述</param>
+        /// <param name="useNumber">负责人电话号码</param>
+        /// <param name="achievement_form">成果形式</param>
+        /// <param name="achievement_brief">项目成果简介</param>
+        /// <returns></returns>
+        static public bool UpdatePrroject(string project_id, string proposal_number, string project_title, string project_description, string useNumber, string achievement_form, string achievement_brief)
+        {
+            string query = "UPDATE ProjectApplications SET " +
+                "proposal_number = '@proposal_number'," +
+                "project_title = '@project_title'," +
+                "project_description = '@project_description'," +
+                "team_id = (select user_id from UserLogin where useNumber='131231414'))," +
+                "achievement_form = '@achievement_form'," +
+                "achievement_brief = '@achievement_brief'" +
+                "WHERE project_id = '@project_id';";
+            SqlParameter[] parameters =
+            {
+                new SqlParameter("@proposal_number",SqlDbType.NVarChar) { Value = proposal_number },
+                new SqlParameter("@project_title",SqlDbType.NVarChar){Value = project_title },
+                new SqlParameter("@project_description",SqlDbType.NVarChar) { Value = project_description },
+                new SqlParameter("@useNumber", SqlDbType.NVarChar) { Value = useNumber },
+                new SqlParameter("@achievement_form",SqlDbType.NVarChar){Value=achievement_form },
+                new SqlParameter("@achievement_brief",SqlDbType.NVarChar){Value=achievement_brief },
+                new SqlParameter("@project_id",SqlDbType.NVarChar) {Value = project_id},
+            };
+
+            int rowsAffected = DBHelper.ExecuteSql(query, parameters);
+
+            return rowsAffected > 0;
+
+        }
+
+        /// <summary>
+        /// 利用立项编号对申请的项目进行删除
+        /// </summary>
+        /// <param name="proposal_number"></param>
+        /// <returns></returns>
+        static public bool DeleteProject(string proposal_number)
+        {
+            string query = "DELETE FROM ProjectApplications WHERE proposal_number = '@proposal_number';";
+            SqlParameter[] parameters =
+            {
+                new SqlParameter("@proposal_number",SqlDbType.NVarChar) {Value = proposal_number},
+            };
+
+            int rowsAffecteed = DBHelper.ExecuteSql(query, parameters);
+
+            return rowsAffecteed > 0;
+        }
 
         /// <summary>
         /// 显示表中的所有信息
         /// </summary>
         /// <returns></returns>
-        public bool ProjectVision()
+        static public bool ProjectVision()
         {
             string query = "select proposal_number,project_title,project_description,team_id,achievement_form,achievement_brief from ProjectApplications;";
             object rowsAffected = DBHelper.GetSingle(query);
+
             int count = Convert.ToInt32(rowsAffected);
+
             return count>0;
-
+            
         }
-
-
-
-
-
-
 
     }
 }

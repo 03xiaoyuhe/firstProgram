@@ -155,8 +155,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 </head>
-<body style="overflow:hidden;">
-
+<body style="overflow: hidden;">
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
         <symbol id="check2" viewBox="0 0 16 16">
             <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
@@ -295,160 +294,170 @@
 
     <main class="d-flex flex-nowrap">
 
+        <form runat="server">
 
-        <div id="accordionExample" class="clearfix sidebarDiv" style="position: relative; height: 570px; margin-left: 10px;">
-            <div
-                id="ForProgrem"
-                class="collapse collapse-horizontal showing"
-                data-bs-parent="#accordionExample"
-                style="max-height: 570px;"
-                >
-                <div style="width: 280px; height: 570px; overflow: auto;">
-                    <div class="card card-body" style="width: 100%">
-                        <div class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
-                            <svg class="bi pe-none me-2" width="30" height="24">
-                                <use xlink:href="#bootstrap"></use>
-                            </svg>
-                            <span class="fs-5 fw-semibold">项目管理</span>
+            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+            <div id="accordionExample" class="clearfix sidebarDiv" style="position: relative; height: 570px; margin-left: 10px;">
+                <div
+                    id="ForProgrem"
+                    class="collapse collapse-horizontal showing"
+                    data-bs-parent="#accordionExample"
+                    style="max-height: 570px;">
+                    <div style="width: 280px; height: 570px; overflow: auto;">
+                        <div class="card card-body" style="width: 100%">
+                            <div class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+                                <svg class="bi pe-none me-2" width="30" height="24">
+                                    <use xlink:href="#bootstrap"></use>
+                                </svg>
+                                <span class="fs-5 fw-semibold">项目管理</span>
+                            </div>
+                            <ul class="list-unstyled ps-0">
+                                <li class="mb-1">
+                                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+                                        Home
+       
+                                    </button>
+                                    <div class="collapse show" id="home-collapse">
+                                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Overview</a></li>
+                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Updates</a></li>
+                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Reports</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="mb-1">
+                                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+                                        Dashboard
+                                    </button>
+                                    <div class="collapse" id="dashboard-collapse">
+                                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Overview</a></li>
+                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Weekly</a></li>
+                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Monthly</a></li>
+                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Annually</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="mb-1">
+                                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+                                        Orders
+       
+                                    </button>
+                                    <div class="collapse" id="orders-collapse">
+                                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">New</a></li>
+                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Processed</a></li>
+                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Shipped</a></li>
+                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Returned</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="border-top my-3"></li>
+                                <li class="mb-1">
+                                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+                                        Account
+       
+                                    </button>
+                                    <div class="collapse" id="account-collapse">
+                                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">New...</a></li>
+                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Profile</a></li>
+                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Settings</a></li>
+                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Sign out</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
-                        <ul class="list-unstyled ps-0">
-                            <li class="mb-1">
-                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-                                    Home
+                    </div>
+                </div>
+
+                <div
+                    id="ForApplication"
+                    class="collapse collapse-horizontal showing sidebarDiv"
+                    data-bs-parent="#accordionExample"
+                    style="max-height: 570px; float: left">
+                    <div id="sidebarF" style="width: 280px; height: 570px; overflow: auto;">
+
+                        <div class="card card-body" style="width: 100%">
+                            <div class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+                                <svg class="bi pe-none me-2" width="30" height="24">
+                                    <use xlink:href="#bootstrap"></use>
+                                </svg>
+                                <span class="fs-5 fw-semibold">申请管理</span>
+                            </div>
+                            <ul class="list-unstyled ps-0">
+                                <li class="mb-1">
+
+                                    <asp:Button ID="Button1" runat="server" Text="Button" />
+                                </li>
+                                <li class="mb-1">
+                                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+                                        Home
        
-                                </button>
-                                <div class="collapse show" id="home-collapse">
-                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Overview</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Updates</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Reports</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="mb-1">
-                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-                                    Dashboard
-                                </button>
-                                <div class="collapse" id="dashboard-collapse">
-                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Overview</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Weekly</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Monthly</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Annually</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="mb-1">
-                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-                                    Orders
+                                    </button>
+                                    <div class="collapse show" id="home-collapse">
+                                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Overview</a></li>
+                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Updates</a></li>
+                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Reports</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="mb-1">
+                                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+                                        Dashboard
+                                    </button>
+                                    <div class="collapse" id="dashboard-collapse">
+                                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Overview</a></li>
+                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Weekly</a></li>
+                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Monthly</a></li>
+                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Annually</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="mb-1">
+                                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+                                        Orders
        
-                                </button>
-                                <div class="collapse" id="orders-collapse">
-                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">New</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Processed</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Shipped</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Returned</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="border-top my-3"></li>
-                            <li class="mb-1">
-                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-                                    Account
+                                    </button>
+                                    <div class="collapse" id="orders-collapse">
+                                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">New</a></li>
+                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Processed</a></li>
+                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Shipped</a></li>
+                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Returned</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="border-top my-3"></li>
+                                <li class="mb-1">
+                                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+                                        Account
        
-                                </button>
-                                <div class="collapse" id="account-collapse">
-                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">New...</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Profile</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Settings</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Sign out</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
+                                    </button>
+                                    <div class="collapse" id="account-collapse">
+                                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">New...</a></li>
+                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Profile</a></li>
+                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Settings</a></li>
+                                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Sign out</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
                     </div>
                 </div>
             </div>
 
-            <div
-                id="ForApplication"
-                class="collapse collapse-horizontal showing sidebarDiv"
-                data-bs-parent="#accordionExample"
-                style="max-height: 570px; float: left"
-                >
-                <div id="sidebarF" style="width: 280px; height: 570px;overflow:auto;">
 
-                    <div class="card card-body" style="width: 100%">
-                        <div class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
-                            <svg class="bi pe-none me-2" width="30" height="24">
-                                <use xlink:href="#bootstrap"></use>
-                            </svg>
-                            <span class="fs-5 fw-semibold">申请管理</span>
-                        </div>
-                        <ul class="list-unstyled ps-0">
-                            <li class="mb-1">
-                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-                                    Home
-       
-                                </button>
-                                <div class="collapse show" id="home-collapse">
-                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Overview</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Updates</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Reports</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="mb-1">
-                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-                                    Dashboard
-                                </button>
-                                <div class="collapse" id="dashboard-collapse">
-                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Overview</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Weekly</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Monthly</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Annually</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="mb-1">
-                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-                                    Orders
-       
-                                </button>
-                                <div class="collapse" id="orders-collapse">
-                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">New</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Processed</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Shipped</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Returned</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="border-top my-3"></li>
-                            <li class="mb-1">
-                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-                                    Account
-       
-                                </button>
-                                <div class="collapse" id="account-collapse">
-                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">New...</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Profile</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Settings</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Sign out</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
 
-                </div>
-            </div>
-        </div>
+
+        </form>
+
 
 
 

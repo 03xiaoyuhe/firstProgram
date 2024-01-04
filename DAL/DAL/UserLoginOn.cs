@@ -11,7 +11,7 @@ namespace DAL
 {
 
 
-    public class UserRegistration
+     public class UserRegistration
     {
         private readonly string connectionString = "SQpwdLoad";
 
@@ -21,11 +21,25 @@ namespace DAL
         /// </summary>
         /// <param name="username">账号</param>
         /// <returns></returns>
-        public bool CheckIfAccountExists(string username)
+        static public bool CheckIfAccountExists(string username)
         {
             string query = "SELECT COUNT(*) FROM UserLogin WHERE Username = @Username";
             SqlParameter[] parameters = {
                 new SqlParameter("@Username", SqlDbType.NVarChar) { Value = username }
+            };
+
+            object result = DBHelper.GetSingle(query, parameters);//（）内的connectionString或许可以去掉。
+            int count = Convert.ToInt32(result);
+
+            return count > 0;
+        }
+
+
+        static public bool CheckIfUserNumberExists(string useNumber)
+        {
+            string query = "SELECT COUNT(*) FROM UserLogin WHERE useNumber = @useNumber";
+            SqlParameter[] parameters = {
+                new SqlParameter("@useNumber", SqlDbType.NVarChar) { Value = useNumber }
             };
 
             object result = DBHelper.GetSingle(query, parameters);//（）内的connectionString或许可以去掉。
@@ -44,7 +58,7 @@ namespace DAL
         /// <param name="userNumber">联系电话</param>
         /// <returns></returns>
         /// <exception cref="InvalidOperationException"></exception>
-        public bool RegisterUser(string username, string password, string userNumber)
+        static public bool RegisterUser(string username, string password, string userNumber)
         {
             if (CheckIfAccountExists(username))
             {
@@ -62,5 +76,8 @@ namespace DAL
 
             return rowsAffected > 0;
         }
+
+    
+
     }
 }
