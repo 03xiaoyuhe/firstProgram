@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="test.aspx.cs" Inherits="test" %>
 
 <%@ Register Src="~/ASCX/popMassage.ascx" TagName="popMassage" TagPrefix="TpopMassage" %>
+<%@ Register Src="~/ASCX/PrintMassage.ascx" TagName="PrintMassage" TagPrefix="TPrintMassage" %>
 
 <!DOCTYPE html>
 
@@ -23,8 +24,7 @@
     </script>
     <form id="form1" runat="server">
         <div>
-            <TpopMassage:popMassage ID="footer1" runat="server" HeadColor="Red" HeadLine="ERRO" Massage="未知错误" />
-            
+            <TPrintMassage:PrintMassage ID="aaa" runat="server" />
             <link href="bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css" rel="stylesheet" />
             <script src="bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
         </div>

@@ -30,20 +30,27 @@ public partial class functionPage_QF_ChildPage_addProgramData : System.Web.UI.Pa
                 this.DoTextarea.Text.ToString()
                 );
             clearAll();
-            ASCX_popMassage ErroMassage = (ASCX_popMassage)LoadControl("~/ASCX/popMassage.ascx");
-            ErroMassage.HeadColor = System.Drawing.ColorTranslator.FromHtml("Blue");
-            ErroMassage.HeadLine = "Success";
-            ErroMassage.Massage = "添加成功";
-            this.errroMassage.Controls.Add(ErroMassage);
+            HttpCookie aCookie = new HttpCookie("Massage");
+            aCookie.Values["Type"] = "Massage";
+            aCookie.Values["HeadColor"] = "Blue";
+            aCookie.Values["HeadLine"] = "Success";
+            aCookie.Values["DataTime"] = DateTime.Now.ToString();
+            aCookie.Values["Massage"] = "添加成功";
+            aCookie.Expires = DateTime.Now.AddDays(1);
+            Response.Cookies.Add(aCookie);
         }
         catch
         {
             clearAll();
-            ASCX_popMassage ErroMassage = (ASCX_popMassage)LoadControl("~/ASCX/popMassage.ascx");
-            ErroMassage.HeadColor = System.Drawing.ColorTranslator.FromHtml("Red");
-            ErroMassage.HeadLine = "ERRO";
-            ErroMassage.Massage = "未知错误";
-            this.errroMassage.Controls.Add(ErroMassage);
+
+            HttpCookie aCookie = new HttpCookie("Massage" + DateTime.Now.ToString());
+            aCookie.Values["Type"] = "Massage";
+            aCookie.Values["HeadColor"] = "Red";
+            aCookie.Values["HeadLine"] = "ERRO";
+            aCookie.Values["DataTime"] = DateTime.Now.ToString();
+            aCookie.Values["Massage"] = "未知错误";
+            aCookie.Expires = DateTime.Now.AddDays(1);
+            Response.Cookies.Add(aCookie);
         }
     }
         else 
