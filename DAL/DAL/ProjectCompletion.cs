@@ -12,6 +12,26 @@ namespace DAL
     {
 
         /// <summary>
+        /// 检查team_id是否存在
+        /// </summary>
+        /// <param name="useNumber">负责人电话号码</param>
+        /// <returns></returns>
+        static public bool CheckTeam_id(string useNumber)
+        {
+            string query = "select team_id from TeamInfo where team_leader_id=(" +
+                "select user_id from UserLogin where useNumber=@useNumber)";
+            SqlParameter[] parameters =
+            {
+                new SqlParameter("@useNumber",SqlDbType.NVarChar) {Value = useNumber},
+            };
+
+            object rowsAffected = DBHelper.GetSingle(query, parameters);
+            int count = Convert.ToInt32(rowsAffected);
+
+            return (count > 0);
+        }
+
+        /// <summary>
         /// 向项目信息表中插入所有的信息
         /// </summary>
         /// <param name="proposal_number">立项编号</param>
@@ -114,6 +134,31 @@ namespace DAL
             return count>0;
             
         }
+
+        /// <summary>
+        ///     
+        /// </summary>
+        /// <param name="proposal_number">立项编号</param>
+        /// <returns></returns>
+        static public bool ProjectNumberVision(string proposal_number)
+        {
+            string query = "select *from ProjectApplications where proposal_number = '@proposal_number';";
+            SqlParameter[] parameters = {
+                new SqlParameter("@proposal_number",SqlDbType.NVarChar){Value = proposal_number},
+            };
+            object rowsAffected = DBHelper.GetSingle(query, parameters);
+            int count = Convert.ToInt32(rowsAffected);
+
+            return count > 0;
+
+        }
+
+        
+
+        //static public bool ProjectVision()
+        //{
+        //    string query = "";
+        //}
 
     }
 }

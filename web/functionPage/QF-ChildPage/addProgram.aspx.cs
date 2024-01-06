@@ -15,6 +15,10 @@ public partial class functionPage_QF_ChildPage_addProgramData : System.Web.UI.Pa
 
     protected void submit_Click(object sender, EventArgs e)
     {
+        if (ProjectCompletion.CheckTeam_id(this.PhoneNum.Text.ToString()))
+        {
+
+        
         try
         {
             ProjectCompletion.ProjectInfor(
@@ -41,7 +45,18 @@ public partial class functionPage_QF_ChildPage_addProgramData : System.Web.UI.Pa
             ErroMassage.Massage = "未知错误";
             this.errroMassage.Controls.Add(ErroMassage);
         }
-   
+    }
+        else 
+        {
+                         
+                clearAll();
+                ASCX_popMassage ErroMassage = (ASCX_popMassage)LoadControl("~/ASCX/popMassage.ascx");
+                ErroMassage.HeadColor = System.Drawing.ColorTranslator.FromHtml("Red");
+                ErroMassage.HeadLine = "ERRO";
+                ErroMassage.Massage = "对应的负责人没有进行组队";
+                this.errroMassage.Controls.Add(ErroMassage);
+            
+        }
     }
 
     protected void clear_Click(object sender, EventArgs e)
