@@ -67,11 +67,40 @@ public partial class ASCX_popMassage : System.Web.UI.UserControl
     }
 
 
-    protected void Timer1_Tick(object sender, EventArgs e)
+    string time = "错误信息";
+    [Description("错误信息"), Category("自定义属性")]
+    public string DataTime                  // 控件的自定义属性值
     {
-        DateTime timeB = DateTime.Now;
-        TimeSpan ts = (TimeSpan)(timeB - start);
-        string time = ts.TotalSeconds.ToString();
-        second.Text = time;
+        get
+        {
+            return time;
+        }
+        set
+        {
+            time = value;
+            second.Text = value;
+        }
+    }
+
+    string cookiename = "";
+    [Description("错误信息"), Category("自定义属性")]
+    public string CookieName                  // 控件的自定义属性值
+    {
+        get
+        {
+            return cookiename;
+        }
+        set
+        {
+            cookiename = value;
+        }
+    }
+
+    public void Quit_Click(object sender, EventArgs e)
+    {
+        string cookiesName = CookieName;
+        HttpCookie cookie = new HttpCookie(cookiesName);
+        cookie.Expires = DateTime.Now.AddDays(-1);
+        Response.Cookies.Add(cookie);
     }
 }
