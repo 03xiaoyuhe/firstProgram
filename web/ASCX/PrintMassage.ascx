@@ -23,7 +23,7 @@
     }
 </style>
 
-<asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true">
+<asp:ScriptManager ID="ScriptManager1" runat="server">
 </asp:ScriptManager>
 
 <!-- Position it: -->
@@ -33,15 +33,13 @@
 <div id ="print" class="toast-container buttom-0 end-0 p-3 index_box">
     <asp:UpdatePanel ID="updateFlight" runat="server" UpdateMode="Always">
         <ContentTemplate>
-            <asp:Timer ID="Timer1" runat="server" Interval="100" OnTick="Timer1_Tick">
+            <asp:Timer ID="Timer1" runat="server" Interval="200" OnTick="Timer1_Tick">
             </asp:Timer>
         </ContentTemplate>
     </asp:UpdatePanel>
 
-    <asp:UpdatePanel ID="MassageP" runat="server" UpdateMode="Always">
+    <asp:UpdatePanel ID="MassageP" runat="server" UpdateMode="Conditional" ChildrenAsTriggers="True" OnLoad="MassageP_Load">
 
-        <ContentTemplate>
-        </ContentTemplate>
     </asp:UpdatePanel>
 </div>
 

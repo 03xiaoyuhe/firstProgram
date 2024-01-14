@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using DAL;
 
 public partial class functionPage_QF_ChildPage_addProgramData : System.Web.UI.Page
@@ -26,27 +22,14 @@ public partial class functionPage_QF_ChildPage_addProgramData : System.Web.UI.Pa
                 this.DoTextarea.Text.ToString()
                 );
             clearAll();
-            HttpCookie aCookie = new HttpCookie("Massage");
-            aCookie.Values["Type"] = "Massage";
-            aCookie.Values["HeadColor"] = "Blue";
-            aCookie.Values["HeadLine"] = "Success";
-            aCookie.Values["DataTime"] = DateTime.Now.ToString();
-            aCookie.Values["Massage"] = "添加成功";
-            aCookie.Expires = DateTime.Now.AddDays(1);
-            Response.Cookies.Add(aCookie);
+            Massage massage = new Massage("Blue", "Success", "添加成功");
+            massage.PostMassage();
         }
         catch
         {
             clearAll();
-
-            HttpCookie aCookie = new HttpCookie("Massage" + DateTime.Now.ToString());
-            aCookie.Values["Type"] = "Massage";
-            aCookie.Values["HeadColor"] = "Red";
-            aCookie.Values["HeadLine"] = "ERRO";
-            aCookie.Values["DataTime"] = DateTime.Now.ToString();
-            aCookie.Values["Massage"] = "未知错误";
-            aCookie.Expires = DateTime.Now.AddDays(1);
-            Response.Cookies.Add(aCookie);
+            Massage massage = new Massage("Red", "ERRO", "未知错误");
+            massage.PostMassage();
         }
    
     }
