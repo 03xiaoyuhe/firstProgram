@@ -8,7 +8,8 @@
         <small class="text-muted">
             <asp:Label ID="second" runat="server" Text=""></asp:Label>
         </small>
-        <asp:Button ID="Button1" runat="server" class="btn-close" data-bs-dismiss="toast" aria-label="Close" OnClick="Quit_Click" />
+        <!--  data-bs-dismiss="toast" aria-label="Close" -->
+        <asp:Button ID="Button1" runat="server" class="btn-close"  OnClick="Quit_Click" />
     </div>
     <div class="toast-body">
         <asp:Label ID="MAssage" runat="server" Text="Label">错误信息</asp:Label>
