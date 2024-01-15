@@ -56,13 +56,17 @@ public partial class functionPage_QF_ChildPage_addProgramData : System.Web.UI.Pa
         else 
         {
                          
-                clearAll();
-                ASCX_popMassage ErroMassage = (ASCX_popMassage)LoadControl("~/ASCX/popMassage.ascx");
-                ErroMassage.HeadColor = System.Drawing.ColorTranslator.FromHtml("Red");
-                ErroMassage.HeadLine = "ERRO";
-                ErroMassage.Massage = "对应的负责人没有进行组队";
-                this.errroMassage.Controls.Add(ErroMassage);
-            
+            clearAll();
+
+            HttpCookie aCookie = new HttpCookie("Massage" + DateTime.Now.ToString());
+            aCookie.Values["Type"] = "Massage";
+            aCookie.Values["HeadColor"] = "Red";
+            aCookie.Values["HeadLine"] = "ERRO";
+            aCookie.Values["DataTime"] = DateTime.Now.ToString();
+            aCookie.Values["Massage"] = "对应负责人未组建小队";
+            aCookie.Expires = DateTime.Now.AddDays(1);
+            Response.Cookies.Add(aCookie);
+
         }
     }
 

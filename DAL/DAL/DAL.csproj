@@ -45,10 +45,8 @@
     <Compile Include="DBHelper.cs" />
     <Compile Include="ProjectCompletion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserControl.cs" />
     <Compile Include="UserInformations.cs" />
     <Compile Include="UserLoginOn.cs" />
-    <Compile Include="UserResearch.cs" />
     <Compile Include="UserSigin.cs" />
     <Compile Include="UserTeamInformation.cs" />
     <Compile Include="UserTeamIofo.cs" />
