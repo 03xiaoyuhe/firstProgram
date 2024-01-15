@@ -9,13 +9,9 @@ using System.Web.UI.WebControls;
 
 public partial class ASCX_popMassage : System.Web.UI.UserControl
 {
-    DateTime? start = null;
     protected void Page_Load(object sender, EventArgs e)
     {
-        if(start == null)
-        {
-            start = DateTime.Now;
-        }
+
     }
     //Head
 
@@ -36,7 +32,7 @@ public partial class ASCX_popMassage : System.Web.UI.UserControl
     }
 
     string headLine = "错误信息";
-    [Description("错误信息"), Category("自定义属性")]
+    [Description("消息类型"), Category("自定义属性")]
     public string HeadLine                  // 控件的自定义属性值
     {
         get
@@ -67,8 +63,8 @@ public partial class ASCX_popMassage : System.Web.UI.UserControl
     }
 
 
-    string time = "错误信息";
-    [Description("错误信息"), Category("自定义属性")]
+    string time = "";
+    [Description("消息产生时间"), Category("自定义属性")]
     public string DataTime                  // 控件的自定义属性值
     {
         get
@@ -83,7 +79,7 @@ public partial class ASCX_popMassage : System.Web.UI.UserControl
     }
 
     string cookiename = "";
-    [Description("错误信息"), Category("自定义属性")]
+    [Description("对应的消息Cookie"), Category("自定义属性")]
     public string CookieName                  // 控件的自定义属性值
     {
         get

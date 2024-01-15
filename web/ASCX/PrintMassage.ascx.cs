@@ -17,16 +17,6 @@ using System.Xml.Linq;
 /// 通过<u>Cookie</u>实现的发送并显示消息的控件<br/>
 /// 在需要发送消息的地方产生一个Cookie<i>(<带有type属性并且为Massage)</i><br/>
 /// 然后该控件就能通过读取特定Cookie来进行消息显示<br/>
-/// 
-/// 
-/// <!-- 
-/// 
-/// 接下来的任务:
-///     将Cookie的产生过程封装起来，
-///     并编写一个专门用于发送消息的类，
-///     将所有消息的发送集成到该类中
-///     
-/// -->
 /// </summary>
 public partial class ASCX_PrintMassage : System.Web.UI.UserControl
 {
@@ -40,11 +30,10 @@ public partial class ASCX_PrintMassage : System.Web.UI.UserControl
     protected void Timer1_Tick(object sender, EventArgs e)
     {
         int count = 0;
+
+        /// 统计消息Cookie数量在与显示数量不同时刷新消息显示控件
         for (int i = Request.Cookies.Count - 1; i > -1; i--)
         {
-            //由于控件刷新过快，导致一定情况下用户无法流畅的关闭提示框
-            //可以通过设置判断条件来选择性的刷新
-            //可采取的判断条件如：通过查看cookie是否发生变化来选择性的刷新控件
             if (Request.Cookies[i].Values["Type"] != null)
             {
                 if (Request.Cookies[i].Values["Type"].ToString() == "Massage")
@@ -95,19 +84,19 @@ public partial class ASCX_PrintMassage : System.Web.UI.UserControl
         MassageP.ContentTemplateContainer.Controls.Add(ErroMassage);
     }
 
-
+    /// <summary>
+    /// 在消息显示控件刷新时调用，读取消息Cookie，创建并将消息控件添加到消息显示控件中
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     protected void MassageP_Load(object sender, EventArgs e)
     {
-    //    foreach (var item in AllCookies)
-    //    {
-    //        LoadUserControl(item);
-    //    }
-
+        /// 直接读取Cookie会使运行效率过慢
+        /// 可尝试在上文，判断消息Cookie数量是否与显示数量相等的部分
+        /// 将读取到的消息Cookie存放在变量中
+        /// 在本处直接读取需要显示的部分进而加快速率
         for (int i = Request.Cookies.Count - 1; i > -1; i--)
         {
-            //由于控件刷新过快，导致一定情况下用户无法流畅的关闭提示框
-            //可以通过设置判断条件来选择性的刷新
-            //可采取的判断条件如：通过查看cookie是否发生变化来选择性的刷新控件
             if (Request.Cookies[i].Values["Type"] != null)
             {
                 if (Request.Cookies[i].Values["Type"].ToString() == "Massage")

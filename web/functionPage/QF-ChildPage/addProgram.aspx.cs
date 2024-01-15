@@ -11,41 +11,31 @@ public partial class functionPage_QF_ChildPage_addProgramData : System.Web.UI.Pa
 
     protected void submit_Click(object sender, EventArgs e)
     {
-        if (ProjectCompletion.CheckTeam_id(this.PhoneNum.Text.ToString()))
-        {
-
-        
         try
         {
-            ProjectCompletion.ProjectInfor(
+            if (!ProjectCompletion.CheckTeam_id(this.PhoneNum.Text.ToString()))
+            {
+                throw (new Exception("对应的负责人没有进行组队"));
+            }
+            if (ProjectCompletion.ProjectInfor(
                 this.ProgramIDInput.Text.ToString(),
                 this.floatingInput.Text.ToString(),
                 this.floatingTextarea.Text.ToString(),
                 this.PhoneNum.Text.ToString(),
                 this.DoForm.Text.ToString(),
                 this.DoTextarea.Text.ToString()
-                );
-            clearAll();
-            Massage massage = new Massage("Blue", "Success", "添加成功");
-            massage.PostMassage();
-        }
-        catch
-        {
-            clearAll();
-            Massage massage = new Massage("Red", "ERRO", "未知错误");
-            massage.PostMassage();
-        }
-    }
-        else 
-        {
-                         
+                ))
+            {
                 clearAll();
-                ASCX_popMassage ErroMassage = (ASCX_popMassage)LoadControl("~/ASCX/popMassage.ascx");
-                ErroMassage.HeadColor = System.Drawing.ColorTranslator.FromHtml("Red");
-                ErroMassage.HeadLine = "ERRO";
-                ErroMassage.Massage = "对应的负责人没有进行组队";
-                this.errroMassage.Controls.Add(ErroMassage);
-            
+                Massage massage = new Massage("Blue", "Success", "添加成功");
+                massage.PostMassage();
+            }
+        }
+        catch (Exception E)
+        {
+            clearAll();
+            Massage massage = new Massage("Red", "ERRO", E.Message);
+            massage.PostMassage();
         }
     }
 

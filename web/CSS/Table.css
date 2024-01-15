@@ -1,0 +1,32 @@
+﻿table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead th {
+    position: fixed;
+    top: 0;
+    height: 50px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    text-align: left;
+    width: 100px; /* 每列单元格的宽度 */
+}
+
+tbody {
+    position: relative;
+    display: block;
+    height: 500px; /* 表格内容的高度 */
+    overflow-y: scroll;
+}
+
+    tbody tr {
+        border-bottom: 1px solid #ddd;
+    }
+
+td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    width: 100px; /* 每列单元格的宽度 */
+}
