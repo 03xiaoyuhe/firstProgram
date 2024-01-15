@@ -136,7 +136,7 @@ namespace DAL
         }
 
         /// <summary>
-        ///     
+        /// 通过立项编号进行查询
         /// </summary>
         /// <param name="proposal_number">立项编号</param>
         /// <returns></returns>
@@ -153,12 +153,24 @@ namespace DAL
 
         }
 
-        
 
-        //static public bool ProjectVision()
-        //{
-        //    string query = "";
-        //}
+        /// <summary>
+        /// 利用立项编号对应删除表中的该项目信息
+        /// </summary>
+        /// <param name="proposal_number">立项编号</param>
+        /// <returns></returns>
+        static public bool ProjectVision(string proposal_number)
+        {
+            string query = "DELETE FROM ProjectApplications WHERE proposal_number='@proposal_number';";
+            SqlParameter[] parameters =
+            {
+                new SqlParameter("@proposal_number",SqlDbType.NVarChar) {Value=proposal_number},
+            };
+
+            int rowsAffecteed = DBHelper.ExecuteSql(query, parameters);
+
+            return (rowsAffecteed > 0);
+        }
 
     }
 }

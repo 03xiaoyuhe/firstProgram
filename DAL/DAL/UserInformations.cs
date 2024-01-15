@@ -18,6 +18,7 @@ namespace DAL
         /// 对Social Philosophy Project数据库中的UserInfo表进行插入操作
         /// 其中利用注册表中的电话号码对user_id进行查询，并将id插入信息表中存储。
         /// </summary>
+        /// <param name="user_name">姓名</param>
         /// <param name="userNumber">联系电话</param>
         /// <param name="gender">性别</param>
         /// <param name="contact_number">身份证号</param>
@@ -27,13 +28,14 @@ namespace DAL
         /// <param name="position">职业</param>
         /// <param name="workplace">工作地点</param>
         /// <returns></returns>
-        public bool RegisterUser( string userNumber, string gender, string contact_number, string email, string date_of_birth, string education_degree, string position, string workplace)
+        public bool RegisterUser( string userNumber, string user_name,string gender, string contact_number, string email, string date_of_birth, string education_degree, string position, string workplace)
         {
-            string query = "INSERT INTO UserInfo (user_id,gender, contact_number, email,date_of_birth,education_degree,position,workplace) VALUES" +
+            string query = "INSERT INTO UserInfo (user_id, user_name ,gender, contact_number, email,date_of_birth,education_degree,position,workplace) VALUES" +
                 " (" + "(select USER_ID from UserLogin where useNumber = '@userNumber'),"+
-                "@gender, @contact_number, @email,@email,@date_of_birth,@education_degree,@position,@workplace)";
+                "@user_name,@gender, @contact_number, @email,@email,@date_of_birth,@education_degree,@position,@workplace)";
             SqlParameter[] parameters = {
                 new SqlParameter("@userNumber", SqlDbType.NVarChar) { Value = userNumber },
+                new SqlParameter("@user_name",SqlDbType.NVarChar){Value = user_name },
                 new SqlParameter("@gender", SqlDbType.NVarChar) { Value = gender },
                 new SqlParameter("@contact_number", SqlDbType.NVarChar) { Value = contact_number },
                 new SqlParameter("@email", SqlDbType.NVarChar) { Value = email },
@@ -63,10 +65,11 @@ namespace DAL
         /// <param name="workplace">工作单位</param>
         /// <param name="user_id">用户id</param>
         /// <returns></returns>
-        static public bool UpdataeUser(string gender, string contact_number, string email,string date_of_birth,string education_degree,string position,string workplace,string user_id)
+        static public bool UpdataeUser(string user_name,  string gender, string contact_number, string email,string date_of_birth,string education_degree,string position,string workplace,string user_id)
         {
             string query = "UPDATE UserInfo SET" +
                 " gender = '@gender'," +
+                "user_name='@user_name'," +
                 "contact_number = '@contact_number'," +
                 "email = '@email'," +
                 "date_of_birth = '@date_of_birth'," +
@@ -76,14 +79,15 @@ namespace DAL
                 "WHERE user_id = '@user_id';";
             SqlParameter[] parameters =
             {
-                new SqlParameter (@gender,SqlDbType.NVarChar){Value = gender},
-                new SqlParameter (@contact_number,SqlDbType.NVarChar){Value = contact_number},
-                new SqlParameter (@email,SqlDbType.NVarChar){Value = email},
-                new SqlParameter (@date_of_birth,SqlDbType.Date){Value = date_of_birth},
-                new SqlParameter (@education_degree,SqlDbType.NVarChar){Value = education_degree},
-                new SqlParameter (@position,SqlDbType.NVarChar){Value = position},
-                new SqlParameter (@workplace,SqlDbType.NVarChar){Value = workplace},
-                new SqlParameter(@user_id,SqlDbType.Int){Value = user_id},
+                new SqlParameter("user_name",SqlDbType.NVarChar){Value = user_name},
+                new SqlParameter ("@gender",SqlDbType.NVarChar){Value = gender},
+                new SqlParameter ("@contact_number",SqlDbType.NVarChar){Value = contact_number},
+                new SqlParameter ("@email",SqlDbType.NVarChar){Value = email},
+                new SqlParameter ("@date_of_birth",SqlDbType.Date){Value = date_of_birth},
+                new SqlParameter ("@education_degree",SqlDbType.NVarChar){Value = education_degree},
+                new SqlParameter ("@position",SqlDbType.NVarChar){Value = position},
+                new SqlParameter ("@workplace",SqlDbType.NVarChar){Value = workplace},
+                new SqlParameter("@user_id",SqlDbType.Int){Value = user_id},
             };
 
             int rowsAffected = DBHelper.ExecuteSql(query, parameters);

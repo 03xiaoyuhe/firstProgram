@@ -29,7 +29,9 @@ namespace DAL
             };
 
             DataSet result = DBHelper.Query(query, parameters);
+
             DataTable dt = result.Tables[0];
+
             int count = Convert.ToInt32(dt.Rows[0]["count"]);
 
             return count > 0;
