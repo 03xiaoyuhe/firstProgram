@@ -1,6 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="PrintMassage.ascx.cs" Inherits="ASCX_PrintMassage" %>
 
-<%@ Register Src="~/ASCX/popMassage.ascx" TagName="popMassage" TagPrefix="TpopMassage" %>
+<%@ Register Src="~/ASCX/Massage/popMassage.ascx" TagName="popMassage" TagPrefix="TpopMassage" %>
+
 <%@ Import Namespace="System.Timers" %>
 <style type="text/css">
     .index_box {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Insus.NET;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -7,7 +8,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class ASCX_popMassage : System.Web.UI.UserControl
+public partial class ASCX_popMassage : System.Web.UI.UserControl, IGetUCable
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -98,5 +99,9 @@ public partial class ASCX_popMassage : System.Web.UI.UserControl
         HttpCookie cookie = new HttpCookie(cookiesName);
         cookie.Expires = DateTime.Now.AddDays(-1);
         Response.Cookies.Add(cookie);
+    }
+    public UserControl GetUC()
+    {
+        return this;
     }
 }
