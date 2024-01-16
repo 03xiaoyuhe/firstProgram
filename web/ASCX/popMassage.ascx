@@ -12,7 +12,7 @@
         <asp:Button ID="Button1" runat="server" class="btn-close"  OnClick="Quit_Click" />
     </div>
     <div class="toast-body">
-        <asp:Label ID="MAssage" runat="server" Text="Label">错误信息</asp:Label>
+        <asp:Label ID="MAssage" runat="server" Text="Label"></asp:Label>
     </div>
 </div>
 

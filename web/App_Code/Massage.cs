@@ -58,7 +58,7 @@ public class Massage
     public void PostMassage()
     {
         HttpCookie aCookie = new HttpCookie("Massage" + DataTime);
-        aCookie.Values["Type"] = "Massage";
+        aCookie.Values["Type"] = "Massage-1.0";
         aCookie.Values["HeadColor"] = HeadColor;
         aCookie.Values["HeadText"] = HeadText;
         aCookie.Values["DataTime"] = DataTime;

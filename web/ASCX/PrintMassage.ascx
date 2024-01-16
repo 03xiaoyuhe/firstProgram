@@ -38,7 +38,7 @@
         </ContentTemplate>
     </asp:UpdatePanel>
 
-    <asp:UpdatePanel ID="MassageP" runat="server" UpdateMode="Conditional" ChildrenAsTriggers="True" OnLoad="MassageP_Load">
+    <asp:UpdatePanel ID="MassageP" runat="server" UpdateMode="Conditional" OnLoad="MassageP_Load">
 
     </asp:UpdatePanel>
 </div>

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Web;
 using DAL;
 
@@ -15,7 +15,7 @@ public partial class functionPage_QF_ChildPage_addProgramData : System.Web.UI.Pa
         {
             if (!ProjectCompletion.CheckTeam_id(this.PhoneNum.Text.ToString()))
             {
-                throw (new Exception("对应的负责人没有进行组队"));
+                throw new Exception("NotLoad");
             }
             if (ProjectCompletion.ProjectInfor(
                 this.ProgramIDInput.Text.ToString(),
@@ -33,9 +33,18 @@ public partial class functionPage_QF_ChildPage_addProgramData : System.Web.UI.Pa
         }
         catch (Exception E)
         {
-            clearAll();
-            Massage massage = new Massage("Red", "ERRO", E.Message);
-            massage.PostMassage();
+            if (E.Message == "NotLoad")
+            {
+                clearAll();
+                Massage massage = new Massage("#ff0000", "ERRO", "对应负责人未组队");
+                massage.PostMassage();
+            }
+            else
+            {
+                clearAll();
+                Massage massage = new Massage("#ff0000", "ERRO", E.Message);
+                massage.PostMassage();
+            }
         }
     }
 

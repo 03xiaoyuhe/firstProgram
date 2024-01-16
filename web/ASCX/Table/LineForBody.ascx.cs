@@ -21,6 +21,6 @@ public partial class ASCX_Table_LineForBody : ASCX_Table_LineForTable
     }
     protected void Page_Load(object sender, EventArgs e)
     {
-        CellHolder.Controls
+
     }
 }

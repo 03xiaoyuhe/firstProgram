@@ -36,7 +36,7 @@ public partial class ASCX_PrintMassage : System.Web.UI.UserControl
         {
             if (Request.Cookies[i].Values["Type"] != null)
             {
-                if (Request.Cookies[i].Values["Type"].ToString() == "Massage")
+                if (Request.Cookies[i].Values["Type"].ToString() == "Massage-1.0")
                 {
                     AllCookies.Add(Request.Cookies[i]);
                     count++;
@@ -76,10 +76,10 @@ public partial class ASCX_PrintMassage : System.Web.UI.UserControl
     {
         ASCX_popMassage ErroMassage = (ASCX_popMassage)LoadControl("~/ASCX/popMassage.ascx");
         ErroMassage.HeadColor = System.Drawing.ColorTranslator.FromHtml(cookie.Values["HeadColor"].ToString());
-        ErroMassage.HeadLine = cookie.Values["HeadText"].ToString();
-        ErroMassage.Massage = cookie.Values["MassageText"].ToString();
-        ErroMassage.DataTime = cookie.Values["DataTime"].ToString();
-        ErroMassage.CookieName = cookie.Name.ToString();
+        ErroMassage.HeadLine = Server.UrlDecode(cookie.Values["HeadText"]);
+        ErroMassage.Massage = Server.UrlDecode(cookie.Values["MassageText"]);
+        ErroMassage.DataTime = Server.UrlDecode(cookie.Values["DataTime"]);
+        ErroMassage.CookieName = Server.UrlDecode(cookie.Name);
         //up1.ContentTemplateContainer.Controls.Add
         MassageP.ContentTemplateContainer.Controls.Add(ErroMassage);
     }
@@ -99,7 +99,7 @@ public partial class ASCX_PrintMassage : System.Web.UI.UserControl
         {
             if (Request.Cookies[i].Values["Type"] != null)
             {
-                if (Request.Cookies[i].Values["Type"].ToString() == "Massage")
+                if (Request.Cookies[i].Values["Type"].ToString() == "Massage-1.0")
                 {
                     LoadUserControl(Request.Cookies[i]);
                 }
