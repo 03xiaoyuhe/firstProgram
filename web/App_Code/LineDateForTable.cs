@@ -52,35 +52,6 @@ public class LineDateForTable
     }
 
 
-    Dictionary<string, string> lineToMean = null;
-    /// <summary>
-    /// 表格列信息 以及对应中文
-    /// </summary>
-    public Dictionary<string, string> LineToMean
-    {
-        get
-        {
-            if (IDLable == null)
-            {
-                throw (new Exception("自定义表格对象未指定主键"));
-            }
-
-            if (lineToMean == null)
-            {
-                InitLineToMean();
-            }
-
-            return lineToMean;
-        }
-        set
-        {
-            lineToMean = value;
-            if (LineToShow == null)
-            {
-                LineToShow = TranslateValueColloctionToList(value.Values);
-            }
-        }
-    }
 
     List<string> lineToShow = null;
     /// <summary>
@@ -94,11 +65,6 @@ public class LineDateForTable
             if (IDLable == null)
             {
                 throw (new Exception("自定义表格对象未指定主键"));
-            }
-
-            if (lineToShow == null)
-            {
-                lineToShow = TranslateValueColloctionToList(LineToMean.Values);
             }
 
             return lineToShow;
@@ -142,9 +108,6 @@ public class LineDateForTable
         {
             line_to_.Add(item.ColumnName, item.ColumnName);
         }
-
-        LineToMean.Clear();
-        LineToMean = line_to_;
     }
 
     #endregion

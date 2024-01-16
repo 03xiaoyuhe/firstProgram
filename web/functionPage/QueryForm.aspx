@@ -2,9 +2,9 @@
 
 <%@ Register Src="~/ASCX/DefaultNONE.ascx" TagPrefix="uc1" TagName="DefaultNONE" %>
 
-<%@ Register Src="~/ASCX/popMassage.ascx" TagName="popMassage" TagPrefix="TpopMassage" %>
+<%@ Register Src="~/ASCX/Massage/popMassage.ascx" TagName="popMassage" TagPrefix="TpopMassage" %>
 
-<%@ Register Src="~/ASCX/PrintMassage.ascx" TagName="PrintMassage" TagPrefix="TPrintMassage" %>
+<%@ Register Src="~/ASCX/Massage/PrintMassage.ascx" TagName="PrintMassage" TagPrefix="TPrintMassage" %>
 
 <!DOCTYPE html>
 
@@ -12,7 +12,7 @@
 <head runat="server">
     <script src="../assets/js/color-modes.js"></script>
 
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -163,7 +163,7 @@
 <body style="overflow: hidden;">
     <script type="text/javascript" src="../JS/QueryFormJS.js"></script>
     <script type="text/javascript">
-    </script>
+</script>
 
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
         <symbol id="check2" viewBox="0 0 16 16">
@@ -453,14 +453,14 @@
         </div>
 
         <script type="text/javascript">
-        </script>
+</script>
         <div class="bg-body-tertiary border rounded-3" style="float: right; position: relative; overflow: hidden; width: 100%; height: 570px; margin-right: 30px; margin-left">
             <iframe id="test" src="../home.aspx" style="width: 100%; height: 100%"></iframe>
         </div>
     </main>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
     <form runat="server">
-        <TPrintMassage:PrintMassage ID="aaa" runat="server" />  
+        <TPrintMassage:PrintMassage ID="aaa" runat="server" />
 
     </form>
     <script src="../JS/sidebars.js"></script>

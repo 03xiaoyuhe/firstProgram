@@ -62,7 +62,7 @@ public partial class ASCX_PrintMassage : System.Web.UI.UserControl
         string Name
         )
     {
-        ASCX_popMassage ErroMassage = (ASCX_popMassage)LoadControl("~/ASCX/popMassage.ascx");
+        ASCX_popMassage ErroMassage = (ASCX_popMassage)LoadControl("~/ASCX/Massage/opMassage.ascx");
         ErroMassage.HeadColor = System.Drawing.ColorTranslator.FromHtml(HeadColor);
         ErroMassage.HeadLine = HeadLine;
         ErroMassage.Massage = Massage;
@@ -74,9 +74,9 @@ public partial class ASCX_PrintMassage : System.Web.UI.UserControl
 
     void LoadUserControl(HttpCookie cookie)
     {
-        ASCX_popMassage ErroMassage = (ASCX_popMassage)LoadControl("~/ASCX/popMassage.ascx");
+        ASCX_popMassage ErroMassage = (ASCX_popMassage)LoadControl("~/ASCX/Massage/popMassage.ascx");
         ErroMassage.HeadColor = System.Drawing.ColorTranslator.FromHtml(cookie.Values["HeadColor"].ToString());
-        ErroMassage.HeadLine = cookie.Values["HeadText"].ToString();
+        ErroMassage.HeadLine = Server.UrlDecode(cookie.Values["HeadText"].ToString());
         ErroMassage.Massage = cookie.Values["MassageText"].ToString();
         ErroMassage.DataTime = cookie.Values["DataTime"].ToString();
         ErroMassage.CookieName = cookie.Name.ToString();

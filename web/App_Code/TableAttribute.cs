@@ -20,7 +20,7 @@ public class TableAttribute
 
 
     string idLable = null;
-    string IDLable
+    public string IDLable
     {
         get
         {

@@ -1,9 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="addProgram.aspx.cs" Inherits="functionPage_QF_ChildPage_addProgramData" %>
 
-<%@ Register Src="~/ASCX/popMassage.ascx" TagName="popMassage" TagPrefix="TpopMassage" %>
+<%@ Register Src="~/ASCX/Massage/popMassage.ascx" TagName="popMassage" TagPrefix="TpopMassage" %>
 
 
-<%@ Register Src="~/ASCX/PrintMassage.ascx" TagName="PrintMassage" TagPrefix="TPrintMassage" %>
+<%@ Register Src="~/ASCX/Massage/PrintMassage.ascx" TagName="PrintMassage" TagPrefix="TPrintMassage" %>
 
 <!DOCTYPE html>
 
@@ -56,139 +56,139 @@
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
-                <div style="width: 80%; margin: 0 auto;">
-                    <div class="fs-1">项目信息</div>
-                    <table style="width: 100%">
-                        <tr>
-                            <td>
-                                <div class="form-floating mb-3" style="margin: 5px auto;">
-                                    <asp:TextBox
-                                        ID="ProgramIDInput"
-                                        runat="server"
-                                        class="form-control"
-                                        placeholder="">
-                                    </asp:TextBox>
-                                    <label for="ProgramIDInput">
-                                        立项编号
-                                    </label>
-                                    <asp:RequiredFieldValidator
-                                        ID="checkNumberNull"
-                                        runat="server"
-                                        ErrorMessage="请输入立项编号"
-                                        Font-Strikeout="False"
-                                        ControlToValidate="ProgramIDInput"
-                                        CssClass="setCharRed setCharSizeSmall program-errorBox" Font-Size="10px">
-                                    </asp:RequiredFieldValidator>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-floating mb-3" style="margin: 5px auto;">
-                                    <asp:TextBox runat="server" class="form-control" ID="floatingInput" placeholder=""></asp:TextBox>
-                                    <label for="floatingInput">项目名称</label>
+        <div style="width: 80%; margin: 0 auto;">
+            <div class="fs-1">项目信息</div>
+            <table style="width: 100%">
+                <tr>
+                    <td>
+                        <div class="form-floating mb-3" style="margin: 5px auto;">
+                            <asp:TextBox
+                                ID="ProgramIDInput"
+                                runat="server"
+                                class="form-control"
+                                placeholder="">
+                            </asp:TextBox>
+                            <label for="ProgramIDInput">
+                                立项编号
+                            </label>
+                            <asp:RequiredFieldValidator
+                                ID="checkNumberNull"
+                                runat="server"
+                                ErrorMessage="请输入立项编号"
+                                Font-Strikeout="False"
+                                ControlToValidate="ProgramIDInput"
+                                CssClass="setCharRed setCharSizeSmall program-errorBox" Font-Size="10px">
+                            </asp:RequiredFieldValidator>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-floating mb-3" style="margin: 5px auto;">
+                            <asp:TextBox runat="server" class="form-control" ID="floatingInput" placeholder=""></asp:TextBox>
+                            <label for="floatingInput">项目名称</label>
 
-                                    <asp:RequiredFieldValidator
-                                        ID="RequiredFieldValidator1"
-                                        runat="server"
-                                        ErrorMessage="请输入项目名称"
-                                        Font-Strikeout="False"
-                                        ControlToValidate="floatingInput"
-                                        CssClass="setCharRed setCharSizeSmall program-errorBox" Font-Size="10px">
-                                    </asp:RequiredFieldValidator>
-                                </div>
+                            <asp:RequiredFieldValidator
+                                ID="RequiredFieldValidator1"
+                                runat="server"
+                                ErrorMessage="请输入项目名称"
+                                Font-Strikeout="False"
+                                ControlToValidate="floatingInput"
+                                CssClass="setCharRed setCharSizeSmall program-errorBox" Font-Size="10px">
+                            </asp:RequiredFieldValidator>
+                        </div>
 
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <div class="form-floating" style="margin: 5px auto;">
-                                    <asp:TextBox ID="floatingTextarea" runat="server" TextMode="MultiLine" class="form-control" placeholder="Leave a comment here" Style="min-height: 125px;"></asp:TextBox>
-                                    <label for="floatingTextarea">
-                                        项目描述
-                                    </label>
-                                    <asp:RequiredFieldValidator
-                                        ID="RequiredFieldValidator2"
-                                        runat="server"
-                                        ErrorMessage="请输入项目描述"
-                                        Font-Strikeout="False"
-                                        ControlToValidate="floatingTextarea"
-                                        CssClass="setCharRed setCharSizeSmall program-errorBox" Font-Size="10px">
-                                    </asp:RequiredFieldValidator>
-                                </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="form-floating" style="margin: 5px auto;">
+                            <asp:TextBox ID="floatingTextarea" runat="server" TextMode="MultiLine" class="form-control" placeholder="Leave a comment here" Style="min-height: 125px;"></asp:TextBox>
+                            <label for="floatingTextarea">
+                                项目描述
+                            </label>
+                            <asp:RequiredFieldValidator
+                                ID="RequiredFieldValidator2"
+                                runat="server"
+                                ErrorMessage="请输入项目描述"
+                                Font-Strikeout="False"
+                                ControlToValidate="floatingTextarea"
+                                CssClass="setCharRed setCharSizeSmall program-errorBox" Font-Size="10px">
+                            </asp:RequiredFieldValidator>
+                        </div>
 
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="form-floating mb-3" style="margin: 5px auto;">
-                                    <asp:TextBox ID="PhoneNum" runat="server" class="form-control" placeholder=""></asp:TextBox>
-                                    <label for="PhoneNum">负责人电话号码</label>
-                                    <asp:RequiredFieldValidator
-                                        ID="RequiredFieldValidator3"
-                                        runat="server"
-                                        ErrorMessage="请输入负责人电话号码"
-                                        Font-Strikeout="False"
-                                        ControlToValidate="PhoneNum"
-                                        CssClass="setCharRed setCharSizeSmall program-errorBox" Font-Size="10px">
-                                    </asp:RequiredFieldValidator>
-                                </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-floating mb-3" style="margin: 5px auto;">
+                            <asp:TextBox ID="PhoneNum" runat="server" class="form-control" placeholder=""></asp:TextBox>
+                            <label for="PhoneNum">负责人电话号码</label>
+                            <asp:RequiredFieldValidator
+                                ID="RequiredFieldValidator3"
+                                runat="server"
+                                ErrorMessage="请输入负责人电话号码"
+                                Font-Strikeout="False"
+                                ControlToValidate="PhoneNum"
+                                CssClass="setCharRed setCharSizeSmall program-errorBox" Font-Size="10px">
+                            </asp:RequiredFieldValidator>
+                        </div>
 
-                            </td>
-                            <td>
-                                <div class="form-floating mb-3" style="margin: 5px auto;">
-                                    <asp:TextBox ID="DoForm" runat="server" class="form-control" placeholder=""></asp:TextBox>
-                                    <label for="DoForm">成果形式</label>
-                                    <asp:RequiredFieldValidator
-                                        ID="RequiredFieldValidator4"
-                                        runat="server"
-                                        ErrorMessage="请输入成果形式"
-                                        Font-Strikeout="False"
-                                        ControlToValidate="ProgramIDInput"
-                                        CssClass="setCharRed setCharSizeSmall program-errorBox" Font-Size="10px">
-                                    </asp:RequiredFieldValidator>
-                                </div>
+                    </td>
+                    <td>
+                        <div class="form-floating mb-3" style="margin: 5px auto;">
+                            <asp:TextBox ID="DoForm" runat="server" class="form-control" placeholder=""></asp:TextBox>
+                            <label for="DoForm">成果形式</label>
+                            <asp:RequiredFieldValidator
+                                ID="RequiredFieldValidator4"
+                                runat="server"
+                                ErrorMessage="请输入成果形式"
+                                Font-Strikeout="False"
+                                ControlToValidate="ProgramIDInput"
+                                CssClass="setCharRed setCharSizeSmall program-errorBox" Font-Size="10px">
+                            </asp:RequiredFieldValidator>
+                        </div>
 
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <div class="form-floating" style="margin: 5px auto;">
-                                    <asp:TextBox ID="DoTextarea" runat="server" TextMode="MultiLine" class="form-control" placeholder="Leave a comment here" Style="min-height: 125px;"></asp:TextBox>
-                                    <label for="DoTextarea">成果描述</label>
-                                    <asp:RequiredFieldValidator
-                                        ID="RequiredFieldValidator5"
-                                        runat="server"
-                                        ErrorMessage="请输入成果描述"
-                                        Font-Strikeout="False"
-                                        ControlToValidate="DoTextarea"
-                                        CssClass="setCharRed setCharSizeSmall program-errorBox" Font-Size="10px">
-                                    </asp:RequiredFieldValidator>
-                                </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="form-floating" style="margin: 5px auto;">
+                            <asp:TextBox ID="DoTextarea" runat="server" TextMode="MultiLine" class="form-control" placeholder="Leave a comment here" Style="min-height: 125px;"></asp:TextBox>
+                            <label for="DoTextarea">成果描述</label>
+                            <asp:RequiredFieldValidator
+                                ID="RequiredFieldValidator5"
+                                runat="server"
+                                ErrorMessage="请输入成果描述"
+                                Font-Strikeout="False"
+                                ControlToValidate="DoTextarea"
+                                CssClass="setCharRed setCharSizeSmall program-errorBox" Font-Size="10px">
+                            </asp:RequiredFieldValidator>
+                        </div>
 
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <asp:Button ID="submit" runat="server" Text="提交" CssClass="addProgram-submit btn btn-outline-dark" OnClick="submit_Click" />
-                                <style type="text/css">
-                                    .addProgram-submit {
-                                        margin: 0;
-                                        float: left;
-                                    }
-                                </style>
-                            </td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Button ID="submit" runat="server" Text="提交" CssClass="addProgram-submit btn btn-outline-dark" OnClick="submit_Click" />
+                        <style type="text/css">
+                            .addProgram-submit {
+                                margin: 0;
+                                float: left;
+                            }
+                        </style>
+                    </td>
 
-                            <td>
-                                <asp:Button ID="clear" runat="server" Text="清除" CssClass="addProgram-clear btn btn-outline-dark" OnClick="clear_Click" ValidationGroup="NEXT" />
-                                <style type="text/css">
-                                    .addProgram-clear {
-                                        margin: 0;
-                                        float: right;
-                                    }
-                                </style>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
+                    <td>
+                        <asp:Button ID="clear" runat="server" Text="清除" CssClass="addProgram-clear btn btn-outline-dark" OnClick="clear_Click" ValidationGroup="NEXT" />
+                        <style type="text/css">
+                            .addProgram-clear {
+                                margin: 0;
+                                float: right;
+                            }
+                        </style>
+                    </td>
+                </tr>
+            </table>
+        </div>
 
         <div class="z-3 ppshade">
             <div class="index_box">
