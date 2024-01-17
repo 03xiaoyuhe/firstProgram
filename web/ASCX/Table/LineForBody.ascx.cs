@@ -68,7 +68,7 @@ public partial class ASCX_Table_LineForBody : System.Web.UI.UserControl
     {
         for (int i = 0; i < ColumnNum; i++)
         {
-            ASCX_Table_CellForTable NewCell = (ASCX_Table_CellForTable)LoadControl("~/ASCX/Table/CellForTable.ascx");
+            ASCX_Table_CellForBody NewCell = (ASCX_Table_CellForBody)LoadControl("~/ASCX/Table/CellForBody.ascx");
             NewCell.ID = ID + String.Format("_{0}", i);
             NewCell.CellData = DataForALine[TheLineDateForTable.LineToShow[i]].ToString();
             CellHolder.Controls.Add(NewCell);

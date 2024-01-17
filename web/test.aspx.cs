@@ -10,6 +10,11 @@ public partial class test : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        //LoadTable();
+    }
+
+    void LoadTable()
+    {
         DataSet dataSet = ProjectCompletion.ProjectVision();
         DataTable dataTable = dataSet.Tables[0];
         List<string> list = new List<string>();
@@ -38,7 +43,5 @@ public partial class test : System.Web.UI.Page
         NewLine.TableBase = tableAttribute;
         NewLine.DataCollection = dataTable;
         PlaceHolder1.Controls.Add(NewLine);
-
-
     }
 }

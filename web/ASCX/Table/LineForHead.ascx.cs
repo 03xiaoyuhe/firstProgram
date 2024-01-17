@@ -65,13 +65,13 @@ public partial class ASCX_Table_LineForHead : System.Web.UI.UserControl
     {
         for(int i = 0; i < ColumnNum; i++)
         {
-            ASCX_Table_CellForTable NewCell = (ASCX_Table_CellForTable)LoadControl("~/ASCX/Table/CellForTable.ascx");
+            ASCX_Table_CellForHead NewCell = (ASCX_Table_CellForHead)LoadControl("~/ASCX/Table/CellForTable.ascx");
             NewCell.ID = ID + String.Format("_{0}", i);
             NewCell.CellData = LineToMean[lineToShow[i]];
             CellHolder.Controls.Add(NewCell);
             Count++;
         }
-        ASCX_Table_CellForTable newCell = (ASCX_Table_CellForTable)LoadControl("~/ASCX/Table/CellForTable.ascx");
+        ASCX_Table_CellForHead newCell = (ASCX_Table_CellForHead)LoadControl("~/ASCX/Table/CellForTable.ascx");
         newCell.CellData = "操作";
         CellHolder.Controls.Add(newCell);
     }
