@@ -12,7 +12,7 @@
     <title></title>
 </head>
 <body>
-    <style>
+<%--    <style>
         table {
             position:relative;
             height:100px;
@@ -58,7 +58,7 @@
         /*.sticky-table table {
             table-layout: fixed;
         }*/
-    </style>
+    </style>--%>
     <form id="form1" runat="server">
         <div class="sticky-table">
         
