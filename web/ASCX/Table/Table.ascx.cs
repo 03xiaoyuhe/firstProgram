@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,7 +10,27 @@ public partial class ASCX_Table_Table : System.Web.UI.UserControl
 {
     #region 自定义参数
 
-    TableAttribute tableBase = null;
+
+    DataTable dataCollection;
+    public DataTable DataCollection
+    {
+        get
+        {
+            if (dataCollection == null)
+            {
+                throw (new Exception("自定义表格对象未绑定数据"));
+            }
+
+            return dataCollection;
+        }
+
+        set
+        {
+            dataCollection = value;
+        }
+    }
+
+        TableAttribute tableBase = null;
     public TableAttribute TableBase
     {
         get
@@ -27,7 +48,7 @@ public partial class ASCX_Table_Table : System.Web.UI.UserControl
     { 
         get
         {
-            return TableBase.DataCollection.Rows.Count;
+            return DataCollection.Rows.Count;
         }
     }
 
@@ -53,17 +74,14 @@ public partial class ASCX_Table_Table : System.Web.UI.UserControl
         NewHead.LineToShow = TableBase.LineToShow;
         NewHead.LineToMean = TableBase.LineToMean;
         HeadHolder.Controls.Add(NewHead);
-        for (int i = 0; i < Count; i++)
-        {
-            BodyHolder.Controls.Add(this.Page.FindControl(ID + String.Format("_{0}", i)));
-        }
-        for (int i = Count; i < RowsCount; i++)
+        for (int i = 0; i < RowsCount; i++)
         {
             ASCX_Table_LineForBody NewLine = (ASCX_Table_LineForBody)LoadControl("~/ASCX/Table/LineForBody.ascx");
             NewLine.ID = ID + String.Format("_{0}", i);
             LineDateForTable lineDateForTable = new LineDateForTable();
             lineDateForTable.IDLable = TableBase.IDLable;
-            lineDateForTable.DataForALine = TableBase.DataCollection.Rows[i];
+            lineDateForTable.LineToShow = TableBase.LineToShow;
+            NewLine.DataForALine = DataCollection.Rows[i];
             NewLine.TheLineDateForTable = lineDateForTable;
             BodyHolder.Controls.Add(NewLine);
             Count++;

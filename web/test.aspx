@@ -1,5 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="test.aspx.cs" Inherits="test" %>
 
+<%@ Register Src="~/ASCX/Table/Table.ascx" TagName="Table" TagPrefix="Table" %>
+<%@ Register Src="~/ASCX/Massage/PrintMassage.ascx" TagName="PrintMassage" TagPrefix="TPrintMassage" %>
+
+<%@ Register Src="~/ASCX/Table/DeletButten.ascx" TagName="Table" TagPrefix="DeletButten" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -11,7 +15,7 @@
     <link rel="stylesheet" href="CSS/Table.css" />
     <form id="form1" runat="server">
         <div>
-        <div style="height:1000px;"></div>
+        
             <table>
                 <thead>
                     <tr>
@@ -27,6 +31,11 @@
                 </tbody>
             </table>
         </div>
+
+        <asp:PlaceHolder ID="PlaceHolder1" runat="server">
+
+        </asp:PlaceHolder>
+        <TPrintMassage:PrintMassage ID="aaa" runat="server" />
     </form>
 </body>
 </html>

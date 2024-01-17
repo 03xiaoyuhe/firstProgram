@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
 
-public partial class ASCX_Table_LineForHead : ASCX_Table_LineForTable
+public partial class ASCX_Table_LineForHead : System.Web.UI.UserControl
 {
 
     Dictionary<string, string> lineToMean = null;
@@ -63,11 +63,7 @@ public partial class ASCX_Table_LineForHead : ASCX_Table_LineForTable
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        for(int i = 0; i < Count; i++)
-        {
-            CellHolder.Controls.Add(this.Page.FindControl(ID + String.Format("_{0}", i)));
-        }
-        for(int i = Count; i < ColumnNum; i++)
+        for(int i = 0; i < ColumnNum; i++)
         {
             ASCX_Table_CellForTable NewCell = (ASCX_Table_CellForTable)LoadControl("~/ASCX/Table/CellForTable.ascx");
             NewCell.ID = ID + String.Format("_{0}", i);

@@ -19,7 +19,7 @@ public class TableAttribute
     public string DataBase { get; set; }
 
 
-    string idLable = null;
+    string idLable;
     public string IDLable
     {
         get
@@ -29,37 +29,44 @@ public class TableAttribute
         set
         {
             idLable = value;
+
+
+            //if (lineToMean == null)
+            //{
+            //    InitLineToMean();
+            //}
         }
     }
 
-    DataTable dataCollection = null;
-    public DataTable DataCollection
-    {
-        get
-        {
-            if(dataCollection == null)
-            {
-                throw (new Exception("自定义表格对象未绑定数据"));
-            }
 
-            if(IDLable == null)
-            {
-                throw (new Exception("自定义表格对象未指定主键"));
-            }
-            return dataCollection;
-        }
+    //DataTable dataCollection;
+    //public DataTable DataCollection
+    //{
+    //    get
+    //    {
+    //        if(dataCollection == null)
+    //        {
+    //            throw (new Exception("自定义表格对象未绑定数据"));
+    //        }
 
-        set
-        {
-            dataCollection = value;
-            if (lineToMean == null)
-            {
-                InitLineToMean();
-            }
-        }
-    }
+    //        if(IDLable == null)
+    //        {
+    //            throw (new Exception("自定义表格对象未指定主键"));
+    //        }
+    //        return dataCollection;
+    //    }
 
-    Dictionary<string, string> lineToMean = null;
+    //    set
+    //    {
+    //        dataCollection = value;
+    //        if (lineToMean == null && IDLable != null)
+    //        {
+    //            InitLineToMean();
+    //        }
+    //    }
+    //}
+
+    Dictionary<string, string> lineToMean;
     /// <summary>
     /// 表格列信息 以及对应中文
     /// </summary>
@@ -67,20 +74,20 @@ public class TableAttribute
     {
         get
         {
-            if (dataCollection == null)
-            {
-                throw (new Exception("表格对象未绑定数据"));
-            }
+            //if (dataCollection == null)
+            //{
+            //    throw (new Exception("表格对象未绑定数据"));
+            //}
 
             if (IDLable == null)
             {
                 throw (new Exception("自定义表格对象未指定主键"));
             }
 
-            if (lineToMean == null)
-            {
-                InitLineToMean();
-            }
+            //if (lineToMean == null)
+            //{
+            //    InitLineToMean();
+            //}
 
             return lineToMean;
         }
@@ -94,7 +101,7 @@ public class TableAttribute
         }
     }
 
-    List<string> lineToShow = null;
+    List<string> lineToShow;
     /// <summary>
     /// 设置需要显示的列以及显示顺序<br/>
     /// 注:使用表的字段名
@@ -103,10 +110,10 @@ public class TableAttribute
     {
         get
         {
-            if (dataCollection == null)
-            {
-                throw (new Exception("表格对象未绑定数据"));
-            }
+            //if (dataCollection == null)
+            //{
+            //    throw (new Exception("表格对象未绑定数据"));
+            //}
 
             if (IDLable == null)
             {
@@ -144,15 +151,16 @@ public class TableAttribute
     /// <param name="line_to_mean">字段名对应的列名</param>
     /// <param name="line_to_show">需要展示的列以及顺序 (以字段名标识)</param>
     public TableAttribute(
-        DataTable data_collection,
+        //DataTable data_collection,
+        string iDlable,
         string data_base = null,
         Dictionary<string, string> line_to_mean = null,
         List<string> line_to_show = null
         )
     {
-        DataCollection = data_collection;
+        //DataCollection = data_collection;
+        IDLable = iDlable;
         if (data_base != null) { DataBase = data_base; }
-        if (data_collection != null) { DataCollection = data_collection; }
         if (line_to_mean != null) { LineToMean = line_to_mean; }
         if (line_to_show != null) { LineToShow = line_to_show; }
     }
@@ -175,16 +183,17 @@ public class TableAttribute
         }
     }
 
-    void InitLineToMean()
-    {
-        Dictionary<string, string> line_to_ = new Dictionary<string, string>();
-        foreach (DataColumn item in DataCollection.Columns)
-        {
-            line_to_.Add(item.ColumnName, item.ColumnName);
-        }
+    //void InitLineToMean()
+    //{
+    //    Dictionary<string, string> line_to_ = new Dictionary<string, string>();
+    //    foreach (DataColumn item in DataCollection.Columns)
+    //    {
+    //        line_to_.Add(item.ColumnName, item.ColumnName);
+    //    }
 
-        LineToMean.Clear();
-        LineToMean = line_to_;
-    }
+    //    LineToMean.Clear();
+    //    LineToMean = line_to_;
+    //}
+
     #endregion
 }

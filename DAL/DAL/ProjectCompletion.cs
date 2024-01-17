@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
 
 namespace DAL
 {   
@@ -124,15 +125,17 @@ namespace DAL
         /// 显示表中的所有信息
         /// </summary>
         /// <returns></returns>
-        static public bool ProjectVision()
+        static public DataSet  ProjectVision()
         {
-            string query = "select proposal_number,project_title,project_description,team_id,achievement_form,achievement_brief from ProjectApplications;";
-            object rowsAffected = DBHelper.GetSingle(query);
+            string query = "select * from ProjectApplications;";
+            DataSet result = DBHelper.Query(query);
 
-            int count = Convert.ToInt32(rowsAffected);
+            //DataTable dt = result.Tables[0];
 
-            return count>0;
-            
+            //int count = Convert.ToInt32(dt.Rows[0]["count"]);
+
+            return result;
+
         }
 
         /// <summary>
@@ -157,14 +160,14 @@ namespace DAL
         /// <summary>
         /// 利用立项编号对应删除表中的该项目信息
         /// </summary>
-        /// <param name="proposal_number">立项编号</param>
+        /// <param name="project_id">项目id</param>
         /// <returns></returns>
-        static public bool ProjectVision(string proposal_number)
+        static public bool ProjectDeteleVision(string project_id)
         {
-            string query = "DELETE FROM ProjectApplications WHERE proposal_number='@proposal_number';";
+            string query = "DELETE FROM ProjectApplications WHERE project_id=@project_id;";
             SqlParameter[] parameters =
             {
-                new SqlParameter("@proposal_number",SqlDbType.NVarChar) {Value=proposal_number},
+                new SqlParameter("@project_id",SqlDbType.Int) {Value = project_id},
             };
 
             int rowsAffecteed = DBHelper.ExecuteSql(query, parameters);

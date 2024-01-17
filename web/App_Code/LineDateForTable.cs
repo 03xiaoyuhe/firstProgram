@@ -26,30 +26,30 @@ public class LineDateForTable
     }
 
 
-    public string RowID
-    {
-        get
-        {
-            return dataRow[IDLable].ToString();
-        }
-    }
+    //public string RowID
+    //{
+    //    get
+    //    {
+    //        return dataRow[IDLable].ToString();
+    //    }
+    //}
 
-    DataRow dataRow;
-    public DataRow DataForALine
-    {
-        get
-        {
-            if (IDLable == null)
-            {
-                throw new Exception("未指定列主键标识");
-            }
-            return dataRow;
-        }
-        set
-        {
-            dataRow = value;
-        }
-    }
+    //DataRow dataRow;
+    //public DataRow DataForALine
+    //{
+    //    get
+    //    {
+    //        if (IDLable == null)
+    //        {
+    //            throw new Exception("未指定列主键标识");
+    //        }
+    //        return dataRow;
+    //    }
+    //    set
+    //    {
+    //        dataRow = value;
+    //    }
+    //}
 
 
 
@@ -101,14 +101,14 @@ public class LineDateForTable
         }
     }
 
-    void InitLineToMean()
-    {
-        Dictionary<string, string> line_to_ = new Dictionary<string, string>();
-        foreach (DataColumn item in dataRow.Table.Columns)
-        {
-            line_to_.Add(item.ColumnName, item.ColumnName);
-        }
-    }
+    //void InitLineToMean()
+    //{
+    //    Dictionary<string, string> line_to_ = new Dictionary<string, string>();
+    //    foreach (DataColumn item in dataRow.Table.Columns)
+    //    {
+    //        line_to_.Add(item.ColumnName, item.ColumnName);
+    //    }
+    //}
 
     #endregion
 
