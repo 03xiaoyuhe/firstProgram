@@ -16,7 +16,15 @@ public partial class test : System.Web.UI.Page
     void LoadTable()
     {
         DataSet dataSet = ProjectCompletion.ProjectVision();
-        DataTable dataTable = dataSet.Tables[0];
+        DataTable dataTable;
+        try
+        {
+            dataTable = dataSet.Tables[0];
+        }
+        catch
+        {
+            dataTable = null;
+        }
         List<string> list = new List<string>();
         list.Add("proposal_number");
         list.Add("project_title");
@@ -43,5 +51,10 @@ public partial class test : System.Web.UI.Page
         NewLine.TableBase = tableAttribute;
         NewLine.DataCollection = dataTable;
         PlaceHolder1.Controls.Add(NewLine);
+    }
+
+    protected void PlaceHolder1_Load(object sender, EventArgs e)
+    {
+        LoadTable();
     }
 }

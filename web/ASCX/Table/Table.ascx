@@ -9,24 +9,21 @@
 <style type="text/css">
     table {
         position: relative;
-        height: 100px;
         width: 100%;
         border-collapse: collapse;
     }
 
     .sticky-table {
         overflow: auto;
-        height: 500px; /* 设置固定高度 */
-        width: 500px;
+        height: 100%; /* 设置固定高度 */
+        width: 100%;
         margin: auto;
-        margin-top: 200px;
     }
 
         .sticky-table td, .sticky-table th {
             /* 设置td,th宽度高度 */
             border: 1px solid #c7d8ee;
-            width: 150px;
-            min-width: 150px;
+            max-width: 150px;
             height: 30px;
             padding: 5px;
         }
@@ -35,6 +32,7 @@
             position: sticky;
             top: 0; /* 首行永远固定在头部  */
             background-color: #eaf4ff; /*设置表头背景色*/
+            font-weight:normal;
         }
 
 
@@ -54,14 +52,21 @@
         }*/
 </style>
 <%--<link rel="stylesheet" href="CSS/Table.css" />--%>
+<div>
 
-<div class="sticky-table">
-    <table>
-        <thead>
-            <asp:PlaceHolder ID="HeadHolder" runat="server"></asp:PlaceHolder>
-        </thead>
-        <tbody>
-            <asp:PlaceHolder ID="BodyHolder" runat="server"></asp:PlaceHolder>
-        </tbody>
-    </table>
+    <asp:Panel ID="Panel1" runat="server">
+        <div class="sticky-table">
+            <table>
+                <thead>
+                    <asp:PlaceHolder ID="HeadHolder" runat="server"></asp:PlaceHolder>
+                </thead>
+                <tbody>
+                    <asp:PlaceHolder ID="BodyHolder" runat="server"></asp:PlaceHolder>
+                </tbody>
+            </table>
+            <asp:PlaceHolder ID="NullMassage" runat="server" Visible="False">
+                <div style="width: 100%; text-align: center; font-weight: bold; color:rgb(128, 128, 128)">无任何数据</div>
+            </asp:PlaceHolder>
+        </div>
+    </asp:Panel>
 </div>
