@@ -9,18 +9,24 @@ using System.Web.UI.WebControls;
 public partial class ASCX_Table_Table : System.Web.UI.UserControl
 {
     #region 自定义参数
-
-
+    int height;
+    public int Height
+    {
+        get
+        {
+            if(height > 100) return height;
+            else return 100;
+        }
+        set
+        {
+            height = value;
+        }
+    }
     DataTable dataCollection;
     public DataTable DataCollection
     {
         get
         {
-            if (dataCollection == null)
-            {
-                throw (new Exception("自定义表格对象未绑定数据"));
-            }
-
             return dataCollection;
         }
 
@@ -48,7 +54,11 @@ public partial class ASCX_Table_Table : System.Web.UI.UserControl
     { 
         get
         {
-            return DataCollection.Rows.Count;
+            if(dataCollection != null)
+            {
+                return DataCollection.Rows.Count;
+            }
+            return 0;
         }
     }
 
@@ -69,22 +79,29 @@ public partial class ASCX_Table_Table : System.Web.UI.UserControl
     #endregion
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        Panel1.Height = (System.Web.UI.WebControls.Unit)Height;
         ASCX_Table_LineForHead NewHead = (ASCX_Table_LineForHead)LoadControl("~/ASCX/Table/LineForHead.ascx");
         NewHead.LineToShow = TableBase.LineToShow;
         NewHead.LineToMean = TableBase.LineToMean;
         HeadHolder.Controls.Add(NewHead);
-        for (int i = 0; i < RowsCount; i++)
+        if(DataCollection != null)
         {
-            ASCX_Table_LineForBody NewLine = (ASCX_Table_LineForBody)LoadControl("~/ASCX/Table/LineForBody.ascx");
-            NewLine.ID = ID + String.Format("_{0}", i);
-            LineDateForTable lineDateForTable = new LineDateForTable();
-            lineDateForTable.IDLable = TableBase.IDLable;
-            lineDateForTable.LineToShow = TableBase.LineToShow;
-            NewLine.DataForALine = DataCollection.Rows[i];
-            NewLine.TheLineDateForTable = lineDateForTable;
-            BodyHolder.Controls.Add(NewLine);
-            Count++;
+            for (int i = 0; i < RowsCount; i++)
+            {
+                ASCX_Table_LineForBody NewLine = (ASCX_Table_LineForBody)LoadControl("~/ASCX/Table/LineForBody.ascx");
+                NewLine.ID = ID + String.Format("_{0}", i);
+                LineDateForTable lineDateForTable = new LineDateForTable();
+                lineDateForTable.IDLable = TableBase.IDLable;
+                lineDateForTable.LineToShow = TableBase.LineToShow;
+                NewLine.DataForALine = DataCollection.Rows[i];
+                NewLine.TheLineDateForTable = lineDateForTable;
+                BodyHolder.Controls.Add(NewLine);
+                Count++;
+            }
+        }
+        else
+        {
+            NullMassage.Visible = true;
         }
     }
 
