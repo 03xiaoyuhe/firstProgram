@@ -48,11 +48,11 @@
 
 
 
-        table caption {
-            font-size: 2em;
-            font-weight: bold;
-            margin: 1em 0;
-        }
+    table caption {
+        font-size: 2em;
+        font-weight: bold;
+        margin: 1em 0;
+    }
 
     th, td {
         border: 1px solid #999;
@@ -87,12 +87,13 @@
         }*/
 </style>
 <%--<link rel="stylesheet" href="CSS/Table.css" />--%>
-<asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
 
-    <ContentTemplate>
+<div>
 
-        <div>
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
 
+        <ContentTemplate>
+            <asp:Button ID ="OpenSearchBtn" runat="server" />
             <asp:Panel ID="Panel1" runat="server">
                 <div class="sticky-table">
                     <table>
@@ -108,7 +109,7 @@
                     </asp:PlaceHolder>
                 </div>
             </asp:Panel>
-        </div>
-    </ContentTemplate>
+        </ContentTemplate>
 
-</asp:UpdatePanel>
+    </asp:UpdatePanel>
+</div>
