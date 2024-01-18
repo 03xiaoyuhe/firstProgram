@@ -10,7 +10,7 @@ public partial class test : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //LoadTable();
+
     }
 
     void LoadTable()
@@ -50,6 +50,7 @@ public partial class test : System.Web.UI.Page
         ASCX_Table_Table NewLine = (ASCX_Table_Table)LoadControl("~/ASCX/Table/Table.ascx");
         NewLine.TableBase = tableAttribute;
         NewLine.DataCollection = dataTable;
+        NewLine.Height = 400;
         PlaceHolder1.Controls.Add(NewLine);
     }
 

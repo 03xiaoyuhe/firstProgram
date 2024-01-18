@@ -75,6 +75,7 @@ public partial class ASCX_Table_LineForBody : System.Web.UI.UserControl
             Count++;
         }
         ASCX_Table_DeletButten newCell = (ASCX_Table_DeletButten)LoadControl("~/ASCX/Table/DeletButten.ascx");
+        newCell.ID = ID + String.Format("_{0}", ColumnNum);
         newCell.DataID = RowID;
         CellHolder.Controls.Add(newCell);
     }

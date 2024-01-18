@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    internal class Class1
+    public class AllRoads
     {
+        static public bool Vision()
+        {
+            string query = "select *from ";
+            return true;
+        }
+
     }
 }
