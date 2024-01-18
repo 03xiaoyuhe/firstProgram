@@ -31,8 +31,7 @@
         .sticky-table th {
             position: sticky;
             top: 0; /* 首行永远固定在头部  */
-            background-color: #eaf4ff; /*设置表头背景色*/
-            font-weight:normal;
+            font-weight: normal;
         }
 
 
@@ -47,13 +46,48 @@
                 word-break: break-all;
             }
 
+
+
+        table caption {
+            font-size: 2em;
+            font-weight: bold;
+            margin: 1em 0;
+        }
+
+    th, td {
+        border: 1px solid #999;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    table thead tr {
+        background-color: #008c8c;
+        color: #fff;
+    }
+
+    table tbody tr:nth-child(odd) {
+        background-color: #eee;
+    }
+
+    table tbody tr:hover {
+        background-color: #ccc;
+    }
+
+    table tbody tr td:first-child {
+        color: #f40;
+    }
+
+    table tfoot tr td {
+        text-align: right;
+        padding-right: 20px;
+    }
+
     /*.sticky-table table {
             table-layout: fixed;
         }*/
 </style>
 <%--<link rel="stylesheet" href="CSS/Table.css" />--%>
 <div>
-
     <asp:Panel ID="Panel1" runat="server">
         <div class="sticky-table">
             <table>
@@ -65,7 +99,7 @@
                 </tbody>
             </table>
             <asp:PlaceHolder ID="NullMassage" runat="server" Visible="False">
-                <div style="width: 100%; text-align: center; font-weight: bold; color:rgb(128, 128, 128)">无任何数据</div>
+                <div style="width: 100%; text-align: center; font-weight: bold; color: rgb(128, 128, 128)">无任何数据</div>
             </asp:PlaceHolder>
         </div>
     </asp:Panel>
