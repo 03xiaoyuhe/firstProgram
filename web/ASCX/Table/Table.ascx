@@ -32,7 +32,7 @@
             position: sticky;
             top: 0; /* 首行永远固定在头部  */
             background-color: #eaf4ff; /*设置表头背景色*/
-            font-weight:normal;
+            font-weight: normal;
         }
 
 
@@ -52,21 +52,28 @@
         }*/
 </style>
 <%--<link rel="stylesheet" href="CSS/Table.css" />--%>
-<div>
+<asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
 
-    <asp:Panel ID="Panel1" runat="server">
-        <div class="sticky-table">
-            <table>
-                <thead>
-                    <asp:PlaceHolder ID="HeadHolder" runat="server"></asp:PlaceHolder>
-                </thead>
-                <tbody>
-                    <asp:PlaceHolder ID="BodyHolder" runat="server"></asp:PlaceHolder>
-                </tbody>
-            </table>
-            <asp:PlaceHolder ID="NullMassage" runat="server" Visible="False">
-                <div style="width: 100%; text-align: center; font-weight: bold; color:rgb(128, 128, 128)">无任何数据</div>
-            </asp:PlaceHolder>
+    <ContentTemplate>
+
+        <div>
+
+            <asp:Panel ID="Panel1" runat="server">
+                <div class="sticky-table">
+                    <table>
+                        <thead>
+                            <asp:PlaceHolder ID="HeadHolder" runat="server"></asp:PlaceHolder>
+                        </thead>
+                        <tbody>
+                            <asp:PlaceHolder ID="BodyHolder" runat="server"></asp:PlaceHolder>
+                        </tbody>
+                    </table>
+                    <asp:PlaceHolder ID="NullMassage" runat="server" Visible="False">
+                        <div style="width: 100%; text-align: center; font-weight: bold; color: rgb(128, 128, 128)">无任何数据</div>
+                    </asp:PlaceHolder>
+                </div>
+            </asp:Panel>
         </div>
-    </asp:Panel>
-</div>
+    </ContentTemplate>
+
+</asp:UpdatePanel>
