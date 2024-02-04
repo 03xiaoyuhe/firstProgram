@@ -8,15 +8,16 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-        <link href="~/bootstrap-5.3.0-alpha1-dist/css/bootstrap-reboot.min.css" rel="stylesheet" />
+    
+    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="./bootstrap-5.3.0-alpha1-dist/css/bootstrap-reboot.min.css" rel="stylesheet" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
 </head>
 <body>
     <form id="form1" runat="server">
-
-        <TPrintMassage:PrintMassage ID="aaa" runat="server" />
-        
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <%--<TPrintMassage:PrintMassage ID="aaa" runat="server" />--%>
         <asp:PlaceHolder ID="PlaceHolder1" runat="server" OnLoad="PlaceHolder1_Load"></asp:PlaceHolder>
     </form>
 </body>

@@ -20,7 +20,21 @@ using System.Xml.Linq;
 /// </summary>
 public partial class ASCX_PrintMassage : System.Web.UI.UserControl
 {
-    static int Count = -1;
+
+    int Count
+    {
+        get
+        {
+            if (ViewState["ControlCount"] == null)
+                ViewState["ControlCount"] = 0;
+            return (int)ViewState["ControlCount"];
+        }
+        set
+        {
+            ViewState["ControlCount"] = value;
+        }
+    }
+
     static List<HttpCookie> AllCookies = new List<HttpCookie>();
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -29,6 +43,7 @@ public partial class ASCX_PrintMassage : System.Web.UI.UserControl
 
     protected void Timer1_Tick(object sender, EventArgs e)
     {
+        //time.Text = DateTime.Now.ToString();
         int count = 0;
 
         /// 统计消息Cookie数量在与显示数量不同时刷新消息显示控件

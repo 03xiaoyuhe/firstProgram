@@ -90,10 +90,10 @@
 
 <div>
 
-    <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
 
         <ContentTemplate>
-            <asp:Button ID ="OpenSearchBtn" runat="server" />
+            <asp:Button ID ="OpenSearchBtn" runat="server" text="sss"/>
             <asp:Panel ID="Panel1" runat="server">
                 <div class="sticky-table">
                     <table>
