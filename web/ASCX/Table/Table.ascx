@@ -93,7 +93,11 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
 
         <ContentTemplate>
-            <asp:Button ID ="OpenSearchBtn" runat="server" text="sss"/>
+            <div>
+                <asp:Button ID="OpenSearchBtn" runat="server" Text="刷新" />
+                
+            </div>
+
             <asp:Panel ID="Panel1" runat="server">
                 <div class="sticky-table">
                     <table>

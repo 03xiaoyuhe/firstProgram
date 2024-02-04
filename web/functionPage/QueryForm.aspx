@@ -25,7 +25,7 @@
 
 
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
     <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet" />
 
@@ -45,8 +45,9 @@
             background-repeat: no-repeat;
             background-size: contain;
             display: inline-table;
-            height: 50px;
-            width: 50px;
+            height: 25px;
+            width: 25px;
+            background-color:white;
         }
 
 
@@ -162,8 +163,7 @@
 
 <body style="overflow: hidden;">
     <script type="text/javascript" src="../JS/QueryFormJS.js"></script>
-    <script type="text/javascript">
-</script>
+    <script type="text/javascript"></script>
 
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
         <symbol id="check2" viewBox="0 0 16 16">
@@ -189,18 +189,21 @@
             data-bs-toggle="dropdown"
             aria-label="Toggle theme (auto)">
             <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
-                <use href="#circle-half"></use></svg>
+                <use href="#circle-half"></use>
+            </svg>
             <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
         </button>
         <ul class="mergin dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
             <li>
                 <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
                     <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
-                        <use href="#sun-fill"></use></svg>
+                        <use href="#sun-fill"></use>
+                    </svg>
                     Light
                    
                         <svg class="bi ms-auto d-none" width="1em" height="1em">
-                            <use href="#check2"></use></svg>
+                            <use href="#check2"></use>
+                        </svg>
                 </button>
             </li>
             <li>
@@ -230,60 +233,59 @@
 
 
     <header class="p-3 mb-3 border-bottom">
-        <div class="container">
-            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <a href="../home.aspx" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
-                    <div class="logo">
-                    </div>
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="../home.aspx" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+                <div class="logo"></div>
+                <div style="font-weight:bold;font-style: oblique; color: #0000007d;padding-right:10px; border-right: solid 5px #0000007d">
+                    哲学与社会科学规划项目信息化管理平台
+                </div>
+                
+            </a>
+            <ul class="mergin nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" style="margin-left: 50px;">
+
+                <li>
+                    <input type="radio" class="btn-check" name="options-base" id="option5" autocomplete="off" /><!--checked-->
+                    <label
+                        class="btn"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#ForProgrem"
+                        aria-expanded="true"
+                        aria-controls="ForProgrem"
+                        for="option5">
+                        项目管理
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" class="btn-check" name="options-base" id="option6" autocomplete="off">
+                    <label
+                        class="btn"
+                        for="option6"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#ForApplication"
+                        aria-expanded="true"
+                        aria-controls="ForApplication">
+                        申请管理
+                    </label>
+                </li>
+            </ul>
+
+            <div class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                <input type="search" class="form-control" placeholder="Search..." aria-label="Search" />
+            </div>
+
+            <div class="dropdown text-end">
+                <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
                 </a>
-
-                <ul class="mergin nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-
-                    <li><a href="../home.aspx" class="nav-link px-2 link-secondary btn">主页</a></li>
+                <ul class="dropdown-menu text-small">
+                    <li><a class="dropdown-item" href="#">New project...</a></li>
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
                     <li>
-                        <input type="radio" class="btn-check" name="options-base" id="option5" autocomplete="off" /><!--checked-->
-                        <label
-                            class="btn"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#ForProgrem"
-                            aria-expanded="true"
-                            aria-controls="ForProgrem"
-                            for="option5">
-                            项目管理
-                        </label>
+                        <hr class="dropdown-divider" />
                     </li>
-                    <li>
-                        <input type="radio" class="btn-check" name="options-base" id="option6" autocomplete="off">
-                        <label
-                            class="btn"
-                            for="option6"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#ForApplication"
-                            aria-expanded="true"
-                            aria-controls="ForApplication">
-                            申请管理
-                        </label>
-                    </li>
+                    <li><a class="dropdown-item" href="#">Sign out</a></li>
                 </ul>
-
-                <div class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                    <input type="search" class="form-control" placeholder="Search..." aria-label="Search" />
-                </div>
-
-                <div class="dropdown text-end">
-                    <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-                    </a>
-                    <ul class="dropdown-menu text-small">
-                        <li><a class="dropdown-item" href="#">New project...</a></li>
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                        <li>
-                            <hr class="dropdown-divider" />
-                        </li>
-                        <li><a class="dropdown-item" href="#">Sign out</a></li>
-                    </ul>
-                </div>
             </div>
         </div>
     </header>
