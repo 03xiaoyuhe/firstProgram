@@ -21,7 +21,7 @@
     <link rel="icon" href="../img/logo.png" type="image/x-icon" />
 
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sidebars/">
+    <link rel="canonical" href="../bootstrap-5.3.2-examples/sidebars/sidebars.css">
 
 
 
