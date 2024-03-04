@@ -21,11 +21,11 @@
     <link rel="icon" href="../img/logo.png" type="image/x-icon" />
 
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sidebars/">
+    <%--<link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sidebars/">--%>
 
 
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+    <%--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />--%>
 
     <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet" />
 
@@ -460,9 +460,9 @@
         </div>
     </main>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-    <form runat="server">
+<%--    <form runat="server">
         <TPrintMassage:PrintMassage ID="aaa" runat="server" />
-    </form>
+    </form>--%>
     <script src="../JS/sidebars.js"></script>
 </body>
 </html>
