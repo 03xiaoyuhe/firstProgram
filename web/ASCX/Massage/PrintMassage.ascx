@@ -36,6 +36,7 @@
         <ContentTemplate>
             <asp:Timer ID="Timer1" runat="server" Interval="200" OnTick="Timer1_Tick">
             </asp:Timer>
+            <%--<asp:Label ID ="time" runat ="server"></asp:Label>--%>
         </ContentTemplate>
     </asp:UpdatePanel>
 
