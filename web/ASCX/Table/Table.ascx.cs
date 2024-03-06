@@ -86,6 +86,10 @@ public partial class ASCX_Table_Table : System.Web.UI.UserControl
         HeadHolder.Controls.Add(NewHead);
         if(DataCollection != null)
         {
+            if(RowsCount == 0 )
+            {
+                NullMassage.Visible = true;
+            }
             for (int i = 0; i < RowsCount; i++)
             {
                 ASCX_Table_LineForBody NewLine = (ASCX_Table_LineForBody)LoadControl("~/ASCX/Table/LineForBody.ascx");
@@ -101,7 +105,8 @@ public partial class ASCX_Table_Table : System.Web.UI.UserControl
         }
         else
         {
-            NullMassage.Visible = true;
+            Massage massage = new Massage("#ff0000", "ERRO", "未将数据绑定到表格");
+            massage.PostMassage();
         }
     }
 
