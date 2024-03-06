@@ -62,7 +62,7 @@ public class Massage
         aCookie.Values["HeadColor"] = HeadColor;
         aCookie.Values["HeadText"] = HeadText;
         aCookie.Values["DataTime"] = DataTime;
-        aCookie.Values["MassageText"] = MassageText;
+        aCookie.Values["MassageText"] = HttpUtility.UrlEncode(MassageText);
 
         /// 识别消息的时间单位并设置销毁时间
         switch (timeModo)
