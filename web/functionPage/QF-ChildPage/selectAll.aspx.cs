@@ -52,7 +52,7 @@ public partial class test : System.Web.UI.Page
         NewLine.TableBase = tableAttribute;
         NewLine.DataCollection = dataTable;
         NewLine.Height = 400;
-        NewLine.TableName = "";
+        //NewLine.TableName = "";
         PlaceHolder1.Controls.Add(NewLine);
     }
 
