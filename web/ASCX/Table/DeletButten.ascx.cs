@@ -1,6 +1,7 @@
 ﻿using DAL;
 using System;
 using System.Collections.Generic;
+using System.EnterpriseServices;
 using System.Linq;
 using System.ServiceModel.Channels;
 using System.Web;
@@ -11,6 +12,23 @@ public partial class ASCX_Table_DeletButten : System.Web.UI.UserControl
 {
 
     #region 参数成员
+
+    /// <summary>
+    /// 绑定数据库对应表单
+    /// </summary>
+    string tableName = null;
+    public string TableName
+    {
+        get
+        {
+            if (tableName == null) throw new Exception("表格未绑定表单");
+            return tableName;
+        }
+        set
+        {
+            tableName = value;
+        }
+    }
 
     string dataID;
     public string DataID
@@ -47,5 +65,11 @@ public partial class ASCX_Table_DeletButten : System.Web.UI.UserControl
             Massage message = new Massage("Red", "ERROR", "删除失败");
             message.PostMassage();
         }
+    }
+
+    protected void ResetButton_Click(object sender, EventArgs e)
+    {
+        string gotoURL = "?";
+        Response.Redirect(gotoURL);
     }
 }

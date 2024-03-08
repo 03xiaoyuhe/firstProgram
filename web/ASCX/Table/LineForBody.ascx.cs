@@ -21,6 +21,22 @@ public partial class ASCX_Table_LineForBody : System.Web.UI.UserControl
         }
     }
 
+    /// <summary>
+    /// 绑定数据库对应表单
+    /// </summary>
+    string tableName = null;
+    public string TableName
+    {
+        get
+        {
+            if (tableName == null) throw new Exception("表格未绑定表单");
+            return tableName;
+        }
+        set
+        {
+            tableName = value;
+        }
+    }
 
     DataRow dataRow;
     public DataRow DataForALine

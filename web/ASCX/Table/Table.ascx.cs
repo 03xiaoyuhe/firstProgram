@@ -9,6 +9,25 @@ using System.Web.UI.WebControls;
 public partial class ASCX_Table_Table : System.Web.UI.UserControl
 {
     #region 自定义参数
+
+
+    /// <summary>
+    /// 绑定数据库对应表单
+    /// </summary>
+    string tableName=null;
+    public string TableName 
+    {
+        get
+        {
+            if (tableName == null) throw new Exception("表格未绑定表单");
+            return tableName;
+        }
+        set
+        {
+            tableName = value;
+        }
+    }
+
     int height;
     public int Height
     {
@@ -99,6 +118,7 @@ public partial class ASCX_Table_Table : System.Web.UI.UserControl
                 lineDateForTable.LineToShow = TableBase.LineToShow;
                 NewLine.DataForALine = DataCollection.Rows[i];
                 NewLine.TheLineDateForTable = lineDateForTable;
+
                 BodyHolder.Controls.Add(NewLine);
                 Count++;
             }

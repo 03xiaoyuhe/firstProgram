@@ -13,7 +13,6 @@ public partial class ASCX_Table_CellForBody : System.Web.UI.UserControl
 
     }
 
-
     string cellData = "";
     [Description("单元格内容"), Category("自定义属性")]
     public string CellData                  // 控件的自定义属性值
