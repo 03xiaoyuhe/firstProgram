@@ -43,9 +43,9 @@ public partial class ASCX_Table_DeletButten : System.Web.UI.UserControl
         }  
         else
         {
-
             Massage message = new Massage("Red", "ERROR", "删除失败");
             message.PostMassage();
+
         }
     }
 }
