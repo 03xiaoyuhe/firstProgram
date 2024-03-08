@@ -8,10 +8,58 @@ using System.Web.UI.WebControls;
 
 public partial class functionPage_QF_ChildPage_ResetPage : System.Web.UI.Page
 {
+
+    #region 自定义变量
+
+    string tableName;
+    public string TableName
+    {
+        get { return tableName; }
+        set { tableName = value; }
+    }
+
+    string idLable;
+    public string IdLable
+    {
+        get { return idLable; }
+        set
+        {
+            idLable = value;
+        }
+    }
+
+    string id;
+    public string Id
+    {
+        get
+        {
+            return id;
+        }
+        set
+        {
+            id = value;
+        }
+    }
+
+    #endregion
+
     protected void Page_Load(object sender, EventArgs e)
     {
         //Request.QueryString["name"];
         //Request.QueryString["email"];
+        TableName = Request.QueryString["tablename"];
+        IdLable = Request.QueryString["idlable"];
+        ID = Request.QueryString["id"];
+
+
+        this.ProgramIDInput.Text.ToString();
+        this.floatingInput.Text.ToString();
+        this.floatingTextarea.Text.ToString();
+        this.PhoneNum.Text.ToString();
+        this.DoForm.Text.ToString();
+        this.DoTextarea.Text.ToString();
+
+
     }
 
     protected void submit_Click(object sender, EventArgs e)
@@ -32,7 +80,7 @@ public partial class functionPage_QF_ChildPage_ResetPage : System.Web.UI.Page
                 ))
             {
                 clearAll();
-                Massage massage = new Massage("Blue", "Success", "添加成功");
+                Massage massage = new Massage("Blue", "Success", "修改");
                 massage.PostMassage();
             }
         }
