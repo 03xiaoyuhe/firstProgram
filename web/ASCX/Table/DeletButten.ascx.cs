@@ -13,6 +13,23 @@ public partial class ASCX_Table_DeletButten : System.Web.UI.UserControl
 
     #region 参数成员
 
+
+    /// <summary>
+    /// 由于不含DateBase 独立的变量
+    /// </summary>
+    string idLable;
+    public string IDLable
+    {
+        get
+        {
+            return idLable;
+        }
+        set
+        {
+            idLable = value;
+        }
+    }
+
     /// <summary>
     /// 绑定数据库对应表单
     /// </summary>
@@ -69,7 +86,7 @@ public partial class ASCX_Table_DeletButten : System.Web.UI.UserControl
 
     protected void ResetButton_Click(object sender, EventArgs e)
     {
-        string gotoURL = "?";
+        string gotoURL = "~/functionPage/QF-ChildPage/ResetPage.aspx?tablename=" + TableName + "&id" + DataID;
         Response.Redirect(gotoURL);
     }
 }

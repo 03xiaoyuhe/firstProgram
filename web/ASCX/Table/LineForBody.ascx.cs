@@ -21,6 +21,23 @@ public partial class ASCX_Table_LineForBody : System.Web.UI.UserControl
         }
     }
 
+
+    /// <summary>
+    /// 独立的属性，由于行数据不包含DateBase
+    /// </summary>
+    string idLable;
+    public string IdLable
+    {
+        get
+        {
+            return idLable;
+        }
+        set
+        {
+            idLable = value;
+        }
+    }
+
     /// <summary>
     /// 绑定数据库对应表单
     /// </summary>
@@ -93,6 +110,7 @@ public partial class ASCX_Table_LineForBody : System.Web.UI.UserControl
         ASCX_Table_DeletButten newCell = (ASCX_Table_DeletButten)LoadControl("~/ASCX/Table/DeletButten.ascx");
         newCell.ID = ID + String.Format("_{0}", ColumnNum);
         newCell.DataID = RowID;
+        newCell.TableName = TableName;
         CellHolder.Controls.Add(newCell);
     }
 }

@@ -10,12 +10,26 @@ public partial class ASCX_Table_Table : System.Web.UI.UserControl
 {
     #region 自定义参数
 
+    /// <summary>
+    /// 主键字段名，查询/修改TableBase.IDLable
+    /// </summary>
+    public string IDLable
+    {
+        get
+        {
+            return TableBase.IDLable;
+        }
+        set
+        {
+            TableBase.IDLable = value;
+        }
+    }
 
     /// <summary>
     /// 绑定数据库对应表单
     /// </summary>
     string tableName=null;
-    public string TableName 
+    public string TableName
     {
         get
         {
@@ -118,7 +132,7 @@ public partial class ASCX_Table_Table : System.Web.UI.UserControl
                 lineDateForTable.LineToShow = TableBase.LineToShow;
                 NewLine.DataForALine = DataCollection.Rows[i];
                 NewLine.TheLineDateForTable = lineDateForTable;
-
+                NewLine.TableName = TableName;
                 BodyHolder.Controls.Add(NewLine);
                 Count++;
             }
