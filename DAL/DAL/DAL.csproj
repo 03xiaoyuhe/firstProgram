@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="AllRoads.cs" />
     <Compile Include="DBHelper.cs" />
+    <Compile Include="PageApart.cs" />
     <Compile Include="ProjectCompletion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TableDetele.cs" />

@@ -23,7 +23,7 @@ namespace DAL
         /// <returns></returns>
         static public DataSet Select(string TableName, string CellId, string Id)
         {
-            string query = "SELECT *FROM "+ TableName + " WHERE "+ CellId  + "= @Id ;";
+            string query = "SELECT *FROM "+ TableName + " WHERE "+ CellId  + "= @Id order by "+ CellId + " asc;";
 
 
             SqlParameter[] parameters = {

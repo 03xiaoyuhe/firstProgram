@@ -16,9 +16,10 @@ public partial class test : System.Web.UI.Page
 
     void LoadTable()
     {
-        DataSet dataSet = ProjectCompletion.ProjectVision();
+
+        DataSet dataSet = PageApart.Apart("ProjectApplications","project_id" , 0);
         DataTable dataTable;
-        //dataTable = dataSet.Tables[0];
+        dataTable = dataSet.Tables[0];
         try
         {
             dataTable = dataSet.Tables[0];
