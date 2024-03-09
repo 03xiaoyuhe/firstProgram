@@ -12,7 +12,7 @@ using System.Data.Common;
 namespace DAL
 {
     //internal class DBHelper
-     public class DBHelper
+    public class DBHelper
     {
 
         /// <summary>
