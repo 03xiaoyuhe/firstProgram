@@ -15,7 +15,7 @@
 
     .sticky-table {
         overflow: auto;
-        height: 100%; /* 设置固定高度 */
+        max-height: 500px; /* 设置固定高度 */
         width: 100%;
         margin: auto;
     }
@@ -29,6 +29,8 @@
         }
 
         .sticky-table th {
+            background-color: #008c8c;
+            color: #fff;
             position: sticky;
             top: 0; /* 首行永远固定在头部  */
             font-weight: normal;
@@ -88,7 +90,7 @@
 </style>
 <%--<link rel="stylesheet" href="CSS/Table.css" />--%>
 
-<div>
+<div style="height:100%">
 
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
 
@@ -96,9 +98,6 @@
 
 
             <asp:Panel ID="Panel1" runat="server">
-                <div class="sticky-table">
-                    <table>
-                        <thead>
                             <div class="container text-center">
                                 <div class="row">
                                     <div class="col" style="text-align:right">
@@ -115,6 +114,9 @@
                                     </div>
                                 </div>
                             </div>
+                <div class="sticky-table">
+                    <table>
+                        <thead>
                             <asp:PlaceHolder ID="HeadHolder" runat="server"></asp:PlaceHolder>
                         </thead>
                         <tbody>

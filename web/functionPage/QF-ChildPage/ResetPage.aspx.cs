@@ -58,8 +58,6 @@ public partial class functionPage_QF_ChildPage_ResetPage : System.Web.UI.Page
         this.PhoneNum.Text.ToString();
         this.DoForm.Text.ToString();
         this.DoTextarea.Text.ToString();
-
-
     }
 
     protected void submit_Click(object sender, EventArgs e)
@@ -70,6 +68,7 @@ public partial class functionPage_QF_ChildPage_ResetPage : System.Web.UI.Page
             {
                 throw new Exception("NotLoad");
             }
+            Response.Write(" <script>function window.onload() {alert( '即将提交,是否确认更改' ); } </script> ");
             if (ProjectCompletion.ProjectInfor(
                 this.ProgramIDInput.Text.ToString(),
                 this.floatingInput.Text.ToString(),
