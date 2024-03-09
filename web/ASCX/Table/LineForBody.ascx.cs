@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using MyWeb;
 using System.Web.UI.WebControls;
 
 public partial class ASCX_Table_LineForBody : System.Web.UI.UserControl
@@ -111,6 +112,7 @@ public partial class ASCX_Table_LineForBody : System.Web.UI.UserControl
         newCell.ID = ID + String.Format("_{0}", ColumnNum);
         newCell.DataID = RowID;
         newCell.TableName = TableName;
+        newCell.IDLable = IdLable;
         CellHolder.Controls.Add(newCell);
     }
 }

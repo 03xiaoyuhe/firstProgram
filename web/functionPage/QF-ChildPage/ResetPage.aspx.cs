@@ -1,8 +1,10 @@
 ﻿using DAL;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
+using MyWeb;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -45,30 +47,33 @@ public partial class functionPage_QF_ChildPage_ResetPage : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        //Request.QueryString["name"];
-        //Request.QueryString["email"];
         TableName = Request.QueryString["tablename"];
         IdLable = Request.QueryString["idlable"];
         ID = Request.QueryString["id"];
+        DataSet dataSet = new DataSet();
+        dataSet = TableSelect.Select(TableName, IdLable, ID);
+        DataTable ds = dataSet.Tables[0];
+        DataRow dl = ds.Rows[0];
+        this.ProgramIDInput.Text = dl["proposal_number"].ToString();
+        this.floatingInput.Text = dl["project_title"].ToString();
+        this.floatingTextarea.Text = dl["project_description"].ToString();
+        this.PhoneNum.Text = dl["team_id"].ToString();
+        this.DoForm.Text = dl["achievement_form"].ToString();
+        this.DoTextarea.Text = dl["achievement_brief"].ToString();
 
 
-        this.ProgramIDInput.Text.ToString();
-        this.floatingInput.Text.ToString();
-        this.floatingTextarea.Text.ToString();
-        this.PhoneNum.Text.ToString();
-        this.DoForm.Text.ToString();
-        this.DoTextarea.Text.ToString();
     }
 
     protected void submit_Click(object sender, EventArgs e)
     {
+
         try
         {
             if (!ProjectCompletion.CheckTeam_id(this.PhoneNum.Text.ToString()))
             {
                 throw new Exception("NotLoad");
             }
-            Response.Write(" <script>function window.onload() {alert( '即将提交,是否确认更改' ); } </script> ");
+
             if (ProjectCompletion.ProjectInfor(
                 this.ProgramIDInput.Text.ToString(),
                 this.floatingInput.Text.ToString(),

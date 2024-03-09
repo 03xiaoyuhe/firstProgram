@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using MyWeb;
 using System.Web.UI.WebControls;
 public partial class test : System.Web.UI.Page
 {
@@ -52,7 +53,7 @@ public partial class test : System.Web.UI.Page
         NewLine.TableBase = tableAttribute;
         NewLine.DataCollection = dataTable;
         NewLine.Height = 400;
-        NewLine.TableName = "";
+        NewLine.TableName = "ProjectApplications";
         PlaceHolder1.Controls.Add(NewLine);
     }
 

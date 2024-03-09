@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using MyWeb;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -133,6 +134,7 @@ public partial class ASCX_Table_Table : System.Web.UI.UserControl
                 NewLine.DataForALine = DataCollection.Rows[i];
                 NewLine.TheLineDateForTable = lineDateForTable;
                 NewLine.TableName = TableName;
+                NewLine.IdLable = IDLable;
                 BodyHolder.Controls.Add(NewLine);
                 Count++;
             }
