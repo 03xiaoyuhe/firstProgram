@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using MyWeb;
+using Models;
 
 public partial class ASCX_Table_CellForHead : System.Web.UI.UserControl
 {

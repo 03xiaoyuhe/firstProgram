@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
-namespace MyWeb
-{
 
+namespace Models
+{
+    /// <summary>
+    /// TableAttribute <br/>
+    /// 表格信息属性
+    /// </summary>
     public class TableAttribute
     {
 
@@ -18,6 +22,9 @@ namespace MyWeb
 
 
         string idLable;
+        /// <summary>
+        /// 主键字段名
+        /// </summary>
         public string IDLable
         {
             get
@@ -27,16 +34,36 @@ namespace MyWeb
             set
             {
                 idLable = value;
-
-
-                //if (lineToMean == null)
-                //{
-                //    InitLineToMean();
-                //}
             }
         }
 
 
+        //DataTable dataCollection;
+        //public DataTable DataCollection
+        //{
+        //    get
+        //    {
+        //        if(dataCollection == null)
+        //        {
+        //            throw (new Exception("自定义表格对象未绑定数据"));
+        //        }
+
+        //        if(IDLable == null)
+        //        {
+        //            throw (new Exception("自定义表格对象未指定主键"));
+        //        }
+        //        return dataCollection;
+        //    }
+
+        //    set
+        //    {
+        //        dataCollection = value;
+        //        if (lineToMean == null && IDLable != null)
+        //        {
+        //            InitLineToMean();
+        //        }
+        //    }
+        //}
 
         Dictionary<string, string> lineToMean;
         /// <summary>
@@ -46,20 +73,11 @@ namespace MyWeb
         {
             get
             {
-                //if (dataCollection == null)
-                //{
-                //    throw (new Exception("表格对象未绑定数据"));
-                //}
 
                 if (IDLable == null)
                 {
                     throw (new Exception("自定义表格对象未指定主键"));
                 }
-
-                //if (lineToMean == null)
-                //{
-                //    InitLineToMean();
-                //}
 
                 return lineToMean;
             }
@@ -82,10 +100,6 @@ namespace MyWeb
         {
             get
             {
-                //if (dataCollection == null)
-                //{
-                //    throw (new Exception("表格对象未绑定数据"));
-                //}
 
                 if (IDLable == null)
                 {
