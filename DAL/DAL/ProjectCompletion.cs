@@ -72,26 +72,27 @@ namespace DAL
         /// <param name="proposal_number">立项编号</param>
         /// <param name="project_title">项目名称</param>
         /// <param name="project_description">项目描述</param>
-        /// <param name="useNumber">负责人电话号码</param>
+        /// <param name="team_id">负责人电话号码</param>
         /// <param name="achievement_form">成果形式</param>
         /// <param name="achievement_brief">项目成果简介</param>
         /// <returns></returns>
-        static public bool UpdatePrroject(string project_id, string proposal_number, string project_title, string project_description, string useNumber, string achievement_form, string achievement_brief)
+        static public bool UpdatePrroject(string project_id, string proposal_number, string project_title, string project_description, string team_id, string achievement_form, string achievement_brief)
         {
             string query = "UPDATE ProjectApplications SET " +
                 "proposal_number = '@proposal_number'," +
                 "project_title = '@project_title'," +
                 "project_description = '@project_description'," +
-                "team_id = (select user_id from UserLogin where useNumber=@userNumber))," +
+                //"team_id = (select user_id from UserLogin where useNumber=@userNumber))," +
+                 "team_id = '@team_id'," +
                 "achievement_form = '@achievement_form'," +
-                "achievement_brief = '@achievement_brief'" +
-                "WHERE project_id = '@project_id';";
+                "achievement_brief = '@achievement_brief' " +
+                " WHERE project_id = @project_id;";
             SqlParameter[] parameters =
             {
                 new SqlParameter("@proposal_number",SqlDbType.NVarChar) { Value = proposal_number },
                 new SqlParameter("@project_title",SqlDbType.NVarChar){Value = project_title },
                 new SqlParameter("@project_description",SqlDbType.NVarChar) { Value = project_description },
-                new SqlParameter("@useNumber", SqlDbType.NVarChar) { Value = useNumber },
+                new SqlParameter("@team_id", SqlDbType.NVarChar) { Value = team_id },
                 new SqlParameter("@achievement_form",SqlDbType.NVarChar){Value=achievement_form },
                 new SqlParameter("@achievement_brief",SqlDbType.NVarChar){Value=achievement_brief },
                 new SqlParameter("@project_id",SqlDbType.NVarChar) {Value = project_id},
