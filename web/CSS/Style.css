@@ -1,0 +1,187 @@
+﻿body {
+}
+
+
+
+
+/*--------------*/
+/* 表格样式设置 */
+/*--------------*/
+/*
+<table >
+    <caption >
+        A summary of the UK's most famous punk bands
+    </caption >
+    <thead >
+        <tr >
+            <th scope="col" > Band</th >
+            <th scope="col" > Year formed</th >
+            <th scope="col" > No. of Albums</th >
+            <th scope="col" > Most famous song</th >
+        </tr >
+    </thead >
+    <tbody >
+        <tr >
+            <th scope="row" > Buzzcocks</th >
+            <td > 1976</td >
+            <td > 9</td >
+            <td > Ever fallen in love (with someone you shouldn't've)</td >
+        </tr >
+        <tr >
+            <th scope="row" > The Clash</th >
+            <td > 1976</td >
+            <td > 6</td >
+            <td > London Calling</td >
+        </tr >
+
+            ... some rows removed for brevity
+
+        <tr >
+            <th scope="row" > The Stranglers</th >
+            <td > 1974</td >
+            <td > 17</td >
+            <td > No More Heroes</td >
+        </tr >
+    </tbody >
+    <tfoot >
+        <tr >
+            <th scope="row" colspan="2" > Total albums</th >
+            <td colspan="2" > 77</td >
+        </tr >
+    </tfoot >
+</table >
+*/
+html {
+    font-family: "helvetica neue", helvetica, arial, sans-serif;
+}
+
+thead th,
+tfoot th {
+    font-family: "Rock Salt", cursive;
+}
+
+th {
+    letter-spacing: 2px;
+}
+
+td {
+    letter-spacing: 1px;
+}
+
+tbody td {
+    text-align: center;
+}
+
+tfoot th {
+    text-align: right;
+}
+
+thead, tfoot {
+    background: url(leopardskin.jpg);
+    color: white;
+    text-shadow: 1px 1px 1px black;
+}
+
+    thead th, tfoot th, tfoot td {
+        background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5));
+        /*border: 3px solid purple;*/
+    }
+
+tbody tr:nth-child(odd) {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+tbody tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+tbody tr {
+    background-image: url(noise.png);
+}
+
+table {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+/*-----end------*/
+/* 表格样式设置 */
+/*--------------*/
+
+
+
+
+
+/*-------------*/
+/* 按钮组表格  */
+/*-------------*/
+
+.table-buttom tr, table-buttom td{
+    border:none;
+}
+
+/*-----end------*/
+/* 按钮组表格  */
+/*-------------*/
+
+
+/*-------------*/
+/*  数据表样式 */
+/*-------------*/
+
+
+/*
+<!-- 数据表 -->
+<table class="table-data" >
+    <tbody >
+        <tr >
+            <th > 姓名</th >
+            <th > 年龄</th >
+        </tr >
+        <tr >
+            <td > 1</td >
+            <td > 2</td >
+        </tr >
+        <tr >
+            <td > 1</td >
+            <td > 2</td >
+        </tr >
+        <tr >
+            <td > 1</td >
+            <td > 2</td >
+        </tr >
+        <tr >
+            <td > 1</td >
+            <td > 2</td >
+        </tr >
+        <tr >
+            <td > 1</td >
+            <td > 2</td >
+        </tr >
+    </tbody >
+</table >
+*/
+.table-data tr,
+.table-data td {
+    border: 1px solid;
+    border-color: rgba(0, 0, 0, 0.2);
+}
+/* nth-of-type(1) */
+
+.table-data tbody tr:nth-of-type(2n+1) {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.table-data tbody tr:nth-of-type(2n) {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+/* tr:nth-of-type(0) */
+.table-data tbody th {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: bold;
+    border-color: rgba(0, 0, 0, 0.4);
+    font-family: 'Microsoft Yahei';
+    background-color: rgba(0, 0, 0, 0.2);
+}

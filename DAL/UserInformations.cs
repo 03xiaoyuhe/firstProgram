@@ -1,0 +1,287 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Net.NetworkInformation;
+
+namespace DAL
+{
+    public class UserInformations
+    {
+        private readonly string connectionString = "SQpwdLoad";//获取连接数据的字符串。
+
+
+        /// <summary>
+        /// 对Social Philosophy Project数据库中的UserInfo表进行插入操作
+        /// 其中利用注册表中的电话号码对user_id进行查询，并将id插入信息表中存储。
+        /// </summary>
+        /// <param name="user_name">姓名</param>
+        /// <param name="userNumber">联系电话</param>
+        /// <param name="gender">性别</param>
+        /// <param name="contact_number">身份证号</param>
+        /// <param name="email">邮箱</param>
+        /// <param name="date_of_birth">出生日期</param>
+        /// <param name="education_degree">学历</param>
+        /// <param name="position">职业</param>
+        /// <param name="workplace">工作地点</param>
+        /// <returns></returns>
+        public bool RegisterUser( string userNumber, string user_name,string gender, string contact_number, string email, string date_of_birth, string education_degree, string position, string workplace)
+        {
+            string query = "INSERT INTO UserInfo (user_id, user_name ,gender, contact_number, email,date_of_birth,education_degree,position,workplace) VALUES" +
+                " (" + "(select USER_ID from UserLogin where useNumber = '@userNumber'),"+
+                "@user_name,@gender, @contact_number, @email,@email,@date_of_birth,@education_degree,@position,@workplace)";
+            SqlParameter[] parameters = {
+                new SqlParameter("@userNumber", SqlDbType.NVarChar) { Value = userNumber },
+                new SqlParameter("@user_name",SqlDbType.NVarChar){Value = user_name },
+                new SqlParameter("@gender", SqlDbType.NVarChar) { Value = gender },
+                new SqlParameter("@contact_number", SqlDbType.NVarChar) { Value = contact_number },
+                new SqlParameter("@email", SqlDbType.NVarChar) { Value = email },
+                new SqlParameter("@date_of_birth", SqlDbType.Date) { Value = date_of_birth },
+                new SqlParameter("@education_degree", SqlDbType.NVarChar) { Value = education_degree },
+                new SqlParameter("@position", SqlDbType.NVarChar) { Value = position },
+                new SqlParameter("@workplace", SqlDbType.NVarChar) { Value = workplace },
+            };
+
+
+            int rowsAffected = DBHelper.ExecuteSql(query, parameters);
+
+            return rowsAffected > 0;
+        }
+
+
+
+        /// <summary>
+        /// 通过user_id修改用户信息表中的用户信息。
+        /// </summary>
+        /// <param name="gender">性别</param>
+        /// <param name="contact_number">身份证</param>
+        /// <param name="email">邮箱</param>
+        /// <param name="date_of_birth">出生日期</param>
+        /// <param name="education_degree">学位</param>
+        /// <param name="position">职务、职称</param>
+        /// <param name="workplace">工作单位</param>
+        /// <param name="user_id">用户id</param>
+        /// <returns></returns>
+        static public bool UpdataeUser(string user_name,  string gender, string contact_number, string email,string date_of_birth,string education_degree,string position,string workplace,string user_id)
+        {
+            string query = "UPDATE UserInfo SET" +
+                " gender = '@gender'," +
+                "user_name='@user_name'," +
+                "contact_number = '@contact_number'," +
+                "email = '@email'," +
+                "date_of_birth = '@date_of_birth'," +
+                "education_degree = '@education_degree'," +
+                "position = '@position'," +
+                "workplace = '@workplace'" +
+                "WHERE user_id = '@user_id';";
+            SqlParameter[] parameters =
+            {
+                new SqlParameter("user_name",SqlDbType.NVarChar){Value = user_name},
+                new SqlParameter ("@gender",SqlDbType.NVarChar){Value = gender},
+                new SqlParameter ("@contact_number",SqlDbType.NVarChar){Value = contact_number},
+                new SqlParameter ("@email",SqlDbType.NVarChar){Value = email},
+                new SqlParameter ("@date_of_birth",SqlDbType.Date){Value = date_of_birth},
+                new SqlParameter ("@education_degree",SqlDbType.NVarChar){Value = education_degree},
+                new SqlParameter ("@position",SqlDbType.NVarChar){Value = position},
+                new SqlParameter ("@workplace",SqlDbType.NVarChar){Value = workplace},
+                new SqlParameter("@user_id",SqlDbType.Int){Value = user_id},
+            };
+
+            int rowsAffected = DBHelper.ExecuteSql(query, parameters);
+
+            return rowsAffected > 0;
+
+
+        }
+
+
+        ///// <summary>
+        ///// 通过原值修改为现有的值，针对性别
+        ///// </summary>      
+        ///// <param name="useNumber">电话号码</param>
+        ///// <param name="gender">正确的修改为的值</param>
+        ///// <returns></returns>
+        ///// 
+        //public bool UpdataRegisterGender(string useNumber, string gender)
+        //{
+        //    string query = "UPDATE UserInfo SET gender='@gender' " +
+        //        "WHERE " +
+        //        " user_id=" +
+        //        "(select user_id from UserInfo where " +
+        //        "user_id=(select user_id from UserLogin where useNumber='@useNumber'))";
+
+        //    SqlParameter[] parameters = {
+        //        new SqlParameter("@gender", SqlDbType.NVarChar) { Value = gender },
+        //        new SqlParameter("@useNumber", SqlDbType.NVarChar) { Value = useNumber },
+
+        //                };
+
+
+        //    int rowsAffected = DBHelper.ExecuteSql(query, parameters);
+
+        //    return rowsAffected > 0;
+        //}
+
+
+        ///// <summary>
+        ///// 通过原值修改为现有的值，针对身份证号
+        ///// </summary>
+        ///// <param name="useNumber">电话号码</param>
+        ///// <param name="contact_number">现身份证号</param>
+        ///// <returns></returns>
+        //public bool UpdataRegisterContact(string useNumber, string contact_number)
+        //{
+        //    string query = "UPDATE UserInfo SET " +
+        //        "contact_number='@contact_number' WHERE " +
+        //        " user_id=(select user_id from UserInfo where " +
+        //        "user_id=(select user_id from UserLogin where useNumber='@useNumber'))";
+
+        //    SqlParameter[] parameters = {
+        //        new SqlParameter("@contact_number", SqlDbType.NVarChar) { Value = contact_number },
+        //        new SqlParameter("@useNumber", SqlDbType.NVarChar) { Value = useNumber },
+
+        //                };
+
+
+        //    int rowsAffected = DBHelper.ExecuteSql(query, parameters);
+
+        //    return rowsAffected > 0;
+        //}
+
+
+        ///// <summary>
+        ///// 通过原值修改为现有的值,针对邮箱
+        ///// </summary>
+        ///// <param name="useNumber">电话号码</param>
+        ///// <param name="email">现邮箱</param>
+        ///// <returns></returns>
+        //public bool UpdataRegisterEmail(string useNumber, string email)
+        //{
+        //    string query = "UPDATE UserInfo SET email='@email'" +
+        //        " WHERE  user_id=(select user_id from UserInfo where" +
+        //        " user_id=(select user_id from UserLogin where useNumber='@useNumber'));";
+
+        //    SqlParameter[] parameters = {
+        //        new SqlParameter("@email", SqlDbType.NVarChar) { Value = email },
+        //        new SqlParameter("@useNumber", SqlDbType.NVarChar) { Value = useNumber },
+
+        //                };
+
+
+        //    int rowsAffected = DBHelper.ExecuteSql(query, parameters);
+
+        //    return rowsAffected > 0;
+        //}
+
+
+
+        ///// <summary>
+        ///// 通过原值修改为现有的值,针对出生日期
+        ///// </summary>
+        ///// <param name="useNumber">电话号码</param>
+        ///// <param name="brith">现生日</param>
+        ///// <returns></returns>
+        //public bool UpdataRegisterBrith(string useNumber, string brith)
+        //{
+        //    string query = "UPDATE UserInfo SET date_of_birth='@brith' WHERE " +
+        //        " user_id=(select user_id from UserInfo where " +
+        //        "user_id=(select user_id from UserLogin where useNumber='@useNumber'));";
+
+        //    SqlParameter[] parameters = {
+        //        new SqlParameter("@brith", SqlDbType.NVarChar) { Value = brith },
+        //        new SqlParameter("@useNumber", SqlDbType.NVarChar) { Value = useNumber },
+
+        //                };
+
+
+        //    int rowsAffected = DBHelper.ExecuteSql(query, parameters);
+
+        //    return rowsAffected > 0;
+        //}
+
+
+
+        ///// <summary>
+        ///// 通过原值修改为现有的值，针对学历
+        ///// </summary>
+        ///// <param name="useNumber">电话号码</param>
+        ///// <param name="Education">现学历</param>
+        ///// <returns></returns>
+        //public bool UpdataRegisterEducation(string useNumber, string Education)
+        //{
+        //    string query = "UPDATE UserInfo SET education_degree='@Education' " +
+        //        "WHERE  user_id=(select user_id from UserInfo where" +
+        //        " user_id=(select user_id from UserLogin where useNumber='@useNumber'));";
+
+        //    SqlParameter[] parameters = {
+        //        new SqlParameter("@Education", SqlDbType.NVarChar) { Value = Education },
+        //        new SqlParameter("@useNumber", SqlDbType.NVarChar) { Value = useNumber },
+
+        //                };
+
+
+        //    int rowsAffected = DBHelper.ExecuteSql(query, parameters);
+
+        //    return rowsAffected > 0;
+        //}
+
+
+        ///// <summary>
+        ///// 通过原值修改为现有的值，针对职业
+        ///// </summary>
+        ///// <param name="useNumber">电话号码</param>
+        ///// <param name="position">现职业</param>
+        ///// <returns></returns>
+        //public bool UpdataRegisterPosition(string useNumber, string position)
+        //{
+        //    string query = "UPDATE UserInfo SET position='@position' " +
+        //        "WHERE  user_id=(select user_id from UserInfo " +
+        //        "where user_id=(select user_id from UserLogin where useNumber='@useNumber'));";
+
+        //    SqlParameter[] parameters = {
+
+        //        new SqlParameter("@position", SqlDbType.NVarChar) { Value = position },
+        //        new SqlParameter("@useNumber", SqlDbType.NVarChar) { Value = useNumber },
+
+        //                };
+
+
+        //    int rowsAffected = DBHelper.ExecuteSql(query, parameters);
+
+        //    return rowsAffected > 0;
+        //}
+
+
+        ///// <summary>
+        ///// 通过原值修改为现有的值，针对工作地点
+        ///// </summary>
+        ///// <param name="useNumber">原工作地点</param>
+        ///// <param name="work">现工作地点</param>
+        ///// <returns></returns>
+        //public bool UpdataRegisterWork(string useNumber, string work)
+        //{
+        //    string query = "UPDATE UserInfo SET workplace='@workplace' " +
+        //        "WHERE  user_id=(select user_id from UserInfo where " +
+        //        "user_id=(select user_id from UserLogin where useNumber='@useNumber'));";
+
+        //    SqlParameter[] parameters = {
+        //        new SqlParameter("@work", SqlDbType.NVarChar) { Value = work },
+        //        new SqlParameter("@useNumber", SqlDbType.NVarChar) { Value = useNumber },
+
+        //                };
+
+
+        //    int rowsAffected = DBHelper.ExecuteSql(query, parameters);
+
+        //    return rowsAffected > 0;
+        //}
+
+
+
+    }
+}
+  
+

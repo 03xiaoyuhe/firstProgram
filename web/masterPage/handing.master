@@ -1,0 +1,193 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="handing.master.cs" Inherits="masterPage_MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style>
+        /* 通用属性 */
+        /* 竖直居中 使用相对定位*/
+        .relVerticalCenter { /* 竖直margin必须为零否则会出bug */
+            position: relative;
+            top: 50%;
+            transform: translate(0,-50%);
+        }
+        /* 水平居中 */
+        .center {
+            left: 50%;
+            transform: translate(-50%,0);
+        }
+        /* 渐变自发光 */
+        .shade {
+            box-shadow: 0 0 30px 20px rgb(0, 0, 0); /* 阴影设置 */
+        }
+
+        /* 右浮动 */
+        .float-right {
+            float: right;
+        }
+
+        /* 将字体设为红色 */
+        .setCharRed {
+            color: red;
+        }
+
+        /* 缩小字体 */
+        .setCharSizeSmall {
+            font-size: 10px;
+        }
+
+        /* 字体加粗 */
+        .makeCharBolder {
+            font-weight: bolder;
+        }
+
+        /* 特定功能属性 */
+        .master-Body {
+        }
+
+        .body1 {
+            min-width: 1200px;
+            margin: auto;
+        }
+
+        .body2 {
+            margin: auto;
+        }
+        /* 顶部开始栏编写 */
+        .topStartBar {
+            padding-left: 5px;
+            z-index: 999;
+            position: fixed;
+            width: 100%;
+            height: 40px;
+            overflow: hidden;
+            top: 0px;
+            background-color: rgb(6, 30, 54, 1);
+        }
+
+        .nameAndLogo {
+            width:100%;
+            display: inline-table;
+        }
+
+        .logo {
+            position: absolute;
+            top: 50%;
+            transform: translate(0,-50%);
+            /* 设置背景图 并使其自适应大小 */
+            background-image: url("../img/logo.png");
+            background-repeat: no-repeat;
+            background-size: contain;
+            display: inline-table;
+            height: 24px;
+            width: 22px;
+        }
+
+        .nameForSys {
+            margin-top:7px;
+            /* 设置背景图 并使其自适应大小 */
+            background-image: url("../img/Home_img/homeName.png");
+            background-repeat: no-repeat;
+            background-size: contain;
+            display: inline-table;
+            height: 38px;
+            width: 350px;
+        }
+
+        /* 开始栏登陆按钮 */
+        .startBarLoginBtn {
+            height: 30px;
+            width: 70px;
+            border-radius: 5px;
+            border: solid;
+            border-color: rgb(253, 253, 253, 0.45);
+            color: rgb(253, 253, 253, 0.45);
+            background: none;
+        }
+
+            .startBarLoginBtn:hover {
+                border-color: rgb(0, 0, 0, 0.60);
+                color: rgb(0, 0, 0, 0.60);
+            }
+        /* 登陆成功后按钮变化添加属性 */
+        .loginSuccessBtnAdd {
+            font-size: 10px;
+            text-align: center;
+        }
+
+        /* 登陆按钮辅助定位 */
+        .loginSpace {
+            margin-top: 5px;
+            margin-right: 30px;
+        }
+
+        /* 登陆弹出窗口背景及容器 */
+        .setSize {
+            width: 100%;
+            height: 100%;
+        }
+
+        .example1 {
+            background-color: rgba(126, 126, 126, 0.556);
+        }
+
+        /* 登陆弹出窗口 */
+        #login {
+            z-index: 1000;
+            width: 400px;
+            margin: auto;
+            border-width: 2px;
+            border-color: black;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 0 10px 2px rgba(126, 126, 126, 0.556);
+        }
+
+        /* 输入框样式 */
+        .putOnShowBorder {
+            border: solid;
+            border-width: 1px;
+            border-color: darkgrey;
+        }
+
+        .placeHolder {
+            height: 100%;
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="master-Body">
+            <div class="topStartBar body2 center">
+                <!-- 网站名及logo -->
+                <div class="nameAndLogo relVerticalCenter">
+                    <!-- logo放置处 -->
+                    <div class="logo">
+                    </div>
+                    <!-- 分隔符 -->
+<%--                    <div style="margin-left: 32px; margin-right: 10px; display: inline-table; color: rgb(255, 255, 255, 0.59);">
+                        |
+                    </div>--%>
+                    <!-- 网站名 -->
+                    <div style="display: inline-table; float:right;">
+                        <div class="nameForSys"></div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+
+
+        </div>
+    </form>
+</body>
+</html>
