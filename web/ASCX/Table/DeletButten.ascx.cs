@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.EnterpriseServices;
+using MyWeb;
 using System.Linq;
 using System.ServiceModel.Channels;
 using System.Web;
@@ -86,7 +87,7 @@ public partial class ASCX_Table_DeletButten : System.Web.UI.UserControl
 
     protected void ResetButton_Click(object sender, EventArgs e)
     {
-        string gotoURL = "~/functionPage/QF-ChildPage/ResetPage.aspx?tablename=" + TableName + "&idlable" + IDLable + "&id" + DataID;
+        string gotoURL = "~/functionPage/QF-ChildPage/ResetPage.aspx?tablename=" + TableName + "&idlable=" + IDLable + "&id=" + DataID;
         Response.Redirect(gotoURL);
     }
 }

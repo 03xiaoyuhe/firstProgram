@@ -15,7 +15,7 @@
 
     .sticky-table {
         overflow: auto;
-        height: 100%; /* 设置固定高度 */
+        height: 300px; /* 设置固定高度 */
         width: 100%;
         margin: auto;
     }
@@ -29,6 +29,8 @@
         }
 
         .sticky-table th {
+            background-color: #008c8c;
+            color: #fff;
             position: sticky;
             top: 0; /* 首行永远固定在头部  */
             font-weight: normal;

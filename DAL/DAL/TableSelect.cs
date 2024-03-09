@@ -11,6 +11,7 @@ namespace DAL
 {
     public class TableSelect
     {
+        
         /// <summary>
         /// 对所有的表都适合的查询单行操作
         /// 其中函数需要三个变量
@@ -20,22 +21,18 @@ namespace DAL
         /// <param name="CellId">字段名</param>
         /// <param name="Id">字段名对应的值</param>
         /// <returns></returns>
-        static public bool Select(string TableName, string CellId, string Id)
+        static public DataSet Select(string TableName, string CellId, string Id)
         {
-            string query = "SELECT *FROM @TableName WHERE @CellId=@Id;";
+            string query = "SELECT *FROM "+ TableName + " WHERE "+ CellId  + "= @Id ;";
 
-            SqlParameter[] parameters =
-             {
-                new SqlParameter("@TableName",SqlDbType.Int) {Value = TableName},
-                new SqlParameter("@CellId",SqlDbType.NVarChar) {Value = CellId},
+
+            SqlParameter[] parameters = {
                 new SqlParameter("@Id",SqlDbType.NVarChar) {Value=Id},
             };
 
-            object rowsAffected = DBHelper.GetSingle(query, parameters);
+            DataSet result = DBHelper.Query(query, parameters);
 
-            int count = Convert.ToInt32(rowsAffected);
-
-            return (count > 0);
+            return result;
         }
     }
 }
