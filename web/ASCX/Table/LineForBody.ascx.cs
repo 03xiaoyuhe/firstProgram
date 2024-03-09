@@ -4,59 +4,18 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using MyWeb;
+using Models;
 using System.Web.UI.WebControls;
 
 public partial class ASCX_Table_LineForBody : System.Web.UI.UserControl
 {
-    LineDateForTable theLineDateForTable;
-    public LineDateForTable TheLineDateForTable
-    {
-        get
-        {
-            return theLineDateForTable;
-        }
-        set
-        {
-            theLineDateForTable = value;
-        }
-    }
 
-
-    /// <summary>
-    /// 独立的属性，由于行数据不包含DateBase
-    /// </summary>
-    string idLable;
-    public string IdLable
-    {
-        get
-        {
-            return idLable;
-        }
-        set
-        {
-            idLable = value;
-        }
-    }
-
-    /// <summary>
-    /// 绑定数据库对应表单
-    /// </summary>
-    string tableName = null;
-    public string TableName
-    {
-        get
-        {
-            if (tableName == null) throw new Exception("表格未绑定表单");
-            return tableName;
-        }
-        set
-        {
-            tableName = value;
-        }
-    }
+    #region 数据绑定属性
 
     DataRow dataRow;
+    /// <summary>
+    /// 行数据集
+    /// </summary>
     public DataRow DataForALine
     {
         get
@@ -68,6 +27,70 @@ public partial class ASCX_Table_LineForBody : System.Web.UI.UserControl
             dataRow = value;
         }
     }
+
+    TableAttribute tableBase;
+    /// <summary>
+    /// 解释数据集
+    /// </summary>
+    public TableAttribute TableBase
+    {
+        get { return tableBase; }
+        set { tableBase = value; }
+    }
+
+    /// <summary>
+    /// 行数据绑定解释<br/>
+    /// 保留接口减小改动
+    /// </summary>
+    public TableAttribute TheLineDateForTable
+    {
+        get
+        {
+            return TableBase;
+        }
+        set
+        {
+            TableBase = value;
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public string IdLable
+    {
+        get
+        {
+            return TableBase.IDLable;
+        }
+        set
+        {
+            TableBase.IDLable = value;
+        }
+    }
+
+
+    /// <summary>
+    /// 绑定数据库对应表单
+    /// </summary>
+    public string TableName
+    {
+        get
+        {
+            if (TableBase.DataBase == null) throw new Exception("表格未绑定表单");
+            return TableBase.DataBase;
+        }
+        set
+        {
+            TableBase.DataBase = value;
+        }
+    }
+
+    #endregion
+
+
+
+
     int Count
     {
         get
@@ -87,7 +110,7 @@ public partial class ASCX_Table_LineForBody : System.Web.UI.UserControl
     {
         get
         {
-            return dataRow[theLineDateForTable.IDLable].ToString();
+            return DataForALine[TheLineDateForTable.IDLable].ToString();
         }
     }
     public int ColumnNum
