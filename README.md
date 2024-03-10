@@ -19,155 +19,19 @@
 
 ## 背景
 
-
+本项目为实现 对市级各种科研项目信息 的智能管控，提供了诸如项目信息一键查看、项目信息快速修改、以及项目信息批量导入等功能。
 
 ## 安装
 
-
+还未完成可用的版本
 
 ## 用法
 
-
-
-### 关于数据库字段建立
-
-> ### 目录
->
-> - [关于数据表的建立](#关于数据库字段建立)
->   - [符号说明](#符号说明)
->   - [项目信息表  `Projects`](#项目信息表)
->   - [项目立项申请表 (`ProjectProposals`)](#项目立项申请表)
->   - [项目修改申请表 (`ProjectModifications`)](#项目修改申请表)
->   - [项目结项申请表 (`ProjectClosures`)](#项目结项申请表)
->   - [审批历史表 (`ApprovalHistory`)](#审批历史表)
->   - [申请小队表 (`ApplicationTeams`)](#申请小队表)
->   - [小队成员表 (`TeamMembers`)](#小队成员表)
->   - [用户表 (`Users`)](#用户表)
-
-
-
-#### 符号说明
-
-> 字段名右标 `*` 为主键
->
-> 字段名右标 `^` 为外键
-
-
-
-#### 项目信息表
-#### `Projects`
-
-| 字段名            | 内容         | 类型 | 属性 |
-| ----------------- | ------------ | ---- | ---- |
-| `ProjectID`       | 项目ID /编号 |      | 主键 |
-| `ProjectName`     | 项目名称     |      |      |
-| `Description`     | 课题名称     |      |      |
-| `ProjectManager`  | 项目负责人   |      |      |
-| `Phone number`    | 联系方式     |      |      |
-| `Pjtcategory`     | 项目负责人   |      |      |
-| `Sjtclassify`     | 项目类别     |      |      |
-| `ApplicationDate` | 申请日期     |      |      |
-
-
-
-#### 项目立项申请表
-#### `ProjectProposals`
-
-| 字段名            | 内容     | 类型 | 属性 |
-| ----------------- | -------- | ---- | ---- |
-| `ProposalID ` *   | 申请ID   |      | 主键 |
-| `ProjectID` ^     | 项目ID   |      | 外键 |
-| `Applicant`       | 申请人   |      |      |
-| `ApplicationDate` | 申请日期 |      |      |
-| `ApprovalStatus`  | 审批状态 |      |      |
-
-
-
-#### 项目修改申请表
-#### `ProjectModifications`
-
-| 字段名              | 内容       | 属性 | 类型 |
-| ------------------- | ---------- | ---- | ---- |
-| `ModificationID ` * | 修改申请ID | 主键 |      |
-| `ProjectID`         | 项目ID     | 外键 |      |
-| `Applicant`         | 申请人     |      |      |
-| `ApplicationDate`   | 申请日期   |      |      |
-| `Description`       | 修改描述   |      |      |
-| `ApprovalStatus`    | 审批状态   |      |      |
-
-
-
-#### 项目结项申请表
-#### `ProjectClosures`
-
-| 字段名            | 内容       | 属性                   | 类型 |
-| ----------------- | ---------- | ---------------------- | ---- |
-| `ClosureID ` *    | 结项申请ID | 主键                   |      |
-| `ProjectID` ^     | 项目ID     | 外键，关联到项目信息表 |      |
-| `Applicant`       | 申请人     |                        |      |
-| `ApplicationDate` | 申请日期   |                        |      |
-| `ClosureReason`   | 结项原因   |                        |      |
-| `ApprovalStatus`  | 审批状态   |                        |      |
-
-
-
-#### 审批历史表
-#### `ApprovalHistory`
-
-| 字段名                                    | 内容     | 属性                     | 类型 |
-| ----------------------------------------- | -------- | ------------------------ | ---- |
-| `RecordID` *                              | 记录ID   | 主键                     |      |
-| `ProposalID`/`ModificationID`/`ClosureID` | 申请ID   | 外键，关联到对应的申请表 |      |
-| `Approver`                                | 审批人   |                          |      |
-| `ApprovalDate`                            | 审批日期 |                          |      |
-| `ApprovalComments`                        | 审批意见 |                          |      |
-
-
-
-#### 申请小队表
-#### `ApplicationTeams`
-
-| 字段名         | 内容     | 属性 | 类型 |
-| -------------- | -------- | ---- | ---- |
-| `RecordID` *   | 记录ID   | 主键 |      |
-| `TeamName`     | 小队名称 |      |      |
-| `TeamLeader`   | 负责人   |      |      |
-| `CreationDate` | 创建日期 |      |      |
-
- 
-
-#### 小队成员表
-#### `TeamMembers`
-
-| 字段名       | 内容     | 属性                                      | 类型 |
-| ------------ | -------- | ----------------------------------------- | ---- |
-| `RecordID` * | 记录ID   | 主键                                      |      |
-| `TeamID`     | 小队ID   | 外键，关联到申请小队表                    |      |
-| `MemberID`   | 成员ID   | 外键，关联到用户表 (如果需要记录成员信息) |      |
-| `MemberRole` | 成员角色 |                                           |      |
-| `JoinDate`   | 加入日期 |                                           |      |
-
- 
-
-#### 用户表
-#### `Users`
-
-| 字段名        | 内容     | 属性 | 类型 |
-| ------------- | -------- | ---- | ---- |
-| `UserID` *    | 用户ID   | 主键 |      |
-| `Username`    | 用户名   |      |      |
-| `Password`    | 密码     |      |      |
-| `FullName`    | 姓名     |      |      |
-| `identity`    | 身份     |      |      |
-| `ContactInfo` | 联系信息 |      |      |
-
-
-
-
+还未完成可用的版本
 
 ## 相关项目
 
-暂无
+- [![Static Badge](https://img.shields.io/badge/%E9%A1%B9%E7%9B%AE%E6%B3%A8%E8%A7%A3-documents--ForFirstprogram-green)](https://github.com/03xiaoyuhe/documents-ForFirstprogram)
 
 
 
