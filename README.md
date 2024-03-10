@@ -46,8 +46,8 @@
 
 ### 贡献人员
 
+感谢所有贡献的人。
 [@03xiaoyuhe](https://github.com/03xiaoyuhe)
 [@xxxlzm](https://github.com/xxxlzm)
 [@guoruixue0924](https://github.com/guoruixue0924)
-感谢所有贡献的人。
 
