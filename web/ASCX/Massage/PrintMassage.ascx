@@ -32,11 +32,10 @@
 <!-- - `top-0` & `end-0` to position the toasts in the upper right corner -->
 <!-- - `.p-3` to prevent the toasts from sticking to the edge of the container  -->
 <div id ="print" class="toast-container buttom-0 end-0 p-3 index_box">
-    <asp:UpdatePanel ID="updateFlight" runat="server" UpdateMode="Always">
+    <asp:UpdatePanel ID="updateFlight" runat="server" UpdateMode="Always" OnLoad="updateFlight_Load">
         <ContentTemplate>
-            <asp:Timer ID="Timer1" runat="server" Interval="200" OnTick="Timer1_Tick">
+            <asp:Timer ID="Timer1" runat="server" Interval="200">
             </asp:Timer>
-            <%--<asp:Label ID ="time" runat ="server"></asp:Label>--%>
         </ContentTemplate>
     </asp:UpdatePanel>
 

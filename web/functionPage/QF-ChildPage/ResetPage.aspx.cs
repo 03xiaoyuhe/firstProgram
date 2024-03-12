@@ -60,58 +60,11 @@ public partial class functionPage_QF_ChildPage_ResetPage : System.Web.UI.Page
         this.PhoneNum.Text = dl["team_id"].ToString();//小队id
         this.DoForm.Text = dl["achievement_form"].ToString();//成果形式
         this.DoTextarea.Text = dl["achievement_brief"].ToString();//成果描述
-
-
     }
 
     protected void submit_Click(object sender, EventArgs e)
     {
 
-        try
-        {
-            //if (!ProjectCompletion.CheckTeam_id(this.PhoneNum.Text.ToString()))
-            //{
-            //    throw new Exception("NotLoad");
-            //}
-
-            //if (ProjectCompletion.ProjectInfor(
-            //    this.ProgramIDInput.Text.ToString(),
-            //    this.floatingInput.Text.ToString(),
-            //    this.floatingTextarea.Text.ToString(),
-            //    this.PhoneNum.Text.ToString(),
-            //    this.DoForm.Text.ToString(),
-            //    this.DoTextarea.Text.ToString()
-            //    ))
-            if(ProjectCompletion.UpdatePrroject(
-                "project_id",
-                this.ProgramIDInput.Text.ToString(),
-                this.floatingInput.Text.ToString(),
-                this.floatingTextarea.Text.ToString(),
-                this.PhoneNum.Text.ToString(),
-                this.DoForm.Text.ToString(),
-                this.DoTextarea.Text.ToString()
-                ))
-            {
-                clearAll();
-                Massage massage = new Massage("Blue", "Success", "修改");
-                massage.PostMassage();
-            }
-        }
-        catch (Exception E)
-        {
-            if (E.Message == "NotLoad")
-            {
-                clearAll();
-                Massage massage = new Massage("#ff0000", "ERRO", "对应负责人未组队");
-                massage.PostMassage();
-            }
-            else
-            {
-                clearAll();
-                Massage massage = new Massage("#ff0000", "ERRO", E.Message);
-                massage.PostMassage();
-            }
-        }
     }
 
     protected void clear_Click(object sender, EventArgs e)

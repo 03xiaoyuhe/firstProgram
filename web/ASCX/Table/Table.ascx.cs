@@ -138,6 +138,14 @@ public partial class ASCX_Table_Table : System.Web.UI.UserControl
     #endregion
 
     #endregion
+
+    #region 自定义事件
+
+    public event EventHandler DataChanged;
+
+    #endregion
+
+
     protected void Page_Load(object sender, EventArgs e)
     {
         Panel1.Height = (System.Web.UI.WebControls.Unit)Height;

@@ -62,6 +62,17 @@ public partial class ASCX_Table_DeletButten : System.Web.UI.UserControl
     }
 
     #endregion
+
+    #region 自定义事件
+    //定义委托
+    public delegate void EventHandler(object sender, EventArgs e);
+
+    //定义事件
+    public event EventHandler DataChanged;
+
+    #endregion
+
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (DataID == null) throw new Exception("删除按钮(" + ID + ")未指定数据项ID");
@@ -75,6 +86,7 @@ public partial class ASCX_Table_DeletButten : System.Web.UI.UserControl
         {
             Massage message = new Massage("Blue", "Success", "删除成功，请刷新页面");
             message.PostMassage();
+            DataChanged(sender, e);
 
         }  
         else
