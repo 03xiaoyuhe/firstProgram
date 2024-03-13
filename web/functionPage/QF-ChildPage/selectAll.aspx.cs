@@ -88,24 +88,23 @@ public partial class test : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            PageNum = Convert.ToInt32(Request.QueryString["Page"]);
+            int a;
+            if (Request.QueryString["index"] != null) a = int.Parse(Request.QueryString["index"]);
+            else a = 1;
+            if (a > 0)
+            {
+                aaa.Index = a;
+                PageNum = a;
+            }
         }
         InitData();
         Loding();
         LoadTable();
-        int a;
-        if (Request.QueryString["index"] != null) a = int.Parse(Request.QueryString["index"]);
-        else a = 1;
-        if (a > 0)
-        {
-            aaa.Index = a;
-            Index = a;
-        }
     }
 
     void InitData()
     {
-        Data = PageApart.Apart("ProjectApplications", "project_id", PageNum);
+        Data = PageApart.Apart("ProjectApplications", "project_id", PageNum-1);
     }
 
     void Loding()

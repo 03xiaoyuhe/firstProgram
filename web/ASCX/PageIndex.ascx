@@ -16,6 +16,9 @@
         height:100%;
         border-top: #0094ff 2px solid;
     }
+    .indexbutton:hover{
+        cursor:default;
+    }
 </style>
 
 <div style="margin:0 auto;">

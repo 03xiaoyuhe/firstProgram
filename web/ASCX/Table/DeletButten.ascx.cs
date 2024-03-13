@@ -86,8 +86,7 @@ public partial class ASCX_Table_DeletButten : System.Web.UI.UserControl
         {
             Massage message = new Massage("Blue", "Success", "删除成功，请刷新页面");
             message.PostMassage();
-            DataChanged(sender, e);
-
+            Response.Redirect(Request.Url.PathAndQuery);
         }  
         else
         {

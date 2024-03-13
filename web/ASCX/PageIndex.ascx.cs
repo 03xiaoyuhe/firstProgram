@@ -17,8 +17,8 @@ public partial class ASCX_PageIndex : System.Web.UI.UserControl
 
     #region 自定义属性
 
-    int index = 1;
-    public int Index 
+    int index=1;
+    public int Index
     {
         get
         {
@@ -29,7 +29,6 @@ public partial class ASCX_PageIndex : System.Web.UI.UserControl
             index = value;
         }
     }
-    
     #endregion 
 
 
@@ -45,6 +44,11 @@ public partial class ASCX_PageIndex : System.Web.UI.UserControl
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        Index = int.Parse(Request.QueryString["index"] == null ? "1" : Request.QueryString["index"]);
+        if (Index < 1)
+        {
+            Response.Redirect(Request.Url.AbsolutePath + "?index=" + "1");
+        }
         List<Data> list = new List<Data>();
         InitList(list);
         PrintList(list);
@@ -52,7 +56,7 @@ public partial class ASCX_PageIndex : System.Web.UI.UserControl
 
     protected void InitList(List<Data> list)
     {
-        if (index < 5)
+        if (Index <= 5)
         {
             int place = 1;
             while (place <= Index + 2)
@@ -103,13 +107,17 @@ public partial class ASCX_PageIndex : System.Web.UI.UserControl
             ((Button)this.FindControl("A"+(i+1).ToString())).Text = list[i].Text;
             ((Button)this.FindControl("A" + (i + 1).ToString())).Visible = true;
             if (list[i].modo == 0) { ((Button)this.FindControl("A" + (i + 1).ToString())).CssClass = "button"; }
-            else { ((Button)this.FindControl("A" + (i + 1).ToString())).CssClass = "indexbutton"; }
+            else { 
+                ((Button)this.FindControl("A" + (i + 1).ToString())).CssClass = "indexbutton";
+            }
         }
     }
 
     protected void Cleck(object sender, EventArgs e)
     {
-        if(((Button)sender).Text != "...") Response.Redirect(Request.Url.AbsolutePath + "?index="+((Button)sender).Text);
-        else Response.Redirect(Request.Url.AbsolutePath + "?index=" + ((1+Index)/2).ToString());
+        if(((Button)sender).Text == "...") Response.Redirect(Request.Url.AbsolutePath + "?index=" + ((1 + Index) / 2).ToString());
+        else if(((Button)sender).Text == "<") Response.Redirect(Request.Url.AbsolutePath + "?index="+ (Index - 1).ToString());
+        else if(((Button)sender).Text == ">") Response.Redirect(Request.Url.AbsolutePath + "?index="+ (Index + 1).ToString());
+        else Response.Redirect(Request.Url.AbsolutePath + "?index=" + ((Button)sender).Text);
     }
 }

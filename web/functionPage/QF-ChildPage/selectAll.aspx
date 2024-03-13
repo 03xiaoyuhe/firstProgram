@@ -22,7 +22,6 @@
             <div class="row">
                 <div class="col" style="text-align: right">
                     <div style="margin: 10px;">
-                        <asp:Button ID="OpenSearchBtn" runat="server" Text="刷新" />
                     </div>
                 </div>
                 <div class="col-8">
