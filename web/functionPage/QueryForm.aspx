@@ -164,7 +164,6 @@
 
 <body style="overflow: hidden;">
     <script type="text/javascript" src="../JS/QueryFormJS.js"></script>
-    <script type="text/javascript"></script>
 
   <%--  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
         <symbol id="check2" viewBox="0 0 16 16">
@@ -471,8 +470,8 @@
         </div>
 
         <script type="text/javascript"></script>
-        <div class="bg-body-tertiary border rounded-3" style="float: right; position: relative; overflow: hidden; width: 100%; height: 570px; margin-right: 30px; margin-left">
-            <iframe id="test" src="./QF-ChildPage/selectAll.aspx" style="width: 100%; height: 100%"></iframe>
+        <div class="bg-body-tertiary border rounded-3" style="float: right; position: relative; overflow: hidden; width: 100%; height: 570px; margin-right: 30px; margin-left;">
+            <iframe id="test" src="./QF-ChildPage/selectAll.aspx?index=5" style="width: 100%; height: 100%"></iframe>
         </div>
     </main>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>

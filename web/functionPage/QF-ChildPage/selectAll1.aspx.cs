@@ -7,13 +7,10 @@ using System.Web;
 using System.Web.UI;
 using Models;
 using System.Web.UI.WebControls;
-using System.Reflection.Emit;
 public partial class test : System.Web.UI.Page
 {
 
     #region 自定义属性
-
-    int Index;
 
     string searchString;
     /// <summary>
@@ -83,28 +80,33 @@ public partial class test : System.Web.UI.Page
     #endregion
 
 
+    //最大页码
+    public int maxPage = 3;
+    //页数
+    int PageSize = 50;
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        int currentPage = 1;
+        if (int.TryParse(Request["currentPage"] + "", out currentPage))
+        {
+        }
+
+        if (currentPage < 1) currentPage = 1;
+
         if (!IsPostBack)
         {
-            int a;
-            if (Request.QueryString["index"] != null) a = int.Parse(Request.QueryString["index"]);
-            else a = 1;
-            if (a > 0)
-            {
-                aaa.Index = a;
-                PageNum = a;
-            }
+            PageNum = Convert.ToInt32(Request.QueryString["currentPage"]);
         }
         InitData();
         Loding();
         LoadTable();
+        Label1.Text = (PageNum + 1).ToString();
     }
 
     void InitData()
     {
-        Data = PageApart.Apart("ProjectApplications", "project_id", PageNum-1);
+        Data = PageApart.Apart("ProjectApplications", "project_id", PageNum);
     }
 
     void Loding()

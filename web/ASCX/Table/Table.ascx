@@ -99,22 +99,6 @@
 
 
             <asp:Panel ID="Panel1" runat="server">
-                <div class="container text-center">
-                    <div class="row">
-                        <div class="col" style="text-align:right">
-                            <div style="margin: 10px;">
-                                <asp:Button ID="OpenSearchBtn" runat="server" Text="刷新" />
-                            </div>
-                        </div>
-                        <div class="col-8">
-                            <div style="margin: 10px;">
-                                <asp:TextBox ID="TextBox1" runat="server" Width="200"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col">
-                        </div>
-                    </div>
-                </div>
                 <div class="sticky-table">
                     <table>
                         <thead>

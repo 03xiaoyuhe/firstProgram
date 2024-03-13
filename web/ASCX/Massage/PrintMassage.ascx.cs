@@ -38,35 +38,12 @@ public partial class ASCX_PrintMassage : System.Web.UI.UserControl
     static List<HttpCookie> AllCookies = new List<HttpCookie>();
     protected void Page_Load(object sender, EventArgs e)
     {
-        Timer1.Interval = 200;
+
     }
 
     protected void Timer1_Tick(object sender, EventArgs e)
     {
-        //time.Text = DateTime.Now.ToString();
-        int count = 0;
 
-        /// 统计消息Cookie数量在与显示数量不同时刷新消息显示控件
-        for (int i = Request.Cookies.Count - 1; i > -1; i--)
-        {
-            if (Request.Cookies[i].Values["Type"] != null)
-            {
-                if (Request.Cookies[i].Values["Type"].ToString() == "Massage-1.0")
-                {
-                    AllCookies.Add(Request.Cookies[i]);
-                    count++;
-                }
-            }
-        }
-        if(count != Count)
-        {
-            MassageP.Update();
-            Count = count;
-        }
-        else
-        {
-            AllCookies.Clear();
-        }
     }
 
     void LoadUserControl(
@@ -119,6 +96,34 @@ public partial class ASCX_PrintMassage : System.Web.UI.UserControl
                     LoadUserControl(Request.Cookies[i]);
                 }
             }
+        }
+    }
+
+    protected void updateFlight_Load(object sender, EventArgs e)
+    {
+        //time.Text = DateTime.Now.ToString();
+        int count = 0;
+
+        /// 统计消息Cookie数量在与显示数量不同时刷新消息显示控件
+        for (int i = Request.Cookies.Count - 1; i > -1; i--)
+        {
+            if (Request.Cookies[i].Values["Type"] != null)
+            {
+                if (Request.Cookies[i].Values["Type"].ToString() == "Massage-1.0")
+                {
+                    AllCookies.Add(Request.Cookies[i]);
+                    count++;
+                }
+            }
+        }
+        if (count != Count)
+        {
+            MassageP.Update();
+            Count = count;
+        }
+        else
+        {
+            AllCookies.Clear();
         }
     }
 }
