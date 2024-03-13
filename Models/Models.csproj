@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="LineDateBase.cs" />
     <Compile Include="Massage.cs" />
+    <Compile Include="PagePostBack.cs" />
     <Compile Include="TableAttribute.cs" />
     <Compile Include="WorkerLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

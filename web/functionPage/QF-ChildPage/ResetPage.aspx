@@ -116,11 +116,11 @@
                     <td>
                         <div class="form-floating mb-3" style="margin: 5px auto;">
                             <asp:TextBox ID="PhoneNum" runat="server" class="form-control" placeholder=""></asp:TextBox>
-                            <label for="PhoneNum">负责人电话号码</label>
+                            <label for="PhoneNum">小队Id</label>
                             <asp:RequiredFieldValidator
                                 ID="RequiredFieldValidator3"
                                 runat="server"
-                                ErrorMessage="请输入负责人电话号码"
+                                ErrorMessage="请输入小队Id"
                                 Font-Strikeout="False"
                                 ControlToValidate="PhoneNum"
                                 CssClass="setCharRed setCharSizeSmall program-errorBox" Font-Size="10px">

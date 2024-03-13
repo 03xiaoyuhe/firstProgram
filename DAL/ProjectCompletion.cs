@@ -79,23 +79,22 @@ namespace DAL
         static public bool UpdatePrroject(string project_id, string proposal_number, string project_title, string project_description, string team_id, string achievement_form, string achievement_brief)
         {
             string query = "UPDATE ProjectApplications SET " +
-                "proposal_number = '@proposal_number'," +
-                "project_title = '@project_title'," +
-                "project_description = '@project_description'," +
-                //"team_id = (select user_id from UserLogin where useNumber=@userNumber))," +
-                 "team_id = '@team_id'," +
-                "achievement_form = '@achievement_form'," +
-                "achievement_brief = '@achievement_brief' " +
+                "proposal_number = @proposal_number," +
+                "project_title = @project_title," +
+                "project_description = @project_description," +
+                 "team_id = @team_id," +
+                "achievement_form = @achievement_form," +
+                "achievement_brief = @achievement_brief " +
                 " WHERE project_id = @project_id;";
-            SqlParameter[] parameters =
+            SqlParameter [] parameters =
             {
-                new SqlParameter("@proposal_number",SqlDbType.NVarChar) { Value = proposal_number },
-                new SqlParameter("@project_title",SqlDbType.NVarChar){Value = project_title },
-                new SqlParameter("@project_description",SqlDbType.NVarChar) { Value = project_description },
-                new SqlParameter("@team_id", SqlDbType.NVarChar) { Value = team_id },
-                new SqlParameter("@achievement_form",SqlDbType.NVarChar){Value=achievement_form },
-                new SqlParameter("@achievement_brief",SqlDbType.NVarChar){Value=achievement_brief },
-                new SqlParameter("@project_id",SqlDbType.NVarChar) {Value = project_id},
+                new SqlParameter("@proposal_number", SqlDbType.NVarChar) { Value = proposal_number },
+                new SqlParameter("@project_title", SqlDbType.NVarChar) {Value = project_title },
+                new SqlParameter("@project_description", SqlDbType.NVarChar) { Value = project_description },
+                new SqlParameter("@team_id", SqlDbType.Int) { Value = team_id },
+                new SqlParameter("@achievement_form", SqlDbType.NVarChar) {Value = achievement_form },
+                new SqlParameter("@achievement_brief", SqlDbType.NVarChar) {Value = achievement_brief },
+                new SqlParameter("@project_id", SqlDbType.Int) {Value = project_id},
             };
 
             int rowsAffected = DBHelper.ExecuteSql(query, parameters);

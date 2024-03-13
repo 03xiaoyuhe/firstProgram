@@ -11,8 +11,17 @@ namespace DAL
 {
     public class PageApart
     {
+        /// <summary>
+        /// 通过三个变量进行分页输出数据
+        /// </summary>
+        /// <param name="TableName">表名</param>
+        /// <param name="CellId">字段名</param>
+        /// <param name="count">页数-1</param>
+        /// <returns></returns>
         static public DataSet Apart(string TableName, string CellId, int count)
         {
+            //to do  需要读取config 里的数据
+
             string query = "select top 12 *" +
                 "from (select row_number()" +
                 " over(order by "+ CellId + " asc) as rownumber,* from " +
@@ -20,7 +29,7 @@ namespace DAL
                 " where rownumber >"+count+"  *12";
             //SqlParameter[] parameters =
             //{
-            //    new SqlParameter("@count",SqlDbType.Int) { Value = count}
+            //    new SqlParameter("@count",SqlDbType.Int) { Value = count}  
             //};
 
             DataSet result = DBHelper.Query(query);
