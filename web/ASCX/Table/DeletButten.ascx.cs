@@ -1,104 +1,100 @@
 ﻿using DAL;
-using System;
-using System.Collections.Generic;
-using System.EnterpriseServices;
 using Models;
-using System.Linq;
-using System.ServiceModel.Channels;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using System;
 
-public partial class ASCX_Table_DeletButten : System.Web.UI.UserControl
+namespace WebForm.ASCX.Table
 {
-
-    #region 参数成员
-
-
-    /// <summary>
-    /// 由于不含DateBase 独立的变量
-    /// </summary>
-    string idLable;
-    public string IDLable
+    public partial class DeletButten : System.Web.UI.UserControl
     {
-        get
+
+        #region 参数成员
+
+
+        /// <summary>
+        /// 由于不含DateBase 独立的变量
+        /// </summary>
+        string idLable;
+        public string IDLable
         {
-            return idLable;
+            get
+            {
+                return idLable;
+            }
+            set
+            {
+                idLable = value;
+            }
         }
-        set
+
+        /// <summary>
+        /// 绑定数据库对应表单
+        /// </summary>
+        string tableName = null;
+        public string TableName
         {
-            idLable = value;
+            get
+            {
+                if (tableName == null) throw new Exception("表格未绑定表单");
+                return tableName;
+            }
+            set
+            {
+                tableName = value;
+            }
         }
-    }
 
-    /// <summary>
-    /// 绑定数据库对应表单
-    /// </summary>
-    string tableName = null;
-    public string TableName
-    {
-        get
+        string dataID;
+        public string DataID
         {
-            if (tableName == null) throw new Exception("表格未绑定表单");
-            return tableName;
+            get
+            {
+                return dataID;
+            }
+            set
+            {
+                dataID = value;
+            }
         }
-        set
+
+        #endregion
+
+        #region 自定义事件
+        //定义委托
+        public delegate void EventHandler(object sender, EventArgs e);
+
+        //定义事件
+        public event EventHandler DataChanged;
+
+        #endregion
+
+
+        protected void Page_Load(object sender, EventArgs e)
         {
-            tableName = value;
+            if (DataID == null) throw new Exception("删除按钮(" + ID + ")未指定数据项ID");
         }
-    }
 
-    string dataID;
-    public string DataID
-    {
-        get
+
+
+        protected void DeletButton_Click(object sender, EventArgs e)
         {
-            return dataID;
+            if (ProjectCompletion.ProjectDeteleVision(DataID))
+            {
+                Massage message = new Massage("Blue", "Success", "删除成功，请刷新页面");
+                message.PostMassage();
+                Response.Redirect(Request.Url.PathAndQuery);
+            }
+            else
+            {
+                Massage message = new Massage("Red", "ERROR", "删除失败");
+                message.PostMassage();
+
+            }
         }
-        set
+
+        protected void ResetButton_Click(object sender, EventArgs e)
         {
-            dataID = value;
+            string gotoURL = "~/functionPage/QF-ChildPage/ResetPage.aspx?tablename=" + TableName + "&idlable=" + IDLable + "&id=" + DataID;
+            Response.Redirect(gotoURL);
         }
-    }
-
-    #endregion
-
-    #region 自定义事件
-    //定义委托
-    public delegate void EventHandler(object sender, EventArgs e);
-
-    //定义事件
-    public event EventHandler DataChanged;
-
-    #endregion
-
-
-    protected void Page_Load(object sender, EventArgs e)
-    {
-        if (DataID == null) throw new Exception("删除按钮(" + ID + ")未指定数据项ID");
-    }
-
-
-
-    protected void DeletButton_Click(object sender, EventArgs e)
-    {
-        if (ProjectCompletion.ProjectDeteleVision(DataID))
-        {
-            Massage message = new Massage("Blue", "Success", "删除成功，请刷新页面");
-            message.PostMassage();
-            Response.Redirect(Request.Url.PathAndQuery);
-        }  
-        else
-        {
-            Massage message = new Massage("Red", "ERROR", "删除失败");
-            message.PostMassage();
-
-        }
-    }
-
-    protected void ResetButton_Click(object sender, EventArgs e)
-    {
-        string gotoURL = "~/functionPage/QF-ChildPage/ResetPage.aspx?tablename=" + TableName + "&idlable=" + IDLable + "&id=" + DataID;
-        Response.Redirect(gotoURL);
     }
 }

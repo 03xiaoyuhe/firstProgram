@@ -4,15 +4,20 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebForm.ASCX;
+using WebForm.ASCX.MassageForm;
 
-public partial class test : System.Web.UI.Page
+namespace WebForm.functionPage
 {
-    protected void Page_Load(object sender, EventArgs e)
+    public partial class QueryForm1 : System.Web.UI.Page
     {
-
-        for (int i = 0; i < Request.Cookies.Count; i++)
+        protected void Page_Load(object sender, EventArgs e)
         {
-            Request.Cookies[i].Expires = DateTime.Now.AddDays(-1);
+
+            for (int i = 0; i < Request.Cookies.Count; i++)
+            {
+                Request.Cookies[i].Expires = DateTime.Now.AddDays(-1);
+            }
         }
     }
 }

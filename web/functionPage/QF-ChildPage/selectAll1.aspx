@@ -1,7 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="selectAll1.aspx.cs" Inherits="test" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="selectAll1.aspx.cs" Inherits="WebApplication1.functionPage.QF_ChildPage.selectAll" %>
 
 <%--<pages enableEventValidation="false"/>--%>
-<%@ Register Src="~/ASCX/Table/Table.ascx" TagName="Table" TagPrefix="Table" %>
+<%@ Register Src="~/ASCX/Table/MyTable.ascx" TagName="Table" TagPrefix="Table" %>
 <%@ Register Src="~/ASCX/Massage/PrintMassage.ascx" TagName="PrintMassage" TagPrefix="TPrintMassage" %>
 <%@ Register Src="~/ASCX/Table/DeletButten.ascx" TagName="Table" TagPrefix="DeletButten" %>
 <%@ Register Src="~/ASCX/Loading.ascx" TagName="Load" TagPrefix="Loading" %>

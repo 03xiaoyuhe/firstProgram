@@ -1,5 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="PageIndex.ascx.cs" Inherits="ASCX_PageIndex" %>
-
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="PageIndex.ascx.cs" Inherits="WebForm.ASCX.PageIndex" %>
 
 <style type="text/css">
     .button{
@@ -21,7 +20,7 @@
     }
 </style>
 
-<div style="margin:0 auto;">
+<div style="margin:0 auto;overflow:hidden;">
     <asp:Button ID="A0" runat="server" OnClick="Cleck" Text="<" CssClass ="button"/>
     <asp:Button ID="A1" runat="server" OnClick="Cleck" Visible="False" />
     <asp:Button ID="A2" runat="server" OnClick="Cleck" Visible="False"/>

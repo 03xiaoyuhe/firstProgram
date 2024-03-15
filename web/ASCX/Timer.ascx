@@ -1,5 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="Timer.ascx.cs" Inherits="ASCX_Timer" %>
-
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Timer.ascx.cs" Inherits="WebForm.ASCX.Timer" %>
 
 <asp:ScriptManager ID="ScriptManager1" runat="server">
 </asp:ScriptManager>

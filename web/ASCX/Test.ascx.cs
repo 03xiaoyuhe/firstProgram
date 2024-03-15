@@ -1,20 +1,16 @@
 ﻿using DAL;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
-
-public partial class ASCX_Test : System.Web.UI.UserControl
+namespace WebForm.ASCX
 {
-    public DataTable dt = new DataTable();
-    protected void Page_Load(object sender, EventArgs e)
+    public partial class Test : System.Web.UI.UserControl
     {
-        //if (!IsPostBack)
-       // {
+        public DataTable dt = new DataTable();
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            //if (!IsPostBack)
+            // {
             //创建一个临时数据库
             DataSet ds;
             ds = DBHelper.Query("select *from UserLogin;");
@@ -33,5 +29,5 @@ public partial class ASCX_Test : System.Web.UI.UserControl
                 }
             }
         }
-  //  }
+    }
 }

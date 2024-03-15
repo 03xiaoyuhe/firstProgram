@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="SideBarForProgram.aspx.cs" Inherits="functionPage_QF_ChildPage_SideBarForProgram" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SideBarForProgram.aspx.cs" Inherits="WebApplication1.functionPage.QF_ChildPage.SideBarForProgram" %>
 
 <!DOCTYPE html>
 

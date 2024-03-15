@@ -1,9 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masterPage/handing.master" AutoEventWireup="true" CodeFile="WorkerLogin.aspx.cs" Inherits="WorkerLogin" %>
-
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masterPage/handing.master" AutoEventWireup="true" CodeBehind="WorkerLogin.aspx.cs" Inherits="WebForm.WorkerLogin" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="../bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="../bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
 
@@ -113,6 +111,4 @@
             </div>
         </div>
     </div>
-
 </asp:Content>
-

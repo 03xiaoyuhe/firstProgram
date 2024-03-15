@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="CellForHead.ascx.cs" Inherits="ASCX_Table_CellForHead" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CellForHead.ascx.cs" Inherits="WebForm.ASCX.Table.CellForHead" %>
 
 <th>
     <asp:Label ID="Data" runat ="server"></asp:Label>

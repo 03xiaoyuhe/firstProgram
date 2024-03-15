@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ResetPage.aspx.cs" Inherits="functionPage_QF_ChildPage_ResetPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ResetPage.aspx.cs" Inherits="WebForm.functionPage.QF_ChildPage.ResetPage" %>
 
 <!DOCTYPE html>
 

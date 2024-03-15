@@ -1,15 +1,13 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="QueryForm.aspx.cs" Inherits="test" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="QueryForm.aspx.cs" Inherits="WebForm.functionPage.QueryForm1" %>
 
 <%@ Register Src="~/ASCX/DefaultNONE.ascx" TagPrefix="uc1" TagName="DefaultNONE" %>
-
-<%@ Register Src="~/ASCX/Massage/popMassage.ascx" TagName="popMassage" TagPrefix="TpopMassage" %>
-
-<%@ Register Src="~/ASCX/Massage/PrintMassage.ascx" TagName="PrintMassage" TagPrefix="TPrintMassage" %>
+<%@ Register Src="~/ASCX/MassageForm/PrintMassage.ascx" TagName="Massage" TagPrefix="TMassage" %>
+<%@ Register Src="~/ASCX/MassageForm/PrintMassage.ascx" TagPrefix="AAA" TagName="MMM" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head runat="server"> 
     <script src="../assets/js/color-modes.js"></script>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -470,13 +468,13 @@
         </div>
 
         <script type="text/javascript"></script>
-        <div class="bg-body-tertiary border rounded-3" style="float: right; position: relative; overflow: hidden; width: 100%; height: 570px; margin-right: 30px; margin-left;">
+        <div class="bg-body-tertiary border rounded-3" style="float: right; position: relative; overflow: hidden; width: 100%; height: 600px; margin-right: 30px; margin-left;">
             <iframe id="test" src="./QF-ChildPage/selectAll.aspx?index=5" style="width: 100%; height: 100%"></iframe>
         </div>
     </main>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
     <form runat="server">
-        <TPrintMassage:PrintMassage ID="aaa" runat="server" />
+        <AAA:MMM runat="server" id="aaa"  ></AAA:MMM>
     </form>
     <script src="../JS/sidebars.js"></script>
 </body>
