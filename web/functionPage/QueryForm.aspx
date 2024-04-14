@@ -231,7 +231,8 @@
 
     <style type="text/css">
         .page-head{
-            /*height:50px;*/
+            --page-head-color:#092f50;
+            --page-head-word-color:#f4f9fd;
             background-color:var(--page-head-color);
             color : var(--page-head-word-color);
         }
@@ -242,7 +243,7 @@
             /*color: #0000007d;*/
             color:var(--page-head-word-color);
             padding-right:10px; 
-            border-right: solid 5px #0000007d;
+            border-right: solid 5px var(--page-head-word-color);
         }
     </style>
 
@@ -260,6 +261,7 @@
                     <input type="radio" class="btn-check" name="options-base" id="option5" autocomplete="off" /><!--checked-->
                     <label
                         class="btn"
+                        style="color : var(--page-head-word-color);"
                         data-bs-toggle="collapse"
                         data-bs-target="#ForProgrem"
                         aria-expanded="true"
@@ -272,6 +274,7 @@
                     <input type="radio" class="btn-check" name="options-base" id="option6" autocomplete="off">
                     <label
                         class="btn"
+                        style="color : var(--page-head-word-color);"
                         for="option6"
                         data-bs-toggle="collapse"
                         data-bs-target="#ForApplication"
@@ -308,14 +311,14 @@
 
 
 
-        <div id="accordionExample" class="clearfix sidebarDiv" style="position: relative; height: 570px; margin-left: 10px;margin-right: 10px;">
+        <div id="accordionExample" class="clearfix sidebarDiv" style="position: relative; height: 570px; margin-left: 10px;margin-right: 10px;overflow:hidden;padding-right:10px;">
 
             <!-- 项目管理功能栏 -->
             <div
                 id="ForProgrem"
                 class="collapse collapse-horizontal showing"
                 data-bs-parent="#accordionExample"
-                style="max-height: 570px;">
+                style="max-height: 570px;width:290px;">
                 <div style="width: 280px; height: 570px; overflow: auto;">
                     <div class="card card-body" style="width: 100%">
                         <div class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
@@ -390,7 +393,7 @@
                 id="ForApplication"
                 class="collapse collapse-horizontal showing sidebarDiv"
                 data-bs-parent="#accordionExample"
-                style="max-height: 570px; float: left">
+                style="max-height: 570px; float: left;width:300px;">
                 <div id="sidebarF" style="width: 280px; height: 570px; overflow: auto;">
 
                     <div class="card card-body" style="width: 100%">

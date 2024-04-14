@@ -17,7 +17,7 @@ namespace WebForm
             }
             if (Session["userName"] != null && Session["loginSuccess"].ToString() == "success")
             {
-                Response.Write("<script language='javascript'>window.location='./functionPage/QueryForm.aspx'</script>");
+                Response.Write("<script language='javascript'>window.location='./QueryForm.aspx'</script>");
             }
         }
 
@@ -33,7 +33,7 @@ namespace WebForm
             {
                 Session["userName"] = this.userName.Text;
                 Session["loginSuccess"] = "success";
-                Response.Write("<script language='javascript'>window.location='./functionPage/QueryForm.aspx'</script>");
+                Response.Write("<script language='javascript'>window.location='./QueryForm.aspx'</script>");
             }
             else
             {
@@ -46,7 +46,7 @@ namespace WebForm
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Write("<script language='javascript'>window.location='home.aspx'</script>");
+            Response.Write("<script language='javascript'>window.location='../home.aspx'</script>");
         }
     }
 }

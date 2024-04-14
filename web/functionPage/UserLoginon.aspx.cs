@@ -23,7 +23,7 @@ namespace WebForm
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Write("<script language='javascript'>window.location='home.aspx'</script>");
+            Response.Write("<script language='javascript'>window.location='../home.aspx'</script>");
         }
 
         protected void userName_TextChanged(object sender, EventArgs e)
@@ -68,7 +68,7 @@ namespace WebForm
                 if (UserRegistration.RegisterUser(this.userName.Text.ToString(), this.userPwd.Text.ToString(), this.useNumber.Text.ToString()))
                 {
                     Response.Write("<script>alert('注册成功！')</script>");
-                    Response.Write("<script language='javascript'>window.location='home.aspx'</script>");
+                    Response.Write("<script language='javascript'>window.location='../home.aspx'</script>");
                 }
                 else
                     Response.Write("<script>alert('发生未知错误，请联系工作人员！')</script>");
