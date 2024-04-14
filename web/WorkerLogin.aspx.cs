@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Models;
 using DAL;
+using Control = DAL.Control;
+
 public partial class WorkerLogin : System.Web.UI.Page
 {
     public string UID = "TTT";
@@ -30,11 +32,14 @@ public partial class WorkerLogin : System.Web.UI.Page
     {
         string a = this.userName.Text.ToString();
         string b = this.userPwd.Text.ToString();
+
         DBHelper.Mode = 1;
         DBHelper.Setting();
-        if ( UserLogin.AuthenticateUser(a,b))
+
+        if ( DAL.Control.AuthenticateUser(a,b))
         {
             Session["userName"] = this.userName.Text;
+
             Session["loginSuccess"] = "success";
             Response.Write("<script language='javascript'>window.location='./functionPage/QueryForm.aspx'</script>");
         }

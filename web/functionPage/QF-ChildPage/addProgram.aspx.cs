@@ -18,19 +18,19 @@ public partial class functionPage_QF_ChildPage_addProgramData : System.Web.UI.Pa
             {
                 throw new Exception("NotLoad");
             }
-            if (ProjectCompletion.ProjectInfor(
-                this.ProgramIDInput.Text.ToString(),
-                this.floatingInput.Text.ToString(),
-                this.floatingTextarea.Text.ToString(),
-                this.PhoneNum.Text.ToString(),
-                this.DoForm.Text.ToString(),
-                this.DoTextarea.Text.ToString()
-                ))
-            {
-                clearAll();
-                Massage massage = new Massage("Blue", "Success", "添加成功");
-                massage.PostMassage();
-            }
+            //if (ProjectCompletion.ProjectInfor(
+            //    this.ProgramIDInput.Text.ToString(),
+            //    this.floatingInput.Text.ToString(),
+            //    this.floatingTextarea.Text.ToString(),
+            //    this.PhoneNum.Text.ToString(),
+            //    this.DoForm.Text.ToString(),
+            //    this.DoTextarea.Text.ToString()
+            //    ))
+            //{
+            //    clearAll();
+            //    Massage massage = new Massage("Blue", "Success", "添加成功");
+            //    massage.PostMassage();
+            //}
         }
         catch (Exception E)
         {

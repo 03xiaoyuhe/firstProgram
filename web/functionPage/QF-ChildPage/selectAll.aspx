@@ -35,26 +35,15 @@
         </div>
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <%--<TPrintMassage:PrintMassage ID="aaa" runat="server" />--%>
-        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-            <ContentTemplate>
-                <asp:PlaceHolder ID="PlaceHolder1" runat="server" OnLoad="PlaceHolder1_Load"></asp:PlaceHolder>
-            </ContentTemplate>
-        </asp:UpdatePanel>
-        
-        <div class="container text-center">
-            <div class="row">
-                <div class="col" style="text-align: right">
-                    <div style="margin: 10px;">
-                    </div>
-                </div>
-                <div class="col-8">
-                    <div style="margin: 10px;">
-                        <PageIndex:PageIndex ID="aaa" runat="server"/>
-                    </div>
-                </div>
-                <div class="col">
-                </div>
-            </div>
+        <div>
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+                    <asp:PlaceHolder ID="PlaceHolder1" runat="server" OnLoad="PlaceHolder1_Load"></asp:PlaceHolder>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
+        <div>
+            <PageIndex:PageIndex ID="aaa" runat="server" />
         </div>
     </form>
 </body>

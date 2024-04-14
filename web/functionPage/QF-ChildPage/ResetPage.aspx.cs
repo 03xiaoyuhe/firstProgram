@@ -84,7 +84,7 @@ public partial class functionPage_QF_ChildPage_ResetPage : System.Web.UI.Page
                 this.DoForm.Text.ToString(),
                 this.DoTextarea.Text.ToString()
                 ))
-                        {
+            {
                 clearAll();
                 Massage massage = new Massage("Blue", "Success", "修改");
                 massage.PostMassage();

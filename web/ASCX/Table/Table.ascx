@@ -8,14 +8,13 @@
 
 <style type="text/css">
     table {
-        position: relative;
         width: 100%;
         border-collapse: collapse;
     }
 
     .sticky-table {
         overflow: auto;
-        max-height: 500px; /* 设置固定高度 */
+        height: 500px; /* 设置固定高度 */
         width: 100%;
         margin: auto;
     }
@@ -91,8 +90,6 @@
 <%--<link rel="stylesheet" href="CSS/Table.css" />
 --%>
 
-<div style="height:100%">
-
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
 
         <ContentTemplate>
@@ -116,4 +113,3 @@
         </ContentTemplate>
 
     </asp:UpdatePanel>
-</div>
