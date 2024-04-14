@@ -8,7 +8,6 @@
 
 <style type="text/css">
     table {
-        position: relative;
         width: 100%;
         border-collapse: collapse;
     }
@@ -89,7 +88,6 @@
 </style>
 <%--<link rel="stylesheet" href="CSS/Table.css" />
 --%>
-
 
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
 

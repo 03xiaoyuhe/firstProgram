@@ -49,6 +49,8 @@
         }
     </style>
 </head>
+
+
 <body>
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -56,6 +58,8 @@
         <div style="width: 80%; margin: 0 auto;">
             <div class="fs-1">项目信息</div>
             <table style="width: 100%">
+
+
                 <tr>
                     <td>
                         <div class="form-floating mb-3" style="margin: 5px auto;">
@@ -95,6 +99,8 @@
 
                     </td>
                 </tr>
+
+
                 <tr>
                     <td colspan="2">
                         <div class="form-floating" style="margin: 5px auto;">
