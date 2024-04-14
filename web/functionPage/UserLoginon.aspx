@@ -1,10 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masterPage/handing.master" AutoEventWireup="true" CodeBehind="WorkerLogin.aspx.cs" Inherits="WebForm.WorkerLogin" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masterPage/handing.master" AutoEventWireup="true" CodeBehind="UserLoginon.aspx.cs" Inherits="WebForm.UserLoginon" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="../bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="../bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
-
     <style>
         .body {
             position: absolute;
@@ -60,55 +59,73 @@
         .Footer {
             position: absolute;
             bottom: 0;
-            text-align: end;
             width: 100%;
             padding-right: 15px;
             padding-bottom: 5px;
         }
     </style>
     <div class="body">
-        <!-- 登陆界面 -->
+        <!-- 注册界面 -->
         <div class="Login">
             <div class="page-header">
 
                 <div class="modal-header Header">
-                    <h1 class="modal-title fs-5 makeCharBolder">登陆</h1>
+                    <h1 class="modal-title fs-5 makeCharBolder">注册</h1>
                 </div>
             </div>
-            <!-- 登陆页主体 -->
+            <!-- 注册页主体 -->
             <div class="modal-body Body-a">
 
                 <!-- 用户名输入框 -->
                 <div class="mb-3">
                     <label for="recipient-name" class="col-form-label">用户名:</label>
-                    <asp:TextBox ID="userName" runat="server" CssClass="putOnShowBorder form-control"></asp:TextBox>
+                    <asp:TextBox ID="userName" runat="server" CssClass="putOnShowBorder form-control" AutoPostBack= "true" OnTextChanged="userName_TextChanged"></asp:TextBox>
+                    <asp:HyperLink ID="SameName" runat="server" ForeColor="Red"></asp:HyperLink>
                     <asp:RequiredFieldValidator ID="checkNameNull" runat="server" ErrorMessage="请输入用户名" Font-Strikeout="False" ControlToValidate="userName" CssClass="setCharRed setCharSizeSmall"></asp:RequiredFieldValidator>
                 </div>
 
+                <!--联系电话-->
+                <div class="mb-3">
+                    <label for="message-text" class="col-form-label">手机电话:</label>
+                    <asp:TextBox ID="useNumber" runat="server" CssClass="putOnShowBorder form-control" AutoPostBack= "true" OnTextChanged="useNumber_TextChanged"></asp:TextBox>
+                    <asp:HyperLink ID="sameUserNumber" runat="server" ForeColor="Red"></asp:HyperLink>
+                    <asp:RequiredFieldValidator ID="checkNumberNull" runat="server" ErrorMessage="请输入联系电话" Font-Strikeout="False" ControlToValidate="useNumber" CssClass="setCharRed setCharSizeSmall"></asp:RequiredFieldValidator>
+
+                </div>
+                
                 <!-- 密码输入框 -->
                 <div class="mb-3">
                     <label for="message-text" class="col-form-label">密码:</label>
                     <asp:TextBox ID="userPwd" runat="server" CssClass="putOnShowBorder form-control" TextMode="Password"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="checkPwdNull" runat="server" ErrorMessage="请输入密码" Font-Strikeout="False" ControlToValidate="userPwd" CssClass="setCharRed setCharSizeSmall"></asp:RequiredFieldValidator>
+
                 </div>
-                <asp:HyperLink ID="HyperLink1" runat="server" 
-                    NavigateUrl="~/UserLoginon.aspx">
-                    没有账号？马上注册->
-
-                </asp:HyperLink>
+                <!--确认密码输入框-->
+                <div class="mb-3">
+                    <label for="message-text" class="col-form-label">确认密码:</label>
+                    <asp:TextBox ID="userPwd2" runat="server" CssClass="putOnShowBorder form-control" TextMode="Password"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="checkPwd2Null" runat="server" ErrorMessage="请输入密码" Font-Strikeout="False" ControlToValidate="userPwd2" CssClass="setCharRed setCharSizeSmall"></asp:RequiredFieldValidator>
+                    <asp:CompareValidator ControlToValidate="userPwd2" ControlToCompare="userPwd" runat="server" ErrorMessage="两次密码不一致，请重新输入" CssClass="setCharRed setCharSizeSmall"></asp:CompareValidator>
+                </div>
             </div>
-
-            <!-- 登陆页尾部 -->
+            
+            <!-- 注册页尾部 -->
             <div class="modal-footer Footer">
-                <link title="aaaa" rel="aaa" />
-                <!-- 登陆按钮 -->
-                <asp:Button ID="BtmLogin" runat="server" Text="登录"  CssClass="btn btn-primary" OnClick="BtmLogin_Click" />
+                <!-- 注册按钮 -->
+                <asp:Button ID="BtmLogin" runat="server" Text="注册" CssClass="btn btn-primary" OnClick="BtmLogin_Click"/>
                 <span style="width: 2px;"></span>
 
-                <a href="home.aspx">
-                    <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">返回主页</button>
+                <a class="btn btn-secondary " href="../home.aspx">返回主页
+                    <%--<button type="button"  data-bs-dismiss="modal"></button>--%>
                 </a>
             </div>
+                <div style="position:absolute; bottom:0;padding-bottom:5px;">
+                    <asp:HyperLink ID="HyperLink1" runat="server"
+                        NavigateUrl="./WorkerLogin.aspx">
+                        已有账号？马上登录->
+                    </asp:HyperLink>
+
+                </div>
         </div>
     </div>
 </asp:Content>

@@ -161,6 +161,7 @@
     <Content Include="CSS\Table.css" />
     <Content Include="CSS\Table2.css" />
     <Content Include="CSS\ThemeColor.css" />
+    <Content Include="ForTest.aspx" />
     <Content Include="functionPage\ProgramImformPage.aspx" />
     <Content Include="functionPage\TestForm.aspx" />
     <Content Include="functionPage\TestP.aspx" />
@@ -255,8 +256,8 @@
     <!-- 功能页 -->
     <Content Include="Default2.aspx" />
     <Content Include="home.aspx" />
-    <Content Include="UserLoginon.aspx" />
-    <Content Include="WorkerLogin.aspx" />
+    <Content Include="functionPage\UserLoginon.aspx" />
+    <Content Include="functionPage\WorkerLogin.aspx" />
     <Content Include="home-test.aspx" />
     <Content Include="functionPage\QueryForm.aspx" />
     <Content Include="functionPage\QF-ChildPage\addProgram.aspx" />
@@ -450,6 +451,13 @@
     <Compile Include="Default2.aspx.designer.cs">
       <DependentUpon>Default2.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ForTest.aspx.cs">
+      <DependentUpon>ForTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ForTest.aspx.designer.cs">
+      <DependentUpon>ForTest.aspx</DependentUpon>
+    </Compile>
     <Compile Include="functionPage\ProgramImformPage.aspx.cs">
       <DependentUpon>ProgramImformPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -514,7 +522,7 @@
       <DependentUpon>handing.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserLoginon.aspx.cs">
+    <Compile Include="functionPage\UserLoginon.aspx.cs">
       <DependentUpon>UserLoginon.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -525,14 +533,14 @@
     <Compile Include="home.aspx.designer.cs">
       <DependentUpon>home.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UserLoginon.aspx.designer.cs">
+    <Compile Include="functionPage\UserLoginon.aspx.designer.cs">
       <DependentUpon>UserLoginon.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WorkerLogin.aspx.cs">
+    <Compile Include="functionPage\WorkerLogin.aspx.cs">
       <DependentUpon>WorkerLogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WorkerLogin.aspx.designer.cs">
+    <Compile Include="functionPage\WorkerLogin.aspx.designer.cs">
       <DependentUpon>WorkerLogin.aspx</DependentUpon>
     </Compile>
   </ItemGroup>

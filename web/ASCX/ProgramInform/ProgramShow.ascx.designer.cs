@@ -51,6 +51,24 @@ namespace WebForm.ASCX.ProgramInform
         protected global::System.Web.UI.WebControls.Label ProgremAdmWhereLable;
 
         /// <summary>
+        /// ProjectFinishLable 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ProjectFinishLable;
+
+        /// <summary>
+        /// ProjectEndLable 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ProjectEndLable;
+
+        /// <summary>
         /// AdmNameLable 控件。
         /// </summary>
         /// <remarks>
@@ -177,31 +195,22 @@ namespace WebForm.ASCX.ProgramInform
         protected global::System.Web.UI.WebControls.Label AdmEmailLable;
 
         /// <summary>
-        /// ProjectFinishLable 控件。
+        /// LineForProgremParter 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ProjectFinishLable;
+        protected global::WebForm.ASCX.ProgramInform.ForProgramShow.ALineForProgremParter LineForProgremParter;
 
         /// <summary>
-        /// ProjectEndLable 控件。
+        /// LineForProgremParterPut 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ProjectEndLable;
-
-        /// <summary>
-        /// ProjectNameLable 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ProjectNameLable;
+        protected global::System.Web.UI.WebControls.PlaceHolder LineForProgremParterPut;
 
         /// <summary>
         /// ProjectIntroduceLable 控件。
