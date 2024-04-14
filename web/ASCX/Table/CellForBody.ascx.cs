@@ -1,31 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Models;
 
-public partial class ASCX_Table_CellForBody : System.Web.UI.UserControl
+namespace WebForm.ASCX.Table
 {
-    protected void Page_Load(object sender, EventArgs e)
+    public partial class CellForBody : System.Web.UI.UserControl
     {
-
-    }
-
-    string cellData = "";
-    [Description("单元格内容"), Category("自定义属性")]
-    public string CellData                  // 控件的自定义属性值
-    {
-        get
+        protected void Page_Load(object sender, EventArgs e)
         {
-            return cellData;
+
         }
-        set
+
+        string cellData = "";
+        [Description("单元格内容"), Category("自定义属性")]
+        public string CellData                  // 控件的自定义属性值
         {
-            cellData = value;
-            Data.Text = value;
+            get
+            {
+                return cellData;
+            }
+            set
+            {
+                cellData = value;
+                Data.Text = value;
+            }
         }
     }
 }

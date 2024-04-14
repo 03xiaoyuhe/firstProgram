@@ -1,15 +1,13 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="QueryForm.aspx.cs" Inherits="test" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="QueryForm.aspx.cs" Inherits="WebForm.functionPage.QueryForm1" %>
 
 <%@ Register Src="~/ASCX/DefaultNONE.ascx" TagPrefix="uc1" TagName="DefaultNONE" %>
-
-<%@ Register Src="~/ASCX/Massage/popMassage.ascx" TagName="popMassage" TagPrefix="TpopMassage" %>
-
-<%@ Register Src="~/ASCX/Massage/PrintMassage.ascx" TagName="PrintMassage" TagPrefix="TPrintMassage" %>
+<%@ Register Src="~/ASCX/MassageForm/PrintMassage.ascx" TagName="Massage" TagPrefix="TMassage" %>
+<%@ Register Src="~/ASCX/MassageForm/PrintMassage.ascx" TagPrefix="AAA" TagName="MMM" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head runat="server"> 
     <script src="../assets/js/color-modes.js"></script>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -233,7 +231,8 @@
 
     <style type="text/css">
         .page-head{
-            /*height:50px;*/
+            --page-head-color:#092f50;
+            --page-head-word-color:#f4f9fd;
             background-color:var(--page-head-color);
             color : var(--page-head-word-color);
         }
@@ -244,7 +243,7 @@
             /*color: #0000007d;*/
             color:var(--page-head-word-color);
             padding-right:10px; 
-            border-right: solid 5px #0000007d;
+            border-right: solid 5px var(--page-head-word-color);
         }
     </style>
 
@@ -262,6 +261,7 @@
                     <input type="radio" class="btn-check" name="options-base" id="option5" autocomplete="off" /><!--checked-->
                     <label
                         class="btn"
+                        style="color : var(--page-head-word-color);"
                         data-bs-toggle="collapse"
                         data-bs-target="#ForProgrem"
                         aria-expanded="true"
@@ -274,6 +274,7 @@
                     <input type="radio" class="btn-check" name="options-base" id="option6" autocomplete="off">
                     <label
                         class="btn"
+                        style="color : var(--page-head-word-color);"
                         for="option6"
                         data-bs-toggle="collapse"
                         data-bs-target="#ForApplication"
@@ -310,14 +311,14 @@
 
 
 
-        <div id="accordionExample" class="clearfix sidebarDiv" style="position: relative; height: 570px; margin-left: 10px;margin-right: 10px;">
+        <div id="accordionExample" class="clearfix sidebarDiv" style="position: relative; height: 570px; margin-left: 10px;margin-right: 10px;overflow:hidden;padding-right:10px;">
 
             <!-- 项目管理功能栏 -->
             <div
                 id="ForProgrem"
                 class="collapse collapse-horizontal showing"
                 data-bs-parent="#accordionExample"
-                style="max-height: 570px;">
+                style="max-height: 570px;width:290px;">
                 <div style="width: 280px; height: 570px; overflow: auto;">
                     <div class="card card-body" style="width: 100%">
                         <div class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
@@ -392,7 +393,7 @@
                 id="ForApplication"
                 class="collapse collapse-horizontal showing sidebarDiv"
                 data-bs-parent="#accordionExample"
-                style="max-height: 570px; float: left">
+                style="max-height: 570px; float: left;width:300px;">
                 <div id="sidebarF" style="width: 280px; height: 570px; overflow: auto;">
 
                     <div class="card card-body" style="width: 100%">
@@ -470,13 +471,13 @@
         </div>
 
         <script type="text/javascript"></script>
-        <div class="bg-body-tertiary border rounded-3" style="float: right; position: relative; overflow: hidden; width: 100%; height: 570px; margin-right: 30px; margin-left;">
-            <iframe id="test" src="./QF-ChildPage/selectAll.aspx" style="width: 100%; height: 100%"></iframe>
+        <div class="bg-body-tertiary border rounded-3" style="float: right; position: relative; overflow: hidden; width: 100%; height: 600px; margin-right: 30px; margin-left;">
+            <iframe id="test" src="./QF-ChildPage/selectAll.aspx?index=5" style="width: 100%; height: 100%"></iframe>
         </div>
     </main>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
     <form runat="server">
-        <TPrintMassage:PrintMassage ID="aaa" runat="server" />
+        <AAA:MMM runat="server" id="aaa"  ></AAA:MMM>
     </form>
     <script src="../JS/sidebars.js"></script>
 </body>

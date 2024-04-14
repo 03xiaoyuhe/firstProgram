@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="LineForHead.ascx.cs" Inherits="ASCX_Table_LineForHead" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="LineForHead.ascx.cs" Inherits="WebForm.ASCX.Table.LineForHead" %>
 
 <%@ Register Src="~/ASCX/Table/CellForHead.ascx" TagName="Table" TagPrefix="CellForTable" %>
 

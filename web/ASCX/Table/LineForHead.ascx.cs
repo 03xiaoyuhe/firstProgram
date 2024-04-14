@@ -1,79 +1,76 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using Models;
-using System.Web.UI.WebControls;
-using System.Xml.Linq;
 
-public partial class ASCX_Table_LineForHead : System.Web.UI.UserControl
+namespace WebForm.ASCX.Table
 {
-
-    Dictionary<string, string> lineToMean = null;
-    /// <summary>
-    /// 表格列信息 以及对应中文
-    /// </summary>
-    public Dictionary<string, string> LineToMean
+    public partial class LineForHead : System.Web.UI.UserControl
     {
-        get
-        {
-            return lineToMean;
-        }
-        set
-        {
-            lineToMean = value;
-        }
-    }
 
-    List<string> lineToShow = null;
-    /// <summary>
-    /// 设置需要显示的列以及显示顺序<br/>
-    /// 注:使用表的字段名
-    /// </summary>
-    public List<string> LineToShow
-    {
-        get
+        Dictionary<string, string> lineToMean = null;
+        /// <summary>
+        /// 表格列信息 以及对应中文
+        /// </summary>
+        public Dictionary<string, string> LineToMean
         {
-            return lineToShow;
+            get
+            {
+                return lineToMean;
+            }
+            set
+            {
+                lineToMean = value;
+            }
         }
-        set
-        {
-            lineToShow = value;
-        }
-    }
 
-    public int ColumnNum
-    {
-        get { return lineToShow.Count; }
-    }
+        List<string> lineToShow = null;
+        /// <summary>
+        /// 设置需要显示的列以及显示顺序<br/>
+        /// 注:使用表的字段名
+        /// </summary>
+        public List<string> LineToShow
+        {
+            get
+            {
+                return lineToShow;
+            }
+            set
+            {
+                lineToShow = value;
+            }
+        }
 
-    int Count
-    {
-        get
+        public int ColumnNum
         {
-            if (ViewState["HeadControlCount"] == null)
-                ViewState["HeadControlCount"] = 0;
-            return (int)ViewState["HeadControlCount"];
+            get { return lineToShow.Count; }
         }
-        set
-        {
-            ViewState["HeadControlCount"] = value;
-        }
-    }
 
-    protected void Page_Load(object sender, EventArgs e)
-    {
-        for(int i = 0; i < ColumnNum; i++)
+        int Count
         {
-            ASCX_Table_CellForHead NewCell = (ASCX_Table_CellForHead)LoadControl("~/ASCX/Table/CellForHead.ascx");
-            NewCell.ID = ID + String.Format("_{0}", i);
-            NewCell.CellData = LineToMean[lineToShow[i]];
-            CellHolder.Controls.Add(NewCell);
-            Count++;
+            get
+            {
+                if (ViewState["HeadControlCount"] == null)
+                    ViewState["HeadControlCount"] = 0;
+                return (int)ViewState["HeadControlCount"];
+            }
+            set
+            {
+                ViewState["HeadControlCount"] = value;
+            }
         }
-        ASCX_Table_CellForHead newCell = (ASCX_Table_CellForHead)LoadControl("~/ASCX/Table/CellForHead.ascx");
-        newCell.CellData = "操作";
-        CellHolder.Controls.Add(newCell);
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            for (int i = 0; i < ColumnNum; i++)
+            {
+                CellForHead NewCell = (CellForHead)LoadControl("~/ASCX/Table/CellForHead.ascx");
+                NewCell.ID = ID + String.Format("_{0}", i);
+                NewCell.CellData = LineToMean[lineToShow[i]];
+                CellHolder.Controls.Add(NewCell);
+                Count++;
+            }
+            CellForHead newCell = (CellForHead)LoadControl("~/ASCX/Table/CellForHead.ascx");
+            newCell.CellData = "操作";
+            CellHolder.Controls.Add(newCell);
+        }
     }
 }

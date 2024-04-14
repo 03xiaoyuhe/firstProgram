@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="Test.ascx.cs" Inherits="ASCX_Test" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Test.ascx.cs" Inherits="WebForm.ASCX.Test" %>
 
 <link href="../CSS/Style.css" rel="stylesheet" />
 
@@ -113,6 +113,4 @@
             </tr>
         </table>
     </div>
-
-
 </div>

@@ -1,9 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="addProgram.aspx.cs" Inherits="functionPage_QF_ChildPage_addProgramData" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="addProgram.aspx.cs" Inherits="WebForm.functionPage.QF_ChildPage.addProgram" %>
 
-<%@ Register Src="~/ASCX/Massage/popMassage.ascx" TagName="popMassage" TagPrefix="TpopMassage" %>
-
-
-<%@ Register Src="~/ASCX/Massage/PrintMassage.ascx" TagName="PrintMassage" TagPrefix="TPrintMassage" %>
+<%@ Register Src="~/ASCX/MassageForm/PrintMassage.ascx" TagName="PrintMassage" TagPrefix="TPrintMassage" %>
 
 <!DOCTYPE html>
 

@@ -42,12 +42,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileRemoveList.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="LineDateBase.cs" />
     <Compile Include="Massage.cs" />
+    <Compile Include="PageDataSor\ProgremData\ProgremDataSplit\DataForAdm.cs" />
+    <Compile Include="PageDataSor\ProgremData\ProgremDataSplit\DataForDoc.cs" />
+    <Compile Include="PageDataSor\ProgremData\ProgremDataSplit\DataForParter.cs" />
+    <Compile Include="PageDataSor\ProgremData\ProgremDataSplit\DataForThinking.cs" />
+    <Compile Include="PageDataSor\ProgremData\ProgromBaseData.cs" />
     <Compile Include="PagePostBack.cs" />
     <Compile Include="TableAttribute.cs" />
     <Compile Include="WorkerLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

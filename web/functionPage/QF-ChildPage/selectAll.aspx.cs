@@ -1,130 +1,73 @@
 ﻿using DAL;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using Models;
 using System.Web.UI.WebControls;
-using System.Reflection.Emit;
-public partial class test : System.Web.UI.Page
+using WebForm.ASCX;
+using WebForm.ASCX.Table;
+
+namespace WebForm.functionPage.QF_ChildPage
 {
-
-    #region 自定义属性
-
-    int Index;
-
-    string searchString;
-    /// <summary>
-    /// 搜索框字符串
-    /// </summary>
-    public string SearchSting
+    public partial class selectAll1 : System.Web.UI.Page
     {
-        get
-        {
-            return searchString;
-        }
-        set
-        {
-            searchString = value;
-        }
-    }
+        #region 自定义属性
 
-    string searchCommend;
-    /// <summary>
-    /// 查询命令
-    /// </summary>
-    public string SearchCommend
-    {
-        get
+        int Index;
+
+        string searchString;
+        /// <summary>
+        /// 搜索框字符串
+        /// </summary>
+        public string SearchSting
         {
-            if (searchCommend == null)
+            get
             {
-                if (SearchSting != null)
-                {
-                    searchCommend = SearchSting;
-                }
-                else
-                {
-                    searchCommend = "";
-                }
+                return searchString;
             }
-            return searchCommend;
-        }
-    }
-
-    DataSet ds;
-    public DataSet Data
-    {
-        get
-        {
-            return ds;
-        }
-        set
-        {
-            ds = value;
-        }
-    }
-
-    int pageNum = 0;
-    public int PageNum
-    {
-        get
-        {
-            return pageNum;
-        }
-        set
-        {
-            pageNum = value;
-        }
-    }
-
-    #endregion
-
-
-
-    protected void Page_Load(object sender, EventArgs e)
-    {
-        if (!IsPostBack)
-        {
-            int a;
-            if (Request.QueryString["index"] != null) a = int.Parse(Request.QueryString["index"]);
-            else a = 1;
-            if (a > 0)
+            set
             {
-                aaa.Index = a;
-                PageNum = a;
+                searchString = value;
             }
         }
-        InitData();
-        Loding();
-        LoadTable();
-    }
 
-    void InitData()
-    {
-        Data = PageApart.Apart("ProjectApplications", "project_id", PageNum-1);
-    }
-
-    void Loding()
-    {
-        ASCX_Loading NewLine = (ASCX_Loading)LoadControl("~/ASCX/Loading.ascx");
-        PlaceHolder1.Controls.Clear();
-        PlaceHolder1.Controls.Add(NewLine);
-    }
-
-
-    void LoadTable()
-    {
-        DataTable dataTable;
-        try
+        string searchCommend;
+        /// <summary>
+        /// 查询命令
+        /// </summary>
+        public string SearchCommend
         {
-            dataTable = Data.Tables[0];
+            get
+            {
+                if (searchCommend == null)
+                {
+                    if (SearchSting != null)
+                    {
+                        searchCommend = SearchSting;
+                    }
+                    else
+                    {
+                        searchCommend = "";
+                    }
+                }
+                return searchCommend;
+            }
         }
-        catch
+
+        DataSet ds;
+        public DataSet Data
         {
-            dataTable = null;
+            get
+            {
+                return ds;
+            }
+            set
+            {
+                ds = value;
+            }
         }
         List<string> list = new List<string>();
         list.Add("team_id");
@@ -165,23 +108,99 @@ public partial class test : System.Web.UI.Page
         //map.Add("achievement_form", "成果形式");
         //map.Add("achievement_brief", "成果简述");
 
-        TableAttribute tableAttribute = new TableAttribute(
-            "project_id",
-            "项目信息",
-            map,
-            list
-            );
-        ASCX_Table_Table NewLine = (ASCX_Table_Table)LoadControl("~/ASCX/Table/Table.ascx");
-        NewLine.TableBase = tableAttribute;
-        NewLine.DataCollection = dataTable;
-        NewLine.Height = 400;
-        NewLine.TableName = "ProjectApplications";
-        PlaceHolder1.Controls.Clear();
-        PlaceHolder1.Controls.Add(NewLine);
-    }
+        int pageNum = 0;
+        public int PageNum
+        {
+            get
+            {
+                return pageNum;
+            }
+            set
+            {
+                pageNum = value;
+            }
+        }
 
-    protected void PlaceHolder1_Load(object sender, EventArgs e)
-    {
+        #endregion
 
+
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                int a;
+                if (Request.QueryString["index"] != null) a = int.Parse(Request.QueryString["index"]);
+                else a = 1;
+                if (a > 0)
+                {
+                    aaa.Index = a;
+                    PageNum = a;
+                }
+            }
+            InitData();
+            Loding();
+            LoadTable();
+        }
+
+        void InitData()
+        {
+            Data = PageApart.Apart("ProjectApplications", "project_id", PageNum - 1);
+        }
+
+        void Loding()
+        {
+            Loading NewLine = (Loading)LoadControl("~/ASCX/Loading.ascx");
+            PlaceHolder1.Controls.Clear();
+            PlaceHolder1.Controls.Add(NewLine);
+        }
+
+
+        void LoadTable()
+        {
+            DataTable dataTable;
+            try
+            {
+                dataTable = Data.Tables[0];
+            }
+            catch
+            {
+                dataTable = null;
+            }
+            List<string> list = new List<string>();
+            list.Add("proposal_number");
+            list.Add("project_title");
+            list.Add("project_description");
+            list.Add("team_id");
+            list.Add("achievement_form");
+            list.Add("achievement_brief");
+
+            Dictionary<string, string> map = new Dictionary<string, string>();
+            map.Add("proposal_number", "立项编号");
+            map.Add("project_title", "项目主题");
+            map.Add("project_description", "项目描述");
+            map.Add("team_id", "小队id");
+            map.Add("achievement_form", "成果形式");
+            map.Add("achievement_brief", "成果简述");
+
+            TableAttribute tableAttribute = new TableAttribute(
+                "project_id",
+                "项目信息",
+                map,
+                list
+                );
+            MyTable NewLine = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
+            NewLine.TableBase = tableAttribute;
+            NewLine.DataCollection = dataTable;
+            NewLine.Height = 400;
+            NewLine.TableName = "ProjectApplications";
+            PlaceHolder1.Controls.Clear();
+            PlaceHolder1.Controls.Add(NewLine);
+        }
+
+        protected void PlaceHolder1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

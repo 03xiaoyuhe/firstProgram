@@ -1,8 +1,8 @@
 ﻿:root {
     /*顶部导航栏颜色*/
 
-    --page-head-color: #1f4c97; /*顶部导航栏颜色*/
-    --page-head-word-color-default: #E1E2E4; /*顶部导航栏字体默认颜色*/
+    --page-head-color: #d6e9fa; /*顶部导航栏颜色*/
+    --page-head-word-color-default: #d6e9fa; /*顶部导航栏字体默认颜色*/
 
     --page-sidebar-left-color: #ffffff; /*右侧侧边栏颜色*/
 }

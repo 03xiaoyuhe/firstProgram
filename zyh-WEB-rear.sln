@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34018.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "web", "web\", "{E6D3BA6D-6A17-4693-8E08-F6B7D5665363}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{008AE4F7-35E9-4D65-9746-4D360541E284}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{E88DE7EC-7E82-4F99-9FB8-BC3A14891F02}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject1", "TestProject1\TestProject1.csproj", "{C80ACDB0-F8C0-4D71-B365-DBC58AFC5B31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web", "web\WebForm.csproj", "{7F5B4C58-5049-41A4-B02B-8CD837ED45C9}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8.1"
 		ProjectReferences = "{008ae4f7-35e9-4d65-9746-4d360541e284}|DAL.dll;{e88de7ec-7e82-4f99-9fb8-bc3a14891f02}|Models.dll;"
@@ -24,12 +30,6 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "web", "web\", "{E6D3BA6D-6A
 		VWDPort = "3032"
 		SlnRelativePath = "web\"
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{008AE4F7-35E9-4D65-9746-4D360541E284}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{E88DE7EC-7E82-4F99-9FB8-BC3A14891F02}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject1", "TestProject1\TestProject1.csproj", "{C80ACDB0-F8C0-4D71-B365-DBC58AFC5B31}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -125,6 +125,26 @@ Global
 		{C80ACDB0-F8C0-4D71-B365-DBC58AFC5B31}.Release|x64.Build.0 = Release|Any CPU
 		{C80ACDB0-F8C0-4D71-B365-DBC58AFC5B31}.Release|x86.ActiveCfg = Release|Any CPU
 		{C80ACDB0-F8C0-4D71-B365-DBC58AFC5B31}.Release|x86.Build.0 = Release|Any CPU
+		{7F5B4C58-5049-41A4-B02B-8CD837ED45C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F5B4C58-5049-41A4-B02B-8CD837ED45C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F5B4C58-5049-41A4-B02B-8CD837ED45C9}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{7F5B4C58-5049-41A4-B02B-8CD837ED45C9}.Debug|ARM.Build.0 = Debug|Any CPU
+		{7F5B4C58-5049-41A4-B02B-8CD837ED45C9}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{7F5B4C58-5049-41A4-B02B-8CD837ED45C9}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{7F5B4C58-5049-41A4-B02B-8CD837ED45C9}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7F5B4C58-5049-41A4-B02B-8CD837ED45C9}.Debug|x64.Build.0 = Debug|Any CPU
+		{7F5B4C58-5049-41A4-B02B-8CD837ED45C9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7F5B4C58-5049-41A4-B02B-8CD837ED45C9}.Debug|x86.Build.0 = Debug|Any CPU
+		{7F5B4C58-5049-41A4-B02B-8CD837ED45C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F5B4C58-5049-41A4-B02B-8CD837ED45C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F5B4C58-5049-41A4-B02B-8CD837ED45C9}.Release|ARM.ActiveCfg = Release|Any CPU
+		{7F5B4C58-5049-41A4-B02B-8CD837ED45C9}.Release|ARM.Build.0 = Release|Any CPU
+		{7F5B4C58-5049-41A4-B02B-8CD837ED45C9}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{7F5B4C58-5049-41A4-B02B-8CD837ED45C9}.Release|ARM64.Build.0 = Release|Any CPU
+		{7F5B4C58-5049-41A4-B02B-8CD837ED45C9}.Release|x64.ActiveCfg = Release|Any CPU
+		{7F5B4C58-5049-41A4-B02B-8CD837ED45C9}.Release|x64.Build.0 = Release|Any CPU
+		{7F5B4C58-5049-41A4-B02B-8CD837ED45C9}.Release|x86.ActiveCfg = Release|Any CPU
+		{7F5B4C58-5049-41A4-B02B-8CD837ED45C9}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

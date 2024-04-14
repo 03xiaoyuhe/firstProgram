@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="home.aspx.cs" Inherits="test" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="home.aspx.cs" Inherits="WebForm.home" %>
 
 <!DOCTYPE html>
 
@@ -294,7 +294,7 @@
                     <h2 class="fw-normal">工作人员</h2>
                     <p>For Staff</p>
                     <p>在这里可进行项目信息查询、整理、导出，以及项目修改信息确认等工作</p>
-                    <p><a class="btn btn-secondary" href="./WorkerLogin.aspx">登陆 &raquo;</a></p>
+                    <p><a class="btn btn-secondary" href="./functionPage/WorkerLogin.aspx">登陆 &raquo;</a></p>
                 </div>
                 <!-- /.col-lg-4 -->
                 <div class="col-lg-4">
