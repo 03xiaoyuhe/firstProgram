@@ -102,38 +102,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ASCX\MassageForm\MassageBox.ascx" />
-    <Content Include="ASCX\MassageForm\PrintMassage.ascx" />
-    <Content Include="ASCX\Table\MyTable.ascx" />
-    <Content Include="functionPage\QF-ChildPage\addProgram.aspx" />
-    <Content Include="functionPage\QF-ChildPage\ResetPage.aspx" />
-    <Content Include="functionPage\QF-ChildPage\selectAll.aspx" />
     <Content Include="App_Data\*" />
-    <Content Include="ASCX\Loading.ascx" />
-    <Content Include="ASCX\PageIndex.ascx" />
-    <Content Include="ASCX\Table\CellForBody.ascx" />
-    <Content Include="ASCX\Table\CellForHead.ascx" />
-    <Content Include="ASCX\Table\DeletButten.ascx" />
-    <Content Include="ASCX\Table\LineForBody.ascx" />
-    <Content Include="ASCX\Table\LineForDateLoading.ascx" />
-    <Content Include="ASCX\Table\LineForHead.ascx" />
-    <Content Include="ASCX\Test.ascx" />
-    <Content Include="ASCX\Timer.ascx" />
-    <Content Include="Default2.aspx" />
-    <Content Include="functionPage\QueryForm.aspx" />
-    <Content Include="home-test.aspx" />
-    <Content Include="masterPage\handing.master" />
-    <Content Include="masterPage\handing.master.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Content>
-    <Content Include="functionPage\test.aspx" />
-    <Content Include="functionPage\test.aspx.cs" />
-    <Content Include="ASCX\DefaultNONE.ascx" />
-    <Content Include="ASCX\ForQueryForm\filtrateChose.ascx" />
-    <Content Include="ASCX\Query\RoughImformation.ascx" />
-    <Content Include="ASCX\Query\RoughImformationForApplica.ascx" />
-    <Content Include="ASCX\WorkerSetup\AccountSetup.ascx" />
-    <Content Include="ASCX\WorkerSetup\DisplaySetup.ascx" />
+    <Content Include="ASCX\FileUpLoad\FileImformationForm.ascx" />
+    <Content Include="ASCX\FileUpLoad\FilrUpLoadFormMain.ascx" />
+    <Content Include="ASCX\ProgramInform\ForProgramShow\ALineForProgremParter.ascx" />
+    <Content Include="ASCX\ProgramInform\ProgramAdd.ascx" />
+    <Content Include="ASCX\ProgramInform\ProgramShow.ascx" />
+    <!-- 样式控制文件 -->
     <Content Include="assets\brand\bootstrap-logo-white.svg" />
     <Content Include="assets\brand\bootstrap-logo.svg" />
     <Content Include="assets\dist\css\bootstrap.min.css" />
@@ -186,7 +161,9 @@
     <Content Include="CSS\Table.css" />
     <Content Include="CSS\Table2.css" />
     <Content Include="CSS\ThemeColor.css" />
-    <Content Include="favicon.ico" />
+    <Content Include="functionPage\ProgramImformPage.aspx" />
+    <Content Include="functionPage\TestForm.aspx" />
+    <Content Include="functionPage\TestP.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -240,9 +217,6 @@
     <Content Include="bootstrap-5.3.0-alpha1-dist\js\bootstrap.esm.min.js.map" />
     <Content Include="bootstrap-5.3.0-alpha1-dist\js\bootstrap.js.map" />
     <Content Include="bootstrap-5.3.0-alpha1-dist\js\bootstrap.min.js.map" />
-    <Content Include="home.aspx" />
-    <Content Include="WorkerLogin.aspx" />
-    <Content Include="masterPage\handing.Master" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -270,7 +244,47 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <!-- end 样式控制文件 -->
+    <!-- 模板页 -->
+    <Content Include="masterPage\handing.Master" />
+    <Content Include="masterPage\handing.master" />
+    <Content Include="masterPage\handing.master.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <!-- end 模板页 -->
+    <!-- 功能页 -->
+    <Content Include="Default2.aspx" />
+    <Content Include="home.aspx" />
     <Content Include="UserLoginon.aspx" />
+    <Content Include="WorkerLogin.aspx" />
+    <Content Include="home-test.aspx" />
+    <Content Include="functionPage\QueryForm.aspx" />
+    <Content Include="functionPage\QF-ChildPage\addProgram.aspx" />
+    <Content Include="functionPage\QF-ChildPage\ResetPage.aspx" />
+    <Content Include="functionPage\QF-ChildPage\selectAll.aspx" />
+    <!-- end 功能页 -->
+    <!-- 自定义控件 -->
+    <Content Include="ASCX\MassageForm\MassageBox.ascx" />
+    <Content Include="ASCX\MassageForm\PrintMassage.ascx" />
+    <Content Include="ASCX\Table\MyTable.ascx" />
+    <Content Include="ASCX\Loading.ascx" />
+    <Content Include="ASCX\PageIndex.ascx" />
+    <Content Include="ASCX\Table\CellForBody.ascx" />
+    <Content Include="ASCX\Table\CellForHead.ascx" />
+    <Content Include="ASCX\Table\DeletButten.ascx" />
+    <Content Include="ASCX\Table\LineForBody.ascx" />
+    <Content Include="ASCX\Table\LineForDateLoading.ascx" />
+    <Content Include="ASCX\Table\LineForHead.ascx" />
+    <Content Include="ASCX\Test.ascx" />
+    <Content Include="ASCX\Timer.ascx" />
+    <Content Include="ASCX\DefaultNONE.ascx" />
+    <Content Include="ASCX\ForQueryForm\filtrateChose.ascx" />
+    <Content Include="ASCX\Query\RoughImformation.ascx" />
+    <Content Include="ASCX\Query\RoughImformationForApplica.ascx" />
+    <Content Include="ASCX\WorkerSetup\AccountSetup.ascx" />
+    <Content Include="ASCX\WorkerSetup\DisplaySetup.ascx" />
+    <!-- end 自定义控件 -->
+    <Content Include="favicon.ico" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Web.sitemap" />
@@ -282,6 +296,20 @@
     <Compile Include="ASCX\DefaultNONE.ascx.cs">
       <DependentUpon>DefaultNONE.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASCX\FileUpLoad\FileImformationForm.ascx.cs">
+      <DependentUpon>FileImformationForm.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASCX\FileUpLoad\FileImformationForm.ascx.designer.cs">
+      <DependentUpon>FileImformationForm.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ASCX\FileUpLoad\FilrUpLoadFormMain.ascx.cs">
+      <DependentUpon>FilrUpLoadFormMain.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASCX\FileUpLoad\FilrUpLoadFormMain.ascx.designer.cs">
+      <DependentUpon>FilrUpLoadFormMain.ascx</DependentUpon>
     </Compile>
     <Compile Include="ASCX\ForQueryForm\filtrateChose.ascx.cs">
       <DependentUpon>filtrateChose.ascx</DependentUpon>
@@ -314,6 +342,27 @@
     </Compile>
     <Compile Include="ASCX\PageIndex.ascx.designer.cs">
       <DependentUpon>PageIndex.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ASCX\ProgramInform\ForProgramShow\ALineForProgremParter.ascx.cs">
+      <DependentUpon>ALineForProgremParter.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASCX\ProgramInform\ForProgramShow\ALineForProgremParter.ascx.designer.cs">
+      <DependentUpon>ALineForProgremParter.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ASCX\ProgramInform\ProgramAdd.ascx.cs">
+      <DependentUpon>ProgramAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASCX\ProgramInform\ProgramAdd.ascx.designer.cs">
+      <DependentUpon>ProgramAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ASCX\ProgramInform\ProgramShow.ascx.cs">
+      <DependentUpon>ProgramShow.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASCX\ProgramInform\ProgramShow.ascx.designer.cs">
+      <DependentUpon>ProgramShow.ascx</DependentUpon>
     </Compile>
     <Compile Include="ASCX\Query\RoughImformation.ascx.cs">
       <DependentUpon>RoughImformation.ascx</DependentUpon>
@@ -401,6 +450,13 @@
     <Compile Include="Default2.aspx.designer.cs">
       <DependentUpon>Default2.aspx</DependentUpon>
     </Compile>
+    <Compile Include="functionPage\ProgramImformPage.aspx.cs">
+      <DependentUpon>ProgramImformPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="functionPage\ProgramImformPage.aspx.designer.cs">
+      <DependentUpon>ProgramImformPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="functionPage\QF-ChildPage\addProgram.aspx.cs">
       <DependentUpon>addProgram.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -429,8 +485,19 @@
     <Compile Include="functionPage\QueryForm.aspx.designer.cs">
       <DependentUpon>QueryForm.aspx</DependentUpon>
     </Compile>
-    <Compile Include="functionPage\test.aspx.designer.cs">
-      <DependentUpon>test.aspx</DependentUpon>
+    <Compile Include="functionPage\TestForm.aspx.cs">
+      <DependentUpon>TestForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="functionPage\TestForm.aspx.designer.cs">
+      <DependentUpon>TestForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="functionPage\TestP.aspx.cs">
+      <DependentUpon>TestP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="functionPage\TestP.aspx.designer.cs">
+      <DependentUpon>TestP.aspx</DependentUpon>
     </Compile>
     <Compile Include="home-test.aspx.cs">
       <DependentUpon>home-test.aspx</DependentUpon>
@@ -490,6 +557,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

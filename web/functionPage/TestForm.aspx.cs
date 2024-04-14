@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace WebForm.functionPage
 {
-    public partial class test : System.Web.UI.Page
+    public partial class TestForm : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -16,6 +16,7 @@ namespace WebForm.functionPage
 
         protected void btnUpload_Click(object sender, EventArgs e)
         {
+            //fileup.PostedFiles;
             //【1】判断文件是否存在
             if (fileup.HasFile)
             {

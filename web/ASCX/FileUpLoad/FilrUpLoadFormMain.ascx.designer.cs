@@ -7,65 +7,56 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace WebForm.functionPage
+namespace WebForm.ASCX.FileUpLoad
 {
 
 
-    public partial class test
+    public partial class FilrUpLoadFormMain
     {
 
         /// <summary>
-        /// form1 控件。
+        /// UpdatePanel1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
 
         /// <summary>
-        /// fileup 控件。
+        /// fileLoadFunc 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fileup;
+        protected global::System.Web.UI.WebControls.FileUpload fileLoadFunc;
 
         /// <summary>
-        /// btnUpload 控件。
+        /// LoadingButton 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUpload;
+        protected global::System.Web.UI.WebControls.Button LoadingButton;
 
         /// <summary>
-        /// Button1 控件。
+        /// SaveButton 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button SaveButton;
 
         /// <summary>
-        /// lblMsg 控件。
+        /// FileLoadingPanel 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal lblMsg;
-
-        /// <summary>
-        /// Label1 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.UpdatePanel FileLoadingPanel;
     }
 }
