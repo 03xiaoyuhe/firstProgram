@@ -12,6 +12,21 @@ namespace Models.PageDataSor.ProgremData
     public class DataForDoc
     {
 
+        public DataForDoc() 
+        {
+            ProjectIntroduce = "未赋值";
+            ProjectMainIdea = "未赋值";
+            ProjectAhead = "未赋值";
+        }
+
+        public DataForDoc(string projectIntroduce, string projectMainIdea,  string projectAhead)
+        {
+            ProjectIntroduce = projectIntroduce;
+            ProjectMainIdea = projectMainIdea;
+            ProjectAhead = projectAhead;
+        }
+
+
         #region 项目论证
 
 

@@ -28,17 +28,17 @@ namespace WebForm
             string a = this.userName.Text.ToString();
             string b = this.userPwd.Text.ToString();
             DBHelper.Mode = 1;
-            DBHelper.Setting();
-            if (UserLogin.AuthenticateUser(a, b))
-            {
-                Session["userName"] = this.userName.Text;
-                Session["loginSuccess"] = "success";
-                Response.Write("<script language='javascript'>window.location='./QueryForm.aspx'</script>");
-            }
-            else
-            {
-                Response.Write("<script>alert('用户名或密码输入错误')</script>");
-            }
+            //DBHelper.Setting();
+            //if (UserLogin.AuthenticateUser(a, b))
+            //{
+            //    Session["userName"] = this.userName.Text;
+            //    Session["loginSuccess"] = "success";
+            //    Response.Write("<script language='javascript'>window.location='./QueryForm.aspx'</script>");
+            //}
+            //else
+            //{
+            //    Response.Write("<script>alert('用户名或密码输入错误')</script>");
+            //}
 
         }
 

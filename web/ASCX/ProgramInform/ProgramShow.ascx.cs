@@ -157,7 +157,6 @@ namespace WebForm.ASCX.ProgramInform
                                 {
                                     admName = value;
                                     AdmNameLable.Text = value;
-                                    ProgromNameLable.Text = value;
                                 }
                             }
 

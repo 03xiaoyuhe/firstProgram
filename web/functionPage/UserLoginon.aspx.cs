@@ -16,7 +16,6 @@ namespace WebForm
                 //useNumber
                 userName.Attributes["onblur"] = ClientScript.GetPostBackEventReference(this.userName, "setModo");
                 useNumber.Attributes["onblur"] = ClientScript.GetPostBackEventReference(this.useNumber, "setModo");
-
             }
 
         }
@@ -28,22 +27,22 @@ namespace WebForm
 
         protected void userName_TextChanged(object sender, EventArgs e)
         {
-            DBHelper.Mode = 1;
-            DBHelper.Setting();
-            if (UserRegistration.CheckIfAccountExists(this.userName.Text.ToString()))
-            {
-                a = this.userPwd.Text.ToString();
-                b = this.userPwd2.Text.ToString();
-                this.SameName.Text = "账号已存在，请重新输入！";
+        //    DBHelper.Mode = 1;
+        //    DBHelper.Setting();
+        //    if (UserRegistration.CheckIfAccountExists(this.userName.Text.ToString()))
+        //    {
+        //        a = this.userPwd.Text.ToString();
+        //        b = this.userPwd2.Text.ToString();
+        //        this.SameName.Text = "账号已存在，请重新输入！";
 
-            }
-            else
-            {
+        //    }
+        //    else
+        //    {
 
-                a = this.userPwd.Text.ToString();
-                b = this.userPwd2.Text.ToString();
-                this.SameName.Text = null;
-            }
+        //        a = this.userPwd.Text.ToString();
+        //        b = this.userPwd2.Text.ToString();
+        //        this.SameName.Text = null;
+        //    }
 
 
 
@@ -53,29 +52,29 @@ namespace WebForm
         {
             DBHelper.Mode = 1;
             DBHelper.Setting();
-            if (UserRegistration.CheckIfAccountExists(this.userName.Text.ToString()))
-            {
-                Response.Write("<script>alert('用户名已存在！')</script>");
+            //if (UserRegistration.CheckIfAccountExists(this.userName.Text.ToString()))
+            //{
+            //    Response.Write("<script>alert('用户名已存在！')</script>");
 
-            }
-            else if (UserRegistration.CheckIfUserNumberExists(this.useNumber.Text.ToString()))
-            {
-                Response.Write("<script>alert('联系电话已被注册！')</script>");
-            }
-            else
-            {
-                this.SameName.Text = null;
-                if (UserRegistration.RegisterUser(this.userName.Text.ToString(), this.userPwd.Text.ToString(), this.useNumber.Text.ToString()))
-                {
-                    Response.Write("<script>alert('注册成功！')</script>");
-                    Response.Write("<script language='javascript'>window.location='../home.aspx'</script>");
-                }
-                else
-                    Response.Write("<script>alert('发生未知错误，请联系工作人员！')</script>");
-
-
-
-            }
+            //}
+            //else if (UserRegistration.CheckIfUserNumberExists(this.useNumber.Text.ToString()))
+            //{
+            //    Response.Write("<script>alert('联系电话已被注册！')</script>");
+            //}
+            //else
+            //{
+            //    this.SameName.Text = null;
+            //    if (UserRegistration.RegisterUser(this.userName.Text.ToString(), this.userPwd.Text.ToString(), this.useNumber.Text.ToString()))
+            //    {
+            //        Response.Write("<script>alert('注册成功！')</script>");
+            //        Response.Write("<script language='javascript'>window.location='../home.aspx'</script>");
+            //    }
+            //    else
+            //        Response.Write("<script>alert('发生未知错误，请联系工作人员！')</script>");
+            //
+            //
+            //
+            //}
 
 
         }
@@ -83,21 +82,21 @@ namespace WebForm
         protected void useNumber_TextChanged(object sender, EventArgs e)
         {
             DBHelper.Mode = 1;
-            DBHelper.Setting();
-            if (UserRegistration.CheckIfUserNumberExists(this.useNumber.Text.ToString()))
-            {
-                a = this.userPwd.Text.ToString();
-                b = this.userPwd2.Text.ToString();
-                this.sameUserNumber.Text = "联系电话已被注册，请重新输入！";
+            //DBHelper.Setting();
+            //if (UserRegistration.CheckIfUserNumberExists(this.useNumber.Text.ToString()))
+            //{
+            //    a = this.userPwd.Text.ToString();
+            //    b = this.userPwd2.Text.ToString();
+            //    this.sameUserNumber.Text = "联系电话已被注册，请重新输入！";
 
-            }
-            else
-            {
-                a = this.userPwd.Text.ToString();
-                b = this.userPwd2.Text.ToString();
-                this.sameUserNumber.Text = null;
+            //}
+            //else
+            //{
+            //    a = this.userPwd.Text.ToString();
+            //    b = this.userPwd2.Text.ToString();
+            //    this.sameUserNumber.Text = null;
 
-            }
+            //}
 
 
         }

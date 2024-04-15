@@ -12,6 +12,56 @@ namespace Models.PageDataSor.ProgremData
     /// </summary>
     public class DataForAdm
     {
+        public DataForAdm()
+        {
+            AdmName = "未赋值";
+            AdmBorn = "未赋值";
+            AdmSex = "未赋值";
+            AdmOrd = "未赋值";
+            AdmOrdName = "未赋值";
+            AdmMajBest = "未赋值";
+            AdmNowDo = "未赋值";
+            AdmJobWhere = "未赋值";
+            AdmPhontWhere = "未赋值";
+            IsYoungProjrem = false;
+            AdmAdmPhone = "未赋值";
+            AdmEmail = "未赋值";
+        }
+
+        public DataForAdm(
+            string admName, 
+            string admBorn,  
+            string admSex,  
+            string admOrd,  
+            string admOrdName, 
+            string admMar,  
+            string admMajBest,  
+            string admNowDo,  
+            string admJobWhere,  
+            string admPhontWhere,  
+            bool isYoungProjrem,  
+            string admAdmPhone,  
+            string admPhone,  
+            string admEmail
+            )
+        {
+            AdmName = admName;
+            AdmBorn = admBorn;
+            AdmSex = admSex;
+            AdmOrd = admOrd;
+            AdmOrdName = admOrdName;
+            AdmMar = admMar;
+            AdmMajBest = admMajBest;
+            AdmNowDo = admNowDo;
+            AdmJobWhere = admJobWhere;
+            AdmPhontWhere = admPhontWhere;
+            IsYoungProjrem = isYoungProjrem;
+            AdmAdmPhone = admAdmPhone;
+            AdmPhone = admPhone;
+            AdmEmail = admEmail;
+        }
+
+
 
         //[Description("标题颜色"), Category("自定义属性")]
         string admName;

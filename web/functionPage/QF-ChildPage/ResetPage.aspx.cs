@@ -76,20 +76,20 @@ namespace WebForm.functionPage.QF_ChildPage
             try
             {
 
-                if (ProjectCompletion.UpdatePrroject(
-                    Id,
-                    this.ProgramIDInput.Text.ToString(),
-                    this.floatingInput.Text.ToString(),
-                    this.floatingTextarea.Text.ToString(),
-                    this.PhoneNum.Text.ToString(),
-                    this.DoForm.Text.ToString(),
-                    this.DoTextarea.Text.ToString()
-                    ))
-                {
-                    clearAll();
-                    Massage massage = new Massage("Blue", "Success", "修改");
-                    massage.PostMassage();
-                }
+            //    if (ProjectCompletion.UpdatePrroject(
+            //        Id,
+            //        this.ProgramIDInput.Text.ToString(),
+            //        this.floatingInput.Text.ToString(),
+            //        this.floatingTextarea.Text.ToString(),
+            //        this.PhoneNum.Text.ToString(),
+            //        this.DoForm.Text.ToString(),
+            //        this.DoTextarea.Text.ToString()
+            //        ))
+            //    {
+            //        clearAll();
+            //        Massage massage = new Massage("Blue", "Success", "修改");
+            //        massage.PostMassage();
+            //    }
             }
             catch (Exception E)
             {

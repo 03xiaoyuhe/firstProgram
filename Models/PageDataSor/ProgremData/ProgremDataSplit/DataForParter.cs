@@ -12,6 +12,25 @@ namespace Models.PageDataSor.ProgremData
     /// </summary>
     public class DataForParter
     {
+
+        public DataForParter() 
+        {
+            Name = "未赋值";
+            Sex = "未赋值";
+            Broth = DateTime.MaxValue;
+            Job = "未赋值";
+            JobWhere = "未赋值";
+        }
+
+        public DataForParter(string name, string sex, DateTime broth, string job, string jobWhere )
+        {
+            Name = name;
+            Sex = sex;
+            Broth = broth;
+            Job = job;
+            JobWhere = jobWhere;
+        }
+
         string name;
         /// <summary>
         /// 成员名

@@ -1,5 +1,6 @@
 ﻿using DAL;
 using Models;
+using Models.PageDataSor.ProgremData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,23 +21,25 @@ namespace WebForm.functionPage.QF_ChildPage
         {
             try
             {
-                if (!ProjectCompletion.CheckTeam_id(this.PhoneNum.Text.ToString()))
-                {
-                    throw new Exception("NotLoad");
-                }
-                if (ProjectCompletion.ProjectInfor(
-                    this.ProgramIDInput.Text.ToString(),
-                    this.floatingInput.Text.ToString(),
-                    this.floatingTextarea.Text.ToString(),
-                    this.PhoneNum.Text.ToString(),
-                    this.DoForm.Text.ToString(),
-                    this.DoTextarea.Text.ToString()
-                    ))
-                {
-                    clearAll();
-                    Massage massage = new Massage("Blue", "Success", "添加成功");
-                    massage.PostMassage();
-                }
+
+                ProgromBaseData progromBaseData = ProgremInf.ProgromBaseDatas;
+                //if (!ProjectCompletion.CheckTeam_id(this.PhoneNum.Text.ToString()))
+                //{
+                //    throw new Exception("NotLoad");
+                //}
+                ////if (ProjectCompletion.ProjectInfor(
+                ////    this.ProgramIDInput.Text.ToString(),
+                ////    this.floatingInput.Text.ToString(),
+                ////    this.floatingTextarea.Text.ToString(),
+                ////    this.PhoneNum.Text.ToString(),
+                ////    this.DoForm.Text.ToString(),
+                ////    this.DoTextarea.Text.ToString()
+                ////    ))
+                ////{
+                ////    clearAll();
+                ////    Massage massage = new Massage("Blue", "Success", "添加成功");
+                ////    massage.PostMassage();
+                ////}
             }
             catch (Exception E)
             {
@@ -62,12 +65,7 @@ namespace WebForm.functionPage.QF_ChildPage
 
         protected void clearAll()
         {
-            this.ProgramIDInput.Text = string.Empty;
-            this.floatingInput.Text = string.Empty;
-            this.floatingTextarea.Text = string.Empty;
-            this.PhoneNum.Text = string.Empty;
-            this.DoForm.Text = string.Empty;
-            this.DoTextarea.Text = string.Empty;
+
         }
     }
 }

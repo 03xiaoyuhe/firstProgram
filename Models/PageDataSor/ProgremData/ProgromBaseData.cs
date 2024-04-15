@@ -11,6 +11,28 @@ namespace Models.PageDataSor.ProgremData
     /// </summary>
     public class ProgromBaseData
     {
+
+        public ProgromBaseData(
+            string projectName, 
+            string projectKinds, 
+            DateTime projectFinish, 
+            string projectEnd, 
+            DataForAdm dataForAdm, 
+            List<DataForParter> dataForParters,
+            DataForDoc dataForDoc,
+            DataForThinking dataForThinking
+            )
+        {
+            ProjectName = projectName;
+            ProjectKinds = projectKinds;
+            ProjectFinish = projectFinish;
+            ProjectEnd = projectEnd;
+            DatasForAdm = dataForAdm;
+            DataForParts = dataForParters;
+            DatasForDoc = dataForDoc;
+            DatasForThinking = dataForThinking;
+        }
+
         string projectName;
         /// <summary>
         /// 项目名称
