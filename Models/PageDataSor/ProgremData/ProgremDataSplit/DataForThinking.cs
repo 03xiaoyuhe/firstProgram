@@ -8,6 +8,25 @@ namespace Models.PageDataSor.ProgremData
 {
     public class DataForThinking
     {
+        public DataForThinking() 
+        {
+            WhereThink = "未赋值";
+            whereThinkTime = DateTime.MaxValue;
+            MajorThink = "未赋值";
+            MajorThinkTime = DateTime.MaxValue;
+            EndThink = "未赋值";
+            EndThinkTime = DateTime.MaxValue;
+        }
+
+        public DataForThinking(string whereThink, DateTime whereThinkTime, string majorThink, DateTime majorThinkTime, string endThink, DateTime endThinkTime)
+        {
+            WhereThink = whereThink;
+            WhereThinkTime = whereThinkTime;
+            MajorThink = majorThink;
+            MajorThinkTime = majorThinkTime;
+            EndThink = endThink;
+            EndThinkTime = endThinkTime;
+        }
 
         string whereThink;
         /// <summary>

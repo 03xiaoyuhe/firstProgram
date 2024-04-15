@@ -148,6 +148,8 @@
     <Content Include="App_Data\*" />
     <Content Include="ASCX\FileUpLoad\FileImformationForm.ascx" />
     <Content Include="ASCX\FileUpLoad\FilrUpLoadFormMain.ascx" />
+    <Content Include="ASCX\ProgramInform\ForProgramAdd\ALineDataForParters.ascx" />
+    <Content Include="ASCX\ProgramInform\ForProgramAdd\LinesDataForParters.ascx" />
     <Content Include="ASCX\ProgramInform\ForProgramShow\ALineForProgremParter.ascx" />
     <Content Include="ASCX\ProgramInform\ProgramAdd.ascx" />
     <Content Include="ASCX\ProgramInform\ProgramShow.ascx" />
@@ -388,6 +390,20 @@
     <Compile Include="ASCX\PageIndex.ascx.designer.cs">
       <DependentUpon>PageIndex.ascx</DependentUpon>
     </Compile>
+    <Compile Include="ASCX\ProgramInform\ForProgramAdd\ALineDataForParters.ascx.cs">
+      <DependentUpon>ALineDataForParters.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASCX\ProgramInform\ForProgramAdd\ALineDataForParters.ascx.designer.cs">
+      <DependentUpon>ALineDataForParters.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ASCX\ProgramInform\ForProgramAdd\LinesDataForParters.ascx.cs">
+      <DependentUpon>LinesDataForParters.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASCX\ProgramInform\ForProgramAdd\LinesDataForParters.ascx.designer.cs">
+      <DependentUpon>LinesDataForParters.ascx</DependentUpon>
+    </Compile>
     <Compile Include="ASCX\ProgramInform\ForProgramShow\ALineForProgremParter.ascx.cs">
       <DependentUpon>ALineForProgremParter.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -531,8 +547,8 @@
       <DependentUpon>selectAll.aspx</DependentUpon>
     </Compile>
     <Compile Include="functionPage\QueryForm.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>QueryForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="functionPage\QueryForm.aspx.designer.cs">
       <DependentUpon>QueryForm.aspx</DependentUpon>
