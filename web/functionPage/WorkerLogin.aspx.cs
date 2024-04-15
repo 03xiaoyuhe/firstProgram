@@ -29,7 +29,7 @@ namespace WebForm
             string b = this.userPwd.Text.ToString();
             DBHelper.Mode = 1;
             DBHelper.Setting();
-            if (UserLogin.AuthenticateUser(a, b))
+            if (DAL.Control.AuthenticateUser(a, b))
             {
                 Session["userName"] = this.userName.Text;
                 Session["loginSuccess"] = "success";

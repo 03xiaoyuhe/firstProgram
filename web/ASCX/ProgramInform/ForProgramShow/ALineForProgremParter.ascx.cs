@@ -1,11 +1,5 @@
 ﻿using Models.PageDataSor.ProgremData;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace WebForm.ASCX.ProgramInform.ForProgramShow
 {
@@ -84,7 +78,7 @@ namespace WebForm.ASCX.ProgramInform.ForProgramShow
             set
             {
                 broth = value;
-                BrothLable.Text = value.Year.ToString()+"--"+ value.Month.ToString() +"--"+ value.Day.ToString();
+                BrothLable.Text = value.Year.ToString() + "--" + value.Month.ToString() + "--" + value.Day.ToString();
             }
         }
 
@@ -98,8 +92,8 @@ namespace WebForm.ASCX.ProgramInform.ForProgramShow
             {
                 return job;
             }
-            set 
-            { 
+            set
+            {
                 job = value;
                 JobLable.Text = job;
             }

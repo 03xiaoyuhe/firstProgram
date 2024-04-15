@@ -1,11 +1,4 @@
-﻿using DAL;
-using Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+﻿using System;
 
 namespace WebForm.functionPage.QF_ChildPage
 {
@@ -18,41 +11,41 @@ namespace WebForm.functionPage.QF_ChildPage
 
         protected void submit_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (!ProjectCompletion.CheckTeam_id(this.PhoneNum.Text.ToString()))
-                {
-                    throw new Exception("NotLoad");
-                }
-                if (ProjectCompletion.ProjectInfor(
-                    this.ProgramIDInput.Text.ToString(),
-                    this.floatingInput.Text.ToString(),
-                    this.floatingTextarea.Text.ToString(),
-                    this.PhoneNum.Text.ToString(),
-                    this.DoForm.Text.ToString(),
-                    this.DoTextarea.Text.ToString()
-                    ))
-                {
-                    clearAll();
-                    Massage massage = new Massage("Blue", "Success", "添加成功");
-                    massage.PostMassage();
-                }
-            }
-            catch (Exception E)
-            {
-                if (E.Message == "NotLoad")
-                {
-                    clearAll();
-                    Massage massage = new Massage("#ff0000", "ERRO", "对应负责人未组队");
-                    massage.PostMassage();
-                }
-                else
-                {
-                    clearAll();
-                    Massage massage = new Massage("#ff0000", "ERRO", E.Message);
-                    massage.PostMassage();
-                }
-            }
+            //    try
+            //    {
+            //        if (!ProjectCompletion.CheckTeam_id(this.PhoneNum.Text.ToString()))
+            //        {
+            //            throw new Exception("NotLoad");
+            //        }
+            //        if (ProjectCompletion.ProjectInfor(
+            //            this.ProgramIDInput.Text.ToString(),
+            //            this.floatingInput.Text.ToString(),
+            //            this.floatingTextarea.Text.ToString(),
+            //            this.PhoneNum.Text.ToString(),
+            //            this.DoForm.Text.ToString(),
+            //            this.DoTextarea.Text.ToString()
+            //            ))
+            //        {
+            //            clearAll();
+            //            Massage massage = new Massage("Blue", "Success", "添加成功");
+            //            massage.PostMassage();
+            //        }
+            //    }
+            //    catch (Exception E)
+            //    {
+            //        if (E.Message == "NotLoad")
+            //        {
+            //            clearAll();
+            //            Massage massage = new Massage("#ff0000", "ERRO", "对应负责人未组队");
+            //            massage.PostMassage();
+            //        }
+            //        else
+            //        {
+            //            clearAll();
+            //            Massage massage = new Massage("#ff0000", "ERRO", E.Message);
+            //            massage.PostMassage();
+            //        }
+            //    }
         }
 
         protected void clear_Click(object sender, EventArgs e)

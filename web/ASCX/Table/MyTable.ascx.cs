@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Models;
+using System;
 using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using DAL;
-using Models;
 
 namespace WebForm.ASCX.Table
 {

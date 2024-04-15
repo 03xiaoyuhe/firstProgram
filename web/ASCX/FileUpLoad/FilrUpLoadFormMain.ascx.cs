@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using WebForm.ASCX.Table;
 
 namespace WebForm.ASCX.FileUpLoad
 {
@@ -47,7 +43,7 @@ namespace WebForm.ASCX.FileUpLoad
         protected void LoadingButton_Click(object sender, EventArgs e)
         {
             int count = 0;
-            foreach (HttpPostedFile file in  fileLoadFunc.PostedFiles)
+            foreach (HttpPostedFile file in fileLoadFunc.PostedFiles)
             {
                 string ID = DateTime.Now.ToString("yyyyMMddhhmmssms") + "_" + count.ToString();
                 Files.Add(ID, file);
@@ -95,14 +91,14 @@ namespace WebForm.ASCX.FileUpLoad
         protected void FileLoadingPanel_Load()
         {
             FileLoadingPanel.ContentTemplateContainer.Controls.Clear();
-            if(FileRemoveList != null)
+            if (FileRemoveList != null)
             {
                 foreach (string file in FileRemoveList)
                 {
                     Files.Remove(file);
                 }
             }
-            if(Files != null)
+            if (Files != null)
             {
                 foreach (HttpPostedFile file in Files.Values)
                 {

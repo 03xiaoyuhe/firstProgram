@@ -30,7 +30,7 @@ namespace WebForm
         {
             DBHelper.Mode = 1;
             DBHelper.Setting();
-            if (UserRegistration.CheckIfAccountExists(this.userName.Text.ToString()))
+            if (DAL.Control.CheckIfAccountExists(this.userName.Text.ToString()))
             {
                 a = this.userPwd.Text.ToString();
                 b = this.userPwd2.Text.ToString();
@@ -53,19 +53,19 @@ namespace WebForm
         {
             DBHelper.Mode = 1;
             DBHelper.Setting();
-            if (UserRegistration.CheckIfAccountExists(this.userName.Text.ToString()))
+            if (DAL.Control.CheckIfAccountExists(this.userName.Text.ToString()))
             {
                 Response.Write("<script>alert('用户名已存在！')</script>");
 
             }
-            else if (UserRegistration.CheckIfUserNumberExists(this.useNumber.Text.ToString()))
+            else if (DAL.Control.CheckIfUserNumberExists(this.useNumber.Text.ToString()))
             {
                 Response.Write("<script>alert('联系电话已被注册！')</script>");
             }
             else
             {
                 this.SameName.Text = null;
-                if (UserRegistration.RegisterUser(this.userName.Text.ToString(), this.userPwd.Text.ToString(), this.useNumber.Text.ToString()))
+                if (DAL.Control.InsertId(this.userName.Text.ToString(), this.userPwd.Text.ToString(), this.useNumber.Text.ToString()))
                 {
                     Response.Write("<script>alert('注册成功！')</script>");
                     Response.Write("<script language='javascript'>window.location='../home.aspx'</script>");
@@ -84,7 +84,7 @@ namespace WebForm
         {
             DBHelper.Mode = 1;
             DBHelper.Setting();
-            if (UserRegistration.CheckIfUserNumberExists(this.useNumber.Text.ToString()))
+            if (DAL.Control.CheckIfUserNumberExists(this.useNumber.Text.ToString()))
             {
                 a = this.userPwd.Text.ToString();
                 b = this.userPwd2.Text.ToString();

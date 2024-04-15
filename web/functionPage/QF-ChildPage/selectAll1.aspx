@@ -82,7 +82,7 @@
     <script type="text/javascript">
         function TurnPage(type) {
             var currentPage = getQueryString("currentPage") == null ? 1 : parseInt(getQueryString("currentPage"));
-            var maxPage = <%=maxPage%>;
+            ////var maxPage = <%= maxPage%>;
 
             switch (type) {
                 case 'f':
@@ -102,7 +102,7 @@
                     }
                     else {
                         currentPage = currentPage + 1;
-                    }
+                    }   
                     break;
                 case 'e':
                     if (currentPage == maxPage) return;

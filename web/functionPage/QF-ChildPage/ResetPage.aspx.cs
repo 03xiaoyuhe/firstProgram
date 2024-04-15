@@ -1,12 +1,6 @@
 ﻿using DAL;
-using Models;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace WebForm.functionPage.QF_ChildPage
 {
@@ -73,39 +67,39 @@ namespace WebForm.functionPage.QF_ChildPage
         protected void submit_Click(object sender, EventArgs e)
         {
 
-            try
-            {
+            //    try
+            //    {
 
-                if (ProjectCompletion.UpdatePrroject(
-                    Id,
-                    this.ProgramIDInput.Text.ToString(),
-                    this.floatingInput.Text.ToString(),
-                    this.floatingTextarea.Text.ToString(),
-                    this.PhoneNum.Text.ToString(),
-                    this.DoForm.Text.ToString(),
-                    this.DoTextarea.Text.ToString()
-                    ))
-                {
-                    clearAll();
-                    Massage massage = new Massage("Blue", "Success", "修改");
-                    massage.PostMassage();
-                }
-            }
-            catch (Exception E)
-            {
-                if (E.Message == "NotLoad")
-                {
-                    clearAll();
-                    Massage massage = new Massage("#ff0000", "ERRO", "发生错误，未修改成功");
-                    massage.PostMassage();
-                }
-                else
-                {
-                    clearAll();
-                    Massage massage = new Massage("#ff0000", "ERRO", E.Message);
-                    massage.PostMassage();
-                }
-            }
+            //        if (ProjectCompletion.UpdatePrroject(
+            //            Id,
+            //            this.ProgramIDInput.Text.ToString(),
+            //            this.floatingInput.Text.ToString(),
+            //            this.floatingTextarea.Text.ToString(),
+            //            this.PhoneNum.Text.ToString(),
+            //            this.DoForm.Text.ToString(),
+            //            this.DoTextarea.Text.ToString()
+            //            ))
+            //        {
+            //            clearAll();
+            //            Massage massage = new Massage("Blue", "Success", "修改");
+            //            massage.PostMassage();
+            //        }
+            //    }
+            //    catch (Exception E)
+            //    {
+            //        if (E.Message == "NotLoad")
+            //        {
+            //            clearAll();
+            //            Massage massage = new Massage("#ff0000", "ERRO", "发生错误，未修改成功");
+            //            massage.PostMassage();
+            //        }
+            //        else
+            //        {
+            //            clearAll();
+            //            Massage massage = new Massage("#ff0000", "ERRO", E.Message);
+            //            massage.PostMassage();
+            //        }
+            //    }
         }
 
         protected void clear_Click(object sender, EventArgs e)
