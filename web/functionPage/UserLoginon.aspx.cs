@@ -35,7 +35,7 @@ namespace WebForm
                 b = this.userPwd2.Text.ToString();
                 this.SameName.Text = "账号已存在，请重新输入！";
 
-        //    }
+            }
         //    else
         //    {
 
@@ -89,7 +89,7 @@ namespace WebForm
                 b = this.userPwd2.Text.ToString();
                 this.sameUserNumber.Text = "联系电话已被注册，请重新输入！";
 
-            //}
+            }
             //else
             //{
             //    a = this.userPwd.Text.ToString();

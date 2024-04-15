@@ -1,4 +1,5 @@
 ﻿using DAL;
+using Models;
 using System;
 using System.Data;
 
@@ -67,8 +68,8 @@ namespace WebForm.functionPage.QF_ChildPage
         protected void submit_Click(object sender, EventArgs e)
         {
 
-            //    try
-            //    {
+            try
+            {
 
             //    if (ProjectCompletion.UpdatePrroject(
             //        Id,
