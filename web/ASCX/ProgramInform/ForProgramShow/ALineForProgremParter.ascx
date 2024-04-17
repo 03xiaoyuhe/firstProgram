@@ -28,6 +28,7 @@
             background-color: white;
         }
 </style>
+
 <tr>
     <td>
         <div class="dataDiv">
@@ -35,9 +36,7 @@
             <div class="data">
                 <!-- input for 姓名 -->
                 <asp:Label ID="NameLable" runat="server" Text="姓名"></asp:Label>
-
             </div>
-
         </div>
     </td>
     <td>

@@ -195,22 +195,13 @@ namespace WebForm.ASCX.ProgramInform
         protected global::System.Web.UI.WebControls.Label AdmEmailLable;
 
         /// <summary>
-        /// LineForProgremParter 控件。
+        /// LinesForProgremParter 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::WebForm.ASCX.ProgramInform.ForProgramShow.ALineForProgremParter LineForProgremParter;
-
-        /// <summary>
-        /// LineForProgremParterPut 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder LineForProgremParterPut;
+        protected global::WebForm.ASCX.ProgramInform.ForProgramShow.DataFormForParters LinesForProgremParter;
 
         /// <summary>
         /// ProjectIntroduceLable 控件。

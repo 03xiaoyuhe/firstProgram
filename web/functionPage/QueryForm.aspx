@@ -238,7 +238,7 @@
         }
         .title{
             font-weight:bold;
-            font-style: oblique; 
+            font-style: oblique;
             font-size:20px;
             /*color: #0000007d;*/
             color:var(--page-head-word-color);
@@ -256,7 +256,6 @@
                 </div>
             </a>
             <ul class="mergin nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" style="margin-left: 50px;">
-
                 <li>
                     <input type="radio" class="btn-check" name="options-base" id="option5" autocomplete="off" /><!--checked-->
                     <label
@@ -477,7 +476,7 @@
     </main>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
     <form runat="server">
-        <AAA:MMM runat="server" id="aaa"  ></AAA:MMM>
+        <TMassage:Massage runat="server" id="aaa"  ></TMassage:Massage>
     </form>
     <script src="../JS/sidebars.js"></script>
 </body>

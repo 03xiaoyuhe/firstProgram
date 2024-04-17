@@ -146,11 +146,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\*" />
+    <Content Include="ASCX\BaseForm\InputBoxForm.ascx" />
     <Content Include="ASCX\FileUpLoad\FileImformationForm.ascx" />
     <Content Include="ASCX\FileUpLoad\FilrUpLoadFormMain.ascx" />
     <Content Include="ASCX\ProgramInform\ForProgramAdd\ALineDataForParters.ascx" />
-    <Content Include="ASCX\ProgramInform\ForProgramAdd\LinesDataForParters.ascx" />
     <Content Include="ASCX\ProgramInform\ForProgramShow\ALineForProgremParter.ascx" />
+    <Content Include="ASCX\ProgramInform\ForProgramShow\DataFormForAdm.ascx" />
+    <Content Include="ASCX\ProgramInform\ForProgramShow\DataFormForDoc.ascx" />
+    <Content Include="ASCX\ProgramInform\ForProgramShow\DataFormForParters.ascx" />
+    <Content Include="ASCX\ProgramInform\ForProgramShow\DataFormForProgremBase.ascx" />
+    <Content Include="ASCX\ProgramInform\ForProgramShow\DataFormForThinking.ascx" />
     <Content Include="ASCX\ProgramInform\ProgramAdd.ascx" />
     <Content Include="ASCX\ProgramInform\ProgramShow.ascx" />
     <!-- 样式控制文件 -->
@@ -208,6 +213,7 @@
     <Content Include="CSS\ThemeColor.css" />
     <Content Include="ForTest.aspx" />
     <Content Include="functionPage\ProgramImformPage.aspx" />
+    <Content Include="functionPage\QF-ChildPage\ProgramDataShow.aspx" />
     <Content Include="functionPage\TestForm.aspx" />
     <Content Include="functionPage\TestP.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -340,6 +346,13 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="ASCX\BaseForm\InputBoxForm.ascx.cs">
+      <DependentUpon>InputBoxForm.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASCX\BaseForm\InputBoxForm.ascx.designer.cs">
+      <DependentUpon>InputBoxForm.ascx</DependentUpon>
+    </Compile>
     <Compile Include="ASCX\DefaultNONE.ascx.cs">
       <DependentUpon>DefaultNONE.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -397,19 +410,47 @@
     <Compile Include="ASCX\ProgramInform\ForProgramAdd\ALineDataForParters.ascx.designer.cs">
       <DependentUpon>ALineDataForParters.ascx</DependentUpon>
     </Compile>
-    <Compile Include="ASCX\ProgramInform\ForProgramAdd\LinesDataForParters.ascx.cs">
-      <DependentUpon>LinesDataForParters.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ASCX\ProgramInform\ForProgramAdd\LinesDataForParters.ascx.designer.cs">
-      <DependentUpon>LinesDataForParters.ascx</DependentUpon>
-    </Compile>
     <Compile Include="ASCX\ProgramInform\ForProgramShow\ALineForProgremParter.ascx.cs">
       <DependentUpon>ALineForProgremParter.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ASCX\ProgramInform\ForProgramShow\ALineForProgremParter.ascx.designer.cs">
       <DependentUpon>ALineForProgremParter.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ASCX\ProgramInform\ForProgramShow\DataFormForAdm.ascx.cs">
+      <DependentUpon>DataFormForAdm.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASCX\ProgramInform\ForProgramShow\DataFormForAdm.ascx.designer.cs">
+      <DependentUpon>DataFormForAdm.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ASCX\ProgramInform\ForProgramShow\DataFormForDoc.ascx.cs">
+      <DependentUpon>DataFormForDoc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASCX\ProgramInform\ForProgramShow\DataFormForDoc.ascx.designer.cs">
+      <DependentUpon>DataFormForDoc.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ASCX\ProgramInform\ForProgramShow\DataFormForParters.ascx.cs">
+      <DependentUpon>DataFormForParters.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASCX\ProgramInform\ForProgramShow\DataFormForParters.ascx.designer.cs">
+      <DependentUpon>DataFormForParters.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ASCX\ProgramInform\ForProgramShow\DataFormForProgremBase.ascx.cs">
+      <DependentUpon>DataFormForProgremBase.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASCX\ProgramInform\ForProgramShow\DataFormForProgremBase.ascx.designer.cs">
+      <DependentUpon>DataFormForProgremBase.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ASCX\ProgramInform\ForProgramShow\DataFormForThinking.ascx.cs">
+      <DependentUpon>DataFormForThinking.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASCX\ProgramInform\ForProgramShow\DataFormForThinking.ascx.designer.cs">
+      <DependentUpon>DataFormForThinking.ascx</DependentUpon>
     </Compile>
     <Compile Include="ASCX\ProgramInform\ProgramAdd.ascx.cs">
       <DependentUpon>ProgramAdd.ascx</DependentUpon>
@@ -531,6 +572,13 @@
     </Compile>
     <Compile Include="functionPage\QF-ChildPage\addProgram.aspx.designer.cs">
       <DependentUpon>addProgram.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="functionPage\QF-ChildPage\ProgramDataShow.aspx.cs">
+      <DependentUpon>ProgramDataShow.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="functionPage\QF-ChildPage\ProgramDataShow.aspx.designer.cs">
+      <DependentUpon>ProgramDataShow.aspx</DependentUpon>
     </Compile>
     <Compile Include="functionPage\QF-ChildPage\ResetPage.aspx.cs">
       <DependentUpon>ResetPage.aspx</DependentUpon>

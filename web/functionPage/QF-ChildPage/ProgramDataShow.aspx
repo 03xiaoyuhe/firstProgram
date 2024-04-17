@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="addProgram.aspx.cs" Inherits="WebForm.functionPage.QF_ChildPage.addProgram" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ProgramDataShow.aspx.cs" Inherits="WebForm.functionPage.QF_ChildPage.ProgramDataShow" %>
 
 <%@ Register Src="~/ASCX/MassageForm/PrintMassage.ascx" TagName="PrintMassage" TagPrefix="TPrintMassage" %>
 
@@ -63,35 +63,9 @@
             
 
             <div style="width:100%;height:490px;overflow:auto;">
-                <ProgremInf:ProgremAdd runat="server" ID ="ProgremInf"></ProgremInf:ProgremAdd>
+                <ProgremInf:ProgremInf runat="server" ID ="ProgremInf"></ProgremInf:ProgremInf>
             </div>
 
-
-
-
-            <table style="width: 100%">
-                <tr>
-                    <td>
-                        <asp:Button ID="submit" runat="server" Text="提交" CssClass="addProgram-submit btn btn-outline-dark" OnClick="submit_Click" />
-                        <style type="text/css">
-                            .addProgram-submit {
-                                margin: 0;
-                                float: left;
-                            }
-                        </style>
-                    </td>
-
-                    <td>
-                        <asp:Button ID="clear" runat="server" Text="清除" CssClass="addProgram-clear btn btn-outline-dark" OnClick="clear_Click" ValidationGroup="NEXT" />
-                        <style type="text/css">
-                            .addProgram-clear {
-                                margin: 0;
-                                float: right;
-                            }
-                        </style>
-                    </td>
-                </tr>
-            </table>
         </div>
 
         <div class="z-3 ppshade">

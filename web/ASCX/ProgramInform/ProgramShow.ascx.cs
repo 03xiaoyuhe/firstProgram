@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebForm.ASCX.ProgramInform.ForProgramShow;
 
 namespace WebForm.ASCX.ProgramInform
 {
@@ -22,11 +23,11 @@ namespace WebForm.ASCX.ProgramInform
             /// <summary>
             /// 网站数据集
             /// </summary>
-            public ProgromBaseData progromBaseDatas
+            public ProgromBaseData ProgromBaseDatas
             {
                 get
                 {
-                    return progromBaseDatas;
+                    return progromBaseData;
                 }
                 set
                 {
@@ -109,8 +110,6 @@ namespace WebForm.ASCX.ProgramInform
                                 ProjectEndLable.Text = value;
                             }
                         }
-
-
 
                 #region 负责人信息
 
@@ -364,7 +363,7 @@ namespace WebForm.ASCX.ProgramInform
 
                 #region 队员信息
 
-                    List<DataForParter> dataForParters;
+                    List<DataForParter> dataForParters = new List<DataForParter>();
                     public List<DataForParter> DataForParts
                     {
                         get
@@ -374,6 +373,7 @@ namespace WebForm.ASCX.ProgramInform
                         set
                         {
                             dataForParters = value;
+                            LinesForProgremParter.DataForParts = value;
                         }
                     }
 
@@ -488,6 +488,7 @@ namespace WebForm.ASCX.ProgramInform
                         set
                         {
                             whereThink = value;
+                            WhereThinkLable.Text = value;
                         }
                     }
 
@@ -520,6 +521,7 @@ namespace WebForm.ASCX.ProgramInform
                         set
                         {
                             majorThink = value;
+                            MajorThinkLable.Text = value;
                         }
                     }
 
@@ -552,6 +554,7 @@ namespace WebForm.ASCX.ProgramInform
                         set
                         {
                             endThink = value;
+                            EndThinkLable.Text = value;
                         }
                     }
 

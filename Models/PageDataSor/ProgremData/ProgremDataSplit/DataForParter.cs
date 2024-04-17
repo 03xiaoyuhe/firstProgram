@@ -13,7 +13,7 @@ namespace Models.PageDataSor.ProgremData
     public class DataForParter
     {
 
-        public DataForParter() 
+        public DataForParter()
         {
             Name = "未赋值";
             Sex = "未赋值";

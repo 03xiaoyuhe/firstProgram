@@ -7,101 +7,137 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace WebForm.ASCX.ProgramInform.ForProgramAdd
+namespace WebForm.ASCX.ProgramInform.ForProgramShow
 {
 
 
-    public partial class LinesDataForParters
+    public partial class DataFormForAdm
     {
 
         /// <summary>
-        /// NameTextBox 控件。
+        /// AdmNameLable 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox NameTextBox;
+        protected global::System.Web.UI.WebControls.Label AdmNameLable;
 
         /// <summary>
-        /// RequiredFieldValidator1 控件。
+        /// AdmBornLable 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.Label AdmBornLable;
 
         /// <summary>
-        /// SexTextBox 控件。
+        /// AdmSexLable 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox SexTextBox;
+        protected global::System.Web.UI.WebControls.Label AdmSexLable;
 
         /// <summary>
-        /// RequiredFieldValidator2 控件。
+        /// AdmOrdLable 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+        protected global::System.Web.UI.WebControls.Label AdmOrdLable;
 
         /// <summary>
-        /// BrothTextBox 控件。
+        /// AdmOrdNameLable 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox BrothTextBox;
+        protected global::System.Web.UI.WebControls.Label AdmOrdNameLable;
 
         /// <summary>
-        /// RequiredFieldValidator3 控件。
+        /// AdmMarLable 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
+        protected global::System.Web.UI.WebControls.Label AdmMarLable;
 
         /// <summary>
-        /// JobTextBox 控件。
+        /// AdmMajBestLable 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox JobTextBox;
+        protected global::System.Web.UI.WebControls.Label AdmMajBestLable;
 
         /// <summary>
-        /// RequiredFieldValidator4 控件。
+        /// AdmNowDoLable 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
+        protected global::System.Web.UI.WebControls.Label AdmNowDoLable;
 
         /// <summary>
-        /// JobWhereTextBox 控件。
+        /// AdmJobWhereLable 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox JobWhereTextBox;
+        protected global::System.Web.UI.WebControls.Label AdmJobWhereLable;
 
         /// <summary>
-        /// RequiredFieldValidator5 控件。
+        /// AdmPhoneWhereLable 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
+        protected global::System.Web.UI.WebControls.Label AdmPhoneWhereLable;
+
+        /// <summary>
+        /// IsYoungProjremLable 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label IsYoungProjremLable;
+
+        /// <summary>
+        /// AdmAdmPhoneLable 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label AdmAdmPhoneLable;
+
+        /// <summary>
+        /// AdmPhoneLable 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label AdmPhoneLable;
+
+        /// <summary>
+        /// AdmEmailLable 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label AdmEmailLable;
     }
 }

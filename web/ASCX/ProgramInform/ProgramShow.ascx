@@ -1,10 +1,10 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ProgramShow.ascx.cs" Inherits="WebForm.ASCX.ProgramInform.ProgramShow" %>
 
-<%@ Register Src="./ForProgramShow/ALineForProgremParter.ascx" TagName="LineForProgremParter" TagPrefix="ProgremInf" %>
+<%@ Register Src="./ForProgramShow/DataFormForParters.ascx" TagName="LineForProgremParter" TagPrefix="ProgremInf" %>
 
 <style type="text/css">
     .dataTable{
-        width:100%;
+        width:99%;
     }
     .dataDiv {
         border-radius: 5px;
@@ -306,11 +306,11 @@
             <lable style="font-size: large; font-weight: bolder;">项目主要参加人</lable>
         </td>
     </tr>
-    <ProgremInf:LineForProgremParter runat="server" ID="LineForProgremParter"></ProgremInf:LineForProgremParter>
-    <!-- 用于放置项目成员信息 -->
-    <asp:PlaceHolder runat="server" ID="LineForProgremParterPut"></asp:PlaceHolder>
 </table>
-<h2>二、项目论证</h2>
+
+<!-- 用于放置项目成员信息 -->
+<ProgremInf:LineForProgremParter runat="server" ID="LinesForProgremParter"></ProgremInf:LineForProgremParter>
+<h2>三、项目论证</h2>
 <table class="dataTable">
     <tr>
         <td colspan="6">
@@ -347,7 +347,7 @@
         </td>
     </tr>
 </table>
-<h2>三、评审意见</h2>
+<h2>四、评审意见</h2>
 <table class="dataTable">
     <tr>
         <td>
@@ -376,7 +376,6 @@
                     <!-- 时间 -->
                     <asp:Label ID="MajorThinkTimeLable" runat="server" Text="年--月--日"></asp:Label>
                 </div>
-
             </div>
         </td>
     </tr>
