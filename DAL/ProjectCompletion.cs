@@ -48,26 +48,28 @@ namespace DAL
         /// <param name="project_form">成果形式</param>
         /// <returns>rowsAffected整型值</returns>
         static public bool ProjectInfor(
-               string team_id,
+               //string team_id,
                string project_name,
-               string project_level,
-               string project_number,
+               //string project_level,
+               //string project_number,
                string project_category,
                string project_youth,
                string project_research,
                string project_view,
                string project_References,
-               string project_time,
+               DateTime project_time,
                string project_form
             )
         {
             
-            string query = "insert into ProjectApplications  (\r\nteam_id,\r\nproject_name,\r\nproject_level,\r\nproject_number,\r\nproject_category,\r\nproject_youth,\r\nproject_research,\r\nproject_view,\r\nproject_References,\r\nproject_time,\r\nproject_form\r\n) values (@team_id,\r\n@project_name,\r\n@project_level,\r\n@project_number,\r\n@project_category,\r\n@project_youth,\r\n@project_research,\r\n@project_view,\r\n@project_References,\r\n@project_time,\r\n@project_form );";
+           // string query = "insert into ProjectApplications  (\r\nteam_id,\r\nproject_name,\r\nproject_level,\r\nproject_number,\r\nproject_category,\r\nproject_youth,\r\nproject_research,\r\nproject_view,\r\nproject_References,\r\nproject_time,\r\nproject_form\r\n) values (@team_id,\r\n@project_name,\r\n@project_level,\r\n@project_number,\r\n@project_category,\r\n@project_youth,\r\n@project_research,\r\n@project_view,\r\n@project_References,\r\n@project_time,\r\n@project_form );";
+            string query = "insert into ProjectApplications  (\r\nproject_name,\r\nproject_category,\r\nproject_youth,\r\nproject_research,\r\nproject_view,\r\nproject_References,\r\nproject_time,\r\nproject_form\r\n) values (@team_id,\r\n@project_name,\r\n@project_level,\r\n@project_number,\r\n@project_category,\r\n@project_youth,\r\n@project_research,\r\n@project_view,\r\n@project_References,\r\n@project_time,\r\n@project_form );";
+
             SqlParameter[] parameters = {   
-                new SqlParameter("@team_id", SqlDbType.Int) { Value = team_id },
+                //new SqlParameter("@team_id", SqlDbType.Int) { Value = team_id },
                 new SqlParameter("@project_name", SqlDbType.NVarChar) { Value = project_name },
-                new SqlParameter("@project_level", SqlDbType.NVarChar) { Value = project_level },
-                new SqlParameter("@project_number", SqlDbType.NVarChar) { Value = project_number },
+                //new SqlParameter("@project_level", SqlDbType.NVarChar) { Value = project_level },
+                //new SqlParameter("@project_number", SqlDbType.NVarChar) { Value = project_number },
                 new SqlParameter("@project_category", SqlDbType.NVarChar) { Value = project_category },
                 new SqlParameter("@project_youth", SqlDbType.NVarChar) { Value = project_youth },
                 new SqlParameter("@project_research", SqlDbType.NVarChar) { Value = project_research },
@@ -100,10 +102,10 @@ namespace DAL
         /// <returns>整型</returns>
         static public bool UpdatePrroject(
                string project_id,
-               string team_id,
+               //string team_id,
                string project_name,
-               string project_level,
-               string project_number,
+               //string project_level,
+               //string project_number,
                string project_category,
                string project_youth,
                string project_research,
@@ -113,14 +115,16 @@ namespace DAL
                string project_form
             )
         {
-            string query = "update ProjectApplications set \r\nteam_id = @team_id, \r\nproject_name = @project_name, \r\nproject_level = @project_level, \r\nproject_number = @project_number, \r\nproject_category = @project_category, \r\nproject_youth = @project_youth, \r\nproject_research = @project_research, \r\nproject_view = @project_view, \r\nproject_References = @project_References, \r\nproject_time = @project_time, \r\nproject_form = @project_form, \r\nwhere project_id = @project_id;";
+            //string query = "update ProjectApplications set \r\nteam_id = @team_id, \r\nproject_name = @project_name, \r\nproject_level = @project_level, \r\nproject_number = @project_number, \r\nproject_category = @project_category, \r\nproject_youth = @project_youth, \r\nproject_research = @project_research, \r\nproject_view = @project_view, \r\nproject_References = @project_References, \r\nproject_time = @project_time, \r\nproject_form = @project_form, \r\nwhere project_id = @project_id;";
+            string query = "update ProjectApplications set   \r\nproject_number = @project_number, \r\nproject_category = @project_category, \r\nproject_youth = @project_youth, \r\nproject_research = @project_research, \r\nproject_view = @project_view, \r\nproject_References = @project_References, \r\nproject_time = @project_time, \r\nproject_form = @project_form, \r\nwhere project_id = @project_id;";
+
             SqlParameter[] parameters =
             {
                 new SqlParameter("@project_id",SqlDbType.Int) { Value = project_id},
-                new SqlParameter("@team_id",SqlDbType.Int) { Value = team_id},
+                //new SqlParameter("@team_id",SqlDbType.Int) { Value = team_id},
                 new SqlParameter("@project_name",SqlDbType.Int) { Value = project_name},
-                new SqlParameter("@project_level",SqlDbType.Int) { Value = project_level},
-                new SqlParameter("@project_number",SqlDbType.Int) { Value = project_number},
+                //new SqlParameter("@project_level",SqlDbType.Int) { Value = project_level},
+                //new SqlParameter("@project_number",SqlDbType.Int) { Value = project_number},
                 new SqlParameter("@project_category",SqlDbType.Int) { Value = project_category},
                 new SqlParameter("@project_youth",SqlDbType.Int) { Value = project_youth},
                 new SqlParameter("@project_research",SqlDbType.Int) { Value = project_research},

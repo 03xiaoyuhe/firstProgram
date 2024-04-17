@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ResetPage.aspx.cs" Inherits="WebForm.functionPage.QF_ChildPage.ResetPage" %>
 
+<%@ Register Src="~/ASCX/ProgramInform/ProgramAdd.ascx" TagName="ProgremInform" TagPrefix="ProgremInf" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -53,9 +55,17 @@
 
         <div style="width: 80%; margin: 0 auto;">
             <div class="fs-1">项目信息</div>
+            
+               <div style="width:100%;height:490px;overflow:auto;">
+
+                <ProgremInf:ProgremInform runat="server" ID ="ProgremInf"></ProgremInf:ProgremInform>
+
+            </div>
+
+
             <table style="width: 100%">
                 <tr>
-                    <td>
+<%--                    <td>
                         <div class="form-floating mb-3" style="margin: 5px auto;">
                             <asp:TextBox
                                 ID="ProgramIDInput"
@@ -160,7 +170,7 @@
                         </div>
 
                     </td>
-                </tr>
+                </tr>--%>
                 <tr>
                     <td>
                         <asp:Button ID="submit" runat="server" Text="提交" CssClass="addProgram-submit btn btn-outline-dark" OnClick="submit_Click" />
@@ -183,6 +193,9 @@
                     </td>
                 </tr>
             </table>
+
+
+
         </div>
 
         <div class="z-3 ppshade">

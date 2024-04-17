@@ -132,9 +132,9 @@ namespace WebForm.functionPage.QF_ChildPage
             list.Add("project_number");
             list.Add("project_category");
             list.Add("project_youth");
-            list.Add("project_research");
-            list.Add("project_view");
-            list.Add("project_References");
+           // list.Add("project_research");
+           // list.Add("project_view");
+           // list.Add("project_References");
             list.Add("project_time");
             list.Add("project_form");
             //list.Add("proposal_number");
@@ -151,9 +151,9 @@ namespace WebForm.functionPage.QF_ChildPage
             map.Add("project_number", "立项编号");
             map.Add("project_category", "项目类别");
             map.Add("project_youth", "是否符合青年项目申报条件");
-            map.Add("project_research", "本项目国内外研究现状述评，选题意义与价值");
-            map.Add("project_view", "本项目研究的主要观点等");
-            map.Add("project_References", "主要参考文献");
+           // map.Add("project_research", "本项目国内外研究现状述评，选题意义与价值");
+           // map.Add("project_view", "本项目研究的主要观点等");
+           // map.Add("project_References", "主要参考文献");
             map.Add("project_time", "项目完成时间");
             map.Add("project_form", "成果形式");
 
