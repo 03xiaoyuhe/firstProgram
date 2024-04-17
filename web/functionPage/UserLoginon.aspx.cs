@@ -29,20 +29,20 @@ namespace WebForm
         {
             DBHelper.Mode = 1;
             DBHelper.Setting();
-            if (DAL.Control.CheckIfAccountExists(this.userName.Text.ToString()))
+            if (Control.CheckIfAccountExists(this.userName.Text.ToString()))
             {
                 a = this.userPwd.Text.ToString();
                 b = this.userPwd2.Text.ToString();
                 this.SameName.Text = "账号已存在，请重新输入！";
 
             }
-        //    else
-        //    {
+            else
+            {
 
-        //        a = this.userPwd.Text.ToString();
-        //        b = this.userPwd2.Text.ToString();
-        //        this.SameName.Text = null;
-        //    }
+                a = this.userPwd.Text.ToString();
+                b = this.userPwd2.Text.ToString();
+                this.SameName.Text = null;
+            }
 
 
 
@@ -57,10 +57,10 @@ namespace WebForm
                 Response.Write("<script>alert('用户名已存在！')</script>");
 
             }
-            else if (DAL.Control.CheckIfUserNumberExists(this.useNumber.Text.ToString()))
-            {
-                Response.Write("<script>alert('联系电话已被注册！')</script>");
-            }
+            //else if (DAL.Control.CheckIfUserNumberExists(this.useNumber.Text.ToString()))
+            //{
+            //    Response.Write("<script>alert('联系电话已被注册！')</script>");
+            //}
             else
             {
                 this.SameName.Text = null;

@@ -2,7 +2,7 @@
 
 <%@ Register Src="~/ASCX/MassageForm/PrintMassage.ascx" TagName="PrintMassage" TagPrefix="TPrintMassage" %>
 
-<%@ Register Src="~/ASCX/ProgramInform/ProgramAdd.ascx" TagName="ProgremInf" TagPrefix="ProgremInf" %>
+<%@ Register Src="~/ASCX/ProgramInform/ProgramAdd.ascx" TagName="ProgremInform" TagPrefix="ProgremInf" %>
 
 <!DOCTYPE html>
 
@@ -62,7 +62,7 @@
             
 
             <div style="width:100%;height:490px;overflow:auto;">
-                <ProgremInf:ProgremInf runat="server" ID ="ProgremInf"></ProgremInf:ProgremInf>
+                <ProgremInf:ProgremInform runat="server" ID ="ProgremInf"></ProgremInf:ProgremInform>
             </div>
 
 

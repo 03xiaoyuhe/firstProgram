@@ -22,11 +22,11 @@ namespace WebForm.ASCX.ProgramInform
             /// <summary>
             /// 网站数据集
             /// </summary>
-            public ProgromBaseData progromBaseDatas
+            public ProgromBaseData ProgromBaseDatas
             {
                 get
                 {
-                    return progromBaseDatas;
+                    return progromBaseData;
                 }
                 set
                 {
@@ -580,7 +580,6 @@ namespace WebForm.ASCX.ProgramInform
 
             #endregion
 
-        #endregion
         #endregion
 
     }

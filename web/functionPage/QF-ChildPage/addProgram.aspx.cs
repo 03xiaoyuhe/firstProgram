@@ -23,30 +23,37 @@ namespace WebForm.functionPage.QF_ChildPage
             {
 
                 ProgromBaseData progromBaseData = ProgremInf.ProgromBaseDatas;
+                //ProgromBaseData progromBaseData = new ProgromBaseData();
+
+
+
                 //if (!ProjectCompletion.CheckTeam_id(this.PhoneNum.Text.ToString()))
                 //{
                 //    throw new Exception("NotLoad");
                 //}
-                ////if (ProjectCompletion.ProjectInfor(
-                ////    this.ProgramIDInput.Text.ToString(),
-                ////    this.floatingInput.Text.ToString(),
-                ////    this.floatingTextarea.Text.ToString(),
-                ////    this.PhoneNum.Text.ToString(),
-                ////    this.DoForm.Text.ToString(),
-                ////    this.DoTextarea.Text.ToString()
-                ////    ))
-                ////{
-                ////    clearAll();
-                ////    Massage massage = new Massage("Blue", "Success", "添加成功");
-                ////    massage.PostMassage();
-                ////}
+
+                if (ProjectCompletion.ProjectInfor(
+                    progromBaseData.ProjectName,
+                    progromBaseData.ProjectKinds,
+                    progromBaseData.DatasForAdm.IsYoungProjrem.ToString(),
+                    progromBaseData.DatasForDoc.ProjectIntroduce,
+                    progromBaseData.DatasForDoc.ProjectMainIdea,
+                    progromBaseData.DatasForDoc.ProjectAhead,
+                    progromBaseData.ProjectFinish,
+                    progromBaseData.ProjectEnd
+                    ))
+                {
+                    clearAll();
+                    Massage massage = new Massage("Blue", "Success", "添加成功");
+                    massage.PostMassage();
+                }
             }
             catch (Exception E)
             {
                 if (E.Message == "NotLoad")
                 {
                     clearAll();
-                    Massage massage = new Massage("#ff0000", "ERRO", "对应负责人未组队");
+                    Massage massage = new Massage("#ff0000", "ERRO", "错误！");
                     massage.PostMassage();
                 }
                 else

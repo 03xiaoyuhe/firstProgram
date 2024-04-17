@@ -15,7 +15,7 @@
     <link href="../..//bootstrap-5.3.0-alpha1-dist/css/bootstrap-reboot.min.css" rel="stylesheet" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-    <style>
+    <style> 
         
         .Center {
             position: absolute;

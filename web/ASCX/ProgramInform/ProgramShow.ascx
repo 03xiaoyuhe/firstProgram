@@ -4,7 +4,7 @@
 
 <style type="text/css">
     .dataTable{
-        width:100%;
+        width:99%;
     }
     .dataDiv {
         border-radius: 5px;

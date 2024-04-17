@@ -51,6 +51,8 @@ namespace DAL
 
             return count > 0;
         }
+
+
         /// <summary>
         /// 注册时查询电话号码有没有被注册
         /// </summary>
@@ -58,16 +60,17 @@ namespace DAL
         /// <returns></returns>
         static public bool CheckIfUserNumberExists(string control_number)
         {
-            string query = "SELECT COUNT(*) FROM UserControl WHERE control_number = @control_number ";
+            string query = "SELECT control_id FROM UserControl WHERE control_number = '@control_number' ";
             SqlParameter[] parameters =
             {
-                new SqlParameter("@control_number", SqlDbType.Int) { Value = control_number }
+                new SqlParameter("@control_number", SqlDbType.NVarChar) { Value = control_number }
             };
 
-            object result = DBHelper.GetSingle(query, parameters);
-            int count = Convert.ToInt32(result);
+            int rowAfforts = DBHelper.ExecuteSql(query, parameters);
+            
 
-            return count > 0;
+            return rowAfforts > 0;
+
         }
 
         /// <summary>
@@ -98,9 +101,9 @@ namespace DAL
 
             };
 
-            int rowsAffected = DBHelper.ExecuteSql(query, parameters);
+            int rowAfforts = DBHelper.ExecuteSql(query, parameters);
 
-            return rowsAffected > 0;
+            return rowAfforts > 0;
 
         }
 

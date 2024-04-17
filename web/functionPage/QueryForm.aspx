@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <%--<meta name="generator" content="Hugo 0.118.2">--%>
-    <title>哲学与社会科学规划项目信息化管理平台 · 用户主页</title>
+    <title>哲学与社会科学规划项目信息化管理平台 · 用户主页</title> 
     <link rel="icon" href="../img/logo.png" type="image/x-icon" />
 
 
