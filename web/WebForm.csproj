@@ -147,6 +147,7 @@
   <ItemGroup>
     <Content Include="App_Data\*" />
     <Content Include="ASCX\BaseForm\InputBoxForm.ascx" />
+    <Content Include="ASCX\BaseForm\ShowBoxForm.ascx" />
     <Content Include="ASCX\FileUpLoad\FileImformationForm.ascx" />
     <Content Include="ASCX\FileUpLoad\FilrUpLoadFormMain.ascx" />
     <Content Include="ASCX\ProgramInform\ForProgramAdd\ALineDataForParters.ascx" />
@@ -352,6 +353,13 @@
     </Compile>
     <Compile Include="ASCX\BaseForm\InputBoxForm.ascx.designer.cs">
       <DependentUpon>InputBoxForm.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ASCX\BaseForm\ShowBoxForm.ascx.cs">
+      <DependentUpon>ShowBoxForm.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASCX\BaseForm\ShowBoxForm.ascx.designer.cs">
+      <DependentUpon>ShowBoxForm.ascx</DependentUpon>
     </Compile>
     <Compile Include="ASCX\DefaultNONE.ascx.cs">
       <DependentUpon>DefaultNONE.ascx</DependentUpon>

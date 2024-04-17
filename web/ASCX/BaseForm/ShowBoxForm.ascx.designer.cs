@@ -7,29 +7,29 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace WebForm
+namespace WebForm.ASCX.BaseForm
 {
 
 
-    public partial class ForTest
+    public partial class ShowBoxForm
     {
 
         /// <summary>
-        /// form1 控件。
+        /// DataHeadLable 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Label DataHeadLable;
 
         /// <summary>
-        /// ProgremInf1 控件。
+        /// DataLable 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::WebForm.ASCX.BaseForm.ShowBoxForm ProgremInf1;
+        protected global::System.Web.UI.WebControls.Label DataLable;
     }
 }
