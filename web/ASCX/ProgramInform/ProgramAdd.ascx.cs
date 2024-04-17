@@ -180,11 +180,11 @@ namespace WebForm.ASCX.ProgramInform
                         {
                             get
                             {
-                                return AdmBornTextBox.Text;
+                                return AdmSexTextBox.Text;
                             }
                             set
                             {
-                                AdmBornTextBox.Text = value;
+                                AdmSexTextBox.Text = value;
                             }
                         }
 

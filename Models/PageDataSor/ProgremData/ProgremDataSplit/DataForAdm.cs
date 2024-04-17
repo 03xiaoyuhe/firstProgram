@@ -27,7 +27,23 @@ namespace Models.PageDataSor.ProgremData
             AdmAdmPhone = "未赋值";
             AdmEmail = "未赋值";
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="admName"></param>
+        /// <param name="admBorn"></param>
+        /// <param name="admSex"></param>
+        /// <param name="admOrd"></param>
+        /// <param name="admOrdName"></param>
+        /// <param name="admMar"></param>
+        /// <param name="admMajBest"></param>
+        /// <param name="admNowDo"></param>
+        /// <param name="admJobWhere"></param>
+        /// <param name="admPhontWhere"></param>
+        /// <param name="isYoungProjrem"></param>
+        /// <param name="admAdmPhone"></param>
+        /// <param name="admPhone"></param>
+        /// <param name="admEmail"></param>
         public DataForAdm(
             string admName, 
             string admBorn,  

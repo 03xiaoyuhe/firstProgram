@@ -12,25 +12,25 @@ namespace DAL
 {   
     public class ProjectCompletion
     {
-        /// <summary>
-        /// 查询小队id是否存在
-        /// </summary>
-        /// <param name="teateam_info_idm_id">小队id</param>
-        /// <returns></returns>
-        static public bool  CheckTeam_id(string teateam_info_idm_id)
-        {
-            string query = "select TeamInfo.team_info_id from TeamInfo where team_info_id = @team_info_id";
-            SqlParameter[] parameters =
-            {
-                new SqlParameter("@team_info_id",SqlDbType.Int ) { Value = teateam_info_idm_id },
-            };
+        ///// <summary>
+        ///// 查询小队id是否存在
+        ///// </summary>
+        ///// <param name="teateam_info_idm_id">小队id</param>
+        ///// <returns></returns>
+        //static public bool  CheckTeam_id(string teateam_info_idm_id)
+        //{
+        //    string query = "select TeamInfo.team_info_id from TeamInfo where team_info_id = @team_info_id";
+        //    SqlParameter[] parameters =
+        //    {
+        //        new SqlParameter("@team_info_id",SqlDbType.Int ) { Value = teateam_info_idm_id },
+        //    };
 
-            object rowsAffected = DBHelper.GetSingle(query, parameters);
-            int count = Convert.ToInt32(rowsAffected);
+        //    object rowsAffected = DBHelper.GetSingle(query, parameters);
+        //    int count = Convert.ToInt32(rowsAffected);
 
-            return (count > 0);
+        //    return (count > 0);
 
-        }
+        //}
 
         /// <summary>
         /// 像项目表插入所有信息
@@ -63,10 +63,10 @@ namespace DAL
         {
             
            // string query = "insert into ProjectApplications  (\r\nteam_id,\r\nproject_name,\r\nproject_level,\r\nproject_number,\r\nproject_category,\r\nproject_youth,\r\nproject_research,\r\nproject_view,\r\nproject_References,\r\nproject_time,\r\nproject_form\r\n) values (@team_id,\r\n@project_name,\r\n@project_level,\r\n@project_number,\r\n@project_category,\r\n@project_youth,\r\n@project_research,\r\n@project_view,\r\n@project_References,\r\n@project_time,\r\n@project_form );";
-            string query = "insert into ProjectApplications  (\r\nproject_name,\r\nproject_category,\r\nproject_youth,\r\nproject_research,\r\nproject_view,\r\nproject_References,\r\nproject_time,\r\nproject_form\r\n) values (@team_id,\r\n@project_name,\r\n@project_level,\r\n@project_number,\r\n@project_category,\r\n@project_youth,\r\n@project_research,\r\n@project_view,\r\n@project_References,\r\n@project_time,\r\n@project_form );";
+            string query = "insert into ProjectApplications  (\r\nproject_name,\r\nproject_category,\r\nproject_youth,\r\nproject_research,\r\nproject_view,\r\nproject_References,\r\nproject_time,\r\nproject_form\r\n) values (@project_name,\r\n@project_category,\r\n@project_youth,\r\n@project_research,\r\n@project_view,\r\n@project_References,\r\n@project_time,\r\n@project_form );";
 
             SqlParameter[] parameters = {   
-                //new SqlParameter("@team_id", SqlDbType.Int) { Value = team_id },
+                //new SqlParameter("@team_id", SqlDbType.Int) { Value = team_id },`
                 new SqlParameter("@project_name", SqlDbType.NVarChar) { Value = project_name },
                 //new SqlParameter("@project_level", SqlDbType.NVarChar) { Value = project_level },
                 //new SqlParameter("@project_number", SqlDbType.NVarChar) { Value = project_number },

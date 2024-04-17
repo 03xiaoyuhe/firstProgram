@@ -23,14 +23,8 @@ namespace WebForm.functionPage.QF_ChildPage
             {
 
                 ProgromBaseData progromBaseData = ProgremInf.ProgromBaseDatas;
-                //ProgromBaseData progromBaseData = new ProgromBaseData();
 
-
-
-                //if (!ProjectCompletion.CheckTeam_id(this.PhoneNum.Text.ToString()))
-                //{
-                //    throw new Exception("NotLoad");
-                //}
+                //申请时向项目信息表中插入对应的字段值
                 bool Project_Insert = ProjectCompletion.ProjectInfor(
                     progromBaseData.ProjectName,
                     progromBaseData.ProjectKinds,
@@ -41,12 +35,24 @@ namespace WebForm.functionPage.QF_ChildPage
                     progromBaseData.ProjectFinish,
                     progromBaseData.ProjectEnd
                     );
+                //申请时对负责人信息进行插入完善
+                bool User_Insert = DAL.User.Insert_Infor(
+                    progromBaseData.DatasForAdm.AdmName,
+                    progromBaseData.DatasForAdm.AdmBorn,
+                    progromBaseData.DatasForAdm.AdmSex,
+                    progromBaseData.DatasForAdm.AdmOrd,
+                    progromBaseData.DatasForAdm.AdmOrdName,
+                    progromBaseData.DatasForAdm.AdmMar,
+                    progromBaseData.DatasForAdm.AdmMajBest,
+                    progromBaseData.DatasForAdm.AdmNowDo,
+                    progromBaseData.DatasForAdm.AdmJobWhere,
+                    progromBaseData.DatasForAdm.AdmPhontWhere,
+                    progromBaseData.DatasForAdm.AdmAdmPhone,
+                    progromBaseData.DatasForAdm.AdmPhone,
+                    progromBaseData.DatasForAdm.AdmEmail
+                    );
 
-                //bool User_Insert = DAL.User.Insert_Infor(
-                    
-                //    );
-
-                if (Project_Insert)
+                if (Project_Insert && User_Insert)
                 {
                     clearAll();
                     Massage massage = new Massage("Blue", "Success", "添加成功");

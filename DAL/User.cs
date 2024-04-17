@@ -125,7 +125,7 @@ namespace DAL
         /// <param name="user_office_number">办公电话</param>
         /// <param name="user_email">邮箱</param>
         /// <returns>整型</returns>
-        public bool Insert_Infor(
+        static public bool Insert_Infor(
             string user_name,
             string user_date,
             string user_sex,
@@ -141,11 +141,12 @@ namespace DAL
             string user_email
             )
         {
-            string query = "insert into UserInfor (\r\nuser_name,\r\nuser_date, \r\nuser_sex,\r\nuser_position,\r\nuser_title,\r\nuser_speciality,\r\nuser_research,\r\nuser_research_now,\r\nuser_workplace,\r\nuser_address,\r\nuser_office_number,\r\nuser_number,\r\nuser_email\r\n) values (\r\n'@user_name',\r\n'@user_date', \r\n'@user_sex',\r\n'@user_position',\r\n'@user_title',\r\n'@user_speciality',\r\n'@user_research',\r\n'@user_research_now',\r\n'@user_workplace',\r\n'@user_address',\r\n'@user_office_number',\r\n'@user_number',\r\n'@user_email'\r\n);";
+            string query = "insert into UserInfor (\r\nuser_name,\r\nuser_date, \r\nuser_sex,\r\nuser_position,\r\nuser_title,\r\nuser_speciality,\r\nuser_research,\r\nuser_research_now,\r\nuser_workplace,\r\nuser_address,\r\nuser_office_number,\r\nuser_number,\r\nuser_email\r\n) values (\r\n@user_name,\r\n@user_date, \r\n@user_sex,\r\n@user_position,\r\n@user_title,\r\n@user_speciality,\r\n@user_research,\r\n@user_research_now,\r\n@user_workplace,\r\n@user_address,\r\n@user_office_number,\r\n@user_number,\r\n@user_email\r\n);";
             SqlParameter[] parameters =
             {
+
                 new SqlParameter("@user_name",SqlDbType.NVarChar) { Value = user_name },
-                new SqlParameter("@user_date",SqlDbType.NVarChar) { Value = user_date },
+                new SqlParameter("@user_date",SqlDbType.Date) { Value = user_date },
                 new SqlParameter("@user_sex",SqlDbType.NVarChar) { Value = user_sex },
                 new SqlParameter("@user_position",SqlDbType.NVarChar) { Value = user_position },
                 new SqlParameter("@user_title",SqlDbType.NVarChar) { Value = user_title },
