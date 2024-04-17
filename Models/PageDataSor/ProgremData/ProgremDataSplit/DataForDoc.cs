@@ -66,10 +66,10 @@ namespace Models.PageDataSor.ProgremData
         /// </summary>
         public string ProjectAhead
         {
-            get { return ProjectAhead; }
+            get { return projectAhead; }
             set
             {
-                ProjectAhead = value;
+                projectAhead = value;
             }
         }
 

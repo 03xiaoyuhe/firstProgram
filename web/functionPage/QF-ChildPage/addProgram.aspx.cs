@@ -31,8 +31,7 @@ namespace WebForm.functionPage.QF_ChildPage
                 //{
                 //    throw new Exception("NotLoad");
                 //}
-
-                if (ProjectCompletion.ProjectInfor(
+                bool Project_Insert = ProjectCompletion.ProjectInfor(
                     progromBaseData.ProjectName,
                     progromBaseData.ProjectKinds,
                     progromBaseData.DatasForAdm.IsYoungProjrem.ToString(),
@@ -41,7 +40,13 @@ namespace WebForm.functionPage.QF_ChildPage
                     progromBaseData.DatasForDoc.ProjectAhead,
                     progromBaseData.ProjectFinish,
                     progromBaseData.ProjectEnd
-                    ))
+                    );
+
+                //bool User_Insert = DAL.User.Insert_Infor(
+                    
+                //    );
+
+                if (Project_Insert)
                 {
                     clearAll();
                     Massage massage = new Massage("Blue", "Success", "添加成功");

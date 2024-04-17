@@ -112,6 +112,7 @@ namespace DAL
         /// 插入用户信息
         /// </summary>
         /// <param name="user_name">姓名</param>
+        /// 
         /// <param name="user_date">生日</param>
         /// <param name="user_sex">性别</param>
         /// <param name="user_position">职务</param>
@@ -124,7 +125,7 @@ namespace DAL
         /// <param name="user_office_number">办公电话</param>
         /// <param name="user_email">邮箱</param>
         /// <returns>整型</returns>
-        public bool RegisterUser(
+        public bool Insert_Infor(
             string user_name,
             string user_date,
             string user_sex,
@@ -136,10 +137,11 @@ namespace DAL
             string user_workplace,
             string user_address,
             string user_office_number,
+            string user_number,
             string user_email
             )
         {
-            string query = "insert into UserInfor (\r\nuser_name,\r\nuser_date, \r\nuser_sex,\r\nuser_position,\r\nuser_title,\r\nuser_speciality,\r\nuser_research,\r\nuser_research_now,\r\nuser_workplace,\r\nuser_address,\r\nuser_office_number,\r\nuser_email\r\n) values (\r\n'@user_name',\r\n'@user_date', \r\n'@user_sex',\r\n'@user_position',\r\n'@user_title',\r\n'@user_speciality',\r\n'@user_research',\r\n'@user_research_now',\r\n'@user_workplace',\r\n'@user_address',\r\n'@user_office_number',\r\n'@user_email'\r\n);";
+            string query = "insert into UserInfor (\r\nuser_name,\r\nuser_date, \r\nuser_sex,\r\nuser_position,\r\nuser_title,\r\nuser_speciality,\r\nuser_research,\r\nuser_research_now,\r\nuser_workplace,\r\nuser_address,\r\nuser_office_number,\r\nuser_number,\r\nuser_email\r\n) values (\r\n'@user_name',\r\n'@user_date', \r\n'@user_sex',\r\n'@user_position',\r\n'@user_title',\r\n'@user_speciality',\r\n'@user_research',\r\n'@user_research_now',\r\n'@user_workplace',\r\n'@user_address',\r\n'@user_office_number',\r\n'@user_number',\r\n'@user_email'\r\n);";
             SqlParameter[] parameters =
             {
                 new SqlParameter("@user_name",SqlDbType.NVarChar) { Value = user_name },
@@ -153,6 +155,7 @@ namespace DAL
                 new SqlParameter("@user_workplace",SqlDbType.NVarChar) { Value = user_workplace },
                 new SqlParameter("@user_address",SqlDbType.NVarChar) { Value = user_address },
                 new SqlParameter("@user_office_number",SqlDbType.NVarChar) { Value = user_office_number },
+                new SqlParameter("@user_number",SqlDbType.NVarChar) { Value = user_number},
                 new SqlParameter("@user_email",SqlDbType.NVarChar) { Value = user_email },
 
              };
