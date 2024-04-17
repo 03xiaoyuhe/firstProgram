@@ -11,14 +11,14 @@ namespace Models.PageDataSor.ProgremData
         public DataForThinking() 
         {
             WhereThink = "未赋值";
-            whereThinkTime = DateTime.MaxValue;
+            whereThinkTime = "未赋值";
             MajorThink = "未赋值";
-            MajorThinkTime = DateTime.MaxValue;
+            MajorThinkTime = "未赋值";
             EndThink = "未赋值";
-            EndThinkTime = DateTime.MaxValue;
+            EndThinkTime = "未赋值";
         }
 
-        public DataForThinking(string whereThink, DateTime whereThinkTime, string majorThink, DateTime majorThinkTime, string endThink, DateTime endThinkTime)
+        public DataForThinking(string whereThink, string whereThinkTime, string majorThink, string majorThinkTime, string endThink, string endThinkTime)
         {
             WhereThink = whereThink;
             WhereThinkTime = whereThinkTime;
@@ -41,11 +41,11 @@ namespace Models.PageDataSor.ProgremData
             }
         }
 
-        DateTime whereThinkTime;
+        string whereThinkTime;
         /// <summary>
         /// 项目负责人所在单位审核意见时间
         /// </summary>
-        public DateTime WhereThinkTime
+        public string WhereThinkTime
         {
             get
             {
@@ -69,11 +69,11 @@ namespace Models.PageDataSor.ProgremData
             }
         }
 
-        DateTime majorThinkTime;
+        string majorThinkTime;
         /// <summary>
         /// 专家组评审意见时间
         /// </summary>
-        public DateTime MajorThinkTime
+        public string MajorThinkTime
         {
             get
             {
@@ -98,15 +98,15 @@ namespace Models.PageDataSor.ProgremData
             }
         }
 
-        DateTime endThinkTime;
+        string endThinkTime;
         /// <summary>
         /// 审批意见时间
         /// </summary>
-        public DateTime EndThinkTime
+        public string EndThinkTime
         {
             get
             {
-                return majorThinkTime;
+                return endThinkTime;
             }
             set
             {
