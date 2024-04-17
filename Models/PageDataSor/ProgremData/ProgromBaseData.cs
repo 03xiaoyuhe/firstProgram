@@ -15,7 +15,7 @@ namespace Models.PageDataSor.ProgremData
         public ProgromBaseData(
             string projectName, 
             string projectKinds, 
-            DateTime projectFinish, 
+            string projectFinish, 
             string projectEnd, 
             DataForAdm dataForAdm, 
             List<DataForParter> dataForParters,
@@ -60,11 +60,11 @@ namespace Models.PageDataSor.ProgremData
         }
 
 
-        DateTime projectFinish;
+        string projectFinish;
         /// <summary>
         /// 项目完成时间
         /// </summary>
-        public DateTime ProjectFinish
+        public string ProjectFinish
         {
             get
             {

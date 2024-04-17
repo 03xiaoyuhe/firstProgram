@@ -73,11 +73,11 @@ namespace WebForm.ASCX.ProgramInform.ForProgramShow
             }
         }
 
-        DateTime projectFinish;
+        string projectFinish;
         /// <summary>
         /// 项目完成时间
         /// </summary>
-        public DateTime ProjectFinish
+        public string ProjectFinish
         {
             get
             {
@@ -86,7 +86,7 @@ namespace WebForm.ASCX.ProgramInform.ForProgramShow
             set
             {
                 projectFinish = value;
-                ProjectFinishLable.Text = value.Year.ToString() + "--" + value.Month.ToString() + "--" + value.Day.ToString();
+                ProjectFinishLable.Text = value;
             }
 
         }

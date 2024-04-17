@@ -76,11 +76,11 @@ namespace WebForm.ASCX.ProgramInform
                     }
                 }
 
-                DateTime projectFinish;
+                string projectFinish;
                 /// <summary>
                 /// 项目完成时间
                 /// </summary>
-                public DateTime ProjectFinish
+                public string ProjectFinish
                 {
                     get 
                     { 
@@ -89,7 +89,7 @@ namespace WebForm.ASCX.ProgramInform
                     set 
                     {
                         projectFinish = value;
-                        ProjectFinishLable.Text = value.Year.ToString() + "--" + value.Month.ToString() + "--" + value.Day.ToString();
+                        ProjectFinishLable.Text = value;
                     }
 
                 }
@@ -493,11 +493,11 @@ namespace WebForm.ASCX.ProgramInform
                     }
 
 
-                    DateTime whereThinkTime;
+                    string whereThinkTime;
                     /// <summary>
                     /// 项目负责人所在单位审核意见时间
                     /// </summary>
-                    public DateTime WhereThinkTime
+                    public string WhereThinkTime
                     {
                         get
                         {
@@ -506,7 +506,7 @@ namespace WebForm.ASCX.ProgramInform
                         set
                         {
                             whereThinkTime = value;
-                            WhereThinkTimeLable.Text = value.Year.ToString() + "--" + value.Month.ToString() + "--" + value.Day.ToString();
+                            WhereThinkTimeLable.Text = value;
                         }
                     }
 
@@ -526,11 +526,11 @@ namespace WebForm.ASCX.ProgramInform
                     }
 
 
-                    DateTime majorThinkTime;
+                    string majorThinkTime;
                     /// <summary>
                     /// 专家组评审意见时间
                     /// </summary>
-                    public DateTime MajorThinkTime
+                    public string MajorThinkTime
                     {
                         get
                         {
@@ -539,7 +539,7 @@ namespace WebForm.ASCX.ProgramInform
                         set
                         {
                             majorThinkTime = value;
-                            MajorThinkTimeLable.Text = value.Year.ToString() + "--" + value.Month.ToString() + "--" + value.Day.ToString();
+                            MajorThinkTimeLable.Text = value;
                         }
                     }
 
@@ -559,20 +559,20 @@ namespace WebForm.ASCX.ProgramInform
                     }
 
 
-                    DateTime endThinkTime;
+                    string endThinkTime;
                     /// <summary>
                     /// 审批意见时间
                     /// </summary>
-                    public DateTime EndThinkTime
+                    public string EndThinkTime
                     {
                         get
                         {
-                            return majorThinkTime;
+                            return endThinkTime;
                         }
                         set
                         {
                             endThinkTime = value;
-                            EndThinkTimeLable.Text = value.Year.ToString() + "--" + value.Month.ToString() + "--" + value.Day.ToString();
+                            EndThinkTimeLable.Text = value;
                         }
                     }
 

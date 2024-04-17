@@ -57,7 +57,7 @@ namespace DAL
                string project_research,
                string project_view,
                string project_References,
-               DateTime project_time,
+               string project_time,
                string project_form
             )
         {
