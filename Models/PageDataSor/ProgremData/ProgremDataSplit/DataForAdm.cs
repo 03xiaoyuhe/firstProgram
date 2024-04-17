@@ -65,7 +65,9 @@ namespace Models.PageDataSor.ProgremData
 
         //[Description("标题颜色"), Category("自定义属性")]
         string admName;
-        [Description("负责人姓名"), Category("自定义属性")]
+        /// <summary>
+        /// 负责人姓名
+        /// </summary>
         public string AdmName
         {
             get
@@ -79,7 +81,9 @@ namespace Models.PageDataSor.ProgremData
         }
 
         string admBorn;
-        [Description("负责人出生年月"), Category("自定义属性")]
+        /// <summary>
+        /// 负责人出生年月
+        /// </summary>
         public string AdmBorn
         {
             get
@@ -93,7 +97,9 @@ namespace Models.PageDataSor.ProgremData
         }
 
         string admSex;
-        [Description("负责人性别"), Category("自定义属性")]
+        /// <summary>
+        /// 负责人性别
+        /// </summary>
         public string AdmSex
         {
             get
@@ -107,7 +113,9 @@ namespace Models.PageDataSor.ProgremData
         }
 
         string admOrd;
-        [Description("负责人职务"), Category("自定义属性")]
+        /// <summary>
+        /// 负责人职务
+        /// </summary>
         public string AdmOrd
         {
             get { return admOrd; }
@@ -118,7 +126,9 @@ namespace Models.PageDataSor.ProgremData
         }
 
         string admOrdName;
-        [Description("负责人职称"), Category("自定义属性")]
+        /// <summary>
+        /// 负责人职称
+        /// </summary>
         public string AdmOrdName
         {
             get
@@ -132,7 +142,9 @@ namespace Models.PageDataSor.ProgremData
         }
 
         string admMar;
-        [Description("负责人专业"), Category("自定义属性")]
+        /// <summary>
+        /// 负责人专业
+        /// </summary>
         public string AdmMar
         {
             get
@@ -146,7 +158,9 @@ namespace Models.PageDataSor.ProgremData
         }
 
         string admMajBest;
-        [Description("负责人研究专长"), Category("自定义属性")]
+        /// <summary>
+        /// 负责人研究专长
+        /// </summary>
         public string AdmMajBest
         {
             get
@@ -158,7 +172,9 @@ namespace Models.PageDataSor.ProgremData
         }
 
         string admNowDo;
-        [Description("负责人现从事专业"), Category("自定义属性")]
+        /// <summary>
+        /// 负责人现从事专业
+        /// </summary>
         public string AdmNowDo
         {
             get
@@ -172,7 +188,10 @@ namespace Models.PageDataSor.ProgremData
         }
 
         string admJobWhere;
-        [Description("负责人工作单位"), Category("自定义属性")]
+        //[Description("负责人工作单位"), Category("自定义属性")]
+        /// <summary>
+        /// 负责人工作单位
+        /// </summary>
         public string AdmJobWhere
         {
             get
@@ -186,7 +205,10 @@ namespace Models.PageDataSor.ProgremData
         }
 
         string admPhontWhere;
-        [Description("通信地址"), Category("自定义属性")]
+        //[Description("通信地址"), Category("自定义属性")]
+        /// <summary>
+        /// 通信地址
+        /// </summary>
         public string AdmPhontWhere
         {
             get
@@ -200,7 +222,10 @@ namespace Models.PageDataSor.ProgremData
         }
 
         bool isYoungProjrem;
-        [Description("是否符合青年项目申报条件"), Category("自定义属性")]
+        //[Description("是否符合青年项目申报条件"), Category("自定义属性")]
+        /// <summary>
+        /// 是否符合青年项目申报条件
+        /// </summary>
         public bool IsYoungProjrem
         {
             get
@@ -214,7 +239,9 @@ namespace Models.PageDataSor.ProgremData
         }
 
         string admAdmPhone;
-        [Description("办公个电话"), Category("自定义属性")]
+        /// <summary>
+        /// 办公个电话
+        /// </summary>
         public string AdmAdmPhone
         {
             get
@@ -228,7 +255,9 @@ namespace Models.PageDataSor.ProgremData
         }
 
         string admPhone;
-        [Description("手机"), Category("自定义属性")]
+        /// <summary>
+        /// 手机
+        /// </summary>
         public string AdmPhone
         {
             get
@@ -242,7 +271,9 @@ namespace Models.PageDataSor.ProgremData
         }
 
         string admEmail;
-        [Description("电子邮箱"), Category("自定义属性")]
+        /// <summary>
+        /// 电子邮箱
+        /// </summary>
         public string AdmEmail
         {
             get
