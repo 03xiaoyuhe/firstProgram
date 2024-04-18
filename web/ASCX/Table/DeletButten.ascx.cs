@@ -96,5 +96,10 @@ namespace WebForm.ASCX.Table
             string gotoURL = "~/functionPage/QF-ChildPage/ResetPage.aspx?tablename=" + TableName + "&idlable=" + IDLable + "&id=" + DataID;
             Response.Redirect(gotoURL);
         }
+
+        protected void DetailButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

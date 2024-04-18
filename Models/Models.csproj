@@ -47,6 +47,7 @@
     </Compile>
     <Compile Include="LineDateBase.cs" />
     <Compile Include="Massage.cs" />
+    <Compile Include="PageDataSor\JumpToControl.cs" />
     <Compile Include="PageDataSor\ProgremData\ProgremDataSplit\DataForAdm.cs" />
     <Compile Include="PageDataSor\ProgremData\ProgremDataSplit\DataForDoc.cs" />
     <Compile Include="PageDataSor\ProgremData\ProgremDataSplit\DataForParter.cs" />

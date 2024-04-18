@@ -8,10 +8,8 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
-    
     <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-
 </head>
 <body>
     <form id="form1" runat="server">
