@@ -6,11 +6,26 @@ using System.Threading.Tasks;
 
 namespace Models.PageDataSor.ProgremData
 {
+
     /// <summary>
     /// 网站数据集
     /// </summary>
     public class ProgromBaseData
     {
+
+        public ProgromBaseData() 
+        {
+            ProjectName = "";
+            ProjectKinds = "";
+            ProjectFinish = "";
+            ProjectEnd = "";
+            DatasForAdm = new DataForAdm();
+            DataForParts = new List<DataForParter>();
+            DatasForDoc = new DataForDoc();
+            DatasForThinking = new DataForThinking();
+        }
+
+
 
         public ProgromBaseData(
             string projectName, 
