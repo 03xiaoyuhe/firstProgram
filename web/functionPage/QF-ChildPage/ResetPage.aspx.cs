@@ -52,15 +52,15 @@ namespace WebForm.functionPage.QF_ChildPage
         {
             if (!IsPostBack)
             {
-                //TableName = Request.QueryString["tablename"];
-                //IdLable = Request.QueryString["idlable"];
-                //Id = Request.QueryString["id"];
-
+                //将项目表显示在ds中。
                 DataSet dataSet = new DataSet();
                 dataSet = TableSelect.Select(TableName, IdLable, Id);
                 DataTable ds = dataSet.Tables[0];
                 DataRow dl = ds.Rows[0];
 
+
+
+                //项目论证信息的三个字段
                 DataForDoc dataForDoc = new DataForDoc();
                 dataForDoc.ProjectIntroduce = dl["project_research"].ToString();
                 dataForDoc.ProjectMainIdea = dl["project_view"].ToString();
@@ -68,7 +68,9 @@ namespace WebForm.functionPage.QF_ChildPage
 
                 List<DataForParter> dataForParters = new List<DataForParter>();
                 dataForParters.Add(new DataForParter());
+
                 DataForThinking dataForThinking = new DataForThinking();
+
                 DataForAdm dataForAdm = new DataForAdm();
 
                ProgromBaseData progromBaseData = new ProgromBaseData(
