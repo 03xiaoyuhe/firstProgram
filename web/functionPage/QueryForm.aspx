@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="QueryForm.aspx.cs" Inherits="WebForm.functionPage.QueryForm1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="QueryForm.aspx.cs" Inherits="WebForm.functionPage.QueryForm" %>
 
 <%@ Register Src="~/ASCX/DefaultNONE.ascx" TagPrefix="uc1" TagName="DefaultNONE" %>
 <%@ Register Src="~/ASCX/MassageForm/PrintMassage.ascx" TagName="Massage" TagPrefix="TMassage" %>

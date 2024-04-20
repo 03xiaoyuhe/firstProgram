@@ -126,7 +126,8 @@ namespace WebForm.functionPage.QF_ChildPage
                 dataTable = null;
             }
             List<string> list = new List<string>();
-            list.Add("team_id");
+            list.Add("project_id");
+            list.Add("user_phone");
             list.Add("project_name");
             list.Add("project_level");
             list.Add("project_number");
@@ -145,7 +146,8 @@ namespace WebForm.functionPage.QF_ChildPage
             //list.Add("achievement_brief");
 
             Dictionary<string, string> map = new Dictionary<string, string>();
-            map.Add("team_id", "小队id ");
+            map.Add("project_id", "ID");
+            map.Add("user_phone", "负责人电话号码");
             map.Add("project_name", "项目名称");
             map.Add("project_level", "项目评级");
             map.Add("project_number", "立项编号");

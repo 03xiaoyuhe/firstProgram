@@ -35,7 +35,7 @@ namespace DAL
         /// <summary>
         /// 像项目表插入所有信息
         /// </summary>
-        /// <param name="team_id">小队id</param>
+        /// <param name="user_phone">负责人电话号码</param>
         /// <param name="project_name">项目名称</param>
         /// <param name="project_level">项目评级</param>
         /// <param name="project_number">立项编号</param>
@@ -48,7 +48,7 @@ namespace DAL
         /// <param name="project_form">成果形式</param>
         /// <returns>rowsAffected整型值</returns>
         static public bool ProjectInfor(
-               //string team_id,
+               string user_phone,
                string project_name,
                //string project_level,
                //string project_number,
@@ -63,10 +63,10 @@ namespace DAL
         {
             
            // string query = "insert into ProjectApplications  (\r\nteam_id,\r\nproject_name,\r\nproject_level,\r\nproject_number,\r\nproject_category,\r\nproject_youth,\r\nproject_research,\r\nproject_view,\r\nproject_References,\r\nproject_time,\r\nproject_form\r\n) values (@team_id,\r\n@project_name,\r\n@project_level,\r\n@project_number,\r\n@project_category,\r\n@project_youth,\r\n@project_research,\r\n@project_view,\r\n@project_References,\r\n@project_time,\r\n@project_form );";
-            string query = "insert into ProjectApplications  (\r\nproject_name,\r\nproject_category,\r\nproject_youth,\r\nproject_research,\r\nproject_view,\r\nproject_References,\r\nproject_time,\r\nproject_form\r\n) values (@project_name,\r\n@project_category,\r\n@project_youth,\r\n@project_research,\r\n@project_view,\r\n@project_References,\r\n@project_time,\r\n@project_form );";
+            string query = "insert into ProjectApplications  (\r\nuser_phone,\r\nproject_name,\r\nproject_category,\r\nproject_youth,\r\nproject_research,\r\nproject_view,\r\nproject_References,\r\nproject_time,\r\nproject_form\r\n) values (@user_phone,\r\n@project_name,\r\n@project_category,\r\n@project_youth,\r\n@project_research,\r\n@project_view,\r\n@project_References,\r\n@project_time,\r\n@project_form );";
 
             SqlParameter[] parameters = {   
-                //new SqlParameter("@team_id", SqlDbType.Int) { Value = team_id },`
+                new SqlParameter("@user_phone", SqlDbType.NVarChar) { Value = user_phone },
                 new SqlParameter("@project_name", SqlDbType.NVarChar) { Value = project_name },
                 //new SqlParameter("@project_level", SqlDbType.NVarChar) { Value = project_level },
                 //new SqlParameter("@project_number", SqlDbType.NVarChar) { Value = project_number },

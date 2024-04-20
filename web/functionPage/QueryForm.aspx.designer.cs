@@ -11,7 +11,7 @@ namespace WebForm.functionPage
 {
 
 
-    public partial class QueryForm1
+    public partial class QueryForm
     {
 
         /// <summary>

@@ -34,5 +34,25 @@ namespace DAL
 
             return result;
         }
+
+        /// <summary>
+        /// 显示项目详细信息时调用，用于显示负责人的基本信息
+        /// </summary>
+        /// <param name="project_id">项目id</param>
+        /// <returns></returns>
+        static public DataSet UserSelect(string project_id)
+        {
+            string query = "select *from UserInfor where user_number =  " +
+                "(\r\nselect user_phone from ProjectApplications where project_id = @project_id \r\n);";
+            SqlParameter[] parameters =
+            {
+                new  SqlParameter("@project_id",SqlDbType.NVarChar) {Value = project_id},
+            };
+
+            DataSet result = DBHelper.Query(query, parameters);
+
+            return result;
+            
+        }
     }
 }
