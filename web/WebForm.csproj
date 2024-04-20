@@ -159,6 +159,15 @@
     <Content Include="ASCX\ProgramInform\ForProgramShow\DataFormForThinking.ascx" />
     <Content Include="ASCX\ProgramInform\ProgramAdd.ascx" />
     <Content Include="ASCX\ProgramInform\ProgramShow.ascx" />
+    <Content Include="ASCX\Table\ForDataTable\BodyCell.ascx" />
+    <Content Include="ASCX\Table\ForDataTable\BodyLine.ascx" />
+    <Content Include="ASCX\Table\ForDataTable\CellForBodyBase.ascx" />
+    <Content Include="ASCX\Table\ForDataTable\ControlButton.ascx" />
+    <Content Include="ASCX\Table\ForDataTable\ControlFormCell.ascx" />
+    <Content Include="ASCX\Table\ForDataTable\HeadCell.ascx" />
+    <Content Include="ASCX\Table\ForDataTable\HeadLine.ascx" />
+    <Content Include="ASCX\Table\ForDataTable\MyButton.ascx" />
+    <Content Include="ASCX\Table\TableWithDelegate.ascx" />
     <!-- 样式控制文件 -->
     <Content Include="assets\brand\bootstrap-logo-white.svg" />
     <Content Include="assets\brand\bootstrap-logo.svg" />
@@ -323,12 +332,12 @@
     <Content Include="ASCX\Table\MyTable.ascx" />
     <Content Include="ASCX\Loading.ascx" />
     <Content Include="ASCX\PageIndex.ascx" />
-    <Content Include="ASCX\Table\CellForBody.ascx" />
-    <Content Include="ASCX\Table\CellForHead.ascx" />
-    <Content Include="ASCX\Table\DeletButten.ascx" />
-    <Content Include="ASCX\Table\LineForBody.ascx" />
-    <Content Include="ASCX\Table\LineForDateLoading.ascx" />
-    <Content Include="ASCX\Table\LineForHead.ascx" />
+    <Content Include="ASCX\Table\ForMyTable\CellForBody.ascx" />
+    <Content Include="ASCX\Table\ForMyTable\CellForHead.ascx" />
+    <Content Include="ASCX\Table\ForMyTable\DeletButten.ascx" />
+    <Content Include="ASCX\Table\ForMyTable\LineForBody.ascx" />
+    <Content Include="ASCX\Table\ForMyTable\LineForDateLoading.ascx" />
+    <Content Include="ASCX\Table\ForMyTable\LineForHead.ascx" />
     <Content Include="ASCX\Test.ascx" />
     <Content Include="ASCX\Timer.ascx" />
     <Content Include="ASCX\DefaultNONE.ascx" />
@@ -482,46 +491,103 @@
       <DependentUpon>RoughImformationForApplica.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ASCX\Table\CellForBody.ascx.cs">
+    <Compile Include="ASCX\Table\ForDataTable\BodyCell.ascx.cs">
+      <DependentUpon>BodyCell.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASCX\Table\ForDataTable\BodyCell.ascx.designer.cs">
+      <DependentUpon>BodyCell.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ASCX\Table\ForDataTable\BodyLine.ascx.cs">
+      <DependentUpon>BodyLine.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASCX\Table\ForDataTable\BodyLine.ascx.designer.cs">
+      <DependentUpon>BodyLine.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ASCX\Table\ForDataTable\CellForBodyBase.ascx.cs">
+      <DependentUpon>CellForBodyBase.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASCX\Table\ForDataTable\CellForBodyBase.ascx.designer.cs">
+      <DependentUpon>CellForBodyBase.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ASCX\Table\ForDataTable\ControlButton.ascx.cs">
+      <DependentUpon>ControlButton.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASCX\Table\ForDataTable\ControlButton.ascx.designer.cs">
+      <DependentUpon>ControlButton.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ASCX\Table\ForDataTable\HeadCell.ascx.cs">
+      <DependentUpon>HeadCell.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASCX\Table\ForDataTable\HeadCell.ascx.designer.cs">
+      <DependentUpon>HeadCell.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ASCX\Table\ForDataTable\HeadLine.ascx.cs">
+      <DependentUpon>HeadLine.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASCX\Table\ForDataTable\HeadLine.ascx.designer.cs">
+      <DependentUpon>HeadLine.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ASCX\Table\ForDataTable\Lisener.cs" />
+    <Compile Include="ASCX\Table\ForDataTable\MyButton.ascx.cs">
+      <DependentUpon>MyButton.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ASCX\Table\ForDataTable\MyButton.ascx.designer.cs">
+      <DependentUpon>MyButton.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ASCX\Table\ForDataTable\Trigger.cs" />
+    <Compile Include="ASCX\Table\ForMyTable\CellForBody.ascx.cs">
       <DependentUpon>CellForBody.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ASCX\Table\CellForBody.ascx.designer.cs">
+    <Compile Include="ASCX\Table\ForMyTable\CellForBody.ascx.designer.cs">
       <DependentUpon>CellForBody.ascx</DependentUpon>
     </Compile>
-    <Compile Include="ASCX\Table\CellForHead.ascx.cs">
+    <Compile Include="ASCX\Table\ForMyTable\CellForHead.ascx.cs">
       <DependentUpon>CellForHead.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ASCX\Table\CellForHead.ascx.designer.cs">
+    <Compile Include="ASCX\Table\ForMyTable\CellForHead.ascx.designer.cs">
       <DependentUpon>CellForHead.ascx</DependentUpon>
     </Compile>
-    <Compile Include="ASCX\Table\DeletButten.ascx.cs">
+    <Compile Include="ASCX\Table\ForMyTable\DeletButten.ascx.cs">
       <DependentUpon>DeletButten.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ASCX\Table\DeletButten.ascx.designer.cs">
+    <Compile Include="ASCX\Table\ForMyTable\DeletButten.ascx.designer.cs">
       <DependentUpon>DeletButten.ascx</DependentUpon>
     </Compile>
-    <Compile Include="ASCX\Table\LineForBody.ascx.cs">
+    <Compile Include="ASCX\Table\ForDataTable\ControlFormCell.ascx.cs">
+      <DependentUpon>ControlFormCell.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASCX\Table\ForDataTable\ControlFormCell.ascx.designer.cs">
+      <DependentUpon>ControlFormCell.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ASCX\Table\ForMyTable\LineForBody.ascx.cs">
       <DependentUpon>LineForBody.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ASCX\Table\LineForBody.ascx.designer.cs">
+    <Compile Include="ASCX\Table\ForMyTable\LineForBody.ascx.designer.cs">
       <DependentUpon>LineForBody.ascx</DependentUpon>
     </Compile>
-    <Compile Include="ASCX\Table\LineForDateLoading.ascx.cs">
+    <Compile Include="ASCX\Table\ForMyTable\LineForDateLoading.ascx.cs">
       <DependentUpon>LineForDateLoading.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ASCX\Table\LineForDateLoading.ascx.designer.cs">
+    <Compile Include="ASCX\Table\ForMyTable\LineForDateLoading.ascx.designer.cs">
       <DependentUpon>LineForDateLoading.ascx</DependentUpon>
     </Compile>
-    <Compile Include="ASCX\Table\LineForHead.ascx.cs">
+    <Compile Include="ASCX\Table\ForMyTable\LineForHead.ascx.cs">
       <DependentUpon>LineForHead.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ASCX\Table\LineForHead.ascx.designer.cs">
+    <Compile Include="ASCX\Table\ForMyTable\LineForHead.ascx.designer.cs">
       <DependentUpon>LineForHead.ascx</DependentUpon>
     </Compile>
     <Compile Include="ASCX\Table\MyTable.ascx.cs">
@@ -530,6 +596,13 @@
     </Compile>
     <Compile Include="ASCX\Table\MyTable.ascx.designer.cs">
       <DependentUpon>MyTable.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ASCX\Table\TableWithDelegate.ascx.cs">
+      <DependentUpon>TableWithDelegate.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASCX\Table\TableWithDelegate.ascx.designer.cs">
+      <DependentUpon>TableWithDelegate.ascx</DependentUpon>
     </Compile>
     <Compile Include="ASCX\Test.ascx.cs">
       <DependentUpon>Test.ascx</DependentUpon>

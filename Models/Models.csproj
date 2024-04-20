@@ -47,6 +47,13 @@
     </Compile>
     <Compile Include="LineDateBase.cs" />
     <Compile Include="Massage.cs" />
+    <Compile Include="PageDataSor\BaseDelegate\BaseListener.cs" />
+    <Compile Include="PageDataSor\BaseDelegate\BaseTrigger.cs" />
+    <Compile Include="PageDataSor\DataTableControl\DataTableControlAttribute.cs" />
+    <Compile Include="PageDataSor\DataTableControl\ForControlAttribute\DataTableControlEventArgs.cs" />
+    <Compile Include="PageDataSor\DataTableControl\ForControlAttribute\DataTableLineArgs.cs" />
+    <Compile Include="PageDataSor\DataTableControl\Lisener\DataTableLineLisener.cs" />
+    <Compile Include="PageDataSor\DataTableControl\Trigger\DataTableLineTrigger.cs" />
     <Compile Include="PageDataSor\JumpToControl.cs" />
     <Compile Include="PageDataSor\ProgremData\ProgremDataSplit\DataForAdm.cs" />
     <Compile Include="PageDataSor\ProgremData\ProgremDataSplit\DataForDoc.cs" />
