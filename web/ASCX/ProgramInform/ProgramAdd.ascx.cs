@@ -409,11 +409,11 @@ namespace WebForm.ASCX.ProgramInform
                     {
                         set
                         {
-                            ProjectAheadTextBox.Text = value;
+                            ProjectMainIdeaTextBox.Text = value;
                         }
                         get
                         {
-                            return ProjectAheadTextBox.Text;
+                            return ProjectMainIdeaTextBox.Text;
                         }
                     }
 

@@ -1,7 +1,10 @@
 ﻿using DAL;
 using Models;
+using Models.PageDataSor.ProgremData;
 using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Security.Cryptography.X509Certificates;
 
 namespace WebForm.functionPage.QF_ChildPage
 {
@@ -9,59 +12,87 @@ namespace WebForm.functionPage.QF_ChildPage
     {
         #region 自定义变量
 
-        static string tableName;
+        //static string tableName;
         public string TableName
         {
-            get { return tableName; }
-            set { tableName = value; }
+            get
+            {
+                //return tableName; 
+                return Request.QueryString["tablename"];
+            }
+            //set { tableName = value; }
         }
 
-        static string idLable;
+        //static string idLable;
         public string IdLable
         {
-            get { return idLable; }
-            set
-            {
-                idLable = value;
-            }
+            get { return Request.QueryString["idlable"]; }
+            //set
+            //{
+            //    idLable = value;
+            //}
         }
 
-        static string id;
+        //static string id;
         public string Id
         {
             get
             {
-                return id;
+                return Request.QueryString["id"];
             }
-            set
-            {
-                id = value;
-            }
+            //set
+            //{
+            //    id = value;
+            //}
         }
 
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (!IsPostBack)
-            //{
-            //    TableName = Request.QueryString["tablename"];
-            //    IdLable = Request.QueryString["idlable"];
-            //    Id = Request.QueryString["id"];
+            if (!IsPostBack)
+            {
+                //将项目表显示在ds中。
+                DataSet dataSet = new DataSet();
+                dataSet = TableSelect.Select(TableName, IdLable, Id);
+                DataTable ds = dataSet.Tables[0];
+                DataRow dl = ds.Rows[0];
 
-            //    DataSet dataSet = new DataSet();
-            //    dataSet = TableSelect.Select(TableName, IdLable, Id);
-            //    DataTable ds = dataSet.Tables[0];
-            //    DataRow dl = ds.Rows[0];
 
-            //    this.ProgramIDInput.Text = dl["proposal_number"].ToString();//立项编号
-            //    this.floatingInput.Text = dl["project_title"].ToString();//项目名称
-            //    this.floatingTextarea.Text = dl["project_description"].ToString();//项目描述
-            //    this.PhoneNum.Text = dl["team_id"].ToString();//小队id
-            //    this.DoForm.Text = dl["achievement_form"].ToString();//成果形式
-            //    this.DoTextarea.Text = dl["achievement_brief"].ToString();//成果描述
 
-            //}
+                //项目论证信息的三个字段
+                DataForDoc dataForDoc = new DataForDoc();
+                dataForDoc.ProjectIntroduce = dl["project_research"].ToString();
+                dataForDoc.ProjectMainIdea = dl["project_view"].ToString();
+                dataForDoc.ProjectAhead = dl["project_References"].ToString();
+
+                List<DataForParter> dataForParters = new List<DataForParter>();
+                dataForParters.Add(new DataForParter());
+
+                DataForThinking dataForThinking = new DataForThinking();
+
+                DataForAdm dataForAdm = new DataForAdm();
+
+               ProgromBaseData progromBaseData = new ProgromBaseData(
+                    dl["project_name"].ToString(),
+                    dl["project_category"].ToString(),
+                    dl["project_time"].ToString(),
+                    dl["project_form"].ToString(),
+                    dataForAdm,
+                    dataForParters,
+                    dataForDoc,
+                    dataForThinking
+                    );
+
+                ProgremInf.ProgromBaseDatas = progromBaseData;
+                //this.ProgramIDInput.Text = dl["proposal_number"].ToString();//立项编号
+                //this.floatingInput.Text = dl["project_title"].ToString();//项目名称
+                //this.floatingTextarea.Text = dl["project_description"].ToString();//项目描述
+                //this.PhoneNum.Text = dl["team_id"].ToString();//小队id
+                //this.DoForm.Text = dl["achievement_form"].ToString();//成果形式
+                //this.DoTextarea.Text = dl["achievement_brief"].ToString();//成果描述
+
+            }
 
         }
 

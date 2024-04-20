@@ -35,6 +35,7 @@ namespace WebForm.functionPage.QF_ChildPage
                     progromBaseData.ProjectFinish,
                     progromBaseData.ProjectEnd
                     );
+
                 //申请时对负责人信息进行插入完善
                 bool User_Insert = DAL.User.Insert_Infor(
                     progromBaseData.DatasForAdm.AdmName,
