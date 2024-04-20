@@ -1,12 +1,16 @@
 ﻿using Models;
 using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace WebForm.ASCX.Table
 {
-    public partial class MyTable : System.Web.UI.UserControl
+    public partial class TableWithDelegate : System.Web.UI.UserControl
     {
-
         #region 自定义参数
 
 
@@ -73,7 +77,7 @@ namespace WebForm.ASCX.Table
         {
             get
             {
-                return TableBase.IDLable;
+                return TableBase.IDLable;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
             }
             set
             {
@@ -147,7 +151,7 @@ namespace WebForm.ASCX.Table
         protected void Page_Load(object sender, EventArgs e)
         {
             Panel1.Height = (System.Web.UI.WebControls.Unit)Height;
-            LineForHead NewHead = (LineForHead)LoadControl("~/ASCX/Table/ForMyTable/LineForHead.ascx");
+            LineForHead NewHead = (LineForHead)LoadControl("~/ASCX/Table/LineForHead.ascx");
             NewHead.LineToShow = TableBase.LineToShow;
             NewHead.LineToMean = TableBase.LineToMean;
             HeadHolder.Controls.Add(NewHead);
@@ -159,7 +163,7 @@ namespace WebForm.ASCX.Table
                 }
                 for (int i = 0; i < RowsCount; i++)
                 {
-                    LineForBody NewLine = (LineForBody)LoadControl("~/ASCX/Table/ForMyTable/LineForBody.ascx");
+                    LineForBody NewLine = (LineForBody)LoadControl("~/ASCX/Table/LineForBody.ascx");
                     NewLine.ID = ID + String.Format("_{0}", i);
                     NewLine.DataForALine = DataCollection.Rows[i];
                     NewLine.TheLineDateForTable = TableBase;
@@ -173,6 +177,5 @@ namespace WebForm.ASCX.Table
                 massage.PostMassage();
             }
         }
-
     }
 }

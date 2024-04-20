@@ -7,47 +7,56 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace WebForm
+namespace WebForm.ASCX.Table
 {
 
 
-    public partial class ForTest
+    public partial class TableWithDelegate
     {
 
         /// <summary>
-        /// form1 控件。
+        /// UpdatePanel1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
 
         /// <summary>
-        /// Test 控件。
+        /// Panel1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::WebForm.ASCX.Table.ForDataTable.ControlFormCell Test;
+        protected global::System.Web.UI.WebControls.Panel Panel1;
 
         /// <summary>
-        /// BodyLine1 控件。
+        /// HeadHolder 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::WebForm.ASCX.Table.ForDataTable.BodyLine BodyLine1;
+        protected global::System.Web.UI.WebControls.PlaceHolder HeadHolder;
 
         /// <summary>
-        /// aaa 控件。
+        /// BodyHolder 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::WebForm.ASCX.MassageForm.PrintMassageForm aaa;
+        protected global::System.Web.UI.WebControls.PlaceHolder BodyHolder;
+
+        /// <summary>
+        /// NullMassage 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder NullMassage;
     }
 }

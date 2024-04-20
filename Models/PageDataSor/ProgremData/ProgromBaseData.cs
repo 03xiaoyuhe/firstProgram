@@ -15,10 +15,10 @@ namespace Models.PageDataSor.ProgremData
 
         public ProgromBaseData() 
         {
-            ProjectName = "";
-            ProjectKinds = "";
-            ProjectFinish = "";
-            ProjectEnd = "";
+            ProjectName = "未赋值";
+            ProjectKinds = "未赋值";
+            ProjectFinish = "未赋值";
+            ProjectEnd = "未赋值";
             DatasForAdm = new DataForAdm();
             DataForParts = new List<DataForParter>();
             DatasForDoc = new DataForDoc();

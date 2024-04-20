@@ -13,12 +13,33 @@ namespace Models
     public class TableAttribute
     {
 
+        #region 已弃用
+
+        /// <summary>
+        /// 数据表 表名(弃用)
+        /// </summary>
+        public string DataBase
+        {
+            get { return DataBaseName; }
+            set { DataBaseName = value; }
+        }
+
+        #endregion
+
+
         #region 参数成员
 
+
+
+        string dataBaseName;
         /// <summary>
         /// 数据表 表名
         /// </summary>
-        public string DataBase { get; set; }
+        public string DataBaseName
+        {
+            get { return dataBaseName; }
+            set { dataBaseName = value; }
+        }
 
 
         string idLable;
@@ -37,35 +58,7 @@ namespace Models
             }
         }
 
-
-        //DataTable dataCollection;
-        //public DataTable DataCollection
-        //{
-        //    get
-        //    {
-        //        if(dataCollection == null)
-        //        {
-        //            throw (new Exception("自定义表格对象未绑定数据"));
-        //        }
-
-        //        if(IDLable == null)
-        //        {
-        //            throw (new Exception("自定义表格对象未指定主键"));
-        //        }
-        //        return dataCollection;
-        //    }
-
-        //    set
-        //    {
-        //        dataCollection = value;
-        //        if (lineToMean == null && IDLable != null)
-        //        {
-        //            InitLineToMean();
-        //        }
-        //    }
-        //}
-
-        Dictionary<string, string> lineToMean;
+        Dictionary<string, string> lineToMean = new Dictionary<string, string>();
         /// <summary>
         /// 表格列信息 以及对应中文
         /// </summary>
@@ -91,7 +84,7 @@ namespace Models
             }
         }
 
-        List<string> lineToShow;
+        List<string> lineToShow = new List<string>();
         /// <summary>
         /// 设置需要显示的列以及显示顺序<br/>
         /// 注:使用表的字段名
@@ -119,6 +112,10 @@ namespace Models
             }
         }
 
+
+        /// <summary>
+        /// 解释数据行数
+        /// </summary>
         public int ColumnNum
         {
             get { return lineToShow.Count(); }
@@ -151,7 +148,9 @@ namespace Models
             if (line_to_show != null) { LineToShow = line_to_show; }
         }
 
+        public TableAttribute() { }
 
+        
         List<string> TranslateValueColloctionToList(Dictionary<string, string>.ValueCollection values)
         {
             List<string> Values = new List<string>();
