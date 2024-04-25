@@ -26,6 +26,7 @@ namespace WebForm.functionPage.QF_ChildPage
 
                 //申请时向项目信息表中插入对应的字段值
                 bool Project_Insert = ProjectCompletion.ProjectInfor(
+                    progromBaseData.DatasForAdm.AdmPhone,
                     progromBaseData.ProjectName,
                     progromBaseData.ProjectKinds,
                     progromBaseData.DatasForAdm.IsYoungProjrem.ToString(),
