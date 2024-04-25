@@ -8,7 +8,7 @@
             ID="RequiredFieldValidator1"
             runat="server"
             ErrorMessage="请输入项目名称"
-            Font-Strikeout="False"
+            Font-Strikeout="False"vxxx
             ControlToValidate="floatingInput"
             CssClass="setCharRed setCharSizeSmall program-errorBox" Font-Size="10px">
         </asp:RequiredFieldValidator>

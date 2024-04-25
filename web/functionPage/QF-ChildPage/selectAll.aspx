@@ -4,7 +4,7 @@
 <%--<pages enableEventValidation="false"/>--%>
 <%@ Register Src="~/ASCX/Table/MyTable.ascx" TagName="Table" TagPrefix="Table" %>
 <%@ Register Src="~/ASCX/MassageForm/PrintMassage.ascx" TagName="PrintMassage" TagPrefix="TPrintMassage" %>
-<%@ Register Src="~/ASCX/Table/DeletButten.ascx" TagName="Table" TagPrefix="DeletButten" %>
+<%@ Register Src="~/ASCX/Table/ForMyTable/DeletButten.ascx" TagName="Table" TagPrefix="DeletButten" %>
 <%@ Register Src="~/ASCX/Loading.ascx" TagName="Load" TagPrefix="Loading" %>
 
 <!DOCTYPE html>

@@ -5,7 +5,6 @@
 <%@ Register Src="~/ASCX/MassageForm/PrintMassage.ascx" TagName="Massage" TagPrefix="TMassage" %>
 <%@ Register Src="~/ASCX/Table/ForDataTable/ControlFormCell.ascx" TagName="ControlButton" TagPrefix="Table" %>
 
-
 <%@ Register Src="~/ASCX/Table/ForDataTable/BodyLine.ascx" TagName="BodyLine" TagPrefix="Table" %>
 
 <%@ Register Src="~/ASCX/MassageForm/PrintMassage.ascx" TagPrefix="AAA" TagName="MMM" %>
@@ -25,6 +24,7 @@
         <div style="width:90%;margin:0 auto;">
             <Table:ControlButton runat="server" ID="Test" />
             <Table:BodyLine runat="server" ID="BodyLine1" />
+            <asp:PlaceHolder ID="PlaceHolder1" runat="server"></asp:PlaceHolder>
             <TMassage:Massage runat="server" id="aaa"  ></TMassage:Massage>
         </div>
     </form>

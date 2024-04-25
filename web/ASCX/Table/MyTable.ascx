@@ -1,10 +1,10 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="MyTable.ascx.cs" Inherits="WebForm.ASCX.Table.MyTable" %>
 
-<%@ Register Src="~/ASCX/Table/LineForHead.ascx" TagName="Table" TagPrefix="LineForHead" %>
+<%@ Register Src="~/ASCX/Table/ForMyTable/LineForHead.ascx" TagName="Table" TagPrefix="LineForHead" %>
 
-<%@ Register Src="~/ASCX/Table/LineForBody.ascx" TagName="Table" TagPrefix="LineForBody" %>
+<%@ Register Src="~/ASCX/Table/ForMyTable/LineForBody.ascx" TagName="Table" TagPrefix="LineForBody" %>
 
-<%@ Register Src="~/ASCX/Table/DeletButten.ascx" TagName="Table" TagPrefix="DeletButten" %>
+<%@ Register Src="~/ASCX/Table/ForMyTable/DeletButten.ascx" TagName="Table" TagPrefix="DeletButten" %>
 
 <style type="text/css">
     table {

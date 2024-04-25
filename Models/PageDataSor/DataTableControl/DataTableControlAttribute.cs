@@ -12,27 +12,27 @@ namespace Models.PageDataSor.DataTableControl
     /// </summary>
     /// <param name="s">触发事件的变量</param>
     /// <param name="args">触发后的传参</param>
-    public delegate void DataTableControl<K>(object s, K args);
+    public delegate void DataTableControl(object s, DataTableLineArgs args);
 
     /// <summary>
     /// 表格控制对象
     /// </summary>
     /// <typeparam name="K">事件所需参数类型</typeparam>
-    public class DataTableControlAttribute<K>
+    public class DataTableControlAttribute
     {
         public DataTableControlAttribute()
         {
-            ControlName = typeof(DataTableControlAttribute<K>).Name;
+            ControlName = typeof(DataTableControlAttribute).Name;
         }
 
         /// <summary>
         /// 使用事件的构造函数，名字默认为对象名
         /// </summary>
         /// <param name="control">需要传入的委托</param>
-        public DataTableControlAttribute(DataTableControl<K> control)
+        public DataTableControlAttribute(DataTableControl control)
         {
             DataTableControls = control;
-            ControlName = typeof(DataTableControlAttribute<K>).Name;
+            ControlName = typeof(DataTableControlAttribute).Name;
         }
 
         /// <summary>
@@ -40,21 +40,22 @@ namespace Models.PageDataSor.DataTableControl
         /// </summary>
         /// <param name="dataTableControls">委托</param>
         /// <param name="controlName">操作名</param>
-        public DataTableControlAttribute(DataTableControl<K> dataTableControls, string controlName) : this(dataTableControls)
+        public DataTableControlAttribute(DataTableControl dataTableControls, string controlName) : this(dataTableControls)
         {
             ControlName = controlName;
         }
 
-        public DataTableControlAttribute(DataTableControlAttribute<K> dataTableControlAttribute)
+        public DataTableControlAttribute(DataTableControlAttribute dataTableControlAttribute)
         {
             DataTableControls = dataTableControlAttribute.DataTableControls;
         }
 
-
+        
         /// <summary>
         /// 数据表列操作集
         /// </summary>
-        public DataTableControl<K> DataTableControls;
+        public DataTableControl DataTableControls;
+
 
 
         /// <summary>

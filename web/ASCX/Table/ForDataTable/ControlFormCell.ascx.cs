@@ -18,23 +18,20 @@ namespace WebForm.ASCX.Table.ForDataTable
             PutControlButton();
         }
 
-        /// <summary>
-        /// 事件侦听器，用于处理本控件的事件处理
-        /// </summary>
-        Lisener lisener = new Lisener();
 
+        List<DataTableControlAttribute> customControls = new List<DataTableControlAttribute>();
         /// <summary>
         /// 用于存放表格操作集
         /// </summary>
-        public List<DataTableControlAttribute<DataTableLineArgs>> CustomControls
+        public List<DataTableControlAttribute> CustomControls
         {
             get
             {
-                return lisener.CustomControls;
+                return customControls;
             }
             set
             {
-                lisener.CustomControls = value;
+                customControls = value;
                 PutControlButton();
             }
         }
@@ -55,11 +52,11 @@ namespace WebForm.ASCX.Table.ForDataTable
         void PutControlButton()
         {
             PutControlPlaceHolder.Controls.Clear();
-            foreach (DataTableControlAttribute<DataTableLineArgs> dataTableControlAttribute in CustomControls)
+            foreach (DataTableControlAttribute dataTableControlAttribute in CustomControls)
             {
                 MyButton controlButton = new MyButton();
 
-                controlButton.CusTrigger.Controls += lisener.Control;
+                controlButton.CusTrigger.Controls += dataTableControlAttribute.DataTableControls;
                 controlButton.CusTrigger.DataTableLineArgs = DataTableLineArgs;
 
                 controlButton.Text = dataTableControlAttribute.ControlName;

@@ -116,15 +116,16 @@ namespace WebForm.ASCX.Table
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            CellHolder.Controls.Clear();
             for (int i = 0; i < ColumnNum; i++)
             {
-                CellForBody NewCell = (CellForBody)LoadControl("~/ASCX/Table/CellForBody.ascx");
+                CellForBody NewCell = (CellForBody)LoadControl("~/ASCX/Table/ForMyTable/CellForBody.ascx");
                 NewCell.ID = ID + String.Format("_{0}", i);
                 NewCell.CellData = DataForALine[TheLineDateForTable.LineToShow[i]].ToString();
                 CellHolder.Controls.Add(NewCell);
                 Count++;
             }
-            DeletButten newCell = (DeletButten)LoadControl("~/ASCX/Table/DeletButten.ascx");
+            DeletButten newCell = (DeletButten)LoadControl("~/ASCX/Table/ForMyTable/DeletButten.ascx");
             newCell.ID = ID + String.Format("_{0}", ColumnNum);
             newCell.DataID = RowID;
             newCell.TableName = TableName;

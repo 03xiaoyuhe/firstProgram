@@ -56,11 +56,11 @@ namespace WebForm.ASCX.Table.ForDataTable
             }
         }
 
-        List<DataTableControlAttribute<DataTableLineArgs>> customControls = new List<DataTableControlAttribute<DataTableLineArgs>>();
+        List<DataTableControlAttribute> customControls = new List<DataTableControlAttribute>();
         /// <summary>
         /// 用于存放表格操作集
         /// </summary>
-        public List<DataTableControlAttribute<DataTableLineArgs>> CustomControls
+        public List<DataTableControlAttribute> CustomControls
         {
             get
             {
