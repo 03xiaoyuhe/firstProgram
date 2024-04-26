@@ -1,0 +1,118 @@
+﻿using Models;
+using Models.PageDataSor;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.IO;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using WebForm.ASCX.Table;
+
+namespace WebForm.functionPage.QF_ChildPage
+{
+    public partial class ProgremLoad : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+            UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            if (FileUpload1.HasFile == false)//HasFile用来检查FileUpload是否有指定文件 choose为文件上传框ID
+            {
+                Response.Write("<script>alert('请您选择Excel文件')</script> ");
+                return;//当无文件时,返回
+            }
+            string IsXls = Path.GetExtension(FileUpload1.FileName).ToLower();//System.IO.Path.GetExtension获得文件的扩展名
+            if (IsXls != ".xlsx" && IsXls != ".xls" && IsXls != ".csv")
+            {
+                Response.Write("<script>alert('只可以选择表格文件')</script>");
+                return;//当选择的不是Excel文件时,返回
+            }
+            string filename = FileUpload1.FileName;              //获取Excel文件名  DateTime日期函数
+
+            string savePath = Server.MapPath($"~\\uploadfiles\\{DateTime.Now.ToFileTime()}" + filename);//Server.MapPath 获得虚拟服务器相对路径 自己也可以写成绝对路径
+            FileUpload1.SaveAs(savePath);                        //SaveAs 将上传的文件内容保存在服务器上  这里保存在本地uploadfiles文件中
+            string saveErroPath = Server.MapPath($"~\\uploadfiles\\erro{DateTime.Now.ToFileTime()}" + filename);
+            Dictionary<string, bool> list1 = new Dictionary<string, bool>();
+            list1.Add("ID", true);
+            list1.Add("负责人电话号码", true);
+            list1.Add("项目名称", true);
+            list1.Add("项目评级", true);
+            list1.Add("立项编号", true);
+            list1.Add("项目类别", true);
+            list1.Add("是否符合青年项目申报条件", true);
+            list1.Add("项目完成时间", true);
+            list1.Add("成果形式", true);
+
+            Dictionary<string, string> map1 = new Dictionary<string, string>();
+            map1.Add("ID", "project_id");
+            map1.Add("负责人电话号码", "user_phone");
+            map1.Add("项目名称", "project_name");
+            map1.Add("项目评级", "project_level");
+            map1.Add("立项编号", "project_number");
+            map1.Add("项目类别", "project_category");
+            map1.Add("是否符合青年项目申报条件", "project_youth");
+            map1.Add("项目完成时间", "project_time");
+            map1.Add("成果形式", "project_form");
+
+            ExcelRead excelRead = new ExcelRead();
+            excelRead.Attribute = list1;
+            excelRead.ExcelHeadLineData = map1;
+            excelRead.InputExcelPath = savePath;
+            excelRead.ErroPutExcelPath = saveErroPath;
+
+
+
+            /// 放置读取代码
+            DataTable dataTable = excelRead.LoadExcel();
+
+
+
+            List<string> list = new List<string>();
+            list.Add("project_id");
+            list.Add("user_phone");
+            list.Add("project_name");
+            list.Add("project_level");
+            list.Add("project_number");
+            list.Add("project_category");
+            list.Add("project_youth");
+            list.Add("project_time");
+            list.Add("project_form");
+
+            Dictionary<string, string> map = new Dictionary<string, string>();
+            map.Add("project_id", "ID");
+            map.Add("user_phone", "负责人电话号码");
+            map.Add("project_name", "项目名称");
+            map.Add("project_level", "项目评级");
+            map.Add("project_number", "立项编号");
+            map.Add("project_category", "项目类别");
+            map.Add("project_youth", "是否符合青年项目申报条件");
+            map.Add("project_time", "项目完成时间");
+            map.Add("project_form", "成果形式");
+
+            TableAttribute tableAttribute = new TableAttribute(
+                "project_id",
+                "项目信息",
+                map,
+                list
+                );
+
+            MyTable NewLine = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
+            NewLine.TableBase = tableAttribute;
+            NewLine.DataCollection = dataTable;
+            NewLine.Height = 400;
+            NewLine.TableName = "ProjectApplications";
+            PlaceHolder2.Controls.Clear();
+            PlaceHolder2.Controls.Add(NewLine);
+
+            System.IO.File.Delete(savePath);
+
+
+        }
+    }
+}
