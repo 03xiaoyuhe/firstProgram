@@ -199,13 +199,13 @@ namespace Models.PageDataSor
                     if(!flag)data.Rows.Add(dataRow);
                     else
                     {
+                        ErroRowCount++;
+                        erroSheet.CreateRow(ErroRowCount);
                         for (int j = row.FirstCellNum; j < cellCount; ++j)
                         {
                             // 判断当前是否 缺少了必须行 如果缺失则输出提示
                             if ((row.GetCell(j) == null && Attribute[DataHead[j]]))
                             {
-                                ErroRowCount++;
-                                erroSheet.CreateRow(ErroRowCount);
                                 IRow erroRow = erroSheet.GetRow(ErroRowCount);
                                 erroRow.CreateCell(j).SetCellValue("缺少必填内容");
                                 continue;
@@ -229,23 +229,17 @@ namespace Models.PageDataSor
                                     string Out = MetarnetRegex.Checked(erroHead.GetCell(j).ToString(), Data);
                                     if (Out != "Success")
                                     {
-                                        ErroRowCount++;
-                                        erroSheet.CreateRow(ErroRowCount);
                                         IRow erroRow = erroSheet.GetRow(ErroRowCount);
                                         erroRow.CreateCell(j).SetCellValue(Out);
                                     }
                                     else
                                     {
-                                        ErroRowCount++;
-                                        erroSheet.CreateRow(ErroRowCount);
                                         IRow erroRow = erroSheet.GetRow(ErroRowCount);
                                         erroRow.CreateCell(j).SetCellValue(Data);
                                     }
                                 }
                                 else
                                 {
-                                    ErroRowCount++;
-                                    erroSheet.CreateRow(ErroRowCount);
                                     IRow erroRow = erroSheet.GetRow(ErroRowCount);
                                     erroRow.CreateCell(j).SetCellValue(Data);
                                 }
