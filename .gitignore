@@ -3,6 +3,10 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+
+## 排除uploadfiles文件夹下的文件
+## uploadfiles/
+
 # User-specific files
 *.rsuser
 *.suo
