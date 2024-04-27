@@ -156,12 +156,12 @@
     <!-- Custom styles for this template -->
     <link href="../CSS/sidebars.css" rel="stylesheet" />
     <link href ="../CSS/ThemeColor.css"  rel="stylesheet"/>
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 </head>
 
 <body style="overflow: hidden;background-color:#e9ede0;">
-    <script type="text/javascript" src="../JS/QueryFormJS.js"></script>
 
   <%--  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
         <symbol id="check2" viewBox="0 0 16 16">
@@ -246,6 +246,8 @@
             border-right: solid 3px #e9ede0;
         }
     </style>
+    
+    <script type="text/javascript" src="../JS/QueryFormJS.js"></script>
 
     <header class="p-3 mb-3 border-bottom page-head" >
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -346,7 +348,7 @@
                                 <div class="collapse" id="manageProgram-collapse">
                                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                         <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="addProgram()">快速插入</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">批量导入</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="programLoad()">批量导入</a></li>
                                         <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">修改</a></li>
                                         <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Annually</a></li>
                                     </ul>
@@ -478,6 +480,29 @@
     <form runat="server">
         <TMassage:Massage runat="server" id="aaa"  ></TMassage:Massage>
     </form>
+    <script type="text/javascript">
+        // 显示所有项目信息逻辑
+        function selectAll() {
+            document.getElementById("test").src = "QF-ChildPage/selectAll.aspx";
+        }
+
+        // 快速添加项目
+        function addProgram() {
+            document.getElementById("test").src = "QF-ChildPage/addProgram.aspx";
+        }
+
+
+        function programLoad() {
+            document.getElementById("test").src = "QF-ChildPage/ProgremLoad.aspx";
+        }
+
+        // 测试
+        function test() {
+            document.getElementById("test").src = "https://www.bilibili.com/";
+        }
+
+    </script>
+    <script src="../JS/QueryFromPageJs.js"></script>
     <script src="../JS/sidebars.js"></script>
 </body>
 </html>

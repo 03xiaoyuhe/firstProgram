@@ -224,6 +224,7 @@
     <Content Include="ASCX\Table\ForDataTable\MyButton.ascx" />
     <Content Include="ASCX\Table\TableWithDelegate.ascx" />
     <!-- 样式控制文件 -->
+    <Content Include="JS\*" />
     <Content Include="assets\brand\bootstrap-logo-white.svg" />
     <Content Include="assets\brand\bootstrap-logo.svg" />
     <Content Include="assets\dist\css\bootstrap.min.css" />

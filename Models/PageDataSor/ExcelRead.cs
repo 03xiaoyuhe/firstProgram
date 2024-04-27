@@ -102,7 +102,7 @@ namespace Models.PageDataSor
             }
 
             sheet = workbook.GetSheetAt(0);
-            ISheet erroSheet = workbook.CreateSheet("erroSheet");
+            ISheet erroSheet = erroworkbook.CreateSheet("erroSheet");
             if (sheet != null)
             {
                 List<string> DataHead = new List<string>();
@@ -112,7 +112,7 @@ namespace Models.PageDataSor
                 for (int i = 0; i < cellCount; i++)
                 {
                     DataHead.Add(firstRow.GetCell(i).StringCellValue);
-                    erroHead.CreateCell(0).SetCellValue(firstRow.GetCell(i).StringCellValue);
+                    erroHead.CreateCell(i).SetCellValue(firstRow.GetCell(i).StringCellValue);
                     DataColumn column = new DataColumn(excelHeadLineDataColu[firstRow.GetCell(i).StringCellValue]);
                     data.Columns.Add(column);
                 }
@@ -130,6 +130,9 @@ namespace Models.PageDataSor
                         continue; //没有数据的行默认是null;
                     }
                     DataRow dataRow = data.NewRow();
+
+                    // 记录是否为无效行 false - 不是 true - 是
+                    bool flag = false;
                     for (int j = row.FirstCellNum; j < cellCount; ++j)
                     {
                         if (row.GetCell(j) == null && Attribute[DataHead[i]])
@@ -137,11 +140,12 @@ namespace Models.PageDataSor
                             erroSheet.CreateRow(count);
                             IRow erroRow = erroSheet.GetRow(count);
                             count++;
+                            flag = true;
                             for (int k = row.FirstCellNum; k < cellCount; ++k)
                             {
                                 if (k != j)
                                 {
-                                    erroRow.CreateCell(k).SetCellValue(row.GetCell(j).ToString());
+                                    erroRow.CreateCell(k).SetCellValue(row.GetCell(k).ToString());
                                 }
                                 else
                                 {
@@ -155,7 +159,7 @@ namespace Models.PageDataSor
                             dataRow[j] = row.GetCell(j).ToString();
                         }
                     }
-                    data.Rows.Add(dataRow);
+                    if(!flag)data.Rows.Add(dataRow);
                 }
             }
             using (errofs)

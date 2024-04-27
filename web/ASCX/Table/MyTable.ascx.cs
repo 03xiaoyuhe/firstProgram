@@ -148,6 +148,7 @@ namespace WebForm.ASCX.Table
         {
             HeadHolder.Controls.Clear();
             Panel1.Height = (System.Web.UI.WebControls.Unit)Height;
+            stickytable.Style["height"] = Height + "px";
             LineForHead NewHead = (LineForHead)LoadControl("~/ASCX/Table/ForMyTable/LineForHead.ascx");
             NewHead.LineToShow = TableBase.LineToShow;
             NewHead.LineToMean = TableBase.LineToMean;

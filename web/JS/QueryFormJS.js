@@ -8,6 +8,13 @@ function addProgram() {
     document.getElementById("test").src = "QF-ChildPage/addProgram.aspx";
 }
 
+
+$(function () {
+    window.programLoad = function () {
+        document.getElementById("test").src = "QF-ChildPage/ProgremLoad.aspx";
+    }
+})
+
 // 测试
 function test() {
     document.getElementById("test").src = "https://www.bilibili.com/";

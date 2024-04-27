@@ -14,11 +14,53 @@ namespace WebForm.functionPage.QF_ChildPage
 {
     public partial class ProgremLoad : System.Web.UI.Page
     {
+
+        Dictionary<string, bool> list1;
+        Dictionary<string, string> map1;
+
+        string ErroFilePath
+        {
+            get
+            {
+                return Session["ErroProgremFilePath"] as string;
+            }
+            set
+            {
+                Session["ErroProgremFilePath"] = value;
+            }
+        }
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
             UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
+
+            list1 = new Dictionary<string, bool>();
+            list1.Add("ID", true);
+            list1.Add("负责人电话号码", true);
+            list1.Add("项目名称", true);
+            list1.Add("项目评级", true);
+            list1.Add("立项编号", true);
+            list1.Add("项目类别", true);
+            list1.Add("是否符合青年项目申报条件", true);
+            list1.Add("项目完成时间", true);
+            list1.Add("成果形式", true);
+
+            map1 = new Dictionary<string, string>();
+            map1.Add("ID", "project_id");
+            map1.Add("负责人电话号码", "user_phone");
+            map1.Add("项目名称", "project_name");
+            map1.Add("项目评级", "project_level");
+            map1.Add("立项编号", "project_number");
+            map1.Add("项目类别", "project_category");
+            map1.Add("是否符合青年项目申报条件", "project_youth");
+            map1.Add("项目完成时间", "project_time");
+            map1.Add("成果形式", "project_form");
         }
+
+
+
 
         protected void Button1_Click(object sender, EventArgs e)
         {
@@ -37,42 +79,24 @@ namespace WebForm.functionPage.QF_ChildPage
 
             string savePath = Server.MapPath($"~\\uploadfiles\\{DateTime.Now.ToFileTime()}" + filename);//Server.MapPath 获得虚拟服务器相对路径 自己也可以写成绝对路径
             FileUpload1.SaveAs(savePath);                        //SaveAs 将上传的文件内容保存在服务器上  这里保存在本地uploadfiles文件中
-            string saveErroPath = Server.MapPath($"~\\uploadfiles\\erro{DateTime.Now.ToFileTime()}" + filename);
-            Dictionary<string, bool> list1 = new Dictionary<string, bool>();
-            list1.Add("ID", true);
-            list1.Add("负责人电话号码", true);
-            list1.Add("项目名称", true);
-            list1.Add("项目评级", true);
-            list1.Add("立项编号", true);
-            list1.Add("项目类别", true);
-            list1.Add("是否符合青年项目申报条件", true);
-            list1.Add("项目完成时间", true);
-            list1.Add("成果形式", true);
-
-            Dictionary<string, string> map1 = new Dictionary<string, string>();
-            map1.Add("ID", "project_id");
-            map1.Add("负责人电话号码", "user_phone");
-            map1.Add("项目名称", "project_name");
-            map1.Add("项目评级", "project_level");
-            map1.Add("立项编号", "project_number");
-            map1.Add("项目类别", "project_category");
-            map1.Add("是否符合青年项目申报条件", "project_youth");
-            map1.Add("项目完成时间", "project_time");
-            map1.Add("成果形式", "project_form");
-
+            ErroFilePath = Server.MapPath($"~\\uploadfiles\\erro{DateTime.Now.ToFileTime()}" + filename);
+            
+            // 读取文件操作
             ExcelRead excelRead = new ExcelRead();
             excelRead.Attribute = list1;
             excelRead.ExcelHeadLineData = map1;
             excelRead.InputExcelPath = savePath;
-            excelRead.ErroPutExcelPath = saveErroPath;
+            excelRead.ErroPutExcelPath = ErroFilePath;
 
 
 
-            /// 放置读取代码
             DataTable dataTable = excelRead.LoadExcel();
 
 
 
+
+
+            // 加载导入预览
             List<string> list = new List<string>();
             list.Add("project_id");
             list.Add("user_phone");
@@ -105,7 +129,7 @@ namespace WebForm.functionPage.QF_ChildPage
             MyTable NewLine = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
             NewLine.TableBase = tableAttribute;
             NewLine.DataCollection = dataTable;
-            NewLine.Height = 400;
+            NewLine.Height = 300;
             NewLine.TableName = "ProjectApplications";
             PlaceHolder2.Controls.Clear();
             PlaceHolder2.Controls.Add(NewLine);
@@ -114,5 +138,57 @@ namespace WebForm.functionPage.QF_ChildPage
 
 
         }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(ErroFilePath))
+            {
+                string fileName = $"ErroExcel{Path.GetExtension(ErroFilePath)}";//客户端保存的文件名
+                string filePath = ErroFilePath;//路径
+                                               //以字符流的形式下载文件
+                FileStream fs = new FileStream(filePath, FileMode.Open);
+                byte[] bytes = new byte[(int)fs.Length];
+                fs.Read(bytes, 0, bytes.Length);
+                fs.Close();
+                Response.ContentType = "application/octet-stream";
+                //通知浏览器下载文件而不是打开
+                Response.AddHeader("Content-Disposition", "attachment;   filename=" + HttpUtility.UrlEncode(fileName, System.Text.Encoding.UTF8));
+                Response.BinaryWrite(bytes);
+                Response.Flush();
+                Response.End();
+            }
+            else
+            {
+                Massage massage = new Massage();
+                massage.HeadColor = "Red";
+                massage.HeadText = "Erro";
+                massage.MassageText = "无错误数据行文件";
+                massage.PostMassage();
+            }
+        }
+
+        #region 物理路径和相对路径的转换
+        //本地路径转换成URL相对路径 
+        private string urlconvertor(string imagesurl1)
+        {
+            string tmpRootDir = Server.MapPath(System.Web.HttpContext.Current.Request.ApplicationPath.ToString());//获取程序根目录
+            string imagesurl2 = imagesurl1.Replace(tmpRootDir, ""); //转换成相对路径
+            imagesurl2 = imagesurl2.Replace(@"\", @"/");
+            //imagesurl2 = imagesurl2.Replace(@"Aspx_Uc/", @"");
+            return imagesurl2;
+        }
+        //相对路径转换成服务器本地物理路径 
+        private string urlconvertorlocal(string imagesurl1)
+        {
+            string tmpRootDir = Server.MapPath(System.Web.HttpContext.Current.Request.ApplicationPath.ToString());//获取程序根目录
+            string imagesurl2 = tmpRootDir + imagesurl1.Replace(@"/", @"\"); //转换成绝对路径
+            return imagesurl2;
+        }
+        #endregion
     }
 }

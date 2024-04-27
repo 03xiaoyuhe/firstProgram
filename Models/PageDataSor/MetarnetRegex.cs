@@ -7,13 +7,26 @@ using System.Threading.Tasks;
 
 namespace Models.PageDataSor
 {
-        /// <summary>
-        /// 通过Framwork类库中的Regex类实现了一些特殊功能数据检查
-        /// </summary>
-        public class MetarnetRegex
-        {
+    /// <summary>
+    /// 通过Framwork类库中的Regex类实现了一些特殊功能数据检查
+    /// </summary>
+    public class MetarnetRegex
+    {
 
-            private static MetarnetRegex instance = null;
+        private static MetarnetRegex instance = null;
+
+
+            //public static string Checked(string Kinds, string Data)
+            //{
+            //    switch (Kinds)
+            //    {
+            //        case "项目负责人":
+
+
+
+            //    }
+                
+            //}
             public static MetarnetRegex GetInstance()
             {
                 if (MetarnetRegex.instance == null)
@@ -24,6 +37,7 @@ namespace Models.PageDataSor
             }
             private MetarnetRegex()
             {
+
             }
             /// <summary>
             /// 判断输入的字符串只包含汉字
@@ -281,6 +295,4 @@ namespace Models.PageDataSor
 
             }
         }
-    
-
-}
+    }
