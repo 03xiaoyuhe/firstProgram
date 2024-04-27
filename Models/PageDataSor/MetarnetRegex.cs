@@ -46,7 +46,7 @@ namespace Models.PageDataSor
                     }
                     break;
                 case "立项编号":
-                    if (Data.Length != 13)
+                    if (Data.Length != 12)
                     {
                         return $"(立项编号的长度不合法，应为五位大写字母加七位整数){Data}"; 
                     }
