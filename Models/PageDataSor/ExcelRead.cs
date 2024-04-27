@@ -107,14 +107,18 @@ namespace Models.PageDataSor
             {
                 List<string> DataHead = new List<string>();
                 IRow firstRow = sheet.GetRow(0);
-                IRow erroHead = erroSheet.CreateRow(0);
                 cellCount = firstRow.LastCellNum;
+                IRow erroHead = erroSheet.CreateRow(0);
                 for (int i = 0; i < cellCount; i++)
                 {
                     DataHead.Add(firstRow.GetCell(i).StringCellValue);
                     erroHead.CreateCell(i).SetCellValue(firstRow.GetCell(i).StringCellValue);
-                    DataColumn column = new DataColumn(excelHeadLineDataColu[firstRow.GetCell(i).StringCellValue]);
-                    data.Columns.Add(column);
+
+                    if (Attribute.ContainsKey(firstRow.GetCell(i).StringCellValue))
+                    {
+                        DataColumn column = new DataColumn(excelHeadLineDataColu[firstRow.GetCell(i).StringCellValue]);
+                        data.Columns.Add(column);
+                    }
                 }
                 foreach (KeyValuePair<string, bool> pair in Attribute)
                 {
@@ -130,7 +134,7 @@ namespace Models.PageDataSor
                         continue; //没有数据的行默认是null;
                     }
                     DataRow dataRow = data.NewRow();
-
+                    int DataCellCount = 0;
                     // 记录是否为无效行 false - 不是 true - 是
                     bool flag = false;
                     for (int j = row.FirstCellNum; j < cellCount; ++j)
@@ -154,9 +158,21 @@ namespace Models.PageDataSor
                             }
                             break;
                         }
-                        if (row.GetCell(j) != null) //同理，没有数据的单元格都默认是null
+                        if(Attribute.ContainsKey( firstRow.GetCell(j).StringCellValue))
                         {
-                            dataRow[j] = row.GetCell(j).ToString();
+                            if (row.GetCell(j) != null) //同理，没有数据的单元格都默认是null
+                            {
+                                dataRow[DataCellCount] = row.GetCell(j).ToString();
+                                if (row.GetCell(j).CellType == CellType.Numeric)
+                                {
+                                    dataRow[DataCellCount] = Convert.ToDateTime(row.GetCell(j).DateCellValue).ToString("yyyy-MM-dd");
+                                }
+                                else
+                                {
+                                    dataRow[DataCellCount] = row.GetCell(j).ToString();
+                                }
+                            }
+                            DataCellCount++;
                         }
                     }
                     if(!flag)data.Rows.Add(dataRow);

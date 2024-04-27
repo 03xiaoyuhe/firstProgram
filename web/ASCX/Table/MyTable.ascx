@@ -14,7 +14,6 @@
 
     .sticky-table {
         overflow: auto;
-        height: ; /* 设置固定高度 */
         width: 100%;
     }
 
@@ -27,7 +26,7 @@
         }
 
         .sticky-table th {
-            background-color: #008c8c;
+            background-color: #525b66;
             color: #fff;
             position: sticky;
             top: 0; /* 首行永远固定在头部  */
@@ -61,7 +60,7 @@
     }
 
     table thead tr {
-        background-color: #008c8c;
+        background-color: var(--bs-body-color);
         color: #fff;
     }
 
