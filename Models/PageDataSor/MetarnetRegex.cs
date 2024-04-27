@@ -24,7 +24,7 @@ namespace Models.PageDataSor
                 case "项目名称":
                     if (Data.Length < 50)
                     {
-                        return "Susses";
+                        return "Success";
                     }
                     else
                     {
@@ -42,7 +42,7 @@ namespace Models.PageDataSor
                     }
                     else
                     {
-                        return "Susses";
+                        return "Success";
                     }
                     break;
                 case "立项编号":
@@ -69,7 +69,7 @@ namespace Models.PageDataSor
                                 }
                             }
                         }
-                        return "Susses";
+                        return "Success";
 
                     }
                     break;
@@ -78,7 +78,10 @@ namespace Models.PageDataSor
                     {
                         return $"(项目类别长度过长，最多可输入50个字){Data}";
                     }
-
+                    else
+                    {
+                        return "Success";
+                    }
                     break;
                 case "是否符合青年项目申报条件":
                     if (Data.Length != 1)
@@ -87,7 +90,7 @@ namespace Models.PageDataSor
                     }
                     else
                     {
-                        return "Susses";
+                        return "Success";
                     }
                     break;
                 case "本项目国内外研究现状述评":
@@ -97,7 +100,7 @@ namespace Models.PageDataSor
                     }
                     else
                     {
-                        return "Susses";
+                        return "Success";
                     }
                     break;
                 case "本项目研究的主要观点":
@@ -107,7 +110,7 @@ namespace Models.PageDataSor
                     }
                     else
                     {
-                        return "Susses";
+                        return "Success";
                     }
                     break;
                 case "前期研究成果":
@@ -117,14 +120,14 @@ namespace Models.PageDataSor
                     }
                     else
                     {
-                        return "Susses";
+                        return "Success";
                     }
                     break;
                 case "项目完成时间":
                     try
                     {
                         DateTime.Parse(Data);
-                        return "Susses";
+                        return "Success";
                     }
                     catch
                     {
@@ -137,7 +140,7 @@ namespace Models.PageDataSor
                         return $"(成果形式填写过长，请控制在50字以内){Data}";
                     }
                     else{
-                        return "Susses";
+                        return "Success";
                     }
                     break;
                 case "项目单位评审意见":
@@ -147,7 +150,7 @@ namespace Models.PageDataSor
                     }
                     else
                     {
-                        return "Susses";
+                        return "Success";
                     }
                     break;
                 case "专家评审":
@@ -157,7 +160,7 @@ namespace Models.PageDataSor
                     }
                     else
                     {
-                        return "Susses";
+                        return "Success";
                     }
                     break;
                 case "项目审批意见":
@@ -167,11 +170,14 @@ namespace Models.PageDataSor
                     }
                     else
                     {
-                        return "Susses";
+                        return "Success";
                     }
                     break;
 
             }
+
+
+
             return $"(系统出现异常请联系工作人员){Data}"; 
         }
         public static MetarnetRegex GetInstance()
