@@ -1,11 +1,14 @@
 ﻿using Models;
 using Models.PageDataSor;
+using Models.PageDataSor.ProgremData;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.DynamicData;
+using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebForm.ASCX.Table;
@@ -37,26 +40,35 @@ namespace WebForm.functionPage.QF_ChildPage
             UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
 
             list1 = new Dictionary<string, bool>();
-            list1.Add("ID", true);
-            list1.Add("负责人电话号码", true);
             list1.Add("项目名称", true);
             list1.Add("项目评级", true);
             list1.Add("立项编号", true);
             list1.Add("项目类别", true);
             list1.Add("是否符合青年项目申报条件", true);
+            list1.Add("本项目国内外研究现状述评", true);
+            list1.Add("本项目研究的主要观点", true);
+            list1.Add("前期研究成果", true);
             list1.Add("项目完成时间", true);
             list1.Add("成果形式", true);
+            list1.Add("项目单位评审意见", true);
+            list1.Add("专家评审", true);
+            list1.Add("项目审批意见",true);
+
 
             map1 = new Dictionary<string, string>();
-            map1.Add("ID", "project_id");
-            map1.Add("负责人电话号码", "user_phone");
             map1.Add("项目名称", "project_name");
             map1.Add("项目评级", "project_level");
             map1.Add("立项编号", "project_number");
             map1.Add("项目类别", "project_category");
             map1.Add("是否符合青年项目申报条件", "project_youth");
+            map1.Add("本项目国内外研究现状述评", "project_research");
+            map1.Add("本项目研究的主要观点", "project_view");
+            map1.Add("前期研究成果", "project_References");
             map1.Add("项目完成时间", "project_time");
             map1.Add("成果形式", "project_form");
+            map1.Add("项目单位评审意见", "project_opinion");
+            map1.Add("专家评审", "project_expert_view");
+            map1.Add("项目审批意见", "project_approval_view");
         }
 
 
@@ -92,6 +104,41 @@ namespace WebForm.functionPage.QF_ChildPage
 
             DataTable dataTable = excelRead.LoadExcel();
 
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                DataRow dl = dataTable.Rows[i];
+                //string Time = dl["project_time"].ToString();
+                //char[] lis = new char[Time.Length - 2];
+                //int count = 0;
+                //for(int j =1; j < Time.Length-1; j++)
+                //{
+                //    lis[count] = Time[j];
+                //}
+
+                if (
+                !DAL.ProjectCompletion.KindsInsert(
+                     dl["project_name"].ToString(),
+                     dl["project_level"].ToString(),
+                     dl["project_number"].ToString(),
+                     dl["project_category"].ToString(),
+                     dl["project_youth"].ToString(),
+                     dl["project_research"].ToString(),
+                     dl["project_view"].ToString(),
+                     dl["project_References"].ToString(),
+                     dl["project_time"].ToString(),
+                     //new string(lis),
+                     dl["project_form"].ToString(),
+                     dl["project_opinion"].ToString(),
+                     dl["project_expert_view"].ToString(),
+                     dl["project_approval_view"].ToString()
+                     ))
+                {
+                    Models.Massage massage = new Massage();
+                    massage.HeadColor = "Red";
+                    massage.HeadText = "第" + i + "插入异常，可能数据依然不符合要求，请仔细检查该行数据并尝试重新插入";
+                }
+                
+            }
 
 
 

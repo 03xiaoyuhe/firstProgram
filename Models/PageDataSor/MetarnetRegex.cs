@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -16,18 +17,164 @@ namespace Models.PageDataSor
         private static MetarnetRegex instance = null;
 
 
-            //public static string Checked(string Kinds, string Data)
-            //{
-            //    switch (Kinds)
-            //    {
-            //        case "项目负责人":
+        public static string Checked(string Kinds, string Data)
+        {
+            switch (Kinds)
+            {
+                case "项目名称":
+                    if (Data.Length < 50)
+                    {
+                        return "Susses";
+                    }
+                    else
+                    {
+                        return $"(项目名称长度超过限制){Data}";
+                    }
+                    break;
+                case "项目评级":
+                    if (Data.Length != 1)
+                    {
+                        return $"(项目评级只能为单个大写字母){Data}";
+                    }
+                    else if (Data[0] < 65 || Data[0] > 70)
+                    {
+                        return $"(项目评级只能为A-E的大写字母){Data}";
+                    }
+                    else
+                    {
+                        return "Susses";
+                    }
+                    break;
+                case "立项编号":
+                    if (Data.Length != 13)
+                    {
+                        return $"(立项编号的长度不合法，应为五位大写字母加七位整数){Data}"; 
+                    }
+                    else
+                    {
+                        for(int i = 0; i < Data.Length; i++)
+                        {
+                            if (i < 5)
+                            {
+                                if (Data[i] < 65 && Data[i] > 90)
+                                {
+                                    return $"(前五位有非A-Z的大写字母){Data}";
+                                }
+                            }
+                            else
+                            {
+                                if(Data[i] < 49 || Data[i] > 57)
+                                {
+                                    return  $"(第六到七位有非0-9的整数数字){Data}";
+                                }
+                            }
+                        }
+                        return "Susses";
 
+                    }
+                    break;
+                case "项目类别":
+                    if(Data.Length > 50)
+                    {
+                        return $"(项目类别长度过长，最多可输入50个字){Data}";
+                    }
 
+                    break;
+                case "是否符合青年项目申报条件":
+                    if (Data.Length != 1)
+                    {
+                        return $"(填写长度不规范，请填写“是”或“否”){Data}";
+                    }
+                    else
+                    {
+                        return "Susses";
+                    }
+                    break;
+                case "本项目国内外研究现状述评":
+                    if (Data.Length > 1300)
+                    {
+                        return $"(填写的述评长度过长，请限制在1300字内){Data}";
+                    }
+                    else
+                    {
+                        return "Susses";
+                    }
+                    break;
+                case "本项目研究的主要观点":
+                    if (Data.Length > 2100)
+                    {
+                        return $"(填写的主要观点长度过长，请限制在2100字内){Data}";
+                    }
+                    else
+                    {
+                        return "Susses";
+                    }
+                    break;
+                case "前期研究成果":
+                    if (Data.Length > 1000)
+                    {
+                        return $"(填写的主要观点长度过长，请限制在1000字内){Data}";
+                    }
+                    else
+                    {
+                        return "Susses";
+                    }
+                    break;
+                case "项目完成时间":
+                    try
+                    {
+                        DateTime.Parse(Data);
+                        return "Susses";
+                    }
+                    catch
+                    {
+                        return $"(不是正确的日期格式，请按照年-月-日填写){Data}";
+                    }
+                    break;
+                case "成果形式":
+                    if (Data.Length > 50)
+                    {
+                        return $"(成果形式填写过长，请控制在50字以内){Data}";
+                    }
+                    else{
+                        return "Susses";
+                    }
+                    break;
+                case "项目单位评审意见":
+                    if(Data.Length > 500)
+                    {
+                        return $"(填写过长，请控制在500字以内){Data}";
+                    }
+                    else
+                    {
+                        return "Susses";
+                    }
+                    break;
+                case "专家评审":
+                    if (Data.Length > 500)
+                    {
+                        return $"(填写过长，请控制在500字以内){Data}";
+                    }
+                    else
+                    {
+                        return "Susses";
+                    }
+                    break;
+                case "项目审批意见":
+                    if (Data.Length > 500)
+                    {
+                        return $"(填写过长，请控制在500字以内){Data}";
+                    }
+                    else
+                    {
+                        return "Susses";
+                    }
+                    break;
 
-            //    }
-                
-            //}
-            public static MetarnetRegex GetInstance()
+            }
+            return $"(系统出现异常请联系工作人员){Data}"; 
+        }
+        public static MetarnetRegex GetInstance()
             {
                 if (MetarnetRegex.instance == null)
                 {

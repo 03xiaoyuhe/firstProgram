@@ -320,9 +320,43 @@ namespace DAL
 
 
 
+        static public bool KindsInsert(
+               string project_name,
+               string project_level,
+               string project_number,
+               string project_category,
+               string project_youth,
+               string project_research,
+               string project_view,
+               string project_References,
+               string project_time,
+               string project_form,
+               string project_opinion ,
+               string project_expert_view ,
+               string project_approval_view
+            )
+        {
+            project_time = (DateTime.Parse(project_time)).ToString("d");
+            string query = " insert into ProjectApplications ( \r\nproject_name ,\r\nproject_level ,\r\nproject_number,\r\nproject_category,\r\nproject_youth, \r\nproject_research,\r\nproject_view ,\r\nproject_References,\r\nproject_time ,\r\nproject_form ,\r\nproject_opinion ,\r\nproject_expert_view ,\r\nproject_approval_view) values \r\n(@project_name,\r\n@project_level ,\r\n@project_number,\r\n@project_category,\r\n@project_youth, \r\n@project_research,\r\n@project_view ,\r\n@project_References,\r\n@project_time ,\r\n@project_form ,\r\n@project_opinion ,\r\n@project_expert_view ,\r\n@project_approval_view); \r\n";
+            SqlParameter[] parameters = {
+                new SqlParameter("@project_name", SqlDbType.NVarChar) { Value = project_name },
+                new SqlParameter("@project_level", SqlDbType.NVarChar) { Value = project_level },
+                new SqlParameter("@project_number", SqlDbType.NVarChar) { Value = project_number },
+                new SqlParameter("@project_category", SqlDbType.NVarChar) { Value = project_category },
+                new SqlParameter("@project_youth", SqlDbType.NVarChar) { Value = project_youth },
+                new SqlParameter("@project_research", SqlDbType.NVarChar) { Value = project_research },
+                new SqlParameter("@project_view", SqlDbType.NVarChar) { Value = project_view },
+                new SqlParameter("@project_References", SqlDbType.NVarChar) { Value = project_References },
+                new SqlParameter("@project_time", SqlDbType.Date) { Value = project_time },
+                new SqlParameter("@project_form", SqlDbType.NVarChar) { Value = project_form },
+                new SqlParameter("@project_opinion", SqlDbType.NVarChar) { Value = project_opinion },
+                new SqlParameter("@project_expert_view", SqlDbType.NVarChar) { Value = project_expert_view },
+                new SqlParameter("@project_approval_view", SqlDbType.NVarChar) { Value = project_approval_view },
+            };
 
+            int rowsAffected = DBHelper.ExecuteSql(query, parameters);
+            return rowsAffected > 0;
 
-
-
+        }
     }
 }
