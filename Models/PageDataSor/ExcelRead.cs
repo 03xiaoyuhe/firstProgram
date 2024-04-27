@@ -139,7 +139,7 @@ namespace Models.PageDataSor
                     bool flag = false;
                     for (int j = row.FirstCellNum; j < cellCount; ++j)
                     {
-                        if (row.GetCell(j) == null && Attribute[DataHead[i]])
+                        if ((row.GetCell(j) == null && Attribute[DataHead[j]]))
                         {
                             erroSheet.CreateRow(count);
                             IRow erroRow = erroSheet.GetRow(count);
@@ -147,11 +147,11 @@ namespace Models.PageDataSor
                             flag = true;
                             for (int k = row.FirstCellNum; k < cellCount; ++k)
                             {
-                                if (k != j)
+                                if (row.GetCell(k) != null)
                                 {
                                     erroRow.CreateCell(k).SetCellValue(row.GetCell(k).ToString());
                                 }
-                                else
+                                else if(Attribute[DataHead[k]])
                                 {
                                     erroRow.CreateCell(k).SetCellValue("缺少必填内容");
                                 }
@@ -171,6 +171,7 @@ namespace Models.PageDataSor
                                 {
                                     dataRow[DataCellCount] = row.GetCell(j).ToString();
                                 }
+                                string 
                             }
                             DataCellCount++;
                         }
