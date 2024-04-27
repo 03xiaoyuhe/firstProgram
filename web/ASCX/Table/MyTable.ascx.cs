@@ -146,6 +146,7 @@ namespace WebForm.ASCX.Table
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            HeadHolder.Controls.Clear();
             Panel1.Height = (System.Web.UI.WebControls.Unit)Height;
             LineForHead NewHead = (LineForHead)LoadControl("~/ASCX/Table/ForMyTable/LineForHead.ascx");
             NewHead.LineToShow = TableBase.LineToShow;

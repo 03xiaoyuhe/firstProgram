@@ -5,7 +5,6 @@
 <%@ Register Src="~/ASCX/MassageForm/PrintMassage.ascx" TagName="Massage" TagPrefix="TMassage" %>
 <%@ Register Src="~/ASCX/Table/ForDataTable/ControlFormCell.ascx" TagName="ControlButton" TagPrefix="Table" %>
 
-
 <%@ Register Src="~/ASCX/Table/ForDataTable/BodyLine.ascx" TagName="BodyLine" TagPrefix="Table" %>
 
 <%@ Register Src="~/ASCX/MassageForm/PrintMassage.ascx" TagPrefix="AAA" TagName="MMM" %>
@@ -23,8 +22,13 @@
 <body>
     <form id="form1" runat="server">
         <div style="width:90%;margin:0 auto;">
+            <asp:FileUpload runat ="server" ID="FileUpload1"/>
+            <asp:Button ID="Button1" runat="server" Text="开始录入" OnClick="Button1_Click" />
+            
+            <asp:PlaceHolder ID="PlaceHolder2" runat="server"></asp:PlaceHolder>
             <Table:ControlButton runat="server" ID="Test" />
             <Table:BodyLine runat="server" ID="BodyLine1" />
+            <%--<asp:PlaceHolder ID="PlaceHolder1" runat="server"></asp:PlaceHolder>--%>
             <TMassage:Massage runat="server" id="aaa"  ></TMassage:Massage>
         </div>
     </form>

@@ -116,6 +116,7 @@ namespace WebForm.ASCX.Table
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            CellHolder.Controls.Clear();
             for (int i = 0; i < ColumnNum; i++)
             {
                 CellForBody NewCell = (CellForBody)LoadControl("~/ASCX/Table/ForMyTable/CellForBody.ascx");
