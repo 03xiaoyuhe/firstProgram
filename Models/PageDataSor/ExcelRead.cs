@@ -171,7 +171,30 @@ namespace Models.PageDataSor
                                 {
                                     dataRow[DataCellCount] = row.GetCell(j).ToString();
                                 }
-                                string 
+                                string Out = MetarnetRegex.Checked(DataHead[j], row.GetCell(j).ToString());
+                                if (Out != "Success")
+                                {
+                                    erroSheet.CreateRow(count);
+                                    IRow erroRow = erroSheet.GetRow(count);
+                                    count++;
+                                    flag = true;
+                                    for (int k = row.FirstCellNum; k < cellCount; ++k)
+                                    {
+                                        if(j == k)
+                                        {
+                                            erroRow.CreateCell(k).SetCellValue(Out);
+                                        }
+                                        if (row.GetCell(k) != null)
+                                        {
+                                            erroRow.CreateCell(k).SetCellValue(row.GetCell(k).ToString());
+                                        }
+                                        else if (Attribute[DataHead[k]])
+                                        {
+                                            erroRow.CreateCell(k).SetCellValue("缺少必填内容");
+                                        }
+                                    }
+                                    break;
+                                }
                             }
                             DataCellCount++;
                         }
