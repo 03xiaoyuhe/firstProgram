@@ -62,13 +62,13 @@ namespace WebForm.ASCX.Table
         {
             for (int i = 0; i < ColumnNum; i++)
             {
-                CellForHead NewCell = (CellForHead)LoadControl("~/ASCX/Table/CellForHead.ascx");
+                CellForHead NewCell = (CellForHead)LoadControl("~/ASCX/Table/ForMyTable/CellForHead.ascx");
                 NewCell.ID = ID + String.Format("_{0}", i);
                 NewCell.CellData = LineToMean[lineToShow[i]];
                 CellHolder.Controls.Add(NewCell);
                 Count++;
             }
-            CellForHead newCell = (CellForHead)LoadControl("~/ASCX/Table/CellForHead.ascx");
+            CellForHead newCell = (CellForHead)LoadControl("~/ASCX/Table/ForMyTable/CellForHead.ascx");
             newCell.CellData = "操作";
             CellHolder.Controls.Add(newCell);
         }

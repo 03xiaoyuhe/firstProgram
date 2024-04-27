@@ -66,16 +66,15 @@ namespace WebForm.functionPage.QF_ChildPage
             }
         }
 
-        int pageNum = 0;
         public int PageNum
         {
             get
             {
-                return pageNum;
-            }
-            set
-            {
-                pageNum = value;
+                if(Request.QueryString["index"]!= null)
+                {
+                    return int.Parse(Request.QueryString["index"]);
+                }
+                return 1;
             }
         }
 
@@ -85,17 +84,6 @@ namespace WebForm.functionPage.QF_ChildPage
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                int a;
-                if (Request.QueryString["index"] != null) a = int.Parse(Request.QueryString["index"]);
-                else a = 1;
-                if (a > 0)
-                {
-                    aaa.Index = a;
-                    PageNum = a;
-                }
-            }
             InitData();
             Loding();
             LoadTable();

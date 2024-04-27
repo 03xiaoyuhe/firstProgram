@@ -121,9 +121,9 @@ namespace WebForm.ASCX.Table.ForDataTable
             CellHolder.Controls.Clear();
             for (int i = 0; i < TableAttribute.ColumnNum; i++)
             {
-                BodyCell bodyCell = new BodyCell();
+                BodyCell bodyCell = (BodyCell)LoadControl("BodyCell.ascx");
                 bodyCell.DataTableLineArgs = DataTableLineArgs;
-                bodyCell.Data = (string)DataForALine[TableAttribute.LineToShow[i]];
+                bodyCell.Data = DataForALine[TableAttribute.LineToShow[i]].ToString();
                 CellHolder.Controls.Add(bodyCell);
             }
             ControlFormCell controlFormCell = (ControlFormCell)LoadControl("ControlFormCell.ascx");
