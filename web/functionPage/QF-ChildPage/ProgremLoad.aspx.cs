@@ -116,7 +116,12 @@ namespace WebForm.functionPage.QF_ChildPage
                 //{
                 //    lis[count] = Time[j];
                 //}
-
+                string values = dl["project_time"].ToString();
+                string[] vals = values.Split('-');
+                string one = vals[1];
+                string two = vals[1].Remove(vals[1].Length-1);
+                string three = vals[2];
+                string ans = one +'-' +two +'-'+ three;
                 if (
                 !DAL.ProjectCompletion.KindsInsert(
                      dl["project_name"].ToString(),
@@ -127,7 +132,8 @@ namespace WebForm.functionPage.QF_ChildPage
                      dl["project_research"].ToString(),
                      dl["project_view"].ToString(),
                      dl["project_References"].ToString(),
-                     dl["project_time"].ToString(),
+                     //dl["project_time"].ToString(),
+                     ans,
                      //new string(lis),
                      dl["project_form"].ToString(),
                      dl["project_opinion"].ToString(),
