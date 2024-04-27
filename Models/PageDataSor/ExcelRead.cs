@@ -87,6 +87,7 @@ namespace Models.PageDataSor
             IWorkbook erroworkbook = null;
             int cellCount = 0;//列数
             int rowCount = 0;//行数
+            int ErroRowCount = 0;
             //判断文件是否存在
             fs = new FileStream(InputExcelPath, FileMode.Open, FileAccess.Read);
             FileStream errofs = new FileStream(ErroPutExcelPath, FileMode.Create, FileAccess.ReadWrite);
@@ -124,7 +125,6 @@ namespace Models.PageDataSor
                 {
                     if (!DataHead.Contains(pair.Key) && pair.Value) throw new Exception($"缺少必须行{pair.Key}");
                 }
-                int count = 1;
                 rowCount = sheet.LastRowNum;
                 for (int i = 1; i <= rowCount; i++)
                 {
@@ -139,29 +139,19 @@ namespace Models.PageDataSor
                     bool flag = false;
                     for (int j = row.FirstCellNum; j < cellCount; ++j)
                     {
+                        // 判断当前是否 缺少了必须行
                         if ((row.GetCell(j) == null && Attribute[DataHead[j]]))
                         {
-                            erroSheet.CreateRow(count);
-                            IRow erroRow = erroSheet.GetRow(count);
-                            count++;
                             flag = true;
-                            for (int k = row.FirstCellNum; k < cellCount; ++k)
-                            {
-                                if (row.GetCell(k) != null)
-                                {
-                                    erroRow.CreateCell(k).SetCellValue(row.GetCell(k).ToString());
-                                }
-                                else if(Attribute[DataHead[k]])
-                                {
-                                    erroRow.CreateCell(k).SetCellValue("缺少必填内容");
-                                }
-                            }
                             break;
                         }
+
+                        // 判断当前是否为多余数据列
                         if(Attribute.ContainsKey( firstRow.GetCell(j).StringCellValue))
                         {
                             if (row.GetCell(j) != null) //同理，没有数据的单元格都默认是null
                             {
+                                // 将日期转化为正常格式
                                 dataRow[DataCellCount] = row.GetCell(j).ToString();
                                 if (row.GetCell(j).CellType == CellType.Numeric)
                                 {
@@ -171,35 +161,97 @@ namespace Models.PageDataSor
                                 {
                                     dataRow[DataCellCount] = row.GetCell(j).ToString();
                                 }
-                                string Out = MetarnetRegex.Checked(DataHead[j], row.GetCell(j).ToString());
-                                if (Out != "Success")
+                                // 对数据表中当前行做数据验证 若不符合则跳出
+                                if(MetarnetRegex.Checked(DataHead[j], dataRow[DataCellCount].ToString()) != "Success")
                                 {
-                                    erroSheet.CreateRow(count);
-                                    IRow erroRow = erroSheet.GetRow(count);
-                                    count++;
                                     flag = true;
-                                    for (int k = row.FirstCellNum; k < cellCount; ++k)
-                                    {
-                                        if(j == k)
-                                        {
-                                            erroRow.CreateCell(k).SetCellValue(Out);
-                                        }
-                                        else if (row.GetCell(k) != null)
-                                        {
-                                            erroRow.CreateCell(k).SetCellValue(row.GetCell(k).ToString());
-                                        }
-                                        else if (Attribute[DataHead[k]])
-                                        {
-                                            erroRow.CreateCell(k).SetCellValue("缺少必填内容");
-                                        }
-                                    }
                                     break;
                                 }
                             }
                             DataCellCount++;
                         }
+
+                        //string Out = MetarnetRegex.Checked(DataHead[j], row.GetCell(j).ToString());
+                        //if (Out != "Success")
+                        //{
+                        //    erroSheet.CreateRow(count);
+                        //    IRow erroRow = erroSheet.GetRow(count);
+                        //    count++;
+                        //    flag = true;
+                        //    for (int k = row.FirstCellNum; k < cellCount; ++k)
+                        //    {
+                        //        if (j == k)
+                        //        {
+                        //            erroRow.CreateCell(k).SetCellValue(Out);
+                        //        }
+                        //        else if (row.GetCell(k) != null)
+                        //        {
+                        //            erroRow.CreateCell(k).SetCellValue(row.GetCell(k).ToString());
+                        //        }
+                        //        else if (Attribute[DataHead[k]])
+                        //        {
+                        //            erroRow.CreateCell(k).SetCellValue("缺少必填内容");
+                        //        }
+                        //    }
+                        //    break;
+                        //}
                     }
                     if(!flag)data.Rows.Add(dataRow);
+                    else
+                    {
+                        for (int j = row.FirstCellNum; j < cellCount; ++j)
+                        {
+                            // 判断当前是否 缺少了必须行 如果缺失则输出提示
+                            if ((row.GetCell(j) == null && Attribute[DataHead[j]]))
+                            {
+                                ErroRowCount++;
+                                erroSheet.CreateRow(ErroRowCount);
+                                IRow erroRow = erroSheet.GetRow(ErroRowCount);
+                                erroRow.CreateCell(j).SetCellValue("缺少必填内容");
+                                continue;
+                            }
+                            // 若当前行缺少但不为必须行则什么也不做
+                            if(row.GetCell(j) != null)
+                            {
+                                /// 将当前数据做转化,以解决日期问题
+                                string Data;
+                                if (row.GetCell(j).CellType == CellType.Numeric)
+                                {
+                                    Data = Convert.ToDateTime(row.GetCell(j).DateCellValue).ToString("yyyy-MM-dd");
+                                }
+                                else
+                                {
+                                    Data = row.GetCell(j).ToString();
+                                }
+                                // 判断当前行是否为需要检查行，若需要检查则进行检查，
+                                if (Attribute.ContainsKey(erroHead.GetCell(j).ToString()))
+                                {
+                                    string Out = MetarnetRegex.Checked(erroHead.GetCell(j).ToString(), Data);
+                                    if (Out != "Success")
+                                    {
+                                        ErroRowCount++;
+                                        erroSheet.CreateRow(ErroRowCount);
+                                        IRow erroRow = erroSheet.GetRow(ErroRowCount);
+                                        erroRow.CreateCell(j).SetCellValue(Out);
+                                    }
+                                    else
+                                    {
+                                        ErroRowCount++;
+                                        erroSheet.CreateRow(ErroRowCount);
+                                        IRow erroRow = erroSheet.GetRow(ErroRowCount);
+                                        erroRow.CreateCell(j).SetCellValue(Data);
+                                    }
+                                }
+                                else
+                                {
+                                    ErroRowCount++;
+                                    erroSheet.CreateRow(ErroRowCount);
+                                    IRow erroRow = erroSheet.GetRow(ErroRowCount);
+                                    erroRow.CreateCell(j).SetCellValue(Data);
+                                }
+                            }
+                        }
+                    }
                 }
             }
             using (errofs)
