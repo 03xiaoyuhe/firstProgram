@@ -184,7 +184,7 @@ namespace Models.PageDataSor
                                         {
                                             erroRow.CreateCell(k).SetCellValue(Out);
                                         }
-                                        if (row.GetCell(k) != null)
+                                        else if (row.GetCell(k) != null)
                                         {
                                             erroRow.CreateCell(k).SetCellValue(row.GetCell(k).ToString());
                                         }
