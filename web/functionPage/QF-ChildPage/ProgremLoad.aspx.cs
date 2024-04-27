@@ -129,7 +129,7 @@ namespace WebForm.functionPage.QF_ChildPage
             MyTable NewLine = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
             NewLine.TableBase = tableAttribute;
             NewLine.DataCollection = dataTable;
-            NewLine.Height = 400;
+            NewLine.Height = 300;
             NewLine.TableName = "ProjectApplications";
             PlaceHolder2.Controls.Clear();
             PlaceHolder2.Controls.Add(NewLine);
@@ -143,5 +143,52 @@ namespace WebForm.functionPage.QF_ChildPage
         {
 
         }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(ErroFilePath))
+            {
+                string fileName = $"ErroExcel{Path.GetExtension(ErroFilePath)}";//客户端保存的文件名
+                string filePath = ErroFilePath;//路径
+                                               //以字符流的形式下载文件
+                FileStream fs = new FileStream(filePath, FileMode.Open);
+                byte[] bytes = new byte[(int)fs.Length];
+                fs.Read(bytes, 0, bytes.Length);
+                fs.Close();
+                Response.ContentType = "application/octet-stream";
+                //通知浏览器下载文件而不是打开
+                Response.AddHeader("Content-Disposition", "attachment;   filename=" + HttpUtility.UrlEncode(fileName, System.Text.Encoding.UTF8));
+                Response.BinaryWrite(bytes);
+                Response.Flush();
+                Response.End();
+            }
+            else
+            {
+                Massage massage = new Massage();
+                massage.HeadColor = "Red";
+                massage.HeadText = "Erro";
+                massage.MassageText = "无错误数据行文件";
+                massage.PostMassage();
+            }
+        }
+
+        #region 物理路径和相对路径的转换
+        //本地路径转换成URL相对路径 
+        private string urlconvertor(string imagesurl1)
+        {
+            string tmpRootDir = Server.MapPath(System.Web.HttpContext.Current.Request.ApplicationPath.ToString());//获取程序根目录
+            string imagesurl2 = imagesurl1.Replace(tmpRootDir, ""); //转换成相对路径
+            imagesurl2 = imagesurl2.Replace(@"\", @"/");
+            //imagesurl2 = imagesurl2.Replace(@"Aspx_Uc/", @"");
+            return imagesurl2;
+        }
+        //相对路径转换成服务器本地物理路径 
+        private string urlconvertorlocal(string imagesurl1)
+        {
+            string tmpRootDir = Server.MapPath(System.Web.HttpContext.Current.Request.ApplicationPath.ToString());//获取程序根目录
+            string imagesurl2 = tmpRootDir + imagesurl1.Replace(@"/", @"\"); //转换成绝对路径
+            return imagesurl2;
+        }
+        #endregion
     }
 }

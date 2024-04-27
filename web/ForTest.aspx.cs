@@ -63,7 +63,7 @@ namespace WebForm
 
                 //将项目表显示在ds中。Id
                 DataSet dataSet = new DataSet();
-                dataSet = TableSelect.Select("ProjectApplications", "project_id", Id);
+                //dataSet = TableSelect.Select("ProjectApplications", "project_id", Id);
                 DataTable ds = dataSet.Tables[0];
                 DataRow dl = ds.Rows[0];
 
@@ -202,15 +202,6 @@ namespace WebForm
         }
        
 
-        void func2(object sender, DataTableLineArgs e)
-        {
-            Massage massage = new Massage();
-            massage.HeadText = "Func2";
-            massage.HeadColor = "red";
-            massage.MassageText = "Success\n";
-            massage.MassageText += ((Button)sender).Text + "\n";
-            massage.PostMassage();
-        }
 
         protected void Button1_Click(object sender, EventArgs e)
         {

@@ -15,9 +15,11 @@
             <asp:FileUpload runat ="server" ID="FileUpload1"/>
             <asp:Button ID="Button1" runat="server" Text="开始录入" OnClick="Button1_Click" />
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-            <h2>结果预览</h2>
-            <asp:PlaceHolder ID="PlaceHolder2" runat="server">未导入</asp:PlaceHolder>
-            <asp:Button ID="Button3" runat="server" Text="下载错误数据行文件" />
+            <h2>结果预览&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="Button3" runat="server" Text="下载错误数据行文件" OnClick="Button3_Click" /></h2>
+            
+            <div>
+                <asp:PlaceHolder ID="PlaceHolder2" runat="server">未导入</asp:PlaceHolder>
+            </div>
         </div>
     </form>
 </body>

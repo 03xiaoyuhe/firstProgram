@@ -14,7 +14,7 @@
 
     .sticky-table {
         overflow: auto;
-        height: 500px; /* 设置固定高度 */
+        height: ; /* 设置固定高度 */
         width: 100%;
     }
 
@@ -92,8 +92,8 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
 
         <ContentTemplate>
-            <asp:Panel ID="Panel1" runat="server">
-                <div class="sticky-table">
+            <asp:Panel ID="Panel1" runat="server" >
+                <div id ="stickytable" class="sticky-table" runat="server">
                     <table>
                         <thead>
                             <asp:PlaceHolder ID="HeadHolder" runat="server"></asp:PlaceHolder>
