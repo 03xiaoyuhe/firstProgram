@@ -21,11 +21,9 @@ namespace WebForm.functionPage.QF_ChildPage
         {
             try
             {
-
                 ProgromBaseData progromBaseData = ProgremInf.ProgromBaseDatas;
 
-                //申请时向项目信息表中插入对应的字段值
-                bool Project_Insert = ProjectCompletion.ProjectInfor(
+                bool Project_Insert = ProjectCompletion.ProjectInfor_Test(
                     progromBaseData.DatasForAdm.AdmPhone,
                     progromBaseData.ProjectName,
                     progromBaseData.ProjectKinds,
@@ -34,11 +32,7 @@ namespace WebForm.functionPage.QF_ChildPage
                     progromBaseData.DatasForDoc.ProjectMainIdea,
                     progromBaseData.DatasForDoc.ProjectAhead,
                     progromBaseData.ProjectFinish,
-                    progromBaseData.ProjectEnd
-                    );
-
-                //申请时对负责人信息进行插入完善
-                bool User_Insert = DAL.User.Insert_Infor(
+                    progromBaseData.ProjectEnd,
                     progromBaseData.DatasForAdm.AdmName,
                     progromBaseData.DatasForAdm.AdmBorn,
                     progromBaseData.DatasForAdm.AdmSex,
@@ -53,13 +47,51 @@ namespace WebForm.functionPage.QF_ChildPage
                     progromBaseData.DatasForAdm.AdmPhone,
                     progromBaseData.DatasForAdm.AdmEmail
                     );
-
-                if (Project_Insert && User_Insert)
+                if (Project_Insert)
                 {
                     clearAll();
                     Massage massage = new Massage("Blue", "Success", "添加成功");
                     massage.PostMassage();
                 }
+
+                //ProgromBaseData progromBaseData = ProgremInf.ProgromBaseDatas;
+
+                ////申请时向项目信息表中插入对应的字段值
+                //bool Project_Insert = ProjectCompletion.ProjectInfor(
+                //    progromBaseData.DatasForAdm.AdmPhone,
+                //    progromBaseData.ProjectName,
+                //    progromBaseData.ProjectKinds,
+                //    progromBaseData.DatasForAdm.IsYoungProjrem.ToString(),
+                //    progromBaseData.DatasForDoc.ProjectIntroduce,
+                //    progromBaseData.DatasForDoc.ProjectMainIdea,
+                //    progromBaseData.DatasForDoc.ProjectAhead,
+                //    progromBaseData.ProjectFinish,
+                //    progromBaseData.ProjectEnd
+                //    );
+
+                ////申请时对负责人信息进行插入完善
+                //bool User_Insert = DAL.User.Insert_Infor(
+                //    progromBaseData.DatasForAdm.AdmName,
+                //    progromBaseData.DatasForAdm.AdmBorn,
+                //    progromBaseData.DatasForAdm.AdmSex,
+                //    progromBaseData.DatasForAdm.AdmOrd,
+                //    progromBaseData.DatasForAdm.AdmOrdName,
+                //    progromBaseData.DatasForAdm.AdmMar,
+                //    progromBaseData.DatasForAdm.AdmMajBest,
+                //    progromBaseData.DatasForAdm.AdmNowDo,
+                //    progromBaseData.DatasForAdm.AdmJobWhere,
+                //    progromBaseData.DatasForAdm.AdmPhontWhere,
+                //    progromBaseData.DatasForAdm.AdmAdmPhone,
+                //    progromBaseData.DatasForAdm.AdmPhone,
+                //    progromBaseData.DatasForAdm.AdmEmail
+                //    );
+
+                //if (Project_Insert && User_Insert)
+                //{
+                //    clearAll();
+                //    Massage massage = new Massage("Blue", "Success", "添加成功");
+                //    massage.PostMassage();
+                //}
             }
             catch (Exception E)
             {
