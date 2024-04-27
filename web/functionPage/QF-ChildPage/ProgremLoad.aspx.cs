@@ -14,11 +14,53 @@ namespace WebForm.functionPage.QF_ChildPage
 {
     public partial class ProgremLoad : System.Web.UI.Page
     {
+
+        Dictionary<string, bool> list1;
+        Dictionary<string, string> map1;
+
+        string ErroFilePath
+        {
+            get
+            {
+                return Session["ErroProgremFilePath"] as string;
+            }
+            set
+            {
+                Session["ErroProgremFilePath"] = value;
+            }
+        }
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
             UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
+
+            list1 = new Dictionary<string, bool>();
+            list1.Add("ID", true);
+            list1.Add("负责人电话号码", true);
+            list1.Add("项目名称", true);
+            list1.Add("项目评级", true);
+            list1.Add("立项编号", true);
+            list1.Add("项目类别", true);
+            list1.Add("是否符合青年项目申报条件", true);
+            list1.Add("项目完成时间", true);
+            list1.Add("成果形式", true);
+
+            map1 = new Dictionary<string, string>();
+            map1.Add("ID", "project_id");
+            map1.Add("负责人电话号码", "user_phone");
+            map1.Add("项目名称", "project_name");
+            map1.Add("项目评级", "project_level");
+            map1.Add("立项编号", "project_number");
+            map1.Add("项目类别", "project_category");
+            map1.Add("是否符合青年项目申报条件", "project_youth");
+            map1.Add("项目完成时间", "project_time");
+            map1.Add("成果形式", "project_form");
         }
+
+
+
 
         protected void Button1_Click(object sender, EventArgs e)
         {
@@ -37,42 +79,24 @@ namespace WebForm.functionPage.QF_ChildPage
 
             string savePath = Server.MapPath($"~\\uploadfiles\\{DateTime.Now.ToFileTime()}" + filename);//Server.MapPath 获得虚拟服务器相对路径 自己也可以写成绝对路径
             FileUpload1.SaveAs(savePath);                        //SaveAs 将上传的文件内容保存在服务器上  这里保存在本地uploadfiles文件中
-            string saveErroPath = Server.MapPath($"~\\uploadfiles\\erro{DateTime.Now.ToFileTime()}" + filename);
-            Dictionary<string, bool> list1 = new Dictionary<string, bool>();
-            list1.Add("ID", true);
-            list1.Add("负责人电话号码", true);
-            list1.Add("项目名称", true);
-            list1.Add("项目评级", true);
-            list1.Add("立项编号", true);
-            list1.Add("项目类别", true);
-            list1.Add("是否符合青年项目申报条件", true);
-            list1.Add("项目完成时间", true);
-            list1.Add("成果形式", true);
-
-            Dictionary<string, string> map1 = new Dictionary<string, string>();
-            map1.Add("ID", "project_id");
-            map1.Add("负责人电话号码", "user_phone");
-            map1.Add("项目名称", "project_name");
-            map1.Add("项目评级", "project_level");
-            map1.Add("立项编号", "project_number");
-            map1.Add("项目类别", "project_category");
-            map1.Add("是否符合青年项目申报条件", "project_youth");
-            map1.Add("项目完成时间", "project_time");
-            map1.Add("成果形式", "project_form");
-
+            ErroFilePath = Server.MapPath($"~\\uploadfiles\\erro{DateTime.Now.ToFileTime()}" + filename);
+            
+            // 读取文件操作
             ExcelRead excelRead = new ExcelRead();
             excelRead.Attribute = list1;
             excelRead.ExcelHeadLineData = map1;
             excelRead.InputExcelPath = savePath;
-            excelRead.ErroPutExcelPath = saveErroPath;
+            excelRead.ErroPutExcelPath = ErroFilePath;
 
 
 
-            /// 放置读取代码
             DataTable dataTable = excelRead.LoadExcel();
 
 
 
+
+
+            // 加载导入预览
             List<string> list = new List<string>();
             list.Add("project_id");
             list.Add("user_phone");
@@ -112,6 +136,11 @@ namespace WebForm.functionPage.QF_ChildPage
 
             System.IO.File.Delete(savePath);
 
+
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
 
         }
     }
