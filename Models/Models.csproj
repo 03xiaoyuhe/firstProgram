@@ -119,6 +119,9 @@
     <Compile Include="Massage.cs" />
     <Compile Include="PageDataSor\BaseDelegate\BaseListener.cs" />
     <Compile Include="PageDataSor\BaseDelegate\BaseTrigger.cs" />
+    <Compile Include="PageDataSor\CacheGenericity.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="PageDataSor\DataTableControl\DataTableControlAttribute.cs" />
     <Compile Include="PageDataSor\DataTableControl\ForControlAttribute\DataTableControlEventArgs.cs" />
     <Compile Include="PageDataSor\DataTableControl\ForControlAttribute\DataTableLineArgs.cs" />
