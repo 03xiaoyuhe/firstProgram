@@ -194,9 +194,9 @@ namespace Models.PageDataSor
                             }
                             else
                             {
-                                if (Data[i] < 49 || Data[i] > 57)
+                                if (Data[i] < 48 || Data[i] > 57)
                                 {
-                                    return $"(第六到七位有非0-9的整数数字){Data}";
+                                    return $"(第五位后的七位整数中有非0-9的字符){Data}";
                                 }
                             }
                         }

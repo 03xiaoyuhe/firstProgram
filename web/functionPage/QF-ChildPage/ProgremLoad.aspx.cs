@@ -1,4 +1,5 @@
 ﻿using Models;
+using Models.DataRowToClass;
 using Models.PageDataSor;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
@@ -48,7 +49,7 @@ namespace WebForm.functionPage.QF_ChildPage
             list1.Add("立项编号", true);
             list1.Add("项目类别", true);
             list1.Add("是否符合青年项目申报条件", true);
-            list1.Add("本项目国内外研究现状述评", true);
+            list1.Add("本项目国内外研究现状述评", false);
             list1.Add("本项目研究的主要观点", true);
             list1.Add("前期研究成果", true);
             list1.Add("项目完成时间", true);
@@ -114,6 +115,12 @@ namespace WebForm.functionPage.QF_ChildPage
                 for (int i = 0; i < dataTable.Rows.Count; i++)
                 {
                     DataRow dl = dataTable.Rows[i];
+                    ProgressProject progressProject = new ProgressProject();
+                    progressProject.DataTable = dl.Table;
+
+                    
+
+
                     //string Time = dl["project_time"].ToString();
                     //char[] lis = new char[Time.Length - 2];
                     //int count = 0;
@@ -122,7 +129,7 @@ namespace WebForm.functionPage.QF_ChildPage
                     //    lis[count] = Time[j];
                     //}
 
-                    string values = dl["project_time"].ToString();
+                    //string values = dl["project_time"].ToString();
 
                     //string[] vals = values.Split('-');
                     //string one = vals[1];
@@ -132,20 +139,19 @@ namespace WebForm.functionPage.QF_ChildPage
 
                     if (
                     !DAL.ProjectCompletion.KindsInsert(
-                         dl["project_name"].ToString(),
-                         dl["project_level"].ToString(),
-                         dl["project_number"].ToString(),
-                         dl["project_category"].ToString(),
-                         dl["project_youth"].ToString(),
-                         dl["project_research"].ToString(),
-                         dl["project_view"].ToString(),
-                         dl["project_References"].ToString(),
-                         dl["project_time"].ToString(),
-                         //new string(lis),
-                         dl["project_form"].ToString(),
-                         dl["project_opinion"].ToString(),
-                         dl["project_expert_view"].ToString(),
-                         dl["project_approval_view"].ToString()
+                         progressProject.ProName, //dl["project_name"].ToString(), 
+                         progressProject.ProLevel, //dl["project_level"].ToString(),
+                         progressProject.ProNumber, //dl["project_number"].ToString(),
+                         progressProject.ProCategory, //dl["project_category"].ToString(),
+                         progressProject.ProYouth,                //dl["project_youth"].ToString(),
+                         progressProject.ProResearch,                //dl["project_research"].ToString(),
+                         progressProject.ProView,                //dl["project_view"].ToString(),
+                         progressProject.ProReferences,                 //dl["project_References"].ToString(),
+                         progressProject.ProTime,                 //dl["project_time"].ToString(),
+                         progressProject.ProForm,                 //dl["project_form"].ToString(),
+                         progressProject.ProOpinion,                 //dl["project_opinion"].ToString(),
+                         progressProject.ProExpert,                  //dl["project_expert_view"].ToString(),
+                         progressProject.ProApproval                  //dl["project_approval_view"].ToString()
                          ))
                     {
                         Models.Massage massage = new Massage();
