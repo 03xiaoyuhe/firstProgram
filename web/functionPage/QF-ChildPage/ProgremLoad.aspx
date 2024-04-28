@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ProgremLoad.aspx.cs" Inherits="WebForm.functionPage.QF_ChildPage.ProgremLoad" %>
-
+<!-- 申报项目批量导入页面 -->
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -29,7 +29,7 @@
             <div style="width: 80%; margin: 0 auto;">
 
                 <div style="width: 100px; height: 20px;"></div>
-                <h2>项目信息批量导入</h2>
+                <h2>申报项目信息批量导入</h2>
                 <label style="color: red">注意上传表必须包含首行，首行信息必须按照模板表，可以更改顺序，但不能更改内容</label><br />
                 <div style="width:70%;">
 

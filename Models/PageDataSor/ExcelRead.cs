@@ -123,7 +123,7 @@ namespace Models.PageDataSor
                 }
                 foreach (KeyValuePair<string, bool> pair in Attribute)
                 {
-                    if (!DataHead.Contains(pair.Key) && pair.Value) throw new Exception($"缺少必须行{pair.Key}");
+                    if (!DataHead.Contains(pair.Key) && pair.Value) throw new Exception($"缺少必须行->{pair.Key}");
                 }
                 rowCount = sheet.LastRowNum;
                 for (int i = 1; i <= rowCount; i++)
