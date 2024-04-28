@@ -112,7 +112,6 @@ namespace DAL
         /// 插入用户信息
         /// </summary>
         /// <param name="user_name">姓名</param>
-        /// 
         /// <param name="user_date">生日</param>
         /// <param name="user_sex">性别</param>
         /// <param name="user_position">职务</param>
@@ -211,6 +210,43 @@ namespace DAL
 
         }
 
+        static public bool KindsInsert(
+            string UseName,
+            string UserDate,
+            string UserSex,
+            string UserPosition,
+            string UserTitle,
+            string UserSpeciality,
+            string UserResearch,
+            string UserResearch_now,
+            string UserWorkplace,
+            string UserAddress,
+            string UserOfficeNumber,
+            string UseNumber,
+            string UserEmail
+            )
+        {
+            string query = "insert into UserInfor ( \r\nUserName\r\nUserDate,\r\nUserSex,\r\nUserPosition,\r\nUserTitle,\r\nUserSpeciality,\r\nUserResearch,\r\nUserResearch_now,\r\nUserWorkplace,\r\nUserAddress,\r\nUserOfficeNumber,\r\nUseNumber,\r\nUserEmail\r\n) values ( \r\n@UseName,\r\n@UserDate,\r\n@UserSex,\r\n@UserPosition,\r\n@UserTitle,\r\n@UserSpeciality,\r\n@UserResearch,\r\n@UserResearch_now,\r\n@UserWorkplace,\r\n@UserAddress,\r\n@UserOfficeNumber,\r\n@UseNumber,\r\n@UserEmail\r\n); ";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter ("@UserName" ,SqlDbType.NVarChar) {Value = UseName},
+                new SqlParameter ("@UserDate" ,SqlDbType.NVarChar) {Value = UserDate},
+                new SqlParameter ("@UserSex" ,SqlDbType.NVarChar) {Value = UserSex},
+                new SqlParameter ("@UserPosition" ,SqlDbType.NVarChar) {Value = UserPosition},
+                new SqlParameter ("@UserTitle" ,SqlDbType.NVarChar) {Value = UserTitle},
+                new SqlParameter ("@UserSpeciality" ,SqlDbType.NVarChar) {Value = UserSpeciality},
+                new SqlParameter ("@UserResearch" ,SqlDbType.NVarChar) {Value = UserResearch},
+                new SqlParameter ("@UserResearch_now" ,SqlDbType.NVarChar) {Value = UserResearch_now},
+                new SqlParameter ("@UserWorkplace" ,SqlDbType.NVarChar) {Value = UserWorkplace},
+                new SqlParameter ("@UserAddress" ,SqlDbType.NVarChar) {Value = UserAddress},
+                new SqlParameter ("@UserOfficeNumber" ,SqlDbType.NVarChar) {Value = UserOfficeNumber},
+                new SqlParameter ("@UseNumber" ,SqlDbType.NVarChar) {Value = UseNumber},
+                new SqlParameter ("@UserEmail" ,SqlDbType.NVarChar) {Value = UserEmail},
+            };
+
+            int 
+
+        }
 
     }
 }

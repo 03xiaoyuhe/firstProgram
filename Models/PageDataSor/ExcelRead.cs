@@ -119,7 +119,7 @@ namespace Models.PageDataSor
                     {
                         DataColumn column = new DataColumn(excelHeadLineDataColu[firstRow.GetCell(i).StringCellValue]);
                         data.Columns.Add(column);
-                    }
+                    } 
                 }
                 foreach (KeyValuePair<string, bool> pair in Attribute)
                 {
