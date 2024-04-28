@@ -12,7 +12,7 @@ namespace Models.PageDataSor
     /// 缓存接口
     /// </summary>
     /// <typeparam name="T">缓存的类型</typeparam>
-    public class CacheGenericity<T>  where T : class
+    public class CacheGenericity<T>  where T : class, new()
     {
         public static SessionCache<T> SessionCache { get; set; }
     }

@@ -8,7 +8,7 @@ using System.Web.UI;
 
 namespace Models.PageDataSor.ProgremData
 {
-    public class SessionCache<T> : UserControl where T : class
+    public class SessionCache<T> : UserControl where T : class, new()
     {
         public SessionCache(): base() { }
 
@@ -21,6 +21,7 @@ namespace Models.PageDataSor.ProgremData
         {
             get
             {
+                if (Session[index] == null) Session[index] = new T();
                 return Session[index] as T;
             }
             set
