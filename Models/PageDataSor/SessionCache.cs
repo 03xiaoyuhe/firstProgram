@@ -10,6 +10,7 @@ namespace Models.PageDataSor.ProgremData
 {
     public class SessionCache<T> : UserControl where T : class
     {
+        public SessionCache(): base() { }
 
         /// <summary>
         /// 缓存机制泛型类
