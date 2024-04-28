@@ -38,7 +38,10 @@ namespace Models.DataRowToClass
             column = new DataColumn("project_expert_view");
             dataTable.Columns.Add(column);
             column = new DataColumn("project_approval_view");
+            dataTable.Columns.Add(column);
+
         }
+
         DataTable dataTable;
         public DataTable DataTable
         {
