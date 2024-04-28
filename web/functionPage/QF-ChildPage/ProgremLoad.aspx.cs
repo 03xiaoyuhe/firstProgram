@@ -39,7 +39,8 @@ namespace WebForm.functionPage.QF_ChildPage
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
+            //UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
+            MetarnetRegex.Give();
 
             list1 = new Dictionary<string, bool>();
             list1.Add("项目名称", true);
@@ -105,6 +106,7 @@ namespace WebForm.functionPage.QF_ChildPage
 
 
             DataTable dataTable = excelRead.LoadExcel();
+            
 
             for (int i = 0; i < dataTable.Rows.Count; i++)
             {

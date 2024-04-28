@@ -1,10 +1,13 @@
-﻿using System;
+﻿using NPOI.SS.Formula.Functions;
+using Org.BouncyCastle.Crypto;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using DAL;
 
 namespace Models.PageDataSor
 {
@@ -16,9 +19,24 @@ namespace Models.PageDataSor
 
         private static MetarnetRegex instance = null;
 
+        //CacheGenericity<List<string>> cacheGenericity = new CacheGenericity<List<string>>();
+
+        
+        public static void Give()
+        {
+            CacheGenericity.Data["立项编号"]  = new List<string>();
+            DataSet rowAfforts = DAL.DBHelper.Query("select project_number from ProjectApplications");
+            DataTable dt = rowAfforts.Tables[0];
+            foreach(DataRow item in dt.Rows)
+            {
+                CacheGenericity.Data["立项编号"].Add(item[0].ToString());
+            }
+        }
 
         public static string Checked(string Kinds, string Data)
         {
+
+            
             switch (Kinds)
             {
                 case "项目名称":
@@ -69,6 +87,16 @@ namespace Models.PageDataSor
                                 }
                             }
                         }
+                        for(int i =0;i< CacheGenericity.Data["立项编号"].Count; i++)
+                        {
+                            if (Data == CacheGenericity.Data["立项编号"][i])
+                            {
+                                return $"(输入的立项编号合法，但已经存在，请重新输入){Data}";
+                            }
+                        }
+
+                        CacheGenericity.Data["立项编号"].Add(Data);
+
                         return "Success";
 
                     }
