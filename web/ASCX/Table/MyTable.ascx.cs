@@ -1,5 +1,6 @@
 ﻿using Models;
 using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace WebForm.ASCX.Table
@@ -146,6 +147,12 @@ namespace WebForm.ASCX.Table
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            List<string> NewLineToShow = new List<string>();
+            foreach(string item in TableBase.LineToShow)
+            {
+                if (DataCollection.Columns.Contains(item)) NewLineToShow.Add(item);
+            }
+            TableBase.LineToShow = NewLineToShow;
             HeadHolder.Controls.Clear();
             Panel1.Height = (System.Web.UI.WebControls.Unit)Height;
             stickytable.Style["height"] = Height + "px";
