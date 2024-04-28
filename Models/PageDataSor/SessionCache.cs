@@ -9,8 +9,8 @@ using System.Web.UI;
 
 namespace Models.PageDataSor.ProgremData
 {
-    public class SessionCache : UserControl// 创建一个UserControl 对象来存放缓存
-    {
+    //public class SessionCache : UserControl// 创建一个UserControl 对象来存放缓存
+    //{
     public class SessionCache<T> : UserControl where T : class, new()
     {
         public SessionCache(): base() { }
@@ -23,7 +23,7 @@ namespace Models.PageDataSor.ProgremData
         public T this[string index]
         {
             get
-            { 
+            //{ 
             {
                 if (Session[index] == null) Session[index] = new T();
                 return Session[index] as T;

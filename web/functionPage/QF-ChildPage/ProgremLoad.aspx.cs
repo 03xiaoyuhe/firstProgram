@@ -40,7 +40,7 @@ namespace WebForm.functionPage.QF_ChildPage
         {
 
             //UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-            MetarnetRegex.Give();
+            //MetarnetRegex.Give();
 
             list1 = new Dictionary<string, bool>();
             list1.Add("项目名称", true);
@@ -79,13 +79,15 @@ namespace WebForm.functionPage.QF_ChildPage
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+
+            MetarnetRegex.Give();
             if (FileUpload1.HasFile == false)//HasFile用来检查FileUpload是否有指定文件 choose为文件上传框ID
             {
                 Response.Write("<script>alert('请您选择Excel文件')</script> ");
                 return;//当无文件时,返回
             }
             string IsXls = Path.GetExtension(FileUpload1.FileName).ToLower();//System.IO.Path.GetExtension获得文件的扩展名
-            if (IsXls != ".xlsx" && IsXls != ".xls" && IsXls != ".csv")
+            if (IsXls != ".xlsx" && IsXls != ".xls" )
             {
                 Response.Write("<script>alert('只可以选择表格文件')</script>");
                 return;//当选择的不是Excel文件时,返回
@@ -95,101 +97,114 @@ namespace WebForm.functionPage.QF_ChildPage
             string savePath = Server.MapPath($"~\\uploadfiles\\{DateTime.Now.ToFileTime()}" + filename);//Server.MapPath 获得虚拟服务器相对路径 自己也可以写成绝对路径
             FileUpload1.SaveAs(savePath);                        //SaveAs 将上传的文件内容保存在服务器上  这里保存在本地uploadfiles文件中
             ErroFilePath = Server.MapPath($"~\\uploadfiles\\erro{DateTime.Now.ToFileTime()}" + filename);
-            
-            // 读取文件操作
-            ExcelRead excelRead = new ExcelRead();
-            excelRead.Attribute = list1;
-            excelRead.ExcelHeadLineData = map1;
-            excelRead.InputExcelPath = savePath;
-            excelRead.ErroPutExcelPath = ErroFilePath;
-
-
-
-            DataTable dataTable = excelRead.LoadExcel();
-            
-
-            for (int i = 0; i < dataTable.Rows.Count; i++)
+            try
             {
-                DataRow dl = dataTable.Rows[i];
-                //string Time = dl["project_time"].ToString();
-                //char[] lis = new char[Time.Length - 2];
-                //int count = 0;
-                //for(int j =1; j < Time.Length-1; j++)
-                //{
-                //    lis[count] = Time[j];
-                //}
+                // 读取文件操作
+                ExcelRead excelRead = new ExcelRead();
+                excelRead.Attribute = list1;
+                excelRead.ExcelHeadLineData = map1;
+                excelRead.InputExcelPath = savePath;
+                excelRead.ErroPutExcelPath = ErroFilePath;
 
-                string values = dl["project_time"].ToString();
 
-                //string[] vals = values.Split('-');
-                //string one = vals[1];
-                //string two = vals[1].Remove(vals[1].Length-1);
-                //string three = vals[2];
-                //string ans = one +'-' +two +'-'+ three;
 
-                if (
-                !DAL.ProjectCompletion.KindsInsert(
-                     dl["project_name"].ToString(),
-                     dl["project_level"].ToString(),
-                     dl["project_number"].ToString(),
-                     dl["project_category"].ToString(),
-                     dl["project_youth"].ToString(),
-                     dl["project_research"].ToString(),
-                     dl["project_view"].ToString(),
-                     dl["project_References"].ToString(),
-                     dl["project_time"].ToString(),
-                     //new string(lis),
-                     dl["project_form"].ToString(),
-                     dl["project_opinion"].ToString(),
-                     dl["project_expert_view"].ToString(),
-                     dl["project_approval_view"].ToString()
-                     ))
+                DataTable dataTable = excelRead.LoadExcel();
+
+
+                for (int i = 0; i < dataTable.Rows.Count; i++)
                 {
-                    Models.Massage massage = new Massage();
-                    massage.HeadColor = "Red";
-                    massage.HeadText = "第" + i + "插入异常，可能数据依然不符合要求，请仔细检查该行数据并尝试重新插入";
+                    DataRow dl = dataTable.Rows[i];
+                    //string Time = dl["project_time"].ToString();
+                    //char[] lis = new char[Time.Length - 2];
+                    //int count = 0;
+                    //for(int j =1; j < Time.Length-1; j++)
+                    //{
+                    //    lis[count] = Time[j];
+                    //}
+
+                    string values = dl["project_time"].ToString();
+
+                    //string[] vals = values.Split('-');
+                    //string one = vals[1];
+                    //string two = vals[1].Remove(vals[1].Length-1);
+                    //string three = vals[2];
+                    //string ans = one +'-' +two +'-'+ three;
+
+                    if (
+                    !DAL.ProjectCompletion.KindsInsert(
+                         dl["project_name"].ToString(),
+                         dl["project_level"].ToString(),
+                         dl["project_number"].ToString(),
+                         dl["project_category"].ToString(),
+                         dl["project_youth"].ToString(),
+                         dl["project_research"].ToString(),
+                         dl["project_view"].ToString(),
+                         dl["project_References"].ToString(),
+                         dl["project_time"].ToString(),
+                         //new string(lis),
+                         dl["project_form"].ToString(),
+                         dl["project_opinion"].ToString(),
+                         dl["project_expert_view"].ToString(),
+                         dl["project_approval_view"].ToString()
+                         ))
+                    {
+                        Models.Massage massage = new Massage();
+                        massage.HeadColor = "Red";
+                        massage.HeadText = "第" + i + "插入异常，可能数据依然不符合要求，请仔细检查该行数据并尝试重新插入";
+                    }
+
+
                 }
-                
+
+                // 加载导入预览
+                List<string> list = new List<string>();
+                list.Add("project_name");
+                list.Add("project_level");
+                list.Add("project_number");
+                list.Add("project_category");
+                list.Add("project_youth");
+                list.Add("project_time");
+                list.Add("project_form");
+
+                Dictionary<string, string> map = new Dictionary<string, string>();
+                map.Add("project_name", "项目名称");
+                map.Add("project_level", "项目评级");
+                map.Add("project_number", "立项编号");
+                map.Add("project_category", "项目类别");
+                map.Add("project_youth", "是否符合青年项目申报条件");
+                map.Add("project_time", "项目完成时间");
+                map.Add("project_form", "成果形式");
+
+                TableAttribute tableAttribute = new TableAttribute(
+                    "project_number",
+                    "项目信息",
+                    map,
+                    list
+                    );
+
+                MyTable NewLine = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
+                NewLine.TableBase = tableAttribute;
+                NewLine.DataCollection = dataTable;
+                NewLine.Height = 350;
+                NewLine.TableName = "ProjectApplications";
+                PlaceHolder2.Controls.Clear();
+                PlaceHolder2.Controls.Add(NewLine);
+
+                System.IO.File.Delete(savePath);
+            }
+            catch (System.Data.SqlClient.SqlException error)
+            {
+                Massage message = new Massage();
+
+                message.MassageText ="系统出现严重异常，请携带报错截图寻找工作人员！"+ error.Message;
+                message.HeadColor = "Red";
+                message.HeadText = "ERROR";
             }
 
 
 
 
-            // 加载导入预览
-            List<string> list = new List<string>();
-            list.Add("project_name");
-            list.Add("project_level");
-            list.Add("project_number");
-            list.Add("project_category");
-            list.Add("project_youth");
-            list.Add("project_time");
-            list.Add("project_form");
-
-            Dictionary<string, string> map = new Dictionary<string, string>();
-            map.Add("project_name", "项目名称");
-            map.Add("project_level", "项目评级");
-            map.Add("project_number", "立项编号");
-            map.Add("project_category", "项目类别");
-            map.Add("project_youth", "是否符合青年项目申报条件");
-            map.Add("project_time", "项目完成时间");
-            map.Add("project_form", "成果形式");
-
-            TableAttribute tableAttribute = new TableAttribute(
-                "project_number",
-                "项目信息",
-                map,
-                list
-                );
-
-            MyTable NewLine = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
-            NewLine.TableBase = tableAttribute;
-            NewLine.DataCollection = dataTable;
-            NewLine.Height = 350;
-            NewLine.TableName = "ProjectApplications";
-            PlaceHolder2.Controls.Clear();
-            PlaceHolder2.Controls.Add(NewLine);
-
-            System.IO.File.Delete(savePath);
+           
 
 
         }

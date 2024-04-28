@@ -8,6 +8,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using DAL;
+using System.Collections;
+using NPOI.XSSF.Streaming.Values;
 
 namespace Models.PageDataSor
 {
@@ -20,16 +22,26 @@ namespace Models.PageDataSor
         private static MetarnetRegex instance = null;
 
         //CacheGenericity<List<string>> cacheGenericity = new CacheGenericity<List<string>>();
+        //static List<string> lists = new List<string>();
+        //static Hashtable hashtable = new Hashtable();
+        static HashSet<string> hashset = new HashSet<string>();
 
         
         public static void Give()
         {
-            CacheGenericity.Data["立项编号"]  = new List<string>();
+
+            //CacheGenericity<List<string>>.Data["立项编号"]  = new List<string>();
+            
             DataSet rowAfforts = DAL.DBHelper.Query("select project_number from ProjectApplications");
             DataTable dt = rowAfforts.Tables[0];
+            //int count = 0;
             foreach(DataRow item in dt.Rows)
             {
-                CacheGenericity.Data["立项编号"].Add(item[0].ToString());
+                hashset.Add(item[0].ToString());
+                //CacheGenericity<List<string>>.Data["立项编号"].Add(item[0].ToString());
+                //lists.Add(item[0].ToString());
+                //hashtable.Add(count,item[0].ToString());
+                //count++;
             }
         }
 
@@ -63,44 +75,7 @@ namespace Models.PageDataSor
                         return "Success";
                     }
                     break;
-                case "立项编号":
-                    if (Data.Length != 12)
-                    {
-                        return $"(立项编号的长度不合法，应为五位大写字母加七位整数){Data}"; 
-                    }
-                    else
-                    {
-                        for(int i = 0; i < Data.Length; i++)
-                        {
-                            if (i < 5)
-                            {
-                                if (Data[i] < 65 && Data[i] > 90)
-                                {
-                                    return $"(前五位有非A-Z的大写字母){Data}";
-                                }
-                            }
-                            else
-                            {
-                                if(Data[i] < 49 || Data[i] > 57)
-                                {
-                                    return  $"(第六到七位有非0-9的整数数字){Data}";
-                                }
-                            }
-                        }
-                        for(int i =0;i< CacheGenericity.Data["立项编号"].Count; i++)
-                        {
-                            if (Data == CacheGenericity.Data["立项编号"][i])
-                            {
-                                return $"(输入的立项编号合法，但已经存在，请重新输入){Data}";
-                            }
-                        }
-
-                        CacheGenericity.Data["立项编号"].Add(Data);
-
-                        return "Success";
-
-                    }
-                    break;
+                
                 case "项目类别":
                     if(Data.Length > 50)
                     {
@@ -201,7 +176,65 @@ namespace Models.PageDataSor
                         return "Success";
                     }
                     break;
+                case "立项编号":
+                    if (Data.Length != 12)
+                    {
+                        return $"(立项编号的长度不合法，应为五位大写字母加七位整数){Data}";
+                    }
+                    else
+                    {
+                        for (int i = 0; i < Data.Length; i++)
+                        {
+                            if (i < 5)
+                            {
+                                if (Data[i] < 65 && Data[i] > 90)
+                                {
+                                    return $"(前五位有非A-Z的大写字母){Data}";
+                                }
+                            }
+                            else
+                            {
+                                if (Data[i] < 49 || Data[i] > 57)
+                                {
+                                    return $"(第六到七位有非0-9的整数数字){Data}";
+                                }
+                            }
+                        }
+                        if (hashset.Contains(Data))
+                        {
+                            return $"(输入的立项编号合法，但已经存在，请重新输入){Data}";
+                        }
+                        hashset.Add(Data);
 
+                        //if (hashtable.ContainsValue(Data))
+                        //{
+                        //    return $"(输入的立项编号合法，但已经存在，请重新输入){Data}";
+                        //}
+
+                        //hashtable.Add(hashtable.Count, Data);
+
+                        //for (int i = 0; i < lists.Count; i++)
+                        //{
+                        //    if (Data == lists[i])
+                        //    {
+                        //        return $"(输入的立项编号合法，但已经存在，请重新输入){Data}";
+                        //    }
+                        //}
+                        //lists.Add(Data);
+                        //for(int i =0;i< CacheGenericity<List<string>>.Data["立项编号"].Count; i++)
+                        //{
+                        //    if (Data == CacheGenericity<List<string>>.Data["立项编号"][i])
+                        //    {
+                        //        return $"(输入的立项编号合法，但已经存在，请重新输入){Data}";
+                        //    }
+                        //}
+
+                        //CacheGenericity<List<string>>.Data["立项编号"].Add(Data);
+
+                        return "Success";
+
+                    }
+                    break;
             }
 
 
