@@ -223,6 +223,7 @@
     <Content Include="ASCX\Table\ForDataTable\HeadLine.ascx" />
     <Content Include="ASCX\Table\ForDataTable\MyButton.ascx" />
     <Content Include="ASCX\Table\TableWithDelegate.ascx" />
+    <Content Include="functionPage\QF-ChildPage\PeopleInform.aspx" />
     <!-- 样式控制文件 -->
     <Content Include="JS\*" />
     <Content Include="assets\brand\bootstrap-logo-white.svg" />
@@ -688,6 +689,13 @@
     </Compile>
     <Compile Include="functionPage\QF-ChildPage\addProgram.aspx.designer.cs">
       <DependentUpon>addProgram.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="functionPage\QF-ChildPage\PeopleInform.aspx.cs">
+      <DependentUpon>PeopleInform.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="functionPage\QF-ChildPage\PeopleInform.aspx.designer.cs">
+      <DependentUpon>PeopleInform.aspx</DependentUpon>
     </Compile>
     <Compile Include="functionPage\QF-ChildPage\ProgramDataShow.aspx.cs">
       <DependentUpon>ProgramDataShow.aspx</DependentUpon>
