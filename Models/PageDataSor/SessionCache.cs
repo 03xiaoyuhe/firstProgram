@@ -11,6 +11,10 @@ namespace Models.PageDataSor.ProgremData
 {
     public class SessionCache : UserControl// 创建一个UserControl 对象来存放缓存
     {
+    public class SessionCache<T> : UserControl where T : class, new()
+    {
+        public SessionCache(): base() { }
+
         /// <summary>
         /// 缓存机制泛型类
         /// </summary>
@@ -20,6 +24,8 @@ namespace Models.PageDataSor.ProgremData
         {
             get
             { 
+            {
+                if (Session[index] == null) Session[index] = new T();
                 return Session[index] as T;
             }
             set
