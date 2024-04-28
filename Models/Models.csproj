@@ -112,6 +112,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataRowToClass\ParticipantInform.cs" />
+    <Compile Include="DataRowToClass\ProgressProject.cs" />
     <Compile Include="FileRemoveList.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
