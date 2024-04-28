@@ -1,4 +1,5 @@
 ﻿using NPOI.SS.Formula.Functions;
+using NPOI.XSSF.Streaming.Values;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,8 @@ using System.Web.UI;
 
 namespace Models.PageDataSor.ProgremData
 {
-    public class SessionCache<T> : UserControl where T : class
+    public class SessionCache : UserControl// 创建一个UserControl 对象来存放缓存
     {
-
         /// <summary>
         /// 缓存机制泛型类
         /// </summary>
@@ -19,7 +19,7 @@ namespace Models.PageDataSor.ProgremData
         public T this[string index]
         {
             get
-            {
+            { 
                 return Session[index] as T;
             }
             set
