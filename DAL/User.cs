@@ -244,7 +244,25 @@ namespace DAL
                 new SqlParameter ("@UserEmail" ,SqlDbType.NVarChar) {Value = UserEmail},
             };
 
-            int 
+            int rowsAfforts = DBHelper.ExecuteSql(query, parameters);
+
+            return rowsAfforts > 0;
+        }
+
+
+        void P()
+        {
+            //利用字典存datatime 与 项目id     id为键，时间为值
+            Dictionary<string, HashSet<string>> keyValuePairs = new Dictionary<string, HashSet<string>>();
+            DataSet dataTable = DBHelper.Query("select project_id,project_time from ProjectApplications where  \r\nProjectApplications.project_id in  \r\n(select ProjectId from ProjectMember where IsLeader = 0) order by project_id asc;");
+            DataTable dt = dataTable.Tables[0];
+            foreach(DataRow row in dt.Rows)
+            {
+                HashSet<string> hashset = new HashSet<string>();
+                hashset.Add (row[1].ToString());
+                keyValuePairs.Add(row[0].ToString(), hashset);
+            }
+
 
         }
 
