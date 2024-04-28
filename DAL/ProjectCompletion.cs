@@ -355,6 +355,7 @@ namespace DAL
             };
 
             int rowsAffected = DBHelper.ExecuteSql(query, parameters);
+
             return rowsAffected > 0;
 
         }

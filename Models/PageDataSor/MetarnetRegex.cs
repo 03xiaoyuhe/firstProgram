@@ -235,6 +235,154 @@ namespace Models.PageDataSor
 
                     }
                     break;
+                case "姓名":
+                    if (Data.Length > 20)
+                    {
+                        return $"(填写过长，请控制在20字以内){Data}";
+                    }
+                    else
+                    {
+                        return "Success";
+                    }
+                    break;
+                case "生日":
+                    try
+                    {
+                        DateTime.Parse(Data);
+                        return "Success";
+                    }
+                    catch
+                    {
+                        return $"(不是正确的日期格式，请按照年-月-日填写){Data}";
+                    }
+                    break;
+                case "性别":
+                    if (Data.Length > 1)
+                    {
+                        return $"(请填写男或女，您填的性别有点太长了){Data}";
+                    }
+                    else
+                    {
+                        return "Success";
+                    }
+                    break;
+                case "职务":
+                    if (Data.Length > 20)
+                    {
+                        return $"(填写过长，请控制在20字以内){Data}";
+                    }
+                    else
+                    {
+                        return "Success";
+                    }
+
+                    break;
+                case "职称":
+                    if (Data.Length > 20)
+                    {
+                        return $"(填写过长，请控制在20字以内){Data}";
+                    }
+                    else
+                    {
+                        return "Success";
+                    }
+
+                    break;
+                case "专业":
+                    if (Data.Length > 30)
+                    {
+                        return $"(填写过长，请控制在30字以内){Data}";
+                    }
+                    else
+                    {
+                        return "Success";
+                    }
+
+                    break;
+                case "研究专长":
+                    if (Data.Length > 50)
+                    {
+                        return $"(填写过长，请控制在50字以内){Data}";
+                    }
+                    else
+                    {
+                        return "Success";
+                    }
+
+                    break;
+                case "现从事职业":
+                    if (Data.Length > 30)
+                    {
+                        return $"(填写过长，请控制在30字以内){Data}";
+                    }
+                    else
+                    {
+                        return "Success";
+                    }
+
+                    break;
+                case "工作单位":
+                    if (Data.Length > 20)
+                    {
+                        return $"(填写过长，请控制在20字以内){Data}";
+                    }
+                    else
+                    {
+                        return "Success";
+                    }
+
+                    break;
+                case "通信地址":
+                    if (Data.Length > 20)
+                    {
+                        return $"(填写过长，请控制在20字以内){Data}";
+                    }
+                    else
+                    {
+                        return "Success";
+                    }
+
+                    break;
+                    //////////////todo
+                case "办公电话":
+                    if (Data.Length > 20)
+                    {
+                        return $"(填写过长，请控制在20字以内){Data}";
+                    }
+                    else
+                    {
+                        return "Success";
+                    }
+
+                    break;
+                case "电话号码":
+                    if (Data.Length > 20)
+                    {
+                        return $"(填写过长，请控制在20字以内){Data}";
+                    }
+                    else
+                    {
+                        return "Success";
+                    }
+
+                    break;
+                case "邮箱":
+                    if (Data.Length > 20)
+                    {
+                        return $"(填写过长，请控制在20字以内){Data}";
+                    }
+                    else
+                    {
+                        return "Success";
+                    }
+                    break;
+
+
+
+
+
+
+
             }
 
 
