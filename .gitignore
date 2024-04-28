@@ -5,7 +5,7 @@
 
 
 ## 排除uploadfiles文件夹下的文件
-uploadfiles/*
+*.xls[x]
 
 # User-specific files
 *.rsuser
