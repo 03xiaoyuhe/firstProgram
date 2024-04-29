@@ -11,6 +11,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebForm.ASCX.Table;
+using Models.DataRowToClass;
 
 namespace WebForm.functionPage.QF_ChildPage
 {
@@ -39,36 +40,39 @@ namespace WebForm.functionPage.QF_ChildPage
             //UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
             //MetarnetRegex.Give();
 
+
+
             list1 = new Dictionary<string, bool>();
-            list1.Add("项目名称", true);
-            list1.Add("项目评级", true);
-            list1.Add("立项编号", true);
-            list1.Add("项目类别", true);
-            list1.Add("是否符合青年项目申报条件", true);
-            list1.Add("本项目国内外研究现状述评", true);
-            list1.Add("本项目研究的主要观点", true);
-            list1.Add("前期研究成果", true);
-            list1.Add("项目完成时间", true);
-            list1.Add("成果形式", true);
-            list1.Add("项目单位评审意见", true);
-            list1.Add("专家评审", true);
-            list1.Add("项目审批意见", true);
+            list1.Add("姓名", true);
+            list1.Add("生日", true);
+            list1.Add("性别", true);
+            list1.Add("职务", true);
+            list1.Add("职称", true);
+            list1.Add("专业", false);
+            list1.Add("研究专长", false);
+            list1.Add("现从事职业", false);
+            list1.Add("工作单位", false);
+            list1.Add("通信地址", false);
+            list1.Add("办公电话", false);
+            list1.Add("电话号码", false);
+            list1.Add("邮箱", false);
+
 
 
             map1 = new Dictionary<string, string>();
-            map1.Add("项目名称", "project_name");
-            map1.Add("项目评级", "project_level");
-            map1.Add("立项编号", "project_number");
-            map1.Add("项目类别", "project_category");
-            map1.Add("是否符合青年项目申报条件", "project_youth");
-            map1.Add("本项目国内外研究现状述评", "project_research");
-            map1.Add("本项目研究的主要观点", "project_view");
-            map1.Add("前期研究成果", "project_References");
-            map1.Add("项目完成时间", "project_time");
-            map1.Add("成果形式", "project_form");
-            map1.Add("项目单位评审意见", "project_opinion");
-            map1.Add("专家评审", "project_expert_view");
-            map1.Add("项目审批意见", "project_approval_view");
+            map1.Add("姓名", "UseName");
+            map1.Add("生日", "UserDate");
+            map1.Add("性别", "UserSex");
+            map1.Add("职务", "UserPosition");
+            map1.Add("职称", "UserTitle");
+            map1.Add("专业", "UserSpeciality");
+            map1.Add("研究专长", "UserResearch");
+            map1.Add("现从事职业", "UserResearch_now");
+            map1.Add("工作单位", "UserWorkplace");
+            map1.Add("通信地址", "UserAddress");
+            map1.Add("办公电话", "UserOffice_number");
+            map1.Add("电话号码", "UserNumber");
+            map1.Add("邮箱", "UserEmail");
         }
 
 
@@ -117,70 +121,69 @@ namespace WebForm.functionPage.QF_ChildPage
                 for (int i = 0; i < dataTable.Rows.Count; i++)
                 {
                     DataRow dl = dataTable.Rows[i];
-                    //string Time = dl["project_time"].ToString();
-                    //char[] lis = new char[Time.Length - 2];
-                    //int count = 0;
-                    //for(int j =1; j < Time.Length-1; j++)
-                    //{
-                    //    lis[count] = Time[j];
-                    //}
-
-                    string values = dl["project_time"].ToString();
-
-                    //string[] vals = values.Split('-');
-                    //string one = vals[1];
-                    //string two = vals[1].Remove(vals[1].Length-1);
-                    //string three = vals[2];
-                    //string ans = one +'-' +two +'-'+ three;
-
+                    ParticipantInform participantInform = new ParticipantInform();
+                    participantInform.DataTable = dl.Table;
                     if (
-                    !DAL.ProjectCompletion.KindsInsert(
-                         dl["project_name"].ToString(),
-                         dl["project_level"].ToString(),
-                         dl["project_number"].ToString(),
-                         dl["project_category"].ToString(),
-                         dl["project_youth"].ToString(),
-                         dl["project_research"].ToString(),
-                         dl["project_view"].ToString(),
-                         dl["project_References"].ToString(),
-                         dl["project_time"].ToString(),
-                         //new string(lis),
-                         dl["project_form"].ToString(),
-                         dl["project_opinion"].ToString(),
-                         dl["project_expert_view"].ToString(),
-                         dl["project_approval_view"].ToString()
+                    !DAL.User.KindsInsert(
+                        participantInform.PeoName,
+                        participantInform.PeoDate,
+                        participantInform.PeoSex,
+                        participantInform.PeoPosition,
+                        participantInform.PeoTitle,
+                        participantInform.PeoSpeciality,
+                        participantInform.PeoResearch,
+                        participantInform.PeoReNow,
+                        participantInform.PeoWork,
+                        participantInform.ProAddress,
+                        participantInform.PeoOffNum,
+                        participantInform.PeoNumber,
+                        participantInform.ProEmail
+                         //dl["UseName"].ToString(),
+                         //dl["UserDate"].ToString(),
+                         //dl["UserSex"].ToString(),
+                         //dl["UserPosition"].ToString(),
+                         //dl["UserTitle"].ToString(),
+                         //dl["UserSpeciality"].ToString(),
+                         //dl["UserResearch"].ToString(),
+                         //dl["UserResearch_now"].ToString(),
+                         //dl["UserWorkplace"].ToString(),
+                         //dl["UserAddress"].ToString(),
+                         //dl["UserOffice_number"].ToString(),
+                         //dl["UserNumber"].ToString(),
+                         //dl["UserEmail"].ToString()
                          ))
                     {
                         Models.Massage massage = new Massage();
                         massage.HeadColor = "Red";
-                        massage.HeadText = "第" + i + "插入异常，可能数据依然不符合要求，请仔细检查该行数据并尝试重新插入";
+                        massage.MassageText = "第" + i + "插入异常，可能数据依然不符合要求，请仔细检查该行数据并尝试重新插入";
+                        massage.HeadText = "ERROR";
+                        massage.PostMassage();
                     }
 
 
                 }
 
+
+
                 // 加载导入预览
                 List<string> list = new List<string>();
-                list.Add("project_name");
-                list.Add("project_level");
-                list.Add("project_number");
-                list.Add("project_category");
-                list.Add("project_youth");
-                list.Add("project_time");
-                list.Add("project_form");
+                list.Add("UseName");
+                list.Add("UserSex");
+                list.Add("UserDate");
+                list.Add("UserPosition");
+                list.Add("UserTitle");
+
 
                 Dictionary<string, string> map = new Dictionary<string, string>();
-                map.Add("project_name", "项目名称");
-                map.Add("project_level", "项目评级");
-                map.Add("project_number", "立项编号");
-                map.Add("project_category", "项目类别");
-                map.Add("project_youth", "是否符合青年项目申报条件");
-                map.Add("project_time", "项目完成时间");
-                map.Add("project_form", "成果形式");
-
+                map.Add("UseName", "姓名");
+                map.Add("UserSex", "性别");
+                map.Add("UserDate", "生日");
+                map.Add("UserPosition", "职务");
+                map.Add("UserTitle", "职称");
+               
                 TableAttribute tableAttribute = new TableAttribute(
-                    "project_number",
-                    "项目信息",
+                    "UseName",
+                    "人员信息",
                     map,
                     list
                     );
@@ -189,7 +192,7 @@ namespace WebForm.functionPage.QF_ChildPage
                 NewLine.TableBase = tableAttribute;
                 NewLine.DataCollection = dataTable;
                 NewLine.Height = 350;
-                NewLine.TableName = "ProjectApplications";
+                NewLine.TableName = "UserInfor";
                 PlaceHolder2.Controls.Clear();
                 PlaceHolder2.Controls.Add(NewLine);
 
@@ -202,13 +205,8 @@ namespace WebForm.functionPage.QF_ChildPage
                 message.MassageText = "系统出现严重异常，请携带报错截图寻找工作人员！" + error.Message;
                 message.HeadColor = "Red";
                 message.HeadText = "ERROR";
+                message.PostMassage();
             }
-
-
-
-
-
-
 
         }
 

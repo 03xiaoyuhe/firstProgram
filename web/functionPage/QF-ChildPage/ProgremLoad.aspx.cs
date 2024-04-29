@@ -50,7 +50,7 @@ namespace WebForm.functionPage.QF_ChildPage
             list1.Add("立项编号", true);
             list1.Add("项目类别", true);
             list1.Add("是否符合青年项目申报条件", true);
-            list1.Add("本项目国内外研究现状述评", false);
+            list1.Add("本项目国内外研究现状述评", true);
             list1.Add("本项目研究的主要观点", true);
             list1.Add("前期研究成果", true);
             list1.Add("项目完成时间", true);
@@ -126,26 +126,8 @@ namespace WebForm.functionPage.QF_ChildPage
                     DataRow dl = dataTable.Rows[i];
                     ProgressProject progressProject = new ProgressProject();
                     progressProject.DataTable = dl.Table;
-
-                    
-
-
-                    //string Time = dl["project_time"].ToString();
-                    //char[] lis = new char[Time.Length - 2];
-                    //int count = 0;
-                    //for(int j =1; j < Time.Length-1; j++)
-                    //{
-                    //    lis[count] = Time[j];
-                    //}
-
-                    //string values = dl["project_time"].ToString();
-
-                    //string[] vals = values.Split('-');
-                    //string one = vals[1];
-                    //string two = vals[1].Remove(vals[1].Length-1);
-                    //string three = vals[2];
-                    //string ans = one +'-' +two +'-'+ three;
-
+                    progressProject.DataTable = dl.Table;
+                   
                     if (
                     !DAL.ProjectCompletion.KindsInsert(
                          progressProject.ProName, //dl["project_name"].ToString(), 
@@ -165,7 +147,9 @@ namespace WebForm.functionPage.QF_ChildPage
                     {
                         Models.Massage massage = new Massage();
                         massage.HeadColor = "Red";
-                        massage.HeadText = "第" + i + "插入异常，可能数据依然不符合要求，请仔细检查该行数据并尝试重新插入";
+                        massage.HeadText = "ERROR";
+                        massage.MassageText = "第" + i + "插入异常，可能数据依然不符合要求，请仔细检查该行数据并尝试重新插入";
+                        massage.PostMassage();
                     }
 
 
@@ -217,14 +201,15 @@ namespace WebForm.functionPage.QF_ChildPage
                 message.MassageText = erro.Message;
                 message.HeadColor = "Red";
                 message.HeadText = "ERROR";
+                message.PostMassage();
             }
             catch (System.Data.SqlClient.SqlException error)
             {
                 Massage message = new Massage();
-
                 message.MassageText ="系统出现严重异常，请携带报错截图寻找工作人员！"+ error.Message;
                 message.HeadColor = "Red";
                 message.HeadText = "ERROR";
+                message.PostMassage();
             }
 
 
