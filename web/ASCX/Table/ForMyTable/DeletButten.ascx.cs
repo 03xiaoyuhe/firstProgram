@@ -8,8 +8,6 @@ namespace WebForm.ASCX.Table
     public partial class DeletButten : ControlBase
     {
 
-        #region 参数成员
-
 
 
         #region 自定义事件

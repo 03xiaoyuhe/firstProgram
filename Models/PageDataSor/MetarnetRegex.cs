@@ -205,36 +205,12 @@ namespace Models.PageDataSor
                             return $"(输入的立项编号合法，但已经存在，请重新输入){Data}";
                         }
                         hashset.Add(Data);
-
-                        //if (hashtable.ContainsValue(Data))
-                        //{
-                        //    return $"(输入的立项编号合法，但已经存在，请重新输入){Data}";
-                        //}
-
-                        //hashtable.Add(hashtable.Count, Data);
-
-                        //for (int i = 0; i < lists.Count; i++)
-                        //{
-                        //    if (Data == lists[i])
-                        //    {
-                        //        return $"(输入的立项编号合法，但已经存在，请重新输入){Data}";
-                        //    }
-                        //}
-                        //lists.Add(Data);
-                        //for(int i =0;i< CacheGenericity<List<string>>.Data["立项编号"].Count; i++)
-                        //{
-                        //    if (Data == CacheGenericity<List<string>>.Data["立项编号"][i])
-                        //    {
-                        //        return $"(输入的立项编号合法，但已经存在，请重新输入){Data}";
-                        //    }
-                        //}
-
-                        //CacheGenericity<List<string>>.Data["立项编号"].Add(Data);
-
+                      
                         return "Success";
 
                     }
                     break;
+
                 case "姓名":
                     if (Data.Length > 20)
                     {
@@ -245,6 +221,7 @@ namespace Models.PageDataSor
                         return "Success";
                     }
                     break;
+
                 case "生日":
                     try
                     {
@@ -256,6 +233,7 @@ namespace Models.PageDataSor
                         return $"(不是正确的日期格式，请按照年-月-日填写){Data}";
                     }
                     break;
+
                 case "性别":
                     if (Data.Length > 1)
                     {
@@ -266,6 +244,7 @@ namespace Models.PageDataSor
                         return "Success";
                     }
                     break;
+
                 case "职务":
                     if (Data.Length > 20)
                     {
@@ -277,6 +256,7 @@ namespace Models.PageDataSor
                     }
 
                     break;
+
                 case "职称":
                     if (Data.Length > 20)
                     {
@@ -310,6 +290,7 @@ namespace Models.PageDataSor
                     }
 
                     break;
+
                 case "现从事职业":
                     if (Data.Length > 30)
                     {
@@ -321,6 +302,7 @@ namespace Models.PageDataSor
                     }
 
                     break;
+
                 case "工作单位":
                     if (Data.Length > 20)
                     {
@@ -343,6 +325,7 @@ namespace Models.PageDataSor
                     }
 
                     break;
+
                     //////////////todo
                 case "办公电话":
                     if (Data.Length > 20)
@@ -355,17 +338,27 @@ namespace Models.PageDataSor
                     }
 
                     break;
+
                 case "电话号码":
-                    if (Data.Length > 20)
+                    if (Data.Length > 11)
                     {
-                        return $"(填写过长，请控制在20字以内){Data}";
+                        return $"(填写过长，请符合电话号码的规范控制在11个整数内){Data}";
                     }
                     else
                     {
-                        return "Success";
+                        if (IsMobilePhone(Data))
+                        {
+                            return "Success";
+                        }
+                        else
+                        {
+                            return $"(填写的电话号码不符合规范，请填11位以1开头的数字。){Data}";
+                        }
+                        
                     }
 
                     break;
+
                 case "邮箱":
                     if (Data.Length > 20)
                     {
@@ -373,15 +366,16 @@ namespace Models.PageDataSor
                     }
                     else
                     {
-                        return "Success";
+                        if (IsEmail(Data))
+                        {
+                            return "Success";
+                        }
+                        else
+                        {
+                            return  $"(填写的邮箱不规范，请检查该邮箱的格式){Data}";
+                        }
                     }
                     break;
-
-
-
-
-
-
 
             }
 
@@ -432,7 +426,7 @@ namespace Models.PageDataSor
             /// <returns></returns>
             public static bool IsMobilePhone(string input)
             {
-                Regex regex = new Regex("^13\\d{9}$");
+                Regex regex = new Regex("^1\\d{10}$");
                 return regex.IsMatch(input);
 
             }

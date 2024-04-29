@@ -84,6 +84,7 @@ namespace Models.PageDataSor
         /// <param name="ErroRow">错误数据行数</param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
+        /// 文件“F:\CloneFromGitHub\firstProgram\firstProgram\web\uploadfiles\erro133588353873406294ErroExcel (1).xlsx”正由另一进程使用，因此该进程无法访问此文件。
         public DataTable LoadExcel(out int ErroRow)
         {
             ISheet sheet = null;

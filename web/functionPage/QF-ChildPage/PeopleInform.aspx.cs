@@ -11,6 +11,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebForm.ASCX.Table;
+using Models.DataRowToClass;
 
 namespace WebForm.functionPage.QF_ChildPage
 {
@@ -120,43 +121,43 @@ namespace WebForm.functionPage.QF_ChildPage
                 for (int i = 0; i < dataTable.Rows.Count; i++)
                 {
                     DataRow dl = dataTable.Rows[i];
-                    //string Time = dl["project_time"].ToString();
-                    //char[] lis = new char[Time.Length - 2];
-                    //int count = 0;
-                    //for(int j =1; j < Time.Length-1; j++)
-                    //{
-                    //    lis[count] = Time[j];
-                    //}
-
-                    //string values = dl["project_time"].ToString();
-
-                    //string[] vals = values.Split('-');
-                    //string one = vals[1];
-                    //string two = vals[1].Remove(vals[1].Length-1);
-                    //string three = vals[2];
-                    //string ans = one +'-' +two +'-'+ three;
-
+                    ParticipantInform participantInform = new ParticipantInform();
+                    participantInform.DataTable = dl.Table;
                     if (
                     !DAL.User.KindsInsert(
-                         dl["UseName"].ToString(),
-                         dl["UserDate"].ToString(),
-                         dl["UserSex"].ToString(),
-                         dl["UserPosition"].ToString(),
-                         dl["UserTitle"].ToString(),
-                         dl["UserSpeciality"].ToString(),
-                         dl["UserResearch"].ToString(),
-                         dl["UserResearch_now"].ToString(),
-                         dl["UserWorkplace"].ToString(),
-                         dl["UserAddress"].ToString(),
-                         //new string(lis),
-                         dl["UserOffice_number"].ToString(),
-                         dl["UserNumber"].ToString(),
-                         dl["UserEmail"].ToString()
+                        participantInform.PeoName,
+                        participantInform.PeoDate,
+                        participantInform.PeoSex,
+                        participantInform.PeoPosition,
+                        participantInform.PeoTitle,
+                        participantInform.PeoSpeciality,
+                        participantInform.PeoResearch,
+                        participantInform.PeoReNow,
+                        participantInform.PeoWork,
+                        participantInform.ProAddress,
+                        participantInform.PeoOffNum,
+                        participantInform.PeoNumber,
+                        participantInform.ProEmail
+                         //dl["UseName"].ToString(),
+                         //dl["UserDate"].ToString(),
+                         //dl["UserSex"].ToString(),
+                         //dl["UserPosition"].ToString(),
+                         //dl["UserTitle"].ToString(),
+                         //dl["UserSpeciality"].ToString(),
+                         //dl["UserResearch"].ToString(),
+                         //dl["UserResearch_now"].ToString(),
+                         //dl["UserWorkplace"].ToString(),
+                         //dl["UserAddress"].ToString(),
+                         //dl["UserOffice_number"].ToString(),
+                         //dl["UserNumber"].ToString(),
+                         //dl["UserEmail"].ToString()
                          ))
                     {
                         Models.Massage massage = new Massage();
                         massage.HeadColor = "Red";
-                        massage.HeadText = "第" + i + "插入异常，可能数据依然不符合要求，请仔细检查该行数据并尝试重新插入";
+                        massage.MassageText = "第" + i + "插入异常，可能数据依然不符合要求，请仔细检查该行数据并尝试重新插入";
+                        massage.HeadText = "ERROR";
+                        massage.PostMassage();
                     }
 
 
@@ -204,13 +205,8 @@ namespace WebForm.functionPage.QF_ChildPage
                 message.MassageText = "系统出现严重异常，请携带报错截图寻找工作人员！" + error.Message;
                 message.HeadColor = "Red";
                 message.HeadText = "ERROR";
+                message.PostMassage();
             }
-
-
-
-
-
-
 
         }
 
