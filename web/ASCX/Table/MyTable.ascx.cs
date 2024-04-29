@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Web.UI.WebControls;
 
 namespace WebForm.ASCX.Table
 {
@@ -120,6 +121,22 @@ namespace WebForm.ASCX.Table
 
         #region 其他 如控制性属性
 
+        /// <summary>
+        /// 绑定功能列的组件
+        /// </summary>
+        string controlASCX;
+        public string ControlASCX
+        {
+            get
+            {
+                return controlASCX;
+            }
+            set
+            {
+                controlASCX = value;
+            }
+        }
+
         int Count
         {
             get
@@ -172,6 +189,7 @@ namespace WebForm.ASCX.Table
                     NewLine.ID = ID + String.Format("_{0}", i);
                     NewLine.DataForALine = DataCollection.Rows[i];
                     NewLine.TheLineDateForTable = TableBase;
+                    NewLine.ControlASCX = ControlASCX;
                     BodyHolder.Controls.Add(NewLine);
                     Count++;
                 }

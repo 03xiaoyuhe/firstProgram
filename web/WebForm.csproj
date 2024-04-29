@@ -222,6 +222,7 @@
     <Content Include="ASCX\Table\ForDataTable\HeadCell.ascx" />
     <Content Include="ASCX\Table\ForDataTable\HeadLine.ascx" />
     <Content Include="ASCX\Table\ForDataTable\MyButton.ascx" />
+    <Content Include="ASCX\Table\ForMyTable\ControlBase.ascx" />
     <Content Include="ASCX\Table\TableWithDelegate.ascx" />
     <Content Include="functionPage\QF-ChildPage\PeopleInform.aspx" />
     <!-- 样式控制文件 -->
@@ -590,6 +591,13 @@
     </Compile>
     <Compile Include="ASCX\Table\ForMyTable\CellForHead.ascx.designer.cs">
       <DependentUpon>CellForHead.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ASCX\Table\ForMyTable\ControlBase.ascx.cs">
+      <DependentUpon>ControlBase.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASCX\Table\ForMyTable\ControlBase.ascx.designer.cs">
+      <DependentUpon>ControlBase.ascx</DependentUpon>
     </Compile>
     <Compile Include="ASCX\Table\ForMyTable\DeletButten.ascx.cs">
       <DependentUpon>DeletButten.ascx</DependentUpon>

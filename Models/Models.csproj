@@ -114,6 +114,7 @@
   <ItemGroup>
     <Compile Include="DataRowToClass\ParticipantInform.cs" />
     <Compile Include="DataRowToClass\ProgressProject.cs" />
+    <Compile Include="ErroModels\LineAbsentException.cs" />
     <Compile Include="FileRemoveList.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
