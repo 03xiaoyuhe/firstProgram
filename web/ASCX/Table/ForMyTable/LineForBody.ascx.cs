@@ -1,6 +1,7 @@
 ﻿using Models;
 using System;
 using System.Data;
+using WebForm.ASCX.Table.ForMyTable;
 
 namespace WebForm.ASCX.Table
 {
@@ -114,6 +115,24 @@ namespace WebForm.ASCX.Table
             }
         }
 
+
+        /// <summary>
+        /// 绑定功能列的组件
+        /// </summary>
+        string controlASCX;
+        public string ControlASCX
+        {
+            get
+            {
+                return controlASCX;
+            }
+            set
+            {
+                controlASCX = value;
+            }
+        }
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             CellHolder.Controls.Clear();
@@ -125,7 +144,7 @@ namespace WebForm.ASCX.Table
                 CellHolder.Controls.Add(NewCell);
                 Count++;
             }
-            DeletButten newCell = (DeletButten)LoadControl("~/ASCX/Table/ForMyTable/DeletButten.ascx");
+            ControlBase newCell = (ControlBase)LoadControl("~/ASCX/Table/ForMyTable/DeletButten.ascx");
             newCell.ID = ID + String.Format("_{0}", ColumnNum);
             newCell.DataID = RowID;
             newCell.TableName = TableName;

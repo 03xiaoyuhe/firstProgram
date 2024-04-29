@@ -1,4 +1,5 @@
-﻿using NPOI.HSSF.UserModel;
+﻿using Models.ErroModels;
+using NPOI.HSSF.UserModel;
 using NPOI.SS.Formula.Functions;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
@@ -77,7 +78,13 @@ namespace Models.PageDataSor
             }
         }
 
-        public DataTable LoadExcel()
+        /// <summary>
+        /// 载入excel文件函数
+        /// </summary>
+        /// <param name="ErroRow">错误数据行数</param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public DataTable LoadExcel(out int ErroRow)
         {
             ISheet sheet = null;
             DataTable data = new DataTable();
@@ -123,7 +130,7 @@ namespace Models.PageDataSor
                 }
                 foreach (KeyValuePair<string, bool> pair in Attribute)
                 {
-                    if (!DataHead.Contains(pair.Key) && pair.Value) throw new Exception($"缺少必须行->{pair.Key}");
+                    if (!DataHead.Contains(pair.Key) && pair.Value) throw new LineAbsentException($"缺少必须行->{pair.Key}");
                 }
                 rowCount = sheet.LastRowNum;
                 for (int i = 1; i <= rowCount; i++)
@@ -227,6 +234,7 @@ namespace Models.PageDataSor
             {
                 erroworkbook.Write(errofs);//向打开的这个xls文件中写入数据  
             }
+            ErroRow = ErroRowCount;
             return data;
         }
 

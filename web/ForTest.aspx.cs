@@ -250,9 +250,9 @@ namespace WebForm
             excelRead.ErroPutExcelPath = saveErroPath;
 
 
-
+            int a = 0;
             /// 放置读取代码
-            DataTable dataTable = excelRead.LoadExcel();
+            DataTable dataTable = excelRead.LoadExcel(out a);
 
 
 

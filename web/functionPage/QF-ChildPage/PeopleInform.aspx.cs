@@ -107,10 +107,16 @@ namespace WebForm.functionPage.QF_ChildPage
                 excelRead.ErroPutExcelPath = ErroFilePath;
 
 
+                int ErroRowCount = 0;
+                DataTable dataTable = excelRead.LoadExcel(out ErroRowCount);
 
-                DataTable dataTable = excelRead.LoadExcel();
-
-
+                if (ErroRowCount > 0)
+                {
+                    Massage massage = new Massage();
+                    massage.HeadColor = "blue";
+                    massage.HeadText = "tips";
+                    massage.MassageText = $"存在无法导入的数据行，共{ErroRowCount}行数据无法导入，请点击下载错误数据行文件，进行查看并修改。";
+                }
                 for (int i = 0; i < dataTable.Rows.Count; i++)
                 {
                     DataRow dl = dataTable.Rows[i];
