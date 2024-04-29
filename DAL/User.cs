@@ -226,10 +226,10 @@ namespace DAL
             string UserEmail
             )
         {
-            string query = "insert into UserInfor ( \r\nUserName\r\nUserDate,\r\nUserSex,\r\nUserPosition,\r\nUserTitle,\r\nUserSpeciality,\r\nUserResearch,\r\nUserResearch_now,\r\nUserWorkplace,\r\nUserAddress,\r\nUserOfficeNumber,\r\nUseNumber,\r\nUserEmail\r\n) values ( \r\n@UseName,\r\n@UserDate,\r\n@UserSex,\r\n@UserPosition,\r\n@UserTitle,\r\n@UserSpeciality,\r\n@UserResearch,\r\n@UserResearch_now,\r\n@UserWorkplace,\r\n@UserAddress,\r\n@UserOfficeNumber,\r\n@UseNumber,\r\n@UserEmail\r\n); ";
+            string query = "insert into UserInfor ( \r\nUseName,\r\nUserDate,\r\nUserSex,\r\nUserPosition,\r\nUserTitle,\r\nUserSpeciality,\r\nUserResearch,\r\nUserResearch_now,\r\nUserWorkplace,\r\nUserAddress,\r\nUserOfficeNumber,\r\nUserNumber,\r\nUserEmail\r\n) values ( \r\n@UseName,\r\n@UserDate,\r\n@UserSex,\r\n@UserPosition,\r\n@UserTitle,\r\n@UserSpeciality,\r\n@UserResearch,\r\n@UserResearch_now,\r\n@UserWorkplace,\r\n@UserAddress,\r\n@UserOfficeNumber,\r\n@UseNumber,\r\n@UserEmail\r\n); ";
             SqlParameter[] parameters = new SqlParameter[]
             {
-                new SqlParameter ("@UserName" ,SqlDbType.NVarChar) {Value = UseName},
+                new SqlParameter ("@UseName" ,SqlDbType.NVarChar) {Value = UseName},
                 new SqlParameter ("@UserDate" ,SqlDbType.NVarChar) {Value = UserDate},
                 new SqlParameter ("@UserSex" ,SqlDbType.NVarChar) {Value = UserSex},
                 new SqlParameter ("@UserPosition" ,SqlDbType.NVarChar) {Value = UserPosition},
@@ -274,7 +274,26 @@ namespace DAL
         //    }
         //}
 
+        //static HashSet<string> names = new HashSet<string>();
+        //static public NameJu(string name)
+        //{
+        //    DataSet dataset = new DataSet();
+        //    dataset = DBHelper.Query("select UserName from UserInfor");
+        //    DataTable datatable = new DataTable();
+        //    datatable = dataset.Tables[0];
+        //    foreach (DataRow row in datatable.Rows)
+        //    {
+        //        names.Add(row[0].ToString());
+        //    }
+
+
+
+
+
+
+            //}
+
+        }
     }
-}
 
 

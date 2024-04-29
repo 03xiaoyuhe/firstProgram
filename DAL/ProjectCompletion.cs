@@ -321,6 +321,7 @@ namespace DAL
 
 
         static public bool KindsInsert(
+               string project_leader,
                string project_name,
                string project_level,
                string project_number,
@@ -337,8 +338,9 @@ namespace DAL
             )
         {
             //project_time = (DateTime.Parse(project_time)).ToString("d");
-            string query = " insert into ProjectApplications ( under_research ,\r\nproject_name ,\r\nproject_level ,\r\nproject_number,\r\nproject_category,\r\nproject_youth, \r\nproject_research,\r\nproject_view ,\r\nproject_References,\r\nproject_time ,\r\nproject_form ,\r\nproject_opinion ,\r\nproject_expert_view ,\r\nproject_approval_view) values \r\n("+"True"+",@project_name,\r\n@project_level ,\r\n@project_number,\r\n@project_category,\r\n@project_youth, \r\n@project_research,\r\n@project_view ,\r\n@project_References,\r\n@project_time ,\r\n@project_form ,\r\n@project_opinion ,\r\n@project_expert_view ,\r\n@project_approval_view); \r\n";
+            string query = " insert into ProjectApplications ( project_leader,under_research ,\r\nproject_name ,\r\nproject_level ,\r\nproject_number,\r\nproject_category,\r\nproject_youth, \r\nproject_research,\r\nproject_view ,\r\nproject_References,\r\nproject_time ,\r\nproject_form ,\r\nproject_opinion ,\r\nproject_expert_view ,\r\nproject_approval_view) values \r\n( @project_leader " + "'True'" +",@project_name,\r\n@project_level ,\r\n@project_number,\r\n@project_category,\r\n@project_youth, \r\n@project_research,\r\n@project_view ,\r\n@project_References,\r\n@project_time ,\r\n@project_form ,\r\n@project_opinion ,\r\n@project_expert_view ,\r\n@project_approval_view); \r\n";
             SqlParameter[] parameters = {
+                new SqlParameter("@project_leader", SqlDbType.NVarChar) { Value = project_leader },
                 new SqlParameter("@project_name", SqlDbType.NVarChar) { Value = project_name },
                 new SqlParameter("@project_level", SqlDbType.NVarChar) { Value = project_level },
                 new SqlParameter("@project_number", SqlDbType.NVarChar) { Value = project_number },

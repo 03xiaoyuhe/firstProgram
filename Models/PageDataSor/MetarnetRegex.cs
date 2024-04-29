@@ -26,7 +26,38 @@ namespace Models.PageDataSor
         //static Hashtable hashtable = new Hashtable();
         static HashSet<string> hashset = new HashSet<string>();
 
-        
+
+        /// <summary>
+        /// 转换Excel日期
+        /// </summary>
+        /// <param name="input">待转换的字符</param>
+        /// <returns>转换后的字符</returns>
+        public static string ExcelDateToSQLDate(string input)
+        {
+            string ExcelPattern = @"(\d+)-(\d+)月-(\d+)";
+            if (Regex.IsMatch(input, ExcelPattern))
+            {
+                string pattern = @"月?-月?";
+                string[] Day = Regex.Split(input, pattern);
+                return $"{Day[2]}/{Day[1]}/{Day[0]}";
+            }
+            else
+            {
+                return input;
+            }
+        }
+
+        /// <summary>
+        /// 检查立项编号
+        /// </summary>
+        /// <param name="input">待检查的字符</param>
+        /// <returns>是否匹配</returns>
+        public static bool IsProjectNumber(string input)
+        {
+            string pattern = @"[A-Z]{5}\d{7}";
+            return Regex.IsMatch(input, pattern);
+        }
+
         public static void Give()
         {
 
@@ -96,6 +127,10 @@ namespace Models.PageDataSor
                         return "Success";
                     }
                     break;
+                    //todo
+                case "项目负责人":
+                    return "Success";
+                    break;
                 case "本项目国内外研究现状述评":
                     if (Data.Length > 1300)
                     {
@@ -129,7 +164,7 @@ namespace Models.PageDataSor
                 case "项目完成时间":
                     try
                     {
-                        DateTime.Parse(Data);
+                        DateTime.Parse(ExcelDateToSQLDate(Data));
                         return "Success";
                     }
                     catch
@@ -183,27 +218,17 @@ namespace Models.PageDataSor
                     }
                     else
                     {
-                        for (int i = 0; i < Data.Length; i++)
+                        if (!IsProjectNumber(Data))
                         {
-                            if (i < 5)
-                            {
-                                if (Data[i] < 65 && Data[i] > 90)
-                                {
-                                    return $"(前五位有非A-Z的大写字母){Data}";
-                                }
-                            }
-                            else
-                            {
-                                if (Data[i] < 48 || Data[i] > 57)
-                                {
-                                    return $"(第五位后的七位整数中有非0-9的字符){Data}";
-                                }
-                            }
+                            return $"(输入的立项编号不规范，应为五位大写字母加七位整数){Data}";
                         }
+
+                    
                         if (hashset.Contains(Data))
                         {
                             return $"(输入的立项编号合法，但已经存在，请重新输入){Data}";
                         }
+                        
                         hashset.Add(Data);
                       
                         return "Success";
@@ -218,6 +243,7 @@ namespace Models.PageDataSor
                     }
                     else
                     {
+
                         return "Success";
                     }
                     break;
@@ -225,7 +251,7 @@ namespace Models.PageDataSor
                 case "生日":
                     try
                     {
-                        DateTime.Parse(Data);
+                        DateTime.Parse(ExcelDateToSQLDate(Data));
                         return "Success";
                     }
                     catch

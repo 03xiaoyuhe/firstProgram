@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using DAL;
+using Models;
 using Models.DataRowToClass;
 using Models.ErroModels;
 using Models.PageDataSor;
@@ -45,6 +46,7 @@ namespace WebForm.functionPage.QF_ChildPage
             //MetarnetRegex.Give();
 
             list1 = new Dictionary<string, bool>();
+            list1.Add("项目负责人", true);
             list1.Add("项目名称", true);
             list1.Add("项目评级", true);
             list1.Add("立项编号", true);
@@ -61,6 +63,7 @@ namespace WebForm.functionPage.QF_ChildPage
 
 
             map1 = new Dictionary<string, string>();
+            map1.Add("项目负责人", "project_leader");
             map1.Add("项目名称", "project_name");
             map1.Add("项目评级", "project_level");
             map1.Add("立项编号", "project_number");
@@ -74,6 +77,8 @@ namespace WebForm.functionPage.QF_ChildPage
             map1.Add("项目单位评审意见", "project_opinion");
             map1.Add("专家评审", "project_expert_view");
             map1.Add("项目审批意见", "project_approval_view");
+
+
         }
 
 
@@ -110,7 +115,7 @@ namespace WebForm.functionPage.QF_ChildPage
 
 
                 int ErroRowCount = 0;
-                DataTable dataTable = excelRead.LoadExcel(out ErroRowCount);
+                DataTable loadDataTable = excelRead.LoadExcel(out ErroRowCount);
 
                 if(ErroRowCount > 0)
                 {
@@ -121,39 +126,146 @@ namespace WebForm.functionPage.QF_ChildPage
                 }
 
 
-                for (int i = 0; i < dataTable.Rows.Count; i++)
+                for (int i = 0; i < loadDataTable.Rows.Count; i++)
                 {
-                    DataRow dl = dataTable.Rows[i];
+                    DataRow dl = loadDataTable.Rows[i];
                     ProgressProject progressProject = new ProgressProject();
                     progressProject.DataTable = dl.Table;
                     progressProject.DataTable = dl.Table;
-                   
-                    if (
-                    !DAL.ProjectCompletion.KindsInsert(
-                         progressProject.ProName, //dl["project_name"].ToString(), 
-                         progressProject.ProLevel, //dl["project_level"].ToString(),
-                         progressProject.ProNumber, //dl["project_number"].ToString(),
-                         progressProject.ProCategory, //dl["project_category"].ToString(),
-                         progressProject.ProYouth,                //dl["project_youth"].ToString(),
-                         progressProject.ProResearch,                //dl["project_research"].ToString(),
-                         progressProject.ProView,                //dl["project_view"].ToString(),
-                         progressProject.ProReferences,                 //dl["project_References"].ToString(),
-                         progressProject.ProTime,                 //dl["project_time"].ToString(),
-                         progressProject.ProForm,                 //dl["project_form"].ToString(),
-                         progressProject.ProOpinion,                 //dl["project_opinion"].ToString(),
-                         progressProject.ProExpert,                  //dl["project_expert_view"].ToString(),
-                         progressProject.ProApproval                  //dl["project_approval_view"].ToString()
-                         ))
+                    //判断是否是使用id插入
+                    if (MetarnetRegex.IsNotNagtive(progressProject.ProUser))
                     {
-                        Models.Massage massage = new Massage();
-                        massage.HeadColor = "Red";
-                        massage.HeadText = "ERROR";
-                        massage.MassageText = "第" + i + "插入异常，可能数据依然不符合要求，请仔细检查该行数据并尝试重新插入";
-                        massage.PostMassage();
+
+                        if (
+                        !DAL.ProjectCompletion.KindsInsert(
+                             progressProject.ProUser,
+                             progressProject.ProName, //dl["project_name"].ToString(), 
+                             progressProject.ProLevel, //dl["project_level"].ToString(),
+                             progressProject.ProNumber, //dl["project_number"].ToString(),
+                             progressProject.ProCategory, //dl["project_category"].ToString(),
+                             progressProject.ProYouth,                //dl["project_youth"].ToString(),
+                             progressProject.ProResearch,                //dl["project_research"].ToString(),
+                             progressProject.ProView,                //dl["project_view"].ToString(),
+                             progressProject.ProReferences,                 //dl["project_References"].ToString(),
+                             progressProject.ProTime,                 //dl["project_time"].ToString(),
+                             progressProject.ProForm,                 //dl["project_form"].ToString(),
+                             progressProject.ProOpinion,                 //dl["project_opinion"].ToString(),
+                             progressProject.ProExpert,                  //dl["project_expert_view"].ToString(),
+                             progressProject.ProApproval                  //dl["project_approval_view"].ToString()
+                             ))
+                        {
+                            Models.Massage massage = new Massage();
+                            massage.HeadColor = "Red";
+                            massage.HeadText = "ERROR";
+                            massage.MassageText = "第" + i + "插入异常，可能数据依然不符合要求，请仔细检查该行数据并尝试重新插入";
+                            massage.PostMassage();
+                        }
+                    }
+
+                    //使用姓名插入 progressProject.ProUser值为姓名
+                    else
+                    {                       
+                        string query = "select Id,UseName,UserDate,UserSex,UserNumber,UserPosition from UseName = " + progressProject.ProUser + " ;";
+                        if (DBHelper.ExecuteSql(query) == 0)
+                        {
+                            Models.Massage massage = new Massage();
+                            massage.HeadColor = "Red";
+                            massage.HeadText = "ERROR";
+                            massage.MassageText = "输入的姓名未插入信息，无法绑定该用户为负责人。";
+                            massage.PostMassage();
+                        }
+                        DataSet dataSet = DBHelper.Query(query);
+
+                        DataTable userInforData = dataSet.Tables[0];   
+                        
+                        if(userInforData.Rows.Count == 1)
+                        {
+                            DataRow row = userInforData.Rows[0];
+                            progressProject.ProUser = row[0].ToString();
+                            if (
+                        !DAL.ProjectCompletion.KindsInsert(
+                             progressProject.ProUser,
+                             progressProject.ProName, //dl["project_name"].ToString(), 
+                             progressProject.ProLevel, //dl["project_level"].ToString(),
+                             progressProject.ProNumber, //dl["project_number"].ToString(),
+                             progressProject.ProCategory, //dl["project_category"].ToString(),
+                             progressProject.ProYouth,                //dl["project_youth"].ToString(),
+                             progressProject.ProResearch,                //dl["project_research"].ToString(),
+                             progressProject.ProView,                //dl["project_view"].ToString(),
+                             progressProject.ProReferences,                 //dl["project_References"].ToString(),
+                             progressProject.ProTime,                 //dl["project_time"].ToString(),
+                             progressProject.ProForm,                 //dl["project_form"].ToString(),
+                             progressProject.ProOpinion,                 //dl["project_opinion"].ToString(),
+                             progressProject.ProExpert,                  //dl["project_expert_view"].ToString(),
+                             progressProject.ProApproval                  //dl["project_approval_view"].ToString()
+                             ))
+                            {
+                                Models.Massage massage = new Massage();
+                                massage.HeadColor = "Red";
+                                massage.HeadText = "ERROR";
+                                massage.MassageText = "第" + i + "插入异常，可能数据依然不符合要求，请仔细检查该行数据并尝试重新插入";
+                                massage.PostMassage();
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            // 加载导入预览
+                            List<string> userInforDatalist = new List<string>();
+                            userInforDatalist.Add("Id");
+                            userInforDatalist.Add("UseName");
+                            userInforDatalist.Add("UserDate");
+                            userInforDatalist.Add("UserSex");
+                            userInforDatalist.Add("UserNumber");
+                            userInforDatalist.Add("UserPosition");
+                            
+
+                            Dictionary<string, string> userInforDataMap = new Dictionary<string, string>();
+                            userInforDataMap.Add("Id", "编号");
+                            userInforDataMap.Add("UseName", "姓名");
+                            userInforDataMap.Add("UserDate", "生日");
+                            userInforDataMap.Add("UserSex", "性别");
+                            userInforDataMap.Add("UserNumber", "电话号码");
+                            userInforDataMap.Add("UserPosition", "职务");
+                            
+
+                            TableAttribute tableAttribute1 = new TableAttribute(
+                                "Id",
+                                "重名信息",
+                                userInforDataMap,
+                                userInforDatalist
+                                );
+
+                            MyTable userDataTableForm = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
+                            userDataTableForm.TableBase = tableAttribute1;
+                            userDataTableForm.DataCollection = userInforData;
+                            userDataTableForm.Height = 350;
+                            userDataTableForm.TableName = "UserInfor";
+                            PlaceHolder1.Controls.Clear();
+                            PlaceHolder1.Controls.Add(userDataTableForm);
+
+                            Massage massage = new Massage();
+                            massage.MassageText = "插入的用户名在系统中有重名信息，请您确定需要绑定的人的编号，已显示在下方重名信息表中。";
+                            massage.HeadText = "ERROR";
+                            massage.HeadColor = "Pink";
+                            massage.PostMassage();
+
+                        }
+                        
+
+
                     }
 
 
+
+
+
+
                 }
+
+
+
 
                 // 加载导入预览
                 List<string> list = new List<string>();
@@ -183,11 +295,17 @@ namespace WebForm.functionPage.QF_ChildPage
 
                 MyTable NewLine = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
                 NewLine.TableBase = tableAttribute;
-                NewLine.DataCollection = dataTable;
+                NewLine.DataCollection = loadDataTable;
                 NewLine.Height = 350;
                 NewLine.TableName = "ProjectApplications";
                 PlaceHolder2.Controls.Clear();
                 PlaceHolder2.Controls.Add(NewLine);
+
+
+
+                
+
+
 
                 System.IO.File.Delete(savePath);
 

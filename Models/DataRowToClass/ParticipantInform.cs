@@ -59,8 +59,8 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || dataTable.Columns.Contains("UseName")) return null;
-                return dataTable.Rows[0].ToString();
+                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("UseName")) return null;
+                return dataTable.Rows[0]["UseName"].ToString();
             }
             set
             {
@@ -74,8 +74,8 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || dataTable.Columns.Contains("UserDate")) return null;
-                return dataTable.Rows[0].ToString();
+                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("UserDate")) return null;
+                return dataTable.Rows[0]["UserDate"].ToString();
             }
             set
             {
@@ -89,8 +89,8 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || dataTable.Columns.Contains("UserSex")) return null;
-                return dataTable.Rows[0].ToString();
+                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("UserSex")) return null;
+                return dataTable.Rows[0]["UserSex"].ToString();
             }
             set
             {
@@ -104,8 +104,8 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || dataTable.Columns.Contains("UserPosition")) return null;
-                return dataTable.Rows[0].ToString();
+                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("UserPosition")) return null;
+                return dataTable.Rows[0]["UserPosition"].ToString();
             }
             set
             {
@@ -119,8 +119,8 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || dataTable.Columns.Contains("UserTitle")) return null;
-                return dataTable.Rows[0].ToString();
+                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("UserTitle")) return null;
+                return dataTable.Rows[0]["UserTitle"].ToString();
             }
             set
             {
@@ -134,8 +134,8 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || dataTable.Columns.Contains("UserSpeciality")) return null;
-                return dataTable.Rows[0].ToString();
+                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("UserSpeciality")) return null;
+                return dataTable.Rows[0]["UserSpeciality"].ToString();
             }
             set
             {
@@ -149,8 +149,8 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || dataTable.Columns.Contains("UserResearch")) return null;
-                return dataTable.Rows[0].ToString();
+                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("UserResearch")) return null;
+                return dataTable.Rows[0]["UserResearch"].ToString();
             }
             set
             {
@@ -163,8 +163,8 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || dataTable.Columns.Contains("UserResearch_now")) return null;
-                return dataTable.Rows[0].ToString();
+                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("UserResearch_now")) return null;
+                return dataTable.Rows[0]["UserResearch_now"].ToString();
             }
             set
             {
@@ -178,8 +178,8 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || dataTable.Columns.Contains("UserWorkplace")) return null;
-                return dataTable.Rows[0].ToString();
+                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("UserWorkplace")) return null;
+                return dataTable.Rows[0]["UserWorkplace"].ToString();
             }
             set
             {
@@ -193,8 +193,8 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || dataTable.Columns.Contains("UserAddress")) return null;
-                return dataTable.Rows[0].ToString();
+                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("UserAddress")) return null;
+                return dataTable.Rows[0]["UserAddress"].ToString();
             }
             set
             {
@@ -208,8 +208,8 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || dataTable.Columns.Contains("UserOffice_number")) return null;
-                return dataTable.Rows[0].ToString();
+                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("UserOffice_number")) return null;
+                return dataTable.Rows[0]["UserOffice_number"].ToString();
             }
             set
             {
@@ -223,8 +223,8 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || dataTable.Columns.Contains("UserNumber")) return null;
-                return dataTable.Rows[0].ToString();
+                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("UserNumber")) return null;
+                return dataTable.Rows[0]["UserNumber"].ToString();
             }
             set
             {
@@ -238,8 +238,8 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || dataTable.Columns.Contains("UserEmail")) return null;
-                return dataTable.Rows[0].ToString();
+                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("UserEmail")) return null;
+                return dataTable.Rows[0]["UserEmail"].ToString();
             }
             set
             {
