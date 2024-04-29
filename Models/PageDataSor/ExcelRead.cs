@@ -1,16 +1,11 @@
 ﻿using Models.ErroModels;
 using NPOI.HSSF.UserModel;
-using NPOI.SS.Formula.Functions;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Models.PageDataSor
 {
@@ -160,14 +155,14 @@ namespace Models.PageDataSor
                             {
                                 // 将日期转化为正常格式
                                 dataRow[DataCellCount] = row.GetCell(j).ToString();
-                                if (row.GetCell(j).CellType == CellType.Numeric)
-                                {
-                                    dataRow[DataCellCount] = Convert.ToDateTime(row.GetCell(j).DateCellValue).ToString("yyyy-MM-dd");
-                                }
-                                else
-                                {
+                                //if (row.GetCell(j).CellType == CellType.Numeric)
+                                //{
+                                //    dataRow[DataCellCount] = Convert.ToDateTime(row.GetCell(j).DateCellValue).ToString("yyyy-MM-dd");
+                                //}
+                                //else
+                                //{
                                     dataRow[DataCellCount] = row.GetCell(j).ToString();
-                                }
+                                //}
                                 // 对数据表中当前行做数据验证 若不符合则跳出
                                 if(MetarnetRegex.Checked(DataHead[j], dataRow[DataCellCount].ToString()) != "Success")
                                 {
@@ -197,14 +192,14 @@ namespace Models.PageDataSor
                             {
                                 /// 将当前数据做转化,以解决日期问题
                                 string Data;
-                                if (row.GetCell(j).CellType == CellType.Numeric)
-                                {
-                                    Data = Convert.ToDateTime(row.GetCell(j).DateCellValue).ToString("yyyy-MM-dd");
-                                }
-                                else
-                                {
+                                //if (row.GetCell(j).CellType == CellType.Numeric)
+                                //{
+                                //    Data = Convert.ToDateTime(row.GetCell(j).DateCellValue).ToString("yyyy/MM/dd");
+                                //}
+                                //else
+                                //{
                                     Data = row.GetCell(j).ToString();
-                                }
+                                //}
                                 // 判断当前行是否为需要检查行，若需要检查则进行检查，
                                 if (Attribute.ContainsKey(erroHead.GetCell(j).ToString()))
                                 {
@@ -234,6 +229,8 @@ namespace Models.PageDataSor
             {
                 erroworkbook.Write(errofs);//向打开的这个xls文件中写入数据  
             }
+            errofs.Close();
+            fs.Close();
             ErroRow = ErroRowCount;
             return data;
         }
