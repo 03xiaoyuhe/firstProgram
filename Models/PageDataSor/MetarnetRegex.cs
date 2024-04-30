@@ -395,6 +395,20 @@ namespace Models.PageDataSor
             {
 
             }
+
+        /// <summary>
+        /// 将excel日期转换
+        /// </summary>
+        /// <returns></returns>
+        public static string ExcelDateToSQLDate(string input)
+        {
+            string pattern = @"^(\\d*)-(\\d*)月-(\\d*)$";
+            string Day = Regex.Replace(input, pattern, "$1");
+            string Mounth = Regex.Replace(input, pattern, "$2");
+            string year = Regex.Replace(input, pattern, "$3");
+            return $"{year}/{Mounth}/{Day}";
+        }
+
             /// <summary>
             /// 判断输入的字符串只包含汉字
             /// </summary>
