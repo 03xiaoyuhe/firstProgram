@@ -1,11 +1,16 @@
 ﻿using Models.ErroModels;
 using NPOI.HSSF.UserModel;
+using NPOI.SS.Formula.Functions;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace Models.PageDataSor
 {
@@ -195,7 +200,7 @@ namespace Models.PageDataSor
                                 string Data;
                                 //if (row.GetCell(j).CellType == CellType.Numeric)
                                 //{
-                                //    Data = Convert.ToDateTime(row.GetCell(j).DateCellValue).ToString("yyyy/MM/dd");
+                                //    Data = Convert.ToDateTime(row.GetCell(j).DateCellValue).ToString("yyyy-MM-dd");
                                 //}
                                 //else
                                 //{
@@ -230,8 +235,6 @@ namespace Models.PageDataSor
             {
                 erroworkbook.Write(errofs);//向打开的这个xls文件中写入数据  
             }
-            errofs.Close();
-            fs.Close();
             ErroRow = ErroRowCount;
             return data;
         }

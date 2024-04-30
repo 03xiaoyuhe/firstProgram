@@ -43,9 +43,12 @@
                 <h2>结果预览&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
 
             </div>
-            <div style="border-radius:10px; margin:10px; overflow:hidden;">
+            <div style="border-radius:10px; margin:10px;margin-left:30px;margin-right:30px; overflow:hidden;">
                 <asp:PlaceHolder ID="PlaceHolder2" runat="server">
                     <div style="width: 80%; margin: 0 auto;">未导入</div>
+                </asp:PlaceHolder>
+                <asp:PlaceHolder ID="PlaceHolder1" runat="server">
+                    <div style="width: 80%; margin: 0 auto;">无重名信息</div>
                 </asp:PlaceHolder>
             </div>
         </div>
