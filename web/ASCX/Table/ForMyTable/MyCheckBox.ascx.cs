@@ -97,7 +97,7 @@ namespace WebForm.ASCX.Table.ForMyTable
                 choosedDataIDContain.ID = ChoosedDataID;
                 if (choosedDataIDContain.Contains(DataID))
                 {
-                    choosedDataIDContain.Add(DataID);
+                    choosedDataIDContain.Remove(DataID);
                 }
             }
         }
