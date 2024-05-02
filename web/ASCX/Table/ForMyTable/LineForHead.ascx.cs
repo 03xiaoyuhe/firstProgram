@@ -39,6 +39,23 @@ namespace WebForm.ASCX.Table
             }
         }
 
+
+        bool showControl = false;
+        /// <summary>
+        /// 是否要显示控制行
+        /// </summary>
+        public bool ShowControl
+        {
+            get
+            {
+                return showControl;
+            }
+            set
+            {
+                showControl = value;
+            }
+        }
+
         public int ColumnNum
         {
             get { return lineToShow.Count; }
@@ -68,9 +85,12 @@ namespace WebForm.ASCX.Table
                 CellHolder.Controls.Add(NewCell);
                 Count++;
             }
-            CellForHead newCell = (CellForHead)LoadControl("~/ASCX/Table/ForMyTable/CellForHead.ascx");
-            newCell.CellData = "操作";
-            CellHolder.Controls.Add(newCell);
+            if (ShowControl)
+            {
+                CellForHead newCell = (CellForHead)LoadControl("~/ASCX/Table/ForMyTable/CellForHead.ascx");
+                newCell.CellData = "操作";
+                CellHolder.Controls.Add(newCell);
+            }
         }
     }
 }

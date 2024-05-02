@@ -114,7 +114,6 @@ namespace WebForm.functionPage.QF_ChildPage
                 dataTable = null;
             }
             List<string> list = new List<string>();
-            list.Add("project_id");
             list.Add("user_phone");
             list.Add("project_name");
             list.Add("project_level");

@@ -121,10 +121,26 @@ namespace WebForm.ASCX.Table
 
         #region 其他 如控制性属性
 
+        bool showControl;
+        /// <summary>
+        /// 是否要显示控制行
+        /// </summary>
+        public bool ShowControl
+        {
+            get
+            {
+                return showControl;
+            }
+            set
+            {
+                showControl = value;
+            }
+        }
+
+        string controlASCX;
         /// <summary>
         /// 绑定功能列的组件
         /// </summary>
-        string controlASCX;
         public string ControlASCX
         {
             get
