@@ -116,14 +116,32 @@ namespace WebForm.ASCX.Table
         }
 
 
+        bool showControl;
+        /// <summary>
+        /// 是否要显示控制行
+        /// </summary>
+        public bool ShowControl
+        {
+            get
+            {
+                if(showControl == null) showControl = false;
+                return showControl;
+            }
+            set
+            {
+                showControl = value;
+            }
+        }
+
+        string controlASCX;
         /// <summary>
         /// 绑定功能列的组件
         /// </summary>
-        string controlASCX;
         public string ControlASCX
         {
             get
             {
+                if (controlASCX == null) throw new Exception("未绑定相应控制组件");
                 return controlASCX;
             }
             set
@@ -139,17 +157,20 @@ namespace WebForm.ASCX.Table
             for (int i = 0; i < ColumnNum; i++)
             {
                 CellForBody NewCell = (CellForBody)LoadControl("~/ASCX/Table/ForMyTable/CellForBody.ascx");
-                NewCell.ID = ID + String.Format("_{0}", i);
+                NewCell.ID = ID + $"_{i}";
                 NewCell.CellData = DataForALine[TheLineDateForTable.LineToShow[i]].ToString();
                 CellHolder.Controls.Add(NewCell);
                 Count++;
             }
-            ControlBase newCell = (ControlBase)LoadControl("~/ASCX/Table/ForMyTable/DeletButten.ascx");
-            newCell.ID = ID + String.Format("_{0}", ColumnNum);
-            newCell.DataID = RowID;
-            newCell.TableName = TableName;
-            newCell.IDLable = IdLable;
-            CellHolder.Controls.Add(newCell);
+            if (ShowControl)
+            {
+                ControlBase newCell = (ControlBase)LoadControl(ControlASCX);
+                newCell.ID = ID + $"_{ColumnNum}";
+                newCell.DataID = RowID;
+                newCell.TableName = TableName;
+                newCell.IDLable = IdLable;
+                CellHolder.Controls.Add(newCell);
+            }
         }
     }
 }

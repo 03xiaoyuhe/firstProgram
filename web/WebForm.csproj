@@ -227,6 +227,9 @@
     <Content Include="functionPage\QF-ChildPage\PeopleInform.aspx" />
     <!-- 样式控制文件 -->
     <Content Include="JS\*" />
+    <Content Include=".\assets\*" />
+    <Content Include=".\assets\dist\*" />
+    <Content Include=".\assets\dist\js\*" />
     <Content Include="assets\brand\bootstrap-logo-white.svg" />
     <Content Include="assets\brand\bootstrap-logo.svg" />
     <Content Include="assets\dist\css\bootstrap.min.css" />

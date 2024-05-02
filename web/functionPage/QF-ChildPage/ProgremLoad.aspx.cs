@@ -240,7 +240,7 @@ namespace WebForm.functionPage.QF_ChildPage
                             MyTable userDataTableForm = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
                             userDataTableForm.TableBase = tableAttribute1;
                             userDataTableForm.DataCollection = userInforData;
-                            userDataTableForm.Height = 350;
+                            userDataTableForm.Height = 265;
                             userDataTableForm.TableName = "UserInfor";
                             PlaceHolder1.Controls.Clear();
                             PlaceHolder1.Controls.Add(userDataTableForm);
@@ -296,7 +296,7 @@ namespace WebForm.functionPage.QF_ChildPage
                 MyTable NewLine = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
                 NewLine.TableBase = tableAttribute;
                 NewLine.DataCollection = loadDataTable;
-                NewLine.Height = 350;
+                NewLine.Height = 265;
                 NewLine.TableName = "ProjectApplications";
                 PlaceHolder2.Controls.Clear();
                 PlaceHolder2.Controls.Add(NewLine);
@@ -316,7 +316,7 @@ namespace WebForm.functionPage.QF_ChildPage
             {
                 Massage message = new Massage();
 
-                message.MassageText = erro.Message;
+                message.MassageText = erro.Message+"，请修改原表并再次导入";
                 message.HeadColor = "Red";
                 message.HeadText = "ERROR";
                 message.PostMassage();

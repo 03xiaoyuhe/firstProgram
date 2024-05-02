@@ -114,7 +114,6 @@ namespace WebForm.functionPage.QF_ChildPage
                 dataTable = null;
             }
             List<string> list = new List<string>();
-            list.Add("project_id");
             list.Add("user_phone");
             list.Add("project_name");
             list.Add("project_level");
@@ -147,6 +146,8 @@ namespace WebForm.functionPage.QF_ChildPage
             NewLine.DataCollection = dataTable;
             NewLine.Height = 400;
             NewLine.TableName = "ProjectApplications";
+            NewLine.ShowControl = true;
+            NewLine.ControlASCX = "~/ASCX/Table/ForMyTable/DeletButten.ascx";
             PlaceHolder1.Controls.Clear();
             PlaceHolder1.Controls.Add(NewLine);
         }
