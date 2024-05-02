@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models.PageDataSor;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -75,7 +76,7 @@ namespace Models.DataRowToClass
             get
             {
                 if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("UserDate")) return null;
-                return dataTable.Rows[0]["UserDate"].ToString();
+                return MetarnetRegex.ExcelDateToSQLDate(dataTable.Rows[0]["UserDate"].ToString());
             }
             set
             {
