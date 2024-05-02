@@ -1,7 +1,9 @@
 ﻿using Models;
+using Models.PageDataSor.ForMyTable;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Web.UI.WebControls;
 
 namespace WebForm.ASCX.Table
@@ -153,6 +155,23 @@ namespace WebForm.ASCX.Table
             }
         }
 
+        string choosedDataID;
+        /// <summary>
+        /// 复选框缓存对象ID
+        /// </summary>
+        public string ChoosedDataID
+        {
+            get
+            {
+                if (choosedDataID == null) choosedDataID = GetRandomStr(10);
+                return choosedDataID;
+            }
+            set
+            {
+                choosedDataID = value;
+            }
+        }
+
         int Count
         {
             get
@@ -180,6 +199,10 @@ namespace WebForm.ASCX.Table
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(!ChoosedDataIDContain.Contian(ChoosedDataID))
+            {
+                ChoosedDataIDContain.Creat(ChoosedDataID);
+            }
             List<string> NewLineToShow = new List<string>();
             foreach(string item in TableBase.LineToShow)
             {
@@ -193,6 +216,7 @@ namespace WebForm.ASCX.Table
             NewHead.LineToShow = TableBase.LineToShow;
             NewHead.LineToMean = TableBase.LineToMean;
             NewHead.ShowControl = ShowControl;
+            NewHead.ChoosedDataID = ChoosedDataID;
             HeadHolder.Controls.Add(NewHead);
             if (DataCollection != null)
             {
@@ -208,6 +232,7 @@ namespace WebForm.ASCX.Table
                     NewLine.TheLineDateForTable = TableBase;
                     NewLine.ShowControl = ShowControl;
                     NewLine.ControlASCX = ControlASCX;
+                    NewLine.ChoosedDataID = ChoosedDataID;
                     BodyHolder.Controls.Add(NewLine);
                     Count++;
                 }
@@ -219,5 +244,36 @@ namespace WebForm.ASCX.Table
             }
         }
 
+
+        private static Random random = new Random();
+        /// <summary>
+        /// 随机字符串
+        /// </summary>
+        /// <param name="chars"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        public string GetRandomStr(int length, string chars = null)
+        {
+            if (string.IsNullOrEmpty(chars))
+            {
+                chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghizklmnopqrstuvwxyz0123456789";
+            }
+            //const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+        protected void Unnamed_Click(object sender, EventArgs e)
+        {
+            ChoosedDataIDContain choosedDataIDContain = new ChoosedDataIDContain();
+            choosedDataIDContain.ID = ChoosedDataID;
+            Massage massage = new Massage();
+            massage.MassageText = "";
+            foreach (string item in choosedDataIDContain.ChoosedIDs)
+            {
+                massage.MassageText += $"{item} ";
+            }
+            massage.PostMassage();
+        }
     }
 }

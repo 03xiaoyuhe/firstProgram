@@ -22,6 +22,7 @@
 <body>
     <form id="form1" runat="server">
         <div style="width:90%;margin:0 auto;">
+            <asp:Button ID="Button2" runat="server" Text="Button" OnClick="Button2_Click" />
             <asp:FileUpload runat ="server" ID="FileUpload1"/>
             <asp:Button ID="Button1" runat="server" Text="开始录入" OnClick="Button1_Click" />
             

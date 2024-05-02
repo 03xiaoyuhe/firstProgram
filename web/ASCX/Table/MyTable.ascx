@@ -89,8 +89,8 @@
 --%>
 
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
-
         <ContentTemplate>
+            <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Unnamed_Click" />
             <asp:Panel ID="Panel1" runat="server" >
                 <div id ="stickytable" class="sticky-table" runat="server">
                     <table>

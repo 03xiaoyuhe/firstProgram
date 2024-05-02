@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace WebForm.ASCX.Table.ForMyTable
 {
+    
     public partial class ControlBase : System.Web.UI.UserControl
     {
 

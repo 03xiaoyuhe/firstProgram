@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Models.PageDataSor;
+using System;
 using System.Collections.Generic;
+using WebForm.ASCX.Table.ForMyTable;
 
 namespace WebForm.ASCX.Table
 {
@@ -61,6 +63,23 @@ namespace WebForm.ASCX.Table
             get { return lineToShow.Count; }
         }
 
+
+        string choosedDataID;
+        /// <summary>
+        /// 复选框缓存
+        /// </summary>
+        public string ChoosedDataID
+        {
+            get
+            {
+                return choosedDataID;
+            }
+            set
+            {
+                choosedDataID = value;
+            }
+        }
+
         int Count
         {
             get
@@ -77,6 +96,11 @@ namespace WebForm.ASCX.Table
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            CheckBoxTree checkBox = (CheckBoxTree)LoadControl("~/ASCX/Table/ForMyTable/CheckBoxTree.ascx");
+
+            CellHolder.Controls.Add(checkBox);
+
             for (int i = 0; i < ColumnNum; i++)
             {
                 CellForHead NewCell = (CellForHead)LoadControl("~/ASCX/Table/ForMyTable/CellForHead.ascx");
@@ -92,5 +116,6 @@ namespace WebForm.ASCX.Table
                 CellHolder.Controls.Add(newCell);
             }
         }
+
     }
 }
