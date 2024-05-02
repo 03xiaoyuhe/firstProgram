@@ -281,7 +281,7 @@
                         data-bs-target="#ForParticipantInform"
                         aria-expanded="true"
                         aria-controls="ForParticipantInform">
-                        项目人员信息管理
+                        人员信息管理
                     </label>
                 </li>
                 
