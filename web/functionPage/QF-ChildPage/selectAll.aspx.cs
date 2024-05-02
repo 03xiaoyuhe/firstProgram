@@ -146,6 +146,8 @@ namespace WebForm.functionPage.QF_ChildPage
             NewLine.DataCollection = dataTable;
             NewLine.Height = 400;
             NewLine.TableName = "ProjectApplications";
+            NewLine.ShowControl = true;
+            NewLine.ControlASCX = "~/ASCX/Table/ForMyTable/DeletButten.ascx";
             PlaceHolder1.Controls.Clear();
             PlaceHolder1.Controls.Add(NewLine);
         }

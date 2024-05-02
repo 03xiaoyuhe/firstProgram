@@ -192,6 +192,7 @@ namespace WebForm.ASCX.Table
             LineForHead NewHead = (LineForHead)LoadControl("~/ASCX/Table/ForMyTable/LineForHead.ascx");
             NewHead.LineToShow = TableBase.LineToShow;
             NewHead.LineToMean = TableBase.LineToMean;
+            NewHead.ShowControl = ShowControl;
             HeadHolder.Controls.Add(NewHead);
             if (DataCollection != null)
             {
@@ -205,6 +206,7 @@ namespace WebForm.ASCX.Table
                     NewLine.ID = ID + String.Format("_{0}", i);
                     NewLine.DataForALine = DataCollection.Rows[i];
                     NewLine.TheLineDateForTable = TableBase;
+                    NewLine.ShowControl = ShowControl;
                     NewLine.ControlASCX = ControlASCX;
                     BodyHolder.Controls.Add(NewLine);
                     Count++;
