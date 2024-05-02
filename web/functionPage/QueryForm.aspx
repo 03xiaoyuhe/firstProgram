@@ -278,10 +278,24 @@
                         style="color : var(--page-head-word-color);"
                         for="option6"
                         data-bs-toggle="collapse"
-                        data-bs-target="#ForApplication"
+                        data-bs-target="#ForParticipantInform"
                         aria-expanded="true"
-                        aria-controls="ForApplication">
-                        申请管理
+                        aria-controls="ForParticipantInform">
+                        项目人员信息管理
+                    </label>
+                </li>
+                
+                <li>
+                    <input type="radio" class="btn-check" name="options-base" id="option7" autocomplete="off">
+                    <label
+                        class="btn"
+                        style="color : var(--page-head-word-color);"
+                        for="option7"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#ForAccountManagement"
+                        aria-expanded="true"
+                        aria-controls="ForAccountManagement">
+                        账号管理
                     </label>
                 </li>
             </ul>
@@ -331,25 +345,99 @@
                         <ul class="list-unstyled ps-0">
                             <li class="mb-1">
                                 <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#selectProgremInform-collapse" aria-expanded="true">
-                                    项目信息查询
+                                    信息批量导入
                                 </button>
-                                <div class="collapse" id="selectProgremInform-collapse">
+                                <div class="collapse show" id="selectProgremInform-collapse">
                                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="selectAll(this)">显示全部</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">在研</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">结项</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="programLoad(this)">申报项目</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">在研项目</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">结项项目</a></li>
                                     </ul>
                                 </div>
                             </li>
                             <li class="mb-1">
                                 <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#manageProgram-collapse" aria-expanded="false">
-                                    项目信息管理
+                                    项目信息查询
                                 </button>
                                 <div class="collapse" id="manageProgram-collapse">
                                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="addProgram()">快速插入</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" >批量导入</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">修改</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="selectAll(this)">显示全部</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="mb-1">
+                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+                                    信息导出
+       
+                                </button>
+                                <div class="collapse" id="orders-collapse">
+                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">年度结项名单</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">年度项目情况统计表</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+<%--                            <li class="border-top my-3"></li>
+                            <li class="mb-1">
+                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+                                    Account
+       
+                                </button>
+                                <div class="collapse" id="account-collapse">
+                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">New...</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Profile</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Settings</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Sign out</a></li>
+                                    </ul>
+                                </div>
+                            </li>--%>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- 参加人信息管理功能栏 -->
+            <div
+                id="ForParticipantInform"
+                class="collapse collapse-horizontal showing sidebarDiv"
+                data-bs-parent="#accordionExample"
+                style="max-height: 10000px; float: left;width:300px;">
+                <div style="width: 280px; height: 570px; overflow: auto;">
+
+                    <div class="card card-body" style="width: 100%">
+                        <div class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+                            <svg class="bi pe-none me-2" width="30" height="24">
+                                <use xlink:href="#bootstrap"></use>
+                            </svg>
+                            <span class="fs-5 fw-semibold">参加人信息管理</span>
+                        </div>
+                        <ul class="list-unstyled ps-0">
+                            <li class="mb-1">
+
+                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+                                    信息管理
+                                </button>
+
+                                <div class="collapse show" id="home-collapse">
+                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="PeopleInform()">批量导入</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">批量更改</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">信息查询</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <%--<li class="mb-1">--%>
+<%--                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+                                    Dashboard
+                                </button>
+                                <div class="collapse" id="dashboard-collapse">
+                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Overview</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Weekly</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Monthly</a></li>
                                         <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Annually</a></li>
                                     </ul>
                                 </div>
@@ -382,20 +470,20 @@
                                         <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Sign out</a></li>
                                     </ul>
                                 </div>
-                            </li>
+                            </li>--%>
                         </ul>
                     </div>
                 </div>
             </div>
 
-
-            <!-- 申请管理功能栏 -->
+            
+            <!-- 账号管理功能栏 -->
             <div
-                id="ForApplication"
+                id="ForAccountManagement"
                 class="collapse collapse-horizontal showing sidebarDiv"
                 data-bs-parent="#accordionExample"
                 style="max-height: 10000px; float: left;width:300px;">
-                <div id="sidebarF" style="width: 280px; height: 570px; overflow: auto;">
+                <div style="width: 280px; height: 570px; overflow: auto;">
 
                     <div class="card card-body" style="width: 100%">
                         <div class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
@@ -466,9 +554,9 @@
                             </li>
                         </ul>
                     </div>
-
                 </div>
             </div>
+
         </div>
 
         <script type="text/javascript"></script>
@@ -490,10 +578,14 @@
         function addProgram() {
             document.getElementById("test").src = "QF-ChildPage/addProgram.aspx";
         }
-
+        // PeopleInform.aspx
 
         function programLoad() {
             document.getElementById("test").src = "QF-ChildPage/ProgremLoad.aspx";
+        }
+
+        function PeopleInform() {
+            document.getElementById("test").src = "QF-ChildPage/PeopleInform.aspx";
         }
 
         // 测试

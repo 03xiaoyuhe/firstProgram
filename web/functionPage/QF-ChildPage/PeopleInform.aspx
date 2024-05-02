@@ -29,7 +29,7 @@
             <div style="width: 80%; margin: 0 auto;">
 
                 <div style="width: 100px; height: 20px;"></div>
-                <h2>人员信息批量导入</h2>
+                <h2><strong>人员信息批量导入</strong></h2>
                 <label style="color: red">注意上传表必须包含首行，首行信息必须按照模板表，可以更改顺序，但不能更改内容</label><br />
                 <div style="width:70%;">
 

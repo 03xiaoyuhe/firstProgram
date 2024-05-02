@@ -24,39 +24,13 @@ namespace Models.PageDataSor
         //CacheGenericity<List<string>> cacheGenericity = new CacheGenericity<List<string>>();
         //static List<string> lists = new List<string>();
         //static Hashtable hashtable = new Hashtable();
+
+        /// <summary>
+        /// 用于存放从数据库查出的以及网站中用户插入的立项编号
+        /// </summary>
         static HashSet<string> hashset = new HashSet<string>();
 
 
-        /// <summary>
-        /// 转换Excel日期
-        /// </summary>
-        /// <param name="input">待转换的字符</param>
-        /// <returns>转换后的字符</returns>
-        public static string ExcelDateToSQLDate(string input)
-        {
-            string ExcelPattern = @"(\d+)-(\d+)月-(\d+)";
-            if (Regex.IsMatch(input, ExcelPattern))
-            {
-                string pattern = @"月?-月?";
-                string[] Day = Regex.Split(input, pattern);
-                return $"{Day[2]}/{Day[1]}/{Day[0]}";
-            }
-            else
-            {
-                return input;
-            }
-        }
-
-        /// <summary>
-        /// 检查立项编号
-        /// </summary>
-        /// <param name="input">待检查的字符</param>
-        /// <returns>是否匹配</returns>
-        public static bool IsProjectNumber(string input)
-        {
-            string pattern = @"[A-Z]{5}\d{7}";
-            return Regex.IsMatch(input, pattern);
-        }
 
         public static void Give()
         {
@@ -76,6 +50,13 @@ namespace Models.PageDataSor
             }
         }
 
+
+        /// <summary>
+        /// 导入表格数据检查函数
+        /// </summary>
+        /// <param name="Kinds">类别描述</param>
+        /// <param name="Data">当前单元格数据</param>
+        /// <returns></returns>
         public static string Checked(string Kinds, string Data)
         {
 
@@ -409,6 +390,40 @@ namespace Models.PageDataSor
 
             return $"(系统出现异常请联系工作人员){Data}"; 
         }
+
+        #region 正则表达式判断函数及转化函数-特例
+
+        /// <summary>
+        /// 将指定格式的字符串转换为数据库可识别日期，若不匹配则返回原值
+        /// </summary>
+        /// <param name="input">待转换的字符</param>
+        /// <returns>转换后的字符</returns>
+        public static string ExcelDateToSQLDate(string input)
+        {
+            string ExcelPattern = @"(\d{1,2})-(\d{1,2})月-(\d{4})";
+            if (Regex.IsMatch(input, ExcelPattern))
+            {
+                string pattern = @"月?-月?";
+                string[] Day = Regex.Split(input, pattern);
+                return $"{Day[2]}/{Day[1]}/{Day[0]}";
+            }
+            else
+            {
+                return input;
+            }
+        }
+
+        /// <summary>
+        /// 检查立项编号
+        /// </summary>
+        /// <param name="input">待检查的字符</param>
+        /// <returns>是否匹配</returns>
+        public static bool IsProjectNumber(string input)
+        {
+            string pattern = @"[A-Z]{5}\d{7}";
+            return Regex.IsMatch(input, pattern);
+        }
+
         public static MetarnetRegex GetInstance()
             {
                 if (MetarnetRegex.instance == null)
@@ -417,23 +432,14 @@ namespace Models.PageDataSor
                 }
                 return MetarnetRegex.instance;
             }
-            private MetarnetRegex()
+
+        #endregion
+
+        private MetarnetRegex()
             {
 
             }
 
-        /// <summary>
-        /// 将excel日期转换
-        /// </summary>
-        /// <returns></returns>
-        public static string ExcelDateToSQLDate(string input)
-        {
-            string pattern = @"^(\\d*)-(\\d*)月-(\\d*)$";
-            string Day = Regex.Replace(input, pattern, "$1");
-            string Mounth = Regex.Replace(input, pattern, "$2");
-            string year = Regex.Replace(input, pattern, "$3");
-            return $"{year}/{Mounth}/{Day}";
-        }
 
             /// <summary>
             /// 判断输入的字符串只包含汉字
