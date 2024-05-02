@@ -23,21 +23,14 @@ namespace WebForm.ASCX.Table.ForMyTable
             }
             else
             {
-                //if (CacheGenericity<List<bool>>.Data[$"{ChoosedDataID}-ChooseAll"].Count > 0 && CacheGenericity<List<bool>>.Data[$"{ChoosedDataID}-ChooseAll"][0])
-                //{
-                //    choosedDataIDContain.Add(DataID);
-                //    CheckBox1.Checked = true;
-                //}
-                //else
-                //{
-                    CheckBox1.Checked = false;
-                //}
+                CheckBox1.Checked = false;
             }
 
-            CheckBox1.CheckedChanged += CheckedChanged;
-
+            CheckBox1.CheckedChanged += CheckedChanged; 
+            CheckBox1.CheckedChanged += eventHandler;
         }
 
+        public EventHandler eventHandler;
 
         public string DataID;
 

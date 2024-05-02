@@ -27,21 +27,6 @@ namespace WebForm.ASCX.Table
 
 
 
-        protected void DeletButton_Click(object sender, EventArgs e)
-        {
-            if (ProjectCompletion.ProjectDeteleVision(DataID))
-            {
-                Massage message = new Massage("Blue", "Success", "删除成功，请刷新页面");
-                message.PostMassage();
-                Response.Redirect(Request.Url.PathAndQuery);
-            }
-            else
-            {
-                Massage message = new Massage("Red", "ERROR", "删除失败");
-                message.PostMassage();
-
-            }
-        }
 
         protected void ResetButton_Click(object sender, EventArgs e)
         {

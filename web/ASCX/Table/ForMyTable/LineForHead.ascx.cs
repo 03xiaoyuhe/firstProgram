@@ -98,7 +98,6 @@ namespace WebForm.ASCX.Table
         {
 
             CheckBoxTree checkBox = (CheckBoxTree)LoadControl("~/ASCX/Table/ForMyTable/CheckBoxTree.ascx");
-
             CellHolder.Controls.Add(checkBox);
 
             for (int i = 0; i < ColumnNum; i++)

@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using DAL;
+using Models;
 using Models.PageDataSor.ForMyTable;
 using System;
 using System.Collections.Generic;
@@ -199,7 +200,11 @@ namespace WebForm.ASCX.Table
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!ChoosedDataIDContain.Contian(ChoosedDataID))
+
+            HeadHolder.Controls.Clear();
+            BodyHolder.Controls.Clear();
+
+            if (!ChoosedDataIDContain.Contian(ChoosedDataID))
             {
                 ChoosedDataIDContain.Creat(ChoosedDataID);
             }
@@ -209,7 +214,6 @@ namespace WebForm.ASCX.Table
                 if (DataCollection.Columns.Contains(item)) NewLineToShow.Add(item);
             }
             TableBase.LineToShow = NewLineToShow;
-            HeadHolder.Controls.Clear();
             Panel1.Height = (System.Web.UI.WebControls.Unit)Height;
             stickytable.Style["height"] = Height + "px";
             LineForHead NewHead = (LineForHead)LoadControl("~/ASCX/Table/ForMyTable/LineForHead.ascx");
@@ -267,13 +271,30 @@ namespace WebForm.ASCX.Table
         {
             ChoosedDataIDContain choosedDataIDContain = new ChoosedDataIDContain();
             choosedDataIDContain.ID = ChoosedDataID;
-            Massage massage = new Massage();
-            massage.MassageText = "";
-            foreach (string item in choosedDataIDContain.ChoosedIDs)
+            for (int i = 0; i < RowsCount; i ++)
             {
-                massage.MassageText += $"{item} ";
+                choosedDataIDContain.Add(DataCollection.Rows[i][TableBase.IDLable].ToString());
             }
-            massage.PostMassage();
+            Page_Load(sender, e);
         }
+
+        public void ClearCheck()
+        {
+            
+            if(!ChoosedDataIDContain.Contian(ChoosedDataID))
+            {
+                ChoosedDataIDContain.Creat(ChoosedDataID);
+            }
+            ChoosedDataIDContain choosedDataIDContain = new ChoosedDataIDContain();
+            choosedDataIDContain.ID = ChoosedDataID;
+            choosedDataIDContain.Clear();
+        }
+
+
+        protected void DeletButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
