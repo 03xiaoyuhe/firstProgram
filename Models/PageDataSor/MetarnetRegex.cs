@@ -30,8 +30,11 @@ namespace Models.PageDataSor
         /// </summary>
         static HashSet<string> hashset = new HashSet<string>();
 
+        static Dictionary<string, HashSet<string>> keyValuePairs = new Dictionary<string, HashSet<string>>();
 
-
+        /// <summary>
+        /// 立项编号的查询与存储
+        /// </summary>
         public static void Give()
         {
 
@@ -48,6 +51,20 @@ namespace Models.PageDataSor
                 //hashtable.Add(count,item[0].ToString());
                 //count++;
             }
+        }
+
+
+        public static void Name()
+        {
+            DataSet rowAfforts = DAL.DBHelper.Query("select  Id,UseName from UserInfor");
+            DataTable dt = rowAfforts.Tables[0];
+            foreach (DataRow item in dt.Rows)
+            {
+               
+                
+            }
+
+
         }
 
 
@@ -224,6 +241,9 @@ namespace Models.PageDataSor
                     }
                     else
                     {
+                        
+
+
 
                         return "Success";
                     }
