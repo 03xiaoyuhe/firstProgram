@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server"> 
+<head runat="server">
     <script src="../assets/js/color-modes.js"></script>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -45,7 +45,7 @@
             display: inline-table;
             height: 25px;
             width: 25px;
-            background-color:white;
+            background-color: white;
         }
 
 
@@ -155,15 +155,15 @@
 
     <!-- Custom styles for this template -->
     <link href="../CSS/sidebars.css" rel="stylesheet" />
-    <link href ="../CSS/ThemeColor.css"  rel="stylesheet"/>
+    <link href="../CSS/ThemeColor.css" rel="stylesheet" />
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 </head>
 
-<body style="overflow: hidden;background-color:#e9ede0;">
+<body style="overflow: hidden; background-color: #e9ede0;">
 
-  <%--  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+    <%--  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
         <symbol id="check2" viewBox="0 0 16 16">
             <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
         </symbol>
@@ -198,7 +198,6 @@
                         <use href="#sun-fill"></use>
                     </svg>
                     Light
-                   
                         <svg class="bi ms-auto d-none" width="1em" height="1em">
                             <use href="#check2"></use>
                         </svg>
@@ -226,30 +225,31 @@
             </li>
         </ul>
     </div>
---%>
+    --%>
 
 
     <style type="text/css">
-        .page-head{
-            --page-head-color:#092f50;
-            --page-head-word-color:#f4f9fd;
-            background-color:var(--page-head-color);
-            color : var(--page-head-word-color);
+        .page-head {
+            --page-head-color: #092f50;
+            --page-head-word-color: #f4f9fd;
+            background-color: var(--page-head-color);
+            color: var(--page-head-word-color);
         }
-        .title{
-            font-weight:bold;
+
+        .title {
+            font-weight: bold;
             font-style: oblique;
-            font-size:20px;
+            font-size: 20px;
             /*color: #0000007d;*/
-            color:var(--page-head-word-color);
-            padding-right:10px; 
+            color: var(--page-head-word-color);
+            padding-right: 10px;
             border-right: solid 3px #e9ede0;
         }
     </style>
-    
+
     <script type="text/javascript" src="../JS/QueryFormJS.js"></script>
 
-    <header class="p-3 mb-3 border-bottom page-head" >
+    <header class="p-3 mb-3 border-bottom page-head">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <a href="../home.aspx" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
                 <%--<div class="logo"></div>--%>
@@ -262,7 +262,7 @@
                     <input type="radio" class="btn-check" name="options-base" id="option5" autocomplete="off" /><!--checked-->
                     <label
                         class="btn"
-                        style="color : var(--page-head-word-color);"
+                        style="color: var(--page-head-word-color);"
                         data-bs-toggle="collapse"
                         data-bs-target="#ForProgrem"
                         aria-expanded="true"
@@ -275,7 +275,7 @@
                     <input type="radio" class="btn-check" name="options-base" id="option6" autocomplete="off">
                     <label
                         class="btn"
-                        style="color : var(--page-head-word-color);"
+                        style="color: var(--page-head-word-color);"
                         for="option6"
                         data-bs-toggle="collapse"
                         data-bs-target="#ForParticipantInform"
@@ -284,12 +284,12 @@
                         人员信息管理
                     </label>
                 </li>
-                
+
                 <li>
                     <input type="radio" class="btn-check" name="options-base" id="option7" autocomplete="off">
                     <label
                         class="btn"
-                        style="color : var(--page-head-word-color);"
+                        style="color: var(--page-head-word-color);"
                         for="option7"
                         data-bs-toggle="collapse"
                         data-bs-target="#ForAccountManagement"
@@ -326,7 +326,7 @@
 
 
 
-        <div id="accordionExample" class="clearfix sidebarDiv" style="position: relative; height: 570px; margin-left: 10px;margin-right: 10px;">
+        <div id="accordionExample" class="clearfix sidebarDiv" style="position: relative; height: 570px; margin-left: 10px; margin-right: 10px;">
 
             <!-- 项目管理功能栏 -->
             <div
@@ -382,7 +382,7 @@
                                     </ul>
                                 </div>
                             </li>
-<%--                            <li class="border-top my-3"></li>
+                            <%--                            <li class="border-top my-3"></li>
                             <li class="mb-1">
                                 <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
                                     Account
@@ -408,7 +408,7 @@
                 id="ForParticipantInform"
                 class="collapse collapse-horizontal showing sidebarDiv"
                 data-bs-parent="#accordionExample"
-                style="max-height: 10000px; float: left;width:300px;">
+                style="max-height: 10000px; float: left; width: 300px;">
                 <div style="width: 280px; height: 570px; overflow: auto;">
 
                     <div class="card card-body" style="width: 100%">
@@ -435,7 +435,7 @@
                             </li>
 
                             <%--<li class="mb-1">--%>
-<%--                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+                            <%--                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
                                     Dashboard
                                 </button>
                                 <div class="collapse" id="dashboard-collapse">
@@ -481,13 +481,13 @@
                 </div>
             </div>
 
-            
+
             <!-- 账号管理功能栏 -->
             <div
                 id="ForAccountManagement"
                 class="collapse collapse-horizontal showing sidebarDiv"
                 data-bs-parent="#accordionExample"
-                style="max-height: 10000px; float: left;width:300px;">
+                style="max-height: 10000px; float: left; width: 300px;">
                 <div style="width: 280px; height: 570px; overflow: auto;">
 
                     <div class="card card-body" style="width: 100%">
@@ -565,16 +565,15 @@
 
         <script type="text/javascript"></script>
         <div class="bg-body-tertiary border rounded-3" style="float: right; position: relative; overflow: hidden; width: 100%; height: 600px; margin-right: 30px; margin-left;">
-            <iframe id="test" src="./QF-ChildPage/UnChoosePage.aspx" style="width: 100%; height: 100%">
-                D:\______myProgram\哲学与社会科学规划项目信息化管理平台\firstProgram\web\functionPage\QF-ChildPage\UnChoosePage.aspx
+            <iframe id="test" src="./QF-ChildPage/UnChoosePage.aspx" style="width: 100%; height: 100%">D:\______myProgram\哲学与社会科学规划项目信息化管理平台\firstProgram\web\functionPage\QF-ChildPage\UnChoosePage.aspx
             </iframe>
         </div>
     </main>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
     <form runat="server">
-        
+
         <!-- 筛选功能页 class="modal-dialog modal-dialog-centered" -->
-        <div class="modal fade" id="exampleModal" style="background-color:rgba(0,0,0,0.3);" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal" style="background-color: rgba(0,0,0,0.3);" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -582,55 +581,44 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
-                        <p>...</p>
+                        <div class="accordion" id="accordionPanelsStayOpenExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                        Accordion Item #1
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                                    <div class="accordion-body">
+                                        <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                                        Accordion Item #2
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                                    <div class="accordion-body">
+                                        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                                        Accordion Item #3
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                                    <div class="accordion-body">
+                                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -639,7 +627,7 @@
                 </div>
             </div>
         </div>
-        <TMassage:Massage runat="server" id="aaa"  ></TMassage:Massage>
+        <TMassage:Massage runat="server" ID="aaa"></TMassage:Massage>
     </form>
     <script type="text/javascript">
         // 显示所有项目信息逻辑
