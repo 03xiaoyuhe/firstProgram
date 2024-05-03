@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <%--<meta name="generator" content="Hugo 0.118.2">--%>
-    <title>哲学与社会科学规划项目信息化管理平台 · 用户主页</title> 
+    <title>哲学与社会科学规划项目信息化管理平台 · 用户主页</title>
     <link rel="icon" href="../img/logo.png" type="image/x-icon" />
 
 
@@ -362,6 +362,7 @@
                                 <div class="collapse" id="manageProgram-collapse">
                                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                         <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="selectAll(this)">显示全部</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="">筛选</a></li>
                                     </ul>
                                 </div>
                             </li>

@@ -35,7 +35,6 @@
                     </div>
                     <div class="col-8">
                         <div style="margin: 10px;">
-                            <asp:TextBox ID="TextBox1" runat="server" Width="200"></asp:TextBox>
                         </div>
                     </div>
                     <div class="col">

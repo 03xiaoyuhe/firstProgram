@@ -1,7 +1,10 @@
-﻿using Models;
+﻿using DAL;
+using Models;
+using Models.PageDataSor.ForMyTable;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Web.UI.WebControls;
 
 namespace WebForm.ASCX.Table
@@ -153,6 +156,23 @@ namespace WebForm.ASCX.Table
             }
         }
 
+        string choosedDataID;
+        /// <summary>
+        /// 复选框缓存对象ID
+        /// </summary>
+        public string ChoosedDataID
+        {
+            get
+            {
+                if (choosedDataID == null) choosedDataID = GetRandomStr(10);
+                return choosedDataID;
+            }
+            set
+            {
+                choosedDataID = value;
+            }
+        }
+
         int Count
         {
             get
@@ -180,19 +200,27 @@ namespace WebForm.ASCX.Table
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            HeadHolder.Controls.Clear();
+            BodyHolder.Controls.Clear();
+
+            if (!ChoosedDataIDContain.Contian(ChoosedDataID))
+            {
+                ChoosedDataIDContain.Creat(ChoosedDataID);
+            }
             List<string> NewLineToShow = new List<string>();
             foreach(string item in TableBase.LineToShow)
             {
                 if (DataCollection.Columns.Contains(item)) NewLineToShow.Add(item);
             }
             TableBase.LineToShow = NewLineToShow;
-            HeadHolder.Controls.Clear();
             Panel1.Height = (System.Web.UI.WebControls.Unit)Height;
             stickytable.Style["height"] = Height + "px";
             LineForHead NewHead = (LineForHead)LoadControl("~/ASCX/Table/ForMyTable/LineForHead.ascx");
             NewHead.LineToShow = TableBase.LineToShow;
             NewHead.LineToMean = TableBase.LineToMean;
             NewHead.ShowControl = ShowControl;
+            NewHead.ChoosedDataID = ChoosedDataID;
             HeadHolder.Controls.Add(NewHead);
             if (DataCollection != null)
             {
@@ -208,6 +236,7 @@ namespace WebForm.ASCX.Table
                     NewLine.TheLineDateForTable = TableBase;
                     NewLine.ShowControl = ShowControl;
                     NewLine.ControlASCX = ControlASCX;
+                    NewLine.ChoosedDataID = ChoosedDataID;
                     BodyHolder.Controls.Add(NewLine);
                     Count++;
                 }
@@ -217,6 +246,54 @@ namespace WebForm.ASCX.Table
                 Massage massage = new Massage("#ff0000", "ERRO", "未将数据绑定到表格");
                 massage.PostMassage();
             }
+        }
+
+
+        private static Random random = new Random();
+        /// <summary>
+        /// 随机字符串
+        /// </summary>
+        /// <param name="chars"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        public string GetRandomStr(int length, string chars = null)
+        {
+            if (string.IsNullOrEmpty(chars))
+            {
+                chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghizklmnopqrstuvwxyz0123456789";
+            }
+            //const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+        protected void Unnamed_Click(object sender, EventArgs e)
+        {
+            ChoosedDataIDContain choosedDataIDContain = new ChoosedDataIDContain();
+            choosedDataIDContain.ID = ChoosedDataID;
+            for (int i = 0; i < RowsCount; i ++)
+            {
+                choosedDataIDContain.Add(DataCollection.Rows[i][TableBase.IDLable].ToString());
+            }
+            Page_Load(sender, e);
+        }
+
+        public void ClearCheck()
+        {
+            
+            if(!ChoosedDataIDContain.Contian(ChoosedDataID))
+            {
+                ChoosedDataIDContain.Creat(ChoosedDataID);
+            }
+            ChoosedDataIDContain choosedDataIDContain = new ChoosedDataIDContain();
+            choosedDataIDContain.ID = ChoosedDataID;
+            choosedDataIDContain.Clear();
+        }
+
+
+        protected void DeletButton_Click(object sender, EventArgs e)
+        {
+
         }
 
     }

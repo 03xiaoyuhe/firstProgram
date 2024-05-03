@@ -150,6 +150,7 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="PageDataSor\ExcelRead.cs" />
+    <Compile Include="PageDataSor\ForMyTable\ChoosedDataIDContain.cs" />
     <Compile Include="PageDataSor\JumpToControl.cs" />
     <Compile Include="PageDataSor\MetarnetRegex.cs" />
     <Compile Include="PageDataSor\ProgremData\ProgremDataSplit\DataForAdm.cs" />

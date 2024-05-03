@@ -16,12 +16,13 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
-    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
         <div style="width:90%;margin:0 auto;">
+            <asp:Button ID="Button2" runat="server" CssClass="bi bi-bookmark" Text="Button" OnClick="Button2_Click" />
             <asp:FileUpload runat ="server" ID="FileUpload1"/>
             <asp:Button ID="Button1" runat="server" Text="开始录入" OnClick="Button1_Click" />
             

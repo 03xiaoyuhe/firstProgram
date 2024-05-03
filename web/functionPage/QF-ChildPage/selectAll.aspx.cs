@@ -87,6 +87,7 @@ namespace WebForm.functionPage.QF_ChildPage
             InitData();
             Loding();
             LoadTable();
+
         }
 
         void InitData()
@@ -148,8 +149,10 @@ namespace WebForm.functionPage.QF_ChildPage
             NewLine.TableName = "ProjectApplications";
             NewLine.ShowControl = true;
             NewLine.ControlASCX = "~/ASCX/Table/ForMyTable/DeletButten.ascx";
+            NewLine.ChoosedDataID = "test";
             PlaceHolder1.Controls.Clear();
             PlaceHolder1.Controls.Add(NewLine);
+            NewLine.ClearCheck();
         }
 
         protected void PlaceHolder1_Load(object sender, EventArgs e)

@@ -11,7 +11,7 @@ namespace WebForm.ASCX.Table.ForMyTable
 {
 
 
-    public partial class ControlBase
+    public partial class CheckBoxTree
     {
     }
 }
