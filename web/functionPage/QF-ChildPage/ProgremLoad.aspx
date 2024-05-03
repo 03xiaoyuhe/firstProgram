@@ -32,11 +32,14 @@
     <form id="form1" runat="server" style="width: 100%;">
         <div style="width: 100%">
             <div style="width: 100px; height: 20px;"></div>
-            <h2 style="margin-left: 30px;">
+            <h2 style="margin:0 30px;">
                 <strong>申报项目信息批量导入</strong>
             </h2>
-            <div style="margin-left: 40px;">
-                <label style="color: red">注意上传表必须包含首行，首行信息必须按照模板表，可以更改顺序，但不能更改内容</label>
+            <div style="margin:0 40px;">
+                <div class="alert alert-danger" role="alert">
+                    注意上传表必须包含首行，首行信息必须按照模板表，可以更改顺序，但不能更改内容
+                </div>
+                <%--<label style="color: red">注意上传表必须包含首行，首行信息必须按照模板表，可以更改顺序，但不能更改内容</label>--%>
                 <div>
                     <asp:Button ID="Button2" CssClass="btn btn-success" runat="server" Text="下载模板表" OnClick="Button2_Click" />
                     <asp:Button ID="Button3" CssClass="btn btn-secondary" runat="server" Text="下载错误数据行文件" OnClick="Button3_Click" />
@@ -69,7 +72,7 @@
                     <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <asp:PlaceHolder ID="PlaceHolder2" runat="server">
-                                <div style="width: 80%; margin: 0 auto; height: 230px;">未导入</div>
+                                <div style="width: 80%; margin: 0 auto; height: 185px;">未导入</div>
                             </asp:PlaceHolder>
                         </div>
                     </div>
@@ -83,13 +86,15 @@
                     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <asp:PlaceHolder ID="PlaceHolder1" runat="server">
-                                <div style="width: 80%; margin: 0 auto; height: 230px;">未导入</div>
+                                <div style="width: 80%; margin: 0 auto; height: 185px;">未导入</div>
                             </asp:PlaceHolder>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+
     </form>
 </body>
 <script src="../../JS/QueryFromPageJs.js"></script>

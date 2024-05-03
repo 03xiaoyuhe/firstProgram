@@ -362,7 +362,12 @@
                                 <div class="collapse" id="manageProgram-collapse">
                                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                         <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="selectAll(this)">显示全部</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="">筛选</a></li>
+                                        <li>
+                                            <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#exampleModal">筛选</a>
+                                            <%--<button type="button" class="link-body-emphasis d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                筛选
+                                            </button>--%>
+                                        </li>
                                     </ul>
                                 </div>
                             </li>
@@ -567,6 +572,73 @@
     </main>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
     <form runat="server">
+        
+        <!-- 筛选功能页 class="modal-dialog modal-dialog-centered" -->
+        <div class="modal fade" id="exampleModal" style="background-color:rgba(0,0,0,0.3);" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel"><strong>筛选</strong></h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                        <p>...</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <TMassage:Massage runat="server" id="aaa"  ></TMassage:Massage>
     </form>
     <script type="text/javascript">
