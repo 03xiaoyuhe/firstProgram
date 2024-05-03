@@ -113,43 +113,55 @@ namespace WebForm.functionPage.QF_ChildPage
             {
                 dataTable = null;
             }
-            List<string> list = new List<string>();
-            list.Add("user_phone");
-            list.Add("project_name");
-            list.Add("project_level");
-            list.Add("project_number");
-            list.Add("project_category");
-            list.Add("project_youth");
-            list.Add("project_time");
-            list.Add("project_form");
+            try
+            {
+                List<string> list = new List<string>();
+                //list.Add("user_phone");
+                list.Add("project_name");
+                list.Add("project_level");
+                list.Add("project_number");
+                list.Add("project_category");
+                list.Add("project_youth");
+                list.Add("project_time");
+                list.Add("project_form");
 
-            Dictionary<string, string> map = new Dictionary<string, string>();
-            map.Add("project_id", "ID");
-            map.Add("user_phone", "负责人电话号码");
-            map.Add("project_name", "项目名称");
-            map.Add("project_level", "项目评级");
-            map.Add("project_number", "立项编号");
-            map.Add("project_category", "项目类别");
-            map.Add("project_youth", "是否符合青年项目申报条件");
-            map.Add("project_time", "项目完成时间");
-            map.Add("project_form", "成果形式");
+                Dictionary<string, string> map = new Dictionary<string, string>();
+                map.Add("project_id", "ID");
+                //map.Add("user_phone", "负责人电话号码");
+                map.Add("project_name", "项目名称");
+                map.Add("project_level", "项目评级");
+                map.Add("project_number", "立项编号");
+                map.Add("project_category", "项目类别");
+                map.Add("project_youth", "是否符合青年项目申报条件");
+                map.Add("project_time", "项目完成时间");
+                map.Add("project_form", "成果形式");
 
-            TableAttribute tableAttribute = new TableAttribute(
-                "project_id",
-                "项目信息",
-                map,
-                list
-                );
+                TableAttribute tableAttribute = new TableAttribute(
+                    "project_id",
+                    "项目信息",
+                    map,
+                    list
+                    );
 
-            MyTable NewLine = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
-            NewLine.TableBase = tableAttribute;
-            NewLine.DataCollection = dataTable;
-            NewLine.Height = 400;
-            NewLine.TableName = "ProjectApplications";
-            NewLine.ShowControl = true;
-            NewLine.ControlASCX = "~/ASCX/Table/ForMyTable/DeletButten.ascx";
-            PlaceHolder1.Controls.Clear();
-            PlaceHolder1.Controls.Add(NewLine);
+                MyTable NewLine = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
+                NewLine.TableBase = tableAttribute;
+                NewLine.DataCollection = dataTable;
+                NewLine.Height = 400;
+                NewLine.TableName = "ProjectApplications";
+                NewLine.ShowControl = true;
+                NewLine.ControlASCX = "~/ASCX/Table/ForMyTable/DeletButten.ascx";
+                PlaceHolder1.Controls.Clear();
+                PlaceHolder1.Controls.Add(NewLine);
+            }
+            catch
+            {
+                Massage massage = new Massage();
+                massage.HeadColor = "Red";
+                massage.HeadText = "ERROR";
+                massage.MassageText = "无法显示全部信息，请联系工作人员";
+                massage.PostMassage();
+            }
+            
         }
 
         protected void PlaceHolder1_Load(object sender, EventArgs e)
