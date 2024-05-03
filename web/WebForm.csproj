@@ -227,6 +227,7 @@
     <Content Include="ASCX\Table\ForMyTable\MyCheckBox.ascx" />
     <Content Include="ASCX\Table\TableWithDelegate.ascx" />
     <Content Include="functionPage\QF-ChildPage\PeopleInform.aspx" />
+    <Content Include="functionPage\QF-ChildPage\UnChoosePage.aspx" />
     <!-- 样式控制文件 -->
     <Content Include="JS\*" />
     <Content Include=".\assets\*" />
@@ -751,6 +752,13 @@
     </Compile>
     <Compile Include="functionPage\QF-ChildPage\selectAll.aspx.designer.cs">
       <DependentUpon>selectAll.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="functionPage\QF-ChildPage\UnChoosePage.aspx.cs">
+      <DependentUpon>UnChoosePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="functionPage\QF-ChildPage\UnChoosePage.aspx.designer.cs">
+      <DependentUpon>UnChoosePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="functionPage\QueryForm.aspx.cs">
       <DependentUpon>QueryForm.aspx</DependentUpon>

@@ -240,7 +240,7 @@ namespace WebForm.functionPage.QF_ChildPage
                             MyTable userDataTableForm = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
                             userDataTableForm.TableBase = tableAttribute1;
                             userDataTableForm.DataCollection = userInforData;
-                            userDataTableForm.Height = 265;
+                            userDataTableForm.Height = 400;
                             userDataTableForm.TableName = "UserInfor";
                             PlaceHolder1.Controls.Clear();
                             PlaceHolder1.Controls.Add(userDataTableForm);
@@ -296,7 +296,7 @@ namespace WebForm.functionPage.QF_ChildPage
                 MyTable NewLine = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
                 NewLine.TableBase = tableAttribute;
                 NewLine.DataCollection = loadDataTable;
-                NewLine.Height = 265;
+                NewLine.Height = 400;
                 NewLine.TableName = "ProjectApplications";
                 PlaceHolder2.Controls.Clear();
                 PlaceHolder2.Controls.Add(NewLine);
