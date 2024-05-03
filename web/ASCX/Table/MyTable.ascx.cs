@@ -231,6 +231,8 @@ namespace WebForm.ASCX.Table
             NewHead.ChoosedDataID = ChoosedDataID;
             NewHead.UpdateTable += Update;
             NewHead.ChooseAll += ChooseAll;
+            NewHead.UnChooseAll += UnChooseAll;
+            NewHead.AllDataCount = RowsCount;
             HeadHolder.Controls.Add(NewHead);
             if (DataCollection != null)
             {
@@ -264,6 +266,16 @@ namespace WebForm.ASCX.Table
             {
                 LineForBody NewLine = (LineForBody)item;
                 NewLine.Checked = true;
+            }
+        }
+
+
+        void UnChooseAll(object sender, EventArgs e)
+        {
+            foreach (object item in BodyHolder.Controls)
+            {
+                LineForBody NewLine = (LineForBody)item;
+                NewLine.Checked = false;
             }
         }
 

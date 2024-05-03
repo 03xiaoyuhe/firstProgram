@@ -91,6 +91,11 @@ namespace WebForm.ASCX.Table
 
         public EventHandler ChooseAll;
 
+        public EventHandler UnChooseAll;
+
+
+        public int AllDataCount;
+
         string choosedDataID;
         /// <summary>
         /// 复选框缓存
@@ -126,7 +131,9 @@ namespace WebForm.ASCX.Table
 
             checkBox.AllDataId = AllDataId;
             checkBox.ChoosedDataID = ChoosedDataID;
+            checkBox.AllDataCount = AllDataCount;
             checkBox.ChooseAll += ChooseAll;
+            checkBox.UnChooseAll += UnChooseAll;
             checkBox.UpdateTable += UpdateTable;
 
             for (int i = 0; i < ColumnNum; i++)

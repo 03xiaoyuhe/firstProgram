@@ -46,24 +46,13 @@ namespace WebForm.ASCX.Table.ForMyTable
 
         public EventHandler ChooseAll;
 
+        public EventHandler UnChooseAll;
+
         /// <summary>
         /// 解释缓存的数据
         /// </summary>
-        HashSet<string> ChoosedDataIDContain
-        { 
-            get
-            {
-                ChoosedDataIDContain choosedDataIDContain = new ChoosedDataIDContain();
-                choosedDataIDContain.ID = ChoosedDataID;
-                return choosedDataIDContain.ChoosedIDs;
-            }
-            set
-            {
-                ChoosedDataIDContain choosedDataIDContain = new ChoosedDataIDContain();
-                choosedDataIDContain.ID = ChoosedDataID;
-                choosedDataIDContain.ChoosedIDs = value;
-            }
-        }
+        /// 
+        public int AllDataCount;
 
         string choosedDataID;
         /// <summary>
@@ -83,7 +72,16 @@ namespace WebForm.ASCX.Table.ForMyTable
 
         public void HtmlBtn_Click(object sender, EventArgs e)
         {
-            ChooseAll(sender, e);
+            ChoosedDataIDContain choosedDataIDContain = new ChoosedDataIDContain();
+            choosedDataIDContain.ID = ChoosedDataID;
+            if (choosedDataIDContain.ChoosedIDs.Count == AllDataCount)
+            {
+                UnChooseAll(sender, e);
+            }
+            else
+            {
+                ChooseAll(sender, e);
+            }
         }
     }
 }
