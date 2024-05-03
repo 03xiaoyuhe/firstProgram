@@ -198,7 +198,7 @@ namespace WebForm.ASCX.Table
         #endregion
 
 
-        protected void Page_Load(object sender, EventArgs e)
+        public void Page_Load(object sender, EventArgs e)
         {
 
             HeadHolder.Controls.Clear();
@@ -219,8 +219,18 @@ namespace WebForm.ASCX.Table
             LineForHead NewHead = (LineForHead)LoadControl("~/ASCX/Table/ForMyTable/LineForHead.ascx");
             NewHead.LineToShow = TableBase.LineToShow;
             NewHead.LineToMean = TableBase.LineToMean;
+
+            // 初始化本表所有ID
+            HashSet<string> AllDataID = new HashSet<string>();
+            for (int i = 0; i < RowsCount; i++)
+            {
+                AllDataID.Add(DataCollection.Rows[i][TableBase.IDLable].ToString());
+            }
+            NewHead.AllDataId = AllDataID;
             NewHead.ShowControl = ShowControl;
             NewHead.ChoosedDataID = ChoosedDataID;
+            NewHead.UpdateTable += Update;
+            NewHead.ChooseAll += ChooseAll;
             HeadHolder.Controls.Add(NewHead);
             if (DataCollection != null)
             {
@@ -248,6 +258,19 @@ namespace WebForm.ASCX.Table
             }
         }
 
+        void ChooseAll(object sender, EventArgs e)
+        {
+            foreach(object item in BodyHolder.Controls)
+            {
+                LineForBody NewLine = (LineForBody)item;
+                NewLine.Checked = true;
+            }
+        }
+
+        public void Update(object sender, EventArgs e)
+        {
+            Page_Load(sender, e);
+        }
 
         private static Random random = new Random();
         /// <summary>
@@ -271,10 +294,6 @@ namespace WebForm.ASCX.Table
         {
             ChoosedDataIDContain choosedDataIDContain = new ChoosedDataIDContain();
             choosedDataIDContain.ID = ChoosedDataID;
-            for (int i = 0; i < RowsCount; i ++)
-            {
-                choosedDataIDContain.Add(DataCollection.Rows[i][TableBase.IDLable].ToString());
-            }
             Page_Load(sender, e);
         }
 
@@ -290,11 +309,6 @@ namespace WebForm.ASCX.Table
             choosedDataIDContain.Clear();
         }
 
-
-        protected void DeletButton_Click(object sender, EventArgs e)
-        {
-
-        }
 
     }
 }

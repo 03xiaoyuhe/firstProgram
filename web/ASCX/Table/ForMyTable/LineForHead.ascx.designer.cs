@@ -15,6 +15,15 @@ namespace WebForm.ASCX.Table
     {
 
         /// <summary>
+        /// checkBox 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::WebForm.ASCX.Table.ForMyTable.CheckBoxTree checkBox;
+
+        /// <summary>
         /// CellHolder 控件。
         /// </summary>
         /// <remarks>
@@ -22,5 +31,23 @@ namespace WebForm.ASCX.Table
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder CellHolder;
+
+        /// <summary>
+        /// PlaceHolder1 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolder1;
+
+        /// <summary>
+        /// DeletButton 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button DeletButton;
     }
 }

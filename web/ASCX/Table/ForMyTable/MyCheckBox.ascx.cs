@@ -14,7 +14,6 @@ namespace WebForm.ASCX.Table.ForMyTable
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
             ChoosedDataIDContain choosedDataIDContain = new ChoosedDataIDContain();
             choosedDataIDContain.ID = ChoosedDataID;
             if (choosedDataIDContain.Contains(DataID))

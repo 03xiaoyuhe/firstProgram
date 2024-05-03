@@ -167,14 +167,24 @@ namespace WebForm.ASCX.Table
             }
         }
 
+        public bool Checked
+        {
+            get
+            {
+                return checkBox.Checked;
+            }
+            set
+            {
+                checkBox.Checked = value;
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             CellHolder.Controls.Clear();
-            MyCheckBox checkBox = (MyCheckBox)LoadControl("~/ASCX/Table/ForMyTable/MyCheckBox.ascx");
             checkBox.DataID = RowID;
             checkBox.Text = "";
             checkBox.ChoosedDataID = ChoosedDataID;
-            CellHolder.Controls.Add(checkBox);
 
             for (int i = 0; i < ColumnNum; i++)
             {

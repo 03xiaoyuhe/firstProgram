@@ -90,8 +90,6 @@
 
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
         <ContentTemplate>
-            <span style="margin-left:10px;"><asp:Button ID="Button1" runat="server" CssClass="btn btn-outline-dark small" Text="全选" OnClick="Unnamed_Click" /></span>
-            <div style="float:right;margin-right:10px;">对选择的操作:&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID ="DeletButton" runat ="server" CssClass="btn btn-outline-dark" Text ="删除" OnClick="DeletButton_Click"/></div>
             <asp:Panel ID="Panel1" runat="server" >
                 <div id ="stickytable" class="sticky-table" runat="server">
                     <table>

@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Runtime.InteropServices.ComTypes;
+using Models;
 
 namespace WebForm.ASCX.Table.ForMyTable
 {
@@ -14,53 +16,74 @@ namespace WebForm.ASCX.Table.ForMyTable
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            //ChoosedDataIDContain choosedDataIDContain = new ChoosedDataIDContain();
-            //choosedDataIDContain.ID = ChoosedDataID;
-            //if(choosedDataIDContain.ChoosedIDs.Count == DataCount)
-            //{
-            //    CheckBox1.Checked = true;
-            //}
-            //else
-            //{
-            //    CheckBox1.Checked = false;
-            //}
+        }
 
-            //CheckBox1.CheckedChanged += eventHandler;
-
+        HashSet<string> _allDataId;
+        /// <summary>
+        /// 存放所有的数据ID
+        /// </summary>
+        public HashSet<string> AllDataId
+        {
+            get
+            {
+                if( _allDataId == null ) _allDataId = new HashSet<string>();
+                return _allDataId;
+            }
+            set
+            {
+                if (_allDataId != value)
+                {
+                    _allDataId = value;
+                }
+            }
         }
 
 
-        //public EventHandler eventHandler;
+        /// <summary>
+        /// 用来存放表格控件刷新事件
+        /// </summary>
+        public EventHandler UpdateTable;
 
-        //public int DataCount;
+        public EventHandler ChooseAll;
 
-        //string choosedDataID;
-        ///// <summary>
-        ///// 复选框缓存对象ID
-        ///// </summary>
-        //public string ChoosedDataID
-        //{
-        //    get
-        //    {
-        //        return choosedDataID;
-        //    }
-        //    set
-        //    {
-        //        choosedDataID = value;
-        //    }
-        //}
+        /// <summary>
+        /// 解释缓存的数据
+        /// </summary>
+        HashSet<string> ChoosedDataIDContain
+        { 
+            get
+            {
+                ChoosedDataIDContain choosedDataIDContain = new ChoosedDataIDContain();
+                choosedDataIDContain.ID = ChoosedDataID;
+                return choosedDataIDContain.ChoosedIDs;
+            }
+            set
+            {
+                ChoosedDataIDContain choosedDataIDContain = new ChoosedDataIDContain();
+                choosedDataIDContain.ID = ChoosedDataID;
+                choosedDataIDContain.ChoosedIDs = value;
+            }
+        }
 
+        string choosedDataID;
+        /// <summary>
+        /// 复选框缓存对象ID
+        /// </summary>
+        public string ChoosedDataID
+        {
+            get
+            {
+                return choosedDataID;
+            }
+            set
+            {
+                choosedDataID = value;
+            }
+        }
 
-        //public override string Text
-        //{
-        //    get
-        //    {
-        //        return CheckBox1.Text;
-        //    }
-        //    set
-        //    {
-        //        CheckBox1.Text = value;
-        //    }
-        //}
+        public void HtmlBtn_Click(object sender, EventArgs e)
+        {
+            ChooseAll(sender, e);
+        }
     }
 }

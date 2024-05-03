@@ -1,4 +1,6 @@
-﻿using Models.PageDataSor;
+﻿using Models;
+using Models.PageDataSor;
+using Models.PageDataSor.ForMyTable;
 using System;
 using System.Collections.Generic;
 using WebForm.ASCX.Table.ForMyTable;
@@ -41,6 +43,25 @@ namespace WebForm.ASCX.Table
             }
         }
 
+        HashSet<string> _allDataId;
+        /// <summary>
+        /// 存放所有的数据ID
+        /// </summary>
+        public HashSet<string> AllDataId
+        {
+            get
+            {
+                if (_allDataId == null) _allDataId = new HashSet<string>();
+                return _allDataId;
+            }
+            set
+            {
+                if (_allDataId != value)
+                {
+                    _allDataId = value;
+                }
+            }
+        }
 
         bool showControl = false;
         /// <summary>
@@ -63,6 +84,12 @@ namespace WebForm.ASCX.Table
             get { return lineToShow.Count; }
         }
 
+        /// <summary>
+        /// 用来存放表格控件刷新事件
+        /// </summary>
+        public EventHandler UpdateTable;
+
+        public EventHandler ChooseAll;
 
         string choosedDataID;
         /// <summary>
@@ -97,8 +124,10 @@ namespace WebForm.ASCX.Table
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            CheckBoxTree checkBox = (CheckBoxTree)LoadControl("~/ASCX/Table/ForMyTable/CheckBoxTree.ascx");
-            CellHolder.Controls.Add(checkBox);
+            checkBox.AllDataId = AllDataId;
+            checkBox.ChoosedDataID = ChoosedDataID;
+            checkBox.ChooseAll += ChooseAll;
+            checkBox.UpdateTable += UpdateTable;
 
             for (int i = 0; i < ColumnNum; i++)
             {
@@ -108,12 +137,20 @@ namespace WebForm.ASCX.Table
                 CellHolder.Controls.Add(NewCell);
                 Count++;
             }
-            if (ShowControl)
+            PlaceHolder1.Visible = ShowControl;
+        }
+
+        protected void DeletButton_Click(object sender, EventArgs e)
+        {
+            Massage massage = new Massage();
+            massage.MassageText = "";
+            ChoosedDataIDContain choosedDataIDContain = new ChoosedDataIDContain();
+            choosedDataIDContain.ID = ChoosedDataID;
+            foreach (string item in choosedDataIDContain.ChoosedIDs)
             {
-                CellForHead newCell = (CellForHead)LoadControl("~/ASCX/Table/ForMyTable/CellForHead.ascx");
-                newCell.CellData = "操作";
-                CellHolder.Controls.Add(newCell);
+                massage.MassageText += item + " ";
             }
+            massage.PostMassage();
         }
 
     }
