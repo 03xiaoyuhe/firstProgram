@@ -1,4 +1,5 @@
 ﻿using Models;
+using Models.PageDataSor.ForMyTable;
 using System;
 using System.Data;
 using WebForm.ASCX.Table.ForMyTable;
@@ -150,10 +151,41 @@ namespace WebForm.ASCX.Table
             }
         }
 
+        string choosedDataID;
+        /// <summary>
+        /// 复选框缓存
+        /// </summary>
+        public string ChoosedDataID
+        {
+            get
+            {
+                return choosedDataID;
+            }
+            set
+            {
+                choosedDataID = value;
+            }
+        }
+
+        public bool Checked
+        {
+            get
+            {
+                return checkBox.Checked;
+            }
+            set
+            {
+                checkBox.Checked = value;
+            }
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
             CellHolder.Controls.Clear();
+            checkBox.DataID = RowID;
+            checkBox.Text = "";
+            checkBox.ChoosedDataID = ChoosedDataID;
+
             for (int i = 0; i < ColumnNum; i++)
             {
                 CellForBody NewCell = (CellForBody)LoadControl("~/ASCX/Table/ForMyTable/CellForBody.ascx");
@@ -172,5 +204,7 @@ namespace WebForm.ASCX.Table
                 CellHolder.Controls.Add(newCell);
             }
         }
+
+
     }
 }

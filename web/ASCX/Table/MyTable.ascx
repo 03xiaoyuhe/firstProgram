@@ -89,7 +89,6 @@
 --%>
 
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
-
         <ContentTemplate>
             <asp:Panel ID="Panel1" runat="server" >
                 <div id ="stickytable" class="sticky-table" runat="server">

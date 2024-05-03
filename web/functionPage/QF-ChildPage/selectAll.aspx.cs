@@ -87,6 +87,7 @@ namespace WebForm.functionPage.QF_ChildPage
             InitData();
             Loding();
             LoadTable();
+
         }
 
         void InitData()

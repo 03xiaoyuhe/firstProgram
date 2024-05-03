@@ -7,11 +7,11 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace WebForm.ASCX.Table.ForMyTable
+namespace WebForm.functionPage.QF_ChildPage
 {
 
 
-    public partial class ControlBase
+    public partial class UnChoosePage
     {
     }
 }

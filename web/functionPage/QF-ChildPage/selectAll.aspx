@@ -15,8 +15,7 @@
     <link href="../..//bootstrap-5.3.0-alpha1-dist/css/bootstrap-reboot.min.css" rel="stylesheet" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-    <style> 
-        
+    <style>
         .Center {
             position: absolute;
             left: 50%;
@@ -35,14 +34,14 @@
                     </div>
                     <div class="col-8">
                         <div style="margin: 10px;">
-                            <asp:TextBox ID="TextBox1" runat="server" Width="200"></asp:TextBox>
+                            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
                         </div>
                     </div>
                     <div class="col">
                     </div>
                 </div>
             </div>
-            <div style="height:500px;">
+            <div style="height: 500px;">
                 <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                 <%--<TPrintMassage:PrintMassage ID="aaa" runat="server" />--%>
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -51,11 +50,12 @@
                     </ContentTemplate>
                 </asp:UpdatePanel>
             </div>
-            <div style="position:absolute;width:100%">
-                <div class="Center" style="margin:0 auto;">
-                            <PageIndex:PageIndex ID="aaa" runat="server" CssClass="Center"/>
+            <div style="position: absolute; width: 100%">
+                <div class="Center" style="margin: 0 auto;">
+                    <PageIndex:PageIndex ID="aaa" runat="server" CssClass="Center" />
                 </div>
             </div>
+        </div>
     </form>
 </body>
 </html>
