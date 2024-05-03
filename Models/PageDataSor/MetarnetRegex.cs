@@ -30,7 +30,8 @@ namespace Models.PageDataSor
         /// </summary>
         static HashSet<string> hashset = new HashSet<string>();
 
-        static Dictionary<string, HashSet<string>> keyValuePairs = new Dictionary<string, HashSet<string>>();
+        static HashSet<string> NameSerch = new HashSet<string>();
+        //static Dictionary<string, HashSet<string>> keyValuePairs = new Dictionary<string, HashSet<string>>();
 
         /// <summary>
         /// 立项编号的查询与存储
@@ -56,18 +57,21 @@ namespace Models.PageDataSor
 
         public static void Name()
         {
-            DataSet rowAfforts = DAL.DBHelper.Query("select  Id,UseName from UserInfor");
+            DataSet rowAfforts = DAL.DBHelper.Query("select  UseName from UserInfor");
             DataTable dt = rowAfforts.Tables[0];
             foreach (DataRow item in dt.Rows)
             {
-               
+                if (!NameSerch.Contains(item[0].ToString()))
+                {
+                    NameSerch.Add(item[0].ToString());
+                }
                 
             }
 
 
         }
 
-
+        static int  Count = 0;
         /// <summary>
         /// 导入表格数据检查函数
         /// </summary>
@@ -89,7 +93,7 @@ namespace Models.PageDataSor
                     {
                         return $"(项目名称长度超过限制){Data}";
                     }
-                    break;
+                     
                 case "项目评级":
                     if (Data.Length != 1)
                     {
@@ -103,7 +107,7 @@ namespace Models.PageDataSor
                     {
                         return "Success";
                     }
-                    break;
+                     
                 
                 case "项目类别":
                     if(Data.Length > 50)
@@ -114,7 +118,7 @@ namespace Models.PageDataSor
                     {
                         return "Success";
                     }
-                    break;
+                     
                 case "是否符合青年项目申报条件":
                     if (Data.Length != 1)
                     {
@@ -124,11 +128,12 @@ namespace Models.PageDataSor
                     {
                         return "Success";
                     }
-                    break;
+                     
                     //todo
                 case "项目负责人":
+
                     return "Success";
-                    break;
+                     
                 case "本项目国内外研究现状述评":
                     if (Data.Length > 1300)
                     {
@@ -138,7 +143,7 @@ namespace Models.PageDataSor
                     {
                         return "Success";
                     }
-                    break;
+                     
                 case "本项目研究的主要观点":
                     if (Data.Length > 2100)
                     {
@@ -148,7 +153,7 @@ namespace Models.PageDataSor
                     {
                         return "Success";
                     }
-                    break;
+                     
                 case "前期研究成果":
                     if (Data.Length > 1000)
                     {
@@ -158,7 +163,7 @@ namespace Models.PageDataSor
                     {
                         return "Success";
                     }
-                    break;
+                     
                 case "项目完成时间":
                     try
                     {
@@ -169,7 +174,7 @@ namespace Models.PageDataSor
                     {
                         return $"(不是正确的日期格式，请按照年-月-日填写){Data}";
                     }
-                    break;
+                     
                 case "成果形式":
                     if (Data.Length > 50)
                     {
@@ -178,7 +183,7 @@ namespace Models.PageDataSor
                     else{
                         return "Success";
                     }
-                    break;
+                     
                 case "项目单位评审意见":
                     if(Data.Length > 500)
                     {
@@ -188,7 +193,7 @@ namespace Models.PageDataSor
                     {
                         return "Success";
                     }
-                    break;
+                     
                 case "专家评审":
                     if (Data.Length > 500)
                     {
@@ -198,7 +203,7 @@ namespace Models.PageDataSor
                     {
                         return "Success";
                     }
-                    break;
+                     
                 case "项目审批意见":
                     if (Data.Length > 500)
                     {
@@ -208,7 +213,7 @@ namespace Models.PageDataSor
                     {
                         return "Success";
                     }
-                    break;
+                     
                 case "立项编号":
                     if (Data.Length != 12)
                     {
@@ -226,13 +231,17 @@ namespace Models.PageDataSor
                         {
                             return $"(输入的立项编号合法，但已经存在，请重新输入){Data}";
                         }
+                        Count++;
+                        if(Count%2 == 0)
+                        {
+                            hashset.Add(Data);
+                        }
                         
-                        hashset.Add(Data);
                       
                         return "Success";
 
                     }
-                    break;
+                     
 
                 case "姓名":
                     if (Data.Length > 20)
@@ -241,13 +250,17 @@ namespace Models.PageDataSor
                     }
                     else
                     {
-                        
-
-
-
-                        return "Success";
+                        if (NameSerch.Contains(Data))
+                        {
+                           return $"(该姓名已存在，请你检查是否需要插入，如果需要请你在名字后添加一个特殊字符){Data}";
+                        }
+                        else
+                        {
+                            NameSerch.Add(Data);
+                            return "Success";
+                        }
                     }
-                    break;
+                     
 
                 case "生日":
                     try
@@ -259,7 +272,7 @@ namespace Models.PageDataSor
                     {
                         return $"(不是正确的日期格式，请按照年-月-日填写){Data}";
                     }
-                    break;
+                     
 
                 case "性别":
                     if (Data.Length > 1)
@@ -270,7 +283,7 @@ namespace Models.PageDataSor
                     {
                         return "Success";
                     }
-                    break;
+                     
 
                 case "职务":
                     if (Data.Length > 20)
@@ -282,7 +295,7 @@ namespace Models.PageDataSor
                         return "Success";
                     }
 
-                    break;
+                     
 
                 case "职称":
                     if (Data.Length > 20)
@@ -294,7 +307,7 @@ namespace Models.PageDataSor
                         return "Success";
                     }
 
-                    break;
+                     
                 case "专业":
                     if (Data.Length > 30)
                     {
@@ -305,7 +318,7 @@ namespace Models.PageDataSor
                         return "Success";
                     }
 
-                    break;
+                     
                 case "研究专长":
                     if (Data.Length > 50)
                     {
@@ -316,7 +329,7 @@ namespace Models.PageDataSor
                         return "Success";
                     }
 
-                    break;
+                     
 
                 case "现从事职业":
                     if (Data.Length > 30)
@@ -328,7 +341,7 @@ namespace Models.PageDataSor
                         return "Success";
                     }
 
-                    break;
+                     
 
                 case "工作单位":
                     if (Data.Length > 20)
@@ -340,7 +353,7 @@ namespace Models.PageDataSor
                         return "Success";
                     }
 
-                    break;
+                     
                 case "通信地址":
                     if (Data.Length > 20)
                     {
@@ -351,7 +364,7 @@ namespace Models.PageDataSor
                         return "Success";
                     }
 
-                    break;
+                     
 
                     //////////////todo
                 case "办公电话":
@@ -364,7 +377,7 @@ namespace Models.PageDataSor
                         return "Success";
                     }
 
-                    break;
+                     
 
                 case "电话号码":
                     if (Data.Length > 11)
@@ -384,7 +397,7 @@ namespace Models.PageDataSor
                         
                     }
 
-                    break;
+                     
 
                 case "邮箱":
                     if (Data.Length > 20)
@@ -402,7 +415,7 @@ namespace Models.PageDataSor
                             return  $"(填写的邮箱不规范，请检查该邮箱的格式){Data}";
                         }
                     }
-                    break;
+                     
 
             }
 

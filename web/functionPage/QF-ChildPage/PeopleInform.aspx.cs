@@ -81,7 +81,7 @@ namespace WebForm.functionPage.QF_ChildPage
         protected void Button1_Click(object sender, EventArgs e)
         {
 
-            MetarnetRegex.Give();
+            MetarnetRegex.Name();
             if (FileUpload1.HasFile == false)//HasFile用来检查FileUpload是否有指定文件 choose为文件上传框ID
             {
                 Response.Write("<script>alert('请您选择Excel文件')</script> ");
@@ -212,7 +212,7 @@ namespace WebForm.functionPage.QF_ChildPage
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-
+            
             IWorkbook Modebook = null;
             int rowCount = 0;//行数
             //判断文件是否存在
