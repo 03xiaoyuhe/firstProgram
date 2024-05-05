@@ -363,7 +363,7 @@
                                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                         <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="selectAll(this)">显示全部</a></li>
                                         <li>
-                                            <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#exampleModal">筛选</a>
+                                            <%--<a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#exampleModal">筛选</a>--%>
                                             <%--<button type="button" class="link-body-emphasis d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                 筛选
                                             </button>--%>
@@ -429,7 +429,7 @@
                                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                         <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="PeopleInform()">批量导入</a></li>
                                         <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">批量更改</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">信息查询</a></li>
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="PersonInformSelectPage()">信息查询</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -564,7 +564,7 @@
         </div>
 
         <script type="text/javascript"></script>
-        <div class="bg-body-tertiary border rounded-3" style="float: right; position: relative; overflow: hidden; width: 100%; height: 600px; margin-right: 30px; margin-left;">
+        <div class="bg-body-tertiary border rounded-3" style="float: right; position: relative; overflow: hidden; width: 100%; height: 620px; margin-right: 30px; margin-left;">
             <iframe id="test" src="./QF-ChildPage/UnChoosePage.aspx" style="width: 100%; height: 100%">D:\______myProgram\哲学与社会科学规划项目信息化管理平台\firstProgram\web\functionPage\QF-ChildPage\UnChoosePage.aspx
             </iframe>
         </div>
@@ -572,62 +572,78 @@
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
     <form runat="server">
 
-        <!-- 筛选功能页 class="modal-dialog modal-dialog-centered" -->
-        <div class="modal fade" id="exampleModal" style="background-color: rgba(0,0,0,0.3);" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel"><strong>筛选</strong></h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="accordion" id="accordionPanelsStayOpenExample">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                                        Accordion Item #1
-                                    </button>
-                                </h2>
-                                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
-                                    <div class="accordion-body">
-                                        <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                                    </div>
-                                </div>
+        <TMassage:Massage runat="server" ID="aaa"></TMassage:Massage>
+
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
+            <ContentTemplate>
+                <!-- 筛选功能页 class="modal-dialog modal-dialog-centered" -->
+                <div class="modal fade" id="exampleModal" style="background-color: rgba(0,0,0,0.3);" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel"><strong>筛选</strong></h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                                        Accordion Item #2
-                                    </button>
-                                </h2>
-                                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
-                                    <div class="accordion-body">
-                                        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+
+                            <div class="modal-body">
+
+                                <div class="accordion" id="accordionPanelsStayOpenExample">
+
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                                Accordion Item #1
+                                            </button>
+                                        </h2>
+                                        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                                            <div class="accordion-body">
+                                                <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                            </div>
+                                        </div>
                                     </div>
+
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                                                Accordion Item #2
+                                            </button>
+                                        </h2>
+                                        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                                            <div class="accordion-body">
+                                                <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                                                Accordion Item #3
+                                            </button>
+                                        </h2>
+                                        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                                            <div class="accordion-body">
+                                                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
+
                             </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                                        Accordion Item #3
-                                    </button>
-                                </h2>
-                                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
-                                    <div class="accordion-body">
-                                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                                    </div>
-                                </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
+                                <button type="button" class="btn btn-primary">Save changes</button>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
                 </div>
-            </div>
-        </div>
-        <TMassage:Massage runat="server" ID="aaa"></TMassage:Massage>
+
+            </ContentTemplate>
+
+        </asp:UpdatePanel>
     </form>
     <script type="text/javascript">
         // 显示所有项目信息逻辑
@@ -652,6 +668,11 @@
         // 测试
         function test() {
             document.getElementById("test").src = "https://www.bilibili.com/";
+        }
+
+        // PersonInformSelectPage
+        function PersonInformSelectPage() {
+            document.getElementById("test").src = "QF-ChildPage/PersonInformSelectPage.aspx";
         }
 
     </script>

@@ -11,7 +11,7 @@ namespace WebForm.functionPage.QF_ChildPage
 {
 
 
-    public partial class selectAll1
+    public partial class PersonInformSelectPage
     {
 
         /// <summary>

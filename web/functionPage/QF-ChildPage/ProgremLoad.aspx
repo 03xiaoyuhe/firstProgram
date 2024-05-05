@@ -32,7 +32,7 @@
     <form id="form1" runat="server" style="width: 100%;">
         <div style="width: 100%">
             <div style="width: 100px; height: 20px;"></div>
-            <h2 style="margin:0 30px;">
+            <h2 style="margin:0 50px;">
                 <strong>申报项目信息批量导入</strong>
             </h2>
             <div style="margin:0 40px;">

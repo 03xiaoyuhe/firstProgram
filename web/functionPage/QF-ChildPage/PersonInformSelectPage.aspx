@@ -1,6 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="selectAll.aspx.cs" Inherits="WebForm.functionPage.QF_ChildPage.selectAll1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PersonInformSelectPage.aspx.cs" Inherits="WebForm.functionPage.QF_ChildPage.PersonInformSelectPage" %>
 
-<%--  项目信息查询页 --%>
+<%--  人员信息查询页 --%>
 
 <%@ Register Src="~/ASCX/PageIndex.ascx" TagName="PageIndex" TagPrefix="PageIndex" %>
 <%@ Register Src="~/ASCX/Table/MyTable.ascx" TagName="Table" TagPrefix="Table" %>
@@ -66,7 +66,7 @@
     <form id="form1" runat="server">
         <div>
             <h2 style="margin: 20px 20px;margin-bottom:0;">
-                <strong>&nbsp;&nbsp;&nbsp;&nbsp;项目信息查询
+                <strong>&nbsp;&nbsp;&nbsp;&nbsp;人员信息查询
                         <a href="#" class="link-body-emphasis text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel" viewBox="0 0 16 16">
                                 <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z" />
@@ -151,3 +151,4 @@
     <script src="../../assets/dist/js/bootstrap.js"></script>
 </body>
 </html>
+

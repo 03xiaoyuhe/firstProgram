@@ -3,12 +3,16 @@ using Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 using WebForm.ASCX;
 using WebForm.ASCX.Table;
 
 namespace WebForm.functionPage.QF_ChildPage
 {
-    public partial class selectAll1 : System.Web.UI.Page
+    public partial class PersonInformSelectPage : System.Web.UI.Page
     {
         #region 自定义属性
 
@@ -70,7 +74,7 @@ namespace WebForm.functionPage.QF_ChildPage
         {
             get
             {
-                if(Request.QueryString["index"]!= null)
+                if (Request.QueryString["index"] != null)
                 {
                     return int.Parse(Request.QueryString["index"]);
                 }
@@ -163,7 +167,7 @@ namespace WebForm.functionPage.QF_ChildPage
                 massage.MassageText = "无法显示全部信息，请联系工作人员";
                 massage.PostMassage();
             }
-            
+
         }
 
         protected void PlaceHolder1_Load(object sender, EventArgs e)
