@@ -87,8 +87,6 @@ namespace WebForm.functionPage.QF_ChildPage
             InitData();
             Loding();
             LoadTable();
-
-
         }
 
         void InitData()
@@ -168,6 +166,14 @@ namespace WebForm.functionPage.QF_ChildPage
 
         protected void PlaceHolder1_Load(object sender, EventArgs e)
         {
+            InitData();
+            Loding();
+            LoadTable();
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(Request.Url.ToString());
 
         }
     }
