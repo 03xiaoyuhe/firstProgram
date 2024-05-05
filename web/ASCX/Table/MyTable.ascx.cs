@@ -123,6 +123,18 @@ namespace WebForm.ASCX.Table
         #endregion
 
         #region 其他 如控制性属性
+        bool showCheck;
+        public bool ShowCheck
+        {
+            get
+            {
+                return showCheck;
+            }
+            set
+            {
+                showCheck = value;
+            }
+        }
 
         bool showControl;
         /// <summary>
@@ -219,7 +231,7 @@ namespace WebForm.ASCX.Table
             LineForHead NewHead = (LineForHead)LoadControl("~/ASCX/Table/ForMyTable/LineForHead.ascx");
             NewHead.LineToShow = TableBase.LineToShow;
             NewHead.LineToMean = TableBase.LineToMean;
-
+            NewHead.ShowCheck = ShowCheck;
             // 初始化本表所有ID
             HashSet<string> AllDataID = new HashSet<string>();
             for (int i = 0; i < RowsCount; i++)
@@ -249,6 +261,7 @@ namespace WebForm.ASCX.Table
                     NewLine.ShowControl = ShowControl;
                     NewLine.ControlASCX = ControlASCX;
                     NewLine.ChoosedDataID = ChoosedDataID;
+                    NewLine.ShowCheck = ShowCheck;
                     BodyHolder.Controls.Add(NewLine);
                     Count++;
                 }

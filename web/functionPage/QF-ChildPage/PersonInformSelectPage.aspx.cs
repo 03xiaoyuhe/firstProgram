@@ -97,7 +97,10 @@ namespace WebForm.functionPage.QF_ChildPage
 
         void InitData()
         {
-            Data = PageApart.Apart("ProjectApplications", "project_id", PageNum - 1);
+
+            DataSet dataSet = DAL.DBHelper.Query("select Id,UseName,UserDate,UserSex,UserPosition from UserInfor;");
+
+            Data = dataSet;
         }
 
         void Loding()
@@ -121,32 +124,28 @@ namespace WebForm.functionPage.QF_ChildPage
             }
             try
             {
-                List<string> list = new List<string>();
-                //list.Add("user_phone");
-                list.Add("project_name");
-                list.Add("project_level");
-                list.Add("project_number");
-                list.Add("project_category");
-                list.Add("project_youth");
-                list.Add("project_time");
-                list.Add("project_form");
+                //将重名信息加载到PlaceHolder1
+                List<string> listInfor = new List<string>();
+                listInfor.Add("Id");
+                listInfor.Add("UseName");
+                listInfor.Add("UserDate");
+                listInfor.Add("UserSex");
+                listInfor.Add("UserPosition");
 
-                Dictionary<string, string> map = new Dictionary<string, string>();
-                map.Add("project_id", "ID");
-                //map.Add("user_phone", "负责人电话号码");
-                map.Add("project_name", "项目名称");
-                map.Add("project_level", "项目评级");
-                map.Add("project_number", "立项编号");
-                map.Add("project_category", "项目类别");
-                map.Add("project_youth", "是否符合青年项目申报条件");
-                map.Add("project_time", "项目完成时间");
-                map.Add("project_form", "成果形式");
+
+                Dictionary<string, string> mapInfor = new Dictionary<string, string>();
+                mapInfor.Add("Id", "用户编号");
+                mapInfor.Add("UseName", "姓名");
+                mapInfor.Add("UserDate", "生日");
+                mapInfor.Add("UserSex", "性别");
+                mapInfor.Add("UserPosition", "职务");
+
 
                 TableAttribute tableAttribute = new TableAttribute(
-                    "project_id",
-                    "项目信息",
-                    map,
-                    list
+                    "Id",
+                    "重名信息",
+                    mapInfor,
+                    listInfor
                     );
 
                 MyTable NewLine = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");

@@ -150,7 +150,7 @@
 
         <!-- 筛选功能页 class="modal-dialog modal-dialog-centered" -->
 
-        <div class="modal fade" id="exampleModal" style="background-color: rgba(0,0,0,0.3);" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal" style="background-color: rgba(0,0,0,0.2);" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
             <Filtrate:FiltrateForm runat="server" ID="Filtrate" />
         </div>

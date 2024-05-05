@@ -63,6 +63,20 @@ namespace WebForm.ASCX.Table
             }
         }
 
+
+        bool showCheck;
+        public bool ShowCheck
+        {
+            get
+            {
+                return showCheck;
+            }
+            set
+            {
+                showCheck = value;
+            }
+        }
+
         bool showControl = false;
         /// <summary>
         /// 是否要显示控制行
@@ -135,7 +149,7 @@ namespace WebForm.ASCX.Table
             checkBox.ChooseAll += ChooseAll;
             checkBox.UnChooseAll += UnChooseAll;
             checkBox.UpdateTable += UpdateTable;
-
+            checkBox.Visible = ShowCheck;
             for (int i = 0; i < ColumnNum; i++)
             {
                 CellForHead NewCell = (CellForHead)LoadControl("~/ASCX/Table/ForMyTable/CellForHead.ascx");

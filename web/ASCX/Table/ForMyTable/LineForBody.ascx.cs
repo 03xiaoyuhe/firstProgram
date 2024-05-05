@@ -117,6 +117,19 @@ namespace WebForm.ASCX.Table
         }
 
 
+        bool showCheck;
+        public bool ShowCheck
+        {
+            get
+            {
+                return showCheck;
+            }
+            set
+            {
+                showCheck = value;
+            }
+        }
+
         bool showControl;
         /// <summary>
         /// 是否要显示控制行
@@ -179,12 +192,15 @@ namespace WebForm.ASCX.Table
             }
         }
 
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             CellHolder.Controls.Clear();
             checkBox.DataID = RowID;
             checkBox.Text = "";
             checkBox.ChoosedDataID = ChoosedDataID;
+            checkBox.Visible = ShowCheck;
 
             for (int i = 0; i < ColumnNum; i++)
             {
