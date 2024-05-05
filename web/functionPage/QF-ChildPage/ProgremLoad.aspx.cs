@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Web;
 using System.Web.DynamicData;
 using System.Web.Services.Description;
@@ -43,7 +44,7 @@ namespace WebForm.functionPage.QF_ChildPage
         {
 
             //UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-            //MetarnetRegex.Give();
+            MetarnetRegex.Give();
 
             list1 = new Dictionary<string, bool>();
             list1.Add("项目负责人", true);
@@ -88,6 +89,7 @@ namespace WebForm.functionPage.QF_ChildPage
         {
 
             MetarnetRegex.Give();
+
             if (FileUpload1.HasFile == false)//HasFile用来检查FileUpload是否有指定文件 choose为文件上传框ID
             {
                 Response.Write("<script>alert('请您选择Excel文件')</script> ");
@@ -135,7 +137,6 @@ namespace WebForm.functionPage.QF_ChildPage
                     //判断是否是使用id插入
                     if (MetarnetRegex.IsNotNagtive(progressProject.ProUser))
                     {
-
                         if (
                         !DAL.ProjectCompletion.KindsInsert(
                              progressProject.ProUser,
@@ -160,31 +161,69 @@ namespace WebForm.functionPage.QF_ChildPage
                             massage.MassageText = "第" + i + "插入异常，可能数据依然不符合要求，请仔细检查该行数据并尝试重新插入";
                             massage.PostMassage();
                         }
+                        else
+                        {
+                            // 加载导入预览
+                            List<string> list = new List<string>();
+                            list.Add("project_name");
+                            list.Add("project_level");
+                            list.Add("project_number");
+                            list.Add("project_category");
+                            list.Add("project_youth");
+                            list.Add("project_time");
+                            list.Add("project_form");
+
+                            Dictionary<string, string> map = new Dictionary<string, string>();
+                            map.Add("project_name", "项目名称");
+                            map.Add("project_level", "项目评级");
+                            map.Add("project_number", "立项编号");
+                            map.Add("project_category", "项目类别");
+                            map.Add("project_youth", "是否符合青年项目申报条件");
+                            map.Add("project_time", "项目完成时间");
+                            map.Add("project_form", "成果形式");
+
+                            TableAttribute tableAttribute = new TableAttribute(
+                                "project_number",
+                                "项目信息",
+                                map,
+                                list
+                                );
+
+                            MyTable NewLine = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
+                            NewLine.TableBase = tableAttribute;
+                            NewLine.DataCollection = loadDataTable;
+                            NewLine.Height = 400;
+                            NewLine.TableName = "ProjectApplications";
+                            PlaceHolder2.Controls.Clear();
+                            PlaceHolder2.Controls.Add(NewLine);
+                        }
                     }
 
                     //使用姓名插入 progressProject.ProUser值为姓名
-                    else
-                    {                       
-                        string query = "select Id,UseName,UserDate,UserSex,UserNumber,UserPosition from UseName = " + progressProject.ProUser + " ;";
-                        if (DBHelper.ExecuteSql(query) == 0)
-                        {
-                            Models.Massage massage = new Massage();
-                            massage.HeadColor = "Red";
-                            massage.HeadText = "ERROR";
-                            massage.MassageText = "输入的姓名未插入信息，无法绑定该用户为负责人。";
-                            massage.PostMassage();
-                        }
-                        DataSet dataSet = DBHelper.Query(query);
+                    DataSet dataSet = DAL.DBHelper.Query("select Id,UseName,UserDate,UserSex,UserPosition from UserInfor where UseName = '" + progressProject.ProUser + "';");
+                    DataTable dt = dataSet.Tables[0];
 
-                        DataTable userInforData = dataSet.Tables[0];   
+                    int rowAfforts = dt.Rows.Count;
+                    if (rowAfforts == 0)
+                    {
+                        Models.Massage massage = new Massage();
+                        massage.HeadColor = "Red";
+                        massage.HeadText = "ERROR";
+                        massage.MassageText = "该负责人未导入信息，请检查填入的负责人姓名是否正确";
+                        massage.PostMassage();
+                    }
+
+                    //检查出不重名信息，因为只有一行，所以直接添加到项目表中
+                    else if (rowAfforts == 1)
+                    {
+                        DataSet dataId = DAL.DBHelper.Query("select Id from UserInfor where UseName ='" + progressProject.ProUser + "';");
+                        DataTable ds = dataId.Tables[0];
+                        DataRow dataRow = ds.Rows[0];
+                        string leaderId = dataRow[0].ToString();
                         
-                        if(userInforData.Rows.Count == 1)
-                        {
-                            DataRow row = userInforData.Rows[0];
-                            progressProject.ProUser = row[0].ToString();
-                            if (
+                        if (
                         !DAL.ProjectCompletion.KindsInsert(
-                             progressProject.ProUser,
+                             leaderId,
                              progressProject.ProName, //dl["project_name"].ToString(), 
                              progressProject.ProLevel, //dl["project_level"].ToString(),
                              progressProject.ProNumber, //dl["project_number"].ToString(),
@@ -199,66 +238,91 @@ namespace WebForm.functionPage.QF_ChildPage
                              progressProject.ProExpert,                  //dl["project_expert_view"].ToString(),
                              progressProject.ProApproval                  //dl["project_approval_view"].ToString()
                              ))
-                            {
-                                Models.Massage massage = new Massage();
-                                massage.HeadColor = "Red";
-                                massage.HeadText = "ERROR";
-                                massage.MassageText = "第" + i + "插入异常，可能数据依然不符合要求，请仔细检查该行数据并尝试重新插入";
-                                massage.PostMassage();
-                            }
-
-                        }
-                        else
                         {
-                            
-                            // 加载导入预览
-                            List<string> userInforDatalist = new List<string>();
-                            userInforDatalist.Add("Id");
-                            userInforDatalist.Add("UseName");
-                            userInforDatalist.Add("UserDate");
-                            userInforDatalist.Add("UserSex");
-                            userInforDatalist.Add("UserNumber");
-                            userInforDatalist.Add("UserPosition");
-                            
-
-                            Dictionary<string, string> userInforDataMap = new Dictionary<string, string>();
-                            userInforDataMap.Add("Id", "编号");
-                            userInforDataMap.Add("UseName", "姓名");
-                            userInforDataMap.Add("UserDate", "生日");
-                            userInforDataMap.Add("UserSex", "性别");
-                            userInforDataMap.Add("UserNumber", "电话号码");
-                            userInforDataMap.Add("UserPosition", "职务");
-                            
-
-                            TableAttribute tableAttribute1 = new TableAttribute(
-                                "Id",
-                                "重名信息",
-                                userInforDataMap,
-                                userInforDatalist
-                                );
-
-                            MyTable userDataTableForm = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
-                            userDataTableForm.TableBase = tableAttribute1;
-                            userDataTableForm.DataCollection = userInforData;
-                            userDataTableForm.Height = 400;
-                            userDataTableForm.TableName = "UserInfor";
-                            PlaceHolder1.Controls.Clear();
-                            PlaceHolder1.Controls.Add(userDataTableForm);
-
-                            Massage massage = new Massage();
-                            massage.MassageText = "插入的用户名在系统中有重名信息，请您确定需要绑定的人的编号，已显示在下方重名信息表中。";
+                            Models.Massage massage = new Massage();
+                            massage.HeadColor = "Red";
                             massage.HeadText = "ERROR";
-                            massage.HeadColor = "Pink";
+                            massage.MassageText = "第" + i + "插入异常，可能数据依然不符合要求，请仔细检查该行数据并尝试重新插入";
                             massage.PostMassage();
-
                         }
-                        
+                        // 加载导入预览
+                        List<string> list = new List<string>();
+                        list.Add("project_name");
+                        list.Add("project_level");
+                        list.Add("project_number");
+                        list.Add("project_category");
+                        list.Add("project_youth");
+                        list.Add("project_time");
+                        list.Add("project_form");
 
+                        Dictionary<string, string> map = new Dictionary<string, string>();
+                        map.Add("project_name", "项目名称");
+                        map.Add("project_level", "项目评级");
+                        map.Add("project_number", "立项编号");
+                        map.Add("project_category", "项目类别");
+                        map.Add("project_youth", "是否符合青年项目申报条件");
+                        map.Add("project_time", "项目完成时间");
+                        map.Add("project_form", "成果形式");
+
+                        TableAttribute tableAttribute = new TableAttribute(
+                            "project_number",
+                            "项目信息",
+                            map,
+                            list
+                            );
+
+                        MyTable NewLine = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
+                        NewLine.TableBase = tableAttribute;
+                        NewLine.DataCollection = loadDataTable;
+                        NewLine.Height = 400;
+                        NewLine.TableName = "ProjectApplications";
+                        PlaceHolder2.Controls.Clear();
+                        PlaceHolder2.Controls.Add(NewLine);
 
                     }
+                    else if(rowAfforts > 1)
+                    {
+                       
 
+                        //将重名信息加载到PlaceHolder1
+                        List<string> listInfor = new List<string>();
+                        listInfor.Add("Id");
+                        listInfor.Add("UseName");
+                        listInfor.Add("UserDate");
+                        listInfor.Add("UserSex");
+                        listInfor.Add("UserPosition");
+                        
 
+                        Dictionary<string, string> mapInfor = new Dictionary<string, string>();
+                        mapInfor.Add("Id", "用户编号");
+                        mapInfor.Add("UseName", "姓名");
+                        mapInfor.Add("UserDate", "生日");
+                        mapInfor.Add("UserSex", "性别");
+                        mapInfor.Add("UserPosition", "职务");
+                        
 
+                        TableAttribute tableAttribute1 = new TableAttribute(
+                            "Id",
+                            "重名信息",
+                            mapInfor,
+                            listInfor
+                            );
+
+                        MyTable NewLine1 = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
+                        NewLine1.TableBase = tableAttribute1;
+                        NewLine1.DataCollection = dt;
+                        NewLine1.Height = 400;
+                        NewLine1.TableName = "UserInfor";
+                        PlaceHolder1.Controls.Clear();
+                        PlaceHolder1.Controls.Add(NewLine1);
+
+                        Massage massage = new Massage();
+                        massage.MassageText = "有重名的信息，请您检查核对需要插入的具体是哪位，并使用编号进行再次插入";
+                        massage.HeadText = "WANNING";
+                        massage.HeadColor = "Yellow";
+                        massage.PostMassage();
+                    }
+                    
 
 
 
@@ -267,39 +331,39 @@ namespace WebForm.functionPage.QF_ChildPage
 
 
 
-                // 加载导入预览
-                List<string> list = new List<string>();
-                list.Add("project_name");
-                list.Add("project_level");
-                list.Add("project_number");
-                list.Add("project_category");
-                list.Add("project_youth");
-                list.Add("project_time");
-                list.Add("project_form");
+                //// 加载导入预览
+                //List<string> list = new List<string>();
+                //list.Add("project_name");
+                //list.Add("project_level");
+                //list.Add("project_number");
+                //list.Add("project_category");
+                //list.Add("project_youth");
+                //list.Add("project_time");
+                //list.Add("project_form");
 
-                Dictionary<string, string> map = new Dictionary<string, string>();
-                map.Add("project_name", "项目名称");
-                map.Add("project_level", "项目评级");
-                map.Add("project_number", "立项编号");
-                map.Add("project_category", "项目类别");
-                map.Add("project_youth", "是否符合青年项目申报条件");
-                map.Add("project_time", "项目完成时间");
-                map.Add("project_form", "成果形式");
+                //Dictionary<string, string> map = new Dictionary<string, string>();
+                //map.Add("project_name", "项目名称");
+                //map.Add("project_level", "项目评级");
+                //map.Add("project_number", "立项编号");
+                //map.Add("project_category", "项目类别");
+                //map.Add("project_youth", "是否符合青年项目申报条件");
+                //map.Add("project_time", "项目完成时间");
+                //map.Add("project_form", "成果形式");
 
-                TableAttribute tableAttribute = new TableAttribute(
-                    "project_number",
-                    "项目信息",
-                    map,
-                    list
-                    );
+                //TableAttribute tableAttribute = new TableAttribute(
+                //    "project_number",
+                //    "项目信息",
+                //    map,
+                //    list
+                //    );
 
-                MyTable NewLine = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
-                NewLine.TableBase = tableAttribute;
-                NewLine.DataCollection = loadDataTable;
-                NewLine.Height = 400;
-                NewLine.TableName = "ProjectApplications";
-                PlaceHolder2.Controls.Clear();
-                PlaceHolder2.Controls.Add(NewLine);
+                //MyTable NewLine = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
+                //NewLine.TableBase = tableAttribute;
+                //NewLine.DataCollection = loadDataTable;
+                //NewLine.Height = 400;
+                //NewLine.TableName = "ProjectApplications";
+                //PlaceHolder2.Controls.Clear();
+                //PlaceHolder2.Controls.Add(NewLine);
 
 
 
