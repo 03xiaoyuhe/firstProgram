@@ -70,7 +70,7 @@
                 <div class="row align-items-end" style="margin-bottom:10px;">
                     <div class="col">
                         <h2>
-                            <strong>项目信息查询</strong>
+                            <strong>&nbsp;项目信息查询</strong>
 
                             <a href="#" class="link-body-emphasis text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel" viewBox="0 0 16 16">

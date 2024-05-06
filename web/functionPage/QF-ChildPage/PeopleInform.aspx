@@ -25,6 +25,7 @@
 </head>
 <body>
     <form id="form1" runat="server" style="width: 100%;">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div style="width: 100%">
 
             <div style="width: 100px; height: 20px;"></div>
