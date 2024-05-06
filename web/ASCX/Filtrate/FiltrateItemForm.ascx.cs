@@ -98,5 +98,7 @@ namespace WebForm.ASCX.Filtrate
                 CacheGenericity<HashSet<string>>.Data[GetCacheIndex].Remove(item.Text);
             }
         }
+
+
     }
 }

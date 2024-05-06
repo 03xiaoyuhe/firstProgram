@@ -2,6 +2,7 @@
 
 <%--  人员信息查询页 --%>
 
+
 <%@ Register Src="~/ASCX/PageIndex.ascx" TagName="PageIndex" TagPrefix="PageIndex" %>
 <%@ Register Src="~/ASCX/Table/MyTable.ascx" TagName="Table" TagPrefix="Table" %>
 <%@ Register Src="~/ASCX/MassageForm/PrintMassage.ascx" TagName="PrintMassage" TagPrefix="TPrintMassage" %>
@@ -64,82 +65,93 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            <h2 style="margin: 20px 20px;margin-bottom:0;">
-                <strong>&nbsp;&nbsp;&nbsp;&nbsp;人员信息查询
-                        <a href="#" class="link-body-emphasis text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel" viewBox="0 0 16 16">
-                                <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z" />
-                            </svg>
-                        </a>
-                    <span data-descr="排序">
-                        <asp:Button ID="Button2" runat="server" CssClass="TreeButtom" Text=" " />
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter-square" viewBox="0 0 16 16">
-                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                            <path d="M6 11.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
-                        </svg>
-                        <ul  class="list-group" style="">
-                            <li class="list-group-item">排序:</li>
-                            <li class="list-group-item">
-                                <asp:Button ID="ByProgremNameButton" runat="server" style="background:none;border:none;font-weight:1000;" Text="按项目名称" />
-                            </li>
-                            <li class="list-group-item">
-                                <asp:Button ID="ByProgremNoButton" runat="server" style="background:none;border:none;font-weight:1000;" Text="按立项编号" />
-                            </li>
-                            <li class="list-group-item">A third item</li>
-                            <li class="list-group-item">A fourth item</li>
-                            <li class="list-group-item">And a fifth one</li>
-                        </ul>
-                    </span>
-                </strong>
-                
-                    <div style="float:right;width:500px;">
-                        <span class="input-group" >
-                            <asp:TextBox
-                                ID="TextBox1"
-                                runat="server"
-                                class="form-control form-control-sm"
-                                type="text"
-                                placeholder="输入搜索内容"
-                                aria-label=".form-control-sm example"></asp:TextBox>
-                            <asp:Button ID="Button1" class="input-group-text" runat="server" Text="搜索" />
-                        </span>
+        <div style="margin-top:15px;">
 
-                    </div>
-            </h2>
-            <div class="container text-center">
-                <div class="row fade">
-                    <div class="col" style="height: 100%; vertical-align: text-top;">
-                    </div>
-                    <div class="col-10" style="height: 100%; vertical-align: bottom;">
-                    </div>
+            <div class="container text-left" style="width:900px">
+                <div class="row align-items-end" style="margin-bottom:10px;">
                     <div class="col">
+                        <h2>
+                            <strong>人员信息查询</strong>
+
+                            <a href="#" class="link-body-emphasis text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel" viewBox="0 0 16 16">
+                                    <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z" />
+                                </svg>
+                            </a>
+                            <span data-descr="排序">
+                                <asp:Button ID="Button2" runat="server" CssClass="TreeButtom" Text=" " />
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter-square" viewBox="0 0 16 16">
+                                    <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                    <path d="M6 11.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                                </svg>
+                                <ul class="list-group card" style="">
+                                    <li class="list-group-item"><strong>排序:</strong></li>
+                                    <li class="list-group-item">
+                                        <asp:Button ID="ByProgremNameButton" CssClass="btn-sm" runat="server" Style="background: none; border: none;" Text="按项目名称" />
+                                    </li>
+                                    <li class="list-group-item">
+                                        <asp:Button ID="ByProgremNoButton"  CssClass="btn-sm" runat="server" Style="background: none; border: none;" Text="按立项编号" />
+                                    </li>
+                                    <li class="list-group-item">A third item</li>
+                                    <li class="list-group-item">A fourth item</li>
+                                    <li class="list-group-item">And a fifth one</li>
+                                </ul>
+                            </span>
+                        </h2>
+                    </div>
+
+                    <div class="col text-right">
+                        <div>
+                            <!--style="float: right; width: 500px;"-->
+                            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                                <ContentTemplate>
+                                    <span class="input-group">
+                                        <asp:TextBox
+                                            ID="TextBox1"
+                                            runat="server"
+                                            class="form-control form-control-sm"
+                                            type="text"
+                                            placeholder="输入搜索内容"
+                                            aria-label=".form-control-sm example"></asp:TextBox>
+                                        <asp:Button ID="Button1" class="btn btn-primary input-group-text" for="TextBox1" runat="server" Text="搜索" OnClick="Button1_Click" />
+                                    </span>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col" >
+                        <div class="card" style="border-radius:10px; overflow:hidden;">
+                            <%--<TPrintMassage:PrintMassage ID="aaa" runat="server" />--%>
+                            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                <ContentTemplate>
+                                    <asp:PlaceHolder ID="PlaceHolder1" runat="server" OnLoad="PlaceHolder1_Load">
+                                        <Loading:Load runat="server" ID="Load" />
+                                    </asp:PlaceHolder>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+
+                        </div>
                     </div>
                 </div>
-                <div style="height: 5px;"></div>
-            </div>
-            <div>
-                <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-                <%--<TPrintMassage:PrintMassage ID="aaa" runat="server" />--%>
-                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                    <ContentTemplate>
 
-                        <asp:PlaceHolder ID="PlaceHolder1" runat="server" OnLoad="PlaceHolder1_Load">
-                            <Loading:Load runat="server" ID="Load" />
-                        </asp:PlaceHolder>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
-            </div>
-            <div style="position: absolute; width: 100%">
-                <div class="Center" style="margin: 0 auto;">
-                    <PageIndex:PageIndex ID="aaa" runat="server" CssClass="Center" />
+                <div class="row text-center">
+                    <div class="col">
+                        <PageIndex:PageIndex ID="aaa" runat="server" CssClass="Center" />
+                    </div>
                 </div>
             </div>
+
         </div>
 
         <!-- 筛选功能页 class="modal-dialog modal-dialog-centered" -->
 
-        <div class="modal fade" id="exampleModal" style="background-color: rgba(0,0,0,0.3);" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal" style="background-color: rgba(0,0,0,0.2);" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
             <Filtrate:FiltrateForm runat="server" ID="Filtrate" />
         </div>
@@ -151,4 +163,3 @@
     <script src="../../assets/dist/js/bootstrap.js"></script>
 </body>
 </html>
-

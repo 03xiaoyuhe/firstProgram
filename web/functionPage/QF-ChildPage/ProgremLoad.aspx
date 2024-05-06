@@ -34,7 +34,7 @@
             <div style="width: 100px; height: 20px;"></div>
             <div style="margin:0 40px;">
                 <div>
-                    <div class="container text-left">
+                    <div class="container text-left"  style="width:900px">
                         <div class="row">
                             <div class="col">
                                 <h2>

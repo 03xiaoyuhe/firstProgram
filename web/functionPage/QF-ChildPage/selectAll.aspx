@@ -66,7 +66,7 @@
     <form id="form1" runat="server">
         <div style="margin-top:15px;">
 
-            <div class="container text-left">
+            <div class="container text-left" style="width:1000px">
                 <div class="row align-items-end" style="margin-bottom:10px;">
                     <div class="col">
                         <h2>
@@ -110,7 +110,7 @@
                                             ID="TextBox1"
                                             runat="server"
                                             class="form-control form-control-sm"
-                                            type="text"
+                                            type="search"
                                             placeholder="输入搜索内容"
                                             aria-label=".form-control-sm example"></asp:TextBox>
                                         <asp:Button ID="Button1" class="btn btn-primary input-group-text" for="TextBox1" runat="server" Text="搜索" OnClick="Button1_Click" />

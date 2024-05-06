@@ -84,8 +84,6 @@ namespace WebForm.functionPage.QF_ChildPage
 
         #endregion
 
-
-
         protected void Page_Load(object sender, EventArgs e)
         {
             InitData();
@@ -154,6 +152,7 @@ namespace WebForm.functionPage.QF_ChildPage
                 NewLine.Height = 500;
                 NewLine.TableName = "ProjectApplications";
                 NewLine.ShowControl = true;
+                NewLine.ShowCheck = true;
                 NewLine.ControlASCX = "~/ASCX/Table/ForMyTable/DeletButten.ascx";
                 PlaceHolder1.Controls.Clear();
                 PlaceHolder1.Controls.Add(NewLine);
@@ -172,6 +171,12 @@ namespace WebForm.functionPage.QF_ChildPage
         protected void PlaceHolder1_Load(object sender, EventArgs e)
         {
 
+        }
+
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(Request.Url.ToString());
         }
     }
 }
