@@ -28,7 +28,7 @@
         }
 
         .sticky-table th {
-            background-color: var(--bs-secondary-bg);
+            background-color: var(--bs-dark-bg-subtle);
             color: black;
             position: sticky;
             top: 0; /* 首行永远固定在头部  */

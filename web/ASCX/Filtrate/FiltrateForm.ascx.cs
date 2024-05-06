@@ -1,4 +1,5 @@
-﻿using Models.PageDataSor;
+﻿using Models;
+using Models.PageDataSor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -93,7 +94,14 @@ namespace WebForm.ASCX.Filtrate
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            foreach(string key in AllFiltrate.Keys)
+            Massage massage = new Massage();
+            massage.MassageText = "";
+            foreach (string s in GetChoosed["project_level"])
+            {
+                massage.MassageText += s;
+            }
+            massage.PostMassage();
+            foreach (string key in AllFiltrate.Keys)
             {
                 CacheGenericity<HashSet<string>>.Data[GetCacheIndex(key)] = CacheGenericity<HashSet<string>>.Data[FiltrateItemForm.GetCheIndex(key)];
             }

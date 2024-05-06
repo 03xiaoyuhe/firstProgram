@@ -21,6 +21,7 @@ namespace Models
     public class Massage
     {
 
+        public string NO = "";
         public string HeadColor;
         public string HeadText;
         public string MassageText;
@@ -60,7 +61,7 @@ namespace Models
 
         public void PostMassage()
         {
-            HttpCookie aCookie = new HttpCookie("Massage" + DataTime);
+            HttpCookie aCookie = new HttpCookie("Massage" + DataTime + NO);
             aCookie.Values["Type"] = "Massage-1.0";
             aCookie.Values["HeadColor"] = HeadColor;
             aCookie.Values["HeadText"] = HeadText;

@@ -44,6 +44,10 @@ namespace WebForm.functionPage.QF_ChildPage
         {
 
             //UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
+            
+                MetarnetRegex.RemoveHash();
+            
+
             MetarnetRegex.Give();
 
             list1 = new Dictionary<string, bool>();
@@ -124,7 +128,8 @@ namespace WebForm.functionPage.QF_ChildPage
                     Massage massage = new Massage();
                     massage.HeadColor = "blue";
                     massage.HeadText = "tips";
-                    massage.MassageText = $"存在无法导入的数据行，共{ErroRowCount}行数据无法导入，请点击下载错误数据行文件，进行查看并修改。";
+                    massage.MassageText = $"共{ErroRowCount}行数据无法导入，请点击下载错误数据行文件，查看并修改。";
+                    massage.PostMassage();
                 }
 
 
@@ -155,6 +160,7 @@ namespace WebForm.functionPage.QF_ChildPage
                              ))
                         {
                             Models.Massage massage = new Massage();
+                            //massage.NO = "1";
                             massage.HeadColor = "Red";
                             massage.HeadText = "ERROR";
                             massage.MassageText = "第" + i + "插入异常，可能数据依然不符合要求，请仔细检查该行数据并尝试重新插入";
@@ -191,7 +197,6 @@ namespace WebForm.functionPage.QF_ChildPage
                             MyTable NewLine = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
                             NewLine.TableBase = tableAttribute;
                             NewLine.DataCollection = loadDataTable;
-                            NewLine.Height = 400;
                             NewLine.TableName = "ProjectApplications";
                             PlaceHolder2.Controls.Clear();
                             PlaceHolder2.Controls.Add(NewLine);
@@ -274,7 +279,6 @@ namespace WebForm.functionPage.QF_ChildPage
                         MyTable NewLine = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
                         NewLine.TableBase = tableAttribute;
                         NewLine.DataCollection = loadDataTable;
-                        NewLine.Height = 400;
                         NewLine.TableName = "ProjectApplications";
                         PlaceHolder2.Controls.Clear();
                         PlaceHolder2.Controls.Add(NewLine);
