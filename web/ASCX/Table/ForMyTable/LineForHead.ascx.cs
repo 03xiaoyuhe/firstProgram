@@ -3,6 +3,8 @@ using Models.PageDataSor;
 using Models.PageDataSor.ForMyTable;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 using WebForm.ASCX.Table.ForMyTable;
 
 namespace WebForm.ASCX.Table
@@ -167,11 +169,36 @@ namespace WebForm.ASCX.Table
             massage.MassageText = "";
             ChoosedDataIDContain choosedDataIDContain = new ChoosedDataIDContain();
             choosedDataIDContain.ID = ChoosedDataID;
+
+            int ans = choosedDataIDContain.ChoosedIDs.Count;
+            
             foreach (string item in choosedDataIDContain.ChoosedIDs)
             {
+                if (!DAL.ProjectCompletion.DeleteInfor(item)){
+                    Massage massage1 = new Massage();
+                    DataSet dataSet = DAL.DBHelper.Query("select project_number from ProjectApplications where project_id = " + item + ";");
+                    DataTable dataTable = dataSet.Tables[0];
+                    DataRow dataRow = dataTable.Rows[0];
+                    massage1.MassageText = "立项编号为："+ dataRow[0].ToString()+"的项目删除失败！";
+                    massage1.HeadColor = "Red";
+                    massage1.HeadText = "ERROR";
+                    massage1.PostMassage();
+                    ans--;
+                }
+                
                 massage.MassageText += item + " ";
             }
-            massage.PostMassage();
+
+            Massage massage12 = new Massage();
+            if (ans == choosedDataIDContain.ChoosedIDs.Count)
+            {
+                massage12.MassageText = "选择的所有项目均删除成功";
+                massage12.HeadText = "Success";
+                massage12.HeadColor = "Blue";
+            }
+            massage12.PostMassage();
+            //massage.PostMassage();
+            Response.Redirect(Request.Url.ToString());
         }
 
     }

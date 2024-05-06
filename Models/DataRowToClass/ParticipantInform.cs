@@ -12,39 +12,39 @@ namespace Models.DataRowToClass
     {
         public ParticipantInform()
         {
-            dataTable = new DataTable();
-            DataColumn column = new DataColumn("UseName");
-            dataTable.Columns.Add(column);
-            column = new DataColumn("UserDate");
-            dataTable.Columns.Add(column);
-            column = new DataColumn("UserSex");
-            dataTable.Columns.Add(column);
-            column = new DataColumn("UserPosition");
-            dataTable.Columns.Add(column);
-            column = new DataColumn("UserTitle");
-            dataTable.Columns.Add(column);
-            column = new DataColumn("UserSpeciality");
-            dataTable.Columns.Add(column);
-            column = new DataColumn("UserResearch");
-            dataTable.Columns.Add(column);
-            column = new DataColumn("UserResearch_now");
-            dataTable.Columns.Add(column);
-            column = new DataColumn("UserWorkplace");
-            dataTable.Columns.Add(column);
-            column = new DataColumn("UserAddress");
-            dataTable.Columns.Add(column);
-            column = new DataColumn("UserOffice_number");
-            dataTable.Columns.Add(column);
-            column = new DataColumn("UserNumber");
-            dataTable.Columns.Add(column);
-            column = new DataColumn("UserEmail");
-            dataTable.Columns.Add(column);
+            //dataTable = new DataTable();
+            //DataColumn column = new DataColumn("UseName");
+            //dataTable.Columns.Add(column);
+            //column = new DataColumn("UserDate");
+            //dataTable.Columns.Add(column);
+            //column = new DataColumn("UserSex");
+            //dataTable.Columns.Add(column);
+            //column = new DataColumn("UserPosition");
+            //dataTable.Columns.Add(column);
+            //column = new DataColumn("UserTitle");
+            //dataTable.Columns.Add(column);
+            //column = new DataColumn("UserSpeciality");
+            //dataTable.Columns.Add(column);
+            //column = new DataColumn("UserResearch");
+            //dataTable.Columns.Add(column);
+            //column = new DataColumn("UserResearch_now");
+            //dataTable.Columns.Add(column);
+            //column = new DataColumn("UserWorkplace");
+            //dataTable.Columns.Add(column);
+            //column = new DataColumn("UserAddress");
+            //dataTable.Columns.Add(column);
+            //column = new DataColumn("UserOffice_number");
+            //dataTable.Columns.Add(column);
+            //column = new DataColumn("UserNumber");
+            //dataTable.Columns.Add(column);
+            //column = new DataColumn("UserEmail");
+            //dataTable.Columns.Add(column);
             
 
         }
 
-        DataTable dataTable;
-        public DataTable DataTable
+        DataRow dataTable;
+        public DataRow DataTable
         {
             get
             {
@@ -60,14 +60,14 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("UseName")) return null;
-                return dataTable.Rows[0]["UseName"].ToString();
+                if (dataTable.Table.Rows.Count == 0 || !dataTable.Table.Columns.Contains("UseName")) return null;
+                return dataTable["UseName"].ToString();
             }
             set
             {
-                if (dataTable.Rows.Count == 0) return;
-                if (dataTable.Columns.Contains("UseName")) return;
-                dataTable.Rows[0]["UseName"] = value;
+                if (dataTable.Table.Rows.Count == 0) return;
+                if (dataTable.Table.Columns.Contains("UseName")) return;
+                dataTable["UseName"] = value;
             }
         }
 
@@ -75,14 +75,14 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("UserDate")) return null;
-                return MetarnetRegex.ExcelDateToSQLDate(dataTable.Rows[0]["UserDate"].ToString());
+                if (dataTable.Table.Rows.Count == 0 || !dataTable.Table.Columns.Contains("UserDate")) return null;
+                return MetarnetRegex.ExcelDateToSQLDate(dataTable["UserDate"].ToString());
             }
             set
             {
-                if (dataTable.Rows.Count == 0) return;
-                if (dataTable.Columns.Contains("UserDate")) return;
-                dataTable.Rows[0]["UserDate"] = value;
+                if (dataTable.Table.Rows.Count == 0) return;
+                if (dataTable.Table.Columns.Contains("UserDate")) return;
+                dataTable["UserDate"] = value;
             }
         }
 
@@ -90,14 +90,14 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("UserSex")) return null;
-                return dataTable.Rows[0]["UserSex"].ToString();
+                if (dataTable.Table.Rows.Count == 0 || !dataTable.Table.Columns.Contains("UserSex")) return null;
+                return dataTable["UserSex"].ToString();
             }
             set
             {
-                if (dataTable.Rows.Count == 0) return;
-                if (dataTable.Columns.Contains("UserSex")) return;
-                dataTable.Rows[0]["UserSex"] = value;
+                if (dataTable.Table.Rows.Count == 0) return;
+                if (dataTable.Table.Columns.Contains("UserSex")) return;
+                dataTable["UserSex"] = value;
             }
         }
 
@@ -105,14 +105,14 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("UserPosition")) return null;
-                return dataTable.Rows[0]["UserPosition"].ToString();
+                if (dataTable.Table.Rows.Count == 0 || !dataTable.Table.Columns.Contains("UserPosition")) return null;
+                return dataTable["UserPosition"].ToString();
             }
             set
             {
-                if (dataTable.Rows.Count == 0) return;
-                if (dataTable.Columns.Contains("UserPosition")) return;
-                dataTable.Rows[0]["UserPosition"] = value;
+                if (dataTable.Table.Rows.Count == 0) return;
+                if (dataTable.Table.Columns.Contains("UserPosition")) return;
+                dataTable["UserPosition"] = value;
             }
         }
 
@@ -120,14 +120,14 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("UserTitle")) return null;
-                return dataTable.Rows[0]["UserTitle"].ToString();
+                if (dataTable.Table.Rows.Count == 0 || !dataTable.Table.Columns.Contains("UserTitle")) return null;
+                return dataTable["UserTitle"].ToString();
             }
             set
             {
-                if (dataTable.Rows.Count == 0) return;
-                if (dataTable.Columns.Contains("UserTitle")) return;
-                dataTable.Rows[0]["UserTitle"] = value;
+                if (dataTable.Table.Rows.Count == 0) return;
+                if (dataTable.Table.Columns.Contains("UserTitle")) return;
+                dataTable["UserTitle"] = value;
             }
         }
 
@@ -135,14 +135,14 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("UserSpeciality")) return null;
-                return dataTable.Rows[0]["UserSpeciality"].ToString();
+                if (dataTable.Table.Rows.Count == 0 || !dataTable.Table.Columns.Contains("UserSpeciality")) return null;
+                return dataTable["UserSpeciality"].ToString();
             }
             set
             {
-                if (dataTable.Rows.Count == 0) return;
-                if (dataTable.Columns.Contains("UserSpeciality")) return;
-                dataTable.Rows[0]["UserSpeciality"] = value;
+                if (dataTable.Table.Rows.Count == 0) return;
+                if (dataTable.Table.Columns.Contains("UserSpeciality")) return;
+                dataTable["UserSpeciality"] = value;
             }
         }
 
@@ -150,28 +150,28 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("UserResearch")) return null;
-                return dataTable.Rows[0]["UserResearch"].ToString();
+                if (dataTable.Table.Rows.Count == 0 || !dataTable.Table.Columns.Contains("UserResearch")) return null;
+                return dataTable["UserResearch"].ToString();
             }
             set
             {
-                if (dataTable.Rows.Count == 0) return;
-                if (dataTable.Columns.Contains("UserResearch")) return;
-                dataTable.Rows[0]["UserResearch"] = value;
+                if (dataTable.Table.Rows.Count == 0) return;
+                if (dataTable.Table.Columns.Contains("UserResearch")) return;
+                dataTable["UserResearch"] = value;
             }
         }
         public string PeoReNow
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("UserResearch_now")) return null;
-                return dataTable.Rows[0]["UserResearch_now"].ToString();
+                if (dataTable.Table.Rows.Count == 0 || !dataTable.Table.Columns.Contains("UserResearch_now")) return null;
+                return dataTable["UserResearch_now"].ToString();
             }
             set
             {
-                if (dataTable.Rows.Count == 0) return;
-                if (dataTable.Columns.Contains("UserResearch_now")) return;
-                dataTable.Rows[0]["UserResearch_now"] = value;
+                if (dataTable.Table.Rows.Count == 0) return;
+                if (dataTable.Table.Columns.Contains("UserResearch_now")) return;
+                dataTable["UserResearch_now"] = value;
             }
         }
 
@@ -179,14 +179,14 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("UserWorkplace")) return null;
-                return dataTable.Rows[0]["UserWorkplace"].ToString();
+                if (dataTable.Table.Rows.Count == 0 || !dataTable.Table.Columns.Contains("UserWorkplace")) return null;
+                return dataTable["UserWorkplace"].ToString();
             }
             set
             {
-                if (dataTable.Rows.Count == 0) return;
-                if (dataTable.Columns.Contains("UserWorkplace")) return;
-                dataTable.Rows[0]["UserWorkplace"] = value;
+                if (dataTable.Table.Rows.Count == 0) return;
+                if (dataTable.Table.Columns.Contains("UserWorkplace")) return;
+                dataTable["UserWorkplace"] = value;
             }
         }
 
@@ -194,14 +194,14 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("UserAddress")) return null;
-                return dataTable.Rows[0]["UserAddress"].ToString();
+                if (dataTable.Table.Rows.Count == 0 || !dataTable.Table.Columns.Contains("UserAddress")) return null;
+                return dataTable["UserAddress"].ToString();
             }
             set
             {
-                if (dataTable.Rows.Count == 0) return;
-                if (dataTable.Columns.Contains("UserAddress")) return;
-                dataTable.Rows[0]["UserAddress"] = value;
+                if (dataTable.Table.Rows.Count == 0) return;
+                if (dataTable.Table.Columns.Contains("UserAddress")) return;
+                dataTable["UserAddress"] = value;
             }
         }
 
@@ -209,14 +209,14 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("UserOffice_number")) return null;
-                return dataTable.Rows[0]["UserOffice_number"].ToString();
+                if (dataTable.Table.Rows.Count == 0 || !dataTable.Table.Columns.Contains("UserOffice_number")) return null;
+                return dataTable["UserOffice_number"].ToString();
             }
             set
             {
-                if (dataTable.Rows.Count == 0) return;
-                if (dataTable.Columns.Contains("UserOffice_number")) return;
-                dataTable.Rows[0]["UserOffice_number"] = value;
+                if (dataTable.Table.Rows.Count == 0) return;
+                if (dataTable.Table.Columns.Contains("UserOffice_number")) return;
+                dataTable["UserOffice_number"] = value;
             }
         }
 
@@ -224,14 +224,14 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("UserNumber")) return null;
-                return dataTable.Rows[0]["UserNumber"].ToString();
+                if (dataTable.Table.Rows.Count == 0 || !dataTable.Table.Columns.Contains("UserNumber")) return null;
+                return dataTable["UserNumber"].ToString();
             }
             set
             {
-                if (dataTable.Rows.Count == 0) return;
-                if (dataTable.Columns.Contains("UserNumber")) return;
-                dataTable.Rows[0]["UserNumber"] = value;
+                if (dataTable.Table.Rows.Count == 0) return;
+                if (dataTable.Table.Columns.Contains("UserNumber")) return;
+                dataTable["UserNumber"] = value;
             }
         }
 
@@ -239,14 +239,14 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("UserEmail")) return null;
-                return dataTable.Rows[0]["UserEmail"].ToString();
+                if (dataTable.Table.Rows.Count == 0 || !dataTable.Table.Columns.Contains("UserEmail")) return null;
+                return dataTable["UserEmail"].ToString();
             }
             set
             {
-                if (dataTable.Rows.Count == 0) return;
-                if (dataTable.Columns.Contains("UserEmail")) return;
-                dataTable.Rows[0]["UserEmail"] = value;
+                if (dataTable.Table.Rows.Count == 0) return;
+                if (dataTable.Table.Columns.Contains("UserEmail")) return;
+                dataTable["UserEmail"] = value;
             }
         }
 

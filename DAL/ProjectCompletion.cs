@@ -318,6 +318,24 @@ namespace DAL
             return rowsAffected > 0;
         }
 
+        /// <summary>
+        /// 通过立项编号删除数据
+        /// </summary>
+        /// <param name="project_id"></param>
+        /// <returns></returns>
+        public static bool DeleteInfor(string project_id)
+        {
+            string query = "delete from ProjectApplications where project_id = @project_id";
+            SqlParameter[] parameters =
+            {
+                new SqlParameter("@project_id",SqlDbType.Int) { Value = project_id },
+            };
+            int rowAfforts = DBHelper.ExecuteSql(query, parameters);
+
+            return rowAfforts > 0;
+        }
+
+
 
         /// <summary>
         /// 插入项目表
