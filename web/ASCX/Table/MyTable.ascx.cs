@@ -22,8 +22,7 @@ namespace WebForm.ASCX.Table
         {
             get
             {
-                if (height > 100) return height;
-                else return 100;
+                return height;
             }
             set
             {
@@ -227,7 +226,7 @@ namespace WebForm.ASCX.Table
             }
             TableBase.LineToShow = NewLineToShow;
             Panel1.Height = (System.Web.UI.WebControls.Unit)Height;
-            stickytable.Style["height"] = Height + "px";
+            if(Height != 0 )stickytable.Style["height"] = Height + "px";
             LineForHead NewHead = (LineForHead)LoadControl("~/ASCX/Table/ForMyTable/LineForHead.ascx");
             NewHead.LineToShow = TableBase.LineToShow;
             NewHead.LineToMean = TableBase.LineToMean;
