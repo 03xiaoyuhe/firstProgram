@@ -132,8 +132,7 @@ namespace WebForm.functionPage.QF_ChildPage
                 {
                     DataRow dl = loadDataTable.Rows[i];
                     ProgressProject progressProject = new ProgressProject();
-                    progressProject.DataTable = dl.Table;
-                    progressProject.DataTable = dl.Table;
+                    progressProject.DataTable = dl;
                     //判断是否是使用id插入
                     if (MetarnetRegex.IsNotNagtive(progressProject.ProUser))
                     {
@@ -204,6 +203,7 @@ namespace WebForm.functionPage.QF_ChildPage
                     DataTable dt = dataSet.Tables[0];
 
                     int rowAfforts = dt.Rows.Count;
+
                     if (rowAfforts == 0)
                     {
                         Models.Massage massage = new Massage();

@@ -122,7 +122,7 @@ namespace WebForm.functionPage.QF_ChildPage
                 {
                     DataRow dl = dataTable.Rows[i];
                     ParticipantInform participantInform = new ParticipantInform();
-                    participantInform.DataTable = dl.Table;
+                    participantInform.DataTable = dl;
                     if (
                     !DAL.User.KindsInsert(
                         participantInform.PeoName,
@@ -198,6 +198,7 @@ namespace WebForm.functionPage.QF_ChildPage
 
                 System.IO.File.Delete(savePath);
             }
+
             catch (System.Data.SqlClient.SqlException error)
             {
                 Massage message = new Massage();

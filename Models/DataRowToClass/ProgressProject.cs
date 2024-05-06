@@ -13,40 +13,11 @@ namespace Models.DataRowToClass
     {
         public ProgressProject()
         {
-            dataTable = new DataTable();
-            DataColumn column = new DataColumn("project_name");
-            dataTable.Columns.Add(column);
-            column = new DataColumn("project_leader");
-            dataTable.Columns.Add(column);
-            column = new DataColumn("project_level");
-            dataTable.Columns.Add(column);
-            column = new DataColumn("project_number");
-            dataTable.Columns.Add(column);
-            column = new DataColumn("project_category");
-            dataTable.Columns.Add(column);
-            column = new DataColumn("project_youth");
-            dataTable.Columns.Add(column);
-            column = new DataColumn("project_research");
-            dataTable.Columns.Add(column);
-            column = new DataColumn("project_view");
-            dataTable.Columns.Add(column);
-            column = new DataColumn("project_References");
-            dataTable.Columns.Add(column);
-            column = new DataColumn("project_time");
-            dataTable.Columns.Add(column);
-            column = new DataColumn("project_form");
-            dataTable.Columns.Add(column);
-            column = new DataColumn("project_opinion");
-            dataTable.Columns.Add(column);
-            column = new DataColumn("project_expert_view");
-            dataTable.Columns.Add(column);
-            column = new DataColumn("project_approval_view");
-            dataTable.Columns.Add(column);
 
         }
 
-        DataTable dataTable;
-        public DataTable DataTable
+        DataRow dataTable;
+        public DataRow DataTable
         {
             get
             {
@@ -62,14 +33,14 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("project_name")) return null;
-                return dataTable.Rows[0]["project_name"].ToString();
+                if (dataTable.Table.Rows.Count == 0 || !dataTable.Table.Columns.Contains("project_name")) return null;
+                return dataTable["project_name"].ToString();
             }
             set
             {
-                if (dataTable.Rows.Count == 0) return;
-                if (dataTable.Columns.Contains("project_name")) return;
-                dataTable.Rows[0]["project_name"] = value;
+                if (dataTable.Table.Rows.Count == 0) return;
+                if (dataTable.Table.Columns.Contains("project_name")) return;
+                dataTable["project_name"] = value;
             }
         }
 
@@ -77,14 +48,14 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("project_leader")) return null;
-                return dataTable.Rows[0]["project_leader"].ToString();
+                if (dataTable.Table.Rows.Count == 0 || !dataTable.Table.Columns.Contains("project_leader")) return null;
+                return dataTable["project_leader"].ToString();
             }
             set
             {
-                if (dataTable.Rows.Count == 0) return;
-                if (dataTable.Columns.Contains("project_leader")) return;
-                dataTable.Rows[0]["project_leader"] = value;
+                if (dataTable.Table.Rows.Count == 0) return;
+                if (dataTable.Table.Columns.Contains("project_leader")) return;
+                dataTable["project_leader"] = value;
             }
         }
 
@@ -92,14 +63,14 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("project_level")) return null;
-                return dataTable.Rows[0]["project_level"].ToString();
+                if (dataTable.Table.Rows.Count == 0 || !dataTable.Table.Columns.Contains("project_level")) return null;
+                return dataTable["project_level"].ToString();
             }
             set
             {
-                if (dataTable.Rows.Count == 0) return;
-                if (dataTable.Columns.Contains("project_level")) return;
-                dataTable.Rows[0]["project_level"] = value;
+                if (dataTable.Table.Rows.Count == 0) return;
+                if (dataTable.Table.Columns.Contains("project_level")) return;
+                dataTable["project_level"] = value;
             }
         }
         
@@ -107,14 +78,14 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("project_number")) return null;
-                return dataTable.Rows[0]["project_number"].ToString();
+                if (dataTable.Table.Rows.Count == 0 || !dataTable.Table.Columns.Contains("project_number")) return null;
+                return dataTable["project_number"].ToString();
             }
             set
             {
-                if (dataTable.Rows.Count == 0) return;
-                if (dataTable.Columns.Contains("project_number")) return;
-                dataTable.Rows[0]["project_number"] = value;
+                if (dataTable.Table.Rows.Count == 0) return;
+                if (dataTable.Table.Columns.Contains("project_number")) return;
+                dataTable["project_number"] = value;
             }
         }
         
@@ -122,14 +93,14 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("project_category")) return null;
-                return dataTable.Rows[0]["project_category"].ToString();
+                if (dataTable.Table.Rows.Count == 0 || !dataTable.Table.Columns.Contains("project_category")) return null;
+                return dataTable["project_category"].ToString();
             }
             set
             {
-                if (dataTable.Rows.Count == 0) return;
-                if (dataTable.Columns.Contains("project_category")) return;
-                dataTable.Rows[0]["project_category"] = value;
+                if (dataTable.Table.Rows.Count == 0) return;
+                if (dataTable.Table.Columns.Contains("project_category")) return;
+                dataTable["project_category"] = value;
             }
         }
     
@@ -137,14 +108,14 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("project_youth")) return null;
-                return dataTable.Rows[0]["project_youth"].ToString();
+                if (dataTable.Table.Rows.Count == 0 || !dataTable.Table.Columns.Contains("project_youth")) return null;
+                return dataTable["project_youth"].ToString();
             }
             set
             {
-                if (dataTable.Rows.Count == 0) return;
-                if (dataTable.Columns.Contains("project_youth")) return;
-                dataTable.Rows[0]["project_youth"] = value;
+                if (dataTable.Table.Rows.Count == 0) return;
+                if (dataTable.Table.Columns.Contains("project_youth")) return;
+                dataTable["project_youth"] = value;
             }
         }
     
@@ -152,14 +123,14 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 ||!dataTable.Columns.Contains("project_research")) return null;
-                return dataTable.Rows[0]["project_research"].ToString();
+                if (dataTable.Table.Rows.Count == 0 ||!dataTable.Table.Columns.Contains("project_research")) return null;
+                return dataTable["project_research"].ToString();
             }
             set
             {
-                if (dataTable.Rows.Count == 0) return;
-                if (dataTable.Columns.Contains("project_research")) return;
-                dataTable.Rows[0]["project_research"] = value;
+                if (dataTable.Table.Rows.Count == 0) return;
+                if (dataTable.Table.Columns.Contains("project_research")) return;
+                dataTable["project_research"] = value;
             }
         }
     
@@ -167,14 +138,14 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("project_view")) return null;
-                return dataTable.Rows[0]["project_view"].ToString();
+                if (dataTable.Table.Rows.Count == 0 || !dataTable.Table.Columns.Contains("project_view")) return null;
+                return dataTable["project_view"].ToString();
             }
             set
             {
-                if (dataTable.Rows.Count == 0) return;
-                if (dataTable.Columns.Contains("project_view")) return;
-                dataTable.Rows[0]["project_view"] = value;
+                if (dataTable.Table.Rows.Count == 0) return;
+                if (dataTable.Table.Columns.Contains("project_view")) return;
+                dataTable["project_view"] = value;
             }
         }
     
@@ -182,14 +153,14 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("project_References")) return null;
-                return dataTable.Rows[0]["project_References"].ToString();
+                if (dataTable.Table.Rows.Count == 0 || !dataTable.Table.Columns.Contains("project_References")) return null;
+                return dataTable["project_References"].ToString();
             }
             set
             {
-                if (dataTable.Rows.Count == 0) return;
-                if (dataTable.Columns.Contains("project_References")) return;
-                dataTable.Rows[0]["project_References"] = value;
+                if (dataTable.Table.Rows.Count == 0) return;
+                if (dataTable.Table.Columns.Contains("project_References")) return;
+                dataTable["project_References"] = value;
             }
         }
     
@@ -197,14 +168,14 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("project_time")) return null;
-                return MetarnetRegex.ExcelDateToSQLDate(dataTable.Rows[0]["project_time"].ToString());
+                if (dataTable.Table.Rows.Count == 0 || !dataTable.Table.Columns.Contains("project_time")) return null;
+                return MetarnetRegex.ExcelDateToSQLDate(dataTable["project_time"].ToString());
             }
             set
             {
-                if (dataTable.Rows.Count == 0) return;
-                if (dataTable.Columns.Contains("project_time")) return;
-                dataTable.Rows[0]["project_time"] = value;
+                if (dataTable.Table.Rows.Count == 0) return;
+                if (dataTable.Table.Columns.Contains("project_time")) return;
+                dataTable["project_time"] = value;
             }
         }
     
@@ -212,14 +183,14 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("project_form")) return null;
-                return dataTable.Rows[0]["project_form"].ToString();
+                if (dataTable.Table.Rows.Count == 0 || !dataTable.Table.Columns.Contains("project_form")) return null;
+                return dataTable["project_form"].ToString();
             }
             set
             {
-                if (dataTable.Rows.Count == 0) return;
-                if (dataTable.Columns.Contains("project_form")) return;
-                dataTable.Rows[0]["project_form"] = value;
+                if (dataTable.Table.Rows.Count == 0) return;
+                if (dataTable.Table.Columns.Contains("project_form")) return;
+                dataTable["project_form"] = value;
             }
         }
     
@@ -227,14 +198,14 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("project_opinion")) return null;
-                return dataTable.Rows[0]["project_opinion"].ToString();
+                if (dataTable.Table.Rows.Count == 0 || !dataTable.Table.Columns.Contains("project_opinion")) return null;
+                return dataTable["project_opinion"].ToString();
             }
             set
             {
-                if (dataTable.Rows.Count == 0) return;
-                if (dataTable.Columns.Contains("project_opinion")) return;
-                dataTable.Rows[0]["project_opinion"] = value;
+                if (dataTable.Table.Rows.Count == 0) return;
+                if (dataTable.Table.Columns.Contains("project_opinion")) return;
+                dataTable["project_opinion"] = value;
             }
         }
     
@@ -242,14 +213,14 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("project_expert_view")) return null;
-                return dataTable.Rows[0]["project_expert_view"].ToString();
+                if (dataTable.Table.Rows.Count == 0 || !dataTable.Table.Columns.Contains("project_expert_view")) return null;
+                return dataTable["project_expert_view"].ToString();
             }
             set
             {
-                if (dataTable.Rows.Count == 0) return;
-                if (dataTable.Columns.Contains("project_expert_view")) return;
-                dataTable.Rows[0]["project_expert_view"] = value;
+                if (dataTable.Table.Rows.Count == 0) return;
+                if (dataTable.Table.Columns.Contains("project_expert_view")) return;
+                dataTable["project_expert_view"] = value;
             }
         }
     
@@ -257,14 +228,14 @@ namespace Models.DataRowToClass
         {
             get
             {
-                if (dataTable.Rows.Count == 0 || !dataTable.Columns.Contains("project_approval_view")) return null;
-                return dataTable.Rows[0]["project_approval_view"].ToString();
+                if (dataTable.Table.Rows.Count == 0 || !dataTable.Table.Columns.Contains("project_approval_view")) return null;
+                return dataTable["project_approval_view"].ToString();
             }
             set
             {
-                if (dataTable.Rows.Count == 0) return;
-                if (dataTable.Columns.Contains("project_approval_view")) return;
-                dataTable.Rows[0]["project_approval_view"] = value;
+                if (dataTable.Table.Rows.Count == 0) return;
+                if (dataTable.Table.Columns.Contains("project_approval_view")) return;
+                dataTable["project_approval_view"] = value;
             }
         }
     
