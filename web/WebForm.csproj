@@ -235,6 +235,7 @@
     <Content Include="JS\*" />
     <Content Include=".\assets\*" />
     <Content Include=".\assets\dist\*" />
+    <Content Include=".\assets\dist\css\*" />
     <Content Include=".\assets\dist\js\*" />
     <Content Include="assets\brand\bootstrap-logo-white.svg" />
     <Content Include="assets\brand\bootstrap-logo.svg" />
