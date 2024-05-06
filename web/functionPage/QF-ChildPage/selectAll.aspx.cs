@@ -96,15 +96,12 @@ namespace WebForm.functionPage.QF_ChildPage
                 Dictionary<string,HashSet<string>> sons = new Dictionary<string,HashSet<string>>();
                 HashSet<string> ds = new HashSet<string>();
                 ds.Add("A");
+                ds.Add("B");
+                ds.Add("C");
+                ds.Add("D");
+                ds.Add("E");
                 sons.Add("project_level", ds);
                 Filtrate.AllFiltrate = sons;
-                Massage massage = new Massage();
-                massage.MassageText = "";
-                foreach (string s in Filtrate.GetChoosed["project_level"])
-                {
-                    massage.MassageText += s;
-                }
-                massage.PostMassage();
 
             }
             catch

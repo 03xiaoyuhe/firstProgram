@@ -164,42 +164,53 @@ namespace WebForm.ASCX.Table
         }
 
         protected void DeletButton_Click(object sender, EventArgs e)
-        {
-            Massage massage = new Massage();
-            massage.MassageText = "";
+        {           
             ChoosedDataIDContain choosedDataIDContain = new ChoosedDataIDContain();
             choosedDataIDContain.ID = ChoosedDataID;
 
             int ans = choosedDataIDContain.ChoosedIDs.Count;
             
-            foreach (string item in choosedDataIDContain.ChoosedIDs)
+            if(ans != 0)
             {
-                if (!DAL.ProjectCompletion.DeleteInfor(item)){
-                    Massage massage1 = new Massage();
-                    DataSet dataSet = DAL.DBHelper.Query("select project_number from ProjectApplications where project_id = " + item + ";");
-                    DataTable dataTable = dataSet.Tables[0];
-                    DataRow dataRow = dataTable.Rows[0];
-                    massage1.MassageText = "立项编号为："+ dataRow[0].ToString()+"的项目删除失败！";
-                    massage1.HeadColor = "Red";
-                    massage1.HeadText = "ERROR";
-                    massage1.PostMassage();
-                    ans--;
-                }
-                
-                massage.MassageText += item + " ";
-            }
+                foreach (string item in choosedDataIDContain.ChoosedIDs)
+                {
+                    if (!DAL.ProjectCompletion.DeleteInfor(item))
+                    {
+                        Massage massage1 = new Massage();
+                        DataSet dataSet = DAL.DBHelper.Query("select project_number from ProjectApplications where project_id = " + item + ";");
+                        DataTable dataTable = dataSet.Tables[0];
+                        DataRow dataRow = dataTable.Rows[0];
+                        massage1.MassageText = "立项编号为：" + dataRow[0].ToString() + "的项目删除失败！";
+                        massage1.HeadColor = "Red";
+                        massage1.HeadText = "ERROR";
+                        massage1.PostMassage();
+                        ans--;
+                    }
 
-            Massage massage12 = new Massage();
-            if (ans == choosedDataIDContain.ChoosedIDs.Count)
-            {
-                massage12.MassageText = "选择的所有项目均删除成功";
-                massage12.HeadText = "Success";
-                massage12.HeadColor = "Blue";
+                    
+                }
+
+                Massage massage12 = new Massage();
+                if (ans == choosedDataIDContain.ChoosedIDs.Count)
+                {
+                    massage12.MassageText = "选择的所有项目均删除成功";
+                    massage12.HeadText = "Success";
+                    massage12.HeadColor = "Blue";
+                }
+                massage12.PostMassage();
+                
+                Response.Redirect(Request.Url.ToString());
             }
-            massage12.PostMassage();
-            //massage.PostMassage();
-            Response.Redirect(Request.Url.ToString());
+            else
+            {
+                Massage massage = new Massage();
+                massage.MassageText = "未选择数据删除";
+                massage.HeadText = "WANNING";
+                massage.HeadColor = "Orange";
+                massage.PostMassage();
+            }
         }
+            
 
     }
 }

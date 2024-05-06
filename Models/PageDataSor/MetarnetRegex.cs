@@ -29,6 +29,13 @@ namespace Models.PageDataSor
         /// 用于存放从数据库查出的以及网站中用户插入的立项编号
         /// </summary>
         static HashSet<string> hashset = new HashSet<string>();
+        /// <summary>
+        /// 清空hashSet
+        /// </summary>
+        public static void RemoveHash()
+        {
+            hashset = new HashSet<string>();
+        }
 
         static HashSet<string> NameSerch = new HashSet<string>();
         //static Dictionary<string, HashSet<string>> keyValuePairs = new Dictionary<string, HashSet<string>>();
