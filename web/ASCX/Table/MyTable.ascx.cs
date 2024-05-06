@@ -225,7 +225,6 @@ namespace WebForm.ASCX.Table
                 if (DataCollection.Columns.Contains(item)) NewLineToShow.Add(item);
             }
             TableBase.LineToShow = NewLineToShow;
-            Panel1.Height = (System.Web.UI.WebControls.Unit)Height;
             if(Height != 0 )stickytable.Style["height"] = Height + "px";
             LineForHead NewHead = (LineForHead)LoadControl("~/ASCX/Table/ForMyTable/LineForHead.ascx");
             NewHead.LineToShow = TableBase.LineToShow;

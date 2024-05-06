@@ -87,6 +87,31 @@ namespace WebForm.functionPage.QF_ChildPage
             InitData();
             Loding();
             LoadTable();
+
+            try
+            {
+                Dictionary<string,string> translation = new Dictionary<string,string>();
+                translation.Add("project_level", "项目评级");
+                Filtrate.AllFiltrateKeyToMean = translation;
+                Dictionary<string,HashSet<string>> sons = new Dictionary<string,HashSet<string>>();
+                HashSet<string> ds = new HashSet<string>();
+                ds.Add("A");
+                sons.Add("project_level", ds);
+                Filtrate.AllFiltrate = sons;
+                Massage massage = new Massage();
+                massage.MassageText = "";
+                foreach (string s in Filtrate.GetChoosed["project_level"])
+                {
+                    massage.MassageText += s;
+                }
+                massage.PostMassage();
+
+            }
+            catch
+            {
+
+            }
+
         }
 
         void InitData()
@@ -163,6 +188,9 @@ namespace WebForm.functionPage.QF_ChildPage
                 massage.PostMassage();
             }
             
+
+
+
         }
 
         protected void PlaceHolder1_Load(object sender, EventArgs e)

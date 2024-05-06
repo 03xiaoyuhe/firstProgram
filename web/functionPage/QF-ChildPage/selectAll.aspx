@@ -64,19 +64,24 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div style="margin-top:15px;">
+        <div style="margin-top: 15px;">
 
-            <div class="container text-left" style="width:1000px">
-                <div class="row align-items-end" style="margin-bottom:10px;">
+            <div class="container text-left" style="width: 1000px">
+                <div class="row align-items-end" style="margin-bottom: 10px;">
                     <div class="col">
-                        <h2>
+                        
+                        <h2 style="display:inline-block;">
                             <strong>&nbsp;项目信息查询</strong>
+                        </h2>
+                        
+                            <span style="border-radius: 10px; border: 1px solid black;">
 
-                            <a href="#" class="link-body-emphasis text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel" viewBox="0 0 16 16">
-                                    <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z" />
-                                </svg>
-                            </a>
+                                <a href="#" class="link-body-emphasis text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel" viewBox="0 0 16 16" style="margin:0 auto;">
+                                        <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z" />
+                                    </svg>
+                                </a>
+                            </span>
                             <span data-descr="排序">
                                 <asp:Button ID="Button2" runat="server" CssClass="TreeButtom" Text=" " />
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter-square" viewBox="0 0 16 16">
@@ -89,14 +94,13 @@
                                         <asp:Button ID="ByProgremNameButton" CssClass="btn-sm" runat="server" Style="background: none; border: none;" Text="按项目名称" />
                                     </li>
                                     <li class="list-group-item">
-                                        <asp:Button ID="ByProgremNoButton"  CssClass="btn-sm" runat="server" Style="background: none; border: none;" Text="按立项编号" />
+                                        <asp:Button ID="ByProgremNoButton" CssClass="btn-sm" runat="server" Style="background: none; border: none;" Text="按立项编号" />
                                     </li>
                                     <li class="list-group-item">A third item</li>
                                     <li class="list-group-item">A fourth item</li>
                                     <li class="list-group-item">And a fifth one</li>
                                 </ul>
                             </span>
-                        </h2>
                     </div>
 
                     <div class="col text-right">
@@ -124,16 +128,16 @@
                 </div>
 
                 <div class="row">
-                    <div class="col" >
+                    <div class="col">
                         <%--<div class="card" style="border-radius:10px; overflow:hidden;">--%>
-                            <%--<TPrintMassage:PrintMassage ID="aaa" runat="server" />--%>
-                            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                                <ContentTemplate>
-                                    <asp:PlaceHolder ID="PlaceHolder1" runat="server" OnLoad="PlaceHolder1_Load">
-                                        <Loading:Load runat="server" ID="Load" />
-                                    </asp:PlaceHolder>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
+                        <%--<TPrintMassage:PrintMassage ID="aaa" runat="server" />--%>
+                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                            <ContentTemplate>
+                                <asp:PlaceHolder ID="PlaceHolder1" runat="server" OnLoad="PlaceHolder1_Load">
+                                    <Loading:Load runat="server" ID="Load" />
+                                </asp:PlaceHolder>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
 
                         <%--</div>--%>
                     </div>

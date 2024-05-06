@@ -22,11 +22,11 @@ namespace DAL
         {
             //to do  需要读取config 里的数据
 
-            string query = "select top 12 *" +
+            string query = "select top 10 *" +
                 "from (select row_number()" +
                 " over(order by "+ CellId + " asc) as rownumber,* from " +
                 ""+ TableName + ") temp_row" +
-                " where rownumber >"+count+"  *12";
+                " where rownumber >"+count+"  *10";
             //SqlParameter[] parameters =
             //{
             //    new SqlParameter("@count",SqlDbType.Int) { Value = count}  
