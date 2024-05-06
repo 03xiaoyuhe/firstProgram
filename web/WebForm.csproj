@@ -207,6 +207,7 @@
     <Content Include="ASCX\FileUpLoad\FilrUpLoadFormMain.ascx" />
     <Content Include="ASCX\Filtrate\FiltrateForm.ascx" />
     <Content Include="ASCX\Filtrate\FiltrateItemForm.ascx" />
+    <Content Include="ASCX\Filtrate\MyCheckBox.ascx" />
     <Content Include="ASCX\ProgramInform\ForProgramAdd\ALineDataForParters.ascx" />
     <Content Include="ASCX\ProgramInform\ForProgramShow\ALineForProgremParter.ascx" />
     <Content Include="ASCX\ProgramInform\ForProgramShow\DataFormForAdm.ascx" />
@@ -449,6 +450,13 @@
     </Compile>
     <Compile Include="ASCX\Filtrate\FiltrateItemForm.ascx.designer.cs">
       <DependentUpon>FiltrateItemForm.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ASCX\Filtrate\MyCheckBox.ascx.cs">
+      <DependentUpon>MyCheckBox.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASCX\Filtrate\MyCheckBox.ascx.designer.cs">
+      <DependentUpon>MyCheckBox.ascx</DependentUpon>
     </Compile>
     <Compile Include="ASCX\ForQueryForm\filtrateChose.ascx.cs">
       <DependentUpon>filtrateChose.ascx</DependentUpon>

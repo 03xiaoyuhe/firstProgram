@@ -161,7 +161,6 @@
             <Filtrate:FiltrateForm runat="server" ID="Filtrate" />
         </div>
 
-
     </form>
     <script src="../../JS/QueryFromPageJs.js"></script>
     <script src="../../JS/sidebars.js"></script>
