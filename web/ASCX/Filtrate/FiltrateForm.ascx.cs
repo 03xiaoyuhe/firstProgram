@@ -36,20 +36,20 @@ namespace WebForm.ASCX.Filtrate
             return $"Filtrate-Choosed-{key}";
         }
 
+        Dictionary<string, string> allFiltrateKeyToMean;
         /// <summary>
         /// 将筛选项的键翻译为筛选项标题
         /// </summary>
-        Dictionary<string, string> allFiltrateKeyToMean;
         public Dictionary<string, string> AllFiltrateKeyToMean
         {
             get
             {
-                if(AllFiltrateKeyToMean == null) allFiltrateKeyToMean = new Dictionary<string, string>();
+                if(allFiltrateKeyToMean == null) allFiltrateKeyToMean = new Dictionary<string, string>();
                 return allFiltrateKeyToMean;
             }
             set
             {
-                AllFiltrateKeyToMean = value;
+                allFiltrateKeyToMean = value;
             }
         }
 
@@ -71,9 +71,11 @@ namespace WebForm.ASCX.Filtrate
         }
 
         Dictionary<string, HashSet<string>> allFiltrate;
+
+
         /// <summary>
-        /// 绑定所有筛选项<br>
-        /// 键为数据库字段< br>
+        /// 绑定所有筛选项<br/>
+        /// 键为数据库字段< br/>
         /// 值为该字段对应的所有筛选项
         /// </summary>
         public Dictionary<string, HashSet<string>> AllFiltrate

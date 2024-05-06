@@ -92,7 +92,6 @@
 
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
         <ContentTemplate>
-            <asp:Panel ID="Panel1" runat="server" >
                 <div id ="stickytable" class="sticky-table" runat="server">
                     <table>
                         <thead>
@@ -106,7 +105,6 @@
                         <div style="width: 100%; text-align: center; font-weight: bold; color: rgb(128, 128, 128)">无任何数据</div>
                     </asp:PlaceHolder>
                 </div>
-            </asp:Panel>
         </ContentTemplate>
 
     </asp:UpdatePanel>
