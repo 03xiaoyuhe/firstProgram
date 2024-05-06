@@ -132,7 +132,7 @@ namespace WebForm.functionPage.QF_ChildPage
                 map.Add("project_level", "项目评级");
                 map.Add("project_number", "立项编号");
                 map.Add("project_category", "项目类别");
-                map.Add("project_youth", "是否符合青年项目申报条件");
+                map.Add("project_youth", "青年项目");
                 map.Add("project_time", "项目完成时间");
                 map.Add("project_form", "成果形式");
 

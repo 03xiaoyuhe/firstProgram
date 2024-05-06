@@ -20,14 +20,16 @@
         .sticky-table td, .sticky-table th {
             /* 设置td,th宽度高度 */
             border: 1px solid #c7d8ee;
+            border-right:none;
+            border-left:none;
             max-width: 150px;
             height: 30px;
             padding: 5px;
         }
 
         .sticky-table th {
-            background-color: #525b66;
-            color: #fff;
+            background-color: var(--bs-secondary-bg);
+            color: black;
             position: sticky;
             top: 0; /* 首行永远固定在头部  */
             font-weight: normal;
@@ -63,10 +65,10 @@
         background-color: var(--bs-body-color);
         color: #fff;
     }
-
+/*
     table tbody tr:nth-child(odd) {
         background-color: #eee;
-    }
+    }*/
 
     table tbody tr:hover {
         background-color: #ccc;

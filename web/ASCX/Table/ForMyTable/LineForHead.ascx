@@ -9,7 +9,7 @@
     <asp:PlaceHolder ID = "CellHolder" runat="server"></asp:PlaceHolder>
     <asp:PlaceHolder ID="PlaceHolder1" runat="server">
         <th>
-            <asp:Button ID ="DeletButton" runat ="server" CssClass="btn btn-light" Text ="删除" OnClick="DeletButton_Click" style="background-color:var(--bs-danger);color:white;"/>
+            <asp:Button ID ="DeletButton" runat ="server" CssClass="btn btn-light btn-sm" Text ="删除" OnClick="DeletButton_Click" style="background-color:var(--bs-danger);color:white;"/>
         </th>
     </asp:PlaceHolder>
 </tr>
