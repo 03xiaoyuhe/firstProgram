@@ -133,10 +133,15 @@ namespace WebForm.functionPage.QF_ChildPage
 
                 Filtrate.AllFiltrate = sons;
 
+
             }
             catch
             {
-
+                Massage massage = new Massage();
+                massage.HeadText = "ERROR";
+                massage.HeadColor = "Red";
+                massage.MassageText = "出现异常，无法执行筛选操作，请联系工作人员";
+                massage.PostMassage();
             }
 
         }
@@ -144,6 +149,10 @@ namespace WebForm.functionPage.QF_ChildPage
         void InitData()
         {
             Data = PageApart.Apart("ProjectApplications", "project_id", PageNum - 1);
+
+
+
+
         }
 
         void Loding()
@@ -230,6 +239,9 @@ namespace WebForm.functionPage.QF_ChildPage
         protected void Button1_Click(object sender, EventArgs e)
         {
             Response.Redirect(Request.Url.ToString());
+
+
+
 
         }
     }
