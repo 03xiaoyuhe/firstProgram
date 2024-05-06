@@ -212,51 +212,61 @@ namespace WebForm.functionPage.QF_ChildPage
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            
-            IWorkbook Modebook = null;
-            int rowCount = 0;//行数
-            //判断文件是否存在
-            string ModeExcelPath = Server.MapPath($"~\\uploadfiles\\FormExcel.xlsx");
-            FileStream ModeExcel = new FileStream(ModeExcelPath, FileMode.Create, FileAccess.ReadWrite);
-
-
-            Modebook = new XSSFWorkbook();
-            ISheet ModeSheet = Modebook.CreateSheet("FormExcel");
-
-            IRow ModeHead = ModeSheet.CreateRow(0);
-            int countcell = 0;
-            foreach (KeyValuePair<string, bool> keyValuePair in list1)
+            try
             {
-                ModeHead.CreateCell(countcell++).SetCellValue(keyValuePair.Key);
-            }
+                XSSFWorkbook Modebook = null;
+                int rowCount = 0;//行数
+                                 //判断文件是否存在
+                string ModeExcelPath = Server.MapPath($"~\\uploadfiles\\FormExcel.xlsx");
+                FileStream ModeExcel = new FileStream(ModeExcelPath, FileMode.Create, FileAccess.ReadWrite);
 
-            using (ModeExcel)
-            {
-                Modebook.Write(ModeExcel);//向打开的这个xls文件中写入数据  
-            }
 
-            if (File.Exists(ModeExcelPath))
-            {
-                string fileName = $"FormExcel{Path.GetExtension(ModeExcelPath)}";//客户端保存的文件名
-                string filePath = ModeExcelPath;//路径
-                                                //以字符流的形式下载文件
-                FileStream fs = new FileStream(filePath, FileMode.Open);
-                byte[] bytes = new byte[(int)fs.Length];
-                fs.Read(bytes, 0, bytes.Length);
-                fs.Close();
-                Response.ContentType = "application/octet-stream";
-                //通知浏览器下载文件而不是打开
-                Response.AddHeader("Content-Disposition", "attachment;   filename=" + HttpUtility.UrlEncode(fileName, System.Text.Encoding.UTF8));
-                Response.BinaryWrite(bytes);
-                Response.Flush();
-                Response.End();
+                Modebook = new XSSFWorkbook();
+                ISheet ModeSheet = Modebook.CreateSheet("FormExcel");
+
+                IRow ModeHead = ModeSheet.CreateRow(0);
+                int countcell = 0;
+                foreach (KeyValuePair<string, bool> keyValuePair in list1)
+                {
+                    ModeHead.CreateCell(countcell++).SetCellValue(keyValuePair.Key);
+                }
+
+                using (ModeExcel)
+                {
+                    Modebook.Write(ModeExcel);//向打开的这个xls文件中写入数据  
+                }
+
+                if (File.Exists(ModeExcelPath))
+                {
+                    string fileName = $"FormExcel{Path.GetExtension(ModeExcelPath)}";//客户端保存的文件名
+                    string filePath = ModeExcelPath;//路径
+                                                    //以字符流的形式下载文件
+                    FileStream fs = new FileStream(filePath, FileMode.Open);
+                    byte[] bytes = new byte[(int)fs.Length];
+                    fs.Read(bytes, 0, bytes.Length);
+                    fs.Close();
+                    Response.ContentType = "application/octet-stream";
+                    //通知浏览器下载文件而不是打开
+                    Response.AddHeader("Content-Disposition", "attachment;   filename=" + HttpUtility.UrlEncode(fileName, System.Text.Encoding.UTF8));
+                    Response.BinaryWrite(bytes);
+                    Response.Flush();
+                    Response.End();
+                }
+                else
+                {
+                    Massage massage = new Massage();
+                    massage.HeadColor = "Red";
+                    massage.HeadText = "Erro";
+                    massage.MassageText = "无格式规定文件";
+                    massage.PostMassage();
+                }
             }
-            else
+            catch(System.IO.IOException error)
             {
                 Massage massage = new Massage();
-                massage.HeadColor = "Red";
-                massage.HeadText = "Erro";
-                massage.MassageText = "无格式规定文件";
+                massage.HeadColor = "orange";
+                massage.HeadText = "WORN";
+                massage.MassageText = "文件使用中";
                 massage.PostMassage();
             }
         }

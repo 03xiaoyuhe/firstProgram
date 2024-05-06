@@ -4,7 +4,7 @@
 <%@ Register Src="~/ASCX/MassageForm/PrintMassage.ascx" TagName="Massage" TagPrefix="TMassage" %>
 <%@ Register Src="~/ASCX/MassageForm/PrintMassage.ascx" TagPrefix="AAA" TagName="MMM" %>
 
-<!DOCTYPE html>
+<!DOCTYPE html lang="zh-CN">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -246,57 +246,57 @@
             border-right: solid 3px #e9ede0;
         }
     </style>
+    <style>
+        .left {
+            float: left;
+        }
+
+        .right {
+            overflow: hidden;
+        }
+
+        .test {
+            margin: 10px;
+            overflow: hidden !important;
+            width: 0;
+            height: 570px;
+            float: left;
+            transition: width 0.3s;
+            display: block;
+        }
+
+        .test-show {
+            width: 280px;
+        }
+
+        .unshow {
+            margin: 0;
+            visibility: none;
+            border: none;
+        }
+    </style>
 
     <script type="text/javascript" src="../JS/QueryFormJS.js"></script>
-
+    
     <header class="p-3 mb-3 border-bottom page-head">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="../home.aspx" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
-                <%--<div class="logo"></div>--%>
+            <a href="../home.aspx"
+                class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
                 <div class="title">
                     哲学与社会科学规划项目信息化管理平台
                 </div>
             </a>
-            <ul class="mergin nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" style="margin-left: 50px;">
+            <ul class="mergin nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
+                style="margin-left: 50px;">
                 <li>
-                    <input type="radio" class="btn-check" name="options-base" id="option5" autocomplete="off" /><!--checked-->
-                    <label
-                        class="btn"
-                        style="color: var(--page-head-word-color);"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#ForProgrem"
-                        aria-expanded="true"
-                        aria-controls="ForProgrem"
-                        for="option5">
-                        项目管理
-                    </label>
+                    <button type="button" class="btn btn-outline-light" onclick="test(this)" target="test1">项目信息管理</button>
                 </li>
                 <li>
-                    <input type="radio" class="btn-check" name="options-base" id="option6" autocomplete="off">
-                    <label
-                        class="btn"
-                        style="color: var(--page-head-word-color);"
-                        for="option6"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#ForParticipantInform"
-                        aria-expanded="true"
-                        aria-controls="ForParticipantInform">
-                        人员信息管理
-                    </label>
+                    <button type="button" class="btn btn-outline-light" onclick="test(this)" target="test2">参加人信息管理</button>
                 </li>
 
                 <li>
-                    <input type="radio" class="btn-check" name="options-base" id="option7" autocomplete="off">
-                    <label
-                        class="btn"
-                        style="color: var(--page-head-word-color);"
-                        for="option7"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#ForAccountManagement"
-                        aria-expanded="true"
-                        aria-controls="ForAccountManagement">
-                        账号管理
-                    </label>
+                    <button type="button" class="btn btn-outline-light" onclick="test(this)" target="test3">账号管理</button>
                 </li>
             </ul>
 
@@ -305,16 +305,13 @@
             </div>
 
             <div class="dropdown text-end">
-                <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+                    data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
                 </a>
                 <ul class="dropdown-menu text-small">
-                    <%--<li><a class="dropdown-item" href="#"></a></li>--%>
                     <li><a class="dropdown-item" href="#">账号设置</a></li>
-                    <%--<li><a class="dropdown-item" href="#">Profile</a></li>--%>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
+                    <hr class="dropdown-divider" />
                     <li><a class="dropdown-item" href="#">Sign out</a></li>
                 </ul>
             </div>
@@ -322,21 +319,17 @@
     </header>
 
 
-    <main class="d-flex flex-nowrap">
 
+    
 
-
-        <div id="accordionExample" class="clearfix sidebarDiv" style="position: relative; height: 570px; margin-left: 10px; margin-right: 10px;">
-
-            <!-- 项目管理功能栏 -->
-            <div
-                id="ForProgrem"
-                class="collapse collapse-horizontal showing"
-                data-bs-parent="#accordionExample"
-                style="max-height: 10000px;">
+    <main class="flex-nowrap">
+        <div class="sidebarDiv left">
+            <div id="test1" class="test test-show">
+                <!-- 项目管理功能栏 -->
                 <div style="width: 280px; height: 570px; overflow: auto;">
                     <div class="card card-body" style="width: 100%">
-                        <div class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+                        <div
+                            class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
                             <svg class="bi pe-none me-2" width="30" height="24">
                                 <use xlink:href="#bootstrap"></use>
                             </svg>
@@ -344,75 +337,74 @@
                         </div>
                         <ul class="list-unstyled ps-0">
                             <li class="mb-1">
-                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#selectProgremInform-collapse" aria-expanded="true">
+                                <button
+                                    class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                                    data-bs-toggle="collapse" data-bs-target="#selectProgremInform-collapse"
+                                    aria-expanded="true">
                                     信息批量导入
                                 </button>
                                 <div class="collapse show" id="selectProgremInform-collapse">
                                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="programLoad(this)">申报项目</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">在研项目</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">结项项目</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="mb-1">
-                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#manageProgram-collapse" aria-expanded="false">
-                                    项目信息查询
-                                </button>
-                                <div class="collapse" id="manageProgram-collapse">
-                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="selectAll(this)">显示全部</a></li>
-                                        <li>
-                                            <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#exampleModal">筛选</a>
-                                            <%--<button type="button" class="link-body-emphasis d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                筛选
-                                            </button>--%>
+                                        <li><a href="#"
+                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded"
+                                                onclick="programLoad(this)">申报项目</a></li>
+                                        <li><a href="#"
+                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded">在研项目</a>
+                                        </li>
+                                        <li><a href="#"
+                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded">结项项目</a>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
                             <li class="mb-1">
-                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+                                <button
+                                    class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                                    data-bs-toggle="collapse" data-bs-target="#manageProgram-collapse"
+                                    aria-expanded="false">
+                                    项目信息查询
+                                </button>
+                                <div class="collapse" id="manageProgram-collapse">
+                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a href="#"
+                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded"
+                                                onclick="selectAll(this)">显示全部</a></li>
+                                        <li>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="mb-1">
+                                <button
+                                    class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                                    data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
                                     信息导出
                                 </button>
                                 <div class="collapse" id="orders-collapse">
                                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">年度结项名单</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">年度项目情况统计表</a></li>
+                                        <li><a href="#"
+                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded">年度结项名单</a>
+                                        </li>
+                                        <li><a href="#"
+                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded">年度项目情况统计表</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </li>
-                            <%--                            <li class="border-top my-3"></li>
-                            <li class="mb-1">
-                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-                                    Account
-       
-                                </button>
-                                <div class="collapse" id="account-collapse">
-                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">New...</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Profile</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Settings</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Sign out</a></li>
-                                    </ul>
-                                </div>
-                            </li>--%>
                         </ul>
                     </div>
                 </div>
+
             </div>
+            <div id="test2" class="test">
 
+                <!-- 参加人信息管理功能栏 -->
 
-            <!-- 参加人信息管理功能栏 -->
-            <div
-                id="ForParticipantInform"
-                class="collapse collapse-horizontal showing sidebarDiv"
-                data-bs-parent="#accordionExample"
-                style="max-height: 10000px; float: left; width: 300px;">
                 <div style="width: 280px; height: 570px; overflow: auto;">
 
                     <div class="card card-body" style="width: 100%">
-                        <div class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+                        <div
+                            class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
                             <svg class="bi pe-none me-2" width="30" height="24">
                                 <use xlink:href="#bootstrap"></use>
                             </svg>
@@ -421,213 +413,120 @@
                         <ul class="list-unstyled ps-0">
                             <li class="mb-1">
 
-                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+                                <button
+                                    class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                                    data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
                                     信息管理
                                 </button>
 
-                                <div class="collapse show" id="home-collapse">
+                                <div class="collapse show" id="people-collapse">
                                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="PeopleInform()">批量导入</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">批量更改</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">信息查询</a></li>
+                                        <li><a href="#"
+                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded"
+                                                onclick="PeopleInform()">批量导入</a></li>
+                                        <li><a href="#"
+                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded">批量更改</a>
+                                        </li>
+                                        <li><a href="#"
+                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded"
+                                                onclick="PersonInformSelectPage()">信息查询</a></li>
                                     </ul>
                                 </div>
                             </li>
 
-                            <%--<li class="mb-1">--%>
-                            <%--                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-                                    Dashboard
-                                </button>
-                                <div class="collapse" id="dashboard-collapse">
-                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Overview</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Weekly</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Monthly</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Annually</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="mb-1">
-                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-                                    Orders
-       
-                                </button>
-                                <div class="collapse" id="orders-collapse">
-                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">New</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Processed</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Shipped</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Returned</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="border-top my-3"></li>
-                            <li class="mb-1">
-                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-                                    Account
-       
-                                </button>
-                                <div class="collapse" id="account-collapse">
-                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">New...</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Profile</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Settings</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Sign out</a></li>
-                                    </ul>
-                                </div>
-                            </li>--%>
                         </ul>
                     </div>
                 </div>
+
             </div>
-
-
-            <!-- 账号管理功能栏 -->
-            <div
-                id="ForAccountManagement"
-                class="collapse collapse-horizontal showing sidebarDiv"
-                data-bs-parent="#accordionExample"
-                style="max-height: 10000px; float: left; width: 300px;">
+            <div id="test3" class="test">
+                <!-- 账号管理功能栏 -->
                 <div style="width: 280px; height: 570px; overflow: auto;">
 
                     <div class="card card-body" style="width: 100%">
-                        <div class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+                        <div
+                            class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
                             <svg class="bi pe-none me-2" width="30" height="24">
                                 <use xlink:href="#bootstrap"></use>
                             </svg>
-                            <span class="fs-5 fw-semibold">申请管理</span>
+                            <span class="fs-5 fw-semibold">账号管理</span>
                         </div>
                         <ul class="list-unstyled ps-0">
                             <li class="mb-1">
-                                <button onclick="test(this)">test</button>
-                            </li>
-                            <li class="mb-1">
-
-                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-                                    Home
-       
+                                <button
+                                    class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                                    data-bs-toggle="collapse" data-bs-target="#accient-collapse" aria-expanded="true">
+                                    账号管理
                                 </button>
-                                <div class="collapse show" id="home-collapse">
+                                <div class="collapse show" id="accient-collapse">
                                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="programLoad()">批量导入</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Updates</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Reports</a></li>
+                                        <li><a href="#"
+                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded">申报人员账号</a>
+                                        </li>
+                                        <li><a href="#"
+                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded">评委账号</a>
+                                        </li>
+                                        <li><a href="#"
+                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded">工作人员账号</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </li>
                             <li class="mb-1">
-                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-                                    Dashboard
+                                <button
+                                    class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                                    data-bs-toggle="collapse" data-bs-target="#accient-creat-collapse"
+                                    aria-expanded="false">
+                                    账号批量生成
                                 </button>
-                                <div class="collapse" id="dashboard-collapse">
+                                <div class="collapse" id="accient-creat-collapse">
                                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Overview</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Weekly</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Monthly</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Annually</a></li>
+                                        <li><a href="#"
+                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded">申报人员账号</a>
+                                        </li>
+                                        <li><a href="#"
+                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded">评委账号</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </li>
                             <li class="mb-1">
-                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-                                    Orders
-       
+                                <button
+                                    class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                                    data-bs-toggle="collapse" data-bs-target="#accient-inform-collapse"
+                                    aria-expanded="false">
+                                    账号信息绑定
                                 </button>
-                                <div class="collapse" id="orders-collapse">
+                                <div class="collapse" id="accient-inform-collapse">
                                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">New</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Processed</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Shipped</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Returned</a></li>
+                                        <li><a href="#"
+                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded">申报人员账号</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </li>
                             <li class="border-top my-3"></li>
-                            <li class="mb-1">
-                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-                                    Account
-       
-                                </button>
-                                <div class="collapse" id="account-collapse">
-                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">New...</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Profile</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Settings</a></li>
-                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Sign out</a></li>
-                                    </ul>
-                                </div>
-                            </li>
+
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="right" style="padding: 10px;">
 
-        <script type="text/javascript"></script>
-        <div class="bg-body-tertiary border rounded-3" style="float: right; position: relative; overflow: hidden; width: 100%; height: 600px; margin-right: 30px; margin-left;">
-            <iframe id="test" src="./QF-ChildPage/UnChoosePage.aspx" style="width: 100%; height: 100%">D:\______myProgram\哲学与社会科学规划项目信息化管理平台\firstProgram\web\functionPage\QF-ChildPage\UnChoosePage.aspx
-            </iframe>
+            <div class="card" style="overflow: auto; width: 100%; height: 620px;">
+                <iframe id="test" src="./QF-ChildPage/UnChoosePage.aspx"
+                    style="width: 100%; height: 100%">D:\______myProgram\哲学与社会科学规划项目信息化管理平台\firstProgram\web\functionPage\QF-ChildPage\UnChoosePage.aspx
+                </iframe>
+            </div>
         </div>
     </main>
+
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
     <form runat="server">
 
-        <!-- 筛选功能页 class="modal-dialog modal-dialog-centered" -->
-        <div class="modal fade" id="exampleModal" style="background-color: rgba(0,0,0,0.3);" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel"><strong>筛选</strong></h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="accordion" id="accordionPanelsStayOpenExample">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                                        Accordion Item #1
-                                    </button>
-                                </h2>
-                                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
-                                    <div class="accordion-body">
-                                        <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                                        Accordion Item #2
-                                    </button>
-                                </h2>
-                                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
-                                    <div class="accordion-body">
-                                        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                                        Accordion Item #3
-                                    </button>
-                                </h2>
-                                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
-                                    <div class="accordion-body">
-                                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
         <TMassage:Massage runat="server" ID="aaa"></TMassage:Massage>
+
     </form>
     <script type="text/javascript">
         // 显示所有项目信息逻辑
@@ -654,7 +553,79 @@
             document.getElementById("test").src = "https://www.bilibili.com/";
         }
 
+        // PersonInformSelectPage
+        function PersonInformSelectPage() {
+            document.getElementById("test").src = "QF-ChildPage/PersonInformSelectPage.aspx";       
+        }
     </script>
+
+    
+<script  type="text/javascript">
+
+    let testToShow;
+    let testToHide;
+
+    let testShow = document.getElementsByClassName("test");
+    for (let i = 0; i < testShow.length; i++) {
+        if (!testShow[i].classList.contains("test-show")) testShow[i].classList.add("unshow");
+    }
+
+    function test(obj) {
+        let ID = obj.getAttribute("target");
+        /// 获取触发按钮绑定的盒子
+        let targetDiv = document.getElementById(ID);
+
+        testToShow = null;
+        testToHide = null;
+
+        let testShow = document.getElementsByClassName("test");
+        let testShowed = document.getElementsByClassName("test-show");
+
+        /// 清除所有盒子的动画完播事件
+        for (let i = 0; i < testShow.length; i++) {
+            testShow[i].transitionend = () => { };
+            if (!testShow[i].classList.contains("test-show")) testShow[i].classList.add("unshow");
+        }
+
+        /// 判断是隐藏当前盒子还是显示当前盒子
+        if (!targetDiv.classList.contains("test-show")) {
+            console.log(testShowed);
+            testToShow = targetDiv;
+            if (testShowed.length > 0) {
+                testToHide = testShowed[0];
+            }
+        }
+        else {
+            testToHide = targetDiv;
+        }
+
+
+        function syncDelay(milliseconds) {
+            var start = new Date().getTime();
+            var end = 0;
+            while ((end - start) < milliseconds) {
+                end = new Date().getTime();
+            }
+        }
+
+        /// 判断是否有盒子需要隐藏
+        if (testToHide != null) {
+            testToHide.classList.remove("test-show");
+            testToHide.ontransitionend = () => {
+                testToHide.classList.add("unshow");
+                if (testToShow != null) {
+                    testToShow.classList.remove("unshow");
+                    testToShow.classList.add("test-show");
+                }
+            };
+        }
+        else {
+            testToShow.classList.remove("unshow");
+            testToShow.classList.add("test-show");
+        }
+    }
+</script>
+
     <script src="../JS/QueryFromPageJs.js"></script>
     <script src="../JS/sidebars.js"></script>
 </body>

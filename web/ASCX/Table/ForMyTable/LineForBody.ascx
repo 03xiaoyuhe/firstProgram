@@ -7,5 +7,6 @@
 <%@ Register Src="~/ASCX/Table/ForMyTable/MyCheckBox.ascx" TagName="Table" TagPrefix="MyCheckBox" %>
 
 <tr>
-    <MyCheckBox:Table runat="server" ID ="checkBox"/><asp:PlaceHolder ID = "CellHolder" runat="server"></asp:PlaceHolder>
+    <MyCheckBox:Table runat="server" ID ="checkBox"/>
+    <asp:PlaceHolder ID = "CellHolder" runat="server"></asp:PlaceHolder>
 </tr>

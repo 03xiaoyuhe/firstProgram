@@ -393,21 +393,14 @@ namespace WebForm.functionPage.QF_ChildPage
                 message.HeadText = "ERROR";
                 message.PostMassage();
             }
-
-
-
-
-           
-
-
         }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
 
-            IWorkbook Modebook = null;
+            XSSFWorkbook Modebook = null;
             int rowCount = 0;//行数
-            //判断文件是否存在
+
             string ModeExcelPath = Server.MapPath($"~\\uploadfiles\\FormExcel.xlsx");
             FileStream ModeExcel = new FileStream(ModeExcelPath, FileMode.Create, FileAccess.ReadWrite);
 

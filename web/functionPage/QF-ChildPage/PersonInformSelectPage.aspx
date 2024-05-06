@@ -1,6 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="selectAll.aspx.cs" Inherits="WebForm.functionPage.QF_ChildPage.selectAll1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PersonInformSelectPage.aspx.cs" Inherits="WebForm.functionPage.QF_ChildPage.PersonInformSelectPage" %>
 
-<%--  项目信息查询页 --%>
+<%--  人员信息查询页 --%>
+
 
 <%@ Register Src="~/ASCX/PageIndex.ascx" TagName="PageIndex" TagPrefix="PageIndex" %>
 <%@ Register Src="~/ASCX/Table/MyTable.ascx" TagName="Table" TagPrefix="Table" %>
@@ -66,11 +67,11 @@
     <form id="form1" runat="server">
         <div style="margin-top:15px;">
 
-            <div class="container text-left" style="width:1000px">
+            <div class="container text-left" style="width:900px">
                 <div class="row align-items-end" style="margin-bottom:10px;">
                     <div class="col">
                         <h2>
-                            <strong>项目信息查询</strong>
+                            <strong>人员信息查询</strong>
 
                             <a href="#" class="link-body-emphasis text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel" viewBox="0 0 16 16">
@@ -110,7 +111,7 @@
                                             ID="TextBox1"
                                             runat="server"
                                             class="form-control form-control-sm"
-                                            type="search"
+                                            type="text"
                                             placeholder="输入搜索内容"
                                             aria-label=".form-control-sm example"></asp:TextBox>
                                         <asp:Button ID="Button1" class="btn btn-primary input-group-text" for="TextBox1" runat="server" Text="搜索" OnClick="Button1_Click" />
