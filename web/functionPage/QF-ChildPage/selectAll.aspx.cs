@@ -198,7 +198,7 @@ namespace WebForm.functionPage.QF_ChildPage
                 MyTable NewLine = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
                 NewLine.TableBase = tableAttribute;
                 NewLine.DataCollection = dataTable;
-                NewLine.Height = 500;
+                NewLine.Height = 480;
                 NewLine.TableName = "ProjectApplications";
                 NewLine.ShowControl = true;
                 NewLine.ControlASCX = "~/ASCX/Table/ForMyTable/DeletButten.ascx";
