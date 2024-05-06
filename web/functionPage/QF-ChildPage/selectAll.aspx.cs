@@ -92,15 +92,45 @@ namespace WebForm.functionPage.QF_ChildPage
             {
                 Dictionary<string,string> translation = new Dictionary<string,string>();
                 translation.Add("project_level", "项目评级");
+                translation.Add("project_project_youth", "青年项目");
+                translation.Add("project_time", "年份");
+                translation.Add("project_form", "成果形式");
+
                 Filtrate.AllFiltrateKeyToMean = translation;
                 Dictionary<string,HashSet<string>> sons = new Dictionary<string,HashSet<string>>();
-                HashSet<string> ds = new HashSet<string>();
-                ds.Add("A");
-                ds.Add("B");
-                ds.Add("C");
-                ds.Add("D");
-                ds.Add("E");
-                sons.Add("project_level", ds);
+
+                HashSet<string> hashLevel = new HashSet<string>();
+                hashLevel.Add("A");
+                hashLevel.Add("B");
+                hashLevel.Add("C");
+                hashLevel.Add("D");
+                hashLevel.Add("E");
+
+                HashSet<string> hashYouth = new HashSet<string>();
+                hashYouth.Add("是");
+                hashYouth.Add("否");
+
+                HashSet<string> hashTime = new HashSet<string>();
+                DataSet time = DBHelper.Query("select project_time from ProjectApplications group by project_time");
+                DataTable dt = time.Tables[0];
+                foreach(DataRow dr in dt.Rows)
+                {
+                    string timme = DateTime.Parse(dr["project_time"].ToString()).ToString("yyyy");
+                    hashTime.Add(timme);
+                }
+                
+                
+                HashSet<string> hashForm = new HashSet<string>();
+                hashForm.Add("论文");
+                hashForm.Add("书籍");
+                hashForm.Add("软件");
+                hashForm.Add("网站");
+
+                sons.Add("project_level", hashLevel);
+                sons.Add("project_project_youth", hashYouth);
+                sons.Add("project_time", hashTime);
+                sons.Add("project_form", hashForm);
+
                 Filtrate.AllFiltrate = sons;
 
             }
