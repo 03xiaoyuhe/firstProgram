@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
+using System.Net.NetworkInformation;
+using System.Collections;
 
 namespace DAL
 {
@@ -33,8 +35,21 @@ namespace DAL
             //};
 
             DataSet result = DBHelper.Query(query);
-
             return result; 
+        }
+        static public DataSet ApartSelect(string sql, string CellId, int count)
+        {
+            string query1 = "create view a as " + sql;
+            string query2 = 
+                "select top 10 *" +
+                "from (select row_number()" +
+                " over(order by " + CellId + " asc) as rownumber,* from a " +
+                   ") temp_row" +
+                " where rownumber >" + count + "  *10;\r\n"
+                + "drop view a;";
+            int rowAfforts = DBHelper.ExecuteSql(query1);
+            DataSet result = DBHelper.Query(query2);
+            return result;
         }
     }
 }

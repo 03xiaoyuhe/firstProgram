@@ -1,7 +1,5 @@
 ﻿using DAL;
 using Models;
-using Models.PageDataSor.Filtrate;
-using Models.PageDataSor;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -81,12 +79,29 @@ namespace WebForm.functionPage.QF_ChildPage
                 return 1;
             }
         }
+        /// <summary>
+        /// 筛选后的信息绑定，如果为null表示未筛选.
+        /// </summary>
+        string query 
+        {
+            get
+            {
+                if (Session["query"] == null) return null;
+                return Session["query"].ToString();
+            }
+            set { Session["query"] = value; }
+        }
 
         #endregion
 
+
+        /// <summary>
+        /// 加载筛选的数据库语句，加载到query变量中
+        /// </summary>
+        /// <param name="dict">传入的筛选数据集</param>
         public void Select(Dictionary<string, HashSet<string>> dict)
         {
-            string query = "select *from ProjectApplications where ";
+            query = "select *from ProjectApplications where ";
             int ans = 0;
             int number = 0;
 
@@ -120,11 +135,131 @@ namespace WebForm.functionPage.QF_ChildPage
                 }
                 else continue;
             }
+
             if (ans != 0)
             {
-                DataSet dataSet = DBHelper.Query(query);
-                DataTable dl = dataSet.Tables[0];
+                InitSelect(query);
+            }
+        }
 
+        /// <summary>
+        /// 加载筛选项
+        /// </summary>
+        void LoadFiltrate()
+        {
+            Dictionary<string, string> translation = new Dictionary<string, string>();
+            translation.Add("project_level", "项目评级");
+            translation.Add("project_youth", "青年项目");
+            translation.Add("year(project_time)", "年份");
+            translation.Add("project_form", "成果形式");
+
+            Filtrate.AllFiltrateKeyToMean = translation;
+            Filtrate.UpdateFiltrate += Select;
+            Dictionary<string, HashSet<string>> sons = new Dictionary<string, HashSet<string>>();
+
+            HashSet<string> hashLevel = new HashSet<string>();
+            hashLevel.Add("A");
+            hashLevel.Add("B");
+            hashLevel.Add("C");
+            hashLevel.Add("D");
+            hashLevel.Add("E");
+
+            HashSet<string> hashYouth = new HashSet<string>();
+            hashYouth.Add("是");
+            hashYouth.Add("否");
+
+            HashSet<string> hashTime = new HashSet<string>();
+            DataSet time = DBHelper.Query("select project_time from ProjectApplications group by project_time");
+            DataTable dt = time.Tables[0];
+            foreach (DataRow dr in dt.Rows)
+            {
+                string timme = DateTime.Parse(dr["project_time"].ToString()).ToString("yyyy");
+                hashTime.Add(timme);
+            }
+
+
+            HashSet<string> hashForm = new HashSet<string>();
+            DataSet form = DBHelper.Query("select project_form from ProjectApplications group by project_form");
+            foreach (DataRow dr in form.Tables[0].Rows)
+            {
+                hashForm.Add(dr["project_form"].ToString());
+            }
+
+            sons.Add("project_level", hashLevel);
+            sons.Add("project_youth", hashYouth);
+            sons.Add("year(project_time)", hashTime);
+            sons.Add("project_form", hashForm);
+
+            Filtrate.AllFiltrate = sons;
+
+        }
+
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            //加载表格
+            InitSelect(query);
+            //LoadeSelect();
+
+            try
+            {
+                LoadFiltrate();               
+            }
+            catch
+            {
+                Massage massage = new Massage();
+                massage.HeadText = "ERROR";
+                massage.HeadColor = "Red";
+                massage.MassageText = "出现异常，无法执行筛选操作，请联系工作人员";
+                massage.PostMassage();
+            }
+
+        }
+        
+        #region 加载表格数据项
+        /// <summary>
+        /// 加载未筛选的信息
+        /// </summary>
+        void InitData()
+        {
+            Data = PageApart.Apart("ProjectApplications", "project_id", PageNum - 1);
+
+        }
+
+        /// <summary>
+        /// 通过query加载筛选信息或未筛选信息
+        /// </summary>
+        /// <param name="query"></param>
+        void InitSelect(string query) {
+            if (query == null)
+            {
+                Data = PageApart.Apart("ProjectApplications", "project_id", PageNum - 1);
+                LoadTable();
+            }
+            else
+            {
+                Data = PageApart.ApartSelect(query, "project_id", PageNum - 1);
+                LoadeSelect();
+            }
+            //Data = PageApart.ApartSelect(query, "project_id", PageNum - 1);
+        }
+
+        /// <summary>
+        /// 加载筛选后的表格数据
+        /// </summary>
+        void LoadeSelect()
+        {
+            DataTable dataTable;
+            try
+            {
+                dataTable = Data.Tables[0];
+            }
+            catch
+            {
+                dataTable = null;
+            }
+            try
+            {
                 List<string> list = new List<string>();
                 list.Add("project_name");
                 list.Add("project_level");
@@ -150,10 +285,10 @@ namespace WebForm.functionPage.QF_ChildPage
                     map,
                     list
                     );
-
+                InitData();
                 MyTable NewLine = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
                 NewLine.TableBase = tableAttribute;
-                NewLine.DataCollection = dl;
+                NewLine.DataCollection = dataTable;
                 NewLine.Height = 480;
                 NewLine.TableName = "ProjectApplications";
                 NewLine.ShowControl = true;
@@ -162,7 +297,7 @@ namespace WebForm.functionPage.QF_ChildPage
                 PlaceHolder1.Controls.Clear();
                 PlaceHolder1.Controls.Add(NewLine);
             }
-            else
+            catch
             {
                 Massage massage = new Massage();
                 massage.HeadText = "WANNING";
@@ -170,97 +305,6 @@ namespace WebForm.functionPage.QF_ChildPage
                 massage.HeadColor = "Orange";
                 massage.PostMassage();
             }
-
-        }
-
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            InitData();
-            Loding();
-            LoadTable();
-
-            try
-            {
-                Dictionary<string,string> translation = new Dictionary<string,string>();
-                translation.Add("project_level", "项目评级");
-                translation.Add("project_youth", "青年项目");
-                translation.Add("project_time", "年份");
-                translation.Add("project_form", "成果形式");
-
-                Filtrate.AllFiltrateKeyToMean = translation;
-                Filtrate.UpdateFiltrate += Select;
-                Dictionary<string,HashSet<string>> sons = new Dictionary<string,HashSet<string>>();
-
-                HashSet<string> hashLevel = new HashSet<string>();
-                hashLevel.Add("A");
-                hashLevel.Add("B");
-                hashLevel.Add("C");
-                hashLevel.Add("D");
-                hashLevel.Add("E");
-
-                HashSet<string> hashYouth = new HashSet<string>();
-                hashYouth.Add("是");
-                hashYouth.Add("否");
-
-                HashSet<string> hashTime = new HashSet<string>();
-                DataSet time = DBHelper.Query("select project_time from ProjectApplications group by project_time");
-                DataTable dt = time.Tables[0];
-                foreach(DataRow dr in dt.Rows)
-                {
-                    string timme = DateTime.Parse(dr["project_time"].ToString()).ToString("yyyy");
-                    hashTime.Add(timme);
-                }
-                
-                
-                HashSet<string> hashForm = new HashSet<string>();
-                DataSet form = DBHelper.Query("select project_form from ProjectApplications group by project_form");
-                foreach (DataRow dr in form.Tables[0].Rows)
-                {
-                    hashForm.Add(dr["project_form"].ToString());
-                }
-
-                sons.Add("project_level", hashLevel);
-                sons.Add("project_youth", hashYouth);
-                sons.Add("project_time", hashTime);
-                sons.Add("project_form", hashForm);
-
-                Filtrate.AllFiltrate = sons;
-                //HashSet<string> dl = Filtrate.GetChoosed("project_level");
-
-                //Select(Filtrate.GetChoosed);
-                
-                //Filtrate.GetChoosed
-            }
-            catch
-            {
-                Massage massage = new Massage();
-                massage.HeadText = "ERROR";
-                massage.HeadColor = "Red";
-                massage.MassageText = "出现异常，无法执行筛选操作，请联系工作人员";
-                massage.PostMassage();
-            }
-
-        }
-
-        void InitData()
-        {
-            Data = PageApart.Apart("ProjectApplications", "project_id", PageNum - 1);
-
-
-
-
-        }
-
-        void Fresh(Dictionary<string,HashSet<string>> keyValuePairs)
-        {
-            Select(keyValuePairs);
-        }
-
-        void Loding()
-        {
-            Loading NewLine = (Loading)LoadControl("~/ASCX/Loading.ascx");
-            PlaceHolder1.Controls.Clear();
-            PlaceHolder1.Controls.Add(NewLine);
         }
 
 
@@ -329,12 +373,14 @@ namespace WebForm.functionPage.QF_ChildPage
 
 
         }
+        #endregion
 
         protected void PlaceHolder1_Load(object sender, EventArgs e)
         {
-            InitData();
-            Loding();
-            LoadTable();
+            InitSelect(query);
+            //    InitData();
+            //    Loding();
+            //    LoadTable();
         }
 
         protected void Button1_Click(object sender, EventArgs e)
