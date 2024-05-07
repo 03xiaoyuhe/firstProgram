@@ -1,4 +1,5 @@
 ﻿using Models.PageDataSor;
+using Models.PageDataSor.Filtrate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace WebForm.ASCX.Filtrate
                     CheckBox checkBox = new CheckBox();
                     checkBox.Text = item;
                     checkBox.CheckedChanged += CheckBoxOnChange;
-                    if(CacheGenericity<HashSet<string>>.Data[GetCacheIndex].Contains(item)) { checkBox.Checked = true; }
+                    if (FiltrateControl.Data[DataBaseTargate].Contains(item)) { checkBox.Checked = true; }
                     checkBox.Style["margin"] = "0 5px;";
                     CheckBoxHolder.Controls.Add(checkBox);
                     Label label = new Label();
@@ -61,7 +62,7 @@ namespace WebForm.ASCX.Filtrate
         {
             get
             {
-                return $"Filtrate-Choose-{DataBaseTargate}";
+                return GetCheIndex(DataBaseTargate);
             }
         }
         
@@ -93,11 +94,11 @@ namespace WebForm.ASCX.Filtrate
             CheckBox item = sender as CheckBox;
             if(item.Checked)
             {
-                CacheGenericity<HashSet<string>>.Data[GetCacheIndex].Add(item.Text);
+                FiltrateControl.Data[DataBaseTargate].Add(item.Text);
             }
             else
             {
-                CacheGenericity<HashSet<string>>.Data[GetCacheIndex].Remove(item.Text);
+                FiltrateControl.Data[DataBaseTargate].Remove(item.Text);
             }
         }
 

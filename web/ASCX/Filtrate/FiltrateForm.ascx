@@ -2,6 +2,8 @@
 
 <%@ Register Src="~/ASCX/Filtrate/FiltrateItemForm.ascx" TagName="FiltrateItemForm" TagPrefix="Filtrate" %>
 
+
+
 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
         <div class="modal-header">
