@@ -94,7 +94,6 @@ namespace WebForm.functionPage.QF_ChildPage
 
         #endregion
 
-
         /// <summary>
         /// 加载筛选的数据库语句，加载到query变量中
         /// </summary>
