@@ -20,6 +20,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <style>
+        .showdow-only-top {
+            box-shadow: 0px -10px 10px -10px #5E5E5E;
+        }
+
         .TreeButtom {
             float: left;
             margin: 0 auto;
@@ -63,8 +67,25 @@
     </style>
 </head>
 <body>
+    <header style="height: 30px; border-bottom: 1px solid var(--bs-dark-bg-subtle); margin: 0 10px;">
+
+        <div class="container text-center">
+            <div class="row align-items-end">
+                <div class="col">
+
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">项目管理</li>
+                            <li class="breadcrumb-item active" aria-current="page"><strong>项目信息查询</strong></li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
     <form id="form1" runat="server">
-        <div style="margin-top: 15px;">
+        <div style="padding-top: 20px;">
 
             <div class="container text-left" style="width: 1000px">
                 <div class="row align-items-end" style="margin-bottom: 10px;">
@@ -80,11 +101,11 @@
                             </a>
                             <span data-descr="排序">
                                 <span class="myColor">
-                                <asp:Button ID="Button2" runat="server" CssClass="TreeButtom" Text=" " />
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter-square" viewBox="0 0 16 16">
-                                    <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                                    <path d="M6 11.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
-                                </svg>
+                                    <asp:Button ID="Button2" runat="server" CssClass="TreeButtom" Text=" " />
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter-square" viewBox="0 0 16 16">
+                                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                        <path d="M6 11.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                                    </svg>
 
                                 </span>
                                 <ul class="list-group card" style="">
