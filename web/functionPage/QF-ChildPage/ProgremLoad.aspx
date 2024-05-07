@@ -29,9 +29,28 @@
     <link href="../../CSS/ThemeColor.css" rel="stylesheet" />
 </head>
 <body>
-    <form id="form1" runat="server" style="width: 100%;">
+    
+    <header style="height: 30px; border-bottom: 1px solid var(--bs-dark-bg-subtle); margin: 0 10px;">
+
+        <div class="container text-center">
+            <div class="row align-items-end">
+                <div class="col">
+
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">项目管理</li>
+                            <li class="breadcrumb-item">项目信息导入</li>
+                            <li class="breadcrumb-item active" aria-current="page"><strong>申报项目</strong></li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <form id="form1" runat="server" style="width: 100%;height:620px;overflow:auto;">
         <div style="width: 100%">
-            <div style="width: 100px; height: 20px;"></div>
+            <%--<div style="width: 100px; height: 20px;"></div>--%>
             <div style="margin:0 40px;">
                 <div>
                     <div class="container text-left"  style="width:900px">
@@ -86,7 +105,7 @@
                                         <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                             <div class="accordion-body">
                                                 <asp:PlaceHolder ID="PlaceHolder2" runat="server">
-                                                    <div style="width: 80%; margin: 0 auto; height: 185px;">未导入</div>
+                                                    <div style="width: 80%; margin: 0 auto; height: 160px;">未导入</div>
                                                 </asp:PlaceHolder>
                                             </div>
                                         </div>
@@ -100,7 +119,7 @@
                                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                             <div class="accordion-body">
                                                 <asp:PlaceHolder ID="PlaceHolder1" runat="server">
-                                                    <div style="width: 80%; margin: 0 auto; height: 185px;">未导入</div>
+                                                    <div style="width: 80%; margin: 0 auto; height: 160px;">未导入</div>
                                                 </asp:PlaceHolder>
                                             </div>
                                         </div>

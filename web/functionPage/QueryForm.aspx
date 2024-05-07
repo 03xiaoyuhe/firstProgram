@@ -8,7 +8,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <script src="../assets/js/color-modes.js"></script>
+    <script type="text/javascript" src="../assets/js/color-modes.js"></script>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,7 +19,7 @@
     <link rel="icon" href="../img/logo.png" type="image/x-icon" />
 
 
-    <link rel="canonical" href="../bootstrap-5.3.2-examples/sidebars/sidebars.css">
+    <link rel="canonical" href="../bootstrap-5.3.2-examples/sidebars/sidebars.css"/>
 
 
 
@@ -158,7 +158,67 @@
     <link href="../CSS/ThemeColor.css" rel="stylesheet" />
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
 
+    <style type="text/css">
+        .page-head {
+            --page-head-color: #092f50;
+            --page-head-word-color: #f4f9fd;
+            background-color: var(--page-head-color);
+            color: var(--page-head-word-color);
+        }
+
+        .title {
+            font-weight: bold;
+            font-style: oblique;
+            font-size: 20px;
+            /*color: #0000007d;*/
+            color: var(--page-head-word-color);
+            padding-right: 10px;
+            border-right: solid 3px #e9ede0;
+        }
+    </style>
+    <style type="text/css">
+        .btn-toggle-nav a{
+            color:black;
+        }
+
+        .btn-toggle-nav a:hover{
+            color:var(--bs-tertiary-color);
+        }
+
+        .left {
+            float: left;
+        }
+
+        .right {
+            overflow: hidden;
+        }
+
+        .test {
+            margin: 10px;
+            overflow: hidden !important;
+            width: 0;
+            height: 570px;
+            float: left;
+            transition: width 0.3s;
+            display: block;
+        }
+
+        .test-show {
+            width: 280px;
+        }
+
+        .unshow {
+            margin: 0;
+            visibility: hidden;
+            border: none;
+        }
+        
+        .test-control-checked {
+            box-shadow: inset 0 0px 10px 0px #0000008f;
+        }
+    </style>
 </head>
 
 <body style="overflow: hidden; background-color: #e9ede0;">
@@ -228,58 +288,10 @@
     --%>
 
 
-    <style type="text/css">
-        .page-head {
-            --page-head-color: #092f50;
-            --page-head-word-color: #f4f9fd;
-            background-color: var(--page-head-color);
-            color: var(--page-head-word-color);
-        }
-
-        .title {
-            font-weight: bold;
-            font-style: oblique;
-            font-size: 20px;
-            /*color: #0000007d;*/
-            color: var(--page-head-word-color);
-            padding-right: 10px;
-            border-right: solid 3px #e9ede0;
-        }
-    </style>
-    <style>
-        .left {
-            float: left;
-        }
-
-        .right {
-            overflow: hidden;
-        }
-
-        .test {
-            margin: 10px;
-            overflow: hidden !important;
-            width: 0;
-            height: 570px;
-            float: left;
-            transition: width 0.3s;
-            display: block;
-        }
-
-        .test-show {
-            width: 280px;
-        }
-
-        .unshow {
-            margin: 0;
-            visibility: none;
-            border: none;
-        }
-    </style>
-
     <script type="text/javascript" src="../JS/QueryFormJS.js"></script>
     
-    <header class="p-3 mb-3 border-bottom page-head">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+    <header class="border-bottom page-head" style="height:60px;padding:0 20px;">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start" style="height:100%;">
             <a href="../home.aspx"
                 class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
                 <div class="title">
@@ -287,16 +299,15 @@
                 </div>
             </a>
             <ul class="mergin nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
-                style="margin-left: 50px;">
+                style="margin-left: 50px; height: 100%;">
                 <li>
-                    <button type="button" class="btn btn-outline-light" onclick="test(this)" target="test1">项目信息管理</button>
+                    <button type="button" class="btn btn-outline-light testchoose" onclick="test(this)" target="test1" style="height: 100%; border: none; ">项目信息管理</button>
                 </li>
                 <li>
-                    <button type="button" class="btn btn-outline-light" onclick="test(this)" target="test2">参加人信息管理</button>
+                    <button type="button" class="btn btn-outline-light testchoose" onclick="test(this)" target="test2" style="height: 100%; border: none; ">参加人信息管理</button>
                 </li>
-
                 <li>
-                    <button type="button" class="btn btn-outline-light" onclick="test(this)" target="test3">账号管理</button>
+                    <button type="button" class="btn btn-outline-light testchoose" onclick="test(this)" target="test3" style="height: 100%; border: none;" >账号管理</button>
                 </li>
             </ul>
 
@@ -415,7 +426,7 @@
 
                                 <button
                                     class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-                                    data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+                                    data-bs-toggle="collapse" data-bs-target="#people-collapse" aria-expanded="true">
                                     信息管理
                                 </button>
 
@@ -514,7 +525,7 @@
         </div>
         <div class="right" style="padding: 10px;">
 
-            <div class="card" style="overflow: auto; width: 100%; height: 620px;">
+            <div class="" style="overflow: auto; width: 100%; height: 650px;">
                 <iframe id="test" src="./QF-ChildPage/UnChoosePage.aspx"
                     style="width: 100%; height: 100%">D:\______myProgram\哲学与社会科学规划项目信息化管理平台\firstProgram\web\functionPage\QF-ChildPage\UnChoosePage.aspx
                 </iframe>
@@ -555,7 +566,7 @@
 
         // PersonInformSelectPage
         function PersonInformSelectPage() {
-            document.getElementById("test").src = "QF-ChildPage/PersonInformSelectPage.aspx";       
+            document.getElementById("test").src = "QF-ChildPage/PersonInformSelectPage.aspx";
         }
     </script>
 
@@ -571,6 +582,16 @@
     }
 
     function test(obj) {
+        /// 获取所有控制按钮
+        let testchoosecontain = document.getElementsByClassName("testchoose")
+
+        /// 将所有控制按钮初始化为初始状态
+        for (let i = 0; i < testchoosecontain.length; i++) {
+            if (testchoosecontain[i].classList.contains("btn-light")) testchoosecontain[i].classList.remove("btn-light");
+            if (testchoosecontain[i].classList.contains("test-control-checked")) testchoosecontain[i].classList.remove("test-control-checked");
+            if (!testchoosecontain[i].classList.contains("btn-outline-light")) testchoosecontain[i].classList.add("btn-outline-light");
+        }
+
         let ID = obj.getAttribute("target");
         /// 获取触发按钮绑定的盒子
         let targetDiv = document.getElementById(ID);
@@ -589,6 +610,14 @@
 
         /// 判断是隐藏当前盒子还是显示当前盒子
         if (!targetDiv.classList.contains("test-show")) {
+
+            if (obj.classList.contains("btn-outline-light")) {
+                obj.classList.remove("btn-outline-light");
+                obj.classList.add("btn-light");
+                obj.classList.add("test-control-checked");
+            }
+            if (!obj.classList.contains("test-control-checked")) obj.classList.add("test-control-checked");
+
             console.log(testShowed);
             testToShow = targetDiv;
             if (testShowed.length > 0) {
@@ -596,17 +625,10 @@
             }
         }
         else {
+
             testToHide = targetDiv;
         }
 
-
-        function syncDelay(milliseconds) {
-            var start = new Date().getTime();
-            var end = 0;
-            while ((end - start) < milliseconds) {
-                end = new Date().getTime();
-            }
-        }
 
         /// 判断是否有盒子需要隐藏
         if (testToHide != null) {
@@ -626,7 +648,7 @@
     }
 </script>
 
-    <script src="../JS/QueryFromPageJs.js"></script>
-    <script src="../JS/sidebars.js"></script>
+    <script type="text/javascript" src="../JS/QueryFromPageJs.js"></script>
+    <script type="text/javascript" src="../JS/sidebars.js"></script>
 </body>
 </html>

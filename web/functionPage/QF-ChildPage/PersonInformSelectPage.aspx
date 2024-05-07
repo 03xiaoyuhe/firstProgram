@@ -126,7 +126,6 @@
 
                 <div class="row">
                     <div class="col" >
-                        <div class="card" style="border-radius:10px; overflow:hidden;">
                             <%--<TPrintMassage:PrintMassage ID="aaa" runat="server" />--%>
                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                 <ContentTemplate>
@@ -137,7 +136,6 @@
                             </asp:UpdatePanel>
 
                         </div>
-                    </div>
                 </div>
 
                 <div class="row text-center">

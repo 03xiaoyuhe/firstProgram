@@ -22,7 +22,7 @@ namespace WebForm.ASCX.Filtrate
                     checkBox.Text = item;
                     checkBox.CheckedChanged += CheckBoxOnChange;
                     if (FiltrateControl.Data[DataBaseTargate].Contains(item)) { checkBox.Checked = true; }
-                    checkBox.Style["margin"] = "0 5px;";
+                    checkBox.Style["padding"] = "0 5px;";
                     CheckBoxHolder.Controls.Add(checkBox);
                     Label label = new Label();
                     label.Text = "  ";
