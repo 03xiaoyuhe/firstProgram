@@ -139,6 +139,10 @@ namespace WebForm.functionPage.QF_ChildPage
             {
                 InitSelect(query);
             }
+            else if(ans == 0)
+            {
+                query = null;
+            }
         }
 
         /// <summary>
