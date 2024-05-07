@@ -124,7 +124,6 @@ namespace WebForm.functionPage.QF_ChildPage
                 DataTable dl = dataSet.Tables[0];
 
                 List<string> list = new List<string>();
-                //list.Add("user_phone");
                 list.Add("project_name");
                 list.Add("project_level");
                 list.Add("project_number");
@@ -135,7 +134,6 @@ namespace WebForm.functionPage.QF_ChildPage
 
                 Dictionary<string, string> map = new Dictionary<string, string>();
                 map.Add("project_id", "ID");
-                //map.Add("user_phone", "负责人电话号码");
                 map.Add("project_name", "项目名称");
                 map.Add("project_level", "项目评级");
                 map.Add("project_number", "立项编号");
@@ -227,7 +225,7 @@ namespace WebForm.functionPage.QF_ChildPage
                 HashSet<string> dl = Filtrate.GetChoosed("project_level");
 
                 //Select(Filtrate.GetChoosed);
-
+                
                 //Filtrate.GetChoosed
             }
             catch
@@ -248,6 +246,11 @@ namespace WebForm.functionPage.QF_ChildPage
 
 
 
+        }
+
+        void Fresh(Dictionary<string,HashSet<string>> keyValuePairs)
+        {
+            Select(keyValuePairs);
         }
 
         void Loding()
