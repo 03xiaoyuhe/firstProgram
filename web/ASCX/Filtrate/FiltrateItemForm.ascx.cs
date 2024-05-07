@@ -19,9 +19,9 @@ namespace WebForm.ASCX.Filtrate
                 {
                     CheckBox checkBox = new CheckBox();
                     checkBox.Text = item;
+                    checkBox.CheckedChanged += CheckBoxOnChange;
                     if(CacheGenericity<HashSet<string>>.Data[GetCacheIndex].Contains(item)) { checkBox.Checked = true; }
                     checkBox.Style["margin"] = "0 5px;";
-                    checkBox.CheckedChanged += CheckBoxOnChange;
                     CheckBoxHolder.Controls.Add(checkBox);
                     Label label = new Label();
                     label.Text = "  ";

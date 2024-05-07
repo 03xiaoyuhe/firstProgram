@@ -57,18 +57,10 @@ namespace WebForm.ASCX.Filtrate
         /// <summary>
         /// 获取用户所做的筛选
         /// </summary>
-        public Dictionary<string, HashSet<string>> GetChoosed
+        public  HashSet<string> GetChoosed(string key)
         {
-            get
-            {
-                Dictionary<string, HashSet<string>>  output = new Dictionary<string, HashSet<string>>();
-
-                foreach (string key in AllFiltrate.Keys)
-                {
-                    output.Add(key, CacheGenericity<HashSet<string>>.Data[GetCacheIndex(key)]);
-                }
+            HashSet<string>  output = CacheGenericity<HashSet<string>>.Data[FiltrateItemForm.GetCheIndex(key)];
                 return output;
-            }
         }
 
         Dictionary<string, HashSet<string>> allFiltrate;
@@ -96,7 +88,7 @@ namespace WebForm.ASCX.Filtrate
         {
             Massage massage = new Massage();
             massage.MassageText = "";
-            foreach (string s in GetChoosed["project_level"])
+            foreach (string s in CacheGenericity<HashSet<string>>.Data[FiltrateItemForm.GetCheIndex("project_time")])
             {
                 massage.MassageText += s;
             }
