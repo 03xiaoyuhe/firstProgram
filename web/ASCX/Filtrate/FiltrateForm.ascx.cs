@@ -62,11 +62,11 @@ namespace WebForm.ASCX.Filtrate
         /// <summary>
         /// 获取用户所做的筛选
         /// </summary>
-        public  HashSet<string> GetChoosed
+        public Dictionary<string, HashSet<string>> GetChoosed
         {
             get
             {
-                Dictionary<string, HashSet<string>>  output = new Dictionary<string, HashSet<string>>();
+                Dictionary<string, HashSet<string>> output = new Dictionary<string, HashSet<string>>();
 
                 foreach (string key in AllFiltrate.Keys)
                 {
@@ -74,6 +74,7 @@ namespace WebForm.ASCX.Filtrate
                     output.Add(key, FiltrateControl.Data[key]);
                 }
                 return output;
+            }
         }
 
         Dictionary<string, HashSet<string>> allFiltrate;

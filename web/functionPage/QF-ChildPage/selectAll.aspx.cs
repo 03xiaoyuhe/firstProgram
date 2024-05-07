@@ -156,7 +156,7 @@ namespace WebForm.functionPage.QF_ChildPage
                 MyTable NewLine = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
                 NewLine.TableBase = tableAttribute;
                 NewLine.DataCollection = dl;
-                NewLine.Height = 500;
+                NewLine.Height = 480;
                 NewLine.TableName = "ProjectApplications";
                 NewLine.ShowControl = true;
                 NewLine.ControlASCX = "~/ASCX/Table/ForMyTable/DeletButten.ascx";
@@ -185,11 +185,12 @@ namespace WebForm.functionPage.QF_ChildPage
             {
                 Dictionary<string,string> translation = new Dictionary<string,string>();
                 translation.Add("project_level", "项目评级");
-                translation.Add("project_project_youth", "青年项目");
+                translation.Add("project_youth", "青年项目");
                 translation.Add("project_time", "年份");
                 translation.Add("project_form", "成果形式");
 
                 Filtrate.AllFiltrateKeyToMean = translation;
+                Filtrate.UpdateFiltrate += Select;
                 Dictionary<string,HashSet<string>> sons = new Dictionary<string,HashSet<string>>();
 
                 HashSet<string> hashLevel = new HashSet<string>();
@@ -226,7 +227,7 @@ namespace WebForm.functionPage.QF_ChildPage
                 sons.Add("project_form", hashForm);
 
                 Filtrate.AllFiltrate = sons;
-                HashSet<string> dl = Filtrate.GetChoosed("project_level");
+                //HashSet<string> dl = Filtrate.GetChoosed("project_level");
 
                 //Select(Filtrate.GetChoosed);
 
