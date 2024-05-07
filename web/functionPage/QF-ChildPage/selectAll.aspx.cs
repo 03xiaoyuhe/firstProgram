@@ -5,6 +5,8 @@ using Models.PageDataSor;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
+using System.Web.DynamicData;
 using WebForm.ASCX;
 using WebForm.ASCX.Table;
 
@@ -82,7 +84,96 @@ namespace WebForm.functionPage.QF_ChildPage
 
         #endregion
 
+        public void Select(Dictionary<string, HashSet<string>> dict)
+        {
+            string query = "select *from ProjectApplications where ";
+            int ans = 0;
+            int number = 0;
 
+            foreach (KeyValuePair<string, HashSet<string>> item in dict)
+            {
+                int count = 0;
+
+                string num = item.Key;
+                if (item.Value.Count != 0)
+                {
+                    if (number != 0)
+                    {
+                        query += " and ";
+                    }
+                    query += " (";
+
+                    foreach (string key in item.Value)
+                    {
+                        if (count != 0)
+                        {
+                            query += " or ";
+                        }
+                        query += num + " = " + "'" + key + "'";
+                        count++;
+                    }
+
+                    number++;
+                    query += ") ";
+
+                    ans++;
+                }
+                else continue;
+            }
+            if (ans != 0)
+            {
+                DataSet dataSet = DBHelper.Query(query);
+                DataTable dl = dataSet.Tables[0];
+
+                List<string> list = new List<string>();
+                //list.Add("user_phone");
+                list.Add("project_name");
+                list.Add("project_level");
+                list.Add("project_number");
+                list.Add("project_category");
+                list.Add("project_youth");
+                list.Add("project_time");
+                list.Add("project_form");
+
+                Dictionary<string, string> map = new Dictionary<string, string>();
+                map.Add("project_id", "ID");
+                //map.Add("user_phone", "负责人电话号码");
+                map.Add("project_name", "项目名称");
+                map.Add("project_level", "项目评级");
+                map.Add("project_number", "立项编号");
+                map.Add("project_category", "项目类别");
+                map.Add("project_youth", "青年项目");
+                map.Add("project_time", "项目完成时间");
+                map.Add("project_form", "成果形式");
+
+                TableAttribute tableAttribute = new TableAttribute(
+                    "project_id",
+                    "项目信息",
+                    map,
+                    list
+                    );
+
+                MyTable NewLine = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
+                NewLine.TableBase = tableAttribute;
+                NewLine.DataCollection = dl;
+                NewLine.Height = 500;
+                NewLine.TableName = "ProjectApplications";
+                NewLine.ShowControl = true;
+                NewLine.ControlASCX = "~/ASCX/Table/ForMyTable/DeletButten.ascx";
+                NewLine.ShowCheck = true;
+                PlaceHolder1.Controls.Clear();
+                PlaceHolder1.Controls.Add(NewLine);
+            }
+            else
+            {
+                Massage massage = new Massage();
+                massage.HeadText = "WANNING";
+                massage.MassageText = "未选择筛选项";
+                massage.HeadColor = "Orange";
+                massage.PostMassage();
+            }
+
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -123,29 +214,23 @@ namespace WebForm.functionPage.QF_ChildPage
                 
                 
                 HashSet<string> hashForm = new HashSet<string>();
-                hashForm.Add("论文");
-                hashForm.Add("书籍");
-                hashForm.Add("软件");
-                hashForm.Add("网站");
+                DataSet form = DBHelper.Query("select project_form from ProjectApplications group by project_form");
+                foreach (DataRow dr in form.Tables[0].Rows)
+                {
+                    hashForm.Add(dr["project_form"].ToString());
+                }
 
                 sons.Add("project_level", hashLevel);
-                sons.Add("project_project_youth", hashYouth);
+                sons.Add("project_youth", hashYouth);
                 sons.Add("project_time", hashTime);
                 sons.Add("project_form", hashForm);
 
                 Filtrate.AllFiltrate = sons;
+                HashSet<string> dl = Filtrate.GetChoosed("project_level");
 
-                Massage massage = new Massage();
-                massage.MassageText = "";
-                foreach (HashSet<string> key in Filtrate.GetChoosed.Values)
-                {
-                    foreach (string key2 in key)
-                    {
-                        massage.MassageText += key2;
-                    }
-                }
-                massage.PostMassage();
+                //Select(Filtrate.GetChoosed);
 
+                //Filtrate.GetChoosed
             }
             catch
             {
