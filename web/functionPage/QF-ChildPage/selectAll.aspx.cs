@@ -1,5 +1,7 @@
 ﻿using DAL;
 using Models;
+using Models.PageDataSor.Filtrate;
+using Models.PageDataSor;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -133,6 +135,16 @@ namespace WebForm.functionPage.QF_ChildPage
 
                 Filtrate.AllFiltrate = sons;
 
+                Massage massage = new Massage();
+                massage.MassageText = "";
+                foreach (HashSet<string> key in Filtrate.GetChoosed.Values)
+                {
+                    foreach (string key2 in key)
+                    {
+                        massage.MassageText += key2;
+                    }
+                }
+                massage.PostMassage();
 
             }
             catch

@@ -1,5 +1,6 @@
 ﻿using Models;
 using Models.PageDataSor;
+using Models.PageDataSor.Filtrate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ using System.Web.UI.WebControls;
 
 namespace WebForm.ASCX.Filtrate
 {
+    public delegate void UpdateFiltrate(Dictionary<string, HashSet<string>> FiltrateChoose);
     public partial class FiltrateForm : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
@@ -26,6 +28,9 @@ namespace WebForm.ASCX.Filtrate
                 }
             }
         }
+
+
+        public event UpdateFiltrate UpdateFiltrate;
 
         /// <summary>
         /// 获取确认筛选缓存的索引
@@ -65,7 +70,8 @@ namespace WebForm.ASCX.Filtrate
 
                 foreach (string key in AllFiltrate.Keys)
                 {
-                    output.Add(key, CacheGenericity<HashSet<string>>.Data[GetCacheIndex(key)]);
+                    //output.Add(key, CacheGenericity<HashSet<string>>.Data[GetCacheIndex(key)]);FiltrateControl.Data[DataBaseTargate]
+                    output.Add(key, FiltrateControl.Data[key]);
                 }
                 return output;
             }
@@ -94,17 +100,13 @@ namespace WebForm.ASCX.Filtrate
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Massage massage = new Massage();
-            massage.MassageText = "";
-            foreach (string s in GetChoosed["project_level"])
-            {
-                massage.MassageText += s;
-            }
-            massage.PostMassage();
+            
+            Dictionary<string, HashSet<string>> keyValuePairs = new Dictionary<string, HashSet<string>>();
             foreach (string key in AllFiltrate.Keys)
             {
-                CacheGenericity<HashSet<string>>.Data[GetCacheIndex(key)] = CacheGenericity<HashSet<string>>.Data[FiltrateItemForm.GetCheIndex(key)];
+                keyValuePairs.Add(key, FiltrateControl.Data[key]);
             }
+            UpdateFiltrate(keyValuePairs);
         }
     }
 }
