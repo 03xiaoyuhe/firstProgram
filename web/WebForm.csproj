@@ -233,6 +233,9 @@
     <Content Include="functionPage\QF-ChildPage\PersonInformSelectPage.aspx" />
     <Content Include="functionPage\QF-ChildPage\UnChoosePage.aspx" />
     <!-- 样式控制文件 -->
+
+    <Content Include="img\*" />
+    <Content Include="img\svg\*" />
     <Content Include="JS\*" />
     <Content Include=".\assets\*" />
     <Content Include=".\assets\dist\*" />

@@ -72,7 +72,7 @@
             <div class="page-header">
 
                 <div class="modal-header Header">
-                    <h1 class="modal-title fs-5 makeCharBolder">登陆</h1>
+                    <h1 class="modal-title fs-5 makeCharBolder">登录</h1>
                 </div>
             </div>
             <!-- 登陆页主体 -->
