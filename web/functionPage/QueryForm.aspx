@@ -304,7 +304,7 @@
                     <button type="button" class="btn btn-outline-light testchoose" onclick="test(this)" target="test1" style="height: 100%; border: none; ">项目信息管理</button>
                 </li>
                 <li>
-                    <button type="button" class="btn btn-outline-light testchoose" onclick="test(this)" target="test2" style="height: 100%; border: none; ">参加人信息管理</button>
+                    <button type="button" class="btn btn-outline-light testchoose" onclick="test(this)" target="test2" style="height: 100%; border: none; ">人员信息管理</button>
                 </li>
                 <li>
                     <button type="button" class="btn btn-outline-light testchoose" onclick="test(this)" target="test3" style="height: 100%; border: none;" >账号管理</button>
@@ -419,7 +419,7 @@
                             <svg class="bi pe-none me-2" width="30" height="24">
                                 <use xlink:href="#bootstrap"></use>
                             </svg>
-                            <span class="fs-5 fw-semibold">参加人信息管理</span>
+                            <span class="fs-5 fw-semibold">人员信息管理</span>
                         </div>
                         <ul class="list-unstyled ps-0">
                             <li class="mb-1">

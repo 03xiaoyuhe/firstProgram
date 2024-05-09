@@ -15,11 +15,19 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <script type="text/javascript" src="../../assets/js/color-modes.js"></script>
     <link href="../../assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../..//bootstrap-5.3.0-alpha1-dist/css/bootstrap-reboot.min.css" rel="stylesheet" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <style>
+        .show-style {
+            position: absolute;
+            inset: 0px auto auto 0px;
+            margin: 0px;
+            margin-top: -10px;
+            transform: translate3d(0px, 41.6px, 0px);
+        }
         .showdow-only-top {
             box-shadow: 0px -10px 10px -10px #5E5E5E;
         }
@@ -54,7 +62,7 @@
             font-size: 14px;
             z-index: 1000;
         }
-
+        /*
         span[data-descr] {
             position: relative;
             text-decoration: underline;
@@ -63,7 +71,7 @@
             span[data-descr]:hover .list-group {
                 opacity: 1;
                 visibility: visible;
-            }
+            }*/
     </style>
 </head>
 <body>
@@ -85,93 +93,106 @@
     </header>
 
     <form id="form1" runat="server">
-        <div style="">
 
-            <div class="container text-left" style="width: 1000px">
-                <div class="row align-items-end" style="margin-bottom: 10px;">
-                    <div class="col">
+        <div class="container text-left" style="width: 1000px">
+            <div class="row align-items-end" style="margin-bottom: 10px;">
+                <div class="col">
+                    <h2 style="display: inline-block;">
+                        <strong>&nbsp;项目信息查询</strong>
+                    </h2>
+                    
+                    <a href="#" class="link-body-emphasis text-decoration-none rounded btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel" viewBox="0 0 16 16" style="margin: 0 auto;">
+                            <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z" />
+                        </svg>
+                    </a>
 
-                        <h2>
-                            <strong>&nbsp;项目信息查询</strong>
-                            <a href="#" class="link-body-emphasis text-decoration-none rounded btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel" viewBox="0 0 16 16" style="margin: 0 auto;">
-                                    <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z" />
-                                </svg>
-                            </a>
-                            <span class="dropdown">
-                                <a class="btn btn-sm btn-outline-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter-square" viewBox="0 0 16 16">
-                                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                                        <path d="M6 11.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
-                                    </svg>
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <li><strong>排序:</strong></li>
-                                    <li >
-                                        <asp:Button ID="Button3" CssClass="btn-sm" runat="server" Style="background: none; border: none;" Text="按项目名称" />
+                    <span class="dropdown">
+                        <a class="btn btn-sm btn-outline-dark dropdown-toggle link-body-emphasis" role="button"
+                            target="dropdown1" onclick="test(this)" onblur="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-filter-square" viewBox="0 0 16 16">
+                                <path
+                                    d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                <path
+                                    d="M6 11.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                            </svg>
+                        </a>
+                        <span class="dropdown-menu" id="dropdown1" style="padding: 0; z-index: 1000;padding:10px;">
+                            <div class="card-body">
+                                <p style="margin:5px;">
+                                    <strong>排序:</strong>
+                                        <btn class="btn btn-light btn-sm" style="float: right;position:relative;">
+                                            <asp:Button ID="Button2" runat="server" Text="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" Style="background: none; border: none;float:left;position:absolute;left:0;" />
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+                                            </svg>
+                                        </btn>
+                                </p>
+                                <p class="card-text">
+                                    <li class="list-group-item">
+                                        <div class="d-grid">
+                                            <asp:Button ID="Button4" class="btn btn-light btn-sm" runat="server" Text="立项编号" />
+                                            <asp:Button ID="Button5" class="btn btn-light btn-sm" runat="server" Text="项目评级" />
+                                            <asp:Button ID="Button6" class="btn btn-light btn-sm" runat="server" Text="项目名称" />
+                                            <asp:Button ID="Button3" class="btn btn-light btn-sm" runat="server" Text="项目完成时间" />
+                                        </div>
                                     </li>
-                                    <li >
-                                        <asp:Button ID="Button4" CssClass="btn-sm" runat="server" Style="background: none; border: none;" Text="按立项编号" />
-                                    </li>
-                                    <li >A third item</li>
-                                    <li >A fourth item</li>
-                                    <li >And a fifth one</li>
-                                </ul>
-                            </span>
-                        </h2>
-
-
-                    </div>
-
-                    <div class="col text-right">
-                        <div>
-                            <!--style="float: right; width: 500px;"-->
-                            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-                            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                                <ContentTemplate>
-                                    <span class="input-group">
-                                        <asp:TextBox
-                                            ID="TextBox1"
-                                            runat="server"
-                                            class="form-control form-control-sm"
-                                            type="search"
-                                            placeholder="输入搜索内容"
-                                            aria-label=".form-control-sm example"></asp:TextBox>
-                                        <asp:Button ID="Button1" class="btn btn-primary input-group-text" for="TextBox1" runat="server" Text="搜索" OnClick="Button1_Click" />
-                                    </span>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
-
-                        </div>
-                    </div>
-
+                                </p>
+                            </div>
+                        </span>
+                    </span>
                 </div>
 
-                <div class="row">
-                    <div class="col">
-                        <%--<div class="card" style="border-radius:10px; overflow:hidden;">--%>
-                        <%--<TPrintMassage:PrintMassage ID="aaa" runat="server" />--%>
-                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+
+
+                <div class="col text-right">
+                    <div>
+                        <!--style="float: right; width: 500px;"-->
+                        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                        <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                             <ContentTemplate>
-                                <asp:PlaceHolder ID="PlaceHolder1" runat="server" OnLoad="PlaceHolder1_Load">
-                                    <Loading:Load runat="server" ID="Load" />
-                                </asp:PlaceHolder>
+                                <span class="input-group">
+                                    <asp:TextBox
+                                        ID="TextBox1"
+                                        runat="server"
+                                        class="form-control form-control-sm"
+                                        type="search"
+                                        placeholder="输入搜索内容"
+                                        aria-label=".form-control-sm example"></asp:TextBox>
+                                    <asp:Button ID="Button1" class="btn btn-primary input-group-text" for="TextBox1" runat="server" Text="搜索" OnClick="Button1_Click" />
+                                </span>
                             </ContentTemplate>
                         </asp:UpdatePanel>
 
-                        <%--</div>--%>
                     </div>
                 </div>
 
-                <div class="row text-center">
-                    <div class="col">
-                        <PageIndex:PageIndex ID="aaa" runat="server" CssClass="Center" />
-                    </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <%--<div class="card" style="border-radius:10px; overflow:hidden;">--%>
+                    <%--<TPrintMassage:PrintMassage ID="aaa" runat="server" />--%>
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>
+                            <asp:PlaceHolder ID="PlaceHolder1" runat="server" OnLoad="PlaceHolder1_Load">
+                                <Loading:Load runat="server" ID="Load" />
+                            </asp:PlaceHolder>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+
+                    <%--</div>--%>
                 </div>
             </div>
 
+            <div class="row text-center">
+                <div class="col">
+                    <PageIndex:PageIndex ID="aaa" runat="server" CssClass="Center" />
+                </div>
+            </div>
         </div>
+
 
         <!-- 筛选功能页 class="modal-dialog modal-dialog-centered" -->
 
@@ -184,5 +205,24 @@
     <script src="../../JS/QueryFromPageJs.js"></script>
     <script src="../../JS/sidebars.js"></script>
     <script src="../../assets/dist/js/bootstrap.js"></script>
+
+    <script type="text/javascript">
+
+        function test(obj) {
+            let targetID = obj.getAttribute("target");
+            let targetName = document.getElementById(targetID);
+            console.log(targetName);
+            console.log(targetName.classList);
+            if (targetName.classList.contains("show")) {
+                targetName.classList.remove("show");//show-style
+                targetName.classList.remove("show-style");
+            }
+            else {
+                targetName.classList.add("show");
+                targetName.classList.add("show-style");
+            }
+        }
+
+    </script>
 </body>
 </html>
