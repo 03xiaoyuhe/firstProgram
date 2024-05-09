@@ -62,6 +62,31 @@
             font-size: 14px;
             z-index: 1000;
         }
+        span[data-descr] {
+            position: relative;
+            text-decoration: underline;
+            background-color:#fff;
+            color: #00f;
+        }
+
+            span[data-descr]:hover::after {
+                content: attr(data-descr);
+                position: absolute;
+                left: 0;
+                bottom:30px;
+                min-width: 120px;
+                border: 1px #aaaaaa solid;
+                border-radius: 10px;
+                padding: 12px;
+            background-color:#fff;
+                color: #000000;
+                font-size: 14px;
+                z-index: 1;
+            }
+
+        .mirrorRotateVertical {
+            transform: rotateX(180deg); /* 垂直镜像翻转 */
+        }
         /*
         span[data-descr] {
             position: relative;
@@ -122,12 +147,14 @@
                             <div class="card-body">
                                 <p style="margin:5px;">
                                     <strong>排序:</strong>
-                                        <btn class="btn btn-light btn-sm" style="float: right;position:relative;">
-                                            <asp:Button ID="Button2" runat="server" Text="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" Style="background: none; border: none;float:left;position:absolute;left:0;" />
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16">
-                                                <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+                                    <span data-descr="切换排序方向" style="float: right;">
+                                        <btn class="btn btn-light btn-sm" style=" position: relative;" onclick="Translate(this)">
+                                            <asp:Button ID="Button2" runat="server" Text="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" Style="background: none; border: none; float: left; position: absolute; left: 0;" />
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart" style="transform: rotate(90deg);" viewBox="0 0 16 16">
+                                                <path d="M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5v12h-2V2h2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3z" />
                                             </svg>
                                         </btn>
+                                    </span>
                                 </p>
                                 <p class="card-text">
                                     <li class="list-group-item">
@@ -221,6 +248,12 @@
                 targetName.classList.add("show");
                 targetName.classList.add("show-style");
             }
+        }
+
+        function Translate(obj)
+        {
+            if(obj.classList.contains("mirrorRotateVertical")) obj.classList.remove("mirrorRotateVertical");
+            else obj.classList.add("mirrorRotateVertical");
         }
 
     </script>
