@@ -304,5 +304,7 @@ namespace WebForm
             CacheGenericity<List<int>>.Data["Test"][0]++;
             Button2.Text = CacheGenericity<List<int>>.Data["Test"][0].ToString();
         }
+
+        
     }
 }

@@ -105,6 +105,7 @@ namespace WebForm.functionPage.QF_ChildPage
                     );
 
                 ProgremInf.ProgromBaseDatas = progromBaseData;
+
                 //this.ProgramIDInput.Text = dl["proposal_number"].ToString();//立项编号
                 //this.floatingInput.Text = dl["project_title"].ToString();//项目名称
                 //this.floatingTextarea.Text = dl["project_description"].ToString();//项目描述

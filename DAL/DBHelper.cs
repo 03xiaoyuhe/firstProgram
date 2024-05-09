@@ -515,17 +515,38 @@ namespace DAL
         /// <param name="SQLString">SQL语句</param>
         /// <returns>影响的记录数</returns>
         public static int ExecuteSql(string SQLString, params SqlParameter[] cmdParms)
-         {
+        {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     try
                     {
-                         PrepareCommand(cmd, connection, null, SQLString, cmdParms);
-                         int rows = cmd.ExecuteNonQuery();
-                         cmd.Parameters.Clear();
-                                  return rows;
+                        PrepareCommand(cmd, connection, null, SQLString, cmdParms);
+                        int rows = cmd.ExecuteNonQuery();
+                        cmd.Parameters.Clear();
+                        return rows;
+                    }
+                    catch (System.Data.SqlClient.SqlException e)
+                    {
+                        throw e;
+                    }
+                }
+            }
+        }
+
+        public static int ExecuteSql(string SQLString,  List<SqlParameter> cmdParms)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    try
+                    {
+                        PrepareCommand(cmd, connection, null, SQLString, cmdParms);
+                        int rows = cmd.ExecuteNonQuery();
+                        cmd.Parameters.Clear();
+                        return rows;
                     }
                     catch (System.Data.SqlClient.SqlException e)
                     {
@@ -729,15 +750,37 @@ namespace DAL
             cmd.CommandType = CommandType.Text;//cmdType;
             if (cmdParms != null)
             {
-                foreach (SqlParameter parameter  in cmdParms)
+                foreach (SqlParameter parameter in cmdParms)
                 {
                     if ((parameter.Direction == ParameterDirection.InputOutput || parameter.Direction == ParameterDirection.Input) &&
                         (parameter.Value == null))
                     {
                         parameter.Value = DBNull.Value;
                     }
-                     cmd.Parameters.Add(parameter);
-                 }
+                    cmd.Parameters.Add(parameter);
+                }
+            }
+        }
+        private static void PrepareCommand(SqlCommand cmd, SqlConnection conn, SqlTransaction trans, string cmdText, List<SqlParameter> cmdParms)
+        {
+            if (conn.State != ConnectionState.Open)
+                conn.Open();
+            cmd.Connection = conn;
+            cmd.CommandText = cmdText;
+            if (trans != null)
+                cmd.Transaction = trans;
+            cmd.CommandType = CommandType.Text;//cmdType;
+            if (cmdParms != null)
+            {
+                foreach (SqlParameter parameter in cmdParms)
+                {
+                    if ((parameter.Direction == ParameterDirection.InputOutput || parameter.Direction == ParameterDirection.Input) &&
+                        (parameter.Value == null))
+                    {
+                        parameter.Value = DBNull.Value;
+                    }
+                    cmd.Parameters.Add(parameter);
+                }
             }
         }
 

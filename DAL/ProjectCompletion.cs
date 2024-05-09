@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.Xml.Serialization.Configuration;
+using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace DAL
 {   
@@ -396,5 +398,85 @@ namespace DAL
             return rowsAffected > 0;
 
         }
+        /// <summary>
+        /// 检查是否只有汉字
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static bool IsChineseCh(string input)
+        {
+            Regex regex = new Regex("^[\u4e00-\u9fa5]+$");
+            return regex.IsMatch(input);
+        }
+
+        static public bool KidsInfor(
+               string project_leader,
+               string project_name,
+               string project_level,
+               string project_number,
+               string project_category,
+               string project_youth,
+               string project_research,
+               string project_view,
+               string project_References,
+               string project_time,
+               string project_form,
+               string project_opinion,
+               string project_expert_view,
+               string project_approval_view,
+               List<string> UserName  //队员姓名               
+            )
+        {
+
+            string query1 = "begin transaction\r\ndeclare @error int\r\nset @error = 0\r\ninsert into ProjectApplications \r\n( project_leader,\r\nunder_research ,\r\nproject_name ,\r\nproject_level ,\r\nproject_number,\r\nproject_category,\r\nproject_youth,\r\nproject_research,\r\nproject_view ,\r\nproject_References,\r\nproject_time ,project_form ,project_opinion ,project_expert_view ,project_approval_view) \r\nvalues\r\n( @project_leader ,'True',@project_name,@project_level ,@project_number,@project_category,@project_youth, @project_research,@project_view ,@project_References,@project_time ,@project_form ,@project_opinion ,@project_expert_view ,@project_approval_view); \r\nset @error = @@error + @error\r\n\r\nif(@error=0)\r\nbegin\r\nset @error = 0";
+            string query3 = "set @error = @@error + @error \r\nif(@error=0)\r\nbegin \r\ncommit transaction\r\nend\r\nelse\r\nbegin\r\nRollback transaction\r\nend\r\nend\r\nelse\r\nbegin\r\nRollback transaction\r\nend";
+
+            string query2 = "insert into ProjectMember (ProjectId,UserId) values \r\n((select project_id from ProjectApplications where project_number = @project_number),";
+
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            int count = UserName.Count;
+
+            for (int i = 0; i < count; i++)
+            {
+                if (IsChineseCh(UserName[i]))
+                {
+                    query2 += (i == 0 ? "" : ",") + $"(select Id from UserInfor where UseName = @UseName{i})";
+                    parameters.Add(new SqlParameter($"@UseName{i}", SqlDbType.NVarChar) { Value = UserName[i] });
+                }
+                else
+                {
+                    query2 += (i == 0 ? "" : ",") + $"(select Id from UserInfor where Id = @UseName{i})";
+                    parameters.Add(new SqlParameter($"@UseName{i}", SqlDbType.NVarChar) { Value = UserName[i] });
+                }
+                
+                
+            }
+
+            query2 += ")";
+
+            query1 = query1 + query2 + query3;
+
+            parameters.Add(new SqlParameter("@project_leader", SqlDbType.NVarChar) { Value = project_leader });
+            parameters.Add(new SqlParameter("@project_opinion", SqlDbType.NVarChar) { Value = project_opinion });
+            parameters.Add(new SqlParameter("@project_name", SqlDbType.NVarChar) { Value = project_name });
+            parameters.Add(new SqlParameter("@project_level", SqlDbType.NVarChar) { Value = project_level });
+            parameters.Add(new SqlParameter("@project_number", SqlDbType.NVarChar) { Value = project_number });
+            parameters.Add(new SqlParameter("@project_category", SqlDbType.NVarChar) { Value = project_category });
+            parameters.Add(new SqlParameter("@project_youth", SqlDbType.NVarChar) { Value = project_youth });
+            parameters.Add(new SqlParameter("@project_research", SqlDbType.NVarChar) { Value = project_research });
+            parameters.Add(new SqlParameter("@project_view", SqlDbType.NVarChar) { Value = project_view });
+            parameters.Add(new SqlParameter("@project_References", SqlDbType.NVarChar) { Value = project_References });
+            parameters.Add(new SqlParameter("@project_time", SqlDbType.Date) { Value = project_time });
+            parameters.Add(new SqlParameter("@project_form", SqlDbType.NVarChar) { Value = project_form });
+            parameters.Add(new SqlParameter("@project_expert_view", SqlDbType.NVarChar) { Value = project_expert_view });
+            parameters.Add(new SqlParameter("@project_approval_view", SqlDbType.NVarChar) { Value = project_approval_view });
+
+            int rowsAffected = DBHelper.ExecuteSql(query1, parameters);
+            
+            return rowsAffected > 0;
+
+        }
+
+
     }
 }

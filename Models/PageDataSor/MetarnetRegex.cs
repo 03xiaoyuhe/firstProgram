@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using DAL;
 using System.Collections;
 using NPOI.XSSF.Streaming.Values;
+using System.Linq.Expressions;
 
 namespace Models.PageDataSor
 {
@@ -87,7 +88,7 @@ namespace Models.PageDataSor
         /// <returns></returns>
         public static string Checked(string Kinds, string Data)
         {
-
+            int count = 0;
             
             switch (Kinds)
             {
@@ -404,7 +405,23 @@ namespace Models.PageDataSor
                         
                     }
 
-                     
+                case "队员0":
+                case "队员1":
+                case "队员2":
+                case "队员3":
+                case "队员4":
+                case "队员5":
+                case "队员6":
+                case "队员7":
+                case "队员8":
+                case "队员9":
+                case "队员10":
+                case "队员11":
+                case "队员12":
+                case "队员13":
+                    return "Success";
+
+
 
                 case "邮箱":
                     if (Data.Length > 20)
@@ -431,7 +448,22 @@ namespace Models.PageDataSor
             return $"(系统出现异常请联系工作人员){Data}"; 
         }
 
+
+        public static string filterInfor(string Kinds, string Data)
+        {
+            switch (Kinds)
+            {
+                case "姓名":
+                    return RetainChineseString(Data);
+            }
+            return Data;
+        }
+
+
         #region 正则表达式判断函数及转化函数-特例
+
+
+
 
         /// <summary>
         /// 将指定格式的字符串转换为数据库可识别日期，若不匹配则返回原值
@@ -481,12 +513,29 @@ namespace Models.PageDataSor
             }
 
 
-            /// <summary>
-            /// 判断输入的字符串只包含汉字
-            /// </summary>
-            /// <param name="input"></param>
-            /// <returns></returns>
-            public static bool IsChineseCh(string input)
+        /// <summary>
+        /// 去除掉汉字中的特殊字符
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static string RetainChineseString(string str)
+        {
+            StringBuilder chineseString = new StringBuilder();
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (str[i] >= 0x4E00 && str[i] <= 0x9FA5 || str[i] == '·') //汉字
+                {
+                    chineseString.Append(str[i]);
+                }
+            }
+            return chineseString.Length > 0 ? chineseString.ToString() : string.Empty;
+        }
+        /// <summary>
+        /// 判断输入的字符串只包含汉字
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static bool IsChineseCh(string input)
             {
                 Regex regex = new Regex("^[\u4e00-\u9fa5]+$");
                 return regex.IsMatch(input);

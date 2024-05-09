@@ -45,7 +45,7 @@ namespace WebForm.functionPage.QF_ChildPage
 
             //UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
             
-                MetarnetRegex.RemoveHash();
+            MetarnetRegex.RemoveHash();
             
 
             MetarnetRegex.Give();
@@ -65,7 +65,10 @@ namespace WebForm.functionPage.QF_ChildPage
             list1.Add("项目单位评审意见", true);
             list1.Add("专家评审", true);
             list1.Add("项目审批意见",true);
-
+            for(int i = 0; i < 13; i++)
+            {
+                list1.Add($"队员{i}", false);
+            }
 
             map1 = new Dictionary<string, string>();
             map1.Add("项目负责人", "project_leader");
@@ -82,12 +85,13 @@ namespace WebForm.functionPage.QF_ChildPage
             map1.Add("项目单位评审意见", "project_opinion");
             map1.Add("专家评审", "project_expert_view");
             map1.Add("项目审批意见", "project_approval_view");
+            for (int i = 0; i < 13; i++)
+            {
+                map1.Add($"队员{i}", $"UserId{i}");
+            }
 
 
         }
-
-
-
 
         protected void Button1_Click(object sender, EventArgs e)
         {
@@ -137,13 +141,31 @@ namespace WebForm.functionPage.QF_ChildPage
                 {
                     DataRow dl = loadDataTable.Rows[i];
                     ProgressProject progressProject = new ProgressProject();
-                    progressProject.DataTable = dl;
+                    progressProject.DataRow = dl;
+
+
                     //判断是否是使用id插入
                     if (MetarnetRegex.IsNotNagtive(progressProject.ProUser))
                     {
-                        if (
-                        !DAL.ProjectCompletion.KindsInsert(
-                             progressProject.ProUser,
+                        //if (
+                        //!DAL.ProjectCompletion.KindsInsert(
+                        //     progressProject.ProUser,
+                        //     progressProject.ProName, //dl["project_name"].ToString(), 
+                        //     progressProject.ProLevel, //dl["project_level"].ToString(),
+                        //     progressProject.ProNumber, //dl["project_number"].ToString(),
+                        //     progressProject.ProCategory, //dl["project_category"].ToString(),
+                        //     progressProject.ProYouth,                //dl["project_youth"].ToString(),
+                        //     progressProject.ProResearch,                //dl["project_research"].ToString(),
+                        //     progressProject.ProView,                //dl["project_view"].ToString(),
+                        //     progressProject.ProReferences,                 //dl["project_References"].ToString(),
+                        //     progressProject.ProTime,                 //dl["project_time"].ToString(),
+                        //     progressProject.ProForm,                 //dl["project_form"].ToString(),
+                        //     progressProject.ProOpinion,                 //dl["project_opinion"].ToString(),
+                        //     progressProject.ProExpert,                  //dl["project_expert_view"].ToString(),
+                        //     progressProject.ProApproval                  //dl["project_approval_view"].ToString()
+                        //     ))
+                        if(!DAL.ProjectCompletion.KidsInfor(
+                            progressProject.ProUser,
                              progressProject.ProName, //dl["project_name"].ToString(), 
                              progressProject.ProLevel, //dl["project_level"].ToString(),
                              progressProject.ProNumber, //dl["project_number"].ToString(),
@@ -156,8 +178,9 @@ namespace WebForm.functionPage.QF_ChildPage
                              progressProject.ProForm,                 //dl["project_form"].ToString(),
                              progressProject.ProOpinion,                 //dl["project_opinion"].ToString(),
                              progressProject.ProExpert,                  //dl["project_expert_view"].ToString(),
-                             progressProject.ProApproval                  //dl["project_approval_view"].ToString()
-                             ))
+                             progressProject.ProApproval,
+                             progressProject.PartersInform
+                             ))              //dl["project))
                         {
                             Models.Massage massage = new Massage();
                             //massage.NO = "1";
@@ -225,9 +248,25 @@ namespace WebForm.functionPage.QF_ChildPage
                         DataTable ds = dataId.Tables[0];
                         DataRow dataRow = ds.Rows[0];
                         string leaderId = dataRow[0].ToString();
-                        
-                        if (
-                        !DAL.ProjectCompletion.KindsInsert(
+
+                        //if (
+                        //!DAL.ProjectCompletion.KindsInsert(
+                        //     leaderId,
+                        //     progressProject.ProName, //dl["project_name"].ToString(), 
+                        //     progressProject.ProLevel, //dl["project_level"].ToString(),
+                        //     progressProject.ProNumber, //dl["project_number"].ToString(),
+                        //     progressProject.ProCategory, //dl["project_category"].ToString(),
+                        //     progressProject.ProYouth,                //dl["project_youth"].ToString(),
+                        //     progressProject.ProResearch,                //dl["project_research"].ToString(),
+                        //     progressProject.ProView,                //dl["project_view"].ToString(),
+                        //     progressProject.ProReferences,                 //dl["project_References"].ToString(),
+                        //     progressProject.ProTime,                 //dl["project_time"].ToString(),
+                        //     progressProject.ProForm,                 //dl["project_form"].ToString(),
+                        //     progressProject.ProOpinion,                 //dl["project_opinion"].ToString(),
+                        //     progressProject.ProExpert,                  //dl["project_expert_view"].ToString(),
+                        //     progressProject.ProApproval                  //dl["project_approval_view"].ToString()
+                        //     ))
+                        if (!DAL.ProjectCompletion.KidsInfor(
                              leaderId,
                              progressProject.ProName, //dl["project_name"].ToString(), 
                              progressProject.ProLevel, //dl["project_level"].ToString(),
@@ -241,7 +280,8 @@ namespace WebForm.functionPage.QF_ChildPage
                              progressProject.ProForm,                 //dl["project_form"].ToString(),
                              progressProject.ProOpinion,                 //dl["project_opinion"].ToString(),
                              progressProject.ProExpert,                  //dl["project_expert_view"].ToString(),
-                             progressProject.ProApproval                  //dl["project_approval_view"].ToString()
+                             progressProject.ProApproval,
+                             progressProject.PartersInform
                              ))
                         {
                             Models.Massage massage = new Massage();
@@ -323,7 +363,7 @@ namespace WebForm.functionPage.QF_ChildPage
                         Massage massage = new Massage();
                         massage.MassageText = "有重名的信息，请您检查核对需要插入的具体是哪位，并使用编号进行再次插入";
                         massage.HeadText = "WANNING";
-                        massage.HeadColor = "Yellow";
+                        massage.HeadColor = "Orange";
                         massage.PostMassage();
                     }
                     
