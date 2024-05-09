@@ -1,10 +1,12 @@
 ﻿using DAL;
 using Models;
+using Models.PageDataSor;
 using NPOI.HSSF.Record.PivotTable;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Web.Caching;
 using System.Web.DynamicData;
 using WebForm.ASCX;
 using WebForm.ASCX.Table;
@@ -119,6 +121,23 @@ namespace WebForm.functionPage.QF_ChildPage
                 Session["TypeSort"] = value;
             }
         }
+        int CountSort
+        {
+            get
+            {
+                if (CacheGenericity<List<int>>.Data["CountSort"].Count == 0) CacheGenericity<List<int>>.Data["CountSort"].Add(0);
+                return CacheGenericity<List<int>>.Data["CountSort"][0];
+            }
+            set
+            {
+                //if (CacheGenericity<List<int>>.Data["CountSort"].Count == 0)
+                //{
+                //    CacheGenericity<List<int>>.Data["CountSort"].Add(value);
+                //    return;
+                //}
+                CacheGenericity<List<int>>.Data["CountSort"][0] = value;
+            }
+        }
 
         #endregion
 
@@ -179,6 +198,7 @@ namespace WebForm.functionPage.QF_ChildPage
         /// </summary>
         void LoadFiltrate()
         {
+
             Dictionary<string, string> translation = new Dictionary<string, string>();
             translation.Add("project_level", "项目评级");
             translation.Add("project_youth", "青年项目");
@@ -419,6 +439,59 @@ namespace WebForm.functionPage.QF_ChildPage
             //    LoadTable();
         }
 
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(Request.Url.ToString());
+
+
+
+
+        }
+       //排序按钮后端：
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            SortField = "project_number";
+            Page_Load(sender, e);
+        }
+
+        protected void Button5_Click(object sender, EventArgs e)
+        {
+            SortField = "project_level";
+            Page_Load(sender, e);
+        }
+
+        protected void Button6_Click(object sender, EventArgs e)
+        {
+            SortField = "project_name";
+            Page_Load(sender, e);
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            SortField = "project_time";
+            Page_Load(sender, e);
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+             CountSort++;            
+            if (CountSort  == 0)
+            {               
+                TypeSort = "asc";
+            }
+            else
+            {
+                TypeSort = "desc";
+            }
+            CountSort %= 2;
+            Page_Load(sender, e);
+        }
+
+
+    }
+}
+
         ///// <summary>
         ///// 对DataTable排序的函数
         ///// </summary>
@@ -445,15 +518,3 @@ namespace WebForm.functionPage.QF_ChildPage
         //    return dtCopy;
         //}
         
-
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            Response.Redirect(Request.Url.ToString());
-
-
-
-
-        }
-    }
-}
