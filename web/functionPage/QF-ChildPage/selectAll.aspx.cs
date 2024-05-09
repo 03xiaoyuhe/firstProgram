@@ -1,5 +1,6 @@
 ﻿using DAL;
 using Models;
+using NPOI.HSSF.Record.PivotTable;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -92,10 +93,38 @@ namespace WebForm.functionPage.QF_ChildPage
             set { Session["query"] = value; }
         }
 
+        string SortField
+        {
+            get 
+            { 
+                if(Session["SortField"] == null) Session["SortField"] = "project_id";
+                return Session["SortField"].ToString();
+            }
+            set
+            {
+                Session["SortField"] = value;
+            }
+        }
+
+
+        string TypeSort
+        {
+            get
+            {
+                if (Session["TypeSort"] == null) Session["TypeSort"] = "asc";
+                return Session["TypeSort"].ToString();
+            }
+            set
+            {
+                Session["TypeSort"] = value;
+            }
+        }
+
         #endregion
 
         /// <summary>
         /// 加载筛选的数据库语句，加载到query变量中
+        /// 作为分页函数的查询表进行分页功能的使用
         /// </summary>
         /// <param name="dict">传入的筛选数据集</param>
         public void Select(Dictionary<string, HashSet<string>> dict)
@@ -225,7 +254,7 @@ namespace WebForm.functionPage.QF_ChildPage
         /// </summary>
         void InitData()
         {
-            Data = PageApart.Apart("ProjectApplications", "project_id", PageNum - 1);
+            Data = PageApart.Apart("ProjectApplications", SortField, PageNum - 1, TypeSort);
 
         }
 
@@ -236,15 +265,17 @@ namespace WebForm.functionPage.QF_ChildPage
         void InitSelect(string query) {
             if (query == null)
             {
-                Data = PageApart.Apart("ProjectApplications", "project_id", PageNum - 1);
+                Data = PageApart.Apart("ProjectApplications", SortField, PageNum - 1, TypeSort);
                 LoadTable();
             }
             else
             {
-                Data = PageApart.ApartSelect(query, "project_id", PageNum - 1);
+                Data = PageApart.ApartSelect(query, SortField, PageNum - 1, TypeSort);
                 LoadeSelect();
             }
+
             //Data = PageApart.ApartSelect(query, "project_id", PageNum - 1);
+
         }
 
         /// <summary>
@@ -294,7 +325,7 @@ namespace WebForm.functionPage.QF_ChildPage
                 NewLine.DataCollection = dataTable;
                 NewLine.Height = 480;
                 NewLine.TableName = "ProjectApplications";
-                NewLine.ShowControl = true;
+                //NewLine.ShowControl = true;
                 NewLine.ControlASCX = "~/ASCX/Table/ForMyTable/DeletButten.ascx";
                 NewLine.ShowCheck = true;
                 PlaceHolder1.Controls.Clear();
@@ -352,6 +383,8 @@ namespace WebForm.functionPage.QF_ChildPage
                     list
                     );
 
+                //dataTable = SortTable(dataTable, "project_level", 1);
+
                 MyTable NewLine = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
                 NewLine.TableBase = tableAttribute;
                 NewLine.DataCollection = dataTable;
@@ -385,6 +418,34 @@ namespace WebForm.functionPage.QF_ChildPage
             //    Loding();
             //    LoadTable();
         }
+
+        ///// <summary>
+        ///// 对DataTable排序的函数
+        ///// </summary>
+        ///// <param name="dt">表</param>
+        ///// <param name="values">需要排序的字段</param>
+        ///// <param name="ans">正序0，倒序非0</param>
+        ///// <returns></returns>
+        //static public DataTable SortTable(DataTable dt,string values,int ans)
+        //{
+        //    DataTable dtCopy = dt.Copy();
+           
+        //    DataView dv = dt.DefaultView;
+        //    if(ans == 0)
+        //    {
+        //        dv.Sort = values;
+        //    }
+        //    else
+        //    {
+        //        dv.Sort = values + " DESC";
+        //    }
+            
+        //    dtCopy = dv.ToTable();
+
+        //    return dtCopy;
+        //}
+        
+
 
         protected void Button1_Click(object sender, EventArgs e)
         {

@@ -219,9 +219,9 @@
             box-shadow: inset 0 0px 10px 0px #0000008f;
         }
     </style>
-</head>
+</head>   
 
-<body style="overflow: hidden; background-color: #e9ede0;">
+<body style=" background-color: #e9ede0;">
 
     <%--  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
         <symbol id="check2" viewBox="0 0 16 16">
@@ -290,7 +290,7 @@
 
     <script type="text/javascript" src="../JS/QueryFormJS.js"></script>
     
-    <header class="border-bottom page-head" style="height:60px;padding:0 20px;">
+    <header class="border-bottom page-head" style="height:60px;padding:0 20px;min-width:1500px;">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start" style="height:100%;">
             <a href="../home.aspx"
                 class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
@@ -333,7 +333,7 @@
 
     
 
-    <main class="flex-nowrap">
+    <main class="flex-nowrap"style="height:650px;">
         <div class="sidebarDiv left">
             <div id="test1" class="test test-show">
                 <!-- 项目管理功能栏 -->

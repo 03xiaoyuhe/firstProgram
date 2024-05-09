@@ -123,7 +123,9 @@ namespace WebForm.functionPage.QF_ChildPage
                     DataRow dl = dataTable.Rows[i];
                     ParticipantInform participantInform = new ParticipantInform();
                     participantInform.DataTable = dl;
-                    if (
+                    if (MetarnetRegex.IsChineseCh(participantInform.PeoName))
+                    {
+                        if (
                     !DAL.User.KindsInsert(
                         participantInform.PeoName,
                         participantInform.PeoDate,
@@ -152,13 +154,55 @@ namespace WebForm.functionPage.QF_ChildPage
                          //dl["UserNumber"].ToString(),
                          //dl["UserEmail"].ToString()
                          ))
-                    {
-                        Models.Massage massage = new Massage();
-                        massage.HeadColor = "Red";
-                        massage.MassageText = "第" + i + "插入异常，可能数据依然不符合要求，请仔细检查该行数据并尝试重新插入";
-                        massage.HeadText = "ERROR";
-                        massage.PostMassage();
+                        {
+                            Models.Massage massage = new Massage();
+                            massage.HeadColor = "Red";
+                            massage.MassageText = "第" + i + "插入异常，可能数据依然不符合要求，请仔细检查该行数据并尝试重新插入";
+                            massage.HeadText = "ERROR";
+                            massage.PostMassage();
+                        }
                     }
+                    else
+                    {
+                        string name = MetarnetRegex.RetainChineseString(participantInform.PeoName);
+                        if (
+                    !DAL.User.KindsInsert(
+                        name,
+                        participantInform.PeoDate,
+                        participantInform.PeoSex,
+                        participantInform.PeoPosition,
+                        participantInform.PeoTitle,
+                        participantInform.PeoSpeciality,
+                        participantInform.PeoResearch,
+                        participantInform.PeoReNow,
+                        participantInform.PeoWork,
+                        participantInform.ProAddress,
+                        participantInform.PeoOffNum,
+                        participantInform.PeoNumber,
+                        participantInform.ProEmail
+                         //dl["UseName"].ToString(),
+                         //dl["UserDate"].ToString(),
+                         //dl["UserSex"].ToString(),
+                         //dl["UserPosition"].ToString(),
+                         //dl["UserTitle"].ToString(),
+                         //dl["UserSpeciality"].ToString(),
+                         //dl["UserResearch"].ToString(),
+                         //dl["UserResearch_now"].ToString(),
+                         //dl["UserWorkplace"].ToString(),
+                         //dl["UserAddress"].ToString(),
+                         //dl["UserOffice_number"].ToString(),
+                         //dl["UserNumber"].ToString(),
+                         //dl["UserEmail"].ToString()
+                         ))
+                        {
+                            Models.Massage massage = new Massage();
+                            massage.HeadColor = "Red";
+                            massage.MassageText = "第" + i + "插入异常，可能数据依然不符合要求，请仔细检查该行数据并尝试重新插入";
+                            massage.HeadText = "ERROR";
+                            massage.PostMassage();
+                        }
+                    }
+                    
 
 
                 }

@@ -159,6 +159,7 @@ namespace Models.PageDataSor
                         {
                             if (row.GetCell(j) != null) //同理，没有数据的单元格都默认是null
                             {
+                                // 数据前向过滤
                                 // 将日期转化为正常格式
                                 dataRow[DataCellCount] = MetarnetRegex.ExcelDateToSQLDate(row.GetCell(j).ToString());
 
@@ -168,6 +169,8 @@ namespace Models.PageDataSor
                                     flag = true;
                                     break;
                                 }
+
+                                dataRow[DataCellCount] = MetarnetRegex.filterInfor(DataHead[j], dataRow[DataCellCount].ToString());
                             }
                             DataCellCount++;
                         }

@@ -37,6 +37,8 @@ namespace WebForm.ASCX.Table
         protected void DetailButton_Click(object sender, EventArgs e)
         {
 
+
+
         }
     }
 }

@@ -42,8 +42,8 @@ namespace DAL
         /// <returns></returns>
         static public DataSet UserSelect(string project_id)
         {
-            string query = "select *from UserInfor where user_number =  " +
-                "(\r\nselect user_phone from ProjectApplications where project_id = @project_id \r\n);";
+            string query = "select *from UserInfor where Id =  " +
+                "(\r\nselect project_leader from ProjectApplications where project_id = @project_id \r\n);";
             SqlParameter[] parameters =
             {
                 new  SqlParameter("@project_id",SqlDbType.NVarChar) {Value = project_id},

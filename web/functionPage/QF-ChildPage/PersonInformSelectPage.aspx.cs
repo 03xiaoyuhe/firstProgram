@@ -99,6 +99,7 @@ namespace WebForm.functionPage.QF_ChildPage
             DataSet dataSet = DAL.DBHelper.Query("select Id,UseName,UserDate,UserSex,UserPosition from UserInfor;");
 
             Data = dataSet;
+
         }
 
         void Loding()
@@ -150,7 +151,7 @@ namespace WebForm.functionPage.QF_ChildPage
                 NewLine.TableBase = tableAttribute;
                 NewLine.DataCollection = dataTable;
                 NewLine.Height = 500;
-                NewLine.TableName = "ProjectApplications";
+                NewLine.TableName = "UserInfor";
                 NewLine.ShowControl = true;
                 NewLine.ShowCheck = true;
                 NewLine.ControlASCX = "~/ASCX/Table/ForMyTable/DeletButten.ascx";

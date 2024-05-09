@@ -400,6 +400,7 @@
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Web.sitemap" />
+    <Content Include="WebForm1.aspx" />
     <Content Include="website.publishproj" />
   </ItemGroup>
   <ItemGroup>
@@ -850,6 +851,13 @@
     </Compile>
     <Compile Include="functionPage\WorkerLogin.aspx.designer.cs">
       <DependentUpon>WorkerLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
