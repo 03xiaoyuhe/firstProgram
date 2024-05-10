@@ -121,7 +121,7 @@ namespace WebForm.functionPage.QF_ChildPage
                 Session["TypeSort"] = value;
             }
         }
-        int CountSort
+        public int CountSort
         {
             get
             {
@@ -475,8 +475,8 @@ namespace WebForm.functionPage.QF_ChildPage
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-             CountSort++;            
-            if (CountSort  == 0)
+             CountSort++;
+            if (CountSort  %2 == 0)
             {               
                 TypeSort = "asc";
             }
@@ -484,7 +484,6 @@ namespace WebForm.functionPage.QF_ChildPage
             {
                 TypeSort = "desc";
             }
-            CountSort %= 2;
             Page_Load(sender, e);
         }
 
