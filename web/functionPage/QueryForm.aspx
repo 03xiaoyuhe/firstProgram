@@ -321,7 +321,7 @@
                     <img src="../img/帐户.png" alt="mdo" width="32" height="32" class="rounded-circle">
                 </a>
                 <ul class="dropdown-menu text-small">
-                    <li><a class="dropdown-item" href="#">账号设置</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="AccountSetting()">账号设置</a></li>
                     <li><a class="dropdown-item" href="#">显示设置</a></li>
                     <hr class="dropdown-divider" />
                     <li><a class="dropdown-item" href="#">Sign out</a></li>
@@ -361,10 +361,12 @@
                                                 class="link-body-emphasis d-inline-flex text-decoration-none rounded"
                                                 onclick="programLoad(this)">申报项目</a></li>
                                         <li><a href="#"
-                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded">在研项目</a>
+                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded"
+                                             onclick="OngoingProjectLoadPage()">在研项目</a>
                                         </li>
                                         <li><a href="#"
-                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded">结项项目</a>
+                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded"
+                                             onclick="EndingProjectLoadPage()">结项项目</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -378,9 +380,11 @@
                                 </button>
                                 <div class="collapse" id="manageProgram-collapse">
                                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li><a href="#"
+                                        <li>
+                                            <a href="#"
                                                 class="link-body-emphasis d-inline-flex text-decoration-none rounded"
-                                                onclick="selectAll(this)">显示全部</a></li>
+                                                onclick="selectAll(this)">显示全部</a>
+                                        </li>
                                         <li>
                                         </li>
                                     </ul>
@@ -435,15 +439,20 @@
 
                                 <div class="collapse show" id="people-collapse">
                                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li><a href="#"
+                                        <li>
+                                            <a href="#"
                                                 class="link-body-emphasis d-inline-flex text-decoration-none rounded"
                                                 onclick="PeopleInform()">批量导入</a></li>
-                                        <li><a href="#"
-                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded">批量更改</a>
-                                        </li>
-                                        <li><a href="#"
+                                        <li>
+                                            <a href="#"
                                                 class="link-body-emphasis d-inline-flex text-decoration-none rounded"
-                                                onclick="PersonInformSelectPage()">信息查询</a></li>
+                                             onclick="UpdatePeopleInform()">批量更改</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded"
+                                                onclick="PersonInformSelectPage()">信息查询</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </li>
@@ -475,13 +484,16 @@
                                 <div class="collapse show" id="accient-collapse">
                                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                         <li><a href="#"
-                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded">申报人员账号</a>
+                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded"
+                                             onclick="ApplicantAcconterSelectPage()">申报人员账号</a>
                                         </li>
                                         <li><a href="#"
-                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded">评委账号</a>
+                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded"
+                                             onclick="JudgeAccounterPage()">评委账号</a>
                                         </li>
                                         <li><a href="#"
-                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded">工作人员账号</a>
+                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded"
+                                             onclick="StaffManagrmentSelectPage()">工作人员账号</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -543,6 +555,7 @@
 
     </form>
     <script type="text/javascript">
+
         // 显示所有项目信息逻辑
         function selectAll() {
             document.getElementById("test").src = "QF-ChildPage/selectAll.aspx";
@@ -570,6 +583,14 @@
             document.getElementById("test").src = "QF-ChildPage/OutForDeclareProgremPage.aspx";
         }
 
+        function ApplicantAcconterSelectPage() {
+            document.getElementById("test").src = "QF-ChildPage/ApplicantAcconterSelectPage.aspx";
+        }
+
+        function JudgeAccounterPage() {
+            document.getElementById("test").src = "QF-ChildPage/JudgeAccounterPage.aspx";
+        }
+        //JudgeAccounterPage
         // 测试
         function test() {
             document.getElementById("test").src = "https://www.bilibili.com/";
@@ -579,6 +600,32 @@
         function PersonInformSelectPage() {
             document.getElementById("test").src = "QF-ChildPage/PersonInformSelectPage.aspx";
         }
+
+        // StaffManagrmentSelectPage
+        function StaffManagrmentSelectPage() {
+            document.getElementById("test").src = "QF-ChildPage/StaffManagrmentSelectPage.aspx";
+        }
+
+        // OngoingProjectLoadPage
+        function OngoingProjectLoadPage() {
+            document.getElementById("test").src = "QF-ChildPage/OngoingProjectLoadPage.aspx";
+        }
+
+        // AccountSetting
+        function AccountSetting() {
+            document.getElementById("test").src = "QF-ChildPage/AccountSetting.aspx";
+        }
+
+        // EndingProjectLoadPage
+        function EndingProjectLoadPage() {
+            document.getElementById("test").src = "QF-ChildPage/EndingProjectLoadPage.aspx";
+        }
+
+        // UpdatePeopleInform
+        function UpdatePeopleInform() {
+            document.getElementById("test").src = "QF-ChildPage/UpdatePeopleInform.aspx";
+        }
+
     </script>
 
     
