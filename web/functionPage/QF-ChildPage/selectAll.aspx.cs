@@ -8,6 +8,7 @@ using System.Data;
 using System.Linq;
 using System.Web.Caching;
 using System.Web.DynamicData;
+using System.Web.UI.WebControls;
 using WebForm.ASCX;
 using WebForm.ASCX.Table;
 
@@ -18,6 +19,20 @@ namespace WebForm.functionPage.QF_ChildPage
         #region 自定义属性
 
         int Index;
+
+        public string SearchTarget
+        {
+
+            get
+            {
+                if (Session["SearchTarget"] == null) Session["SearchTarget"] = "项目名称";
+                return Session["SearchTarget"].ToString();
+            }
+            set
+            {
+                Session["SearchTarget"] = value;
+            }
+        }
 
         string searchString;
         /// <summary>
@@ -487,7 +502,11 @@ namespace WebForm.functionPage.QF_ChildPage
             Page_Load(sender, e);
         }
 
+        protected void Button7_Click(object sender, EventArgs e)
+        {
 
+            SearchTarget = ((Button)sender).Text;
+        }
     }
 }
 

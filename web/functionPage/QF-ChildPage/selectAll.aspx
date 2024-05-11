@@ -177,9 +177,18 @@
                     <div>
                         <!--style="float: right; width: 500px;"-->
                         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-                        <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                            <ContentTemplate>
-                                <span class="input-group">
+                                <span class="input-group btn-outline-dark">
+                                    <a class="btn btn-outline-dark dropdown-toggle link-body-emphasis" role="button"
+                                        target="dropdown2" onclick="test(this)" onblur=""><% = SearchTarget %>
+                                    </a>
+                                    <span class="dropdown-menu" id="dropdown2" style="padding: 0; z-index: 1000; padding: 10px;margin-top:5px;">
+                                        <div class="card-body">
+                                            <asp:Button ID="Button7" class="btn btn-light btn-sm" runat="server" Text="项目名称" OnClick="Button7_Click"/>
+                                            <asp:Button ID="Button8" class="btn btn-light btn-sm" runat="server" Text="负责人" OnClick="Button7_Click"/>
+                                            <asp:Button ID="Button9" class="btn btn-light btn-sm" runat="server" Text="电话号码" OnClick="Button7_Click"/>
+                                            <asp:Button ID="Button10" class="btn btn-light btn-sm" runat="server" Text="立项编号" OnClick="Button7_Click"/>
+                                        </div>
+                                    </span>
                                     <asp:TextBox
                                         ID="TextBox1"
                                         runat="server"
@@ -189,8 +198,6 @@
                                         aria-label=".form-control-sm example"></asp:TextBox>
                                     <asp:Button ID="Button1" class="btn btn-primary input-group-text" for="TextBox1" runat="server" Text="搜索" OnClick="Button1_Click" />
                                 </span>
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
 
                     </div>
                 </div>
