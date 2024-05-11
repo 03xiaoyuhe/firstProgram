@@ -12,9 +12,28 @@ namespace WebForm.ASCX.Filtrate
 {
     public partial class MyCheckBox : UserControl
     {
+        CheckBox checkBox;
+        CheckBox CheckBox1
+        {
+            get
+            {
+                if(checkBox == null)
+                {
+                    checkBox = new CheckBox();
+                }
+                return checkBox;
+            }
+            set
+            {
+                checkBox = value;
+            }
+        }
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            CheckBox1.CheckedChanged += CheckedChanged; 
+            CheckBox1.CheckedChanged += CheckedChanged;
+            CheckBox1.ID = $"{Text}1";
         }
 
         public string DataID;

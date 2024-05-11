@@ -290,7 +290,7 @@
 
     <script type="text/javascript" src="../JS/QueryFormJS.js"></script>
     
-    <header class="border-bottom page-head" style="height:60px;padding:0 20px;min-width:1500px;">
+    <header class="border-bottom page-head" style="height:60px;padding:0 20px;">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start" style="height:100%;">
             <a href="../home.aspx"
                 class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
@@ -318,7 +318,7 @@
             <div class="dropdown text-end">
                 <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
                     data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                    <img src="../img/我的团队.png" alt="mdo" width="32" height="32" class="rounded-circle">
                 </a>
                 <ul class="dropdown-menu text-small">
                     <li><a class="dropdown-item" href="#">账号设置</a></li>
