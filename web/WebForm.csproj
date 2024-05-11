@@ -229,11 +229,19 @@
     <Content Include="ASCX\Table\ForMyTable\ControlBase.ascx" />
     <Content Include="ASCX\Table\ForMyTable\MyCheckBox.ascx" />
     <Content Include="ASCX\Table\TableWithDelegate.ascx" />
+    <Content Include="functionPage\QF-ChildPage\AccountSetting.aspx" />
+    <Content Include="functionPage\QF-ChildPage\ApplicantAcconterSelectPage.aspx" />
+    <Content Include="functionPage\QF-ChildPage\EndingProjectLoadPage.aspx" />
+    <Content Include="functionPage\QF-ChildPage\JudgeAccounterPage.aspx" />
+    <Content Include="functionPage\QF-ChildPage\OngoingProjectLoadPage.aspx" />
+    <Content Include="functionPage\QF-ChildPage\OutForDeclareProgremPage.aspx" />
+    <Content Include="functionPage\QF-ChildPage\OutForEndProgremPage.aspx" />
     <Content Include="functionPage\QF-ChildPage\PeopleInform.aspx" />
     <Content Include="functionPage\QF-ChildPage\PersonInformSelectPage.aspx" />
+    <Content Include="functionPage\QF-ChildPage\StaffManagrmentSelectPage.aspx" />
     <Content Include="functionPage\QF-ChildPage\UnChoosePage.aspx" />
+    <Content Include="functionPage\QF-ChildPage\UpdatePeopleInform.aspx" />
     <!-- 样式控制文件 -->
-
     <Content Include="img\*" />
     <Content Include="img\svg\*" />
     <Content Include="JS\*" />
@@ -742,12 +750,61 @@
     <Compile Include="functionPage\ProgramImformPage.aspx.designer.cs">
       <DependentUpon>ProgramImformPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="functionPage\QF-ChildPage\AccountSetting.aspx.cs">
+      <DependentUpon>AccountSetting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="functionPage\QF-ChildPage\AccountSetting.aspx.designer.cs">
+      <DependentUpon>AccountSetting.aspx</DependentUpon>
+    </Compile>
     <Compile Include="functionPage\QF-ChildPage\addProgram.aspx.cs">
       <DependentUpon>addProgram.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="functionPage\QF-ChildPage\addProgram.aspx.designer.cs">
       <DependentUpon>addProgram.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="functionPage\QF-ChildPage\ApplicantAcconterSelectPage.aspx.cs">
+      <DependentUpon>ApplicantAcconterSelectPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="functionPage\QF-ChildPage\ApplicantAcconterSelectPage.aspx.designer.cs">
+      <DependentUpon>ApplicantAcconterSelectPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="functionPage\QF-ChildPage\EndingProjectLoadPage.aspx.cs">
+      <DependentUpon>EndingProjectLoadPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="functionPage\QF-ChildPage\EndingProjectLoadPage.aspx.designer.cs">
+      <DependentUpon>EndingProjectLoadPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="functionPage\QF-ChildPage\JudgeAccounterPage.aspx.cs">
+      <DependentUpon>JudgeAccounterPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="functionPage\QF-ChildPage\JudgeAccounterPage.aspx.designer.cs">
+      <DependentUpon>JudgeAccounterPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="functionPage\QF-ChildPage\OngoingProjectLoadPage.aspx.cs">
+      <DependentUpon>OngoingProjectLoadPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="functionPage\QF-ChildPage\OngoingProjectLoadPage.aspx.designer.cs">
+      <DependentUpon>OngoingProjectLoadPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="functionPage\QF-ChildPage\OutForDeclareProgremPage.aspx.cs">
+      <DependentUpon>OutForDeclareProgremPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="functionPage\QF-ChildPage\OutForDeclareProgremPage.aspx.designer.cs">
+      <DependentUpon>OutForDeclareProgremPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="functionPage\QF-ChildPage\OutForEndProgremPage.aspx.cs">
+      <DependentUpon>OutForEndProgremPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="functionPage\QF-ChildPage\OutForEndProgremPage.aspx.designer.cs">
+      <DependentUpon>OutForEndProgremPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="functionPage\QF-ChildPage\PeopleInform.aspx.cs">
       <DependentUpon>PeopleInform.aspx</DependentUpon>
@@ -791,12 +848,26 @@
     <Compile Include="functionPage\QF-ChildPage\selectAll.aspx.designer.cs">
       <DependentUpon>selectAll.aspx</DependentUpon>
     </Compile>
+    <Compile Include="functionPage\QF-ChildPage\StaffManagrmentSelectPage.aspx.cs">
+      <DependentUpon>StaffManagrmentSelectPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="functionPage\QF-ChildPage\StaffManagrmentSelectPage.aspx.designer.cs">
+      <DependentUpon>StaffManagrmentSelectPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="functionPage\QF-ChildPage\UnChoosePage.aspx.cs">
       <DependentUpon>UnChoosePage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="functionPage\QF-ChildPage\UnChoosePage.aspx.designer.cs">
       <DependentUpon>UnChoosePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="functionPage\QF-ChildPage\UpdatePeopleInform.aspx.cs">
+      <DependentUpon>UpdatePeopleInform.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="functionPage\QF-ChildPage\UpdatePeopleInform.aspx.designer.cs">
+      <DependentUpon>UpdatePeopleInform.aspx</DependentUpon>
     </Compile>
     <Compile Include="functionPage\QueryForm.aspx.cs">
       <DependentUpon>QueryForm.aspx</DependentUpon>

@@ -1,6 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PeopleInform.aspx.cs" Inherits="WebForm.functionPage.QF_ChildPage.PeopleInform" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UpdatePeopleInform.aspx.cs" Inherits="WebForm.functionPage.QF_ChildPage.UpdatePeopleInform" %>
 
-<!-- 人员信息批量导入页面 -->
+<!-- 人员信息批量更新页面 -->
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -40,7 +40,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">人员信息管理</li>
                             <li class="breadcrumb-item">信息管理</li>
-                            <li class="breadcrumb-item active" aria-current="page"><strong>人员信息批量导入</strong></li>
+                            <li class="breadcrumb-item active" aria-current="page"><strong>人员信息批量更改</strong></li>
                         </ol>
                     </nav>
                 </div>
@@ -57,7 +57,7 @@
                         <div class="row">
                             <div class="col">
                                 <h2>
-                                    <strong>人员信息批量导入</strong>
+                                    <strong>人员信息批量更改</strong>
                                 </h2>
                             </div>
                         </div>

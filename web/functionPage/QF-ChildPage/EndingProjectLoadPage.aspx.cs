@@ -1,9 +1,7 @@
-﻿using DAL;
-using Models;
-using Models.DataRowToClass;
+﻿using Models.DataRowToClass;
 using Models.ErroModels;
 using Models.PageDataSor;
-using NPOI.HSSF.UserModel;
+using Models;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 using System;
@@ -11,19 +9,15 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
 using System.Web;
-using System.Web.DynamicData;
-using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebForm.ASCX.Table;
 
 namespace WebForm.functionPage.QF_ChildPage
 {
-    public partial class ProgremLoad : System.Web.UI.Page
+    public partial class EndingProjectLoadPage : System.Web.UI.Page
     {
-
         Dictionary<string, bool> list1;
         Dictionary<string, string> map1;
 
@@ -44,9 +38,9 @@ namespace WebForm.functionPage.QF_ChildPage
         {
 
             //UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-            
+
             MetarnetRegex.RemoveHash();
-            
+
 
             MetarnetRegex.Give();
 
@@ -64,8 +58,8 @@ namespace WebForm.functionPage.QF_ChildPage
             list1.Add("成果形式", true);
             list1.Add("项目单位评审意见", true);
             list1.Add("专家评审", true);
-            list1.Add("项目审批意见",true);
-            for(int i = 0; i < 13; i++)
+            list1.Add("项目审批意见", true);
+            for (int i = 0; i < 13; i++)
             {
                 list1.Add($"队员{i}", false);
             }
@@ -114,7 +108,7 @@ namespace WebForm.functionPage.QF_ChildPage
                 return;//当无文件时,返回
             }
             string IsXls = Path.GetExtension(FileUpload1.FileName).ToLower();//System.IO.Path.GetExtension获得文件的扩展名
-            if (IsXls != ".xlsx" && IsXls != ".xls" )
+            if (IsXls != ".xlsx" && IsXls != ".xls")
             {
                 Response.Write("<script>alert('只可以选择表格文件')</script>");
                 return;//当选择的不是Excel文件时,返回
@@ -175,7 +169,7 @@ namespace WebForm.functionPage.QF_ChildPage
                         //     progressProject.ProExpert,                  //dl["project_expert_view"].ToString(),
                         //     progressProject.ProApproval                  //dl["project_approval_view"].ToString()
                         //     ))
-                        if(!DAL.ProjectCompletion.KidsInfor(
+                        if (!DAL.ProjectCompletion.KidsInfor(
                             progressProject.ProUser,
                              progressProject.ProName, //dl["project_name"].ToString(), 
                              progressProject.ProLevel, //dl["project_level"].ToString(),
@@ -335,9 +329,9 @@ namespace WebForm.functionPage.QF_ChildPage
                         PlaceHolder2.Controls.Add(NewLine);
 
                     }
-                    else if(rowAfforts > 1)
+                    else if (rowAfforts > 1)
                     {
-                       
+
 
                         //将重名信息加载到PlaceHolder1
                         List<string> listInfor = new List<string>();
@@ -346,7 +340,7 @@ namespace WebForm.functionPage.QF_ChildPage
                         listInfor.Add("UserDate");
                         listInfor.Add("UserSex");
                         listInfor.Add("UserPosition");
-                        
+
 
                         Dictionary<string, string> mapInfor = new Dictionary<string, string>();
                         mapInfor.Add("Id", "用户编号");
@@ -354,7 +348,7 @@ namespace WebForm.functionPage.QF_ChildPage
                         mapInfor.Add("UserDate", "生日");
                         mapInfor.Add("UserSex", "性别");
                         mapInfor.Add("UserPosition", "职务");
-                        
+
 
                         TableAttribute tableAttribute1 = new TableAttribute(
                             "Id",
@@ -377,7 +371,7 @@ namespace WebForm.functionPage.QF_ChildPage
                         massage.HeadColor = "Orange";
                         massage.PostMassage();
                     }
-                    
+
 
 
 
@@ -422,7 +416,7 @@ namespace WebForm.functionPage.QF_ChildPage
 
 
 
-                
+
 
 
 
@@ -431,11 +425,11 @@ namespace WebForm.functionPage.QF_ChildPage
 
 
             }
-            catch(LineAbsentException erro)
+            catch (LineAbsentException erro)
             {
                 Massage message = new Massage();
 
-                message.MassageText = erro.Message+"，请修改原表并再次导入";
+                message.MassageText = erro.Message + "，请修改原表并再次导入";
                 message.HeadColor = "Red";
                 message.HeadText = "ERROR";
                 message.PostMassage();
@@ -443,7 +437,7 @@ namespace WebForm.functionPage.QF_ChildPage
             catch (System.Data.SqlClient.SqlException error)
             {
                 Massage message = new Massage();
-                message.MassageText ="系统出现严重异常，请携带报错截图寻找工作人员！"+ error.Message;
+                message.MassageText = "系统出现严重异常，请携带报错截图寻找工作人员！" + error.Message;
                 message.HeadColor = "Red";
                 message.HeadText = "ERROR";
                 message.PostMassage();
@@ -465,7 +459,7 @@ namespace WebForm.functionPage.QF_ChildPage
 
             IRow ModeHead = ModeSheet.CreateRow(0);
             int countcell = 0;
-            foreach(KeyValuePair<string, bool> keyValuePair in list1)
+            foreach (KeyValuePair<string, bool> keyValuePair in list1)
             {
                 ModeHead.CreateCell(countcell++).SetCellValue(keyValuePair.Key);
             }
@@ -479,7 +473,7 @@ namespace WebForm.functionPage.QF_ChildPage
             {
                 string fileName = $"FormExcel{Path.GetExtension(ModeExcelPath)}";//客户端保存的文件名
                 string filePath = ModeExcelPath;//路径
-                                               //以字符流的形式下载文件
+                                                //以字符流的形式下载文件
                 FileStream fs = new FileStream(filePath, FileMode.Open);
                 byte[] bytes = new byte[(int)fs.Length];
                 fs.Read(bytes, 0, bytes.Length);
@@ -530,6 +524,5 @@ namespace WebForm.functionPage.QF_ChildPage
                 massage.PostMassage();
             }
         }
-
     }
 }
