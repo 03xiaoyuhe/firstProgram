@@ -229,11 +229,12 @@
     <Content Include="ASCX\Table\ForMyTable\ControlBase.ascx" />
     <Content Include="ASCX\Table\ForMyTable\MyCheckBox.ascx" />
     <Content Include="ASCX\Table\TableWithDelegate.ascx" />
+    <Content Include="functionPage\QF-ChildPage\OutForDeclareProgremPage.aspx" />
+    <Content Include="functionPage\QF-ChildPage\OutForEndProgremPage.aspx" />
     <Content Include="functionPage\QF-ChildPage\PeopleInform.aspx" />
     <Content Include="functionPage\QF-ChildPage\PersonInformSelectPage.aspx" />
     <Content Include="functionPage\QF-ChildPage\UnChoosePage.aspx" />
     <!-- 样式控制文件 -->
-
     <Content Include="img\*" />
     <Content Include="img\svg\*" />
     <Content Include="JS\*" />
@@ -748,6 +749,20 @@
     </Compile>
     <Compile Include="functionPage\QF-ChildPage\addProgram.aspx.designer.cs">
       <DependentUpon>addProgram.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="functionPage\QF-ChildPage\OutForDeclareProgremPage.aspx.cs">
+      <DependentUpon>OutForDeclareProgremPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="functionPage\QF-ChildPage\OutForDeclareProgremPage.aspx.designer.cs">
+      <DependentUpon>OutForDeclareProgremPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="functionPage\QF-ChildPage\OutForEndProgremPage.aspx.cs">
+      <DependentUpon>OutForEndProgremPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="functionPage\QF-ChildPage\OutForEndProgremPage.aspx.designer.cs">
+      <DependentUpon>OutForEndProgremPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="functionPage\QF-ChildPage\PeopleInform.aspx.cs">
       <DependentUpon>PeopleInform.aspx</DependentUpon>

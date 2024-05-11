@@ -93,6 +93,16 @@ namespace WebForm.functionPage.QF_ChildPage
 
         }
 
+
+        protected void Page_Unload(object sender, EventArgs e)
+        {
+
+            if (File.Exists(ErroFilePath))
+            {
+                File.Delete(ErroFilePath);
+            }
+        }
+
         protected void Button1_Click(object sender, EventArgs e)
         {
 
@@ -126,8 +136,9 @@ namespace WebForm.functionPage.QF_ChildPage
 
                 int ErroRowCount = 0;
                 DataTable loadDataTable = excelRead.LoadExcel(out ErroRowCount);
+                File.Delete(savePath);
 
-                if(ErroRowCount > 0)
+                if (ErroRowCount > 0)
                 {
                     Massage massage = new Massage();
                     massage.HeadColor = "blue";
@@ -479,6 +490,7 @@ namespace WebForm.functionPage.QF_ChildPage
                 Response.BinaryWrite(bytes);
                 Response.Flush();
                 Response.End();
+
             }
             else
             {
@@ -488,6 +500,7 @@ namespace WebForm.functionPage.QF_ChildPage
                 massage.MassageText = "无格式规定文件";
                 massage.PostMassage();
             }
+            File.Delete(ModeExcelPath);
         }
 
         protected void Button3_Click(object sender, EventArgs e)
@@ -518,23 +531,5 @@ namespace WebForm.functionPage.QF_ChildPage
             }
         }
 
-        #region 物理路径和相对路径的转换
-        //本地路径转换成URL相对路径 
-        private string urlconvertor(string imagesurl1)
-        {
-            string tmpRootDir = Server.MapPath(System.Web.HttpContext.Current.Request.ApplicationPath.ToString());//获取程序根目录
-            string imagesurl2 = imagesurl1.Replace(tmpRootDir, ""); //转换成相对路径
-            imagesurl2 = imagesurl2.Replace(@"\", @"/");
-            //imagesurl2 = imagesurl2.Replace(@"Aspx_Uc/", @"");
-            return imagesurl2;
-        }
-        //相对路径转换成服务器本地物理路径 
-        private string urlconvertorlocal(string imagesurl1)
-        {
-            string tmpRootDir = Server.MapPath(System.Web.HttpContext.Current.Request.ApplicationPath.ToString());//获取程序根目录
-            string imagesurl2 = tmpRootDir + imagesurl1.Replace(@"/", @"\"); //转换成绝对路径
-            return imagesurl2;
-        }
-        #endregion
     }
 }

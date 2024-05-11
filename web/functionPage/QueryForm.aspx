@@ -318,10 +318,11 @@
             <div class="dropdown text-end">
                 <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
                     data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="../img/我的团队.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                    <img src="../img/帐户.png" alt="mdo" width="32" height="32" class="rounded-circle">
                 </a>
                 <ul class="dropdown-menu text-small">
                     <li><a class="dropdown-item" href="#">账号设置</a></li>
+                    <li><a class="dropdown-item" href="#">显示设置</a></li>
                     <hr class="dropdown-divider" />
                     <li><a class="dropdown-item" href="#">Sign out</a></li>
                 </ul>
@@ -394,10 +395,12 @@
                                 <div class="collapse" id="orders-collapse">
                                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                         <li><a href="#"
-                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded">年度结项名单</a>
+                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded"
+                                             onclick="OutForEndProgremPage()">年度结项名单</a>
                                         </li>
                                         <li><a href="#"
-                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded">年度项目情况统计表</a>
+                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded" 
+                                            onclick="OutForDeclareProgremPage()">年度项目情况统计表</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -557,6 +560,14 @@
 
         function PeopleInform() {
             document.getElementById("test").src = "QF-ChildPage/PeopleInform.aspx";
+        }
+
+        function OutForEndProgremPage() {
+            document.getElementById("test").src = "QF-ChildPage/OutForEndProgremPage.aspx";
+        }
+
+        function OutForDeclareProgremPage() {
+            document.getElementById("test").src = "QF-ChildPage/OutForDeclareProgremPage.aspx";
         }
 
         // 测试

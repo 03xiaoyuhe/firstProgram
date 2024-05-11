@@ -1,5 +1,6 @@
 ﻿using DAL;
 using Models;
+using Models.PageDataSor;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -81,6 +82,26 @@ namespace WebForm.functionPage.QF_ChildPage
                 return 1;
             }
         }
+
+
+        public int CountSort
+        {
+            get
+            {
+                if (CacheGenericity<List<int>>.Data["CountSort"].Count == 0) CacheGenericity<List<int>>.Data["CountSort"].Add(0);
+                return CacheGenericity<List<int>>.Data["CountSort"][0];
+            }
+            set
+            {
+                //if (CacheGenericity<List<int>>.Data["CountSort"].Count == 0)
+                //{
+                //    CacheGenericity<List<int>>.Data["CountSort"].Add(value);
+                //    return;
+                //}
+                CacheGenericity<List<int>>.Data["CountSort"][0] = value;
+            }
+        }
+
 
         #endregion
 
