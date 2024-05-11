@@ -375,7 +375,8 @@ namespace DAL
             )
         {
             //project_time = (DateTime.Parse(project_time)).ToString("d");
-            string query = " insert into ProjectApplications ( project_leader,under_research ,\r\nproject_name ,\r\nproject_level ,\r\nproject_number,\r\nproject_category,\r\nproject_youth, \r\nproject_research,\r\nproject_view ,\r\nproject_References,\r\nproject_time ,\r\nproject_form ,\r\nproject_opinion ,\r\nproject_expert_view ,\r\nproject_approval_view) values \r\n( @project_leader ,'True',@project_name,\r\n@project_level ,\r\n@project_number,\r\n@project_category,\r\n@project_youth, \r\n@project_research,\r\n@project_view ,\r\n@project_References,\r\n@project_time ,\r\n@project_form ,\r\n@project_opinion ,\r\n@project_expert_view ,\r\n@project_approval_view); \r\n";
+            //string query = " insert into ProjectApplications ( project_leader,under_research ,\r\nproject_name ,\r\nproject_level ,\r\nproject_number,\r\nproject_category,\r\nproject_youth, \r\nproject_research,\r\nproject_view ,\r\nproject_References,\r\nproject_time ,\r\nproject_form ,\r\nproject_opinion ,\r\nproject_expert_view ,\r\nproject_approval_view) values \r\n( @project_leader ,'True',@project_name,\r\n@project_level ,\r\n@project_number,\r\n@project_category,\r\n@project_youth, \r\n@project_research,\r\n@project_view ,\r\n@project_References,\r\n@project_time ,\r\n@project_form ,\r\n@project_opinion ,\r\n@project_expert_view ,\r\n@project_approval_view); \r\n";
+            string query = "\r\nbegin transaction\r\ndeclare @num int\r\nset @num = 0\r\n\r\n insert into ProjectApplications (\r\n project_leader,under_research ,\r\nproject_name ,\r\nproject_level ,\r\nproject_number,\r\nproject_category,\r\nproject_youth,\r\nproject_research,\r\nproject_view ,\r\nproject_References,\r\nproject_time ,\r\nproject_form,\r\nproject_opinion ,\r\nproject_expert_view ,\r\nproject_approval_view)\r\nvalues \r\n( @project_leader ,'True',@project_name,@project_level ,@project_number,@project_category,@project_youth, @project_research,@project_view ,@project_References,@project_time ,@project_form ,@project_opinion ,@project_expert_view ,@project_approval_view)\r\nset @num = @num + @@error\r\nif @num = 0\r\nbegin\r\ninsert into ProjectMember (ProjectId,UserId,IsLeader) values ((select project_id from ProjectApplications where project_number = '" + project_number + "')," + project_leader + ",1)\r\nset @num = @num + @@error\r\nif @num = 0\r\nbegin \r\ncommit transaction\r\nend\r\nelse\r\nbegin\r\nRollback transaction\r\nend\r\nend\r\nelse\r\nbegin\r\nRollback transaction\r\nend";
             SqlParameter[] parameters = {
                 new SqlParameter("@project_leader", SqlDbType.NVarChar) { Value = project_leader },
                 new SqlParameter("@project_name", SqlDbType.NVarChar) { Value = project_name },
@@ -427,53 +428,74 @@ namespace DAL
                List<string> UserName  //队员姓名               
             )
         {
-
-            string query1 = "begin transaction\r\ndeclare @error int\r\nset @error = 0\r\ninsert into ProjectApplications \r\n( project_leader,\r\nunder_research ,\r\nproject_name ,\r\nproject_level ,\r\nproject_number,\r\nproject_category,\r\nproject_youth,\r\nproject_research,\r\nproject_view ,\r\nproject_References,\r\nproject_time ,project_form ,project_opinion ,project_expert_view ,project_approval_view) \r\nvalues\r\n( @project_leader ,'True',@project_name,@project_level ,@project_number,@project_category,@project_youth, @project_research,@project_view ,@project_References,@project_time ,@project_form ,@project_opinion ,@project_expert_view ,@project_approval_view); \r\nset @error = @@error + @error\r\n\r\nif(@error=0)\r\nbegin\r\nset @error = 0";
-            string query3 = "set @error = @@error + @error \r\nif(@error=0)\r\nbegin \r\ncommit transaction\r\nend\r\nelse\r\nbegin\r\nRollback transaction\r\nend\r\nend\r\nelse\r\nbegin\r\nRollback transaction\r\nend";
-
-            string query2 = "insert into ProjectMember (ProjectId,UserId) values \r\n((select project_id from ProjectApplications where project_number = @project_number),";
-
-            List<SqlParameter> parameters = new List<SqlParameter>();
-            int count = UserName.Count;
-
-            for (int i = 0; i < count; i++)
+            if(UserName.Count == 0)
             {
-                if (IsChineseCh(UserName[i]))
-                {
-                    query2 += (i == 0 ? "" : ",") + $"(select Id from UserInfor where UseName = @UseName{i})";
-                    parameters.Add(new SqlParameter($"@UseName{i}", SqlDbType.NVarChar) { Value = UserName[i] });
-                }
-                else
-                {
-                    query2 += (i == 0 ? "" : ",") + $"(select Id from UserInfor where Id = @UseName{i})";
-                    parameters.Add(new SqlParameter($"@UseName{i}", SqlDbType.NVarChar) { Value = UserName[i] });
-                }
-                
+                return KindsInsert(
+                project_leader,
+                project_name,
+                project_level,
+                project_number,
+                project_category,
+                project_youth,
+                project_research,
+                project_view,
+                project_References,
+                project_time,
+                project_form,
+                project_opinion,
+                project_expert_view,
+                project_approval_view);
                 
             }
+            else
+            {
+                string query1 = "begin transaction\r\ndeclare @error int\r\nset @error = 0\r\ninsert into ProjectApplications \r\n( project_leader,\r\nunder_research ,\r\nproject_name ,\r\nproject_level ,\r\nproject_number,\r\nproject_category,\r\nproject_youth,\r\nproject_research,\r\nproject_view ,\r\nproject_References,\r\nproject_time ,project_form ,project_opinion ,project_expert_view ,project_approval_view) \r\nvalues\r\n( @project_leader ,'True',@project_name,@project_level ,@project_number,@project_category,@project_youth, @project_research,@project_view ,@project_References,@project_time ,@project_form ,@project_opinion ,@project_expert_view ,@project_approval_view); \r\nset @error = @@error + @error\r\n\r\nif(@error=0)\r\nbegin\r\nset @error = 0";
+                string query3 = "set @error = @@error + @error \r\nif(@error=0)\r\nbegin \r\ncommit transaction\r\nend\r\nelse\r\nbegin\r\nRollback transaction\r\nend\r\nend\r\nelse\r\nbegin\r\nRollback transaction\r\nend";
 
-            query2 += ")";
+                string query2 = "insert into ProjectMember (ProjectId,UserId) values \r\n((select project_id from ProjectApplications where project_number = @project_number),";
 
-            query1 = query1 + query2 + query3;
+                List<SqlParameter> parameters = new List<SqlParameter>();
+                int count = UserName.Count;
 
-            parameters.Add(new SqlParameter("@project_leader", SqlDbType.NVarChar) { Value = project_leader });
-            parameters.Add(new SqlParameter("@project_opinion", SqlDbType.NVarChar) { Value = project_opinion });
-            parameters.Add(new SqlParameter("@project_name", SqlDbType.NVarChar) { Value = project_name });
-            parameters.Add(new SqlParameter("@project_level", SqlDbType.NVarChar) { Value = project_level });
-            parameters.Add(new SqlParameter("@project_number", SqlDbType.NVarChar) { Value = project_number });
-            parameters.Add(new SqlParameter("@project_category", SqlDbType.NVarChar) { Value = project_category });
-            parameters.Add(new SqlParameter("@project_youth", SqlDbType.NVarChar) { Value = project_youth });
-            parameters.Add(new SqlParameter("@project_research", SqlDbType.NVarChar) { Value = project_research });
-            parameters.Add(new SqlParameter("@project_view", SqlDbType.NVarChar) { Value = project_view });
-            parameters.Add(new SqlParameter("@project_References", SqlDbType.NVarChar) { Value = project_References });
-            parameters.Add(new SqlParameter("@project_time", SqlDbType.Date) { Value = project_time });
-            parameters.Add(new SqlParameter("@project_form", SqlDbType.NVarChar) { Value = project_form });
-            parameters.Add(new SqlParameter("@project_expert_view", SqlDbType.NVarChar) { Value = project_expert_view });
-            parameters.Add(new SqlParameter("@project_approval_view", SqlDbType.NVarChar) { Value = project_approval_view });
+                for (int i = 0; i < count; i++)
+                {
+                    if (IsChineseCh(UserName[i]))
+                    {
+                        query2 += (i == 0 ? "" : ",") + $"(select Id from UserInfor where UseName = @UseName{i})";
+                        parameters.Add(new SqlParameter($"@UseName{i}", SqlDbType.NVarChar) { Value = UserName[i] });
+                    }
+                    else
+                    {
+                        query2 += (i == 0 ? "" : ",") + $"(select Id from UserInfor where Id = @UseName{i})";
+                        parameters.Add(new SqlParameter($"@UseName{i}", SqlDbType.NVarChar) { Value = UserName[i] });
+                    }
 
-            int rowsAffected = DBHelper.ExecuteSql(query1, parameters);
-            
-            return rowsAffected > 0;
+
+                }
+
+                query2 += ")";
+
+                query1 = query1 + query2 + query3;
+
+                parameters.Add(new SqlParameter("@project_leader", SqlDbType.NVarChar) { Value = project_leader });
+                parameters.Add(new SqlParameter("@project_opinion", SqlDbType.NVarChar) { Value = project_opinion });
+                parameters.Add(new SqlParameter("@project_name", SqlDbType.NVarChar) { Value = project_name });
+                parameters.Add(new SqlParameter("@project_level", SqlDbType.NVarChar) { Value = project_level });
+                parameters.Add(new SqlParameter("@project_number", SqlDbType.NVarChar) { Value = project_number });
+                parameters.Add(new SqlParameter("@project_category", SqlDbType.NVarChar) { Value = project_category });
+                parameters.Add(new SqlParameter("@project_youth", SqlDbType.NVarChar) { Value = project_youth });
+                parameters.Add(new SqlParameter("@project_research", SqlDbType.NVarChar) { Value = project_research });
+                parameters.Add(new SqlParameter("@project_view", SqlDbType.NVarChar) { Value = project_view });
+                parameters.Add(new SqlParameter("@project_References", SqlDbType.NVarChar) { Value = project_References });
+                parameters.Add(new SqlParameter("@project_time", SqlDbType.Date) { Value = project_time });
+                parameters.Add(new SqlParameter("@project_form", SqlDbType.NVarChar) { Value = project_form });
+                parameters.Add(new SqlParameter("@project_expert_view", SqlDbType.NVarChar) { Value = project_expert_view });
+                parameters.Add(new SqlParameter("@project_approval_view", SqlDbType.NVarChar) { Value = project_approval_view });
+
+                int rowsAffected = DBHelper.ExecuteSql(query1, parameters);
+
+                return rowsAffected > 0;
+            }
 
         }
 
