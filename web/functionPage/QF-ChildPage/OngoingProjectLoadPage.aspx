@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="OngoingProjectLoadPage.aspx.cs" Inherits="WebForm.functionPage.QF_ChildPage.OngoingProjectLoadPage" %>
 
+<!-- 在研项目信息批量导入 -->
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -39,7 +41,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">项目管理</li>
                             <li class="breadcrumb-item">项目信息导入</li>
-                            <li class="breadcrumb-item active" aria-current="page"><strong>在研项目</strong></li>
+                            <li class="breadcrumb-item active" aria-current="page"><strong>在研项目信息批量导入</strong></li>
                         </ol>
                     </nav>
                 </div>
@@ -53,20 +55,13 @@
             <div style="margin:0 40px;">
                 <div>
                     <div class="container text-left"  style="width:900px">
-                        <div class="row">
+<%--                        <div class="row">
                             <div class="col">
                                 <h2>
                                     <strong>在研项目信息批量导入</strong>
                                 </h2>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="alert alert-danger" role="alert">
-                                    注意上传表必须包含首行，首行信息必须按照模板表，可以更改顺序，但不能更改内容
-                                </div>
-                            </div>
-                        </div>
+                        </div>--%>
                         <div class="row">
                             <div class="col" style="margin:5px 0;">
                                 <asp:Button ID="Button3" CssClass="btn btn-secondary" runat="server" Text="下载错误数据行文件" OnClick="Button3_Click" />
@@ -80,6 +75,13 @@
                                 <div class="input-group">
                                     <asp:FileUpload runat="server" ID="FileUpload1" class="form-control btn-primary" Style="height: 40px;" />
                                     <asp:Button ID="Button1" CssClass="btn btn-primary" runat="server" Text="开始录入" OnClick="Button1_Click" for="FileUpload1" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="alert alert-danger" role="alert" style="margin:10px 0;">
+                                    注意上传表必须包含首行，首行信息必须按照模板表，可以更改顺序，但不能更改内容
                                 </div>
                             </div>
                         </div>

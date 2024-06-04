@@ -2,6 +2,7 @@
 using Models;
 using Models.PageDataSor;
 using NPOI.HSSF.Record.PivotTable;
+using Spire.Xls;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -20,6 +21,32 @@ namespace WebForm.functionPage.QF_ChildPage
 
         int Index;
 
+        /// <summary>
+        /// 表格显示描述缓存
+        /// </summary>
+        public TableAttribute DataBash
+        {
+
+            get
+            {
+                if (Session["DataBash"] == null) Session["DataBash"] = new TableAttribute();
+                return Session["DataBash"] as TableAttribute;
+            }
+            set
+            {
+                Session["DataBash"] = value;
+            }
+        }
+
+        public Dictionary<string, string> SearchTargetToDataLable = new Dictionary<string, string>()
+        {
+            {"项目名称", "project_name" },
+            {"电话号码", "project_name" },
+        };
+
+        /// <summary>
+        /// 搜索框所选内容缓存
+        /// </summary>
         public string SearchTarget
         {
 
@@ -156,6 +183,44 @@ namespace WebForm.functionPage.QF_ChildPage
 
         #endregion
 
+
+        #region 页面加载
+
+        /// <summary>
+        /// 初始化表格显示信息
+        /// </summary>
+        public void InitDataAttribute()
+        {
+
+            List<string> list = new List<string>();
+            list.Add("project_name");
+            list.Add("project_level");
+            list.Add("project_number");
+            list.Add("project_category");
+            list.Add("project_youth");
+            list.Add("project_time");
+            list.Add("project_form");
+
+            Dictionary<string, string> map = new Dictionary<string, string>();
+            map.Add("project_id", "ID");
+            map.Add("project_name", "项目名称");
+            map.Add("project_level", "项目评级");
+            map.Add("project_number", "立项编号");
+            map.Add("project_category", "项目类别");
+            map.Add("project_youth", "青年项目");
+            map.Add("project_time", "项目完成时间");
+            map.Add("project_form", "成果形式");
+
+            TableAttribute tableAttribute = new TableAttribute(
+                "project_id",
+                "项目信息",
+                map,
+                list
+                );
+
+            DataBash = tableAttribute;
+        }
+
         /// <summary>
         /// 加载筛选的数据库语句，加载到query变量中
         /// 作为分页函数的查询表进行分页功能的使用
@@ -202,11 +267,12 @@ namespace WebForm.functionPage.QF_ChildPage
             {
                 InitSelect(query);
             }
-            else if(ans == 0)
+            else if (ans == 0)
             {
                 query = null;
             }
         }
+
 
         /// <summary>
         /// 加载筛选项
@@ -270,7 +336,7 @@ namespace WebForm.functionPage.QF_ChildPage
 
             try
             {
-                LoadFiltrate();               
+                LoadFiltrate();
             }
             catch
             {
@@ -282,7 +348,8 @@ namespace WebForm.functionPage.QF_ChildPage
             }
 
         }
-        
+
+
         #region 加载表格数据项
         /// <summary>
         /// 加载未筛选的信息
@@ -297,7 +364,8 @@ namespace WebForm.functionPage.QF_ChildPage
         /// 通过query加载筛选信息或未筛选信息
         /// </summary>
         /// <param name="query"></param>
-        void InitSelect(string query) {
+        void InitSelect(string query)
+        {
             if (query == null)
             {
                 Data = PageApart.Apart("ProjectApplications", SortField, PageNum - 1, TypeSort);
@@ -329,38 +397,14 @@ namespace WebForm.functionPage.QF_ChildPage
             }
             try
             {
-                List<string> list = new List<string>();
-                list.Add("project_name");
-                list.Add("project_level");
-                list.Add("project_number");
-                list.Add("project_category");
-                list.Add("project_youth");
-                list.Add("project_time");
-                list.Add("project_form");
-
-                Dictionary<string, string> map = new Dictionary<string, string>();
-                map.Add("project_id", "ID");
-                map.Add("project_name", "项目名称");
-                map.Add("project_level", "项目评级");
-                map.Add("project_number", "立项编号");
-                map.Add("project_category", "项目类别");
-                map.Add("project_youth", "青年项目");
-                map.Add("project_time", "项目完成时间");
-                map.Add("project_form", "成果形式");
-
-                TableAttribute tableAttribute = new TableAttribute(
-                    "project_id",
-                    "项目信息",
-                    map,
-                    list
-                    );
+                InitDataAttribute();
                 InitData();
                 MyTable NewLine = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
-                NewLine.TableBase = tableAttribute;
+                NewLine.TableBase = DataBash;
                 NewLine.DataCollection = dataTable;
                 NewLine.Height = 480;
                 NewLine.TableName = "ProjectApplications";
-                //NewLine.ShowControl = true;
+                NewLine.ShowControl = true;
                 NewLine.ControlASCX = "~/ASCX/Table/ForMyTable/DeletButten.ascx";
                 NewLine.ShowCheck = true;
                 PlaceHolder1.Controls.Clear();
@@ -390,38 +434,12 @@ namespace WebForm.functionPage.QF_ChildPage
             }
             try
             {
-                List<string> list = new List<string>();
-                //list.Add("user_phone");
-                list.Add("project_name");
-                list.Add("project_level");
-                list.Add("project_number");
-                list.Add("project_category");
-                list.Add("project_youth");
-                list.Add("project_time");
-                list.Add("project_form");
-
-                Dictionary<string, string> map = new Dictionary<string, string>();
-                map.Add("project_id", "ID");
-                //map.Add("user_phone", "负责人电话号码");
-                map.Add("project_name", "项目名称");
-                map.Add("project_level", "项目评级");
-                map.Add("project_number", "立项编号");
-                map.Add("project_category", "项目类别");
-                map.Add("project_youth", "青年项目");
-                map.Add("project_time", "项目完成时间");
-                map.Add("project_form", "成果形式");
-
-                TableAttribute tableAttribute = new TableAttribute(
-                    "project_id",
-                    "项目信息",
-                    map,
-                    list
-                    );
+                InitDataAttribute();
 
                 //dataTable = SortTable(dataTable, "project_level", 1);
 
                 MyTable NewLine = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
-                NewLine.TableBase = tableAttribute;
+                NewLine.TableBase = DataBash;
                 NewLine.DataCollection = dataTable;
                 NewLine.Height = 480;
                 NewLine.TableName = "ProjectApplications";
@@ -439,13 +457,18 @@ namespace WebForm.functionPage.QF_ChildPage
                 massage.MassageText = "无法显示全部信息，请联系工作人员";
                 massage.PostMassage();
             }
-            
+
 
 
 
         }
         #endregion
 
+        #endregion
+
+
+
+        #region 事件定义
         protected void PlaceHolder1_Load(object sender, EventArgs e)
         {
             InitSelect(query);
@@ -457,10 +480,64 @@ namespace WebForm.functionPage.QF_ChildPage
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Redirect(Request.Url.ToString());
+            string Lable = "";
+            foreach (KeyValuePair<string, string> keyValuePair in DataBash.LineToMean)
+            {
+                if(keyValuePair.Value == SearchTarget)
+                {
+                    Lable = keyValuePair.Key;
+                    break;
+                }
+            }
+            
 
+            List<string> list = new List<string>();
+            //list.Add("user_phone");
+            list.Add("project_name");
+            list.Add("project_level");
+            list.Add("project_number");
+            list.Add("project_category");
+            list.Add("project_youth");
+            list.Add("project_time");
+            list.Add("project_form");
 
+            Dictionary<string, string> map = new Dictionary<string, string>();
+            map.Add("project_id", "ID");
+            //map.Add("user_phone", "负责人电话号码");
+            map.Add("project_name", "项目名称");
+            map.Add("project_level", "项目评级");
+            map.Add("project_number", "立项编号");
+            map.Add("project_category", "项目类别");
+            map.Add("project_youth", "青年项目");
+            map.Add("project_time", "项目完成时间");
+            map.Add("project_form", "成果形式");
 
+            TableAttribute tableAttribute = new TableAttribute(
+                "project_id",
+                "项目信息",
+                map,
+                list
+                );
+
+            //dataTable = SortTable(dataTable, "project_level", 1);
+
+            MyTable NewLine = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
+            NewLine.TableBase = tableAttribute;
+            try
+            {
+                NewLine.DataCollection = DAL.ForSelect.Select(DataBash.DataBaseName, Lable, TextBox1.Text).Tables[0];
+            }
+            catch
+            {
+                NewLine.DataCollection = new DataTable();
+            }
+            NewLine.Height = 480;
+            NewLine.TableName = "ProjectApplications";
+            NewLine.ShowControl = true;
+            NewLine.ControlASCX = "~/ASCX/Table/ForMyTable/DeletButten.ascx";
+            NewLine.ShowCheck = true;
+            PlaceHolder1.Controls.Clear();
+            PlaceHolder1.Controls.Add(NewLine);
 
         }
        //排序按钮后端：
@@ -507,6 +584,8 @@ namespace WebForm.functionPage.QF_ChildPage
 
             SearchTarget = ((Button)sender).Text;
         }
+
+        #endregion
     }
 }
 

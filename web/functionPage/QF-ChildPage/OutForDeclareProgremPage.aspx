@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="OutForDeclareProgremPage.aspx.cs" Inherits="WebForm.functionPage.QF_ChildPage.OutForDeclareProgremPage" %>
 
+<!-- 年度申报项目情况统计表导出 -->
+
 <%@ Register Src="~/ASCX/PageIndex.ascx" TagName="PageIndex" TagPrefix="PageIndex" %>
 <%@ Register Src="~/ASCX/Table/MyTable.ascx" TagName="Table" TagPrefix="Table" %>
 <%@ Register Src="~/ASCX/MassageForm/PrintMassage.ascx" TagName="PrintMassage" TagPrefix="TPrintMassage" %>
@@ -124,12 +126,12 @@
         <div class="container text-right" style="width: 1000px">
 
             <div class="row align-items-end" style="margin-bottom: 10px;">
-                <div class="col">
+<%--                <div class="col">
                     <h2 style="display: inline-block;">
                         <strong>&nbsp;年度申报项目情况统计表导出</strong>
                     </h2>
 
-                </div>
+                </div>--%>
 
 
 

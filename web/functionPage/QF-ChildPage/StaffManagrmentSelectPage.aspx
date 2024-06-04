@@ -122,9 +122,9 @@
         <div class="container text-left" style="width: 1000px">
             <div class="row align-items-end" style="margin-bottom: 10px;">
                 <div class="col">
-                    <h2 style="display: inline-block;">
+<%--                    <h2 style="display: inline-block;">
                         <strong>&nbsp;工作人员账号管理</strong>
-                    </h2>
+                    </h2>--%>
                     
                     <a href="#" class="link-body-emphasis text-decoration-none rounded btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel" viewBox="0 0 16 16" style="margin: 0 auto;">

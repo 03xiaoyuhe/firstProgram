@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="JudgeAccounterPage.aspx.cs" Inherits="WebForm.functionPage.QF_ChildPage.JudgeAccounterPage" %>
 
+<!-- 评委账号管理 -->
 
 <%@ Register Src="~/ASCX/PageIndex.ascx" TagName="PageIndex" TagPrefix="PageIndex" %>
 <%@ Register Src="~/ASCX/Table/MyTable.ascx" TagName="Table" TagPrefix="Table" %>

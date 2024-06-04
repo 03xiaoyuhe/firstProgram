@@ -171,7 +171,7 @@
         .title {
             font-weight: bold;
             font-style: oblique;
-            font-size: 20px;
+            font-size: 18px;
             /*color: #0000007d;*/
             color: var(--page-head-word-color);
             padding-right: 10px;
@@ -192,6 +192,7 @@
         }
 
         .right {
+            float:right;
             overflow: hidden;
         }
 
@@ -290,8 +291,8 @@
 
     <script type="text/javascript" src="../JS/QueryFormJS.js"></script>
     
-    <header class="border-bottom page-head" style="height:60px;padding:0 20px;">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start" style="height:100%;">
+    <header class="border-bottom page-head" style="height:50px;padding:0 20px;padding-top:5px;">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <a href="../home.aspx"
                 class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
                 <div class="title">
@@ -299,15 +300,15 @@
                 </div>
             </a>
             <ul class="mergin nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
-                style="margin-left: 50px; height: 100%;">
+                style="margin-left: 50px;">
                 <li>
-                    <button type="button" class="btn btn-outline-light testchoose" onclick="test(this)" target="test1" style="height: 100%; border: none; ">项目信息管理</button>
+                    <button type="button" class="btn btn-outline-light testchoose" onclick="test(this)" target="test1" style="border: none; ">项目信息管理</button>
                 </li>
                 <li>
-                    <button type="button" class="btn btn-outline-light testchoose" onclick="test(this)" target="test2" style="height: 100%; border: none; ">人员信息管理</button>
+                    <button type="button" class="btn btn-outline-light testchoose" onclick="test(this)" target="test2" style="border: none; ">人员信息管理</button>
                 </li>
                 <li>
-                    <button type="button" class="btn btn-outline-light testchoose" onclick="test(this)" target="test3" style="height: 100%; border: none;" >账号管理</button>
+                    <button type="button" class="btn btn-outline-light testchoose" onclick="test(this)" target="test3" style="border: none;" >账号管理</button>
                 </li>
             </ul>
 
@@ -334,7 +335,7 @@
 
     
 
-    <main class="flex-nowrap"style="height:650px;">
+    <main class="flex-nowrap"style="height:650px;width:100%;">
         <div class="sidebarDiv left">
             <div id="test1" class="test test-show">
                 <!-- 项目管理功能栏 -->
@@ -538,7 +539,7 @@
                 </div>
             </div>
         </div>
-        <div class="right" style="padding: 10px;">
+        <div class="right" style="padding: 10px;width:1125px;">
 
             <div class="" style="overflow: auto; width: 100%; height: 650px;">
                 <iframe id="test" src="./QF-ChildPage/UnChoosePage.aspx"

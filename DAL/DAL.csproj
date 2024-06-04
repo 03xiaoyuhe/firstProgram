@@ -43,7 +43,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Control.cs" />
+    <Compile Include="DataBase\FiltrateBase.cs" />
+    <Compile Include="DataBase\FuzzyQueryBase.cs" />
+    <Compile Include="DataBase\OutputTable.cs" />
+    <Compile Include="DataBase\SortBase.cs" />
+    <Compile Include="DataBase\SpliteBase.cs" />
+    <Compile Include="DataControl\DataBaseObject.cs" />
+    <Compile Include="DataControl\Interface\IDataDelete.cs" />
+    <Compile Include="DataControl\Interface\IDataInseart.cs" />
+    <Compile Include="DataControl\Interface\IDataSelect.cs" />
+    <Compile Include="DataControl\Interface\IDataUpdate.cs" />
     <Compile Include="DBHelper.cs" />
+    <Compile Include="ForSelect.cs" />
     <Compile Include="PageApart.cs" />
     <Compile Include="ProjectCompletion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

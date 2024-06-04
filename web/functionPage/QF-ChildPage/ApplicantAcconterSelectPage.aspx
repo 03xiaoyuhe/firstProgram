@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ApplicantAcconterSelectPage.aspx.cs" Inherits="WebForm.functionPage.QF_ChildPage.ApplicantAcconterSelectPage" %>
 
+<!-- 申报人员账号查询 -->
 
 <%@ Register Src="~/ASCX/PageIndex.ascx" TagName="PageIndex" TagPrefix="PageIndex" %>
 <%@ Register Src="~/ASCX/Table/MyTable.ascx" TagName="Table" TagPrefix="Table" %>
