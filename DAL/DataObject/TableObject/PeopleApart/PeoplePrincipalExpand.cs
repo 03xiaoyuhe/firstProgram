@@ -5,7 +5,7 @@
         public override bool IsEmpty()
         {
             if (
-                PE_ID == 0 &&
+                //PE_ID == 0 &&
                 PB_ID == 0 &&
                 PE_Major == string.Empty &&
                 PE_Speciality == string.Empty &&
@@ -23,21 +23,22 @@
 
         #region 属性及字段
 
-        int _PE_ID;
-        /// <summary>
-        /// 信息ID
-        /// </summary>
-        public int PE_ID
-        {
-            get
-            {
-                return _PE_ID;
-            }
-            set
-            {
-                _PE_ID = value;
-            }
-        }
+        // 信息 ID 是未知的
+        //int _PE_ID;
+        ///// <summary>
+        ///// 信息ID
+        ///// </summary>
+        //public int PE_ID
+        //{
+        //    get
+        //    {
+        //        return _PE_ID;
+        //    }
+        //    set
+        //    {
+        //        _PE_ID = value;
+        //    }
+        //}
 
         int _PB_ID;
         /// <summary>

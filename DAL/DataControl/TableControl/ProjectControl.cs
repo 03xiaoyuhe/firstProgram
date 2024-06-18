@@ -121,6 +121,10 @@ namespace DAL.DataControl.TableControl
         public string InseartBaseData(Object item)
         {
             ProjectData projectData = (ProjectData)item;
+            if(projectData.IsEmpty())
+            {
+                return string.Empty;
+            }
 
         }
 

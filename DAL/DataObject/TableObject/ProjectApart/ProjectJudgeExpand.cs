@@ -6,7 +6,7 @@
         public override bool IsEmpty()
         {
             if (
-                PJ_ID == 0 &&
+                //PJ_ID == 0 &&
                 PB_ID == 0 &&
                 UnitJudge == string.Empty &&
                 UnitJudgeDate == string.Empty &&
@@ -24,21 +24,21 @@
 
         #region 属性及字段
 
-        int pJ_ID;
-        /// <summary>
-        /// 数据ID
-        /// </summary>
-        public int PJ_ID
-        {
-            get
-            {
-                return pJ_ID;
-            }
-            set
-            {
-                pJ_ID = value;
-            }
-        }
+        //int pJ_ID;
+        ///// <summary>
+        ///// 数据ID
+        ///// </summary>
+        //public int PJ_ID
+        //{
+        //    get
+        //    {
+        //        return pJ_ID;
+        //    }
+        //    set
+        //    {
+        //        pJ_ID = value;
+        //    }
+        //}
 
         int pB_ID;
         /// <summary>

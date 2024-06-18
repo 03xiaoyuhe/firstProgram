@@ -6,7 +6,7 @@
         public override bool IsEmpty()
         {
             if (
-                DE_ID == 0 &&
+                //DE_ID == 0 &&
                 PB_ID == 0 &&
                 ProjectSignificance == string.Empty &&
                 ProjectDocument == string.Empty &&

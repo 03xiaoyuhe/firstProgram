@@ -5,7 +5,7 @@
         public override bool IsEmpty()
         {
             if (
-                PB_ID == 0 &&
+                //PB_ID == 0 &&
                 PB_Name == string.Empty &&
                 PB_Sex == string.Empty &&
                 PB_Birthday == string.Empty &&
@@ -21,21 +21,22 @@
 
         #region 属性及字段
 
-        int _PB_ID;
-        /// <summary>
-        /// 信息ID
-        /// </summary>
-        public int PB_ID
-        {
-            get
-            {
-                return _PB_ID;
-            }
-            set
-            {
-                _PB_ID = value;
-            }
-        }
+        // 信息 ID 是未知的
+        //int _PB_ID;
+        ///// <summary>
+        ///// 信息ID
+        ///// </summary>
+        //public int PB_ID
+        //{
+        //    get
+        //    {
+        //        return _PB_ID;
+        //    }
+        //    set
+        //    {
+        //        _PB_ID = value;
+        //    }
+        //}
         string _PB_Name;
         /// <summary>
         /// 姓名
