@@ -1,18 +1,14 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Collections;
-using System.Collections.Specialized;
-using System.Data.Common;
 
 namespace DAL
 {
     //internal class DBHelper
-     public class DBHelper
+    public class DBHelper
     {
 
         /// <summary>
@@ -535,7 +531,7 @@ namespace DAL
             }
         }
 
-        public static int ExecuteSql(string SQLString,  List<SqlParameter> cmdParms)
+        public static int ExecuteSql(string SQLString, List<SqlParameter> cmdParms)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

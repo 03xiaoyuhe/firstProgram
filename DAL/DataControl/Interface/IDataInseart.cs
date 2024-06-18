@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL.DataControl.Interface
 {
@@ -18,7 +14,8 @@ namespace DAL.DataControl.Interface
         /// ----- pair.second : 插入行的指定字段的值
         /// </param>
         /// <returns>影响的行数</returns>
-        int Inseart(params KeyValuePair<String, String>[] DataPairs);
+        /// 
+        //int Inseart(params KeyValuePair<String, String>[] DataPairs);  仅提供按对象传入数据的方法
 
 
         /// <summary>
@@ -27,5 +24,12 @@ namespace DAL.DataControl.Interface
         /// <param name="Item">插入的指定表的数据对象</param>
         /// <returns>影响的行数</returns>
         int Inseart(Object Item);
+
+        /// <summary>
+        /// 插入指定内容，并返回插入数据的ID
+        /// </summary>
+        /// <param name="Item">插入的指定表的数据对象</param>
+        /// <returns>数据的ID</returns>
+        string InseartReturnID(Object Item);
     }
 }

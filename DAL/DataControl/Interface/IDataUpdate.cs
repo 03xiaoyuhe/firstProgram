@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL.DataControl.Interface
 {
@@ -28,7 +24,7 @@ namespace DAL.DataControl.Interface
         /// ----- pair.second:将该字段名对应的值替换为
         /// </param>
         /// <returns>影响的条数</returns>
-        int Update(int ID, List<KeyValuePair<string, string>> UpdatePairs);
+        //int Update(int ID, List<KeyValuePair<string, string>> UpdatePairs);   仅提供按对象传入数据的方法
 
         /// <summary>
         /// 将指定数据ID的记录的指定字段替换为Item对象里存放的数据
@@ -58,7 +54,7 @@ namespace DAL.DataControl.Interface
         /// </param>
         /// <param name="Where">限制条件</param>
         /// <returns>影响的条数</returns>
-        int Update(List<KeyValuePair<string, string>> UpdatePairs, String Where);
+        //int Update(List<KeyValuePair<string, string>> UpdatePairs, String Where);  仅提供按对象传入数据的方法
 
         /// <summary>
         /// 提供一个将所有符合Where语句的记录的指定字段替换为Item对象里存放的数据

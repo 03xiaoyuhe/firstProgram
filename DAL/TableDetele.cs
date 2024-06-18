@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Security.Cryptography;
+using System.Data.SqlClient;
 
 namespace DAL
 {
@@ -21,10 +16,10 @@ namespace DAL
         /// <param name="CellId">字段名</param>
         /// <param name="Id">字段名对应的值</param>
         /// <returns></returns>
-        static public bool Delete(string TableName,string CellId,string Id)
+        static public bool Delete(string TableName, string CellId, string Id)
         {
-            string query = "DELETE FROM "+ TableName + " WHERE "+ CellId + " = @Id;";
-            SqlParameter [] parameters =
+            string query = "DELETE FROM " + TableName + " WHERE " + CellId + " = @Id;";
+            SqlParameter[] parameters =
              {
                 new SqlParameter("@Id",SqlDbType.NVarChar) {Value=Id},
             };
@@ -32,7 +27,7 @@ namespace DAL
 
             int count = Convert.ToInt32(rowsAffected);
 
-            return (count>0);
+            return (count > 0);
         }
     }
 }

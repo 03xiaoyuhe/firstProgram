@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
+﻿using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Security.Cryptography;
-using System.Xml.Serialization.Configuration;
+using System.Data.SqlClient;
 using System.Text.RegularExpressions;
-using System.Threading;
 
 namespace DAL
-{   
+{
     public class ProjectCompletion
     {
         ///// <summary>
@@ -63,11 +56,11 @@ namespace DAL
                string project_form
             )
         {
-            
-           // string query = "insert into ProjectApplications  (\r\nteam_id,\r\nproject_name,\r\nproject_level,\r\nproject_number,\r\nproject_category,\r\nproject_youth,\r\nproject_research,\r\nproject_view,\r\nproject_References,\r\nproject_time,\r\nproject_form\r\n) values (@team_id,\r\n@project_name,\r\n@project_level,\r\n@project_number,\r\n@project_category,\r\n@project_youth,\r\n@project_research,\r\n@project_view,\r\n@project_References,\r\n@project_time,\r\n@project_form );";
+
+            // string query = "insert into ProjectApplications  (\r\nteam_id,\r\nproject_name,\r\nproject_level,\r\nproject_number,\r\nproject_category,\r\nproject_youth,\r\nproject_research,\r\nproject_view,\r\nproject_References,\r\nproject_time,\r\nproject_form\r\n) values (@team_id,\r\n@project_name,\r\n@project_level,\r\n@project_number,\r\n@project_category,\r\n@project_youth,\r\n@project_research,\r\n@project_view,\r\n@project_References,\r\n@project_time,\r\n@project_form );";
             string query = "insert into ProjectApplications  (\r\nuser_phone,\r\nproject_name,\r\nproject_category,\r\nproject_youth,\r\nproject_research,\r\nproject_view,\r\nproject_References,\r\nproject_time,\r\nproject_form\r\n) values (@user_phone,\r\n@project_name,\r\n@project_category,\r\n@project_youth,\r\n@project_research,\r\n@project_view,\r\n@project_References,\r\n@project_time,\r\n@project_form );";
 
-            SqlParameter[] parameters = {   
+            SqlParameter[] parameters = {
                 new SqlParameter("@user_phone", SqlDbType.NVarChar) { Value = user_phone },
                 new SqlParameter("@project_name", SqlDbType.NVarChar) { Value = project_name },
                 //new SqlParameter("@project_level", SqlDbType.NVarChar) { Value = project_level },
@@ -146,11 +139,11 @@ namespace DAL
         /// <returns></returns>
         static public bool ProjectDeteleVision(string project_id)
         {
-            string query = "select * from view_project_infor  order by "+ project_id + ";";
+            string query = "select * from view_project_infor  order by " + project_id + ";";
 
             int reslut = DBHelper.ExecuteSql(query);
 
-            return reslut>0;
+            return reslut > 0;
 
         }
 
@@ -228,32 +221,32 @@ namespace DAL
         /// <param name="user_number"></param>
         /// <param name="user_email"></param>
         /// <returns></returns>
-       static public bool ProjectInfor_Test(
-       string user_phone,
-       string project_name,
-       //string project_level,
-       //string project_number,
-       string project_category,
-       string project_youth,
-       string project_research,
-       string project_view,
-       string project_References,
-       string project_time,
-       string project_form,
-       string user_name,
-       string user_date,
-       string user_sex,
-       string user_position,
-       string user_title,
-       string user_speciality,
-       string user_research,
-       string user_research_now,
-       string user_workplace,
-       string user_address,
-       string user_office_number,
-       string user_number,
-       string user_email
-    )
+        static public bool ProjectInfor_Test(
+        string user_phone,
+        string project_name,
+        //string project_level,
+        //string project_number,
+        string project_category,
+        string project_youth,
+        string project_research,
+        string project_view,
+        string project_References,
+        string project_time,
+        string project_form,
+        string user_name,
+        string user_date,
+        string user_sex,
+        string user_position,
+        string user_title,
+        string user_speciality,
+        string user_research,
+        string user_research_now,
+        string user_workplace,
+        string user_address,
+        string user_office_number,
+        string user_number,
+        string user_email
+     )
         {
 
 
@@ -369,8 +362,8 @@ namespace DAL
                string project_References,
                string project_time,
                string project_form,
-               string project_opinion ,
-               string project_expert_view ,
+               string project_opinion,
+               string project_expert_view,
                string project_approval_view
             )
         {
@@ -428,7 +421,7 @@ namespace DAL
                List<string> UserName  //队员姓名               
             )
         {
-            if(UserName.Count == 0)
+            if (UserName.Count == 0)
             {
                 return KindsInsert(
                 project_leader,
@@ -445,7 +438,7 @@ namespace DAL
                 project_opinion,
                 project_expert_view,
                 project_approval_view);
-                
+
             }
             else
             {

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 
 namespace DAL
 {
@@ -12,7 +7,7 @@ namespace DAL
         static public DataSet Select(string DataBash, string DataLine, string LikeString)
         {
             string DataLikeString = "%";
-            for(int i = 0; i < LikeString.Length; i++) 
+            for (int i = 0; i < LikeString.Length; i++)
             {
                 DataLikeString += $"{LikeString[i]}%";
             }

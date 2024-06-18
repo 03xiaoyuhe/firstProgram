@@ -48,11 +48,27 @@
     <Compile Include="DataBase\OutputTable.cs" />
     <Compile Include="DataBase\SortBase.cs" />
     <Compile Include="DataBase\SpliteBase.cs" />
-    <Compile Include="DataControl\DataBaseObject.cs" />
+    <Compile Include="DataControl\DataBaseControl.cs" />
     <Compile Include="DataControl\Interface\IDataDelete.cs" />
     <Compile Include="DataControl\Interface\IDataInseart.cs" />
     <Compile Include="DataControl\Interface\IDataSelect.cs" />
     <Compile Include="DataControl\Interface\IDataUpdate.cs" />
+    <Compile Include="DataControl\TableControl\AccountControl.cs" />
+    <Compile Include="DataControl\TableControl\PeopleControl.cs" />
+    <Compile Include="DataControl\TableControl\ProjectControl.cs" />
+    <Compile Include="DataObject\DataObjectBase.cs" />
+    <Compile Include="DataObject\TableObject\AccountApart\AccountBase.cs" />
+    <Compile Include="DataObject\TableObject\AccountData.cs" />
+    <Compile Include="DataObject\TableObject\PeopleApart\PeopleBase.cs" />
+    <Compile Include="DataObject\TableObject\PeopleApart\PeoplePrincipalExpand.cs" />
+    <Compile Include="DataObject\TableObject\PeopleData.cs" />
+    <Compile Include="DataObject\TableObject\ProjectApart\ProjectApprovalExpand.cs" />
+    <Compile Include="DataObject\TableObject\ProjectApart\ProjectBase.cs" />
+    <Compile Include="DataObject\TableObject\ProjectApart\ProjectChangeExpansion.cs" />
+    <Compile Include="DataObject\TableObject\ProjectApart\ProjectDemonstrationExpand.cs" />
+    <Compile Include="DataObject\TableObject\ProjectApart\ProjectFinishExpansion.cs" />
+    <Compile Include="DataObject\TableObject\ProjectApart\ProjectJudgeExpand.cs" />
+    <Compile Include="DataObject\TableObject\ProjectData.cs" />
     <Compile Include="DBHelper.cs" />
     <Compile Include="ForSelect.cs" />
     <Compile Include="PageApart.cs" />
@@ -61,6 +77,10 @@
     <Compile Include="TableDetele.cs" />
     <Compile Include="TableSelect.cs" />
     <Compile Include="User.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DataControl\AuthotityControl\" />
+    <Folder Include="DataControl\RelationshipControl\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

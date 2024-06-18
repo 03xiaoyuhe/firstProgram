@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Data;
 using System.Data.SqlClient;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Security.Cryptography;
 
 namespace DAL
 {
     public class TableSelect
     {
-        
+
         /// <summary>
         /// 对所有的表都适合的查询单行操作
         /// 其中函数需要三个变量
@@ -23,7 +17,7 @@ namespace DAL
         /// <returns></returns>
         static public DataSet Select(string TableName, string CellId, string Id)
         {
-            string query = "SELECT *FROM "+ TableName + " WHERE "+ CellId  + "= @Id order by "+ CellId + " asc;";
+            string query = "SELECT *FROM " + TableName + " WHERE " + CellId + "= @Id order by " + CellId + " asc;";
 
 
             SqlParameter[] parameters = {
@@ -52,7 +46,7 @@ namespace DAL
             DataSet result = DBHelper.Query(query, parameters);
 
             return result;
-            
+
         }
     }
 }
