@@ -540,7 +540,7 @@
         </div>
         <div class="right" style="padding: 10px;">
 
-            <div class="" style="overflow: auto; width: 100%; height: 650px;">
+            <div class="" style="overflow: auto; width: 1130px; height: 650px;float:right;">
                 <iframe id="test" src="./QF-ChildPage/UnChoosePage.aspx"
                     style="width: 100%; height: 100%">D:\______myProgram\哲学与社会科学规划项目信息化管理平台\firstProgram\web\functionPage\QF-ChildPage\UnChoosePage.aspx
                 </iframe>
