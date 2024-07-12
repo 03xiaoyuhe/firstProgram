@@ -2,8 +2,8 @@
 
 namespace DAL.DataControl.TableControl
 {
-    public class AccountControl : DataBaseControl, IDataSelect, IDataInseart, IDataDelete, IDataUpdate
-    {
+    //public class AccountControl : DataBaseControl, IDataSelect, IDataInseart, IDataDelete, IDataUpdate
+    //{
 
-    }
+    //}
 }

@@ -22,8 +22,8 @@ namespace DAL.DataControl.Interface
         /// 插入指定内容
         /// </summary>
         /// <param name="Item">插入的指定表的数据对象</param>
-        /// <returns>影响的行数</returns>
-        int Inseart(Object Item);
+        /// <returns></returns>
+        void Inseart(Object Item);
 
         /// <summary>
         /// 插入指定内容，并返回插入数据的ID

@@ -9,7 +9,7 @@ namespace DAL.DataControl.Interface
         /// </summary>
         /// <param name="ID">指定的ID</param>
         /// <returns>影响的条数</returns>
-        int Delete(int ID);
+        int DeleteByID(string ID);
 
         /// <summary>
         /// 删除符合Where语句条件的数据项

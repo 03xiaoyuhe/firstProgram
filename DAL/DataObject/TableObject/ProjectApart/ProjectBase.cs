@@ -13,7 +13,7 @@ namespace DAL.DataObject.TableObject.ProjectApart
                 ProjectName == string.Empty &&
                 ProjectCategory == string.Empty &&
                 DisciplineClassificaton == string.Empty &&
-                FillDate == new DateTime() &&
+                FillDate == String.Empty &&
                 Ending == string.Empty &&
                 EndingDate == string.Empty
                 )
@@ -103,17 +103,21 @@ namespace DAL.DataObject.TableObject.ProjectApart
                 if (disciplineClassificaton == null) disciplineClassificaton = string.Empty;
                 return disciplineClassificaton;
             }
+            set
+            {
+                disciplineClassificaton = value;
+            }
         }
 
-        DateTime fillDate;
+        string fillDate;
         /// <summary>
         /// 填表日期
         /// </summary>
-        public DateTime FillDate
+        public string FillDate
         {
             get
             {
-                if (fillDate == null) fillDate = new DateTime();
+                if (fillDate == null) fillDate = String.Empty;
                 return fillDate;
             }
             set

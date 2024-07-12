@@ -38,7 +38,7 @@ namespace DAL
             //return appSettings.ToString();
 
 
-            if (Mode == 1) return ConfigurationManager.ConnectionStrings["Social Philosophy Projectes"].ConnectionString;
+            if (Mode == 1) return ConfigurationManager.ConnectionStrings["Social_Science_Projects"].ConnectionString;
             else if (Mode == 2) return "Data Source =.; Initial Catalog = Social Philosophy Projectes; User Id = sa; Password = 0.0.00.0;";
             else return null;
         }
