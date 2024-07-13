@@ -14,7 +14,7 @@ namespace DAL.DataObject.TableObject.ProjectApart
                 ChangeKind == string.Empty &&
                 AnotherChangeKind == string.Empty &&
                 ChangeDataAndReason == string.Empty &&
-                ApplicationTime == new DateTime() &&
+                ApplicationTime == string.Empty &&
                 UnitOpinion == string.Empty
                 )
             {
@@ -120,15 +120,15 @@ namespace DAL.DataObject.TableObject.ProjectApart
             }
         }
 
-        DateTime applicationTime;
+        string applicationTime;
         /// <summary>
         /// 申请时间
         /// </summary>
-        public DateTime ApplicationTime
+        public string ApplicationTime
         {
             get
             {
-                if (applicationTime == null) applicationTime = new DateTime();
+                if (applicationTime == null) applicationTime = string.Empty;
                 return applicationTime;
             }
             set

@@ -25,23 +25,24 @@ namespace DAL.DataObject.TableObject.ProjectApart
 
         #region 属性及字段
 
-        // 信息ID 是 未知的
-        //int pB_ID;
 
-        ///// <summary>
-        ///// 项目ID
-        ///// </summary>
-        //public int PB_ID
-        //{
-        //    get
-        //    {
-        //        return pB_ID;
-        //    }
-        //    set
-        //    {
-        //        pB_ID = value;
-        //    }
-        //}
+        // 查询数据时有效
+        int pB_ID;
+
+        /// <summary>
+        /// 项目ID
+        /// </summary>
+        public int PB_ID
+        {
+            get
+            {
+                return pB_ID;
+            }
+            set
+            {
+                pB_ID = value;
+            }
+        }
 
         int projectState;
         /// <summary>

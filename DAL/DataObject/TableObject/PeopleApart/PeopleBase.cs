@@ -22,21 +22,23 @@
         #region 属性及字段
 
         // 信息 ID 是未知的
-        //int _PB_ID;
-        ///// <summary>
-        ///// 信息ID
-        ///// </summary>
-        //public int PB_ID
-        //{
-        //    get
-        //    {
-        //        return _PB_ID;
-        //    }
-        //    set
-        //    {
-        //        _PB_ID = value;
-        //    }
-        //}
+
+        // 在查询信息时  PB_ID 
+        int _PB_ID;
+        /// <summary>
+        /// 信息ID
+        /// </summary>
+        public int PB_ID
+        {
+            get
+            {
+                return _PB_ID;
+            }
+            set
+            {
+                _PB_ID = value;
+            }
+        }
         string _PB_Name;
         /// <summary>
         /// 姓名

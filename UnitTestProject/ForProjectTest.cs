@@ -17,38 +17,35 @@ namespace Test1001.ProjectControlTest
         {
             try
             {
-                // 初始化 ProjectControl 对象
-                ProjectControl projectControl = new ProjectControl();
-
                 // 测试插入功能
                 ProjectData projectData = CreateDummyProjectData(); // 创建虚拟项目数据对象
-                string insertedId = projectControl.InseartReturnID(projectData);
+                string insertedId = ProjectControl.InseartReturnID(projectData);
                 Console.WriteLine($"Inserted Project ID: {insertedId}");
 
                 // 测试查询功能
                 Console.WriteLine("\nQuerying project data:");
-                DataSet projectDataSet = projectControl.Select();
+                DataSet projectDataSet = ProjectControl.Select();
                 PrintDataSet(projectDataSet);
 
                 // 测试更新功能
                 Console.WriteLine("\nUpdating project data:");
                 projectData.Base.ProjectName = "Updated Project Name";
-                int updateResult = projectControl.Update(insertedId, projectData);
+                int updateResult = ProjectControl.Update(insertedId, projectData);
                 Console.WriteLine($"Update result: {updateResult}");
 
                 // 再次查询以确认更新
                 Console.WriteLine("\nRe-querying updated project data:");
-                projectDataSet = projectControl.Select();
+                projectDataSet = ProjectControl.Select();
                 PrintDataSet(projectDataSet);
 
                 // 测试删除功能
                 Console.WriteLine("\nDeleting project data:");
-                int deleteResult = projectControl.Delete(insertedId);
+                int deleteResult = ProjectControl.Delete(insertedId);
                 Console.WriteLine($"Delete result: {deleteResult}");
 
                 // 再次查询以确认删除
                 Console.WriteLine("\nRe-querying project data after deletion:");
-                projectDataSet = projectControl.Select();
+                projectDataSet = ProjectControl.Select();
                 PrintDataSet(projectDataSet);
             }
             catch (Exception ex)

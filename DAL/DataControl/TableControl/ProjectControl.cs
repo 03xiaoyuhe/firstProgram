@@ -14,86 +14,168 @@ namespace DAL.DataControl.TableControl
         #region 查询功能
 
         /// <summary>
-        /// 构建 SQL 查询语句，查询项目信息及其拓展信息
+        /// 构建SQL查询语句
         /// </summary>
-        /// <param name="OutTable">输出表名，可选</param>
-        /// <param name="where">WHERE 条件，默认查询所有项目信息</param>
-        /// <returns>构建好的 SQL 查询语句</returns>
-        private string BuildSelectSQL(string OutTable = "", string where = "1=1")
+        /// <param name="Fields">指定查询出的字段</param>
+        /// <param name="whereString">在SQL中 WHERE 部分需要填入的部分</param>
+        /// <param name="orderByField">用于排序的字段</param>
+        /// <param name="isAscending">是否按升序排序</param>
+        /// <param name="pageSize">每页数据条数</param>
+        /// <param name="pageNumber">页码</param>
+        /// <returns>返回SQL查询语句</returns>
+        private static string BuildSelectSQL(List<string> Fields, string whereString, string orderByField, bool isAscending, int pageSize = 20, int pageNumber = 1)
         {
-            string SQL =
-                "-- 查询项目信息及其拓展信息                          \n" +
-                "SELECT                                             \n" +
-                "    PB.ProjectState,                              \n" +
-                "    PB.ProjectName,                               \n" +
-                "    PB.ProjectCategory,                           \n" +
-                "    PB.DisciplineClassificaton,                   \n" +
-                "    PB.FillDate,                                  \n" +
-                "    PB.Ending,                                    \n" +
-                "    PB.EndingDate,                                \n" +
-                "    PDE.ProjectSignificance,                      \n" +
-                "    PDE.ProjectDocument,                          \n" +
-                "    PDE.ProjectReferences,                        \n" +
-                "    PJ.UnitJudge,                                 \n" +
-                "    PJ.UnitJudgeDate,                             \n" +
-                "    PJ.ExpertJudge,                               \n" +
-                "    PJ.ExpertJudgeDate,                           \n" +
-                "    PJ.ApprovalOpinion,                           \n" +
-                "    PJ.ApprovalOpinionDate,                       \n" +
-                "    PA.ProjectApprovalNum,                        \n" +
-                "    PF.FinishCertificateNum,                      \n" +
-                "    PC.ChangeState,                               \n" +
-                "    PC.ChangeKind,                                \n" +
-                "    PC.AnotherChangeKind,                         \n" +
-                "    PC.ChangeDataAndReason,                       \n" +
-                "    PC.ApplicationTime,                           \n" +
-                "    PC.UnitOpinion                                \n" +
-                "FROM                                               \n" +
-                "    ProjectBase PB                                  \n" +
-                "LEFT JOIN ProjectDemonstrationExpand PDE            \n" +
-                "    ON PB.PB_ID = PDE.PB_ID                        \n" +
-                "LEFT JOIN ProjectJudgeExpand PJ                    \n" +
-                "    ON PB.PB_ID = PJ.PB_ID                         \n" +
-                "LEFT JOIN ProjectApprovalExpand PA                 \n" +
-                "    ON PB.PB_ID = PA.PB_ID                         \n" +
-                "LEFT JOIN ProjectFinishExpansion PF                \n" +
-                "    ON PB.PB_ID = PF.PB_ID                         \n" +
-                "LEFT JOIN ProjectChangeExpansion PC                \n" +
-                "    ON PB.PB_ID = PC.PB_ID                         \n" +
-                "WHERE " + where + ";                               \n";
+            // 如果没有指定字段，则查询所有字段
+            string fieldString = Fields != null && Fields.Count > 0 ? string.Join(", ", Fields) : @"
+                ProjectBase.PB_ID,
+                ProjectBase.ProjectState,
+                ProjectBase.ProjectName,
+                ProjectBase.ProjectCategory,
+                ProjectBase.DisciplineClassificaton,
+                ProjectBase.FillDate,
+                ProjectBase.Ending,
+                ProjectBase.EndingDate,
+                ProjectDemonstrationExpand.ProjectSignificance,
+                ProjectDemonstrationExpand.ProjectDocument,
+                ProjectDemonstrationExpand.ProjectReferences,
+                ProjectJudgeExpand.UnitJudge,
+                ProjectJudgeExpand.UnitJudgeDate,
+                ProjectJudgeExpand.ExpertJudge,
+                ProjectJudgeExpand.ExpertJudgeDate,
+                ProjectJudgeExpand.ApprovalOpinion,
+                ProjectJudgeExpand.ApprovalOpinionDate,
+                ProjectApprovalExpand.ProjectApprovalNum,
+                ProjectFinishExpansion.FinishCertificateNum,
+                ProjectChangeExpansion.ChangeState,
+                ProjectChangeExpansion.ChangeKind,
+                ProjectChangeExpansion.AnotherChangeKind,
+                ProjectChangeExpansion.ChangeDataAndReason,
+                ProjectChangeExpansion.ApplicationTime,
+                ProjectChangeExpansion.UnitOpinion";
 
-            if (!string.IsNullOrEmpty(OutTable))
-            {
-                SQL = $"SELECT * INTO {OutTable} FROM ({SQL}) AS ProjectData;";
-            }
+            string SQL =
+                "-- 项目信息查询SQL\n" +
+                "DECLARE @SelectSQL NVARCHAR(MAX);\n" +
+                "DECLARE @Where NVARCHAR(MAX);\n" +
+                $"SET @Where = '{whereString}';\n" +
+                "SET @SelectSQL =\n" +
+                "'SELECT " + fieldString + "\n" +
+                "FROM ProjectBase\n" +
+                "LEFT JOIN ProjectDemonstrationExpand ON ProjectBase.PB_ID = ProjectDemonstrationExpand.PB_ID\n" +
+                "LEFT JOIN ProjectJudgeExpand ON ProjectBase.PB_ID = ProjectJudgeExpand.PB_ID\n" +
+                "LEFT JOIN ProjectApprovalExpand ON ProjectBase.PB_ID = ProjectApprovalExpand.PB_ID\n" +
+                "LEFT JOIN ProjectFinishExpansion ON ProjectBase.PB_ID = ProjectFinishExpansion.PB_ID\n" +
+                "LEFT JOIN ProjectChangeExpansion ON ProjectBase.PB_ID = ProjectChangeExpansion.PB_ID\n" +
+                "WHERE ' + @Where + '\n" +
+                "ORDER BY " + orderByField + " " + (isAscending ? "ASC" : "DESC") + "\n" +
+                "OFFSET " + (pageSize * (pageNumber - 1)) + " ROWS\n" +
+                "FETCH NEXT " + pageSize + " ROWS ONLY;';\n" +
+                "EXEC sp_executesql @SelectSQL;";
 
             return SQL;
         }
 
         /// <summary>
-        /// 执行查询，并返回 DataSet 对象
+        /// 通过指定规则执行查询，并返回查询的数据
         /// </summary>
-        /// <param name="whereString">WHERE 条件，默认查询所有项目信息</param>
-        /// <returns>包含查询结果的 DataSet 对象</returns>
-        public DataSet Select(string whereString = "1=1")
+        /// <param name="Fields">指定查询出的字段</param>
+        /// <param name="whereString">在SQL中 WHERE 部分需要填入的部分</param>
+        /// <param name="orderByField">用于排序的字段</param>
+        /// <param name="isAscending">是否按升序排序</param>
+        /// <param name="pageSize">每页数据条数</param>
+        /// <param name="pageNumber">页码</param>
+        /// <returns>返回查询出的所有数据</returns>
+        public static DataSet Select(List<string> Fields, string whereString = null, string orderByField = "PB_ID", bool isAscending = true, int pageSize = 20, int pageNumber = 1)
         {
-            return DBHelper.Query(BuildSelectSQL("", whereString));
+            if (string.IsNullOrEmpty(whereString))
+            {
+                whereString = "1 = 1"; // 默认条件，表示查询所有数据
+            }
+
+            string SQL = BuildSelectSQL(Fields, whereString, orderByField, isAscending, pageSize, pageNumber);
+            return DBHelper.Query(SQL);
         }
 
         /// <summary>
-        /// 执行查询，并将结果保存到指定表中
+        /// 通过指定规则执行查询，并返回查询的数据，返回所有字段
         /// </summary>
-        /// <param name="OutTable">保存查询结果的表名</param>
-        /// <param name="whereString">WHERE 条件，默认查询所有项目信息</param>
-        public void Select(string OutTable, string whereString = "1=1")
+        /// <param name="whereString">在SQL中 WHERE 部分需要填入的部分</param>
+        /// <param name="orderByField">用于排序的字段</param>
+        /// <param name="isAscending">是否按升序排序</param>
+        /// <param name="pageSize">每页数据条数</param>
+        /// <param name="pageNumber">页码</param>
+        /// <returns>返回查询出的所有数据</returns>
+        public static DataSet Select(string whereString = null, string orderByField = "PB_ID", bool isAscending = true, int pageSize = 20, int pageNumber = 1)
         {
-            DBHelper.ExecuteSql(BuildSelectSQL(OutTable, whereString));
+            return Select(null, whereString, orderByField, isAscending, pageSize, pageNumber);
+        }
+
+
+        /// <summary>
+        /// 提供一个通过指定规则执行查询的功能，该功能会直接返回查询的数据。
+        /// </summary>
+        /// <param name="whereString">在SQL中 WHERE 部分需要填入的部分</param>
+        /// <param name="orderByField">用于排序的字段</param>
+        /// <param name="isAscending">是否按升序排序</param>
+        /// <returns>对应数据的数据类</returns>
+        public static Object SelectReturnObject(string whereString)
+        {
+            // 构建SQL查询语句
+            string SQL = BuildSelectSQL(null, whereString, "PB_ID", true);
+
+
+            
+            using (SqlConnection connection = new SqlConnection(DBHelper.connectionString))
+            {
+                SqlCommand command = new SqlCommand(SQL, connection);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                ProjectData projectData = new ProjectData();
+
+                if (reader.Read())
+                {
+                    // 映射基础表字段
+                    projectData.Base.PB_ID = reader.GetInt32(reader.GetOrdinal("PB_ID"));
+                    projectData.Base.ProjectState = int.Parse(reader.GetString(reader.GetOrdinal("ProjectState")));
+                    projectData.Base.ProjectName = reader.GetString(reader.GetOrdinal("ProjectName"));
+                    projectData.Base.ProjectCategory = reader.GetString(reader.GetOrdinal("ProjectCategory"));
+                    projectData.Base.DisciplineClassificaton = reader.GetString(reader.GetOrdinal("DisciplineClassificaton"));
+                    projectData.Base.FillDate = reader.IsDBNull(reader.GetOrdinal("FillDate")) ? String.Empty : reader.GetDateTime(reader.GetOrdinal("UnitJudgeDate")).ToString("yyyy-MM-dd");
+                    projectData.Base.EndingDate = reader.IsDBNull(reader.GetOrdinal("EndingDate")) ? String.Empty : reader.GetDateTime(reader.GetOrdinal("UnitJudgeDate")).ToString("yyyy-MM-dd");
+
+                    // 映射拓展表字段
+                    projectData.DemonstrationExpand.ProjectSignificance = reader.GetString(reader.GetOrdinal("ProjectSignificance"));
+                    projectData.DemonstrationExpand.ProjectDocument = reader.GetString(reader.GetOrdinal("ProjectDocument"));
+                    projectData.DemonstrationExpand.ProjectReferences = reader.GetString(reader.GetOrdinal("ProjectReferences"));
+
+                    projectData.JudgeExpand.UnitJudge = reader.GetString(reader.GetOrdinal("UnitJudge"));
+                    projectData.JudgeExpand.UnitJudgeDate = reader.IsDBNull(reader.GetOrdinal("UnitJudgeDate")) ? String.Empty : reader.GetDateTime(reader.GetOrdinal("UnitJudgeDate")).ToString("yyyy-MM-dd");
+                    projectData.JudgeExpand.ExpertJudge = reader.GetString(reader.GetOrdinal("ExpertJudge"));
+                    projectData.JudgeExpand.ExpertJudgeDate = reader.IsDBNull(reader.GetOrdinal("ExpertJudgeDate")) ? String.Empty : reader.GetDateTime(reader.GetOrdinal("UnitJudgeDate")).ToString("yyyy-MM-dd");
+                    projectData.JudgeExpand.ApprovalOpinion = reader.GetString(reader.GetOrdinal("ApprovalOpinion"));
+                    projectData.JudgeExpand.ApprovalOpinionDate = reader.IsDBNull(reader.GetOrdinal("ApprovalOpinionDate")) ? String.Empty : reader.GetDateTime(reader.GetOrdinal("UnitJudgeDate")).ToString("yyyy-MM-dd");
+
+                    projectData.ApprovalExpand.ProjectApprovalNum = reader.GetString(reader.GetOrdinal("ProjectApprovalNum"));
+
+                    projectData.FinishExpansion.FinishCertificateNum = reader.GetString(reader.GetOrdinal("FinishCertificateNum"));
+
+                    projectData.ChangeExpansion.ChangeState = int.Parse(reader.GetString(reader.GetOrdinal("ChangeState")));
+                    projectData.ChangeExpansion.ChangeKind = reader.GetString(reader.GetOrdinal("ChangeKind"));
+                    projectData.ChangeExpansion.AnotherChangeKind = reader.GetString(reader.GetOrdinal("AnotherChangeKind"));
+                    projectData.ChangeExpansion.ChangeDataAndReason = reader.GetString(reader.GetOrdinal("ChangeDataAndReason"));
+                    projectData.ChangeExpansion.ApplicationTime = reader.IsDBNull(reader.GetOrdinal("ApplicationTime")) ? String.Empty : reader.GetDateTime(reader.GetOrdinal("UnitJudgeDate")).ToString("yyyy-MM-dd");
+                    projectData.ChangeExpansion.UnitOpinion = reader.GetString(reader.GetOrdinal("UnitOpinion"));
+                }
+
+                return projectData;
+            }
         }
 
         #endregion
 
         #region 插入功能
-        private string BuildInseartSQL(string TableName, List<string> Fields, List<string> Datas)
+        private static string BuildInseartSQL(string TableName, List<string> Fields, List<string> Datas)
         {
             string FieldsString = string.Join(", ", Fields);
             string DatesString = string.Join(", ", Datas.Select(data => $"'{data}'"));
@@ -106,12 +188,12 @@ namespace DAL.DataControl.TableControl
         }
 
 
-        public void Inseart(Object item)
+        public static void Inseart(Object item)
         {
             InseartReturnID(item);
         }
 
-        public string InseartReturnID(Object item)
+        public static string InseartReturnID(Object item)
         {
 
             using (SqlConnection conn = new SqlConnection(DBHelper.connectionString))
@@ -147,7 +229,7 @@ namespace DAL.DataControl.TableControl
         /// </summary>
         /// <param name="item">插入的对象</param>
         /// <returns>插入数据的ID</returns>
-        public string InseartProjectBaseData(Object item)
+        public static string InseartProjectBaseData(Object item)
         {
             ProjectData projectData = (ProjectData)item;
             if (projectData.IsEmpty())
@@ -186,7 +268,7 @@ namespace DAL.DataControl.TableControl
         /// 插入项目论证拓展信息表
         /// </summary>
         /// <param name="item">插入的对象</param>
-        public void InseartProjectDemonstrationExpandData(Object item, string PB_ID)
+        public static void InseartProjectDemonstrationExpandData(Object item, string PB_ID)
         {
             ProjectData projectData = (ProjectData)item;
             if (projectData.DemonstrationExpand.IsEmpty())
@@ -215,7 +297,7 @@ namespace DAL.DataControl.TableControl
         /// 插入项目评审拓展信息表
         /// </summary>
         /// <param name="item">插入的对象</param>
-        public void InseartProjectJudgeExpandData(Object item, string PB_ID)
+        public static void InseartProjectJudgeExpandData(Object item, string PB_ID)
         {
             ProjectData projectData = (ProjectData)item;
             if (projectData.JudgeExpand.IsEmpty())
@@ -254,7 +336,7 @@ namespace DAL.DataControl.TableControl
         /// 插入项目立项拓展信息表
         /// </summary>
         /// <param name="item">插入的对象</param>
-        public void InseartProjectApprovalExpandData(Object item, string PB_ID)
+        public static void InseartProjectApprovalExpandData(Object item, string PB_ID)
         {
             ProjectData projectData = (ProjectData)item;
             if (projectData.ApprovalExpand.IsEmpty())
@@ -278,7 +360,7 @@ namespace DAL.DataControl.TableControl
         /// 插入项目结项拓展信息表
         /// </summary>
         /// <param name="item">插入的对象</param>
-        public void InseartProjectFinishExpansionExpandData(Object item, string PB_ID)
+        public static void InseartProjectFinishExpansionExpandData(Object item, string PB_ID)
         {
             ProjectData projectData = (ProjectData)item;
             if (projectData.FinishExpansion.IsEmpty())
@@ -302,7 +384,7 @@ namespace DAL.DataControl.TableControl
         /// 插入项目变更信息表
         /// </summary>
         /// <param name="item">插入的对象</param>
-        public void InseartProjectChangeExpansionExpandData(Object item, string PB_ID)
+        public static void InseartProjectChangeExpansionExpandData(Object item, string PB_ID)
         {
             ProjectData projectData = (ProjectData)item;
             if (projectData.ChangeExpansion.IsEmpty())
@@ -328,7 +410,7 @@ namespace DAL.DataControl.TableControl
             datas.Add(projectData.ChangeExpansion.ChangeDataAndReason);
 
             fields.Add("ApplicationTime");
-            datas.Add(projectData.ChangeExpansion.ApplicationTime.ToString("yyyy-MM-dd"));
+            datas.Add(projectData.ChangeExpansion.ApplicationTime);
 
             fields.Add("UnitOpinion");
             datas.Add(projectData.ChangeExpansion.UnitOpinion);
@@ -355,7 +437,7 @@ namespace DAL.DataControl.TableControl
         /// <param name="tableName">表名</param>
         /// <param name="where">删除条件</param>
         /// <returns>删除SQL语句</returns>
-        private string BuildDeleteSQL(string tableName, string where)
+        private static string BuildDeleteSQL(string tableName, string where)
         {
             return $"DELETE FROM {tableName} WHERE {where}";
         }
@@ -365,7 +447,7 @@ namespace DAL.DataControl.TableControl
         /// </summary>
         /// <param name="ID">项目ID</param>
         /// <returns>影响的条数</returns>
-        private int DeleteProjectBaseData(string ID)
+        private static int DeleteProjectBaseData(string ID)
         {
             string sql = BuildDeleteSQL("ProjectBase", $"PB_ID = {ID}");
             return DBHelper.ExecuteSql(sql);
@@ -376,7 +458,7 @@ namespace DAL.DataControl.TableControl
         /// </summary>
         /// <param name="ID">项目ID</param>
         /// <returns>影响的条数</returns>
-        private int DeleteProjectDemonstrationExpandData(string ID)
+        private static int DeleteProjectDemonstrationExpandData(string ID)
         {
             string sql = BuildDeleteSQL("ProjectDemonstrationExpand", $"PB_ID = {ID}");
             return DBHelper.ExecuteSql(sql);
@@ -387,7 +469,7 @@ namespace DAL.DataControl.TableControl
         /// </summary>
         /// <param name="ID">项目ID</param>
         /// <returns>影响的条数</returns>
-        private int DeleteProjectJudgeExpandData(string ID)
+        private static int DeleteProjectJudgeExpandData(string ID)
         {
             string sql = BuildDeleteSQL("ProjectJudgeExpand", $"PB_ID = {ID}");
             return DBHelper.ExecuteSql(sql);
@@ -398,7 +480,7 @@ namespace DAL.DataControl.TableControl
         /// </summary>
         /// <param name="ID">项目ID</param>
         /// <returns>影响的条数</returns>
-        private int DeleteProjectApprovalExpandData(string ID)
+        private static int DeleteProjectApprovalExpandData(string ID)
         {
             string sql = BuildDeleteSQL("ProjectApprovalExpand", $"PB_ID = {ID}");
             return DBHelper.ExecuteSql(sql);
@@ -409,7 +491,7 @@ namespace DAL.DataControl.TableControl
         /// </summary>
         /// <param name="ID">项目ID</param>
         /// <returns>影响的条数</returns>
-        private int DeleteProjectFinishExpansionExpandData(string ID)
+        private static int DeleteProjectFinishExpansionExpandData(string ID)
         {
             string sql = BuildDeleteSQL("ProjectFinishExpansion", $"PB_ID = {ID}");
             return DBHelper.ExecuteSql(sql);
@@ -420,7 +502,7 @@ namespace DAL.DataControl.TableControl
         /// </summary>
         /// <param name="ID">项目ID</param>
         /// <returns>影响的条数</returns>
-        private int DeleteProjectChangeExpansionExpandData(string ID)
+        private static int DeleteProjectChangeExpansionExpandData(string ID)
         {
             string sql = BuildDeleteSQL("ProjectChangeExpansion", $"PB_ID = {ID}");
             return DBHelper.ExecuteSql(sql);
@@ -430,7 +512,7 @@ namespace DAL.DataControl.TableControl
         /// 删除完整的项目数据，包括所有相关表的信息
         /// </summary>
         /// <param name="ID">项目ID</param>
-        public int DeleteByID(string ID)
+        public static int DeleteByID(string ID)
         {
             int affectedRows = 0;
             using (SqlConnection conn = new SqlConnection(DBHelper.connectionString))
@@ -464,7 +546,7 @@ namespace DAL.DataControl.TableControl
         /// </summary>
         /// <param name="Where">限制条件</param>
         /// <returns>影响的条数</returns>
-        public int Delete(string Where)
+        public static int Delete(string Where)
         {
             int affectedRows = 0;
 
@@ -520,7 +602,7 @@ namespace DAL.DataControl.TableControl
         /// <param name="updatePairs">更新字段和值的键值对</param>
         /// <param name="where">更新条件</param>
         /// <returns>更新SQL语句</returns>
-        private string BuildUpdateSQL(string tableName, Dictionary<string, string> updatePairs, string where)
+        private static string BuildUpdateSQL(string tableName, Dictionary<string, string> updatePairs, string where)
         {
             List<string> setClauses = new List<string>();
             foreach (var pair in updatePairs)
@@ -537,7 +619,7 @@ namespace DAL.DataControl.TableControl
         /// <param name="ID">项目ID</param>
         /// <param name="updatePairs">更新字段和值的键值对</param>
         /// <returns>影响的条数</returns>
-        private int UpdateProjectBaseData(string ID, Dictionary<string, string> updatePairs)
+        private static int UpdateProjectBaseData(string ID, Dictionary<string, string> updatePairs)
         {
             string sql = BuildUpdateSQL("ProjectBase", updatePairs, $"PB_ID = {ID}");
             return DBHelper.ExecuteSql(sql);
@@ -549,7 +631,7 @@ namespace DAL.DataControl.TableControl
         /// <param name="ID">项目ID</param>
         /// <param name="updatePairs">更新字段和值的键值对</param>
         /// <returns>影响的条数</returns>
-        private int UpdateProjectDemonstrationExpandData(string ID, Dictionary<string, string> updatePairs)
+        private static int UpdateProjectDemonstrationExpandData(string ID, Dictionary<string, string> updatePairs)
         {
             string sql = BuildUpdateSQL("ProjectDemonstrationExpand", updatePairs, $"PB_ID = {ID}");
             return DBHelper.ExecuteSql(sql);
@@ -561,7 +643,7 @@ namespace DAL.DataControl.TableControl
         /// <param name="ID">项目ID</param>
         /// <param name="updatePairs">更新字段和值的键值对</param>
         /// <returns>影响的条数</returns>
-        private int UpdateProjectJudgeExpandData(string ID, Dictionary<string, string> updatePairs)
+        private static int UpdateProjectJudgeExpandData(string ID, Dictionary<string, string> updatePairs)
         {
             string sql = BuildUpdateSQL("ProjectJudgeExpand", updatePairs, $"PB_ID = {ID}");
             return DBHelper.ExecuteSql(sql);
@@ -573,7 +655,7 @@ namespace DAL.DataControl.TableControl
         /// <param name="ID">项目ID</param>
         /// <param name="updatePairs">更新字段和值的键值对</param>
         /// <returns>影响的条数</returns>
-        private int UpdateProjectApprovalExpandData(string ID, Dictionary<string, string> updatePairs)
+        private static int UpdateProjectApprovalExpandData(string ID, Dictionary<string, string> updatePairs)
         {
             string sql = BuildUpdateSQL("ProjectApprovalExpand", updatePairs, $"PB_ID = {ID}");
             return DBHelper.ExecuteSql(sql);
@@ -585,7 +667,7 @@ namespace DAL.DataControl.TableControl
         /// <param name="ID">项目ID</param>
         /// <param name="updatePairs">更新字段和值的键值对</param>
         /// <returns>影响的条数</returns>
-        private int UpdateProjectFinishExpansionExpandData(string ID, Dictionary<string, string> updatePairs)
+        private  static int UpdateProjectFinishExpansionExpandData(string ID, Dictionary<string, string> updatePairs)
         {
             string sql = BuildUpdateSQL("ProjectFinishExpansion", updatePairs, $"PB_ID = {ID}");
             return DBHelper.ExecuteSql(sql);
@@ -597,7 +679,7 @@ namespace DAL.DataControl.TableControl
         /// <param name="ID">项目ID</param>
         /// <param name="updatePairs">更新字段和值的键值对</param>
         /// <returns>影响的条数</returns>
-        private int UpdateProjectChangeExpansionExpandData(string ID, Dictionary<string, string> updatePairs)
+        private static int UpdateProjectChangeExpansionExpandData(string ID, Dictionary<string, string> updatePairs)
         {
             string sql = BuildUpdateSQL("ProjectChangeExpansion", updatePairs, $"PB_ID = {ID}");
             return DBHelper.ExecuteSql(sql);
@@ -608,7 +690,7 @@ namespace DAL.DataControl.TableControl
         /// </summary>
         /// <param name="ID">项目ID</param>
         /// <param name="item">包含更新数据的对象</param>
-        public int Update(string ID, Object item)
+        public static int Update(string ID, Object item)
         {
             ProjectData projectData = (ProjectData)item;
             int affectedRows = 0;
@@ -687,7 +769,7 @@ namespace DAL.DataControl.TableControl
                                 { "ChangeKind", projectData.ChangeExpansion.ChangeKind },
                                 { "AnotherChangeKind", projectData.ChangeExpansion.AnotherChangeKind },
                                 { "ChangeDataAndReason", projectData.ChangeExpansion.ChangeDataAndReason },
-                                { "ApplicationTime", projectData.ChangeExpansion.ApplicationTime.ToString("yyyy-MM-dd") },
+                                { "ApplicationTime", projectData.ChangeExpansion.ApplicationTime },
                                 { "UnitOpinion", projectData.ChangeExpansion.UnitOpinion }
                             };
                             affectedRows += UpdateProjectChangeExpansionExpandData(ID, updatePairs);
@@ -711,7 +793,7 @@ namespace DAL.DataControl.TableControl
         /// <param name="item">包含更新数据的对象</param>
         /// <param name="where">更新条件</param>
         /// <returns>影响的条数</returns>
-        public int Update(Object item, String where)
+        public static int Update(Object item, String where)
         {
             ProjectData projectData = (ProjectData)item;
             int affectedRows = 0;
@@ -790,7 +872,7 @@ namespace DAL.DataControl.TableControl
                                 { "ChangeKind", projectData.ChangeExpansion.ChangeKind },
                                 { "AnotherChangeKind", projectData.ChangeExpansion.AnotherChangeKind },
                                 { "ChangeDataAndReason", projectData.ChangeExpansion.ChangeDataAndReason },
-                                { "ApplicationTime", projectData.ChangeExpansion.ApplicationTime.ToString("yyyy-MM-dd") },
+                                { "ApplicationTime", projectData.ChangeExpansion.ApplicationTime },
                                 { "UnitOpinion", projectData.ChangeExpansion.UnitOpinion }
                             };
                             affectedRows += DBHelper.ExecuteSql(BuildUpdateSQL("ProjectChangeExpansion", updatePairs, where));
