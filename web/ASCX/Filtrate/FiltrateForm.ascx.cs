@@ -29,7 +29,9 @@ namespace WebForm.ASCX.Filtrate
             }
         }
 
-
+        /// <summary>
+        /// 更新筛选项事件，在点击确认按钮后执行
+        /// </summary>
         public event UpdateFiltrate UpdateFiltrate;
 
         /// <summary>
@@ -100,7 +102,6 @@ namespace WebForm.ASCX.Filtrate
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            
             Dictionary<string, HashSet<string>> keyValuePairs = new Dictionary<string, HashSet<string>>();
             foreach (string key in AllFiltrate.Keys)
             {

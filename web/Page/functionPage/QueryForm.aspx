@@ -27,6 +27,10 @@
 
 
     <style>
+        body{
+            min-width:1435px;
+        }
+
         .mergin li {
             margin-left: 5px;
             margin-right: 5px;
@@ -360,6 +364,9 @@
                                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                         <li><a href="#"
                                                 class="link-body-emphasis d-inline-flex text-decoration-none rounded"
+                                                onclick="addProgram(this)">快速添加</a></li>
+                                        <li><a href="#"
+                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded"
                                                 onclick="programLoad(this)">申报项目</a></li>
                                         <li><a href="#"
                                                 class="link-body-emphasis d-inline-flex text-decoration-none rounded"
@@ -539,7 +546,7 @@
                 </div>
             </div>
         </div>
-        <div class="right" style="padding: 10px;width:1125px;">
+        <div class="right" style="padding: 10px;width:1130px;">
 
             <div class="" style="overflow: auto; width: 100%; height: 650px;">
                 <iframe id="test" src="./QF-ChildPage/UnChoosePage.aspx"

@@ -1,5 +1,6 @@
 ﻿using DAL;
 using DAL.DataControl.TableControl;
+using DAL.DataControl.ViewControl;
 using Models;
 using Models.PageDataSor;
 using Spire.Xls;
@@ -30,7 +31,7 @@ namespace WebForm.functionPage.QF_ChildPage
         {
             get
             {
-                if (Session["SortField"] == null) Session["SortField"] = "project_id";
+                if (Session["SortField"] == null) Session["SortField"] = "PB_ID";
                 return Session["SortField"].ToString();
             }
             set
@@ -42,22 +43,40 @@ namespace WebForm.functionPage.QF_ChildPage
         /// <summary>
         /// 是否按升序排序
         /// </summary>
-        bool TypeSort
+        public bool TypeSort
         {
             get
             {
-                if (Session["TypeSort"] == null) Session["TypeSort"] = "1";
+                if (Session["TypeSort"] == null) Session["TypeSort"] = "0";
                 return Session["TypeSort"].ToString() == "1" ? true : false;
             }
             set
             {
-                Session["TypeSort"] = value ? "1" : "0";
+                Session["TypeSort"] = (value ? "1" : "0");
             }
         }
 
         #endregion
 
         #region 表格基础数据
+
+
+        /// <summary>
+        /// 表格显示描述缓存
+        /// </summary>
+        public TableAttribute DataBash
+        {
+
+            get
+            {
+                if (Session["DataBash"] == null) Session["DataBash"] = new TableAttribute();
+                return Session["DataBash"] as TableAttribute;
+            }
+            set
+            {
+                Session["DataBash"] = value;
+            }
+        }
 
         DataSet ds;
         public DataSet Data
@@ -86,25 +105,7 @@ namespace WebForm.functionPage.QF_ChildPage
 
         #endregion
 
-
-        int Index;
-
-        /// <summary>
-        /// 表格显示描述缓存
-        /// </summary>
-        public TableAttribute DataBash
-        {
-
-            get
-            {
-                if (Session["DataBash"] == null) Session["DataBash"] = new TableAttribute();
-                return Session["DataBash"] as TableAttribute;
-            }
-            set
-            {
-                Session["DataBash"] = value;
-            }
-        }
+        #region 搜索信息数据
 
         public Dictionary<string, string> SearchTargetToDataLable = new Dictionary<string, string>()
         {
@@ -171,6 +172,25 @@ namespace WebForm.functionPage.QF_ChildPage
         #endregion
 
 
+        /// <summary>
+        /// 查询Where子句缓存
+        /// </summary>
+        public string WhereString
+        {
+            get
+            {
+                if (Session["WhereString"] == null) Session["WhereString"] = "1 = 1";
+                return Session["WhereString"].ToString();
+            }
+            set
+            {
+                Session["WhereString"] = value;
+            }
+        }
+
+        #endregion
+
+
         #region 页面加载
 
         /// <summary>
@@ -180,26 +200,24 @@ namespace WebForm.functionPage.QF_ChildPage
         {
 
             List<string> list = new List<string>();
-            list.Add("project_name");
-            list.Add("project_level");
-            list.Add("project_number");
-            list.Add("project_category");
-            list.Add("project_youth");
-            list.Add("project_time");
-            list.Add("project_form");
+            list.Add("ProjectName");
+            list.Add("ProjectState");
+            list.Add("ProjectCategory");
+            list.Add("DisciplineClassification");
+            list.Add("Ending");
+            list.Add("EndingDate");
 
             Dictionary<string, string> map = new Dictionary<string, string>();
-            map.Add("project_id", "ID");
-            map.Add("project_name", "项目名称");
-            map.Add("project_level", "项目评级");
-            map.Add("project_number", "立项编号");
-            map.Add("project_category", "项目类别");
-            map.Add("project_youth", "青年项目");
-            map.Add("project_time", "项目完成时间");
-            map.Add("project_form", "成果形式");
+            map.Add("PB_ID", "ID");
+            map.Add("ProjectName", "项目名称");
+            map.Add("ProjectState", "项目状态");
+            map.Add("ProjectCategory", "学科分类");
+            map.Add("DisciplineClassification", "学科分类");
+            map.Add("Ending", "最后成果形式");
+            map.Add("EndingDate", "项目完成时间");
 
             TableAttribute tableAttribute = new TableAttribute(
-                "project_id",
+                "PB_ID",
                 "项目信息",
                 map,
                 list
@@ -209,12 +227,15 @@ namespace WebForm.functionPage.QF_ChildPage
         }
 
         /// <summary>
-        /// 加载筛选的数据库语句，加载到query变量中
-        /// 作为分页函数的查询表进行分页功能的使用
+        /// 构建筛选查询后的Where子句
         /// </summary>
         /// <param name="dict">传入的筛选数据集</param>
-        public void Select(Dictionary<string, HashSet<string>> dict)
+        public void BulidWhereString(Dictionary<string, HashSet<string>> dict)
         {
+            WhereString = ProjectViewContron.BuildWhereClause(dict);
+
+            InitData();
+            LoadTable();
 
         }
 
@@ -224,49 +245,40 @@ namespace WebForm.functionPage.QF_ChildPage
         /// </summary>
         void LoadFiltrate()
         {
-
             Dictionary<string, string> translation = new Dictionary<string, string>();
             translation.Add("project_level", "项目评级");
             translation.Add("project_youth", "青年项目");
-            translation.Add("year(project_time)", "年份");
-            translation.Add("project_form", "成果形式");
+            translation.Add("year(EndingDate)", "项目完成日期");
+            translation.Add("Ending", "成果形式");
 
             Filtrate.AllFiltrateKeyToMean = translation;
-            Filtrate.UpdateFiltrate += Select;
+            Filtrate.UpdateFiltrate += BulidWhereString;
+
+            // 加载筛选项内容
             Dictionary<string, HashSet<string>> sons = new Dictionary<string, HashSet<string>>();
 
-            HashSet<string> hashLevel = new HashSet<string>();
-            hashLevel.Add("A");
-            hashLevel.Add("B");
-            hashLevel.Add("C");
-            hashLevel.Add("D");
-            hashLevel.Add("E");
 
-            HashSet<string> hashYouth = new HashSet<string>();
-            hashYouth.Add("是");
-            hashYouth.Add("否");
-
-            HashSet<string> hashTime = new HashSet<string>();
-            DataSet time = DBHelper.Query("select project_time from ProjectApplications group by project_time");
+            // 立项日期筛选项
+            // 查询项目所有结项时间
+            DataSet time = (new ProjectViewContron()).Select(new List<string>() { "year(EndingDate) as EndingDate" }, null, "year(EndingDate)");
             DataTable dt = time.Tables[0];
+            HashSet<string> hashTime = new HashSet<string>();
             foreach (DataRow dr in dt.Rows)
             {
-                string timme = DateTime.Parse(dr["project_time"].ToString()).ToString("yyyy");
+                string timme = dr["EndingDate"].ToString();
                 hashTime.Add(timme);
             }
+            sons.Add("year(EndingDate)", hashTime);
 
 
+            // 成果形式筛选项
             HashSet<string> hashForm = new HashSet<string>();
-            DataSet form = DBHelper.Query("select project_form from ProjectApplications group by project_form");
+            DataSet form = (new ProjectViewContron()).Select(new List<string>() { "Ending" }, null, "Ending");
             foreach (DataRow dr in form.Tables[0].Rows)
             {
-                hashForm.Add(dr["project_form"].ToString());
+                hashForm.Add(dr["Ending"].ToString());
             }
-
-            sons.Add("project_level", hashLevel);
-            sons.Add("project_youth", hashYouth);
-            sons.Add("year(project_time)", hashTime);
-            sons.Add("project_form", hashForm);
+            sons.Add("Ending", hashForm);
 
             Filtrate.AllFiltrate = sons;
 
@@ -275,9 +287,6 @@ namespace WebForm.functionPage.QF_ChildPage
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //加载表格
-            InitSelect(query);
-            //LoadeSelect();
 
             try
             {
@@ -291,79 +300,19 @@ namespace WebForm.functionPage.QF_ChildPage
                 massage.MassageText = "出现异常，无法执行筛选操作，请联系工作人员";
                 massage.PostMassage();
             }
-
         }
 
 
         #region 加载表格数据项
+
+
         /// <summary>
         /// 加载未筛选的信息
         /// </summary>
         void InitData()
         {
-            Data = ProjectControl.Select(null, SortField, TypeSort, 20, PageNum);
+            Data = (new ProjectViewContron()).Select(WhereString, null, SortField, TypeSort, 20, PageNum);
         }
-
-        /// <summary>
-        /// 通过query加载筛选信息或未筛选信息
-        /// </summary>
-        /// <param name="query"></param>
-        void InitSelect(string query)
-        {
-            if (query == null)
-            {
-                Data = ProjectControl.Select(null, SortField, TypeSort, 20, PageNum);
-                LoadTable();
-            }
-            else
-            {
-                Data = ProjectControl.Select(null, SortField, TypeSort, 20, PageNum);
-                LoadeSelect();
-            }
-
-            //Data = PageApart.ApartSelect(query, "project_id", PageNum - 1);
-
-        }
-
-        /// <summary>
-        /// 加载筛选后的表格数据
-        /// </summary>
-        void LoadeSelect()
-        {
-            DataTable dataTable;
-            try
-            {
-                dataTable = Data.Tables[0];
-            }
-            catch
-            {
-                dataTable = null;
-            }
-            try
-            {
-                InitDataAttribute();
-                InitData();
-                MyTable NewLine = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
-                NewLine.TableBase = DataBash;
-                NewLine.DataCollection = dataTable;
-                NewLine.Height = 480;
-                NewLine.TableName = "ProjectApplications";
-                NewLine.ShowControl = true;
-                NewLine.ControlASCX = "~/ASCX/Table/ForMyTable/DeletButten.ascx";
-                NewLine.ShowCheck = true;
-                PlaceHolder1.Controls.Clear();
-                PlaceHolder1.Controls.Add(NewLine);
-            }
-            catch
-            {
-                Massage massage = new Massage();
-                massage.HeadText = "WANNING";
-                massage.MassageText = "未选择筛选项";
-                massage.HeadColor = "Orange";
-                massage.PostMassage();
-            }
-        }
-
 
         void LoadTable()
         {
@@ -374,13 +323,11 @@ namespace WebForm.functionPage.QF_ChildPage
             }
             catch
             {
-                dataTable = null;
+                return;
             }
             try
             {
                 InitDataAttribute();
-
-                //dataTable = SortTable(dataTable, "project_level", 1);
 
                 MyTable NewLine = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
                 NewLine.TableBase = DataBash;
@@ -390,8 +337,8 @@ namespace WebForm.functionPage.QF_ChildPage
                 NewLine.ShowControl = true;
                 NewLine.ControlASCX = "~/ASCX/Table/ForMyTable/DeletButten.ascx";
                 NewLine.ShowCheck = true;
-                PlaceHolder1.Controls.Clear();
-                PlaceHolder1.Controls.Add(NewLine);
+                DataLoadPlaceHoler.Controls.Clear();
+                DataLoadPlaceHoler.Controls.Add(NewLine);
             }
             catch
             {
@@ -413,27 +360,31 @@ namespace WebForm.functionPage.QF_ChildPage
 
 
         #region 事件定义
-        protected void PlaceHolder1_Load(object sender, EventArgs e)
+
+        /// <summary>
+        /// 数据显示容器刷新事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void DataLoadPlaceHoler_Load(object sender, EventArgs e)
         {
-            InitSelect(query);
-            //    InitData();
-            //    Loding();
-            //    LoadTable();
+            InitData();
+            LoadTable();
         }
 
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void BtnForSearch_Click(object sender, EventArgs e)
         {
             string Lable = "";
             foreach (KeyValuePair<string, string> keyValuePair in DataBash.LineToMean)
             {
-                if(keyValuePair.Value == SearchTarget)
+                if (keyValuePair.Value == SearchTarget)
                 {
                     Lable = keyValuePair.Key;
                     break;
                 }
             }
-            
+
 
             List<string> list = new List<string>();
             //list.Add("user_phone");
@@ -480,47 +431,28 @@ namespace WebForm.functionPage.QF_ChildPage
             NewLine.ShowControl = true;
             NewLine.ControlASCX = "~/ASCX/Table/ForMyTable/DeletButten.ascx";
             NewLine.ShowCheck = true;
-            PlaceHolder1.Controls.Clear();
-            PlaceHolder1.Controls.Add(NewLine);
+            DataLoadPlaceHoler.Controls.Clear();
+            DataLoadPlaceHoler.Controls.Add(NewLine);
 
         }
-       //排序按钮后端：
-        protected void Button4_Click(object sender, EventArgs e)
-        {
-            SortField = "project_number";
-            Page_Load(sender, e);
-        }
 
-        protected void Button5_Click(object sender, EventArgs e)
-        {
-            SortField = "project_level";
-            Page_Load(sender, e);
-        }
 
-        protected void Button6_Click(object sender, EventArgs e)
+        //排序按钮后端：
+        public Dictionary<string, string> TargetTextToField = new Dictionary<string, string>()
         {
-            SortField = "project_name";
-            Page_Load(sender, e);
-        }
-
-        protected void Button3_Click(object sender, EventArgs e)
+            {"项目名称", "ProjectName" },
+            { "项目完成时间", "EndingDate"},
+        };
+        protected void btnForSortTarget_Click(object sender, EventArgs e)
         {
-            SortField = "project_time";
-            Page_Load(sender, e);
+            SortField = TargetTextToField[((Button)sender).Text];
         }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-             CountSort++;
-            if (CountSort  %2 == 0)
-            {               
-                TypeSort = "asc";
-            }
-            else
-            {
-                TypeSort = "desc";
-            }
-            Page_Load(sender, e);
+            TypeSort = !TypeSort;
+            InitData();
+            LoadTable();
         }
 
         protected void Button7_Click(object sender, EventArgs e)
@@ -533,29 +465,4 @@ namespace WebForm.functionPage.QF_ChildPage
     }
 }
 
-        ///// <summary>
-        ///// 对DataTable排序的函数
-        ///// </summary>
-        ///// <param name="dt">表</param>
-        ///// <param name="values">需要排序的字段</param>
-        ///// <param name="ans">正序0，倒序非0</param>
-        ///// <returns></returns>
-        //static public DataTable SortTable(DataTable dt,string values,int ans)
-        //{
-        //    DataTable dtCopy = dt.Copy();
-           
-        //    DataView dv = dt.DefaultView;
-        //    if(ans == 0)
-        //    {
-        //        dv.Sort = values;
-        //    }
-        //    else
-        //    {
-        //        dv.Sort = values + " DESC";
-        //    }
-            
-        //    dtCopy = dv.ToTable();
-
-        //    return dtCopy;
-        //}
         

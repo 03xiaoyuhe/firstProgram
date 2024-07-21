@@ -18,7 +18,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
 
-    <link href="../../../../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../../assets/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../../../../bootstrap-5.3.0-alpha1-dist/css/bootstrap-reboot.min.css" rel="stylesheet" />
     <style>
         .show-style {
@@ -148,7 +148,7 @@
                                 <p style="margin:5px;">
                                     <strong>排序:</strong>
                                     <span data-descr="切换排序方向" style="float: right;">
-                                        <span id="Button2body" class="<% ="btn btn-light btn-sm "+(CountSort%2==0?"": "mirrorRotateVertical") %>" style="position: relative;" >
+                                        <span id="Button2body" class="<% ="btn btn-light btn-sm "+(TypeSort ?"": "mirrorRotateVertical") %>" style="position: relative;" >
                                             <asp:Button ID="Button2" runat="server" Text="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" Style="background: none; border: none; float: left; position: absolute; left: 0;z-index:100;" OnClick="Button2_Click" />
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart" style="transform: rotate(90deg);" viewBox="0 0 16 16">
                                                 <path d="M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5v12h-2V2h2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3z" />
@@ -159,10 +159,8 @@
                                 <p class="card-text">
                                     <li class="list-group-item">
                                         <div class="d-grid">
-                                            <asp:Button ID="Button4" class="btn btn-light btn-sm" runat="server" Text="立项编号" OnClick="Button4_Click" />
-                                            <asp:Button ID="Button5" class="btn btn-light btn-sm" runat="server" Text="项目评级" OnClick="Button5_Click"/>
-                                            <asp:Button ID="Button6" class="btn btn-light btn-sm" runat="server" Text="项目名称"  OnClick="Button6_Click"/>
-                                            <asp:Button ID="Button3" class="btn btn-light btn-sm" runat="server" Text="项目完成时间" OnClick="Button3_Click" />
+                                            <asp:Button ID="btnForSortTarget1" class="btn btn-light btn-sm"  runat="server" Text="项目名称" OnClick="btnForSortTarget_Click" />
+                                            <asp:Button ID="btnForSortTarget2" class="btn btn-light btn-sm" runat="server" Text="项目完成时间" OnClick="btnForSortTarget_Click"/>
                                         </div>
                                     </li>
                                 </p>
@@ -196,7 +194,7 @@
                                         type="search"
                                         placeholder="输入搜索内容"
                                         aria-label=".form-control-sm example"></asp:TextBox>
-                                    <asp:Button ID="Button1" class="btn btn-primary input-group-text" for="TextBox1" runat="server" Text="搜索" OnClick="Button1_Click" />
+                                    <asp:Button ID="BtnForSearch" class="btn btn-primary input-group-text" for="TextBox1" runat="server" Text="搜索" OnClick="BtnForSearch_Click" />
                                 </span>
 
                     </div>
@@ -210,7 +208,7 @@
                     <%--<TPrintMassage:PrintMassage ID="aaa" runat="server" />--%>
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
-                            <asp:PlaceHolder ID="PlaceHolder1" runat="server" OnLoad="PlaceHolder1_Load">
+                            <asp:PlaceHolder ID="DataLoadPlaceHoler" runat="server" OnLoad="DataLoadPlaceHoler_Load">
                                 <Loading:Load runat="server" ID="Load" />
                             </asp:PlaceHolder>
                         </ContentTemplate>
@@ -236,6 +234,8 @@
         </div>
 
     </form>
+
+
     <script type="text/javascript" src="../../../../assets/js/color-modes.js"></script>
     <script src="../../../../JS/QueryFromPageJs.js"></script>
     <script src="../../../../JS/sidebars.js"></script>

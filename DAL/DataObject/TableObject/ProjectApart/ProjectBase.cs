@@ -12,7 +12,7 @@ namespace DAL.DataObject.TableObject.ProjectApart
                 ProjectState == 0 &&
                 ProjectName == string.Empty &&
                 ProjectCategory == string.Empty &&
-                DisciplineClassificaton == string.Empty &&
+                DisciplineClassification == string.Empty &&
                 FillDate == String.Empty &&
                 Ending == string.Empty &&
                 EndingDate == string.Empty
@@ -24,6 +24,8 @@ namespace DAL.DataObject.TableObject.ProjectApart
         }
 
         #region 属性及字段
+
+
 
 
         // 查询数据时有效
@@ -93,20 +95,20 @@ namespace DAL.DataObject.TableObject.ProjectApart
             }
         }
 
-        string disciplineClassificaton;
+        string disciplineClassification;
         /// <summary>
         /// 学科分类
         /// </summary>
-        public string DisciplineClassificaton
+        public string DisciplineClassification
         {
             get
             {
-                if (disciplineClassificaton == null) disciplineClassificaton = string.Empty;
-                return disciplineClassificaton;
+                if (disciplineClassification == null) disciplineClassification = string.Empty;
+                return disciplineClassification;
             }
             set
             {
-                disciplineClassificaton = value;
+                disciplineClassification = value;
             }
         }
 
@@ -176,6 +178,17 @@ namespace DAL.DataObject.TableObject.ProjectApart
             {3,"结项" },
             {4,"终止" },
             {5,"撤销" },
+        };
+
+
+        public static Dictionary<string, int> ProjectStateMeanToInt = new Dictionary<string, int>()
+        {
+            {"", 0 },
+            {"申报", 1},
+            {"在研", 2},
+            {"结项", 3},
+            {"终止", 4},
+            {"撤销", 5},
         };
 
         ///// <summary>

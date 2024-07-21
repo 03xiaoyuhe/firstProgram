@@ -14,6 +14,18 @@ namespace WebForm.ASCX.BaseForm
 
         }
 
+        public bool CheckEmpty
+        {
+            get
+            {
+                return RequiredFieldValidator.Enabled;
+            }
+            set
+            {
+                RequiredFieldValidator.Enabled = value;
+            }
+        }
+
         /// <summary>
         /// 未输入消息提示词
         /// </summary>

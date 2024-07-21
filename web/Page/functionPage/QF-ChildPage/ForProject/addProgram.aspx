@@ -56,18 +56,17 @@
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
-        <div style="width: 90%; margin: 0 auto;">
-            <div class="fs-1">项目信息</div>
+        <div style="width: 100%;">
             
 
-            <div style="width:100%;height:490px;overflow:auto;">
+            <div style="width:100%;height:570px;overflow:auto;">
                 <ProgremInf:ProgremAdd runat="server" ID ="ProgremInf"></ProgremInf:ProgremAdd>
             </div>
 
 
 
 
-            <table style="width: 100%">
+            <table style="width: 90%; margin: 0 auto;">
                 <tr>
                     <td>
                         <asp:Button ID="submit" runat="server" Text="提交" CssClass="addProgram-submit btn btn-outline-dark" OnClick="submit_Click" />

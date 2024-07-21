@@ -8,11 +8,8 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
-    
-    <%--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">--%>
+
     <link href="../../assets/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <%--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/mhDoLbDldZc3qpsJHpLogda//BVZbgYuw6kof4u2FrCedxOtgRZDTHgHUhOCVim" crossorigin="anonymous"></script>--%>
-    <script src="../../assets/js/color-modes.js"></script>
     <style>
         /* 将字体设为红色 */
         .setCharRed {
@@ -204,5 +201,6 @@
             </div>
         </div>
     </form>
+    <script src="../../assets/js/color-modes.js"></script>
 </body>
 </html>

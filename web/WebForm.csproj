@@ -231,6 +231,7 @@
     <Content Include="ASCX\Table\ForMyTable\MyCheckBox.ascx" />
     <Content Include="ASCX\Table\TableWithDelegate.ascx" />
     <Content Include="Page\ForTest\ProjectControlTest.aspx" />
+    <Content Include="Page\ForTest\ProjectViewTest.aspx" />
     <Content Include="Page\functionPage\QF-ChildPage\ForAccount\AccountSetting.aspx" />
     <Content Include="Page\functionPage\QF-ChildPage\ForAccount\ApplicantAcconterSelectPage.aspx" />
     <Content Include="Page\functionPage\QF-ChildPage\ForProject\EndingProjectLoadPage.aspx" />
@@ -758,6 +759,13 @@
     </Compile>
     <Compile Include="Page\ForTest\ProgramImformPage.aspx.designer.cs">
       <DependentUpon>ProgramImformPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\ForTest\ProjectViewTest.aspx.cs">
+      <DependentUpon>ProjectViewTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\ForTest\ProjectViewTest.aspx.designer.cs">
+      <DependentUpon>ProjectViewTest.aspx</DependentUpon>
     </Compile>
     <Compile Include="Page\functionPage\QF-ChildPage\ForAccount\AccountSetting.aspx.cs">
       <DependentUpon>AccountSetting.aspx</DependentUpon>

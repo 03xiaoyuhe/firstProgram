@@ -11,8 +11,13 @@ namespace DAL.DataControl.Interface
         /// 提供一个通过指定规则执行查询的功能，该功能会直接返回查询的数据。
         /// </summary>
         /// <param name="whereString">在SQL中 WHERE 部分需要填入的部分</param>
+        /// <param name="gropeBy"></param>
+        /// <param name="orderByField"></param>
+        /// <param name="isAscending"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="pageNumber"></param>
         /// <returns>返回查询出的所有数据</returns>
-        DataSet Select(String whereString, string orderByField = "PB_ID", bool isAscending = true, int pageSize = 20, int pageNumber = 1);
+        DataSet Select(String whereString, string gropeBy, string orderByField, bool isAscending, int? pageSize, int? pageNumber);
 
 
         /// <summary>
@@ -20,8 +25,13 @@ namespace DAL.DataControl.Interface
         /// </summary>
         /// <param name="Fields">指定查询出的字段</param>
         /// <param name="whereString">在SQL中 WHERE 部分需要填入的部分</param>
+        /// <param name="gropeBy"></param>
+        /// <param name="orderByField"></param>
+        /// <param name="isAscending"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="pageNumber"></param>
         /// <returns>返回查询出的所有数据</returns>
-        DataSet Select(List<String> Fields, String whereString, string orderByField = "PB_ID", bool isAscending = true, int pageSize = 20, int pageNumber = 1);
+        DataSet Select(List<String> Fields, String whereString, string gropeBy, string orderByField, bool isAscending, int? pageSize, int? pageNumber);
 
         /// <summary>
         /// 提供一个通过指定规则执行查询的功能，该功能会直接返回查询的数据。

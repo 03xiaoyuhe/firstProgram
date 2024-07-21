@@ -164,6 +164,7 @@
     <Compile Include="DataControl\TableControl\AccountControl.cs" />
     <Compile Include="DataControl\TableControl\PeopleControl.cs" />
     <Compile Include="DataControl\TableControl\ProjectControl.cs" />
+    <Compile Include="DataControl\ViewControl\ProjectViewContron.cs" />
     <Compile Include="DataObject\DataObjectBase.cs" />
     <Compile Include="DataObject\TableObject\AccountApart\AccountBase.cs" />
     <Compile Include="DataObject\TableObject\AccountData.cs" />

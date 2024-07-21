@@ -1,4 +1,6 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Collections.Generic;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace DAL.DataControl
 {
@@ -60,6 +62,101 @@ namespace DAL.DataControl
         }
 
 
+
+        #endregion
+
+        #region 构建where子句
+
+
+        /// <summary>
+        /// 构建SQL的WHERE子句
+        /// </summary>
+        /// <param name="conditions">键为字段名称，值为匹配的值</param>
+        /// <returns>返回构建的WHERE子句字符串</returns>
+        public static string BuildWhereClause(Dictionary<string, string> conditions)
+        {
+            if (conditions == null || conditions.Count == 0)
+            {
+                return "1 = 1"; // 默认条件，表示无条件
+            }
+
+            StringBuilder whereClause = new StringBuilder();
+            foreach (var condition in conditions)
+            {
+                // 如果值包含通配符则进行模糊匹配
+                if (condition.Value.Contains("%"))
+                {
+                    whereClause.Append($"{condition.Key} LIKE '{condition.Value}' AND ");
+                }
+                else
+                {
+                    whereClause.Append($"{condition.Key} = '{condition.Value}' AND ");
+                }
+            }
+
+            // 移除最后一个 AND
+            if (whereClause.Length > 0)
+            {
+                whereClause.Length -= 5; // " AND " 的长度
+            }
+
+            return whereClause.ToString();
+        }
+
+        /// <summary>
+        /// 构建SQL的WHERE子句
+        /// </summary>
+        /// <param name="conditions">键为字段名称，值为可匹配的多个值</param>
+        /// <returns>返回构建的WHERE子句字符串</returns>
+        public static string BuildWhereClause(Dictionary<string, HashSet<string>> conditions)
+        {
+            if (conditions == null || conditions.Count == 0)
+            {
+                return "1 = 1"; // 默认条件，表示查询所有数据
+            }
+
+            StringBuilder whereClause = new StringBuilder();
+            bool isFirstCondition = true;
+
+            foreach (var condition in conditions)
+            {
+                string field = condition.Key;
+                HashSet<string> values = condition.Value;
+
+                if (values != null && values.Count > 0)
+                {
+                    if (!isFirstCondition)
+                    {
+                        whereClause.Append(" AND ");
+                    }
+                    else
+                    {
+                        isFirstCondition = false;
+                    }
+
+                    whereClause.Append("(");
+
+                    bool isFirstValue = true;
+                    foreach (var value in values)
+                    {
+                        if (!isFirstValue)
+                        {
+                            whereClause.Append(" OR ");
+                        }
+                        else
+                        {
+                            isFirstValue = false;
+                        }
+
+                        whereClause.Append($"{field} = '{value}'");
+                    }
+
+                    whereClause.Append(")");
+                }
+            }
+
+            return whereClause.ToString();
+        }
 
         #endregion
     }

@@ -23,8 +23,13 @@ namespace DAL.DataControl.TableControl
         /// <param name="pageSize">每页数据条数</param>
         /// <param name="pageNumber">页码</param>
         /// <returns>返回SQL查询语句</returns>
-        private static string BuildSelectSQL(List<string> Fields, string whereString, string orderByField, bool isAscending, int pageSize = 20, int pageNumber = 1)
+        private string BuildSelectSQL(List<string> Fields, string whereString, string groupBy, string orderByField, bool isAscending, int? pageSize, int? pageNumber)
         {
+            if (whereString == null) whereString = "1 = 1";
+            if (orderByField == null)
+            {
+                orderByField = "PB_ID";
+            }
             // 如果没有指定字段，则查询所有字段
             string fieldString = Fields != null && Fields.Count > 0 ? string.Join(", ", Fields) : @"
                 ProjectBase.PB_ID,
@@ -53,26 +58,31 @@ namespace DAL.DataControl.TableControl
                 ProjectChangeExpansion.ApplicationTime,
                 ProjectChangeExpansion.UnitOpinion";
 
+
+            string OffsetString = "";
+            // 添加分页逻辑（如果提供了分页参数）
+            if (pageSize.HasValue && pageNumber.HasValue)
+            {
+                int offset = (pageNumber.Value - 1) * pageSize.Value;
+                OffsetString = $" OFFSET {offset} ROWS FETCH NEXT {pageSize.Value} ROWS ONLY";
+            }
+
             string SQL =
                 "-- 项目信息查询SQL\n" +
-                "DECLARE @SelectSQL NVARCHAR(MAX);\n" +
-                "DECLARE @Where NVARCHAR(MAX);\n" +
-                $"SET @Where = '{whereString}';\n" +
-                "SET @SelectSQL =\n" +
-                "'SELECT " + fieldString + "\n" +
+                "SELECT " + fieldString + "\n" +
                 "FROM ProjectBase\n" +
                 "LEFT JOIN ProjectDemonstrationExpand ON ProjectBase.PB_ID = ProjectDemonstrationExpand.PB_ID\n" +
                 "LEFT JOIN ProjectJudgeExpand ON ProjectBase.PB_ID = ProjectJudgeExpand.PB_ID\n" +
                 "LEFT JOIN ProjectApprovalExpand ON ProjectBase.PB_ID = ProjectApprovalExpand.PB_ID\n" +
                 "LEFT JOIN ProjectFinishExpansion ON ProjectBase.PB_ID = ProjectFinishExpansion.PB_ID\n" +
                 "LEFT JOIN ProjectChangeExpansion ON ProjectBase.PB_ID = ProjectChangeExpansion.PB_ID\n" +
-                "WHERE ' + @Where + '\n" +
+                $"WHERE {whereString}\n" +
+                (groupBy == null ? "" : $"group by {groupBy}\n") +
                 "ORDER BY " + orderByField + " " + (isAscending ? "ASC" : "DESC") + "\n" +
-                "OFFSET " + (pageSize * (pageNumber - 1)) + " ROWS\n" +
-                "FETCH NEXT " + pageSize + " ROWS ONLY;';\n" +
-                "EXEC sp_executesql @SelectSQL;";
+                $"{OffsetString}\n";
 
             return SQL;
+
         }
 
         /// <summary>
@@ -85,14 +95,14 @@ namespace DAL.DataControl.TableControl
         /// <param name="pageSize">每页数据条数</param>
         /// <param name="pageNumber">页码</param>
         /// <returns>返回查询出的所有数据</returns>
-        public static DataSet Select(List<string> Fields, string whereString = null, string orderByField = "PB_ID", bool isAscending = true, int pageSize = 20, int pageNumber = 1)
+        public DataSet Select(List<string> Fields, string whereString, string groupBy, string orderByField, bool isAscending, int? pageSize, int? pageNumber)
         {
             if (string.IsNullOrEmpty(whereString))
             {
                 whereString = "1 = 1"; // 默认条件，表示查询所有数据
             }
 
-            string SQL = BuildSelectSQL(Fields, whereString, orderByField, isAscending, pageSize, pageNumber);
+            string SQL = BuildSelectSQL(Fields, whereString, groupBy, orderByField, isAscending, pageSize, pageNumber);
             return DBHelper.Query(SQL);
         }
 
@@ -105,7 +115,7 @@ namespace DAL.DataControl.TableControl
         /// <param name="pageSize">每页数据条数</param>
         /// <param name="pageNumber">页码</param>
         /// <returns>返回查询出的所有数据</returns>
-        public static DataSet Select(string whereString = null, string orderByField = "PB_ID", bool isAscending = true, int pageSize = 20, int pageNumber = 1)
+        public DataSet Select(string whereString, string groupBy, string orderByField, bool isAscending, int? pageSize, int? pageNumber)
         {
             return Select(null, whereString, orderByField, isAscending, pageSize, pageNumber);
         }
@@ -118,10 +128,10 @@ namespace DAL.DataControl.TableControl
         /// <param name="orderByField">用于排序的字段</param>
         /// <param name="isAscending">是否按升序排序</param>
         /// <returns>对应数据的数据类</returns>
-        public static Object SelectReturnObject(string whereString)
+        public Object SelectReturnObject(string whereString)
         {
             // 构建SQL查询语句
-            string SQL = BuildSelectSQL(null, whereString, "PB_ID", true);
+            string SQL = BuildSelectSQL(null, whereString,null, "PB_ID", true, null, null);
 
 
             
@@ -140,7 +150,7 @@ namespace DAL.DataControl.TableControl
                     projectData.Base.ProjectState = int.Parse(reader.GetString(reader.GetOrdinal("ProjectState")));
                     projectData.Base.ProjectName = reader.GetString(reader.GetOrdinal("ProjectName"));
                     projectData.Base.ProjectCategory = reader.GetString(reader.GetOrdinal("ProjectCategory"));
-                    projectData.Base.DisciplineClassificaton = reader.GetString(reader.GetOrdinal("DisciplineClassificaton"));
+                    projectData.Base.DisciplineClassification = reader.GetString(reader.GetOrdinal("DisciplineClassificaton"));
                     projectData.Base.FillDate = reader.IsDBNull(reader.GetOrdinal("FillDate")) ? String.Empty : reader.GetDateTime(reader.GetOrdinal("UnitJudgeDate")).ToString("yyyy-MM-dd");
                     projectData.Base.EndingDate = reader.IsDBNull(reader.GetOrdinal("EndingDate")) ? String.Empty : reader.GetDateTime(reader.GetOrdinal("UnitJudgeDate")).ToString("yyyy-MM-dd");
 
@@ -175,7 +185,7 @@ namespace DAL.DataControl.TableControl
         #endregion
 
         #region 插入功能
-        private static string BuildInseartSQL(string TableName, List<string> Fields, List<string> Datas)
+        private string BuildInseartSQL(string TableName, List<string> Fields, List<string> Datas)
         {
             string FieldsString = string.Join(", ", Fields);
             string DatesString = string.Join(", ", Datas.Select(data => $"'{data}'"));
@@ -188,12 +198,14 @@ namespace DAL.DataControl.TableControl
         }
 
 
-        public static void Inseart(Object item)
+        public void Inseart(Object item)
         {
-            InseartReturnID(item);
+
+                InseartReturnID(item);
+
         }
 
-        public static string InseartReturnID(Object item)
+        public string InseartReturnID(Object item)
         {
 
             using (SqlConnection conn = new SqlConnection(DBHelper.connectionString))
@@ -229,7 +241,7 @@ namespace DAL.DataControl.TableControl
         /// </summary>
         /// <param name="item">插入的对象</param>
         /// <returns>插入数据的ID</returns>
-        public static string InseartProjectBaseData(Object item)
+        public string InseartProjectBaseData(Object item)
         {
             ProjectData projectData = (ProjectData)item;
             if (projectData.IsEmpty())
@@ -248,7 +260,7 @@ namespace DAL.DataControl.TableControl
             datas.Add(projectData.Base.ProjectCategory.ToString());
 
             fields.Add("DisciplineClassificaton");
-            datas.Add(projectData.Base.DisciplineClassificaton);
+            datas.Add(projectData.Base.DisciplineClassification);
 
             fields.Add("FillDate");
             datas.Add(projectData.Base.FillDate.ToString());
@@ -268,7 +280,7 @@ namespace DAL.DataControl.TableControl
         /// 插入项目论证拓展信息表
         /// </summary>
         /// <param name="item">插入的对象</param>
-        public static void InseartProjectDemonstrationExpandData(Object item, string PB_ID)
+        public void InseartProjectDemonstrationExpandData(Object item, string PB_ID)
         {
             ProjectData projectData = (ProjectData)item;
             if (projectData.DemonstrationExpand.IsEmpty())
@@ -297,7 +309,7 @@ namespace DAL.DataControl.TableControl
         /// 插入项目评审拓展信息表
         /// </summary>
         /// <param name="item">插入的对象</param>
-        public static void InseartProjectJudgeExpandData(Object item, string PB_ID)
+        public void InseartProjectJudgeExpandData(Object item, string PB_ID)
         {
             ProjectData projectData = (ProjectData)item;
             if (projectData.JudgeExpand.IsEmpty())
@@ -336,7 +348,7 @@ namespace DAL.DataControl.TableControl
         /// 插入项目立项拓展信息表
         /// </summary>
         /// <param name="item">插入的对象</param>
-        public static void InseartProjectApprovalExpandData(Object item, string PB_ID)
+        public void InseartProjectApprovalExpandData(Object item, string PB_ID)
         {
             ProjectData projectData = (ProjectData)item;
             if (projectData.ApprovalExpand.IsEmpty())
@@ -360,7 +372,7 @@ namespace DAL.DataControl.TableControl
         /// 插入项目结项拓展信息表
         /// </summary>
         /// <param name="item">插入的对象</param>
-        public static void InseartProjectFinishExpansionExpandData(Object item, string PB_ID)
+        public void InseartProjectFinishExpansionExpandData(Object item, string PB_ID)
         {
             ProjectData projectData = (ProjectData)item;
             if (projectData.FinishExpansion.IsEmpty())
@@ -384,7 +396,7 @@ namespace DAL.DataControl.TableControl
         /// 插入项目变更信息表
         /// </summary>
         /// <param name="item">插入的对象</param>
-        public static void InseartProjectChangeExpansionExpandData(Object item, string PB_ID)
+        public void InseartProjectChangeExpansionExpandData(Object item, string PB_ID)
         {
             ProjectData projectData = (ProjectData)item;
             if (projectData.ChangeExpansion.IsEmpty())
@@ -512,7 +524,7 @@ namespace DAL.DataControl.TableControl
         /// 删除完整的项目数据，包括所有相关表的信息
         /// </summary>
         /// <param name="ID">项目ID</param>
-        public static int DeleteByID(string ID)
+        public int DeleteByID(string ID)
         {
             int affectedRows = 0;
             using (SqlConnection conn = new SqlConnection(DBHelper.connectionString))
@@ -546,7 +558,7 @@ namespace DAL.DataControl.TableControl
         /// </summary>
         /// <param name="Where">限制条件</param>
         /// <returns>影响的条数</returns>
-        public static int Delete(string Where)
+        public int Delete(string Where)
         {
             int affectedRows = 0;
 
@@ -690,7 +702,7 @@ namespace DAL.DataControl.TableControl
         /// </summary>
         /// <param name="ID">项目ID</param>
         /// <param name="item">包含更新数据的对象</param>
-        public static int Update(string ID, Object item)
+        public int Update(string ID, Object item)
         {
             ProjectData projectData = (ProjectData)item;
             int affectedRows = 0;
@@ -710,7 +722,7 @@ namespace DAL.DataControl.TableControl
                                 { "ProjectState", projectData.Base.ProjectState.ToString() },
                                 { "ProjectName", projectData.Base.ProjectName },
                                 { "ProjectCategory", projectData.Base.ProjectCategory.ToString() },
-                                { "DisciplineClassificaton", projectData.Base.DisciplineClassificaton },
+                                { "DisciplineClassificaton", projectData.Base.DisciplineClassification },
                                 { "FillDate", projectData.Base.FillDate.ToString() },
                                 { "Ending", projectData.Base.Ending.ToString() },
                                 { "EndingDate", projectData.Base.EndingDate }
@@ -793,7 +805,7 @@ namespace DAL.DataControl.TableControl
         /// <param name="item">包含更新数据的对象</param>
         /// <param name="where">更新条件</param>
         /// <returns>影响的条数</returns>
-        public static int Update(Object item, String where)
+        public int Update(Object item, String where)
         {
             ProjectData projectData = (ProjectData)item;
             int affectedRows = 0;
@@ -813,7 +825,7 @@ namespace DAL.DataControl.TableControl
                                 { "ProjectState", projectData.Base.ProjectState.ToString() },
                                 { "ProjectName", projectData.Base.ProjectName },
                                 { "ProjectCategory", projectData.Base.ProjectCategory.ToString() },
-                                { "DisciplineClassificaton", projectData.Base.DisciplineClassificaton },
+                                { "DisciplineClassificaton", projectData.Base.DisciplineClassification },
                                 { "FillDate", projectData.Base.FillDate.ToString() },
                                 { "Ending", projectData.Base.Ending.ToString() },
                                 { "EndingDate", projectData.Base.EndingDate }

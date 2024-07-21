@@ -44,8 +44,9 @@
         ID="RequiredFieldValidator"
         runat="server"
         ErrorMessage="未设置"
-        Font-Strikeout="False"
+        Font-Strikeout="true"
         ControlToValidate="InputTextBox"
-        CssClass="setCharRed setCharSizeSmall program-errorBox" Font-Size="10px">
+        CssClass="setCharRed setCharSizeSmall program-errorBox" Font-Size="10px" 
+        Enabled ="false" >
     </asp:RequiredFieldValidator>
 </div>

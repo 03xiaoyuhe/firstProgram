@@ -28,7 +28,7 @@ namespace WebForm.ForDataControl
 
                 // 测试插入功能
                 ProjectData projectData = CreateDummyProjectData(); // 创建虚拟项目数据对象
-                string insertedId = ProjectControl.InseartReturnID(projectData);
+                string insertedId = (new ProjectControl()).InseartReturnID(projectData);
                 
                 this.Controls.Add(new Label()
                 {
@@ -41,12 +41,12 @@ namespace WebForm.ForDataControl
                     Text = "\nQuerying project data:"
                 });
                 this.Controls.Add(new Panel());
-                DataSet projectDataSet = ProjectControl.Select();
+                DataSet projectDataSet = (new ProjectControl()).Select(null, null, null, true, null, null);
                 PrintDataSet(projectDataSet);
                  
                 this.Controls.Add(new Panel());
                 projectData.Base.ProjectName = "Updated Project Name";
-                int updateResult = ProjectControl.Update(insertedId, projectData);
+                int updateResult = (new ProjectControl()).Update(insertedId, projectData);
                 this.Controls.Add(new Label()
                 {
                     Text = $"Update result: {updateResult}"
@@ -59,7 +59,7 @@ namespace WebForm.ForDataControl
                     Text = "\nRe-querying updated project data:"
                 });
                 this.Controls.Add(new Panel());
-                projectDataSet = ProjectControl.Select();
+                projectDataSet = (new ProjectControl()).Select(null, null, null, true, null, null);
                 PrintDataSet(projectDataSet);
 
                 // 测试删除功能
@@ -68,7 +68,7 @@ namespace WebForm.ForDataControl
                     Text = "\nDeleting project data:"
                 });
                 this.Controls.Add(new Panel());
-                int deleteResult = ProjectControl.DeleteByID(insertedId);
+                int deleteResult = (new ProjectControl()).DeleteByID(insertedId);
                 this.Controls.Add(new Label()
                 {
                     Text = $"Delete result: {deleteResult}"
@@ -81,7 +81,7 @@ namespace WebForm.ForDataControl
                     Text = "\nRe-querying project data after deletion:"
                 });
                 this.Controls.Add(new Panel());
-                projectDataSet = ProjectControl.Select();
+                projectDataSet = (new ProjectControl()).Select(null, null, null, true, null, null);
                 PrintDataSet(projectDataSet);
             }
             catch (Exception ex)
@@ -115,7 +115,7 @@ namespace WebForm.ForDataControl
                 ProjectState = 1,
                 ProjectName = "Test Project",
                 ProjectCategory = "Category",
-                DisciplineClassificaton = "Test Discipline",
+                DisciplineClassification = "Test Discipline",
                 FillDate = "2024-7-8",
                 Ending = "aaa",
                 EndingDate = "2024-7-8"
