@@ -1,5 +1,6 @@
 ﻿using DAL.DataControl.Interface;
 using DAL.DataObject.TableObject;
+using DAL.DataObject.TableObject.ProjectApart;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -103,36 +104,36 @@ namespace DAL.DataControl.ViewControl
                 if (reader.Read())
                 {
                     // 映射基础表字段
-                    projectData.Base.PB_ID = reader.GetInt32(reader.GetOrdinal("PB_ID"));
-                    projectData.Base.ProjectState = int.Parse(reader.GetString(reader.GetOrdinal("ProjectState")));
-                    projectData.Base.ProjectName = reader.GetString(reader.GetOrdinal("ProjectName"));
-                    projectData.Base.ProjectCategory = reader.GetString(reader.GetOrdinal("ProjectCategory"));
-                    projectData.Base.DisciplineClassification = reader.GetString(reader.GetOrdinal("DisciplineClassificaton"));
-                    projectData.Base.FillDate = reader.IsDBNull(reader.GetOrdinal("FillDate")) ? String.Empty : reader.GetDateTime(reader.GetOrdinal("FillDate")).ToString("yyyy-MM-dd");
-                    projectData.Base.EndingDate = reader.IsDBNull(reader.GetOrdinal("EndingDate")) ? String.Empty : reader.GetDateTime(reader.GetOrdinal("EndingDate")).ToString("yyyy-MM-dd");
-
+                    if (!reader.IsDBNull(reader.GetOrdinal("PB_ID"))) projectData.Base.PB_ID = reader.GetInt32(reader.GetOrdinal("PB_ID"));
+                    if (!reader.IsDBNull(reader.GetOrdinal("ProjectState"))) projectData.Base.ProjectState = reader.GetInt32(reader.GetOrdinal("ProjectState"));
+                    if (!reader.IsDBNull(reader.GetOrdinal("ProjectName"))) projectData.Base.ProjectName = reader.GetString(reader.GetOrdinal("ProjectName"));
+                    if (!reader.IsDBNull(reader.GetOrdinal("ProjectCategory"))) projectData.Base.ProjectCategory = reader.GetString(reader.GetOrdinal("ProjectCategory"));
+                    if (!reader.IsDBNull(reader.GetOrdinal("DisciplineClassificaton"))) projectData.Base.DisciplineClassification = reader.GetString(reader.GetOrdinal("DisciplineClassificaton"));
+                    if (!reader.IsDBNull(reader.GetOrdinal("FillDate"))) projectData.Base.FillDate = reader.IsDBNull(reader.GetOrdinal("FillDate")) ? String.Empty : reader.GetDateTime(reader.GetOrdinal("FillDate")).ToString("yyyy-MM-dd");
+                    if (!reader.IsDBNull(reader.GetOrdinal("EndingDate"))) projectData.Base.EndingDate = reader.IsDBNull(reader.GetOrdinal("EndingDate")) ? String.Empty : reader.GetDateTime(reader.GetOrdinal("EndingDate")).ToString("yyyy-MM-dd");
+                    if (!reader.IsDBNull(reader.GetOrdinal("Ending"))) projectData.Base.Ending = reader.GetString(reader.GetOrdinal("Ending"));
                     // 映射拓展表字段
-                    projectData.DemonstrationExpand.ProjectSignificance = reader.GetString(reader.GetOrdinal("ProjectSignificance"));
-                    projectData.DemonstrationExpand.ProjectDocument = reader.GetString(reader.GetOrdinal("ProjectDocument"));
-                    projectData.DemonstrationExpand.ProjectReferences = reader.GetString(reader.GetOrdinal("ProjectReferences"));
+                    if (!reader.IsDBNull(reader.GetOrdinal("ProjectSignificance"))) projectData.DemonstrationExpand.ProjectSignificance = reader.GetString(reader.GetOrdinal("ProjectSignificance"));
+                    if (!reader.IsDBNull(reader.GetOrdinal("ProjectDocument"))) projectData.DemonstrationExpand.ProjectDocument = reader.GetString(reader.GetOrdinal("ProjectDocument"));
+                    if (!reader.IsDBNull(reader.GetOrdinal("ProjectReferences"))) projectData.DemonstrationExpand.ProjectReferences = reader.GetString(reader.GetOrdinal("ProjectReferences"));
 
-                    projectData.JudgeExpand.UnitJudge = reader.GetString(reader.GetOrdinal("UnitJudge"));
-                    projectData.JudgeExpand.UnitJudgeDate = reader.IsDBNull(reader.GetOrdinal("UnitJudgeDate")) ? String.Empty : reader.GetDateTime(reader.GetOrdinal("UnitJudgeDate")).ToString("yyyy-MM-dd");
-                    projectData.JudgeExpand.ExpertJudge = reader.GetString(reader.GetOrdinal("ExpertJudge"));
-                    projectData.JudgeExpand.ExpertJudgeDate = reader.IsDBNull(reader.GetOrdinal("ExpertJudgeDate")) ? String.Empty : reader.GetDateTime(reader.GetOrdinal("ExpertJudgeDate")).ToString("yyyy-MM-dd");
-                    projectData.JudgeExpand.ApprovalOpinion = reader.GetString(reader.GetOrdinal("ApprovalOpinion"));
-                    projectData.JudgeExpand.ApprovalOpinionDate = reader.IsDBNull(reader.GetOrdinal("ApprovalOpinionDate")) ? String.Empty : reader.GetDateTime(reader.GetOrdinal("ApprovalOpinionDate")).ToString("yyyy-MM-dd");
+                    if (!reader.IsDBNull(reader.GetOrdinal("UnitJudge"))) projectData.JudgeExpand.UnitJudge = reader.GetString(reader.GetOrdinal("UnitJudge"));
+                    if (!reader.IsDBNull(reader.GetOrdinal("UnitJudgeDate"))) projectData.JudgeExpand.UnitJudgeDate = reader.IsDBNull(reader.GetOrdinal("UnitJudgeDate")) ? String.Empty : reader.GetDateTime(reader.GetOrdinal("UnitJudgeDate")).ToString("yyyy-MM-dd");
+                    if (!reader.IsDBNull(reader.GetOrdinal("ExpertJudge"))) projectData.JudgeExpand.ExpertJudge = reader.GetString(reader.GetOrdinal("ExpertJudge"));
+                    if (!reader.IsDBNull(reader.GetOrdinal("ExpertJudgeDate"))) projectData.JudgeExpand.ExpertJudgeDate = reader.IsDBNull(reader.GetOrdinal("ExpertJudgeDate")) ? String.Empty : reader.GetDateTime(reader.GetOrdinal("ExpertJudgeDate")).ToString("yyyy-MM-dd");
+                    if (!reader.IsDBNull(reader.GetOrdinal("ApprovalOpinion"))) projectData.JudgeExpand.ApprovalOpinion = reader.GetString(reader.GetOrdinal("ApprovalOpinion"));
+                    if (!reader.IsDBNull(reader.GetOrdinal("ApprovalOpinionDate"))) projectData.JudgeExpand.ApprovalOpinionDate = reader.IsDBNull(reader.GetOrdinal("ApprovalOpinionDate")) ? String.Empty : reader.GetDateTime(reader.GetOrdinal("ApprovalOpinionDate")).ToString("yyyy-MM-dd");
 
-                    projectData.ApprovalExpand.ProjectApprovalNum = reader.GetString(reader.GetOrdinal("ProjectApprovalNum"));
+                    if (!reader.IsDBNull(reader.GetOrdinal("ProjectApprovalNum"))) projectData.ApprovalExpand.ProjectApprovalNum = reader.GetString(reader.GetOrdinal("ProjectApprovalNum"));
 
-                    projectData.FinishExpansion.FinishCertificateNum = reader.GetString(reader.GetOrdinal("FinishCertificateNum"));
+                    if (!reader.IsDBNull(reader.GetOrdinal("FinishCertificateNum"))) projectData.FinishExpansion.FinishCertificateNum = reader.GetString(reader.GetOrdinal("FinishCertificateNum"));
 
-                    projectData.ChangeExpansion.ChangeState = int.Parse(reader.GetString(reader.GetOrdinal("ChangeState")));
-                    projectData.ChangeExpansion.ChangeKind = reader.GetString(reader.GetOrdinal("ChangeKind"));
-                    projectData.ChangeExpansion.AnotherChangeKind = reader.GetString(reader.GetOrdinal("AnotherChangeKind"));
-                    projectData.ChangeExpansion.ChangeDataAndReason = reader.GetString(reader.GetOrdinal("ChangeDataAndReason"));
-                    projectData.ChangeExpansion.ApplicationTime = reader.IsDBNull(reader.GetOrdinal("ApplicationTime")) ? String.Empty : reader.GetDateTime(reader.GetOrdinal("ApplicationTime")).ToString("yyyy-MM-dd");
-                    projectData.ChangeExpansion.UnitOpinion = reader.GetString(reader.GetOrdinal("UnitOpinion"));
+                    if (!reader.IsDBNull(reader.GetOrdinal("ChangeState"))) projectData.ChangeExpansion.ChangeState = int.Parse(reader.GetString(reader.GetOrdinal("ChangeState")));
+                    if (!reader.IsDBNull(reader.GetOrdinal("ChangeKind"))) projectData.ChangeExpansion.ChangeKind = reader.GetString(reader.GetOrdinal("ChangeKind"));
+                    if (!reader.IsDBNull(reader.GetOrdinal("AnotherChangeKind"))) projectData.ChangeExpansion.AnotherChangeKind = reader.GetString(reader.GetOrdinal("AnotherChangeKind"));
+                    if (!reader.IsDBNull(reader.GetOrdinal("ChangeDataAndReason"))) projectData.ChangeExpansion.ChangeDataAndReason = reader.GetString(reader.GetOrdinal("ChangeDataAndReason"));
+                    if (!reader.IsDBNull(reader.GetOrdinal("ApplicationTime"))) projectData.ChangeExpansion.ApplicationTime = reader.IsDBNull(reader.GetOrdinal("ApplicationTime")) ? String.Empty : reader.GetDateTime(reader.GetOrdinal("ApplicationTime")).ToString("yyyy-MM-dd");
+                    if (!reader.IsDBNull(reader.GetOrdinal("UnitOpinion"))) projectData.ChangeExpansion.UnitOpinion = reader.GetString(reader.GetOrdinal("UnitOpinion"));
                 }
 
                 return projectData;

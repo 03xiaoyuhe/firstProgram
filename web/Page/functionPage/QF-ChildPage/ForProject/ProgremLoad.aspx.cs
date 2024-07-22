@@ -48,49 +48,44 @@ namespace WebForm.functionPage.QF_ChildPage
             MetarnetRegex.RemoveHash();
             
 
-            MetarnetRegex.Give();
+            //MetarnetRegex.Give();
 
             list1 = new Dictionary<string, bool>();
-            list1.Add("项目负责人", true);
-            list1.Add("项目名称", true);
-            list1.Add("项目评级", true);
-            list1.Add("立项编号", true);
+            list1.Add("课题名称", true);
             list1.Add("项目类别", true);
-            list1.Add("是否符合青年项目申报条件", true);
-            list1.Add("本项目国内外研究现状述评", true);
-            list1.Add("本项目研究的主要观点", true);
-            list1.Add("前期研究成果", true);
+            list1.Add("项目状态", true);
+            list1.Add("学科分类", true);
+            list1.Add("最后成果形式", true);
             list1.Add("项目完成时间", true);
-            list1.Add("成果形式", true);
-            list1.Add("项目单位评审意见", true);
-            list1.Add("专家评审", true);
-            list1.Add("项目审批意见",true);
-            for(int i = 0; i < 13; i++)
-            {
-                list1.Add($"队员{i}", false);
-            }
+            list1.Add("填表日期", false); 
+            list1.Add("项目国内外研究现状述评，选题意义及价值", false);
+            list1.Add("项目研究的主要观点、基本思路和方法、重点难点及创新之处", false);
+            list1.Add("项目负责人和主要成员前期研究成果及主要参考文献", false);
+            list1.Add("所在单位评审意见", false);
+            list1.Add("所在单位评审意见时间", false);
+            list1.Add("专家组评审意见", false);
+            list1.Add("专家组评审意见时间", false);
+            list1.Add("审批意见", false);
+            list1.Add("审批意见时间", false);
+
 
             map1 = new Dictionary<string, string>();
-            map1.Add("项目负责人", "project_leader");
-            map1.Add("项目名称", "project_name");
-            map1.Add("项目评级", "project_level");
-            map1.Add("立项编号", "project_number");
-            map1.Add("项目类别", "project_category");
-            map1.Add("是否符合青年项目申报条件", "project_youth");
-            map1.Add("本项目国内外研究现状述评", "project_research");
-            map1.Add("本项目研究的主要观点", "project_view");
-            map1.Add("前期研究成果", "project_References");
-            map1.Add("项目完成时间", "project_time");
-            map1.Add("成果形式", "project_form");
-            map1.Add("项目单位评审意见", "project_opinion");
-            map1.Add("专家评审", "project_expert_view");
-            map1.Add("项目审批意见", "project_approval_view");
-            for (int i = 0; i < 13; i++)
-            {
-                map1.Add($"队员{i}", $"UserId{i}");
-            }
-
-
+            map1.Add("课题名称", "ProjectName");
+            map1.Add("学科分类", "DisciplineClassificaton");
+            map1.Add("项目状态", "ProjectState");
+            map1.Add("项目类别", "ProjectCategory");
+            map1.Add("填表日期", "FillDate");
+            map1.Add("最后成果形式", "Ending");
+            map1.Add("项目完成时间", "EndingDate");
+            map1.Add("项目国内外研究现状述评，选题意义及价值", "ProjectSignificance");
+            map1.Add("项目研究的主要观点、基本思路和方法、重点难点及创新之处", "ProjectDocument");
+            map1.Add("项目负责人和主要成员前期研究成果及主要参考文献", "ProjectReferences");
+            map1.Add("所在单位评审意见", "UnitJudge");
+            map1.Add("所在单位评审意见时间", "UnitJudgeDate");
+            map1.Add("专家组评审意见", "ExpertJudge");
+            map1.Add("专家组评审意见时间", "ExpertJudgeDate");
+            map1.Add("审批意见", "ApprovalOpinion");
+            map1.Add("审批意见时间", "ApprovalOpinionDate");
         }
 
 
@@ -106,7 +101,7 @@ namespace WebForm.functionPage.QF_ChildPage
         protected void Button1_Click(object sender, EventArgs e)
         {
 
-            MetarnetRegex.Give();
+            //MetarnetRegex.Give();
 
             if (FileUpload1.HasFile == false)//HasFile用来检查FileUpload是否有指定文件 choose为文件上传框ID
             {

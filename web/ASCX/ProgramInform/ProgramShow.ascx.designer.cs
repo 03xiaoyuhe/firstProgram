@@ -15,273 +15,147 @@ namespace WebForm.ASCX.ProgramInform
     {
 
         /// <summary>
-        /// ProgromNameLable 控件。
+        /// PB_ID 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ProgromNameLable;
+        protected global::WebForm.ASCX.BaseForm.ShowBoxForm PB_ID;
 
         /// <summary>
-        /// ProgromKindsLable 控件。
+        /// ProjectName 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ProgromKindsLable;
+        protected global::WebForm.ASCX.BaseForm.ShowBoxForm ProjectName;
 
         /// <summary>
-        /// ProjromAdmNameLable 控件。
+        /// ProjectState 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ProjromAdmNameLable;
+        protected global::WebForm.ASCX.BaseForm.ShowBoxForm ProjectState;
 
         /// <summary>
-        /// ProgremAdmWhereLable 控件。
+        /// ProjectCategory 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ProgremAdmWhereLable;
+        protected global::WebForm.ASCX.BaseForm.ShowBoxForm ProjectCategory;
 
         /// <summary>
-        /// ProjectFinishLable 控件。
+        /// DisciplineClassification 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ProjectFinishLable;
+        protected global::WebForm.ASCX.BaseForm.ShowBoxForm DisciplineClassification;
 
         /// <summary>
-        /// ProjectEndLable 控件。
+        /// EndingDate 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ProjectEndLable;
+        protected global::WebForm.ASCX.BaseForm.ShowBoxForm EndingDate;
 
         /// <summary>
-        /// AdmNameLable 控件。
+        /// Ending 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label AdmNameLable;
+        protected global::WebForm.ASCX.BaseForm.ShowBoxForm Ending;
 
         /// <summary>
-        /// AdmBornLable 控件。
+        /// ProjectSignificance 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label AdmBornLable;
+        protected global::WebForm.ASCX.BaseForm.ShowBoxForm ProjectSignificance;
 
         /// <summary>
-        /// AdmSexLable 控件。
+        /// ProjectDocument 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label AdmSexLable;
+        protected global::WebForm.ASCX.BaseForm.ShowBoxForm ProjectDocument;
 
         /// <summary>
-        /// AdmOrdLable 控件。
+        /// ProjectReferences 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label AdmOrdLable;
+        protected global::WebForm.ASCX.BaseForm.ShowBoxForm ProjectReferences;
 
         /// <summary>
-        /// AdmOrdNameLable 控件。
+        /// UnitJudge 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label AdmOrdNameLable;
+        protected global::WebForm.ASCX.BaseForm.ShowBoxForm UnitJudge;
 
         /// <summary>
-        /// AdmMarLable 控件。
+        /// UnitJudgeDate 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label AdmMarLable;
+        protected global::WebForm.ASCX.BaseForm.ShowBoxForm UnitJudgeDate;
 
         /// <summary>
-        /// AdmMajBestLable 控件。
+        /// ExpertJudge 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label AdmMajBestLable;
+        protected global::WebForm.ASCX.BaseForm.ShowBoxForm ExpertJudge;
 
         /// <summary>
-        /// AdmNowDoLable 控件。
+        /// ExpertJudgeDate 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label AdmNowDoLable;
+        protected global::WebForm.ASCX.BaseForm.ShowBoxForm ExpertJudgeDate;
 
         /// <summary>
-        /// AdmJobWhereLable 控件。
+        /// ApprovalOpinion 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label AdmJobWhereLable;
+        protected global::WebForm.ASCX.BaseForm.ShowBoxForm ApprovalOpinion;
 
         /// <summary>
-        /// AdmPhoneWhereLable 控件。
+        /// ApprovalOpinionDate 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label AdmPhoneWhereLable;
-
-        /// <summary>
-        /// IsYoungProjremLable 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label IsYoungProjremLable;
-
-        /// <summary>
-        /// AdmAdmPhoneLable 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label AdmAdmPhoneLable;
-
-        /// <summary>
-        /// AdmPhoneLable 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label AdmPhoneLable;
-
-        /// <summary>
-        /// AdmEmailLable 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label AdmEmailLable;
-
-        /// <summary>
-        /// LinesForProgremParter 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::WebForm.ASCX.ProgramInform.ForProgramShow.DataFormForParters LinesForProgremParter;
-
-        /// <summary>
-        /// ProjectIntroduceLable 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ProjectIntroduceLable;
-
-        /// <summary>
-        /// ProjectMainIdeaLable 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ProjectMainIdeaLable;
-
-        /// <summary>
-        /// ProjectAheadLable 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ProjectAheadLable;
-
-        /// <summary>
-        /// WhereThinkLable 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label WhereThinkLable;
-
-        /// <summary>
-        /// WhereThinkTimeLable 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label WhereThinkTimeLable;
-
-        /// <summary>
-        /// MajorThinkLable 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label MajorThinkLable;
-
-        /// <summary>
-        /// MajorThinkTimeLable 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label MajorThinkTimeLable;
-
-        /// <summary>
-        /// EndThinkLable 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label EndThinkLable;
-
-        /// <summary>
-        /// EndThinkTimeLable 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label EndThinkTimeLable;
+        protected global::WebForm.ASCX.BaseForm.ShowBoxForm ApprovalOpinionDate;
     }
 }

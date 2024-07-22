@@ -287,6 +287,8 @@ namespace WebForm.functionPage.QF_ChildPage
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            InitData();
+            LoadTable();
 
             try
             {

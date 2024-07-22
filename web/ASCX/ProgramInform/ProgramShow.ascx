@@ -1,11 +1,87 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ProgramShow.ascx.cs" Inherits="WebForm.ASCX.ProgramInform.ProgramShow" %>
 
 <%@ Register Src="./ForProgramShow/DataFormForParters.ascx" TagName="LineForProgremParter" TagPrefix="ProgremInf" %>
+<%@ Register Src="~/ASCX/BaseForm/ShowBoxForm.ascx" TagName="ShowBoxForm" TagPrefix="BaseForm" %>
+
 
 <style type="text/css">
-    .dataTable{
-        width:99%;
+    .container {
+        margin: 20px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        position: relative;
     }
+
+    .tabs {
+        display: flex;
+        cursor: pointer;
+        padding-left: 10px;
+        background-color: #f1f1f1;
+        border-bottom: 1px solid #ddd;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .tab {
+        padding: 10px 20px;
+        background-color: #ddd;
+        border: 1px solid #ddd;
+        border-bottom: none;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        margin-right: 2px;
+        position: relative;
+        top: 1px;
+    }
+
+        .tab.active {
+            background-color: #fff;
+            border-bottom: none;
+            z-index: 2;
+            top: 0;
+        }
+
+    .tab-content {
+        display: none;
+        padding: 20px;
+        padding-top: 40px;
+        border: 1px solid #ddd;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        background-color: #fff;
+        position: relative;
+        z-index: 1;
+        top: -5px;
+    }
+
+        .tab-content.active {
+            display: block;
+        }
+
+    .tabs::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 10px;
+        background-color: #fff;
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        z-index: 1;
+    }
+
+    .dataTable {
+        width: 99%;
+    }
+
     .dataDiv {
         border-radius: 5px;
         position: relative;
@@ -35,366 +111,154 @@
         }
 </style>
 
-<h2>一、基本信息</h2>
-<table class="dataTable">
-    <tr>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-    </tr>
-    <tr>
-        <td colspan="6">
-            <!-- input for 课题名称 -->
-            <div class="dataDiv">
-                <div class="descrip">课题名称</div>
-                <div class="data">
-                    <asp:Label ID="ProgromNameLable" runat="server" Text="课题名称"></asp:Label>
+<div class="container">
+    <div class="tabs">
+        <div class="tab active" data-tab="tab1">基本信息</div>
+        <div class="tab" data-tab="tab2">项目论证</div>
+        <div class="tab" data-tab="tab3">评审意见</div>
+    </div>
+    <div class="tab-content active" id="tab1">
 
-                </div>
+        <table class="dataTable">
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <!-- input for 课题名称 -->
+                    <BaseForm:ShowBoxForm runat="server" ID="PB_ID" DataHead="项目ID" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <!-- input for 课题名称 -->
+                    <BaseForm:ShowBoxForm runat="server" ID="ProjectName" DataHead="课题名称" />
+                </td>
+            </tr>
 
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="6">
-            <!-- input for 项目类别 -->
-            <div class="dataDiv">
-                <div class="descrip">项目类别</div>
-                <div class="data">
-                    <asp:Label ID="ProgromKindsLable" runat="server" Text="项目类别"></asp:Label>
+            <tr>
+                <td colspan="6">
+                    <!-- input for 项目状态 -->
+                    <BaseForm:ShowBoxForm runat="server" ID="ProjectState" DataHead="项目状态" />
+                </td>
+            </tr>
 
-                </div>
+            <tr>
+                <td colspan="6">
+                    <!-- input for 项目类别 -->
+                    <BaseForm:ShowBoxForm runat="server" ID="ProjectCategory" DataHead="项目类别" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <!-- input for 学科分类 -->
+                    <BaseForm:ShowBoxForm runat="server" ID="DisciplineClassification" DataHead="学科分类" />
+                </td>
+            </tr>
 
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="6">
-            <!-- input for 项目负责人 -->
-            <div class="dataDiv">
-                <div class="descrip">项目负责人</div>
-                <div class="data">
-                    <asp:Label ID="ProjromAdmNameLable" runat="server" Text="项目负责人"></asp:Label>
+            <tr>
+                <td colspan="3">
+                    <!-- input for 项目完成时间 -->
+                    <BaseForm:ShowBoxForm runat="server" ID="EndingDate" DataHead="项目完成时间" />
+                </td>
+                <td colspan="3">
+                    <!-- input for 最后成果形式 -->
+                    <BaseForm:ShowBoxForm runat="server" ID="Ending" DataHead="最后成果形式" />
+                </td>
+            </tr>
 
-                </div>
+        </table>
+    </div>
+    <div class="tab-content" id="tab2">
 
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="6">
-            <!-- input for 负责人所在单位 -->
-            <div class="dataDiv">
-                <div class="descrip">负责人所在单位</div>
-                <div class="data">
-                    <asp:Label ID="ProgremAdmWhereLable" runat="server" Text="负责人所在单位"></asp:Label>
+        <table class="dataTable">
+            <tr>
+                <td colspan="6">
+                    <!-- input for 本项目国内外研究现状述评、选题意义和价值。限 1200 字以内 -->
+                    <BaseForm:ShowBoxForm runat="server" ID="ProjectSignificance" DataHead="项目国内外研究现状述评，选题意义及价值" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <!-- input for 本项目研究的主要观点，基本思路和方法、重点、难点及创新之处。限 2000 字以内 -->
 
-                </div>
+                    <BaseForm:ShowBoxForm runat="server" ID="ProjectDocument" DataHead="项目研究的主要观点、基本思路和方法、重点难点及创新之处" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <!-- input for 项目负责人和主要成员前期研究成果及参考文献。限填20项 -->
+                    <BaseForm:ShowBoxForm runat="server" ID="ProjectReferences" DataHead="项目负责人和主要成员前期研究成果及主要参考文献" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="tab-content" id="tab3">
+        <table class="dataTable">
+            <tr>
+                <td>
+                    <!-- input for 项目负责人所在单位审核意见(本栏由申请人所在单位根据申报要求，认真审核后进行填写，电子版申请书可不盖公章 -->
 
-            </div>
-        </td>
-    </tr>
+                    <BaseForm:ShowBoxForm runat="server" ID="UnitJudge" DataHead="所在单位评审意见" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <!-- input for 项目负责人所在单位审核意见(本栏由申请人所在单位根据申报要求，认真审核后进行填写，电子版申请书可不盖公章 -->
 
-    <tr>
-        <td colspan="3">
-            <!-- input for 项目完成时间 -->
-            <div class="dataDiv">
-                <div class="descrip">项目完成时间</div>
-                <div class="data">
-                    <asp:Label ID="ProjectFinishLable" runat="server" Text="项目完成时间"></asp:Label>
+                    <BaseForm:ShowBoxForm runat="server" ID="UnitJudgeDate" DataHead="所在单位评审意见时间" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <!-- input for 专家组评审意见 -->
+                    <BaseForm:ShowBoxForm runat="server" ID="ExpertJudge" DataHead="专家组评审意见" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <!-- input for 专家组评审意见 -->
+                    <BaseForm:ShowBoxForm runat="server" ID="ExpertJudgeDate" DataHead="专家组评审意见时间" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <!-- input for 审批意见 -->
+                    <BaseForm:ShowBoxForm runat="server" ID="ApprovalOpinion" DataHead="审批意见" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <!-- input for 审批意见 -->
+                    <BaseForm:ShowBoxForm runat="server" ID="ApprovalOpinionDate" DataHead="审批意见时间" />
+                </td>
+            </tr>
+        </table>
 
-                </div>
 
-            </div>
-        </td>
-        <td colspan="3">
-            <!-- input for 最后成果形式 -->
-            <div class="dataDiv">
-                <div class="descrip">最后成果形式</div>
-                <div class="data">
-                    <asp:Label ID="ProjectEndLable" runat="server" Text="最后成果形式"></asp:Label>
+    </div>
+</div>
 
-                </div>
 
-            </div>
-        </td>
-    </tr>
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
 
-</table>
-<h2>二、项目负责人基本信息</h2>
-<table class="dataTable">
-    <tr>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-    </tr>
-    <tr>
-        <td colspan="2">
-            <!--input for 姓名-->
-            <div class="dataDiv">
-                <div class="descrip">姓名</div>
-                <div class="data">
-                    <asp:Label ID="AdmNameLable" runat="server" Text="姓名"></asp:Label>
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function () {
+                tabs.forEach(item => item.classList.remove('active'));
+                tabContents.forEach(item => item.classList.remove('active'));
 
-                </div>
-
-            </div>
-        </td>
-        <td colspan="2">
-            <!-- input for 出生年月 -->
-            <div class="dataDiv">
-                <div class="descrip">出生年月</div>
-                <div class="data">
-                    <asp:Label ID="AdmBornLable" runat="server" Text="出生年月"></asp:Label>
-
-                </div>
-
-            </div>
-        </td>
-        <td colspan="2">
-            <!-- input for 性别 -->
-            <div class="dataDiv">
-                <div class="descrip">性别</div>
-                <div class="data">
-                    <asp:Label ID="AdmSexLable" runat="server" Text="性别"></asp:Label>
-
-                </div>
-
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2">
-            <!-- input for 职务 -->
-            <div class="dataDiv">
-                <div class="descrip">职务</div>
-                <div class="data">
-                    <asp:Label ID="AdmOrdLable" runat="server" Text="职务"></asp:Label>
-
-                </div>
-
-            </div>
-        </td>
-        <td colspan="2">
-            <!-- input for 职称 -->
-            <div class="dataDiv">
-                <div class="descrip">职称</div>
-                <div class="data">
-                    <asp:Label ID="AdmOrdNameLable" runat="server" Text="职称"></asp:Label>
-
-                </div>
-
-            </div>
-        </td>
-        <td colspan="2">
-            <!-- input for 专业 -->
-            <div class="dataDiv">
-                <div class="descrip">专业</div>
-                <div class="data">
-                    <asp:Label ID="AdmMarLable" runat="server" Text="专业"></asp:Label>
-
-                </div>
-
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="3">
-            <!-- input for 研究专长 -->
-            <div class="dataDiv">
-                <div class="descrip">研究专长</div>
-                <div class="data">
-                    <asp:Label ID="AdmMajBestLable" runat="server" Text="研究专长"></asp:Label>
-
-                </div>
-
-            </div>
-        </td>
-        <td colspan="3">
-            <!-- input for 现从事专业 -->
-            <div class="dataDiv">
-                <div class="descrip">现从事专业</div>
-                <div class="data">
-                    <asp:Label ID="AdmNowDoLable" runat="server" Text="现从事专业"></asp:Label>
-
-                </div>
-
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="6">
-            <!-- input for 工作单位 -->
-            <div class="dataDiv">
-                <div class="descrip">工作单位</div>
-                <div class="data">
-                    <asp:Label ID="AdmJobWhereLable" runat="server" Text="工作单位"></asp:Label>
-
-                </div>
-
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="3">
-            <!-- input for 通信地址 -->
-            <div class="dataDiv">
-                <div class="descrip">通信地址</div>
-                <div class="data">
-                    <asp:Label ID="AdmPhoneWhereLable" runat="server" Text="通信地址"></asp:Label>
-
-                </div>
-
-            </div>
-        </td>
-        <td colspan="3">
-            <!-- input for 是否符合青年项目申报条件 -->
-            <div class="dataDiv">
-                <div class="descrip">是否符合青年项目申报条件</div>
-                <div class="data">
-                    <asp:Label ID="IsYoungProjremLable" runat="server" Text="是否符合青年项目申报条件"></asp:Label>
-
-                </div>
-
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="3">
-            <!-- input for 办公个电话 -->
-            <div class="dataDiv">
-                <div class="descrip">办公个电话</div>
-                <div class="data">
-
-                    <asp:Label ID="AdmAdmPhoneLable" runat="server" Text="办公个电话"></asp:Label>
-                </div>
-
-            </div>
-        </td>
-        <td colspan="3">
-            <!-- input for 手机 -->
-            <div class="dataDiv">
-                <div class="descrip">手机</div>
-                <div class="data">
-
-                    <asp:Label ID="AdmPhoneLable" runat="server" Text="手机"></asp:Label>
-                </div>
-
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="6">
-            <!-- input for 电子邮箱 -->
-            <div class="dataDiv">
-                <div class="descrip">电子邮箱</div>
-                <div class="data">
-
-                    <asp:Label ID="AdmEmailLable" runat="server" Text="电子邮箱"></asp:Label>
-                </div>
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="6">
-            <lable style="font-size: large; font-weight: bolder;">项目主要参加人</lable>
-        </td>
-    </tr>
-</table>
-
-<!-- 用于放置项目成员信息 -->
-<ProgremInf:LineForProgremParter runat="server" ID="LinesForProgremParter"></ProgremInf:LineForProgremParter>
-<h2>三、项目论证</h2>
-<table class="dataTable">
-    <tr>
-        <td colspan="6">
-            <!-- input for 本项目国内外研究现状述评、选题意义和价值。限 1200 字以内 -->
-            <div class="dataDiv">
-                <div class="descrip">本项目国内外研究现状述评、选题意义和价值。限 1200 字以内</div>
-                <div class="data">
-                    <asp:Label ID="ProjectIntroduceLable" runat="server" Text="本项目国内外研究现状述评、选题意义和价值。限 1200 字以内"></asp:Label>
-                </div>
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="6">
-            <!-- input for 本项目研究的主要观点，基本思路和方法、重点、难点及创新之处。限 2000 字以内 -->
-            <div class="dataDiv">
-                <div class="descrip">本项目研究的主要观点，基本思路和方法、重点、难点及创新之处。限 2000 字以内</div>
-                <div class="data">
-                    <asp:Label ID="ProjectMainIdeaLable" runat="server" Text="本项目研究的主要观点，基本思路和方法、重点、难点及创新之处。限 2000 字以内"></asp:Label>
-                </div>
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="6">
-            <!-- input for 项目负责人和主要成员前期研究成果及参考文献。限填20项 -->
-            <div class="dataDiv">
-                <div class="descrip">项目负责人和主要成员前期研究成果及参考文献。限填20项</div>
-                <div class="data">
-                    <asp:Label ID="ProjectAheadLable" runat="server" Text="项目负责人和主要成员前期研究成果及参考文献。限填20项"></asp:Label>
-                </div>
-
-            </div>
-        </td>
-    </tr>
-</table>
-<h2>四、评审意见</h2>
-<table class="dataTable">
-    <tr>
-        <td>
-            <!-- input for 项目负责人所在单位审核意见(本栏由申请人所在单位根据申报要求，认真审核后进行填写，电子版申请书可不盖公章 -->
-            <div class="dataDiv">
-                <div class="descrip">项目负责人所在单位审核意见(本栏由申请人所在单位根据申报要求，认真审核后进行填写，电子版申请书可不盖公章</div>
-                <div class="data">
-                    <asp:Label ID="WhereThinkLable" runat="server" Text="项目负责人所在单位审核意见(本栏由申请人所在单位根据申报要求，认真审核后进行填写，电子版申请书可不盖公章"></asp:Label>
-                </div>
-                <div class="time">
-                    <!-- 时间 -->
-                    <asp:Label ID="WhereThinkTimeLable" runat="server" Text="年--月--日"></asp:Label>
-                </div>
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <!-- input for 专家组评审意见 -->
-            <div class="dataDiv">
-                <div class="descrip">专家组评审意见</div>
-                <div class="data">
-                    <asp:Label ID="MajorThinkLable" runat="server" Text="专家组评审意见"></asp:Label>
-                </div>
-                <div class="time">
-                    <!-- 时间 -->
-                    <asp:Label ID="MajorThinkTimeLable" runat="server" Text="年--月--日"></asp:Label>
-                </div>
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <!-- input for 审批意见 -->
-            <div class="dataDiv">
-                <div class="descrip">审批意见</div>
-                <div class="data">
-
-                    <asp:Label ID="EndThinkLable" runat="server" Text="审批意见"></asp:Label>
-                </div>
-                <div class="time">
-                    <!-- 时间 -->
-                    <asp:Label ID="EndThinkTimeLable" runat="server" Text="年--月--日"></asp:Label>
-                </div>
-
-            </div>
-        </td>
-    </tr>
-</table>
+                this.classList.add('active');
+                document.getElementById(this.dataset.tab).classList.add('active');
+            });
+        });
+    });
+    </script>
 

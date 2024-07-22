@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.Linq;
 
 namespace DAL.DataControl.TableControl
@@ -553,6 +554,25 @@ namespace DAL.DataControl.TableControl
             return affectedRows;
         }
 
+        public int ExecuteSql(string sql, SqlConnection connection)
+        {
+
+            // 删除 ProjectBase 表中的数据
+
+            using (SqlCommand cmd = new SqlCommand(sql, connection))
+            {
+                try
+                {
+                    int rows = cmd.ExecuteNonQuery();
+                    return rows;
+                }
+                catch (System.Data.SqlClient.SqlException e)
+                {
+                    throw e;
+                }
+            }
+        }
+
         /// <summary>
         /// 删除符合Where语句条件的数据项
         /// </summary>
@@ -566,33 +586,43 @@ namespace DAL.DataControl.TableControl
             {
                 conn.Open();
                 // 创建一个事务对象，通过事务操作保证删除的可靠性
-                using (SqlTransaction trans = conn.BeginTransaction())
+                using (SqlCommand cmd = new SqlCommand())
                 {
+                    cmd.Connection = conn;
+                    SqlTransaction tx = conn.BeginTransaction();
+                    cmd.Transaction = tx;
                     try
                     {
-                        // 删除 ProjectBase 表中的数据
-                        affectedRows += DBHelper.ExecuteSql(BuildDeleteSQL("ProjectBase", Where));
 
                         // 删除 ProjectDemonstrationExpand 表中的数据
-                        affectedRows += DBHelper.ExecuteSql(BuildDeleteSQL("ProjectDemonstrationExpand", Where));
+                        cmd.CommandText = BuildDeleteSQL("ProjectDemonstrationExpand", Where);
+                        affectedRows += cmd.ExecuteNonQuery();
 
                         // 删除 ProjectJudgeExpand 表中的数据
-                        affectedRows += DBHelper.ExecuteSql(BuildDeleteSQL("ProjectJudgeExpand", Where));
+                        cmd.CommandText = BuildDeleteSQL("ProjectJudgeExpand", Where);
+                        affectedRows += cmd.ExecuteNonQuery();
 
                         // 删除 ProjectApprovalExpand 表中的数据
-                        affectedRows += DBHelper.ExecuteSql(BuildDeleteSQL("ProjectApprovalExpand", Where));
+                        cmd.CommandText = BuildDeleteSQL("ProjectApprovalExpand", Where);
+                        affectedRows += cmd.ExecuteNonQuery();
 
                         // 删除 ProjectFinishExpansion 表中的数据
-                        affectedRows += DBHelper.ExecuteSql(BuildDeleteSQL("ProjectFinishExpansion", Where));
+                        cmd.CommandText = BuildDeleteSQL("ProjectFinishExpansion", Where);
+                        affectedRows += cmd.ExecuteNonQuery();
 
                         // 删除 ProjectChangeExpansion 表中的数据
-                        affectedRows += DBHelper.ExecuteSql(BuildDeleteSQL("ProjectChangeExpansion", Where));
+                        cmd.CommandText = BuildDeleteSQL("ProjectChangeExpansion", Where);
+                        affectedRows += cmd.ExecuteNonQuery();
 
-                        trans.Commit();
+                        // 删除 基础数据内容
+                        cmd.CommandText = BuildDeleteSQL("ProjectBase", Where);
+                        affectedRows += cmd.ExecuteNonQuery();
+
+                        tx.Commit();
                     }
                     catch
                     {
-                        trans.Rollback();
+                        tx.Rollback();
                         throw;
                     }
                 }

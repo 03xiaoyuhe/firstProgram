@@ -96,6 +96,8 @@ namespace Models.PageDataSor
             int cellCount = 0;//列数
             int rowCount = 0;//行数
             int ErroRowCount = 0;
+
+
             //判断文件是否存在
             fs = new FileStream(InputExcelPath, FileMode.Open, FileAccess.Read);
             FileStream errofs = new FileStream(ErroPutExcelPath, FileMode.Create, FileAccess.ReadWrite);
@@ -112,6 +114,7 @@ namespace Models.PageDataSor
 
             sheet = workbook.GetSheetAt(0);
             ISheet erroSheet = erroworkbook.CreateSheet("erroSheet");
+
             if (sheet != null)
             {
                 List<string> DataHead = new List<string>();
@@ -223,7 +226,7 @@ namespace Models.PageDataSor
             }
             using (errofs)
             {
-                erroworkbook.Write(errofs);//向打开的这个xls文件中写入数据  
+                erroworkbook.Write(errofs);//向打开的这个xls文件中写入数据
             }
 
             // 关闭文件解除资源占用

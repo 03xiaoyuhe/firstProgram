@@ -5,7 +5,8 @@
 
 
 <!-- D:\______myProgram\哲学与社会科学规划项目信息化管理平台\firstProgram\web\ASCX\BaseForm\InputBoxForm.ascx -->
-<style type="text/css">.container {
+<style type="text/css">
+    .container {
             margin: 20px;
             border-radius: 10px;
             overflow: hidden;

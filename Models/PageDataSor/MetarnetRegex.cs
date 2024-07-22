@@ -11,6 +11,7 @@ using DAL;
 using System.Collections;
 using NPOI.XSSF.Streaming.Values;
 using System.Linq.Expressions;
+using DAL.DataControl.ViewControl;
 
 namespace Models.PageDataSor
 {
@@ -49,17 +50,18 @@ namespace Models.PageDataSor
 
             //CacheGenericity<List<string>>.Data["立项编号"]  = new List<string>();
             
-            DataSet rowAfforts = DAL.DBHelper.Query("select project_number from ProjectApplications");
-            DataTable dt = rowAfforts.Tables[0];
-            //int count = 0;
-            foreach(DataRow item in dt.Rows)
-            {
-                hashset.Add(item[0].ToString());
-                //CacheGenericity<List<string>>.Data["立项编号"].Add(item[0].ToString());
-                //lists.Add(item[0].ToString());
-                //hashtable.Add(count,item[0].ToString());
-                //count++;
-            }
+            //DataSet rowAfforts = (new ProjectViewContron()).Select(new List<string>() { });
+            
+            //DataTable dt = rowAfforts.Tables[0];
+            ////int count = 0;
+            //foreach(DataRow item in dt.Rows)
+            //{
+            //    hashset.Add(item[0].ToString());
+            //    //CacheGenericity<List<string>>.Data["立项编号"].Add(item[0].ToString());
+            //    //lists.Add(item[0].ToString());
+            //    //hashtable.Add(count,item[0].ToString());
+            //    //count++;
+            //}
         }
 
 

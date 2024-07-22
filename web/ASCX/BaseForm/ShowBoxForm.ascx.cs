@@ -25,6 +25,7 @@ namespace WebForm.ASCX.BaseForm
             }
             set
             {
+                if (value == null || value == string.Empty || value == "") { value = "无数据"; }
                 dataHead = value;
                 DataHeadLable.Text = value;
             }

@@ -54,7 +54,7 @@ namespace WebForm.functionPage.QF_ChildPage
 
         protected void clearAll()
         {
-
+            ProgremInf.ClearAll();
         }
     }
 }

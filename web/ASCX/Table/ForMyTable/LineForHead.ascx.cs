@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using DAL.DataControl.TableControl;
+using Models;
 using Models.PageDataSor;
 using Models.PageDataSor.ForMyTable;
 using System;
@@ -174,13 +175,14 @@ namespace WebForm.ASCX.Table
             {
                 foreach (string item in choosedDataIDContain.ChoosedIDs)
                 {
-                    if (!DAL.ProjectCompletion.DeleteInfor(item))
+                    if (
+                        !(
+                        (new ProjectControl()).Delete(ProjectControl.BuildWhereClause(new Dictionary<string, string>(){{ "PB_ID",item }}))>=1
+                        )
+                       )
                     {
                         Massage massage1 = new Massage();
-                        DataSet dataSet = DAL.DBHelper.Query("select project_number from ProjectApplications where project_id = " + item + ";");
-                        DataTable dataTable = dataSet.Tables[0];
-                        DataRow dataRow = dataTable.Rows[0];
-                        massage1.MassageText = "立项编号为：" + dataRow[0].ToString() + "的项目删除失败！";
+                        massage1.MassageText = "项目ID为：" + item + "的项目删除失败！";
                         massage1.HeadColor = "Red";
                         massage1.HeadText = "ERROR";
                         massage1.PostMassage();

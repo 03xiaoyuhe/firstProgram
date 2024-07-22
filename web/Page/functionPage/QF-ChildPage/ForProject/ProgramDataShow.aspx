@@ -55,8 +55,7 @@
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
-        <div style="width: 90%; margin: 0 auto;">
-            <div class="fs-1">项目信息</div>
+        <div style="width: 100%; margin: 0 auto;">
             
 
             <div style="width:100%;height:490px;overflow:auto;">

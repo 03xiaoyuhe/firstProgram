@@ -19,6 +19,33 @@ namespace WebForm.ASCX.ProgramInform
 
         }
 
+        public void ClearAll()
+        {
+            InputForProjectName.InputData = string.Empty;
+            InputForProjectState.InputData = string.Empty;
+            InputForProjectCategory.InputData = string.Empty;
+            InputForDisciplineClassification.InputData = string.Empty;
+            InputForEnding.InputData = string.Empty;
+            InputForEndingDate.InputData = string.Empty;
+
+
+
+
+            InputForProjectSignificance.InputData = string.Empty;
+            InputForProjectDocument.InputData = string.Empty;
+            InputForProjectReferences.InputData = string.Empty;
+
+
+
+            InputForUnitJudge.InputData = string.Empty;
+            InputForUnitJudgeDate.InputData = string.Empty;
+            InputForExpertJudge.InputData = string.Empty;
+            InputForExpertJudgeDate.InputData = string.Empty;
+            InputForApprovalOpinion.InputData = string.Empty;
+            InputForApprovalOpinionDate.InputData = string.Empty;
+
+        }
+
         #region 网站数据
 
         public ProjectData ProjectData

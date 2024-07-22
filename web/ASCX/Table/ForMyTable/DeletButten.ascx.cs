@@ -36,9 +36,9 @@ namespace WebForm.ASCX.Table
 
         protected void DetailButton_Click(object sender, EventArgs e)
         {
-
-
-
+            // G:\01____资源管理\______myProgram\哲学与社会科学规划项目信息化管理平台\firstProgram\web\Page\functionPage\QF-ChildPage\ForProject\ProgramDataShow.aspx
+            string gotoURL = "~/Page/functionPage/QF-ChildPage/ForProject/ProgramDataShow.aspx?tablename=" + TableName + "&idlable=" + IDLable + "&id=" + DataID;
+            Response.Redirect(gotoURL);
         }
     }
 }
