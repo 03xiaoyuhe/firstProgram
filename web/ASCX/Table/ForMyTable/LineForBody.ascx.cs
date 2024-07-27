@@ -197,10 +197,14 @@ namespace WebForm.ASCX.Table
         protected void Page_Load(object sender, EventArgs e)
         {
             CellHolder.Controls.Clear();
-            checkBox.DataID = RowID;
-            checkBox.Text = "";
-            checkBox.ChoosedDataID = ChoosedDataID;
             checkBox.Visible = ShowCheck;
+            checkBox.IsAble = ShowCheck;
+            if (ShowCheck)
+            {
+                checkBox.DataID = RowID;
+                checkBox.Text = "";
+                checkBox.ChoosedDataID = ChoosedDataID;
+            }
 
             for (int i = 0; i < ColumnNum; i++)
             {

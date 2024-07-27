@@ -1,4 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -7,8 +10,95 @@ namespace DAL.DataControl
     /// <summary>
     /// 数据访问基类，用于提供数据访问基础的功能，如各种格式检测
     /// </summary>
-    public class DataBaseControl
+    public abstract class  DataBaseControl
     {
+        /// <summary>
+        /// 单例，数据库连接对象
+        /// </summary>
+        private SqlConnection sqlConnection;
+
+        /// <summary>
+        /// 创建数据库连接对象，单例模型
+        /// </summary>
+        /// <returns>返回数据库连接对象</returns>
+        public SqlConnection GetSqlConnection()
+        {
+            if(sqlConnection == null) sqlConnection = new SqlConnection(DBHelper.connectionString);
+            return sqlConnection;
+        }
+
+        /// <summary>
+        /// 打开数据库链接
+        /// </summary>
+        public void OpenSqlConnection()
+        {
+            if (sqlConnection.State != ConnectionState.Open)
+                sqlConnection.Open();
+        }
+
+        /// <summary>
+        /// 关闭数据库链接
+        /// </summary>
+        public void CloseSqlConnection()
+        {
+            if (sqlConnection.State != ConnectionState.Closed)
+                sqlConnection.Close();
+        }
+
+        public int ExecuteSQL(SqlTransaction sqlTransaction, string sql, List<SqlParameter> sqlParameters)
+        {
+            SqlCommand cmd = sqlConnection.CreateCommand();
+            cmd.CommandText = sql;
+            cmd.Parameters.Clear();
+            foreach(SqlParameter sqlParameter in sqlParameters)
+            {
+                cmd.Parameters.Add(sqlParameter);
+            }
+            if (sqlTransaction != null)
+                cmd.Transaction = sqlTransaction;
+            return cmd.ExecuteNonQuery();
+        }
+
+
+        /// <summary>
+        /// 采用事务方式执行一组SQL语句，返回是否执行成功
+        /// </summary>
+        /// <param name="SQLs">一组SQL语句</param>
+        /// <returns>是否执行成功</returns>
+        public bool ExecuteGroupSQL(List<string> SQLs)
+        {
+
+            using (SqlConnection conn = new SqlConnection(DBHelper.connectionString))
+            {
+                conn.Open();
+
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+
+                    // 创建一个事务对象，通过事务操作保证可靠性
+                    SqlTransaction trans = conn.BeginTransaction(); // 开启事务操作
+
+                    cmd.Transaction = trans; // 将事务绑定到cmd上
+
+                    for (int i = 0; i < SQLs.Count; i++)
+                    {
+                        try
+                        {
+                            cmd.CommandText = SQLs[i];
+                            cmd.ExecuteNonQuery();
+                        }
+                        catch
+                        {
+                            trans.Rollback();
+                            return false;
+                        }
+                    }
+                    trans.Commit();
+                    return true;
+                }
+            }
+        }
+
         #region 数据检查
 
         /// <summary>
@@ -64,6 +154,8 @@ namespace DAL.DataControl
 
 
         #endregion
+
+
 
         #region 构建where子句
 

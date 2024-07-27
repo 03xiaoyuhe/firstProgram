@@ -1,12 +1,13 @@
-﻿namespace DAL.DataObject.TableObject.ProjectApart
+﻿using System;
+using System.Collections.Generic;
+
+namespace DAL.DataObject.TableObject.ProjectApart
 {
     public class ProjectDemonstrationExpand : DataObjectBase
     {
-
         public override bool IsEmpty()
         {
             if (
-                //DE_ID == 0 &&
                 PB_ID == 0 &&
                 ProjectSignificance == string.Empty &&
                 ProjectDocument == string.Empty &&
@@ -20,20 +21,6 @@
 
         #region 属性及字段
 
-        //int dE_ID;
-
-        //public int DE_ID
-        //{
-        //    get
-        //    {
-        //        return dE_ID;
-        //    }
-        //    set
-        //    {
-        //        dE_ID = value;
-        //    }
-        //}
-
         int pB_ID;
         /// <summary>
         /// 项目 ID
@@ -42,6 +29,15 @@
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "PB_ID");
+                    if (Data != null)
+                    {
+                        return int.Parse(Data.ToString());
+                    }
+                    else return 0;
+                }
                 return pB_ID;
             }
             set
@@ -49,7 +45,6 @@
                 pB_ID = value;
             }
         }
-
 
         string projectSignificance;
         /// <summary>
@@ -59,6 +54,15 @@
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "ProjectSignificance");
+                    if (Data != null)
+                    {
+                        return Data.ToString();
+                    }
+                    else return String.Empty;
+                }
                 if (projectSignificance == null) projectSignificance = string.Empty;
                 return projectSignificance;
             }
@@ -76,6 +80,15 @@
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "ProjectDocument");
+                    if (Data != null)
+                    {
+                        return Data.ToString();
+                    }
+                    else return String.Empty;
+                }
                 if (projectDocument == null) projectDocument = string.Empty;
                 return projectDocument;
             }
@@ -93,6 +106,15 @@
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "ProjectReferences");
+                    if (Data != null)
+                    {
+                        return Data.ToString();
+                    }
+                    else return String.Empty;
+                }
                 if (projectReferences == null) projectReferences = string.Empty;
                 return projectReferences;
             }
@@ -101,7 +123,6 @@
                 projectReferences = value;
             }
         }
-
 
         #endregion
     }

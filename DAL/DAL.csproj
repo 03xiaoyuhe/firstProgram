@@ -178,6 +178,7 @@
     <Compile Include="DataObject\TableObject\ProjectApart\ProjectFinishExpansion.cs" />
     <Compile Include="DataObject\TableObject\ProjectApart\ProjectJudgeExpand.cs" />
     <Compile Include="DataObject\TableObject\ProjectData.cs" />
+    <Compile Include="DataTableHelper.cs" />
     <Compile Include="DBHelper.cs" />
     <Compile Include="ForSelect.cs" />
     <Compile Include="PageApart.cs" />

@@ -367,15 +367,15 @@
                                                 onclick="addProgram(this)">快速添加</a></li>
                                         <li><a href="#"
                                                 class="link-body-emphasis d-inline-flex text-decoration-none rounded"
-                                                onclick="programLoad(this)">申报项目</a></li>
-                                        <li><a href="#"
+                                                onclick="programLoad(this)">批量导入</a></li>
+                                        <%--<li><a href="#"
                                                 class="link-body-emphasis d-inline-flex text-decoration-none rounded"
                                              onclick="OngoingProjectLoadPage()">在研项目</a>
                                         </li>
                                         <li><a href="#"
                                                 class="link-body-emphasis d-inline-flex text-decoration-none rounded"
                                              onclick="EndingProjectLoadPage()">结项项目</a>
-                                        </li>
+                                        </li>--%>
                                     </ul>
                                 </div>
                             </li>

@@ -1,11 +1,13 @@
-﻿namespace DAL.DataObject.TableObject.ProjectApart
+﻿using System;
+using System.Collections.Generic;
+
+namespace DAL.DataObject.TableObject.ProjectApart
 {
     public class ProjectFinishExpansion : DataObjectBase
     {
         public override bool IsEmpty()
         {
             if (
-                //PF_ID == 0 &&
                 PB_ID == 0 &&
                 FinishCertificateNum == string.Empty
                )
@@ -17,22 +19,6 @@
 
         #region 属性与字段
 
-        //int pF_ID;
-        ///// <summary>
-        ///// 信息ID
-        ///// </summary>
-        //public int PF_ID
-        //{
-        //    get
-        //    {
-        //        return pF_ID;
-        //    }
-        //    set
-        //    {
-        //        pF_ID = value;
-        //    }
-        //}
-
         int pB_ID;
         /// <summary>
         /// 项目ID
@@ -41,6 +27,15 @@
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "PB_ID");
+                    if (Data != null)
+                    {
+                        return int.Parse(Data.ToString());
+                    }
+                    else return 0;
+                }
                 return pB_ID;
             }
             set
@@ -57,6 +52,15 @@
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "FinishCertificateNum");
+                    if (Data != null)
+                    {
+                        return Data.ToString();
+                    }
+                    else return String.Empty;
+                }
                 if (finishCertificateNum == null) finishCertificateNum = string.Empty;
                 return finishCertificateNum;
             }
@@ -67,6 +71,5 @@
         }
 
         #endregion
-
     }
 }

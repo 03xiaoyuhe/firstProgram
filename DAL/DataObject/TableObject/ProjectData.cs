@@ -1,4 +1,5 @@
 ﻿using DAL.DataObject.TableObject.ProjectApart;
+using System.Data;
 
 namespace DAL.DataObject.TableObject
 {
@@ -7,6 +8,36 @@ namespace DAL.DataObject.TableObject
     /// </summary>
     public class ProjectData : DataObjectBase
     {
+        public new DataObjectState State
+        {
+            get { return base.State; }
+            set
+            {
+                base.State = value;
+                Base.State = value;
+                DemonstrationExpand.State = value;
+                JudgeExpand.State = value;
+                ApprovalExpand.State = value;
+                FinishExpansion.State = value;
+                ChangeExpansion.State = value;
+            }
+        }
+        public new DataTable DataTable
+        {
+            get { return base.DataTable; }
+            set
+            {
+                base.DataTable = value;
+                Base.DataTable = value;
+                DemonstrationExpand.DataTable = value;
+                JudgeExpand.DataTable = value;
+                ApprovalExpand.DataTable = value;
+                FinishExpansion.DataTable = value;
+                ChangeExpansion.DataTable = value;
+            }
+        }
+
+
         public override bool IsEmpty()
         {
             // 基础数据为空，项目数据即为空，因为基础数据不可省略

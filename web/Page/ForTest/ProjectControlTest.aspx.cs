@@ -28,7 +28,7 @@ namespace WebForm.ForDataControl
 
                 // 测试插入功能
                 ProjectData projectData = CreateDummyProjectData(); // 创建虚拟项目数据对象
-                string insertedId = (new ProjectControl()).InseartReturnID(projectData);
+                string insertedId = (new ProjectControl()).InseartReturnID(null, projectData);
                 
                 this.Controls.Add(new Label()
                 {
@@ -46,7 +46,7 @@ namespace WebForm.ForDataControl
                  
                 this.Controls.Add(new Panel());
                 projectData.Base.ProjectName = "Updated Project Name";
-                int updateResult = (new ProjectControl()).Update(insertedId, projectData);
+                int updateResult = (new ProjectControl()).Update(null, insertedId, projectData);
                 this.Controls.Add(new Label()
                 {
                     Text = $"Update result: {updateResult}"
@@ -68,7 +68,7 @@ namespace WebForm.ForDataControl
                     Text = "\nDeleting project data:"
                 });
                 this.Controls.Add(new Panel());
-                int deleteResult = (new ProjectControl()).DeleteByID(insertedId);
+                int deleteResult = (new ProjectControl()).DeleteByID(null, insertedId);
                 this.Controls.Add(new Label()
                 {
                     Text = $"Delete result: {deleteResult}"

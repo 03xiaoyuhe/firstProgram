@@ -693,11 +693,11 @@ namespace DAL
             {
                 throw e;
             }
-            //  finally
-            //  {
-            //  cmd.Dispose();
-            //  connection.Close();
-            //  }
+            finally
+            {
+                cmd.Dispose();
+                connection.Close();
+            }
 
 
         }

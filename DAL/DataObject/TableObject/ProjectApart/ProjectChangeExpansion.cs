@@ -8,7 +8,6 @@ namespace DAL.DataObject.TableObject.ProjectApart
         public override bool IsEmpty()
         {
             if (
-                //PC_ID == 0 &&
                 PB_ID == 0 &&
                 ChangeState == 0 &&
                 ChangeKind == string.Empty &&
@@ -20,26 +19,10 @@ namespace DAL.DataObject.TableObject.ProjectApart
             {
                 return true;
             }
-            return false;
+            else return false;
         }
 
         #region 属性及字段
-
-        //int pC_ID;
-        ///// <summary>
-        ///// 信息ID
-        ///// </summary>
-        //public int PC_ID
-        //{
-        //    get
-        //    {
-        //        return this.pC_ID;
-        //    }
-        //    set
-        //    {
-        //        this.pC_ID = value;
-        //    }
-        //}
 
         int pB_ID;
         /// <summary>
@@ -49,11 +32,20 @@ namespace DAL.DataObject.TableObject.ProjectApart
         {
             get
             {
-                return this.pB_ID;
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "PB_ID");
+                    if (Data != null)
+                    {
+                        return int.Parse(Data.ToString());
+                    }
+                    else return 0;
+                }
+                return pB_ID;
             }
             set
             {
-                this.pB_ID = value;
+                pB_ID = value;
             }
         }
 
@@ -65,11 +57,20 @@ namespace DAL.DataObject.TableObject.ProjectApart
         {
             get
             {
-                return this.changeState;
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "ChangeState");
+                    if (Data != null)
+                    {
+                        return int.Parse(Data.ToString());
+                    }
+                    else return 0;
+                }
+                return changeState;
             }
             set
             {
-                this.changeState = value;
+                changeState = value;
             }
         }
 
@@ -81,9 +82,22 @@ namespace DAL.DataObject.TableObject.ProjectApart
         {
             get
             {
-                return this.changeKind;
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "ChangeKind");
+                    if (Data != null)
+                    {
+                        return Data.ToString();
+                    }
+                    else return String.Empty;
+                }
+                if (changeKind == null) changeKind = string.Empty;
+                return changeKind;
             }
-            set { this.changeKind = value; }
+            set
+            {
+                changeKind = value;
+            }
         }
 
         string anotherChangeKind;
@@ -94,12 +108,21 @@ namespace DAL.DataObject.TableObject.ProjectApart
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "AnotherChangeKind");
+                    if (Data != null)
+                    {
+                        return Data.ToString();
+                    }
+                    else return String.Empty;
+                }
                 if (anotherChangeKind == null) anotherChangeKind = string.Empty;
-                return this.anotherChangeKind;
+                return anotherChangeKind;
             }
             set
             {
-                this.anotherChangeKind = value;
+                anotherChangeKind = value;
             }
         }
 
@@ -111,6 +134,15 @@ namespace DAL.DataObject.TableObject.ProjectApart
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "ChangeDataAndReason");
+                    if (Data != null)
+                    {
+                        return Data.ToString();
+                    }
+                    else return String.Empty;
+                }
                 if (changeDataAndReason == null) changeDataAndReason = string.Empty;
                 return changeDataAndReason;
             }
@@ -128,6 +160,15 @@ namespace DAL.DataObject.TableObject.ProjectApart
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "ApplicationTime");
+                    if (Data != null)
+                    {
+                        return Data.ToString();
+                    }
+                    else return String.Empty;
+                }
                 if (applicationTime == null) applicationTime = string.Empty;
                 return applicationTime;
             }
@@ -145,6 +186,15 @@ namespace DAL.DataObject.TableObject.ProjectApart
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "UnitOpinion");
+                    if (Data != null)
+                    {
+                        return Data.ToString();
+                    }
+                    else return String.Empty;
+                }
                 if (unitOpinion == null) unitOpinion = string.Empty;
                 return unitOpinion;
             }
@@ -184,7 +234,6 @@ namespace DAL.DataObject.TableObject.ProjectApart
         //    {8,"撤销项目" },
         //};
 
-        #endregion 
-
+        #endregion
     }
 }

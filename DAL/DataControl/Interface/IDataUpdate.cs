@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 
 namespace DAL.DataControl.Interface
 {
@@ -33,7 +34,7 @@ namespace DAL.DataControl.Interface
         /// <param name="ID">指定的数据ID</param>
         /// <param name="Item">要替换的内容</param>
         /// <returns>影响的条数</returns>
-        int Update(string ID, Object Item);
+        int Update(SqlTransaction sqlTransaction, string ID, Object Item);
 
         ///// <summary>
         ///// 提供一个将所有符合Where语句的记录的指定字段替换为指定内容的功能
@@ -63,7 +64,7 @@ namespace DAL.DataControl.Interface
         /// <param name="Item">要替换的内容</param>
         /// <param name="Where">限制条件</param>
         /// <returns>影响的条数</returns>
-        int Update(Object Item, String Where);
+        int Update(SqlTransaction sqlTransaction, Object Item, String Where);
 
     }
 }

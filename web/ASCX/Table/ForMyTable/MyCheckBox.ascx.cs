@@ -12,21 +12,25 @@ namespace WebForm.ASCX.Table.ForMyTable
 {
     public partial class MyCheckBox : UserControl
     {
+        public bool IsAble = true;
         protected void Page_Load(object sender, EventArgs e)
         {
-            ChoosedDataIDContain choosedDataIDContain = new ChoosedDataIDContain();
-            choosedDataIDContain.ID = ChoosedDataID;
-            if (choosedDataIDContain.Contains(DataID))
+            if(IsAble)
             {
-                CheckBox1.Checked = true;
-            }
-            else
-            {
-                CheckBox1.Checked = false;
-            }
+                ChoosedDataIDContain choosedDataIDContain = new ChoosedDataIDContain();
+                choosedDataIDContain.ID = ChoosedDataID;
+                if (choosedDataIDContain.Contains(DataID))
+                {
+                    CheckBox1.Checked = true;
+                }
+                else
+                {
+                    CheckBox1.Checked = false;
+                }
 
-            CheckBox1.CheckedChanged += CheckedChanged; 
-            CheckBox1.CheckedChanged += eventHandler;
+                CheckBox1.CheckedChanged += CheckedChanged;
+                CheckBox1.CheckedChanged += eventHandler;
+            }
         }
 
         public EventHandler eventHandler;

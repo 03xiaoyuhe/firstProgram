@@ -177,7 +177,7 @@ namespace WebForm.ASCX.Table
                 {
                     if (
                         !(
-                        (new ProjectControl()).Delete(ProjectControl.BuildWhereClause(new Dictionary<string, string>(){{ "PB_ID",item }}))>=1
+                        (new ProjectControl()).Delete(null, ProjectControl.BuildWhereClause(new Dictionary<string, string>(){{ "PB_ID",item }}))>=1
                         )
                        )
                     {

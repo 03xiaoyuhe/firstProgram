@@ -38,6 +38,15 @@ namespace DAL.DataObject.TableObject.ProjectApart
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "PB_ID");
+                    if (Data != null)
+                    {
+                        return int.Parse(Data.ToString());
+                    }
+                    else return 0;
+                }
                 return pB_ID;
             }
             set
@@ -54,6 +63,15 @@ namespace DAL.DataObject.TableObject.ProjectApart
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "ProjectState");
+                    if (Data != null)
+                    {
+                        return ProjectStateMeanToInt[Data.ToString()];
+                    }
+                    else return 0;
+                }
                 return projectState;
             }
             set
@@ -70,6 +88,15 @@ namespace DAL.DataObject.TableObject.ProjectApart
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "ProjectName");
+                    if ( Data != null )
+                    {
+                        return Data.ToString();
+                    }
+                    else return String.Empty;
+                }
                 if (projectName == null) projectName = string.Empty;
                 return projectName;
             }
@@ -87,6 +114,16 @@ namespace DAL.DataObject.TableObject.ProjectApart
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "ProjectCategory");
+                    if (Data != null)
+                    {
+                        return Data.ToString();
+                    }
+                    else return String.Empty;
+                }
+                if (projectCategory == null) projectCategory = string.Empty;
                 return projectCategory;
             }
             set
@@ -103,6 +140,15 @@ namespace DAL.DataObject.TableObject.ProjectApart
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "DisciplineClassificaton");
+                    if (Data != null)
+                    {
+                        return Data.ToString();
+                    }
+                    else return String.Empty;
+                }
                 if (disciplineClassification == null) disciplineClassification = string.Empty;
                 return disciplineClassification;
             }
@@ -120,6 +166,15 @@ namespace DAL.DataObject.TableObject.ProjectApart
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "FillDate");
+                    if (Data != null)
+                    {
+                        return Data.ToString();
+                    }
+                    else return String.Empty;
+                }
                 if (fillDate == null) fillDate = String.Empty;
                 return fillDate;
             }
@@ -137,6 +192,15 @@ namespace DAL.DataObject.TableObject.ProjectApart
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "Ending");
+                    if (Data != null)
+                    {
+                        return Data.ToString();
+                    }
+                    else return String.Empty;
+                }
                 return ending;
             }
             set
@@ -153,6 +217,15 @@ namespace DAL.DataObject.TableObject.ProjectApart
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "EndingDate");
+                    if (Data != null)
+                    {
+                        return Data.ToString();
+                    }
+                    else return String.Empty;
+                }
                 if (endingDate == null) endingDate = string.Empty;
                 return endingDate;
             }

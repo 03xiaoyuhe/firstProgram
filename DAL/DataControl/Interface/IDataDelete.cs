@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.SqlClient;
 
 namespace DAL.DataControl.Interface
 {
@@ -9,14 +10,14 @@ namespace DAL.DataControl.Interface
         /// </summary>
         /// <param name="ID">指定的ID</param>
         /// <returns>影响的条数</returns>
-        int DeleteByID(string ID);
+        int DeleteByID(SqlTransaction sqlTransaction, string ID);
 
         /// <summary>
         /// 删除符合Where语句条件的数据项
         /// </summary>
         /// <param name="Where">限制条件</param>
         /// <returns>影响的条数</returns>
-        int Delete(String Where);
+        int Delete(SqlTransaction sqlTransaction, String Where);
 
     }
 }

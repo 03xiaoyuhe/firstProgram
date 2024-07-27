@@ -22,7 +22,7 @@ namespace WebForm.functionPage.QF_ChildPage
         {
             try
             {
-                (new ProjectControl()).Inseart(ProgremInf.ProjectData);
+                (new ProjectControl()).Inseart(null, ProgremInf.ProjectData);
                 {
 
                     clearAll();

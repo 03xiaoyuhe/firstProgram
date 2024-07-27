@@ -1,34 +1,23 @@
-﻿namespace DAL.DataObject.TableObject.ProjectApart
+﻿using System;
+using System.Collections.Generic;
+
+namespace DAL.DataObject.TableObject.ProjectApart
 {
     public class ProjectApprovalExpand : DataObjectBase
     {
         public override bool IsEmpty()
         {
             if (
-                //PA_ID == 0 &&
                 PB_ID == 0 &&
-                ProjectApprovalNum == ""
+                ProjectApprovalNum == string.Empty
                 )
-                return false;
-            return true;
+            {
+                return true;
+            }
+            else return false;
         }
 
-        #region 属性与字段
-
-        // 信息 ID 是未知的
-        //int pA_ID;
-
-        //public int PA_ID
-        //{
-        //    get
-        //    {
-        //        return pA_ID;
-        //    }
-        //    set
-        //    {
-        //        pA_ID = value;
-        //    }
-        //}
+        #region 属性及字段
 
         int pB_ID;
         /// <summary>
@@ -38,6 +27,15 @@
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "PB_ID");
+                    if (Data != null)
+                    {
+                        return int.Parse(Data.ToString());
+                    }
+                    else return 0;
+                }
                 return pB_ID;
             }
             set
@@ -54,6 +52,15 @@
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "ProjectApprovalNum");
+                    if (Data != null)
+                    {
+                        return Data.ToString();
+                    }
+                    else return String.Empty;
+                }
                 if (projectApprovalNum == null) projectApprovalNum = string.Empty;
                 return projectApprovalNum;
             }
@@ -62,7 +69,6 @@
                 projectApprovalNum = value;
             }
         }
-
 
         #endregion
     }

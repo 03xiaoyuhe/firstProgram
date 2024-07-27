@@ -1,4 +1,6 @@
 ﻿using DAL;
+using DAL.DataControl.TableControl;
+using DAL.DataObject.TableObject;
 using Models;
 using Models.DataRowToClass;
 using Models.ErroModels;
@@ -6,6 +8,7 @@ using Models.PageDataSor;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
+using Spire.Xls;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -92,10 +95,6 @@ namespace WebForm.functionPage.QF_ChildPage
         protected void Page_Unload(object sender, EventArgs e)
         {
 
-            if (File.Exists(ErroFilePath))
-            {
-                File.Delete(ErroFilePath);
-            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -133,6 +132,57 @@ namespace WebForm.functionPage.QF_ChildPage
                 DataTable loadDataTable = excelRead.LoadExcel(out ErroRowCount);
                 File.Delete(savePath);
 
+                ProjectData projectData = new ProjectData();
+                projectData.DataTable = loadDataTable;
+                projectData.State = DAL.DataObject.DataObjectState.PraiseDateTableToData;
+                for(int i = 0; i <  loadDataTable.Rows.Count; i++)
+                {
+                    projectData.RowIndex = i;
+                    (new ProjectControl()).Inseart(null, projectData);
+                }
+
+
+                #region 导入结果显示页
+
+
+                List<string> list = new List<string>();
+                list.Add("ProjectName");
+                list.Add("ProjectState");
+                list.Add("ProjectCategory");
+                list.Add("DisciplineClassification");
+                list.Add("Ending");
+                list.Add("EndingDate");
+
+                Dictionary<string, string> map = new Dictionary<string, string>();
+                map.Add("ProjectName", "项目名称");
+                map.Add("ProjectState", "项目状态");
+                map.Add("ProjectCategory", "学科分类");
+                map.Add("DisciplineClassification", "学科分类");
+                map.Add("Ending", "最后成果形式");
+                map.Add("EndingDate", "项目完成时间");
+
+                TableAttribute tableAttribute = new TableAttribute(
+                    "PB_ID",
+                    "项目信息",
+                    map,
+                    list
+                    );
+
+
+                MyTable NewLine = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
+                NewLine.TableBase = tableAttribute;
+                NewLine.DataCollection = loadDataTable;
+                NewLine.Height = 480;
+                NewLine.TableName = "ProjectApplications";
+                NewLine.ShowControl = false;
+                NewLine.ControlASCX = "~/ASCX/Table/ForMyTable/DeletButten.ascx";
+                NewLine.ShowCheck = false;
+                PlaceHolder2.Controls.Clear();
+                PlaceHolder2.Controls.Add(NewLine);
+
+
+                #endregion
+
                 if (ErroRowCount > 0)
                 {
                     Massage massage = new Massage();
@@ -141,290 +191,15 @@ namespace WebForm.functionPage.QF_ChildPage
                     massage.MassageText = $"共{ErroRowCount}行数据无法导入，请点击下载错误数据行文件，查看并修改。";
                     massage.PostMassage();
                 }
-
-
-                for (int i = 0; i < loadDataTable.Rows.Count; i++)
+                else
                 {
-                    DataRow dl = loadDataTable.Rows[i];
-                    ProgressProject progressProject = new ProgressProject();
-                    progressProject.DataRow = dl;
-
-
-                    //判断是否是使用id插入
-                    if (MetarnetRegex.IsNotNagtive(progressProject.ProUser))
-                    {
-                        //if (
-                        //!DAL.ProjectCompletion.KindsInsert(
-                        //     progressProject.ProUser,
-                        //     progressProject.ProName, //dl["project_name"].ToString(), 
-                        //     progressProject.ProLevel, //dl["project_level"].ToString(),
-                        //     progressProject.ProNumber, //dl["project_number"].ToString(),
-                        //     progressProject.ProCategory, //dl["project_category"].ToString(),
-                        //     progressProject.ProYouth,                //dl["project_youth"].ToString(),
-                        //     progressProject.ProResearch,                //dl["project_research"].ToString(),
-                        //     progressProject.ProView,                //dl["project_view"].ToString(),
-                        //     progressProject.ProReferences,                 //dl["project_References"].ToString(),
-                        //     progressProject.ProTime,                 //dl["project_time"].ToString(),
-                        //     progressProject.ProForm,                 //dl["project_form"].ToString(),
-                        //     progressProject.ProOpinion,                 //dl["project_opinion"].ToString(),
-                        //     progressProject.ProExpert,                  //dl["project_expert_view"].ToString(),
-                        //     progressProject.ProApproval                  //dl["project_approval_view"].ToString()
-                        //     ))
-                        if(!DAL.ProjectCompletion.KidsInfor(
-                            progressProject.ProUser,
-                             progressProject.ProName, //dl["project_name"].ToString(), 
-                             progressProject.ProLevel, //dl["project_level"].ToString(),
-                             progressProject.ProNumber, //dl["project_number"].ToString(),
-                             progressProject.ProCategory, //dl["project_category"].ToString(),
-                             progressProject.ProYouth,                //dl["project_youth"].ToString(),
-                             progressProject.ProResearch,                //dl["project_research"].ToString(),
-                             progressProject.ProView,                //dl["project_view"].ToString(),
-                             progressProject.ProReferences,                 //dl["project_References"].ToString(),
-                             progressProject.ProTime,                 //dl["project_time"].ToString(),
-                             progressProject.ProForm,                 //dl["project_form"].ToString(),
-                             progressProject.ProOpinion,                 //dl["project_opinion"].ToString(),
-                             progressProject.ProExpert,                  //dl["project_expert_view"].ToString(),
-                             progressProject.ProApproval,
-                             progressProject.PartersInform
-                             ))              //dl["project))
-                        {
-                            Models.Massage massage = new Massage();
-                            //massage.NO = "1";
-                            massage.HeadColor = "Red";
-                            massage.HeadText = "ERROR";
-                            massage.MassageText = "第" + i + "插入异常，可能数据依然不符合要求，请仔细检查该行数据并尝试重新插入";
-                            massage.PostMassage();
-                        }
-                        else
-                        {
-                            // 加载导入预览
-                            List<string> list = new List<string>();
-                            list.Add("project_name");
-                            list.Add("project_level");
-                            list.Add("project_number");
-                            list.Add("project_category");
-                            list.Add("project_youth");
-                            list.Add("project_time");
-                            list.Add("project_form");
-
-                            Dictionary<string, string> map = new Dictionary<string, string>();
-                            map.Add("project_name", "项目名称");
-                            map.Add("project_level", "项目评级");
-                            map.Add("project_number", "立项编号");
-                            map.Add("project_category", "项目类别");
-                            map.Add("project_youth", "是否符合青年项目申报条件");
-                            map.Add("project_time", "项目完成时间");
-                            map.Add("project_form", "成果形式");
-
-                            TableAttribute tableAttribute = new TableAttribute(
-                                "project_number",
-                                "项目信息",
-                                map,
-                                list
-                                );
-
-                            MyTable NewLine = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
-                            NewLine.TableBase = tableAttribute;
-                            NewLine.DataCollection = loadDataTable;
-                            NewLine.TableName = "ProjectApplications";
-                            PlaceHolder2.Controls.Clear();
-                            PlaceHolder2.Controls.Add(NewLine);
-                        }
-                    }
-
-                    //使用姓名插入 progressProject.ProUser值为姓名
-                    DataSet dataSet = DAL.DBHelper.Query("select Id,UseName,UserDate,UserSex,UserPosition from UserInfor where UseName = '" + progressProject.ProUser + "';");
-                    DataTable dt = dataSet.Tables[0];
-
-                    int rowAfforts = dt.Rows.Count;
-
-                    if (rowAfforts == 0)
-                    {
-                        Models.Massage massage = new Massage();
-                        massage.HeadColor = "Red";
-                        massage.HeadText = "ERROR";
-                        massage.MassageText = "该负责人未导入信息，请检查填入的负责人姓名是否正确";
-                        massage.PostMassage();
-                    }
-
-                    //检查出不重名信息，因为只有一行，所以直接添加到项目表中
-                    else if (rowAfforts == 1)
-                    {
-                        DataSet dataId = DAL.DBHelper.Query("select Id from UserInfor where UseName ='" + progressProject.ProUser + "';");
-                        DataTable ds = dataId.Tables[0];
-                        DataRow dataRow = ds.Rows[0];
-                        string leaderId = dataRow[0].ToString();
-
-                        //if (
-                        //!DAL.ProjectCompletion.KindsInsert(
-                        //     leaderId,
-                        //     progressProject.ProName, //dl["project_name"].ToString(), 
-                        //     progressProject.ProLevel, //dl["project_level"].ToString(),
-                        //     progressProject.ProNumber, //dl["project_number"].ToString(),
-                        //     progressProject.ProCategory, //dl["project_category"].ToString(),
-                        //     progressProject.ProYouth,                //dl["project_youth"].ToString(),
-                        //     progressProject.ProResearch,                //dl["project_research"].ToString(),
-                        //     progressProject.ProView,                //dl["project_view"].ToString(),
-                        //     progressProject.ProReferences,                 //dl["project_References"].ToString(),
-                        //     progressProject.ProTime,                 //dl["project_time"].ToString(),
-                        //     progressProject.ProForm,                 //dl["project_form"].ToString(),
-                        //     progressProject.ProOpinion,                 //dl["project_opinion"].ToString(),
-                        //     progressProject.ProExpert,                  //dl["project_expert_view"].ToString(),
-                        //     progressProject.ProApproval                  //dl["project_approval_view"].ToString()
-                        //     ))
-                        if (!DAL.ProjectCompletion.KidsInfor(
-                             leaderId,
-                             progressProject.ProName, //dl["project_name"].ToString(), 
-                             progressProject.ProLevel, //dl["project_level"].ToString(),
-                             progressProject.ProNumber, //dl["project_number"].ToString(),
-                             progressProject.ProCategory, //dl["project_category"].ToString(),
-                             progressProject.ProYouth,                //dl["project_youth"].ToString(),
-                             progressProject.ProResearch,                //dl["project_research"].ToString(),
-                             progressProject.ProView,                //dl["project_view"].ToString(),
-                             progressProject.ProReferences,                 //dl["project_References"].ToString(),
-                             progressProject.ProTime,                 //dl["project_time"].ToString(),
-                             progressProject.ProForm,                 //dl["project_form"].ToString(),
-                             progressProject.ProOpinion,                 //dl["project_opinion"].ToString(),
-                             progressProject.ProExpert,                  //dl["project_expert_view"].ToString(),
-                             progressProject.ProApproval,
-                             progressProject.PartersInform
-                             ))
-                        {
-                            Models.Massage massage = new Massage();
-                            massage.HeadColor = "Red";
-                            massage.HeadText = "ERROR";
-                            massage.MassageText = "第" + i + "插入异常，可能数据依然不符合要求，请仔细检查该行数据并尝试重新插入";
-                            massage.PostMassage();
-                        }
-                        // 加载导入预览
-                        List<string> list = new List<string>();
-                        list.Add("project_name");
-                        list.Add("project_level");
-                        list.Add("project_number");
-                        list.Add("project_category");
-                        list.Add("project_youth");
-                        list.Add("project_time");
-                        list.Add("project_form");
-
-                        Dictionary<string, string> map = new Dictionary<string, string>();
-                        map.Add("project_name", "项目名称");
-                        map.Add("project_level", "项目评级");
-                        map.Add("project_number", "立项编号");
-                        map.Add("project_category", "项目类别");
-                        map.Add("project_youth", "是否符合青年项目申报条件");
-                        map.Add("project_time", "项目完成时间");
-                        map.Add("project_form", "成果形式");
-
-                        TableAttribute tableAttribute = new TableAttribute(
-                            "project_number",
-                            "项目信息",
-                            map,
-                            list
-                            );
-
-                        MyTable NewLine = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
-                        NewLine.TableBase = tableAttribute;
-                        NewLine.DataCollection = loadDataTable;
-                        NewLine.TableName = "ProjectApplications";
-                        PlaceHolder2.Controls.Clear();
-                        PlaceHolder2.Controls.Add(NewLine);
-
-                    }
-                    else if(rowAfforts > 1)
-                    {
-                       
-
-                        //将重名信息加载到PlaceHolder1
-                        List<string> listInfor = new List<string>();
-                        listInfor.Add("Id");
-                        listInfor.Add("UseName");
-                        listInfor.Add("UserDate");
-                        listInfor.Add("UserSex");
-                        listInfor.Add("UserPosition");
-                        
-
-                        Dictionary<string, string> mapInfor = new Dictionary<string, string>();
-                        mapInfor.Add("Id", "用户编号");
-                        mapInfor.Add("UseName", "姓名");
-                        mapInfor.Add("UserDate", "生日");
-                        mapInfor.Add("UserSex", "性别");
-                        mapInfor.Add("UserPosition", "职务");
-                        
-
-                        TableAttribute tableAttribute1 = new TableAttribute(
-                            "Id",
-                            "重名信息",
-                            mapInfor,
-                            listInfor
-                            );
-
-                        MyTable NewLine1 = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
-                        NewLine1.TableBase = tableAttribute1;
-                        NewLine1.DataCollection = dt;
-                        NewLine1.Height = 400;
-                        NewLine1.TableName = "UserInfor";
-                        PlaceHolder1.Controls.Clear();
-                        PlaceHolder1.Controls.Add(NewLine1);
-
-                        Massage massage = new Massage();
-                        massage.MassageText = "有重名的信息，请您检查核对需要插入的具体是哪位，并使用编号进行再次插入";
-                        massage.HeadText = "WANNING";
-                        massage.HeadColor = "Orange";
-                        massage.PostMassage();
-                    }
-                    
-
-
-
+                    Massage massage = new Massage();
+                    massage.HeadColor = "blue";
+                    massage.HeadText = "Success";
+                    massage.MassageText = $"导入完成";
+                    massage.PostMassage();
                 }
-
-
-
-
-                //// 加载导入预览
-                //List<string> list = new List<string>();
-                //list.Add("project_name");
-                //list.Add("project_level");
-                //list.Add("project_number");
-                //list.Add("project_category");
-                //list.Add("project_youth");
-                //list.Add("project_time");
-                //list.Add("project_form");
-
-                //Dictionary<string, string> map = new Dictionary<string, string>();
-                //map.Add("project_name", "项目名称");
-                //map.Add("project_level", "项目评级");
-                //map.Add("project_number", "立项编号");
-                //map.Add("project_category", "项目类别");
-                //map.Add("project_youth", "是否符合青年项目申报条件");
-                //map.Add("project_time", "项目完成时间");
-                //map.Add("project_form", "成果形式");
-
-                //TableAttribute tableAttribute = new TableAttribute(
-                //    "project_number",
-                //    "项目信息",
-                //    map,
-                //    list
-                //    );
-
-                //MyTable NewLine = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
-                //NewLine.TableBase = tableAttribute;
-                //NewLine.DataCollection = loadDataTable;
-                //NewLine.Height = 400;
-                //NewLine.TableName = "ProjectApplications";
-                //PlaceHolder2.Controls.Clear();
-                //PlaceHolder2.Controls.Add(NewLine);
-
-
-
-                
-
-
-
                 System.IO.File.Delete(savePath);
-
-
-
             }
             catch(LineAbsentException erro)
             {

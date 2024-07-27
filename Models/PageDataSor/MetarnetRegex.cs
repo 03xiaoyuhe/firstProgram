@@ -94,7 +94,7 @@ namespace Models.PageDataSor
             
             switch (Kinds)
             {
-                case "项目名称":
+                case "课题名称":
                     if (Data.Length < 50)
                     {
                         return "Success";
@@ -117,10 +117,16 @@ namespace Models.PageDataSor
                     {
                         return "Success";
                     }
-                     
-                
+
+                case "项目状态":
+                    if (Data == "申报" || Data == "在研" || Data == "结项" || Data == "结项" || Data == "结项")
+                    {
+                        return "Success";
+                    }
+                    else return "(只能为\"申报\"、\"在研\"、\"结项\"、\"结项\"、\"结项\"，中的一项)";
+
                 case "项目类别":
-                    if(Data.Length > 50)
+                    if (Data.Length > 50)
                     {
                         return $"(项目类别长度过长，最多可输入50个字){Data}";
                     }
@@ -128,7 +134,27 @@ namespace Models.PageDataSor
                     {
                         return "Success";
                     }
-                     
+
+                case "学科分类":
+                    if (Data.Length > 50)
+                    {
+                        return $"(学科分类长度过长，最多可输入50个字){Data}";
+                    }
+                    else
+                    {
+                        return "Success";
+                    }
+
+                case "最后成果形式":
+                    if (Data.Length > 50)
+                    {
+                        return $"(最后成果形式长度过长，最多可输入50个字){Data}";
+                    }
+                    else
+                    {
+                        return "Success";
+                    }
+
                 case "是否符合青年项目申报条件":
                     if (Data.Length != 1)
                     {
@@ -174,7 +200,12 @@ namespace Models.PageDataSor
                         return "Success";
                     }
                      
+
                 case "项目完成时间":
+                case "填表日期":
+                case "专家组评审意见时间":
+                case "审批意见时间":
+                case "所在单位评审意见时间":
                     try
                     {
                         DateTime.Parse(ExcelDateToSQLDate(Data));
@@ -193,18 +224,23 @@ namespace Models.PageDataSor
                     else{
                         return "Success";
                     }
-                     
-                case "项目单位评审意见":
-                    if(Data.Length > 500)
+
+                case "项目国内外研究现状述评，选题意义及价值":
+                case "项目研究的主要观点、基本思路和方法、重点难点及创新之处":
+                case "项目负责人和主要成员前期研究成果及主要参考文献":
+                    if (Data.Length > 1200)
                     {
-                        return $"(填写过长，请控制在500字以内){Data}";
+                        return $"(填写过长，请控制在1200字以内){Data}";
                     }
                     else
                     {
                         return "Success";
                     }
-                     
-                case "专家评审":
+
+
+                case "所在单位评审意见":
+                case "审批意见":
+                case "专家组评审意见":
                     if (Data.Length > 500)
                     {
                         return $"(填写过长，请控制在500字以内){Data}";
@@ -213,16 +249,7 @@ namespace Models.PageDataSor
                     {
                         return "Success";
                     }
-                     
-                case "项目审批意见":
-                    if (Data.Length > 500)
-                    {
-                        return $"(填写过长，请控制在500字以内){Data}";
-                    }
-                    else
-                    {
-                        return "Success";
-                    }
+
                      
                 case "立项编号":
                     if (Data.Length != 12)
@@ -447,7 +474,7 @@ namespace Models.PageDataSor
 
 
 
-            return $"(系统出现异常请联系工作人员){Data}"; 
+            return $"(系统出现异常请联系工作人员){Data}";
         }
 
 

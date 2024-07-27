@@ -232,6 +232,7 @@ namespace WebForm.ASCX.Table
             NewHead.ShowCheck = ShowCheck;
             // 初始化本表所有ID
             HashSet<string> AllDataID = new HashSet<string>();
+            if(ShowCheck)
             for (int i = 0; i < RowsCount; i++)
             {
                 AllDataID.Add(DataCollection.Rows[i][TableBase.IDLable].ToString());
