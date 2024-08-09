@@ -6,7 +6,7 @@
         {
             if (
                 //PE_ID == 0 &&
-                PB_ID == 0 &&
+                PEB_ID == 0 &&
                 PE_Major == string.Empty &&
                 PE_Speciality == string.Empty &&
                 PE_Engage == string.Empty &&
@@ -44,7 +44,7 @@
         /// <summary>
         /// 人员信息表ID
         /// </summary>
-        public int PB_ID
+        public int PEB_ID
         {
             get
             {

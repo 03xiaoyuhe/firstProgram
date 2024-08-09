@@ -6,12 +6,12 @@
         {
             if (
                 //PB_ID == 0 &&
-                PB_Name == string.Empty &&
-                PB_Sex == string.Empty &&
-                PB_Birthday == string.Empty &&
-                PB_Job == string.Empty &&
-                PB_Title == string.Empty &&
-                PB_Employer == string.Empty
+                PEB_Name == string.Empty &&
+                PEB_Sex == string.Empty &&
+                PEB_Birthday == string.Empty &&
+                PEB_Job == string.Empty &&
+                PEB_Title == string.Empty &&
+                PEB_Employer == string.Empty
                 )
             {
                 return true;
@@ -28,7 +28,7 @@
         /// <summary>
         /// 信息ID
         /// </summary>
-        public int PB_ID
+        public int PEB_ID
         {
             get
             {
@@ -43,7 +43,7 @@
         /// <summary>
         /// 姓名
         /// </summary>
-        public string PB_Name
+        public string PEB_Name
         {
             get
             {
@@ -60,7 +60,7 @@
         /// <summary>
         /// 性别
         /// </summary>
-        public string PB_Sex
+        public string PEB_Sex
         {
             get
             {
@@ -77,7 +77,7 @@
         /// <summary>
         /// 生日
         /// </summary>
-        public string PB_Birthday
+        public DateTime PEB_Birthday
         {
             get
             {
@@ -94,7 +94,7 @@
         /// <summary>
         /// 职务
         /// </summary>
-        public string PB_Job
+        public string PEB_Job
         {
             get
             {
@@ -111,7 +111,7 @@
         /// <summary>
         /// 职称
         /// </summary>
-        public string PB_Title
+        public string PEB_Title
         {
             get
             {
@@ -128,7 +128,7 @@
         /// <summary>
         /// 工作单位
         /// </summary>
-        public string PB_Employer
+        public string PEB_Employer
         {
             get
             {
