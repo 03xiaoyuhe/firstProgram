@@ -11,7 +11,7 @@ namespace DAL.DataControl.TableControl
     /// <summary>
     /// 人员信息访问类，用于执行对人员信息数据的查询、插入、删除和更新操作。
     /// </summary>
-    public class PeopleDataAccess : DataBaseControl, IDataSelect, IDataInseart, IDataDelete, IDataUpdate
+    public class PeopleDataAccess : DataBaseControl, IDataSelect, IDataInsert, IDataDelete, IDataUpdate
     {
         private readonly string _connectionString;
 
@@ -178,7 +178,7 @@ namespace DAL.DataControl.TableControl
         /// 插入指定内容。
         /// </summary>
         /// <param name="item">插入的指定表的数据对象。</param>
-        public void Inseart(SqlTransaction sqlTransaction, object item)
+        public void Insert(SqlTransaction sqlTransaction, object item)
         {
             if (item is PeopleData peopleData)
             {
@@ -221,7 +221,7 @@ namespace DAL.DataControl.TableControl
         /// </summary>
         /// <param name="item">插入的指定表的数据对象。</param>
         /// <returns>数据的 ID。</returns>
-        public string InseartReturnID(SqlTransaction sqlTransaction, object item)
+        public string InsertReturnID(SqlTransaction sqlTransaction, object item)
         {
             if (item is PeopleData peopleData)
             {

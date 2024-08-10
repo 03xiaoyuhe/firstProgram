@@ -3,7 +3,7 @@ using System.Data.SqlClient;
 
 namespace DAL.DataControl.Interface
 {
-    public interface IDataInseart
+    public interface IDataInsert
     {
         /// <summary>
         /// 插入指定内容
@@ -24,13 +24,13 @@ namespace DAL.DataControl.Interface
         /// </summary>
         /// <param name="Item">插入的指定表的数据对象</param>
         /// <returns></returns>
-        void Inseart(SqlTransaction sqlTransaction, Object Item);
+        void Insert(SqlTransaction sqlTransaction, Object Item);
 
         /// <summary>
         /// 插入指定内容，并返回插入数据的ID
         /// </summary>
         /// <param name="Item">插入的指定表的数据对象</param>
         /// <returns>数据的ID</returns>
-        string InseartReturnID(SqlTransaction sqlTransaction, Object Item);
+        string InsertReturnID(SqlTransaction sqlTransaction, Object Item);
     }
 }

@@ -77,7 +77,7 @@
         /// <summary>
         /// 生日
         /// </summary>
-        public DateTime PEB_Birthday
+        public string PEB_Birthday
         {
             get
             {

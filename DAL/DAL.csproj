@@ -158,7 +158,7 @@
     <Compile Include="DataBase\SpliteBase.cs" />
     <Compile Include="DataControl\DataBaseControl.cs" />
     <Compile Include="DataControl\Interface\IDataDelete.cs" />
-    <Compile Include="DataControl\Interface\IDataInseart.cs" />
+    <Compile Include="DataControl\Interface\IDataInsert.cs" />
     <Compile Include="DataControl\Interface\IDataSelect.cs" />
     <Compile Include="DataControl\Interface\IDataUpdate.cs" />
     <Compile Include="DataControl\TableControl\AccountControl.cs" />

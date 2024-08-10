@@ -138,7 +138,7 @@ namespace WebForm.functionPage.QF_ChildPage
                 for(int i = 0; i <  loadDataTable.Rows.Count; i++)
                 {
                     projectData.RowIndex = i;
-                    (new ProjectControl()).Inseart(null, projectData);
+                    (new ProjectControl()).Insert(null, projectData);
                 }
 
 

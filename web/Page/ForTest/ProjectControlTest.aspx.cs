@@ -28,7 +28,7 @@ namespace WebForm.ForDataControl
 
                 // 测试插入功能
                 ProjectData projectData = CreateDummyProjectData(); // 创建虚拟项目数据对象
-                string insertedId = (new ProjectControl()).InseartReturnID(null, projectData);
+                string insertedId = (new ProjectControl()).InsertReturnID(null, projectData);
                 
                 this.Controls.Add(new Label()
                 {
