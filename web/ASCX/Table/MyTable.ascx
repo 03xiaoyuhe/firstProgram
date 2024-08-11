@@ -4,8 +4,6 @@
 
 <%@ Register Src="~/ASCX/Table/ForMyTable/LineForBody.ascx" TagName="Table" TagPrefix="LineForBody" %>
 
-<%@ Register Src="~/ASCX/Table/ForMyTable/DeletButten.ascx" TagName="Table" TagPrefix="DeletButten" %>
-
 <style type="text/css">
     table {
         width: 100%;

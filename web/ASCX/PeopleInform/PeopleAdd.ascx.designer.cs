@@ -7,146 +7,137 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace WebForm.functionPage.QF_ChildPage
+namespace WebForm.ASCX.PeopleInform
 {
 
 
-    public partial class PersonInformSelectPage
+    public partial class PeopleAdd
     {
 
         /// <summary>
-        /// form1 控件。
+        /// PEB_Name 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::WebForm.ASCX.BaseForm.InputBoxForm PEB_Name;
 
         /// <summary>
-        /// Button2 控件。
+        /// PEB_Sex 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::WebForm.ASCX.BaseForm.InputBoxForm PEB_Sex;
 
         /// <summary>
-        /// btnForSortTarget1 控件。
+        /// PEB_Birthday 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnForSortTarget1;
+        protected global::WebForm.ASCX.BaseForm.InputBoxForm PEB_Birthday;
 
         /// <summary>
-        /// btnForSortTarget2 控件。
+        /// PEB_Job 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnForSortTarget2;
+        protected global::WebForm.ASCX.BaseForm.InputBoxForm PEB_Job;
 
         /// <summary>
-        /// ScriptManager1 控件。
+        /// PEB_Title 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::WebForm.ASCX.BaseForm.InputBoxForm PEB_Title;
 
         /// <summary>
-        /// Button7 控件。
+        /// PEB_Employer 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button7;
+        protected global::WebForm.ASCX.BaseForm.InputBoxForm PEB_Employer;
 
         /// <summary>
-        /// Button9 控件。
+        /// PE_Major 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button9;
+        protected global::WebForm.ASCX.BaseForm.InputBoxForm PE_Major;
 
         /// <summary>
-        /// Button10 控件。
+        /// PE_Speciality 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button10;
+        protected global::WebForm.ASCX.BaseForm.InputBoxForm PE_Speciality;
 
         /// <summary>
-        /// TextBox1 控件。
+        /// PE_Engage 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::WebForm.ASCX.BaseForm.InputBoxForm PE_Engage;
 
         /// <summary>
-        /// BtnForSearch 控件。
+        /// PE_Address 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnForSearch;
+        protected global::WebForm.ASCX.BaseForm.InputBoxForm PE_Address;
 
         /// <summary>
-        /// UpdatePanel1 控件。
+        /// PE_IsYouth 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::WebForm.ASCX.BaseForm.InputBoxForm PE_IsYouth;
 
         /// <summary>
-        /// DataLoadPlaceHoler 控件。
+        /// PE_OfficePhone 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder DataLoadPlaceHoler;
+        protected global::WebForm.ASCX.BaseForm.InputBoxForm PE_OfficePhone;
 
         /// <summary>
-        /// Load 控件。
+        /// PE_MobilePhone 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::WebForm.ASCX.Loading Load;
+        protected global::WebForm.ASCX.BaseForm.InputBoxForm PE_MobilePhone;
 
         /// <summary>
-        /// aaa 控件。
+        /// PE_Email 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::WebForm.ASCX.PageIndex aaa;
-
-        /// <summary>
-        /// Filtrate 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::WebForm.ASCX.Filtrate.FiltrateForm Filtrate;
+        protected global::WebForm.ASCX.BaseForm.InputBoxForm PE_Email;
     }
 }

@@ -1,0 +1,101 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PeopleInformAdd.aspx.cs" Inherits="WebForm.Page.functionPage.QF_ChildPage.ForPeople.PeopleInformAdd" %>
+
+<%@ Register Src="~/ASCX/MassageForm/PrintMassage.ascx" TagName="PrintMassage" TagPrefix="TPrintMassage" %>
+
+<%@ Register Src="~/ASCX/PeopleInform/PeopleAdd.ascx" TagName="PeopleAdd" TagPrefix="PeopleInf" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    
+    <link href="../../../../assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+        /* 将字体设为红色 */
+        .setCharRed {
+            color: red;
+        }
+
+        /* 缩小字体 */
+        .setCharSizeSmall {
+            font-size: 10px;
+        }
+
+        .program-errorBox {
+            display: inline-block;
+        }
+
+
+        .index_box {
+            position: fixed; /*相对于浏览器进行定位*/
+            bottom: 50px;
+            right: 0;
+            /*background:-webkit-linear-gradient(top, rgba(0,0,0,1),rgba(0,0,0,0));*/
+            max-height: 40%;
+            overflow: auto;
+        }
+
+            .index_box::-webkit-scrollbar {
+                display: none
+            }
+
+        .ppshade {
+            background: linear-gradient( rgba(255, 255, 255, 0.001),blue); /* 溢出部分那显示渐变 */
+            overflow: hidden;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
+        <div style="width: 100%;">
+            
+
+            <div style="width:100%;height:570px;overflow:auto;">
+                <PeopleInf:PeopleAdd runat="server" ID ="PeopleInf"></PeopleInf:PeopleAdd>
+            </div>
+
+
+
+
+            <table style="width: 90%; margin: 0 auto;">
+                <tr>
+                    <td>
+                        <asp:Button ID="submit" runat="server" Text="提交" CssClass="addProgram-submit btn btn-outline-dark" OnClick="submit_Click" />
+                        <style type="text/css">
+                            .addProgram-submit {
+                                margin: 0;
+                                float: left;
+                            }
+                        </style>
+                    </td>
+
+                    <td>
+                        <asp:Button ID="clear" runat="server" Text="清除" CssClass="addProgram-clear btn btn-outline-dark" OnClick="clear_Click" ValidationGroup="NEXT" />
+                        <style type="text/css">
+                            .addProgram-clear {
+                                margin: 0;
+                                float: right;
+                            }
+                        </style>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="z-3 ppshade">
+            <div class="index_box">
+                <asp:PlaceHolder ID="errroMassage" runat="server"></asp:PlaceHolder>
+            </div>
+        </div>
+    </form>
+    <script src="../../../../assets/js/color-modes.js"></script>
+</body>
+</html>

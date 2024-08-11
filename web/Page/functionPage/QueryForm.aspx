@@ -447,6 +447,9 @@
 
                                 <div class="collapse show" id="people-collapse">
                                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a href="#"
+                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded"
+                                                onclick="addPeople(this)">快速添加</a></li>
                                         <li>
                                             <a href="#"
                                                 class="link-body-emphasis d-inline-flex text-decoration-none rounded"
@@ -572,6 +575,10 @@
         function addProgram() {
             document.getElementById("test").src = "QF-ChildPage/ForProject/addProgram.aspx";
         }
+        // 快速添加人员
+        function addPeople() {
+            document.getElementById("test").src = "QF-ChildPage/ForPeople/PeopleInformAdd.aspx";
+        }
         // PeopleInform.aspx
 
         function programLoad() {
@@ -579,7 +586,7 @@
         }
 
         function PeopleInform() {
-            document.getElementById("test").src = "QF-ChildPage/ForProject/PeopleInform.aspx";
+            document.getElementById("test").src = "QF-ChildPage/ForPeople/PeopleInform.aspx";
         }
 
         function OutForEndProgremPage() {

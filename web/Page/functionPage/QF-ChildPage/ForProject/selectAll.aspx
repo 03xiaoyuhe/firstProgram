@@ -5,7 +5,6 @@
 <%@ Register Src="~/ASCX/PageIndex.ascx" TagName="PageIndex" TagPrefix="PageIndex" %>
 <%@ Register Src="~/ASCX/Table/MyTable.ascx" TagName="Table" TagPrefix="Table" %>
 <%@ Register Src="~/ASCX/MassageForm/PrintMassage.ascx" TagName="PrintMassage" TagPrefix="TPrintMassage" %>
-<%@ Register Src="~/ASCX/Table/ForMyTable/DeletButten.ascx" TagName="Table" TagPrefix="DeletButten" %>
 <%@ Register Src="~/ASCX/Loading.ascx" TagName="Load" TagPrefix="Loading" %>
 
 <%@ Register Src="~/ASCX/Filtrate/FiltrateForm.ascx" TagName="FiltrateForm" TagPrefix="Filtrate" %>

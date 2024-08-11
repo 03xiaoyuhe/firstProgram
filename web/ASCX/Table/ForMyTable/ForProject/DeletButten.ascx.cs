@@ -3,13 +3,10 @@ using Models;
 using System;
 using WebForm.ASCX.Table.ForMyTable;
 
-namespace WebForm.ASCX.Table
+namespace WebForm.ASCX.Table.ForProject
 {
     public partial class DeletButten : ControlBase
     {
-
-
-
         #region 自定义事件
         //定义委托
         public delegate void EventHandler(object sender, EventArgs e);

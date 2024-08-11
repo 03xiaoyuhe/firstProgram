@@ -11,7 +11,6 @@
                 PE_Speciality == string.Empty &&
                 PE_Engage == string.Empty &&
                 PE_Address == string.Empty &&
-                PE_Employer == string.Empty &&
                 PE_IsYouth == string.Empty &&
                 PE_OfficePhone == string.Empty &&
                 PE_MobilePhone == string.Empty &&
@@ -109,7 +108,7 @@
 
         string _PE_Address;
         /// <summary>
-        /// 职称
+        /// 通信地址
         /// </summary>
         public string PE_Address
         {
@@ -124,22 +123,22 @@
             }
         }
 
-        string _PE_Employer;
-        /// <summary>
-        /// 通信地址
-        /// </summary>
-        public string PE_Employer
-        {
-            get
-            {
-                if (_PE_Employer == null) _PE_Employer = string.Empty;
-                return _PE_Employer;
-            }
-            set
-            {
-                _PE_Employer = value;
-            }
-        }
+        //string _PE_Employer;
+        ///// <summary>
+        ///// 通信地址
+        ///// </summary>
+        //public string PE_Employer
+        //{
+        //    get
+        //    {
+        //        if (_PE_Employer == null) _PE_Employer = string.Empty;
+        //        return _PE_Employer;
+        //    }
+        //    set
+        //    {
+        //        _PE_Employer = value;
+        //    }
+        //}
 
         string _PE_IsYouth;
         /// <summary>

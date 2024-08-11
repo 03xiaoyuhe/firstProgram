@@ -206,6 +206,11 @@ namespace WebForm.ASCX.Table
 
         public event EventHandler DataChanged;
 
+        /// <summary>
+        /// 删除按钮点击事件
+        /// </summary>
+        public EventHandler DeletButtonClick;
+
         #endregion
 
 
@@ -239,6 +244,7 @@ namespace WebForm.ASCX.Table
             }
             NewHead.AllDataId = AllDataID;
             NewHead.ShowControl = ShowControl;
+            NewHead.DeletButtonClick = DeletButtonClick;
             NewHead.ChoosedDataID = ChoosedDataID;
             NewHead.UpdateTable += Update;
             NewHead.ChooseAll += ChooseAll;

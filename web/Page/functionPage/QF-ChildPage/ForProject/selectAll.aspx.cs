@@ -3,6 +3,7 @@ using DAL.DataControl.TableControl;
 using DAL.DataControl.ViewControl;
 using Models;
 using Models.PageDataSor;
+using Models.PageDataSor.ForMyTable;
 using Spire.Xls;
 using System;
 using System.Collections.Generic;
@@ -60,6 +61,22 @@ namespace WebForm.functionPage.QF_ChildPage
 
         #region 表格基础数据
 
+
+        string choosedDataID;
+        /// <summary>
+        /// 复选框缓存
+        /// </summary>
+        public string ChoosedDataID
+        {
+            get
+            {
+                return choosedDataID;
+            }
+            set
+            {
+                choosedDataID = value;
+            }
+        }
 
         /// <summary>
         /// 表格显示描述缓存
@@ -337,10 +354,12 @@ namespace WebForm.functionPage.QF_ChildPage
                 NewLine.Height = 480;
                 NewLine.TableName = "ProjectApplications";
                 NewLine.ShowControl = true;
-                NewLine.ControlASCX = "~/ASCX/Table/ForMyTable/DeletButten.ascx";
+                NewLine.ControlASCX = "~/ASCX/Table/ForMyTable/ForProject/DeletButten.ascx";
+                NewLine.DeletButtonClick = DeletButtonClick;
                 NewLine.ShowCheck = true;
                 DataLoadPlaceHoler.Controls.Clear();
                 DataLoadPlaceHoler.Controls.Add(NewLine);
+                ChoosedDataID = NewLine.ChoosedDataID;
             }
             catch
             {
@@ -377,64 +396,6 @@ namespace WebForm.functionPage.QF_ChildPage
 
         protected void BtnForSearch_Click(object sender, EventArgs e)
         {
-            string Lable = "";
-            foreach (KeyValuePair<string, string> keyValuePair in DataBash.LineToMean)
-            {
-                if (keyValuePair.Value == SearchTarget)
-                {
-                    Lable = keyValuePair.Key;
-                    break;
-                }
-            }
-
-
-            List<string> list = new List<string>();
-            //list.Add("user_phone");
-            list.Add("project_name");
-            list.Add("project_level");
-            list.Add("project_number");
-            list.Add("project_category");
-            list.Add("project_youth");
-            list.Add("project_time");
-            list.Add("project_form");
-
-            Dictionary<string, string> map = new Dictionary<string, string>();
-            map.Add("project_id", "ID");
-            //map.Add("user_phone", "负责人电话号码");
-            map.Add("project_name", "项目名称");
-            map.Add("project_level", "项目评级");
-            map.Add("project_number", "立项编号");
-            map.Add("project_category", "项目类别");
-            map.Add("project_youth", "青年项目");
-            map.Add("project_time", "项目完成时间");
-            map.Add("project_form", "成果形式");
-
-            TableAttribute tableAttribute = new TableAttribute(
-                "project_id",
-                "项目信息",
-                map,
-                list
-                );
-
-            //dataTable = SortTable(dataTable, "project_level", 1);
-
-            MyTable NewLine = (MyTable)LoadControl("~/ASCX/Table/MyTable.ascx");
-            NewLine.TableBase = tableAttribute;
-            try
-            {
-                NewLine.DataCollection = DAL.ForSelect.Select(DataBash.DataBaseName, Lable, TextBox1.Text).Tables[0];
-            }
-            catch
-            {
-                NewLine.DataCollection = new DataTable();
-            }
-            NewLine.Height = 480;
-            NewLine.TableName = "ProjectApplications";
-            NewLine.ShowControl = true;
-            NewLine.ControlASCX = "~/ASCX/Table/ForMyTable/DeletButten.ascx";
-            NewLine.ShowCheck = true;
-            DataLoadPlaceHoler.Controls.Clear();
-            DataLoadPlaceHoler.Controls.Add(NewLine);
 
         }
 
@@ -457,10 +418,71 @@ namespace WebForm.functionPage.QF_ChildPage
             LoadTable();
         }
 
+        /// <summary>
+        /// 更新搜索目标按钮点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Button7_Click(object sender, EventArgs e)
         {
-
             SearchTarget = ((Button)sender).Text;
+        }
+
+
+
+
+        /// <summary>
+        /// 删除按钮点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void DeletButtonClick(object sender, EventArgs e)
+        {
+            ChoosedDataIDContain choosedDataIDContain = new ChoosedDataIDContain();
+            choosedDataIDContain.ID = ChoosedDataID;
+
+            int ans = choosedDataIDContain.ChoosedIDs.Count;
+
+            if (ans != 0)
+            {
+                foreach (string item in choosedDataIDContain.ChoosedIDs)
+                {
+                    if (
+                        !(
+                        (new ProjectControl()).Delete(null, ProjectControl.BuildWhereClause(new Dictionary<string, string>() { { "PB_ID", item } })) >= 1
+                        )
+                       )
+                    {
+                        Massage massage1 = new Massage();
+                        massage1.MassageText = "项目ID为：" + item + "的项目删除失败！";
+                        massage1.HeadColor = "Red";
+                        massage1.HeadText = "ERROR";
+                        massage1.PostMassage();
+                        ans--;
+                    }
+
+
+                }
+
+                Massage massage12 = new Massage();
+                if (ans == choosedDataIDContain.ChoosedIDs.Count)
+                {
+                    massage12.MassageText = "选择的所有项目均删除成功";
+                    massage12.HeadText = "Success";
+                    massage12.HeadColor = "Blue";
+                }
+                massage12.PostMassage();
+
+                Response.Redirect(Request.Url.ToString());
+            }
+            else
+            {
+                Massage massage = new Massage();
+                massage.MassageText = "未选择数据删除";
+                massage.HeadText = "WANNING";
+                massage.HeadColor = "Orange";
+                massage.PostMassage();
+            }
         }
 
         #endregion

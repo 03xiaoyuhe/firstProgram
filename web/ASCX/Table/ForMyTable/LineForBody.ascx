@@ -2,8 +2,6 @@
 
 <%@ Register Src="~/ASCX/Table/ForMyTable/CellForBody.ascx" TagName="Table" TagPrefix="CellForBody" %>
 
-<%@ Register Src="~/ASCX/Table/ForMyTable/DeletButten.ascx" TagName="Table" TagPrefix="DeletButten" %>
-
 <%@ Register Src="~/ASCX/Table/ForMyTable/MyCheckBox.ascx" TagName="Table" TagPrefix="MyCheckBox" %>
 
 <tr>

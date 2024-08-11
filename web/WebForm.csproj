@@ -209,6 +209,8 @@
     <Content Include="ASCX\Filtrate\FiltrateForm.ascx" />
     <Content Include="ASCX\Filtrate\FiltrateItemForm.ascx" />
     <Content Include="ASCX\Filtrate\MyCheckBox.ascx" />
+    <Content Include="ASCX\PeopleInform\PeopleAdd.ascx" />
+    <Content Include="ASCX\PeopleInform\PeopleShow.ascx" />
     <Content Include="ASCX\ProgramInform\ForProgramAdd\ALineDataForParters.ascx" />
     <Content Include="ASCX\ProgramInform\ForProgramShow\ALineForProgremParter.ascx" />
     <Content Include="ASCX\ProgramInform\ForProgramShow\DataFormForAdm.ascx" />
@@ -228,12 +230,14 @@
     <Content Include="ASCX\Table\ForDataTable\MyButton.ascx" />
     <Content Include="ASCX\Table\ForMyTable\CheckBoxTree.ascx" />
     <Content Include="ASCX\Table\ForMyTable\ControlBase.ascx" />
+    <Content Include="ASCX\Table\ForMyTable\ForPeople\DeletButten.ascx" />
     <Content Include="ASCX\Table\ForMyTable\MyCheckBox.ascx" />
     <Content Include="ASCX\Table\TableWithDelegate.ascx" />
     <Content Include="Page\ForTest\ProjectControlTest.aspx" />
     <Content Include="Page\ForTest\ProjectViewTest.aspx" />
     <Content Include="Page\functionPage\QF-ChildPage\ForAccount\AccountSetting.aspx" />
     <Content Include="Page\functionPage\QF-ChildPage\ForAccount\ApplicantAcconterSelectPage.aspx" />
+    <Content Include="Page\functionPage\QF-ChildPage\ForPeople\PeopleInformAdd.aspx" />
     <Content Include="Page\functionPage\QF-ChildPage\ForProject\EndingProjectLoadPage.aspx" />
     <Content Include="Page\functionPage\QF-ChildPage\ForAccount\JudgeAccounterPage.aspx" />
     <Content Include="Page\functionPage\QF-ChildPage\ForProject\OngoingProjectLoadPage.aspx" />
@@ -397,7 +401,7 @@
     <Content Include="ASCX\PageIndex.ascx" />
     <Content Include="ASCX\Table\ForMyTable\CellForBody.ascx" />
     <Content Include="ASCX\Table\ForMyTable\CellForHead.ascx" />
-    <Content Include="ASCX\Table\ForMyTable\DeletButten.ascx" />
+    <Content Include="ASCX\Table\ForMyTable\ForProject\DeletButten.ascx" />
     <Content Include="ASCX\Table\ForMyTable\LineForBody.ascx" />
     <Content Include="ASCX\Table\ForMyTable\LineForDateLoading.ascx" />
     <Content Include="ASCX\Table\ForMyTable\LineForHead.ascx" />
@@ -504,6 +508,20 @@
     </Compile>
     <Compile Include="ASCX\PageIndex.ascx.designer.cs">
       <DependentUpon>PageIndex.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ASCX\PeopleInform\PeopleAdd.ascx.cs">
+      <DependentUpon>PeopleAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASCX\PeopleInform\PeopleAdd.ascx.designer.cs">
+      <DependentUpon>PeopleAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ASCX\PeopleInform\PeopleShow.ascx.cs">
+      <DependentUpon>PeopleShow.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASCX\PeopleInform\PeopleShow.ascx.designer.cs">
+      <DependentUpon>PeopleShow.ascx</DependentUpon>
     </Compile>
     <Compile Include="ASCX\ProgramInform\ForProgramAdd\ALineDataForParters.ascx.cs">
       <DependentUpon>ALineDataForParters.ascx</DependentUpon>
@@ -654,11 +672,18 @@
     <Compile Include="ASCX\Table\ForMyTable\ControlBase.ascx.designer.cs">
       <DependentUpon>ControlBase.ascx</DependentUpon>
     </Compile>
-    <Compile Include="ASCX\Table\ForMyTable\DeletButten.ascx.cs">
+    <Compile Include="ASCX\Table\ForMyTable\ForPeople\DeletButten.ascx.cs">
       <DependentUpon>DeletButten.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ASCX\Table\ForMyTable\DeletButten.ascx.designer.cs">
+    <Compile Include="ASCX\Table\ForMyTable\ForPeople\DeletButten.ascx.designer.cs">
+      <DependentUpon>DeletButten.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ASCX\Table\ForMyTable\ForProject\DeletButten.ascx.cs">
+      <DependentUpon>DeletButten.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASCX\Table\ForMyTable\ForProject\DeletButten.ascx.designer.cs">
       <DependentUpon>DeletButten.ascx</DependentUpon>
     </Compile>
     <Compile Include="ASCX\Table\ForDataTable\ControlFormCell.ascx.cs">
@@ -773,6 +798,13 @@
     </Compile>
     <Compile Include="Page\functionPage\QF-ChildPage\ForAccount\AccountSetting.aspx.designer.cs">
       <DependentUpon>AccountSetting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\functionPage\QF-ChildPage\ForPeople\PeopleInformAdd.aspx.cs">
+      <DependentUpon>PeopleInformAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\functionPage\QF-ChildPage\ForPeople\PeopleInformAdd.aspx.designer.cs">
+      <DependentUpon>PeopleInformAdd.aspx</DependentUpon>
     </Compile>
     <Compile Include="Page\functionPage\QF-ChildPage\ForProject\addProgram.aspx.cs">
       <DependentUpon>addProgram.aspx</DependentUpon>
@@ -998,6 +1030,8 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ASCX\PeopleInform\ForPeopleAdd\" />
+    <Folder Include="ASCX\PeopleInform\ForPeopleShow\" />
     <Folder Include="uploadfiles\" />
   </ItemGroup>
   <PropertyGroup>

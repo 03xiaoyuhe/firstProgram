@@ -110,6 +110,13 @@ namespace WebForm.ASCX.Table
 
         public EventHandler UnChooseAll;
 
+        /// <summary>
+        /// 删除按钮点击事件
+        /// </summary>
+        public EventHandler DeletButtonClick;
+
+
+
 
         public int AllDataCount;
 
@@ -145,7 +152,7 @@ namespace WebForm.ASCX.Table
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            DeletButton.Enabled = true;
             checkBox.AllDataId = AllDataId;
             checkBox.ChoosedDataID = ChoosedDataID;
             checkBox.AllDataCount = AllDataCount;
@@ -165,54 +172,8 @@ namespace WebForm.ASCX.Table
         }
 
         protected void DeletButton_Click(object sender, EventArgs e)
-        {           
-            ChoosedDataIDContain choosedDataIDContain = new ChoosedDataIDContain();
-            choosedDataIDContain.ID = ChoosedDataID;
-
-            int ans = choosedDataIDContain.ChoosedIDs.Count;
-            
-            if(ans != 0)
-            {
-                foreach (string item in choosedDataIDContain.ChoosedIDs)
-                {
-                    if (
-                        !(
-                        (new ProjectControl()).Delete(null, ProjectControl.BuildWhereClause(new Dictionary<string, string>(){{ "PB_ID",item }}))>=1
-                        )
-                       )
-                    {
-                        Massage massage1 = new Massage();
-                        massage1.MassageText = "项目ID为：" + item + "的项目删除失败！";
-                        massage1.HeadColor = "Red";
-                        massage1.HeadText = "ERROR";
-                        massage1.PostMassage();
-                        ans--;
-                    }
-
-                    
-                }
-
-                Massage massage12 = new Massage();
-                if (ans == choosedDataIDContain.ChoosedIDs.Count)
-                {
-                    massage12.MassageText = "选择的所有项目均删除成功";
-                    massage12.HeadText = "Success";
-                    massage12.HeadColor = "Blue";
-                }
-                massage12.PostMassage();
-                
-                Response.Redirect(Request.Url.ToString());
-            }
-            else
-            {
-                Massage massage = new Massage();
-                massage.MassageText = "未选择数据删除";
-                massage.HeadText = "WANNING";
-                massage.HeadColor = "Orange";
-                massage.PostMassage();
-            }
+        {
+            DeletButtonClick(sender, e);
         }
-            
-
     }
 }

@@ -7,7 +7,7 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace WebForm.ASCX.Table
+namespace WebForm.ASCX.Table.ForPeople
 {
 
 
