@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Models.PageDataSor.ProgremData
 {
@@ -13,7 +9,7 @@ namespace Models.PageDataSor.ProgremData
     public class ProgromBaseData
     {
 
-        public ProgromBaseData() 
+        public ProgromBaseData()
         {
             ProjectName = "未赋值";
             ProjectKinds = "未赋值";
@@ -28,11 +24,11 @@ namespace Models.PageDataSor.ProgremData
 
 
         public ProgromBaseData(
-            string projectName, 
-            string projectKinds, 
-            string projectFinish, 
-            string projectEnd, 
-            DataForAdm dataForAdm, 
+            string projectName,
+            string projectKinds,
+            string projectFinish,
+            string projectEnd,
+            DataForAdm dataForAdm,
             List<DataForParter> dataForParters,
             DataForDoc dataForDoc,
             DataForThinking dataForThinking

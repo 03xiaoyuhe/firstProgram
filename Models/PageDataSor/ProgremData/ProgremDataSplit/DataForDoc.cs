@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Models.PageDataSor.ProgremData
+﻿namespace Models.PageDataSor.ProgremData
 {
     /// <summary>
     /// 项目说明文档数据
@@ -12,14 +6,14 @@ namespace Models.PageDataSor.ProgremData
     public class DataForDoc
     {
 
-        public DataForDoc() 
+        public DataForDoc()
         {
             ProjectIntroduce = "未赋值";
             ProjectMainIdea = "未赋值";
             ProjectAhead = "未赋值";
         }
 
-        public DataForDoc(string projectIntroduce, string projectMainIdea,  string projectAhead)
+        public DataForDoc(string projectIntroduce, string projectMainIdea, string projectAhead)
         {
             ProjectIntroduce = projectIntroduce;
             ProjectMainIdea = projectMainIdea;

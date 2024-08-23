@@ -1,17 +1,8 @@
-﻿using NPOI.SS.Formula.Functions;
-using Org.BouncyCastle.Crypto;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using DAL;
-using System.Collections;
-using NPOI.XSSF.Streaming.Values;
-using System.Linq.Expressions;
-using DAL.DataControl.ViewControl;
 
 namespace Models.PageDataSor
 {
@@ -49,9 +40,9 @@ namespace Models.PageDataSor
         {
 
             //CacheGenericity<List<string>>.Data["立项编号"]  = new List<string>();
-            
+
             //DataSet rowAfforts = (new ProjectViewContron()).Select(new List<string>() { });
-            
+
             //DataTable dt = rowAfforts.Tables[0];
             ////int count = 0;
             //foreach(DataRow item in dt.Rows)
@@ -67,21 +58,23 @@ namespace Models.PageDataSor
 
         public static void Name()
         {
-            DataSet rowAfforts = DAL.DBHelper.Query("select  UseName from UserInfor");
+
+            DataSet rowAfforts = DAL.DBHelper.Query("select  PEB_Name from PeopleBase");
             DataTable dt = rowAfforts.Tables[0];
+            NameSerch.Clear();
             foreach (DataRow item in dt.Rows)
             {
                 if (!NameSerch.Contains(item[0].ToString()))
                 {
                     NameSerch.Add(item[0].ToString());
                 }
-                
+
             }
 
 
         }
 
-        static int  Count = 0;
+        static int Count = 0;
         /// <summary>
         /// 导入表格数据检查函数
         /// </summary>
@@ -91,7 +84,7 @@ namespace Models.PageDataSor
         public static string Checked(string Kinds, string Data)
         {
             int count = 0;
-            
+
             switch (Kinds)
             {
                 case "课题名称":
@@ -103,7 +96,7 @@ namespace Models.PageDataSor
                     {
                         return $"(项目名称长度超过限制){Data}";
                     }
-                     
+
                 case "项目评级":
                     if (Data.Length != 1)
                     {
@@ -164,12 +157,12 @@ namespace Models.PageDataSor
                     {
                         return "Success";
                     }
-                     
-                    //todo
+
+                //todo
                 case "项目负责人":
 
                     return "Success";
-                     
+
                 case "本项目国内外研究现状述评":
                     if (Data.Length > 1300)
                     {
@@ -179,7 +172,7 @@ namespace Models.PageDataSor
                     {
                         return "Success";
                     }
-                     
+
                 case "本项目研究的主要观点":
                     if (Data.Length > 2100)
                     {
@@ -189,7 +182,7 @@ namespace Models.PageDataSor
                     {
                         return "Success";
                     }
-                     
+
                 case "前期研究成果":
                     if (Data.Length > 1000)
                     {
@@ -199,7 +192,7 @@ namespace Models.PageDataSor
                     {
                         return "Success";
                     }
-                     
+
 
                 case "项目完成时间":
                 case "填表日期":
@@ -215,13 +208,14 @@ namespace Models.PageDataSor
                     {
                         return $"(不是正确的日期格式，请按照年-月-日填写){Data}";
                     }
-                     
+
                 case "成果形式":
                     if (Data.Length > 50)
                     {
                         return $"(成果形式填写过长，请控制在50字以内){Data}";
                     }
-                    else{
+                    else
+                    {
                         return "Success";
                     }
 
@@ -250,7 +244,7 @@ namespace Models.PageDataSor
                         return "Success";
                     }
 
-                     
+
                 case "立项编号":
                     if (Data.Length != 12)
                     {
@@ -263,22 +257,22 @@ namespace Models.PageDataSor
                             return $"(输入的立项编号不规范，应为五位大写字母加七位整数){Data}";
                         }
 
-                    
+
                         if (hashset.Contains(Data))
                         {
                             return $"(输入的立项编号合法，但已经存在，请重新输入){Data}";
                         }
                         Count++;
-                        if(Count%2 == 0)
+                        if (Count % 2 == 0)
                         {
                             hashset.Add(Data);
                         }
-                        
-                      
+
+
                         return "Success";
 
                     }
-                     
+
 
                 case "姓名":
                     if (Data.Length > 20)
@@ -289,7 +283,7 @@ namespace Models.PageDataSor
                     {
                         if (NameSerch.Contains(Data))
                         {
-                           return $"(该姓名已存在，请你检查是否需要插入，如果需要请你在名字后添加一个特殊字符){Data}";
+                            return $"(该姓名已存在，请你检查是否需要插入，如果需要请你在名字后添加一个特殊字符){Data}";
                         }
                         else
                         {
@@ -297,9 +291,9 @@ namespace Models.PageDataSor
                             return "Success";
                         }
                     }
-                     
 
-                case "生日":
+
+                case "出生年月":
                     try
                     {
                         DateTime.Parse(ExcelDateToSQLDate(Data));
@@ -309,7 +303,7 @@ namespace Models.PageDataSor
                     {
                         return $"(不是正确的日期格式，请按照年-月-日填写){Data}";
                     }
-                     
+
 
                 case "性别":
                     if (Data.Length > 1)
@@ -320,31 +314,31 @@ namespace Models.PageDataSor
                     {
                         return "Success";
                     }
-                     
+
 
                 case "职务":
-                    if (Data.Length > 20)
+                    if (Data.Length > 50)
                     {
-                        return $"(填写过长，请控制在20字以内){Data}";
+                        return $"(填写过长，请控制在50字以内){Data}";
                     }
                     else
                     {
                         return "Success";
                     }
 
-                     
+
 
                 case "职称":
-                    if (Data.Length > 20)
+                    if (Data.Length > 50)
                     {
-                        return $"(填写过长，请控制在20字以内){Data}";
+                        return $"(填写过长，请控制在50字以内){Data}";
                     }
                     else
                     {
                         return "Success";
                     }
 
-                     
+
                 case "专业":
                     if (Data.Length > 30)
                     {
@@ -355,7 +349,7 @@ namespace Models.PageDataSor
                         return "Success";
                     }
 
-                     
+
                 case "研究专长":
                     if (Data.Length > 50)
                     {
@@ -366,7 +360,7 @@ namespace Models.PageDataSor
                         return "Success";
                     }
 
-                     
+
 
                 case "现从事职业":
                     if (Data.Length > 30)
@@ -378,45 +372,45 @@ namespace Models.PageDataSor
                         return "Success";
                     }
 
-                     
+
 
                 case "工作单位":
-                    if (Data.Length > 20)
+                    if (Data.Length > 100)
                     {
-                        return $"(填写过长，请控制在20字以内){Data}";
+                        return $"(填写过长，请控制在100字以内){Data}";
                     }
                     else
                     {
                         return "Success";
                     }
 
-                     
+
                 case "通信地址":
-                    if (Data.Length > 20)
+                    if (Data.Length > 100)
                     {
-                        return $"(填写过长，请控制在20字以内){Data}";
+                        return $"(填写过长，请控制在100字以内){Data}";
                     }
                     else
                     {
                         return "Success";
                     }
 
-                     
 
-                    //////////////todo
+
+                //////////////todo
                 case "办公电话":
-                    if (Data.Length > 20)
+                    if (Data.Length > 11)
                     {
-                        return $"(填写过长，请控制在20字以内){Data}";
+                        return $"(填写过长，请控制在11字以内){Data}";
                     }
                     else
                     {
                         return "Success";
                     }
 
-                     
 
-                case "电话号码":
+
+                case "手机":
                     if (Data.Length > 11)
                     {
                         return $"(填写过长，请符合电话号码的规范控制在11个整数内){Data}";
@@ -431,7 +425,7 @@ namespace Models.PageDataSor
                         {
                             return $"(填写的电话号码不符合规范，请填11位以1开头的数字。){Data}";
                         }
-                        
+
                     }
 
                 case "队员0":
@@ -452,7 +446,7 @@ namespace Models.PageDataSor
 
 
 
-                case "邮箱":
+                case "电子邮箱":
                     if (Data.Length > 20)
                     {
                         return $"(填写过长，请控制在20字以内){Data}";
@@ -465,10 +459,10 @@ namespace Models.PageDataSor
                         }
                         else
                         {
-                            return  $"(填写的邮箱不规范，请检查该邮箱的格式){Data}";
+                            return $"(填写的邮箱不规范，请检查该邮箱的格式){Data}";
                         }
                     }
-                     
+
 
             }
 
@@ -526,20 +520,20 @@ namespace Models.PageDataSor
         }
 
         public static MetarnetRegex GetInstance()
+        {
+            if (MetarnetRegex.instance == null)
             {
-                if (MetarnetRegex.instance == null)
-                {
-                    MetarnetRegex.instance = new MetarnetRegex();
-                }
-                return MetarnetRegex.instance;
+                MetarnetRegex.instance = new MetarnetRegex();
             }
+            return MetarnetRegex.instance;
+        }
 
         #endregion
 
         private MetarnetRegex()
-            {
+        {
 
-            }
+        }
 
 
         /// <summary>
@@ -565,254 +559,254 @@ namespace Models.PageDataSor
         /// <param name="input"></param>
         /// <returns></returns>
         public static bool IsChineseCh(string input)
+        {
+            Regex regex = new Regex("^[\u4e00-\u9fa5]+$");
+            return regex.IsMatch(input);
+        }
+        /// <summary>
+        /// 匹配3位或4位区号的电话号码，其中区号可以用小括号括起来，
+        /// 也可以不用，区号与本地号间可以用连字号或空格间隔，
+        /// 也可以没有间隔
+        /// \(0\d{2}\)[- ]?\d{8}|0\d{2}[- ]?\d{8}|\(0\d{3}\)[- ]?\d{7}|0\d{3}[- ]?\d{7}
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static bool IsPhone(string input)
+        {
+            string pattern = "^\\(0\\d{2}\\)[- ]?\\d{8}$|^0\\d{2}[- ]?\\d{8}$|^\\(0\\d{3}\\)[- ]?\\d{7}$|^0\\d{3}[- ]?\\d{7}$";
+            Regex regex = new Regex(pattern);
+            return regex.IsMatch(input);
+        }
+        /// <summary>
+        /// 判断输入的字符串是否是一个合法的手机号
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static bool IsMobilePhone(string input)
+        {
+            Regex regex = new Regex("^1\\d{10}$");
+            return regex.IsMatch(input);
+
+        }
+
+
+        /// <summary>
+        /// 判断输入的字符串只包含数字
+        /// 可以匹配整数和浮点数
+        /// ^-?\d+$|^(-?\d+)(\.\d+)?$
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static bool IsNumber(string input)
+        {
+            string pattern = "^-?\\d+$|^(-?\\d+)(\\.\\d+)?$";
+            Regex regex = new Regex(pattern);
+            return regex.IsMatch(input);
+        }
+        /// <summary>
+        /// 匹配非负整数
+        ///
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static bool IsNotNagtive(string input)
+        {
+            Regex regex = new Regex(@"^\d+$");
+            return regex.IsMatch(input);
+        }
+        /// <summary>
+        /// 匹配正整数
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static bool IsUint(string input)
+        {
+            Regex regex = new Regex("^[0-9]*[1-9][0-9]*$");
+            return regex.IsMatch(input);
+        }
+        /// <summary>
+        /// 判断输入的字符串字包含英文字母
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static bool IsEnglisCh(string input)
+        {
+            Regex regex = new Regex("^[A-Za-z]+$");
+            return regex.IsMatch(input);
+        }
+
+
+        /// <summary>
+        /// 判断输入的字符串是否是一个合法的Email地址
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static bool IsEmail(string input)
+        {
+            string pattern = @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
+            Regex regex = new Regex(pattern);
+            return regex.IsMatch(input);
+        }
+
+
+        /// <summary>
+        /// 判断输入的字符串是否只包含数字和英文字母
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static bool IsNumAndEnCh(string input)
+        {
+            string pattern = @"^[A-Za-z0-9]+$";
+            Regex regex = new Regex(pattern);
+            return regex.IsMatch(input);
+        }
+
+
+        /// <summary>
+        /// 判断输入的字符串是否是一个超链接
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static bool IsURL(string input)
+        {
+            //string pattern = @"http://([\w-]+\.)+[\w-]+(/[\w- ./?%&=]*)?";
+            string pattern = @"^[a-zA-Z]+://(\w+(-\w+)*)(\.(\w+(-\w+)*))*(\?\S*)?$";
+            System.Text.RegularExpressions.Regex regex = new Regex(pattern);
+            return regex.IsMatch(input);
+        }
+
+
+        /// <summary>
+        /// 判断输入的字符串是否是表示一个IP地址
+        /// </summary>
+        /// <param name="input">被比较的字符串</param>
+        /// <returns>是IP地址则为True</returns>
+        public static bool IsIPv4(string input)
+        {
+
+            string[] IPs = input.Split('.');
+            Regex regex = new Regex(@"^\d+$");
+            for (int i = 0; i < IPs.Length; i++)
             {
-                Regex regex = new Regex("^[\u4e00-\u9fa5]+$");
-                return regex.IsMatch(input);
-            }
-            /// <summary>
-            /// 匹配3位或4位区号的电话号码，其中区号可以用小括号括起来，
-            /// 也可以不用，区号与本地号间可以用连字号或空格间隔，
-            /// 也可以没有间隔
-            /// \(0\d{2}\)[- ]?\d{8}|0\d{2}[- ]?\d{8}|\(0\d{3}\)[- ]?\d{7}|0\d{3}[- ]?\d{7}
-            /// </summary>
-            /// <param name="input"></param>
-            /// <returns></returns>
-            public static bool IsPhone(string input)
-            {
-                string pattern = "^\\(0\\d{2}\\)[- ]?\\d{8}$|^0\\d{2}[- ]?\\d{8}$|^\\(0\\d{3}\\)[- ]?\\d{7}$|^0\\d{3}[- ]?\\d{7}$";
-                Regex regex = new Regex(pattern);
-                return regex.IsMatch(input);
-            }
-            /// <summary>
-            /// 判断输入的字符串是否是一个合法的手机号
-            /// </summary>
-            /// <param name="input"></param>
-            /// <returns></returns>
-            public static bool IsMobilePhone(string input)
-            {
-                Regex regex = new Regex("^1\\d{10}$");
-                return regex.IsMatch(input);
-
-            }
-
-
-            /// <summary>
-            /// 判断输入的字符串只包含数字
-            /// 可以匹配整数和浮点数
-            /// ^-?\d+$|^(-?\d+)(\.\d+)?$
-            /// </summary>
-            /// <param name="input"></param>
-            /// <returns></returns>
-            public static bool IsNumber(string input)
-            {
-                string pattern = "^-?\\d+$|^(-?\\d+)(\\.\\d+)?$";
-                Regex regex = new Regex(pattern);
-                return regex.IsMatch(input);
-            }
-            /// <summary>
-            /// 匹配非负整数
-            ///
-            /// </summary>
-            /// <param name="input"></param>
-            /// <returns></returns>
-            public static bool IsNotNagtive(string input)
-            {
-                Regex regex = new Regex(@"^\d+$");
-                return regex.IsMatch(input);
-            }
-            /// <summary>
-            /// 匹配正整数
-            /// </summary>
-            /// <param name="input"></param>
-            /// <returns></returns>
-            public static bool IsUint(string input)
-            {
-                Regex regex = new Regex("^[0-9]*[1-9][0-9]*$");
-                return regex.IsMatch(input);
-            }
-            /// <summary>
-            /// 判断输入的字符串字包含英文字母
-            /// </summary>
-            /// <param name="input"></param>
-            /// <returns></returns>
-            public static bool IsEnglisCh(string input)
-            {
-                Regex regex = new Regex("^[A-Za-z]+$");
-                return regex.IsMatch(input);
-            }
-
-
-            /// <summary>
-            /// 判断输入的字符串是否是一个合法的Email地址
-            /// </summary>
-            /// <param name="input"></param>
-            /// <returns></returns>
-            public static bool IsEmail(string input)
-            {
-                string pattern = @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
-                Regex regex = new Regex(pattern);
-                return regex.IsMatch(input);
-            }
-
-
-            /// <summary>
-            /// 判断输入的字符串是否只包含数字和英文字母
-            /// </summary>
-            /// <param name="input"></param>
-            /// <returns></returns>
-            public static bool IsNumAndEnCh(string input)
-            {
-                string pattern = @"^[A-Za-z0-9]+$";
-                Regex regex = new Regex(pattern);
-                return regex.IsMatch(input);
-            }
-
-
-            /// <summary>
-            /// 判断输入的字符串是否是一个超链接
-            /// </summary>
-            /// <param name="input"></param>
-            /// <returns></returns>
-            public static bool IsURL(string input)
-            {
-                //string pattern = @"http://([\w-]+\.)+[\w-]+(/[\w- ./?%&=]*)?";
-                string pattern = @"^[a-zA-Z]+://(\w+(-\w+)*)(\.(\w+(-\w+)*))*(\?\S*)?$";
-                System.Text.RegularExpressions.Regex regex = new Regex(pattern);
-                return regex.IsMatch(input);
-            }
-
-
-            /// <summary>
-            /// 判断输入的字符串是否是表示一个IP地址
-            /// </summary>
-            /// <param name="input">被比较的字符串</param>
-            /// <returns>是IP地址则为True</returns>
-            public static bool IsIPv4(string input)
-            {
-
-                string[] IPs = input.Split('.');
-                Regex regex = new Regex(@"^\d+$");
-                for (int i = 0; i < IPs.Length; i++)
-                {
-                    if (!regex.IsMatch(IPs[i]))
-                    {
-                        return false;
-                    }
-                    if (Convert.ToUInt16(IPs[i]) > 255)
-                    {
-                        return false;
-                    }
-                }
-                return true;
-            }
-
-
-            /// <summary>
-            /// 计算字符串的字符长度，一个汉字字符将被计算为两个字符
-            /// </summary>
-            /// <param name="input">需要计算的字符串</param>
-            /// <returns>返回字符串的长度</returns>
-            public static int GetCount(string input)
-            {
-                return Regex.Replace(input, @"[\u4e00-\u9fa5/g]", "aa").Length;
-            }
-
-            /// <summary>
-            /// 调用Regex中IsMatch函数实现一般的正则表达式匹配
-            /// </summary>
-            /// <param name="pattern">要匹配的正则表达式模式。</param>
-            /// <param name="input">要搜索匹配项的字符串</param>
-            /// <returns>如果正则表达式找到匹配项，则为 true；否则，为 false。</returns>
-            public static bool IsMatch(string pattern, string input)
-            {
-                System.Text.RegularExpressions.Regex regex = new Regex(pattern);
-                return regex.IsMatch(input);
-            }
-
-            /// <summary>
-            /// 从输入字符串中的第一个字符开始，用替换字符串替换指定的正则表达式模式的所有匹配项。
-            /// </summary>
-            /// <param name="pattern">模式字符串</param>
-            /// <param name="input">输入字符串</param>
-            /// <param name="replacement">用于替换的字符串</param>
-            /// <returns>返回被替换后的结果</returns>
-            public static string Replace(string pattern, string input, string replacement)
-            {
-                Regex regex = new Regex(pattern);
-                return regex.Replace(input, replacement);
-            }
-
-            /// <summary>
-            /// 在由正则表达式模式定义的位置拆分输入字符串。
-            /// </summary>
-            /// <param name="pattern">模式字符串</param>
-            /// <param name="input">输入字符串</param>
-            /// <returns></returns>
-            public static string[] Split(string pattern, string input)
-            {
-                Regex regex = new Regex(pattern);
-                return regex.Split(input);
-            }
-            /// <summary>
-            /// 判断输入的字符串是否是合法的IPV6 地址
-            /// </summary>
-            /// <param name="input"></param>
-            /// <returns></returns>
-            public static bool IsIPV6(string input)
-            {
-                string pattern = "";
-                string temp = input;
-                string[] strs = temp.Split(':');
-                if (strs.Length > 8)
+                if (!regex.IsMatch(IPs[i]))
                 {
                     return false;
                 }
-                int count = MetarnetRegex.GetStringCount(input, "::");
-                if (count > 1)
+                if (Convert.ToUInt16(IPs[i]) > 255)
                 {
                     return false;
                 }
-                else if (count == 0)
-                {
-                    pattern = @"^([\da-f]{1,4}:){7}[\da-f]{1,4}$";
-
-                    Regex regex = new Regex(pattern);
-                    return regex.IsMatch(input);
-                }
-                else
-                {
-                    pattern = @"^([\da-f]{1,4}:){0,5}::([\da-f]{1,4}:){0,5}[\da-f]{1,4}$";
-                    Regex regex1 = new Regex(pattern);
-                    return regex1.IsMatch(input);
-                }
-
             }
-            /* *******************************************************************
-            * 1、通过“:”来分割字符串看得到的字符串数组长度是否小于等于8
-            * 2、判断输入的IPV6字符串中是否有“::”。
-            * 3、如果没有“::”采用 ^([\da-f]{1,4}:){7}[\da-f]{1,4}$ 来判断
-            * 4、如果有“::” ，判断"::"是否止出现一次
-            * 5、如果出现一次以上 返回false
-            * 6、^([\da-f]{1,4}:){0,5}::([\da-f]{1,4}:){0,5}[\da-f]{1,4}$
-            * ******************************************************************/
-            /// <summary>
-            /// 判断字符串compare 在 input字符串中出现的次数
-            /// </summary>
-            /// <param name="input">源字符串</param>
-            /// <param name="compare">用于比较的字符串</param>
-            /// <returns>字符串compare 在 input字符串中出现的次数</returns>
-            private static int GetStringCount(string input, string compare)
+            return true;
+        }
+
+
+        /// <summary>
+        /// 计算字符串的字符长度，一个汉字字符将被计算为两个字符
+        /// </summary>
+        /// <param name="input">需要计算的字符串</param>
+        /// <returns>返回字符串的长度</returns>
+        public static int GetCount(string input)
+        {
+            return Regex.Replace(input, @"[\u4e00-\u9fa5/g]", "aa").Length;
+        }
+
+        /// <summary>
+        /// 调用Regex中IsMatch函数实现一般的正则表达式匹配
+        /// </summary>
+        /// <param name="pattern">要匹配的正则表达式模式。</param>
+        /// <param name="input">要搜索匹配项的字符串</param>
+        /// <returns>如果正则表达式找到匹配项，则为 true；否则，为 false。</returns>
+        public static bool IsMatch(string pattern, string input)
+        {
+            System.Text.RegularExpressions.Regex regex = new Regex(pattern);
+            return regex.IsMatch(input);
+        }
+
+        /// <summary>
+        /// 从输入字符串中的第一个字符开始，用替换字符串替换指定的正则表达式模式的所有匹配项。
+        /// </summary>
+        /// <param name="pattern">模式字符串</param>
+        /// <param name="input">输入字符串</param>
+        /// <param name="replacement">用于替换的字符串</param>
+        /// <returns>返回被替换后的结果</returns>
+        public static string Replace(string pattern, string input, string replacement)
+        {
+            Regex regex = new Regex(pattern);
+            return regex.Replace(input, replacement);
+        }
+
+        /// <summary>
+        /// 在由正则表达式模式定义的位置拆分输入字符串。
+        /// </summary>
+        /// <param name="pattern">模式字符串</param>
+        /// <param name="input">输入字符串</param>
+        /// <returns></returns>
+        public static string[] Split(string pattern, string input)
+        {
+            Regex regex = new Regex(pattern);
+            return regex.Split(input);
+        }
+        /// <summary>
+        /// 判断输入的字符串是否是合法的IPV6 地址
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static bool IsIPV6(string input)
+        {
+            string pattern = "";
+            string temp = input;
+            string[] strs = temp.Split(':');
+            if (strs.Length > 8)
             {
-                int index = input.IndexOf(compare);
-                if (index != -1)
-                {
-                    return 1 + GetStringCount(input.Substring(index + compare.Length), compare);
-                }
-                else
-                {
-                    return 0;
-                }
-
+                return false;
             }
+            int count = MetarnetRegex.GetStringCount(input, "::");
+            if (count > 1)
+            {
+                return false;
+            }
+            else if (count == 0)
+            {
+                pattern = @"^([\da-f]{1,4}:){7}[\da-f]{1,4}$";
+
+                Regex regex = new Regex(pattern);
+                return regex.IsMatch(input);
+            }
+            else
+            {
+                pattern = @"^([\da-f]{1,4}:){0,5}::([\da-f]{1,4}:){0,5}[\da-f]{1,4}$";
+                Regex regex1 = new Regex(pattern);
+                return regex1.IsMatch(input);
+            }
+
+        }
+        /* *******************************************************************
+        * 1、通过“:”来分割字符串看得到的字符串数组长度是否小于等于8
+        * 2、判断输入的IPV6字符串中是否有“::”。
+        * 3、如果没有“::”采用 ^([\da-f]{1,4}:){7}[\da-f]{1,4}$ 来判断
+        * 4、如果有“::” ，判断"::"是否止出现一次
+        * 5、如果出现一次以上 返回false
+        * 6、^([\da-f]{1,4}:){0,5}::([\da-f]{1,4}:){0,5}[\da-f]{1,4}$
+        * ******************************************************************/
+        /// <summary>
+        /// 判断字符串compare 在 input字符串中出现的次数
+        /// </summary>
+        /// <param name="input">源字符串</param>
+        /// <param name="compare">用于比较的字符串</param>
+        /// <returns>字符串compare 在 input字符串中出现的次数</returns>
+        private static int GetStringCount(string input, string compare)
+        {
+            int index = input.IndexOf(compare);
+            if (index != -1)
+            {
+                return 1 + GetStringCount(input.Substring(index + compare.Length), compare);
+            }
+            else
+            {
+                return 0;
+            }
+
         }
     }
+}

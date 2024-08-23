@@ -1,12 +1,4 @@
-﻿using Models.PageDataSor.DataTableControl.ForControlAttribute;
-using Models.PageDataSor.DataTableControl.Trigger;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks; 
-
-namespace Models.PageDataSor.BaseDelegate
+﻿namespace Models.PageDataSor.BaseDelegate
 {
     /// <summary>
     /// 触发器委托

@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Models.PageDataSor.DataTableControl.ForControlAttribute
 {
     public class DataTableControlEventArgs : EventArgs
     {
-        public DataTableControlEventArgs() 
-        { 
+        public DataTableControlEventArgs()
+        {
 
         }
 
@@ -47,13 +44,13 @@ namespace Models.PageDataSor.DataTableControl.ForControlAttribute
         /// <summary>
         /// 解释存放参数
         /// </summary>
-        Dictionary<object,string> argsKinds = new Dictionary<object,string>();
+        Dictionary<object, string> argsKinds = new Dictionary<object, string>();
 
         void Init_argsKinds()
         {
-            foreach(object arg in Args)
+            foreach (object arg in Args)
             {
-                if(!argsKinds.ContainsKey(arg))
+                if (!argsKinds.ContainsKey(arg))
                 {
                     argsKinds.Add(arg, arg.GetType().Name);
                 }
@@ -65,7 +62,7 @@ namespace Models.PageDataSor.DataTableControl.ForControlAttribute
         /// </summary>
         /// <param name="arg">参数</param>
         /// <param name="kind">参数类型解释</param>
-        public void SetArgKinds(Object arg,string kind)
+        public void SetArgKinds(Object arg, string kind)
         {
             if (!argsKinds.ContainsKey(arg))
             {

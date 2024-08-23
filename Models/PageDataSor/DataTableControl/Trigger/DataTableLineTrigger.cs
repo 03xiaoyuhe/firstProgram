@@ -1,9 +1,4 @@
 ﻿using Models.PageDataSor.DataTableControl.ForControlAttribute;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Models.PageDataSor.DataTableControl.Trigger
 {

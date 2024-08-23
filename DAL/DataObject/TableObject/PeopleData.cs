@@ -1,7 +1,9 @@
 ﻿using DAL.DataObject.TableObject.PeopleApart;
+using System.Data;
 
 namespace DAL.DataObject.TableObject
 {
+
     /// <summary>
     /// 人员信息
     /// </summary>
@@ -15,6 +17,28 @@ namespace DAL.DataObject.TableObject
 
         #region 属性及字段
 
+
+        public new DataObjectState State
+        {
+            get { return base.State; }
+            set
+            {
+                base.State = value;
+                Base.State = value;
+                PrincipalExpand.State = value;
+            }
+        }
+
+        public new DataTable DataTable
+        {
+            get { return base.DataTable; }
+            set
+            {
+                base.DataTable = value;
+                Base.DataTable = value;
+                PrincipalExpand.DataTable = value;
+            }
+        }
         PeopleBase _Base;
         /// <summary>
         /// 人员基础信息

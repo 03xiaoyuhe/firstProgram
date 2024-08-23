@@ -92,25 +92,25 @@ namespace DAL.DataControl.TableControl
                             {
                                 Base = new PeopleBase
                                 {
-                                    PEB_ID = reader.GetInt32(reader.GetOrdinal("PEB_ID")),
-                                    PEB_Name = reader.GetString(reader.GetOrdinal("PEB_Name")),
-                                    PEB_Sex = reader.GetString(reader.GetOrdinal("PEB_Sex")),
-                                    PEB_Birthday = reader.GetDateTime(reader.GetOrdinal("PEB_Birthday")).ToString("yyyy-MM-dd"),
-                                    PEB_Job = reader.GetString(reader.GetOrdinal("PEB_Job")),
-                                    PEB_Title = reader.GetString(reader.GetOrdinal("PEB_Title")),
-                                    PEB_Employer = reader.GetString(reader.GetOrdinal("PEB_Employer"))
+                                    PEB_ID = reader.IsDBNull(reader.GetOrdinal("PEB_ID")) ? 0 : reader.GetInt32(reader.GetOrdinal("PEB_ID")),
+                                    PEB_Name = reader.IsDBNull(reader.GetOrdinal("PEB_Name")) ? String.Empty : reader.GetString(reader.GetOrdinal("PEB_Name")),
+                                    PEB_Sex = reader.IsDBNull(reader.GetOrdinal("PEB_Sex")) ? String.Empty : reader.GetString(reader.GetOrdinal("PEB_Sex")),
+                                    PEB_Birthday = reader.IsDBNull(reader.GetOrdinal("PEB_Birthday")) ? String.Empty : reader.GetDateTime(reader.GetOrdinal("PEB_Birthday")).ToString("yyyy-MM-dd"),
+                                    PEB_Job = reader.IsDBNull(reader.GetOrdinal("PEB_Job")) ? String.Empty : reader.GetString(reader.GetOrdinal("PEB_Job")),
+                                    PEB_Title = reader.IsDBNull(reader.GetOrdinal("PEB_Title")) ? String.Empty : reader.GetString(reader.GetOrdinal("PEB_Title")),
+                                    PEB_Employer = reader.IsDBNull(reader.GetOrdinal("PEB_Employer")) ? String.Empty : reader.GetString(reader.GetOrdinal("PEB_Employer"))
                                 },
                                 PrincipalExpand = new PeoplePrincipalExpand
                                 {
-                                    PEB_ID = reader.GetInt32(reader.GetOrdinal("PEB_ID")),
-                                    PE_Major = reader.GetString(reader.GetOrdinal("PE_Major")),
-                                    PE_Speciality = reader.GetString(reader.GetOrdinal("PE_Speciality")),
-                                    PE_Engage = reader.GetString(reader.GetOrdinal("PE_Engage")),
-                                    PE_Address = reader.GetString(reader.GetOrdinal("PE_Address")),
-                                    PE_IsYouth = reader.GetString(reader.GetOrdinal("PE_IsYouth")),
-                                    PE_OfficePhone = reader.GetString(reader.GetOrdinal("PE_OfficePhone")),
-                                    PE_MobilePhone = reader.GetString(reader.GetOrdinal("PE_MobilePhone")),
-                                    PE_Email = reader.GetString(reader.GetOrdinal("PE_Email"))
+                                    PEB_ID = reader.IsDBNull(reader.GetOrdinal("PEB_ID")) ? 0 : reader.GetInt32(reader.GetOrdinal("PEB_ID")),
+                                    PE_Major = reader.IsDBNull(reader.GetOrdinal("PE_Major")) ? String.Empty : reader.GetString(reader.GetOrdinal("PE_Major")),
+                                    PE_Speciality = reader.IsDBNull(reader.GetOrdinal("PE_Speciality")) ? String.Empty : reader.GetString(reader.GetOrdinal("PE_Speciality")),
+                                    PE_Engage = reader.IsDBNull(reader.GetOrdinal("PE_Engage")) ? String.Empty : reader.GetString(reader.GetOrdinal("PE_Engage")),
+                                    PE_Address = reader.IsDBNull(reader.GetOrdinal("PE_Address")) ? String.Empty : reader.GetString(reader.GetOrdinal("PE_Address")),
+                                    PE_IsYouth = reader.IsDBNull(reader.GetOrdinal("PE_IsYouth")) ? String.Empty : reader.GetString(reader.GetOrdinal("PE_IsYouth")),
+                                    PE_OfficePhone = reader.IsDBNull(reader.GetOrdinal("PE_OfficePhone")) ? String.Empty : reader.GetString(reader.GetOrdinal("PE_OfficePhone")),
+                                    PE_MobilePhone = reader.IsDBNull(reader.GetOrdinal("PE_MobilePhone")) ? String.Empty : reader.GetString(reader.GetOrdinal("PE_MobilePhone")),
+                                    PE_Email = reader.IsDBNull(reader.GetOrdinal("PE_Email")) ? String.Empty : reader.GetString(reader.GetOrdinal("PE_Email"))
                                 }
                             };
                             return peopleData;
@@ -141,7 +141,7 @@ namespace DAL.DataControl.TableControl
             PeopleBase.PEB_ID ,
             PeopleBase.PEB_Name ,
             PeopleBase.PEB_Sex ,
-            CONVERT(varchar, PeopleBase.PEB_Birthday , 23) AS PEB_Birthday,
+            PEB_Birthday,
             PeopleBase.PEB_Job ,
             PeopleBase.PEB_Title ,
             PeopleBase.PEB_Employer ,

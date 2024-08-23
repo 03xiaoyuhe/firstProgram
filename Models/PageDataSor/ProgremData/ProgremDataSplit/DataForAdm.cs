@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Models.PageDataSor.ProgremData
+﻿namespace Models.PageDataSor.ProgremData
 {
     /// <summary>
     /// 项目负责人数据对象
@@ -45,19 +38,19 @@ namespace Models.PageDataSor.ProgremData
         /// <param name="admPhone"></param>
         /// <param name="admEmail"></param>
         public DataForAdm(
-            string admName, 
-            string admBorn,  
-            string admSex,  
-            string admOrd,  
-            string admOrdName, 
-            string admMar,  
-            string admMajBest,  
-            string admNowDo,  
-            string admJobWhere,  
-            string admPhontWhere,  
-            bool isYoungProjrem,  
-            string admAdmPhone,  
-            string admPhone,  
+            string admName,
+            string admBorn,
+            string admSex,
+            string admOrd,
+            string admOrdName,
+            string admMar,
+            string admMajBest,
+            string admNowDo,
+            string admJobWhere,
+            string admPhontWhere,
+            bool isYoungProjrem,
+            string admAdmPhone,
+            string admPhone,
             string admEmail
             )
         {

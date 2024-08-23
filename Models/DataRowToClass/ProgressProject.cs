@@ -1,11 +1,6 @@
 ﻿using Models.PageDataSor;
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Models.DataRowToClass
 {
@@ -73,7 +68,7 @@ namespace Models.DataRowToClass
                 dataRow["project_level"] = value;
             }
         }
-        
+
         public string ProNumber
         {
             get
@@ -88,7 +83,7 @@ namespace Models.DataRowToClass
                 dataRow["project_number"] = value;
             }
         }
-        
+
         public string ProCategory
         {
             get
@@ -103,7 +98,7 @@ namespace Models.DataRowToClass
                 dataRow["project_category"] = value;
             }
         }
-    
+
         public string ProYouth
         {
             get
@@ -118,12 +113,12 @@ namespace Models.DataRowToClass
                 dataRow["project_youth"] = value;
             }
         }
-    
+
         public string ProResearch
         {
             get
             {
-                if (dataRow.Table.Rows.Count == 0 ||!dataRow.Table.Columns.Contains("project_research")) return null;
+                if (dataRow.Table.Rows.Count == 0 || !dataRow.Table.Columns.Contains("project_research")) return null;
                 return dataRow["project_research"].ToString();
             }
             set
@@ -133,7 +128,7 @@ namespace Models.DataRowToClass
                 dataRow["project_research"] = value;
             }
         }
-    
+
         public string ProView
         {
             get
@@ -148,7 +143,7 @@ namespace Models.DataRowToClass
                 dataRow["project_view"] = value;
             }
         }
-    
+
         public string ProReferences
         {
             get
@@ -163,7 +158,7 @@ namespace Models.DataRowToClass
                 dataRow["project_References"] = value;
             }
         }
-    
+
         public string ProTime
         {
             get
@@ -178,7 +173,7 @@ namespace Models.DataRowToClass
                 dataRow["project_time"] = value;
             }
         }
-    
+
         public string ProForm
         {
             get
@@ -193,7 +188,7 @@ namespace Models.DataRowToClass
                 dataRow["project_form"] = value;
             }
         }
-    
+
         public string ProOpinion
         {
             get
@@ -208,7 +203,7 @@ namespace Models.DataRowToClass
                 dataRow["project_opinion"] = value;
             }
         }
-    
+
         public string ProExpert
         {
             get
@@ -223,7 +218,7 @@ namespace Models.DataRowToClass
                 dataRow["project_expert_view"] = value;
             }
         }
-    
+
         public string ProApproval
         {
             get
@@ -245,7 +240,7 @@ namespace Models.DataRowToClass
             get
             {
                 List<string> list = new List<string>();
-                for(int i = 0; i < 13; i++)
+                for (int i = 0; i < 13; i++)
                 {
                     if (dataRow.Table.Rows.Count == 0 || !dataRow.Table.Columns.Contains($"UserId{i}") || dataRow[$"UserId{i}"] == null || dataRow[$"UserId{i}"].ToString() == "") continue;
                     list.Add(dataRow[$"UserId{i}"].ToString());

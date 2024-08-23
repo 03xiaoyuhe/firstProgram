@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Models
 {
@@ -30,8 +26,8 @@ namespace Models
         public LineDateBase(
             string iDlable,
             DataRow dataRow,
-            string data_base = null, 
-            Dictionary<string, string> line_to_mean = null, 
+            string data_base = null,
+            Dictionary<string, string> line_to_mean = null,
             List<string> line_to_show = null
             ) : base(iDlable, data_base, line_to_mean, line_to_show)
         {

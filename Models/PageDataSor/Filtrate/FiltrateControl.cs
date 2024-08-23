@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Models.PageDataSor.Filtrate
+﻿namespace Models.PageDataSor.Filtrate
 {
     public class FiltrateControl
     {
@@ -13,7 +7,7 @@ namespace Models.PageDataSor.Filtrate
         {
             get
             {
-                if(data == null) data= new FiltrateData();
+                if (data == null) data = new FiltrateData();
                 return data;
             }
             set

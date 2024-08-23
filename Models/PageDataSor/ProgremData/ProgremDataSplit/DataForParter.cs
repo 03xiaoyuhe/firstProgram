@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
 
 namespace Models.PageDataSor.ProgremData
 {
@@ -22,7 +17,7 @@ namespace Models.PageDataSor.ProgremData
             JobWhere = "未赋值";
         }
 
-        public DataForParter(string name, string sex, DateTime broth, string job, string jobWhere )
+        public DataForParter(string name, string sex, DateTime broth, string job, string jobWhere)
         {
             Name = name;
             Sex = sex;

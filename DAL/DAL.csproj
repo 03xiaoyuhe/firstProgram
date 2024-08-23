@@ -161,11 +161,14 @@
     <Compile Include="DataControl\Interface\IDataInsert.cs" />
     <Compile Include="DataControl\Interface\IDataSelect.cs" />
     <Compile Include="DataControl\Interface\IDataUpdate.cs" />
+    <Compile Include="DataControl\RelationshipControl\RelationForParterControl.cs" />
+    <Compile Include="DataControl\RelationshipControl\RelationForPrincipalControl.cs" />
     <Compile Include="DataControl\TableControl\AccountControl.cs" />
     <Compile Include="DataControl\TableControl\PeopleControl.cs" />
     <Compile Include="DataControl\TableControl\ProjectControl.cs" />
     <Compile Include="DataControl\ViewControl\ProjectViewContron.cs" />
     <Compile Include="DataObject\DataObjectBase.cs" />
+    <Compile Include="DataObject\RelationObject\RelationForPrincipalCell.cs" />
     <Compile Include="DataObject\TableObject\AccountApart\AccountBase.cs" />
     <Compile Include="DataObject\TableObject\AccountData.cs" />
     <Compile Include="DataObject\TableObject\PeopleApart\PeopleBase.cs" />
@@ -190,7 +193,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataControl\AuthotityControl\" />
-    <Folder Include="DataControl\RelationshipControl\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

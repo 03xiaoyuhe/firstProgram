@@ -1,9 +1,4 @@
 ﻿using Models.PageDataSor.DataTableControl.ForControlAttribute;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Models.PageDataSor.DataTableControl
 {
@@ -50,7 +45,7 @@ namespace Models.PageDataSor.DataTableControl
             DataTableControls = dataTableControlAttribute.DataTableControls;
         }
 
-        
+
         /// <summary>
         /// 数据表列操作集
         /// </summary>

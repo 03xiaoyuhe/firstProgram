@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Models.PageDataSor.ForMyTable
 {
@@ -84,7 +81,7 @@ namespace Models.PageDataSor.ForMyTable
         /// <exception cref="CacheForChoosedBoxIsExistException">如果对于ID已存在会抛出异常</exception>
         public static void Creat(string ID)
         {
-            if(!IDContains.Contains(ID))
+            if (!IDContains.Contains(ID))
             {
                 IDContains.Add(ID);
                 CacheGenericity<HashSet<string>>.Data[$"{ID}-ChoosedID"] = new HashSet<string>();
@@ -102,7 +99,7 @@ namespace Models.PageDataSor.ForMyTable
         /// <exception cref="CacheForChoosedBoxNotExistException">若ID不存在会抛出异常</exception>
         public static void Clear(string ID)
         {
-            if(IDContains.Contains(ID))
+            if (IDContains.Contains(ID))
             {
                 CacheGenericity<HashSet<string>>.Data[$"{ID}-ChoosedID"] = new HashSet<string>();
             }
@@ -119,7 +116,7 @@ namespace Models.PageDataSor.ForMyTable
         /// <exception cref="CacheForChoosedBoxNotExistException">如果ID不存在会抛出异常</exception>
         public static void Delete(string ID)
         {
-            if(!IDContains.Contains(ID))
+            if (!IDContains.Contains(ID))
             {
                 IDContains.Remove(ID);
                 CacheGenericity<HashSet<string>>.Data[$"{ID}-ChoosedID"] = null;

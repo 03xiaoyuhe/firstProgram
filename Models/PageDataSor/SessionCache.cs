@@ -1,16 +1,8 @@
-﻿using NPOI.SS.Formula.Functions;
-using NPOI.XSSF.Streaming.Values;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.UI;
+﻿using System.Web;
 
 namespace Models.PageDataSor.ProgremData
 {
-    public class SessionCache<T>  where T : class, new()
+    public class SessionCache<T> where T : class, new()
     {
 
         /// <summary>

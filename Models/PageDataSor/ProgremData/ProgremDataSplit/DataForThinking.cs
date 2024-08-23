@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Models.PageDataSor.ProgremData
+﻿namespace Models.PageDataSor.ProgremData
 {
     public class DataForThinking
     {
-        public DataForThinking() 
+        public DataForThinking()
         {
             WhereThink = "未赋值";
             whereThinkTime = "未赋值";

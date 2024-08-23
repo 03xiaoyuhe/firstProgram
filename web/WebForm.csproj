@@ -238,6 +238,7 @@
     <Content Include="Page\functionPage\QF-ChildPage\ForAccount\AccountSetting.aspx" />
     <Content Include="Page\functionPage\QF-ChildPage\ForAccount\ApplicantAcconterSelectPage.aspx" />
     <Content Include="Page\functionPage\QF-ChildPage\ForPeople\PeopleInformAdd.aspx" />
+    <Content Include="Page\functionPage\QF-ChildPage\ForPeople\PeopleInformShow.aspx" />
     <Content Include="Page\functionPage\QF-ChildPage\ForProject\EndingProjectLoadPage.aspx" />
     <Content Include="Page\functionPage\QF-ChildPage\ForAccount\JudgeAccounterPage.aspx" />
     <Content Include="Page\functionPage\QF-ChildPage\ForProject\OngoingProjectLoadPage.aspx" />
@@ -805,6 +806,13 @@
     </Compile>
     <Compile Include="Page\functionPage\QF-ChildPage\ForPeople\PeopleInformAdd.aspx.designer.cs">
       <DependentUpon>PeopleInformAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\functionPage\QF-ChildPage\ForPeople\PeopleInformShow.aspx.cs">
+      <DependentUpon>PeopleInformShow.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\functionPage\QF-ChildPage\ForPeople\PeopleInformShow.aspx.designer.cs">
+      <DependentUpon>PeopleInformShow.aspx</DependentUpon>
     </Compile>
     <Compile Include="Page\functionPage\QF-ChildPage\ForProject\addProgram.aspx.cs">
       <DependentUpon>addProgram.aspx</DependentUpon>

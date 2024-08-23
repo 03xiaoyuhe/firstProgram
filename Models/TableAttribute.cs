@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
-using System.Web;
 
 namespace Models
 {
@@ -150,7 +148,7 @@ namespace Models
 
         public TableAttribute() { }
 
-        
+
         List<string> TranslateValueColloctionToList(Dictionary<string, string>.ValueCollection values)
         {
             List<string> Values = new List<string>();

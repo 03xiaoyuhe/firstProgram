@@ -1,11 +1,13 @@
-﻿namespace DAL.DataObject.TableObject.PeopleApart
+﻿using System;
+
+namespace DAL.DataObject.TableObject.PeopleApart
 {
     public class PeoplePrincipalExpand : DataObjectBase
     {
         public override bool IsEmpty()
         {
             if (
-                //PE_ID == 0 &&
+                PE_ID == 0 &&
                 PEB_ID == 0 &&
                 PE_Major == string.Empty &&
                 PE_Speciality == string.Empty &&
@@ -22,22 +24,30 @@
 
         #region 属性及字段
 
-        // 信息 ID 是未知的
-        //int _PE_ID;
-        ///// <summary>
-        ///// 信息ID
-        ///// </summary>
-        //public int PE_ID
-        //{
-        //    get
-        //    {
-        //        return _PE_ID;
-        //    }
-        //    set
-        //    {
-        //        _PE_ID = value;
-        //    }
-        //}
+        int _PE_ID;
+        /// <summary>
+        /// 信息ID
+        /// </summary>
+        public int PE_ID
+        {
+            get
+            {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "PE_ID");
+                    if (Data != null)
+                    {
+                        return int.Parse(Data.ToString());
+                    }
+                    else return 0;
+                }
+                return _PE_ID;
+            }
+            set
+            {
+                _PE_ID = value;
+            }
+        }
 
         int _PB_ID;
         /// <summary>
@@ -47,6 +57,15 @@
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "PEB_ID");
+                    if (Data != null)
+                    {
+                        return int.Parse(Data.ToString());
+                    }
+                    else return 0;
+                }
                 return _PB_ID;
             }
             set
@@ -63,6 +82,15 @@
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "PE_Major");
+                    if (Data != null)
+                    {
+                        return Data.ToString();
+                    }
+                    else return String.Empty;
+                }
                 if (_PE_Major == null) _PE_Major = string.Empty;
                 return _PE_Major;
             }
@@ -80,6 +108,15 @@
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "PE_Speciality");
+                    if (Data != null)
+                    {
+                        return Data.ToString();
+                    }
+                    else return String.Empty;
+                }
                 if (_PE_Speciality == null) _PE_Speciality = string.Empty;
                 return _PE_Speciality;
             }
@@ -97,6 +134,15 @@
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "PE_Engage");
+                    if (Data != null)
+                    {
+                        return Data.ToString();
+                    }
+                    else return String.Empty;
+                }
                 if (_PE_Engage == null) _PE_Engage = string.Empty;
                 return _PE_Engage;
             }
@@ -114,6 +160,15 @@
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "PE_Address");
+                    if (Data != null)
+                    {
+                        return Data.ToString();
+                    }
+                    else return String.Empty;
+                }
                 if (_PE_Address == null) _PE_Address = string.Empty;
                 return _PE_Address;
             }
@@ -148,6 +203,15 @@
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "PE_IsYouth");
+                    if (Data != null)
+                    {
+                        return Data.ToString();
+                    }
+                    else return String.Empty;
+                }
                 if (_PE_IsYouth == null) _PE_IsYouth = string.Empty;
                 return _PE_IsYouth;
             }
@@ -165,6 +229,15 @@
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "PE_OfficePhone");
+                    if (Data != null)
+                    {
+                        return Data.ToString();
+                    }
+                    else return String.Empty;
+                }
                 if (_PE_OfficePhone == null) _PE_OfficePhone = string.Empty;
                 return _PE_OfficePhone;
             }
@@ -182,6 +255,15 @@
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "PE_MobilePhone");
+                    if (Data != null)
+                    {
+                        return Data.ToString();
+                    }
+                    else return String.Empty;
+                }
                 if (_PE_MobilePhone == null) _PE_MobilePhone = string.Empty;
                 return _PE_MobilePhone;
             }
@@ -199,6 +281,15 @@
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "PE_Email");
+                    if (Data != null)
+                    {
+                        return Data.ToString();
+                    }
+                    else return String.Empty;
+                }
                 if (_PE_Email == null) _PE_Email = string.Empty;
                 return _PE_Email;
             }

@@ -1,10 +1,5 @@
 ﻿using Models.PageDataSor;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Models.DataRowToClass
 {
@@ -39,7 +34,7 @@ namespace Models.DataRowToClass
             //dataTable.Columns.Add(column);
             //column = new DataColumn("UserEmail");
             //dataTable.Columns.Add(column);
-            
+
 
         }
 
@@ -250,7 +245,7 @@ namespace Models.DataRowToClass
             }
         }
 
-        
+
 
     }
 }

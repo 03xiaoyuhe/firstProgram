@@ -1,4 +1,6 @@
-﻿namespace DAL.DataObject.TableObject.PeopleApart
+﻿using System;
+
+namespace DAL.DataObject.TableObject.PeopleApart
 {
     public class PeopleBase : DataObjectBase
     {
@@ -32,6 +34,15 @@
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "PEB_ID");
+                    if (Data != null)
+                    {
+                        return int.Parse(Data.ToString());
+                    }
+                    else return 0;
+                }
                 return _PB_ID;
             }
             set
@@ -47,6 +58,15 @@
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "PEB_Name");
+                    if (Data != null)
+                    {
+                        return Data.ToString();
+                    }
+                    else return String.Empty;
+                }
                 if (_PB_Name == null) _PB_Name = string.Empty;
                 return _PB_Name;
             }
@@ -64,6 +84,15 @@
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "PEB_Sex");
+                    if (Data != null)
+                    {
+                        return Data.ToString();
+                    }
+                    else return String.Empty;
+                }
                 if (_PB_Sex == null) _PB_Sex = string.Empty;
                 return _PB_Sex;
             }
@@ -81,6 +110,15 @@
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "PEB_Birthday");
+                    if (Data != null)
+                    {
+                        return Data.ToString();
+                    }
+                    else return String.Empty;
+                }
                 if (_PB_Birthday == null) _PB_Birthday = string.Empty;
                 return _PB_Birthday;
             }
@@ -98,6 +136,15 @@
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "PEB_Job");
+                    if (Data != null)
+                    {
+                        return Data.ToString();
+                    }
+                    else return String.Empty;
+                }
                 if (_PB_Job == null) _PB_Job = string.Empty;
                 return _PB_Job;
             }
@@ -115,6 +162,15 @@
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "PEB_Title");
+                    if (Data != null)
+                    {
+                        return Data.ToString();
+                    }
+                    else return String.Empty;
+                }
                 if (_PB_Title == null) _PB_Title = string.Empty;
                 return _PB_Title;
             }
@@ -132,6 +188,15 @@
         {
             get
             {
+                if (State == DataObjectState.PraiseDateTableToData)
+                {
+                    Object Data = DataTableHelper.GetRowColumnValue(DataTable, RowIndex, "PEB_Employer");
+                    if (Data != null)
+                    {
+                        return Data.ToString();
+                    }
+                    else return String.Empty;
+                }
                 if (_PB_Employer == null) _PB_Employer = string.Empty;
                 return _PB_Employer;
             }

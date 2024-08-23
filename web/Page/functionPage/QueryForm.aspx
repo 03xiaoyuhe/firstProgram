@@ -358,7 +358,7 @@
                                     class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
                                     data-bs-toggle="collapse" data-bs-target="#selectProgremInform-collapse"
                                     aria-expanded="true">
-                                    信息批量导入
+                                    信息导入
                                 </button>
                                 <div class="collapse show" id="selectProgremInform-collapse">
                                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
@@ -384,7 +384,7 @@
                                     class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
                                     data-bs-toggle="collapse" data-bs-target="#manageProgram-collapse"
                                     aria-expanded="false">
-                                    项目信息查询
+                                    信息查询
                                 </button>
                                 <div class="collapse" id="manageProgram-collapse">
                                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
@@ -441,28 +441,46 @@
 
                                 <button
                                     class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-                                    data-bs-toggle="collapse" data-bs-target="#people-collapse" aria-expanded="true">
-                                    信息管理
+                                    data-bs-toggle="collapse" data-bs-target="#people-dataLoad" aria-expanded="true">
+                                    信息录入
                                 </button>
 
-                                <div class="collapse show" id="people-collapse">
+                                <div class="collapse show" id="people-dataLoad">
                                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                         <li><a href="#"
                                                 class="link-body-emphasis d-inline-flex text-decoration-none rounded"
-                                                onclick="addPeople(this)">快速添加</a></li>
-                                        <li>
-                                            <a href="#"
-                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded"
-                                                onclick="PeopleInform()">批量导入</a></li>
-                                        <li>
-                                            <a href="#"
-                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded"
-                                             onclick="UpdatePeopleInform()">批量更改</a>
+                                                onclick="addPeople(this)">快速添加</a>
                                         </li>
                                         <li>
                                             <a href="#"
                                                 class="link-body-emphasis d-inline-flex text-decoration-none rounded"
-                                                onclick="PersonInformSelectPage()">信息查询</a>
+                                                onclick="PeopleInform()">批量导入</a>
+                                        </li>
+<%--                                        <li>
+                                            <a href="#"
+                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded"
+                                             onclick="UpdatePeopleInform()">批量更改</a>
+                                        </li>--%>
+                                    </ul>
+                                </div>
+                            </li>
+
+                        </ul>
+                        <ul class="list-unstyled ps-0">
+                            <li class="mb-1">
+
+                                <button
+                                    class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                                    data-bs-toggle="collapse" data-bs-target="#people-select" aria-expanded="false">
+                                    信息查询
+                                </button>
+
+                                <div class="collapse" id="people-select">
+                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li>
+                                            <a href="#"
+                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded"
+                                                onclick="PersonInformSelectPage()">显示全部</a>
                                         </li>
                                     </ul>
                                 </div>

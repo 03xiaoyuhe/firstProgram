@@ -12,6 +12,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebForm.ASCX.Table;
 using Models.DataRowToClass;
+using DAL.DataObject.TableObject;
+using DAL.DataControl.TableControl;
 
 namespace WebForm.functionPage.QF_ChildPage
 {
@@ -44,35 +46,37 @@ namespace WebForm.functionPage.QF_ChildPage
 
             list1 = new Dictionary<string, bool>();
             list1.Add("姓名", true);
-            list1.Add("生日", true);
             list1.Add("性别", true);
+            list1.Add("出生年月", true);
             list1.Add("职务", true);
             list1.Add("职称", true);
+            list1.Add("工作单位", true);
             list1.Add("专业", false);
             list1.Add("研究专长", false);
             list1.Add("现从事职业", false);
-            list1.Add("工作单位", false);
             list1.Add("通信地址", false);
+            list1.Add("是否符合青年项目申报条件", false);
             list1.Add("办公电话", false);
-            list1.Add("电话号码", false);
-            list1.Add("邮箱", false);
+            list1.Add("手机", false);
+            list1.Add("电子邮箱", false);
 
 
 
             map1 = new Dictionary<string, string>();
-            map1.Add("姓名", "UseName");
-            map1.Add("生日", "UserDate");
-            map1.Add("性别", "UserSex");
-            map1.Add("职务", "UserPosition");
-            map1.Add("职称", "UserTitle");
-            map1.Add("专业", "UserSpeciality");
-            map1.Add("研究专长", "UserResearch");
-            map1.Add("现从事职业", "UserResearch_now");
-            map1.Add("工作单位", "UserWorkplace");
-            map1.Add("通信地址", "UserAddress");
-            map1.Add("办公电话", "UserOffice_number");
-            map1.Add("电话号码", "UserNumber");
-            map1.Add("邮箱", "UserEmail");
+            map1.Add("姓名", "PEB_Name");
+            map1.Add("性别", "PEB_Sex");
+            map1.Add("出生年月", "PEB_Birthday");
+            map1.Add("职务", "PEB_Job");
+            map1.Add("职称", "PEB_Title");
+            map1.Add("工作单位", "PEB_Employer");
+            map1.Add("专业", "PE_Major");
+            map1.Add("研究专长", "PE_Speciality");
+            map1.Add("现从事职业", "PE_Engage");
+            map1.Add("通信地址", "PE_Address");
+            map1.Add("是否符合青年项目申报条件", "PE_IsYouth");
+            map1.Add("办公电话", "PE_OfficePhone");
+            map1.Add("手机", "PE_MobilePhone");
+            map1.Add("电子邮箱", "PE_Email");
         }
 
 
@@ -120,89 +124,14 @@ namespace WebForm.functionPage.QF_ChildPage
                 }
                 for (int i = 0; i < dataTable.Rows.Count; i++)
                 {
-                    DataRow dl = dataTable.Rows[i];
-                    ParticipantInform participantInform = new ParticipantInform();
-                    participantInform.DataTable = dl;
-                    if (MetarnetRegex.IsChineseCh(participantInform.PeoName))
+                    PeopleData peopleData = new PeopleData
                     {
-                        if (
-                    !DAL.User.KindsInsert(
-                        participantInform.PeoName,
-                        participantInform.PeoDate,
-                        participantInform.PeoSex,
-                        participantInform.PeoPosition,
-                        participantInform.PeoTitle,
-                        participantInform.PeoSpeciality,
-                        participantInform.PeoResearch,
-                        participantInform.PeoReNow,
-                        participantInform.PeoWork,
-                        participantInform.ProAddress,
-                        participantInform.PeoOffNum,
-                        participantInform.PeoNumber,
-                        participantInform.ProEmail
-                         //dl["UseName"].ToString(),
-                         //dl["UserDate"].ToString(),
-                         //dl["UserSex"].ToString(),
-                         //dl["UserPosition"].ToString(),
-                         //dl["UserTitle"].ToString(),
-                         //dl["UserSpeciality"].ToString(),
-                         //dl["UserResearch"].ToString(),
-                         //dl["UserResearch_now"].ToString(),
-                         //dl["UserWorkplace"].ToString(),
-                         //dl["UserAddress"].ToString(),
-                         //dl["UserOffice_number"].ToString(),
-                         //dl["UserNumber"].ToString(),
-                         //dl["UserEmail"].ToString()
-                         ))
-                        {
-                            Models.Massage massage = new Massage();
-                            massage.HeadColor = "Red";
-                            massage.MassageText = "第" + i + "插入异常，可能数据依然不符合要求，请仔细检查该行数据并尝试重新插入";
-                            massage.HeadText = "ERROR";
-                            massage.PostMassage();
-                        }
-                    }
-                    else
-                    {
-                        string name = MetarnetRegex.RetainChineseString(participantInform.PeoName);
-                        if (
-                    !DAL.User.KindsInsert(
-                        name,
-                        participantInform.PeoDate,
-                        participantInform.PeoSex,
-                        participantInform.PeoPosition,
-                        participantInform.PeoTitle,
-                        participantInform.PeoSpeciality,
-                        participantInform.PeoResearch,
-                        participantInform.PeoReNow,
-                        participantInform.PeoWork,
-                        participantInform.ProAddress,
-                        participantInform.PeoOffNum,
-                        participantInform.PeoNumber,
-                        participantInform.ProEmail
-                         //dl["UseName"].ToString(),
-                         //dl["UserDate"].ToString(),
-                         //dl["UserSex"].ToString(),
-                         //dl["UserPosition"].ToString(),
-                         //dl["UserTitle"].ToString(),
-                         //dl["UserSpeciality"].ToString(),
-                         //dl["UserResearch"].ToString(),
-                         //dl["UserResearch_now"].ToString(),
-                         //dl["UserWorkplace"].ToString(),
-                         //dl["UserAddress"].ToString(),
-                         //dl["UserOffice_number"].ToString(),
-                         //dl["UserNumber"].ToString(),
-                         //dl["UserEmail"].ToString()
-                         ))
-                        {
-                            Models.Massage massage = new Massage();
-                            massage.HeadColor = "Red";
-                            massage.MassageText = "第" + i + "插入异常，可能数据依然不符合要求，请仔细检查该行数据并尝试重新插入";
-                            massage.HeadText = "ERROR";
-                            massage.PostMassage();
-                        }
-                    }
-                    
+                        State = DAL.DataObject.DataObjectState.PraiseDateTableToData,
+                        DataTable = dataTable,
+                        RowIndex = i
+                    };
+                    (new PeopleControl()).Insert(null, peopleData);
+
 
 
                 }
@@ -211,22 +140,24 @@ namespace WebForm.functionPage.QF_ChildPage
 
                 // 加载导入预览
                 List<string> list = new List<string>();
-                list.Add("UseName");
-                list.Add("UserSex");
-                list.Add("UserDate");
-                list.Add("UserPosition");
-                list.Add("UserTitle");
+                list.Add("PEB_Name");
+                list.Add("PEB_Sex");
+                list.Add("PEB_Birthday");
+                list.Add("PEB_Job");
+                list.Add("PEB_Title");
+                list.Add("PEB_Employer");
 
 
                 Dictionary<string, string> map = new Dictionary<string, string>();
-                map.Add("UseName", "姓名");
-                map.Add("UserSex", "性别");
-                map.Add("UserDate", "生日");
-                map.Add("UserPosition", "职务");
-                map.Add("UserTitle", "职称");
-               
+                map.Add("PEB_Name", "姓名");
+                map.Add("PEB_Sex", "性别");
+                map.Add("PEB_Birthday", "生日");
+                map.Add("PEB_Job", "职务");
+                map.Add("PEB_Title", "职称");
+                map.Add("PEB_Employer", "工作单位");
+
                 TableAttribute tableAttribute = new TableAttribute(
-                    "UseName",
+                    "PEB_Name",
                     "人员信息",
                     map,
                     list
