@@ -59,7 +59,7 @@ namespace DAL.DataControl.RelationshipControl
         {
             string query = BuildSelectQuery(null, whereString, groupBy, orderByField, isAscending, pageSize, pageNumber);
 
-            using (SqlConnection connection = GetSqlConnection())
+            SqlConnection connection = GetSqlConnection();
             {
                 OpenSqlConnection();
                 using (SqlCommand command = new SqlCommand(query, connection))
@@ -77,7 +77,7 @@ namespace DAL.DataControl.RelationshipControl
         {
             string query = BuildSelectQuery(fields, whereString, groupBy, orderByField, isAscending, pageSize, pageNumber);
 
-            using (SqlConnection connection = GetSqlConnection())
+            SqlConnection connection = GetSqlConnection();
             {
                 OpenSqlConnection();
                 using (SqlCommand command = new SqlCommand(query, connection))
@@ -101,7 +101,7 @@ namespace DAL.DataControl.RelationshipControl
 
             List<RelationForPrincipalCell> result = new List<RelationForPrincipalCell>();
 
-            using (SqlConnection connection = GetSqlConnection())
+            SqlConnection connection = GetSqlConnection();
             {
                 OpenSqlConnection();
                 using (SqlCommand command = new SqlCommand(query, connection))
@@ -143,7 +143,7 @@ namespace DAL.DataControl.RelationshipControl
 
             return sql;
         }
-        void IDataInsert.Insert(SqlTransaction Transaction, object Item)
+        public void Insert(SqlTransaction Transaction, object Item)
         {
             var items = Item as List<RelationForPrincipalCell>;
             if (items == null || items.Count == 0)
@@ -175,13 +175,13 @@ namespace DAL.DataControl.RelationshipControl
                 command.ExecuteNonQuery();
 
 
-                if(Transaction != null)
+                if(Transaction == null)
                     sqlTransaction.Commit();
             }
 
         }
 
-        string IDataInsert.InsertReturnID(SqlTransaction Transaction, object Item)
+        public string InsertReturnID(SqlTransaction Transaction, object Item)
         {
             var items = Item as List<RelationForPrincipalCell>;
             if (items == null || items.Count == 0)
@@ -244,7 +244,7 @@ namespace DAL.DataControl.RelationshipControl
             }
         }
 
-        int IDataDelete.DeleteByID(SqlTransaction Transaction, string ID)
+        public int DeleteByID(SqlTransaction Transaction, string ID)
         {
             if (string.IsNullOrEmpty(ID))
             {
@@ -262,21 +262,29 @@ namespace DAL.DataControl.RelationshipControl
                 sqlTransaction = sqlConnection.BeginTransaction();
             }
 
-
-            using (SqlCommand command = new SqlCommand(sqlDelete, sqlTransaction.Connection, sqlTransaction))
+            try
             {
-                command.Parameters.AddWithValue("@PEB_ID", ID);
+                using (SqlCommand command = new SqlCommand(sqlDelete, sqlTransaction.Connection, sqlTransaction))
+                {
+                   command.Parameters.AddWithValue("@PEB_ID", ID);
 
 
-                if (Transaction != null)
-                    sqlTransaction.Commit();
+                   if (Transaction == null)
+                        sqlTransaction.Commit();
 
 
-                return command.ExecuteNonQuery();
+                   return command.ExecuteNonQuery();
+                }
+
             }
+            catch
+            {
+                sqlTransaction.Rollback();
+            }
+            return 0;
         }
 
-        int IDataDelete.Delete(SqlTransaction Transaction, string Where)
+        public int Delete(SqlTransaction Transaction, string Where)
         {
             if (string.IsNullOrEmpty(Where))
             {
@@ -301,7 +309,7 @@ namespace DAL.DataControl.RelationshipControl
 
 
 
-                if (Transaction != null)
+                if (Transaction == null)
                     sqlTransaction.Commit();
 
 
@@ -344,7 +352,7 @@ namespace DAL.DataControl.RelationshipControl
             return $"UPDATE RelationForPrincipal SET {updateFieldString} WHERE {condition}";
         }
 
-        int IDataUpdate.Update(SqlTransaction Transaction, string ID, object Item)
+        public int Update(SqlTransaction Transaction, string ID, object Item)
         {
             if (string.IsNullOrEmpty(ID))
             {
@@ -387,13 +395,13 @@ namespace DAL.DataControl.RelationshipControl
             }
 
 
-            if (Transaction != null)
+            if (Transaction == null)
                 sqlTransaction.Commit();
 
             return affectedRows;
         }
 
-        int IDataUpdate.Update(SqlTransaction Transaction, object Item, string Where)
+        public int Update(SqlTransaction Transaction, object Item, string Where)
         {
             if (string.IsNullOrEmpty(Where))
             {
@@ -433,7 +441,7 @@ namespace DAL.DataControl.RelationshipControl
             }
 
 
-            if (Transaction != null)
+            if (Transaction == null)
                 sqlTransaction.Commit();
 
             return affectedRows;

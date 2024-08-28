@@ -1,6 +1,9 @@
 ﻿using DAL;
+using DAL.DataControl.RelationshipControl;
 using DAL.DataControl.TableControl;
 using DAL.DataControl.ViewControl;
+using DAL.DataObject.TableObject;
+using DAL.DataObject.TableObject.ProjectApart;
 using Models;
 using Models.PageDataSor;
 using Models.PageDataSor.ForMyTable;
@@ -449,6 +452,7 @@ namespace WebForm.functionPage.QF_ChildPage
                 {
                     if (
                         !(
+                        (new RelationForPrincipalControl()).Delete(null, ProjectControl.BuildWhereClause(new Dictionary<string, string>() { { "PB_ID", item } })) >= 0 &&
                         (new ProjectControl()).Delete(null, ProjectControl.BuildWhereClause(new Dictionary<string, string>() { { "PB_ID", item } })) >= 1
                         )
                        )

@@ -15,8 +15,22 @@ namespace WebForm.ASCX.ProgramInform
 {
     public partial class ProgramShow : System.Web.UI.UserControl
     {
-
+        /// <summary>
+        /// 项目信息
+        /// </summary>
         public ProjectData ProjectData { get; set; }
+
+        /// <summary>
+        /// 项目负责人信息
+        /// </summary>
+        public PeopleData PrincipalData
+        {
+            set
+            {
+                PrincipalDataForm.PeopleData = value;
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             PB_ID.Data = ProjectData.Base.PB_ID.ToString();

@@ -1,5 +1,7 @@
-﻿using DAL.DataObject.TableObject;
+﻿using DAL.DataControl.TableControl;
+using DAL.DataObject.TableObject;
 using DAL.DataObject.TableObject.ProjectApart;
+using Models.PageDataSor;
 using Models.PageDataSor.ProgremData;
 using Newtonsoft.Json.Linq;
 using System;
@@ -9,6 +11,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebForm.ASCX.PeopleInform.ForPeopleShow;
+using WebForm.ASCX.Table;
 
 namespace WebForm.ASCX.ProgramInform
 {
@@ -16,7 +20,10 @@ namespace WebForm.ASCX.ProgramInform
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(!IsPostBack)
+            {
+                PeopleData = null;
+            }
         }
 
         public void ClearAll()
@@ -86,7 +93,46 @@ namespace WebForm.ASCX.ProgramInform
             }
         }
 
+
+        public PeopleData PeopleData
+        {
+            get
+            {
+                return CacheGenericity<PeopleData>.Data["ProgramAdd-PeopleData"];
+            }
+            set
+            {
+                CacheGenericity<PeopleData>.Data["ProgramAdd-PeopleData"] = value;
+            }
+        }
+
         #endregion
 
+
+
+        protected void UpdatePanel1_Load(object sender, EventArgs e)
+        {
+            SearchAns.PeopleData = PeopleData;
+        }
+
+        public void Button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ClearBtn_Click(object sender, EventArgs e)
+        {
+            PeopleData = new PeopleData();
+            SearchAns.PeopleData = PeopleData;
+        }
+
+        protected void PrincipalSearchButton_Click(object sender, EventArgs e)
+        {
+            if (PrincipalSearchBox.Text != string.Empty)
+            {
+                PeopleData = (PeopleData)(new PeopleControl()).SelectReturnObject($"PeopleBase.PEB_ID = {PrincipalSearchBox.Text}");
+            }
+            SearchAns.PeopleData = PeopleData;
+        }
     }
 }

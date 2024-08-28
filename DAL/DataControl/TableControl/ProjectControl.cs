@@ -248,7 +248,7 @@ namespace DAL.DataControl.TableControl
         /// <returns>插入数据的ID</returns>
         public string InsertReturnID(SqlTransaction sqlTransaction, Object item)
         {
-            using (SqlConnection conn = GetSqlConnection())
+            SqlConnection conn = GetSqlConnection();
             {
                 OpenSqlConnection();
                 SqlTransaction tx;
@@ -650,7 +650,7 @@ namespace DAL.DataControl.TableControl
         public int DeleteByID(SqlTransaction sqlTransaction, string ID)
         {
             int affectedRows = 0;
-            using (SqlConnection conn = new SqlConnection(DBHelper.connectionString))
+            SqlConnection conn = new SqlConnection(DBHelper.connectionString);
             {
                 conn.Open();
                 // 创建一个事务对象，通过事务操作保证删除的可靠性
@@ -669,7 +669,6 @@ namespace DAL.DataControl.TableControl
                     catch
                     {
                         trans.Rollback();
-                        throw;
                     }
                 }
             }
@@ -685,7 +684,7 @@ namespace DAL.DataControl.TableControl
         {
             int affectedRows = 0;
 
-            using (SqlConnection conn = GetSqlConnection())
+            SqlConnection conn = GetSqlConnection();
             {
                 OpenSqlConnection();
                 // 创建一个事务对象，通过事务操作保证删除的可靠性
@@ -732,7 +731,6 @@ namespace DAL.DataControl.TableControl
                     catch
                     {
                         tx.Rollback();
-                        throw;
                     }
                 }
             }

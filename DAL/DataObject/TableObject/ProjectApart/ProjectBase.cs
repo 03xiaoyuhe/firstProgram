@@ -254,6 +254,20 @@ namespace DAL.DataObject.TableObject.ProjectApart
         };
 
 
+        /// <summary>
+        /// 项目状态，数字转换为其含义
+        /// </summary>
+        static public Dictionary<string, string> ProjectStateIntStringToMean = new Dictionary<string, string>()
+        {
+            {"0", "" },
+            {"1","申报" },
+            {"2","在研" },
+            {"3","结项" },
+            {"4","终止" },
+            {"5","撤销" },
+        };
+
+
         public static Dictionary<string, int> ProjectStateMeanToInt = new Dictionary<string, int>()
         {
             {"", 0 },

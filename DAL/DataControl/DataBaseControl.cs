@@ -15,13 +15,13 @@ namespace DAL.DataControl
         /// <summary>
         /// 单例，数据库连接对象
         /// </summary>
-        private SqlConnection sqlConnection;
+        private static SqlConnection sqlConnection;
 
         /// <summary>
         /// 创建数据库连接对象，单例模型
         /// </summary>
         /// <returns>返回数据库连接对象</returns>
-        public SqlConnection GetSqlConnection()
+        public static SqlConnection GetSqlConnection()
         {
             if(sqlConnection == null) sqlConnection = new SqlConnection(DBHelper.connectionString);
             return sqlConnection;
@@ -30,7 +30,7 @@ namespace DAL.DataControl
         /// <summary>
         /// 打开数据库链接
         /// </summary>
-        public void OpenSqlConnection()
+        public static void OpenSqlConnection()
         {
             if (sqlConnection.State != ConnectionState.Open)
                 sqlConnection.Open();
@@ -39,7 +39,7 @@ namespace DAL.DataControl
         /// <summary>
         /// 关闭数据库链接
         /// </summary>
-        public void CloseSqlConnection()
+        public static void CloseSqlConnection()
         {
             if (sqlConnection.State != ConnectionState.Closed)
                 sqlConnection.Close();
@@ -47,7 +47,8 @@ namespace DAL.DataControl
 
         public int ExecuteSQL(SqlTransaction sqlTransaction, string sql, List<SqlParameter> sqlParameters)
         {
-            SqlCommand cmd = sqlConnection.CreateCommand();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = sqlTransaction.Connection;
             cmd.CommandText = sql;
             cmd.Parameters.Clear();
             foreach(SqlParameter sqlParameter in sqlParameters)

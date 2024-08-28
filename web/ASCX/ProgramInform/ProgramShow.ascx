@@ -2,7 +2,7 @@
 
 <%@ Register Src="./ForProgramShow/DataFormForParters.ascx" TagName="LineForProgremParter" TagPrefix="ProgremInf" %>
 <%@ Register Src="~/ASCX/BaseForm/ShowBoxForm.ascx" TagName="ShowBoxForm" TagPrefix="BaseForm" %>
-
+<%@ Register Src="~/ASCX/PeopleInform/ForPeopleShow/SingleLineDataFormForPeople.ascx" TagName="SingleLineDataFormForPeople" TagPrefix="BaseForm" %>
 
 <style type="text/css">
     .container {
@@ -116,6 +116,7 @@
         <div class="tab active" data-tab="tab1">基本信息</div>
         <div class="tab" data-tab="tab2">项目论证</div>
         <div class="tab" data-tab="tab3">评审意见</div>
+        <div class="tab" data-tab="tab4">负责人</div>
     </div>
     <div class="tab-content active" id="tab1">
 
@@ -240,7 +241,10 @@
             </tr>
         </table>
 
+    </div>
 
+    <div class="tab-content active" id="tab4">
+        <BaseForm:SingleLineDataFormForPeople runat="server" ID="PrincipalDataForm" />
     </div>
 </div>
 
@@ -260,5 +264,5 @@
             });
         });
     });
-    </script>
+</script>
 

@@ -69,7 +69,7 @@
             <table style="width: 90%; margin: 0 auto;">
                 <tr>
                     <td>
-                        <asp:Button ID="submit" runat="server" Text="提交" CssClass="addProgram-submit btn btn-outline-dark" OnClick="submit_Click" />
+                        <asp:Button ID="submit" runat="server" Text="提交" CssClass="addProgram-submit btn" OnClick="submit_Click" />
                         <style type="text/css">
                             .addProgram-submit {
                                 margin: 0;
@@ -79,7 +79,7 @@
                     </td>
 
                     <td>
-                        <asp:Button ID="clear" runat="server" Text="清除" CssClass="addProgram-clear btn btn-outline-dark" OnClick="clear_Click" ValidationGroup="NEXT" />
+                        <asp:Button ID="clear" runat="server" Text="清除" CssClass="addProgram-clear btn" OnClick="clear_Click" ValidationGroup="NEXT" />
                         <style type="text/css">
                             .addProgram-clear {
                                 margin: 0;

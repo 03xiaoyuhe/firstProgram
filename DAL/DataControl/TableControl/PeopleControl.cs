@@ -31,7 +31,7 @@ namespace DAL.DataControl.TableControl
         {
             string query = BuildSelectSQL(null, whereString, groupBy, orderByField, isAscending, pageSize, pageNumber);
 
-            using (SqlConnection connection = GetSqlConnection())
+            SqlConnection connection = GetSqlConnection();
             {
                 OpenSqlConnection();
                 using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
@@ -58,7 +58,7 @@ namespace DAL.DataControl.TableControl
         {
             string query = BuildSelectSQL(fields, whereString, groupBy, orderByField, isAscending, pageSize, pageNumber);
 
-            using (SqlConnection connection = GetSqlConnection())
+            SqlConnection connection = GetSqlConnection();
             {
                 OpenSqlConnection();
                 using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
@@ -79,9 +79,9 @@ namespace DAL.DataControl.TableControl
         {
             string query = BuildSelectSQL(null, whereString);
 
-            using (SqlConnection connection = GetSqlConnection())
+            SqlConnection connection = GetSqlConnection();
             {
-                connection.Open();
+                OpenSqlConnection();
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
@@ -204,8 +204,7 @@ namespace DAL.DataControl.TableControl
         /// <returns>数据的 ID。</returns>
         public string InsertReturnID(SqlTransaction sqlTransaction, object item)
         {
-
-            using (SqlConnection conn = GetSqlConnection())
+            SqlConnection conn = GetSqlConnection();
             {
                 OpenSqlConnection();
                 SqlTransaction tx;

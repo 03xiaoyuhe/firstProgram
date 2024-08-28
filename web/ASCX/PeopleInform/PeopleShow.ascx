@@ -148,7 +148,7 @@
         <table class="dataTable">
             <tr>
                 <td colspan="6">
-                    <!-- input for 姓名 -->
+                    <!-- input for ID -->
                     <BaseForm:ShowBoxForm runat="server" ID="PEB_ID" DataHead="ID" />
                 </td>
             </tr>

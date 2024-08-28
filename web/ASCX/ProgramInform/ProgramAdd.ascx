@@ -2,76 +2,83 @@
 
 <%@ Register Src="./ForProgramAdd/ALineDataForParters.ascx" TagName="LineForProgremParter" TagPrefix="ProgremInf" %>
 <%@ Register Src="~/ASCX/BaseForm/InputBoxForm.ascx" TagName="InputBoxForm" TagPrefix="BaseForm" %>
+<%@ Register Src="~/ASCX/PeopleInform/ForPeopleShow/SingleLineDataFormForPeople.ascx" TagName="SingleLineDataFormForPeople" TagPrefix="BaseForm" %>
 
 
 <!-- D:\______myProgram\哲学与社会科学规划项目信息化管理平台\firstProgram\web\ASCX\BaseForm\InputBoxForm.ascx -->
 <style type="text/css">
     .container {
-            margin: 20px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            background-color: #fff;
-            position: relative;
-        }
-        .tabs {
-            display: flex;
-            cursor: pointer;
-            padding-left: 10px;
-            background-color: #f1f1f1;
-            border-bottom: 1px solid #ddd;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-        .tab {
-            padding: 10px 20px;
-            background-color: #ddd;
-            border: 1px solid #ddd;
-            border-bottom: none;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-            margin-right: 2px;
-            position: relative;
-            top: 1px;
-        }
+        margin: 20px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        position: relative;
+    }
+
+    .tabs {
+        display: flex;
+        cursor: pointer;
+        padding-left: 10px;
+        background-color: #f1f1f1;
+        border-bottom: 1px solid #ddd;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .tab {
+        padding: 10px 20px;
+        background-color: #ddd;
+        border: 1px solid #ddd;
+        border-bottom: none;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        margin-right: 2px;
+        position: relative;
+        top: 1px;
+    }
+
         .tab.active {
             background-color: #fff;
             border-bottom: none;
             z-index: 2;
             top: 0;
         }
-        .tab-content {
-            display: none;
-            padding: 20px;
-            padding-top:40px;
-            border: 1px solid #ddd;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
-            background-color: #fff;
-            position: relative;
-            z-index: 1;
-            top: -5px;
-        }
+
+    .tab-content {
+        display: none;
+        padding: 20px;
+        padding-top: 40px;
+        border: 1px solid #ddd;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        background-color: #fff;
+        position: relative;
+        z-index: 1;
+        top: -5px;
+    }
+
         .tab-content.active {
             display: block;
         }
-        .tabs::after {
-            content: '';
-            display: block;
-            width: 100%;
-            height: 10px;
-            background-color: #fff;
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
-            z-index: 1;
-        }
+
+    .tabs::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 10px;
+        background-color: #fff;
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        z-index: 1;
+    }
 
     /* 将字体设为红色 */
     .setCharRed {
@@ -139,6 +146,16 @@
             right: 10px;
             background-color: white;
         }
+
+
+    .TreeButtom {
+        float: left;
+        margin: 0 auto;
+        border: none;
+        background: none;
+        position: absolute;
+        z-index: 3;
+    }
 </style>
 
 <div class="container">
@@ -146,6 +163,7 @@
         <div class="tab active" data-tab="tab1">基本信息</div>
         <div class="tab" data-tab="tab2">项目论证</div>
         <div class="tab" data-tab="tab3">评审意见</div>
+        <div class="tab" data-tab="tab4">项目负责人</div>
     </div>
     <div class="tab-content active" id="tab1">
         <table class="dataTable">
@@ -261,6 +279,48 @@
 
 
     </div>
+    <div class="tab-content" id="tab4">
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always" OnLoad="UpdatePanel1_Load">
+
+            <ContentTemplate>
+                <table class="dataTable">
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td colspan="5">
+                            <div class="form-floating mb-3">
+                                <div class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                                    <asp:TextBox ID="PrincipalSearchBox" class="form-control" runat="server" placeholder="输入ID查询" aria-label="Search" ValidationGroup="NoSet"></asp:TextBox>
+                                </div>
+                            </div>
+                        </td>
+                        <td colspan="1">
+
+                            <div class="form-floating mb-3">
+                                <asp:Button ID="PrincipalSearchButton" runat="server" Text="搜索" CssClass="btn" ValidationGroup="NoSet" OnClick="PrincipalSearchButton_Click" />
+                            </div>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="overflow: hidden;">
+                            <div class="modal-header" style="width:100%;">
+                                <BaseForm:SingleLineDataFormForPeople runat="server" ID="SearchAns" />
+                                <asp:Button ID="ClearBtn" runat="server" Text=" " CssClass="btn-close" style="margin-left:10px;" ValidationGroup="NoSet" OnClick="ClearBtn_Click" />
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+            </ContentTemplate>
+        </asp:UpdatePanel>
+    </div>
 </div>
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function () {
@@ -277,4 +337,4 @@
             });
         });
     });
-    </script>
+</script>

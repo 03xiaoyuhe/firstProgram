@@ -209,6 +209,7 @@
     <Content Include="ASCX\Filtrate\FiltrateForm.ascx" />
     <Content Include="ASCX\Filtrate\FiltrateItemForm.ascx" />
     <Content Include="ASCX\Filtrate\MyCheckBox.ascx" />
+    <Content Include="ASCX\PeopleInform\ForPeopleShow\SingleLineDataFormForPeople.ascx" />
     <Content Include="ASCX\PeopleInform\PeopleAdd.ascx" />
     <Content Include="ASCX\PeopleInform\PeopleShow.ascx" />
     <Content Include="ASCX\ProgramInform\ForProgramAdd\ALineDataForParters.ascx" />
@@ -509,6 +510,13 @@
     </Compile>
     <Compile Include="ASCX\PageIndex.ascx.designer.cs">
       <DependentUpon>PageIndex.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ASCX\PeopleInform\ForPeopleShow\SingleLineDataFormForPeople.ascx.cs">
+      <DependentUpon>SingleLineDataFormForPeople.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASCX\PeopleInform\ForPeopleShow\SingleLineDataFormForPeople.ascx.designer.cs">
+      <DependentUpon>SingleLineDataFormForPeople.ascx</DependentUpon>
     </Compile>
     <Compile Include="ASCX\PeopleInform\PeopleAdd.ascx.cs">
       <DependentUpon>PeopleAdd.ascx</DependentUpon>
@@ -1039,7 +1047,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ASCX\PeopleInform\ForPeopleAdd\" />
-    <Folder Include="ASCX\PeopleInform\ForPeopleShow\" />
     <Folder Include="uploadfiles\" />
   </ItemGroup>
   <PropertyGroup>
